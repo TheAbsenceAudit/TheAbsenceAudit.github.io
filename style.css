@@ -257,3 +257,10 @@
   .row-cta{text-align:left}
   .row-btn{padding:.35rem .6rem;font-size:.74rem}
 }
+
+/* Buy variant: visually distinct from a plain navigation button, because a
+   button that takes money must never look like a button that just opens a page. */
+.row-btn--buy{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+.row-btn--buy:hover,.row-btn--buy:focus-visible{background:var(--accent);
+  border-color:var(--accent);color:#fff}
+.row-btn__price{font-variant-numeric:tabular-nums;opacity:.75;margin-left:.3rem}
