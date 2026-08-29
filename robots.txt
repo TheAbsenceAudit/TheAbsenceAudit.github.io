@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://theabsenceaudit.github.io/sitemap.xml
+Sitemap: https://theabsenceaudit.com/sitemap.xml

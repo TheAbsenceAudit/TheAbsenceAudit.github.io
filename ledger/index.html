@@ -1,0 +1,323 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The ledger — every concept, searchable | The Absence Audit</title>
+<meta name="description" content="Search every venture concept we have assessed: what cleared all seven gates, what we rejected, and exactly why. Filter by discipline, the incumbent it displaces, startup capital, payback and failure mode.">
+<link rel="canonical" href="https://theabsenceaudit.com/ledger/">
+<meta name="theme-color" content="#FBF9F5">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theabsenceaudit.com/ledger/">
+<meta property="og:title" content="The ledger — every concept, searchable">
+<meta property="og:description" content="Everything we have assessed, and every rejection with its reason.">
+<meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/style.css">
+<style>
+  .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
+    border-bottom:1px solid var(--rule);padding:1.1rem 0}
+  .toolbar .wrap{display:grid;gap:.75rem}
+  .searchrow{display:flex;gap:.6rem;flex-wrap:wrap}
+  .searchrow input[type=search]{flex:1 1 22rem;min-height:48px;padding:.7rem .95rem;font:inherit;
+    font-size:1rem;background:var(--paper);border:1px solid var(--ink-3);border-radius:0;color:var(--ink)}
+  .searchrow input[type=search]:focus-visible{outline:2px solid var(--kill);outline-offset:1px}
+  .facets{display:flex;gap:.55rem;flex-wrap:wrap;align-items:center}
+  .facets label{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;
+    text-transform:uppercase;color:var(--ink-3)}
+  .facets select,.facets input[type=number]{min-height:40px;padding:.4rem .6rem;font:inherit;
+    font-size:.9rem;background:var(--paper);border:1px solid var(--rule);border-radius:0;color:var(--ink)}
+  .seg{display:inline-flex;border:1px solid var(--ink-3)}
+  .seg button{min-height:40px;padding:.4rem .95rem;font:inherit;font-size:.88rem;font-weight:500;
+    background:var(--paper);color:var(--ink-2);border:0;border-right:1px solid var(--rule);cursor:pointer}
+  .seg button:last-child{border-right:0}
+  .seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+  .countline{font-family:var(--mono);font-size:.8rem;color:var(--ink-3)}
+  .results{border-top:1px solid var(--ink)}
+  .row{display:grid;grid-template-columns:1fr auto;gap:1rem 1.6rem;align-items:start;
+    padding:1.25rem 0;border-bottom:1px solid var(--rule)}
+  .row:hover{background:var(--paper-2)}
+  .row h2{font-size:1.14rem;font-weight:500;margin:0 0 .3rem}
+  .row h2 a{text-decoration:none}
+  .row h2 a:hover{color:var(--kill)}
+  .rmeta{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);margin:0 0 .45rem}
+  .rmetric{font-size:.92rem;color:var(--ink-2);margin:0;max-width:74ch}
+  .rright{text-align:right;white-space:nowrap;font-family:var(--mono);font-size:.8rem}
+  .rdelta{font-size:1.02rem;font-weight:500;color:var(--live)}
+  .tagline{margin:.5rem 0 0;display:flex;gap:.4rem;flex-wrap:wrap}
+  .tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;
+    padding:.2rem .45rem;border:1px solid var(--rule);color:var(--ink-3)}
+  .tag.fail{color:var(--kill);border-color:#E0BDB5}
+  .more{display:block;width:100%;margin:2rem 0 0}
+  .empty{padding:3.5rem 0;color:var(--ink-2)}
+  @media (max-width:700px){.row{grid-template-columns:1fr}.rright{text-align:left}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead"><div class="wrap">
+  <a class="logo" href="/">The Absence <span>Audit</span></a>
+  <nav><a href="/#thesis">Method</a><a href="/ledger/">The ledger</a><a href="/#join">Get it free</a></nav>
+</div></header>
+
+<main id="main">
+<div class="wrap" style="padding:2.6rem 0 1.4rem">
+  <p class="eyebrow">The ledger</p>
+  <h1 style="font-size:clamp(1.9rem,3.6vw,2.7rem)">Every concept we have assessed.</h1>
+  <p class="lede" style="max-width:60ch">What cleared all seven gates, what we rejected, and the
+  specific reason each rejection failed. Search by concept, discipline, or the incumbent product
+  it was measured against.</p>
+</div>
+
+<div class="toolbar"><div class="wrap">
+  <div class="searchrow">
+    <input type="search" id="q" placeholder="Search concepts, disciplines, or an incumbent (e.g. silver ink, Portland cement)" aria-label="Search the ledger">
+    <div class="seg" role="group" aria-label="Verdict">
+      <button type="button" data-v="all" aria-pressed="true">All</button>
+      <button type="button" data-v="1" aria-pressed="false">Cleared</button>
+      <button type="button" data-v="0" aria-pressed="false">Rejected</button>
+    </div>
+  </div>
+  <div class="facets">
+    <label for="disc">Discipline</label>
+    <select id="disc"><option value="">any</option></select>
+    <label for="fail">Failure mode</label>
+    <select id="fail"><option value="">any</option></select>
+    <label for="capex">Max CapEx $</label>
+    <input type="number" id="capex" min="0" step="10000" placeholder="any" style="width:8rem">
+    <label for="pay">Max payback mo</label>
+    <input type="number" id="pay" min="0" step="1" placeholder="any" style="width:6rem">
+    <label for="sort">Sort</label>
+    <select id="sort">
+      <option value="new">newest first</option>
+      <option value="delta">biggest advantage</option>
+      <option value="capex">lowest CapEx</option>
+      <option value="pay">fastest payback</option>
+      <option value="az">A–Z</option>
+    </select>
+    <button type="button" id="reset" style="min-height:40px;padding:.4rem .9rem;font-size:.88rem">Reset</button>
+  </div>
+  <p class="countline" id="count">Loading the ledger…</p>
+</div></div>
+
+<div class="wrap">
+  <div class="results" id="results"></div>
+  <button type="button" class="more" id="more" hidden>Show more</button>
+  <div class="empty" id="empty" hidden>
+    <p><strong>Nothing matches those filters.</strong></p>
+    <p style="font-size:.95rem">Try a broader search, or <button type="button" id="reset2"
+      style="min-height:auto;padding:.2rem .5rem;font-size:.9rem">reset the filters</button>.</p>
+  </div>
+</div>
+</main>
+
+<footer class="site"><div class="wrap"><span>The Absence Audit</span>
+<nav><a href="/">Home</a><a href="/#thesis">Method</a><a href="/#join">Subscribe</a></nav></div>
+<div class="wrap"><p class="disclaimer">Research and educational purposes only. Not investment,
+legal, regulatory or engineering advice; no commercial outcome is promised or implied. Concepts are
+drawn from published literature and are not commercially validated. Verify every figure and
+regulatory requirement independently before committing capital.</p></div></footer>
+
+<script>
+(function () {
+  var FAIL_LABEL = {"negative_control": "Negative control used as incumbent", "sub_2x": "Below the 2x step-change bar", "no_superiority_table": "No head-to-head evidence", "weak_superiority_source": "Evidence rests on non-peer-reviewed sources", "evidence_concentration": "Single-source evidence base", "duplicate_refs": "Duplicate references inflating the evidence base", "declared_parity": "Price parity asserted, not sourced", "uncited_incumbent_price": "Incumbent price uncited", "defunct_incumbent": "Comparator may have left the market"};
+  var VOID_LABEL = {"A": "Illegitimate incumbent", "B": "Mismatched comparison", "C": "Capital and time to revenue", "E": "Negative control / sub-2x"};
+  var BATCH = 50;
+  var all = [], view = [], shown = 0;
+
+  var $ = function (id) { return document.getElementById(id); };
+  var q = $("q"), disc = $("disc"), fail = $("fail"), capex = $("capex"),
+      pay = $("pay"), sort = $("sort"), results = $("results"),
+      count = $("count"), more = $("more"), empty = $("empty");
+  var verdict = "all";
+
+  function hay(r) {
+    if (!r._h) r._h = [r.n, r.d, r.i, r.m].join(" ").toLowerCase();
+    return r._h;
+  }
+
+  function tokens(s) {
+    return s.toLowerCase().split(/\s+/).filter(function (t) { return t.length > 0; });
+  }
+
+  function apply() {
+    var terms = tokens(q.value);
+    var dv = disc.value, fv = fail.value;
+    var cx = capex.value ? parseFloat(capex.value) : null;
+    var pb = pay.value ? parseFloat(pay.value) : null;
+
+    view = all.filter(function (r) {
+      if (verdict !== "all" && String(r.v) !== verdict) return false;
+      if (dv && r.d !== dv) return false;
+      if (fv) {
+        var has = (r.f || []).indexOf(fv) >= 0 ||
+                  (r.o || "").split(",").map(function (x) { return x.trim(); }).indexOf(fv) >= 0;
+        if (!has) return false;
+      }
+      if (cx !== null && !(r.cx !== null && r.cx !== undefined && r.cx <= cx)) return false;
+      if (pb !== null && !(r.pb !== null && r.pb !== undefined && r.pb <= pb)) return false;
+      if (terms.length) {
+        var h = hay(r);
+        for (var i = 0; i < terms.length; i++) if (h.indexOf(terms[i]) < 0) return false;
+      }
+      return true;
+    });
+
+    var s = sort.value;
+    view.sort(function (a, b) {
+      // A rejected concept's delta is a DISCREDITED claim, so it must never
+      // outrank a verified one. Sorting by advantage ranks cleared first.
+      if (s === "delta") {
+        var ax = a.v ? (a.x || 0) : -1, bx = b.v ? (b.x || 0) : -1;
+        return bx - ax;
+      }
+      if (s === "capex") return (a.cx == null ? Infinity : a.cx) - (b.cx == null ? Infinity : b.cx);
+      if (s === "pay") return (a.pb == null ? Infinity : a.pb) - (b.pb == null ? Infinity : b.pb);
+      if (s === "az") return a.n.localeCompare(b.n);
+      return (b.t || "").localeCompare(a.t || "") || a.n.localeCompare(b.n);
+    });
+
+    shown = 0;
+    results.innerHTML = "";
+    render();
+    syncHash();
+  }
+
+  function render() {
+    var slice = view.slice(shown, shown + BATCH);
+    var frag = document.createDocumentFragment();
+    slice.forEach(function (r) {
+      var row = document.createElement("article");
+      row.className = "row";
+      var tags = [];
+      if (r.v) {
+        tags.push('<span class="tag">cleared</span>');
+      } else {
+        (r.o || "").split(",").forEach(function (p) {
+          p = p.trim();
+          if (p && p.toLowerCase() !== "none" && VOID_LABEL[p])
+            tags.push('<span class="tag fail">' + VOID_LABEL[p] + "</span>");
+        });
+        (r.f || []).forEach(function (f) {
+          tags.push('<span class="tag fail">' + (FAIL_LABEL[f] || f) + "</span>");
+        });
+      }
+      row.innerHTML =
+        '<div><h2><a href="/c/' + r.s + '/">' + esc(r.n) + "</a></h2>" +
+        '<p class="rmeta">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") +
+          (r.i ? " · vs " + esc(r.i) : "") + "</p>" +
+        (r.m ? '<p class="rmetric">' + esc(r.m) + "</p>" : "") +
+        '<div class="tagline">' + tags.join("") + "</div></div>" +
+        '<div class="rright">' +
+          (r.v && r.x ? '<div class="rdelta">' + fmtx(r.x) + "</div>" : "") +
+          (r.cx ? "<div>$" + Number(r.cx).toLocaleString() + " capex</div>" : "") +
+          (r.pb ? "<div>" + r.pb + " mo payback</div>" : "") +
+          (r.gm ? "<div>" + r.gm + "% margin</div>" : "") +
+        "</div>";
+      frag.appendChild(row);
+    });
+    results.appendChild(frag);
+    shown += slice.length;
+    more.hidden = shown >= view.length;
+    more.textContent = "Show more (" + Math.max(0, view.length - shown) + " remaining)";
+    empty.hidden = view.length > 0;
+    count.textContent = view.length === all.length
+      ? all.length + " concepts assessed"
+      : "Showing " + view.length + " of " + all.length + " concepts";
+  }
+
+  function fmtx(x) { return (x >= 2 ? "\u2265" : "") + (Math.round(x * 10) / 10) + "\u00d7"; }
+  function esc(s) {
+    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
+      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
+    });
+  }
+
+  function syncHash() {
+    var p = new URLSearchParams();
+    if (q.value) p.set("q", q.value);
+    if (verdict !== "all") p.set("v", verdict);
+    if (disc.value) p.set("d", disc.value);
+    if (fail.value) p.set("f", fail.value);
+    if (capex.value) p.set("cx", capex.value);
+    if (pay.value) p.set("pb", pay.value);
+    if (sort.value !== "new") p.set("s", sort.value);
+    var s = p.toString();
+    history.replaceState(null, "", s ? "?" + s : location.pathname);
+  }
+
+  function readHash() {
+    var p = new URLSearchParams(location.search);
+    if (p.get("q")) q.value = p.get("q");
+    if (p.get("v")) verdict = p.get("v");
+    if (p.get("d")) disc.value = p.get("d");
+    if (p.get("f")) fail.value = p.get("f");
+    if (p.get("cx")) capex.value = p.get("cx");
+    if (p.get("pb")) pay.value = p.get("pb");
+    if (p.get("s")) sort.value = p.get("s");
+    document.querySelectorAll(".seg button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.v === verdict));
+    });
+  }
+
+  var timer;
+  q.addEventListener("input", function () {
+    clearTimeout(timer);
+    timer = setTimeout(apply, 140);
+  });
+  [disc, fail, capex, pay, sort].forEach(function (el) {
+    el.addEventListener("change", apply);
+  });
+  document.querySelectorAll(".seg button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      verdict = b.dataset.v;
+      document.querySelectorAll(".seg button").forEach(function (x) {
+        x.setAttribute("aria-pressed", String(x === b));
+      });
+      apply();
+    });
+  });
+  more.addEventListener("click", render);
+  function reset() {
+    q.value = ""; disc.value = ""; fail.value = ""; capex.value = ""; pay.value = "";
+    sort.value = "new"; verdict = "all";
+    document.querySelectorAll(".seg button").forEach(function (x) {
+      x.setAttribute("aria-pressed", String(x.dataset.v === "all"));
+    });
+    apply();
+  }
+  $("reset").addEventListener("click", reset);
+  $("reset2").addEventListener("click", reset);
+
+  fetch("/ledger.json", { cache: "no-cache" })
+    .then(function (r) { return r.json(); })
+    .then(function (data) {
+      all = data.concepts || [];
+      var ds = {}, fs = {};
+      all.forEach(function (r) {
+        if (r.d) ds[r.d] = 1;
+        (r.f || []).forEach(function (f) { fs[f] = 1; });
+        (r.o || "").split(",").forEach(function (p) {
+          p = p.trim();
+          if (p && p.toLowerCase() !== "none") fs[p] = 1;
+        });
+      });
+      Object.keys(ds).sort().forEach(function (d) {
+        var o = document.createElement("option"); o.value = d; o.textContent = d; disc.appendChild(o);
+      });
+      Object.keys(fs).sort().forEach(function (f) {
+        var o = document.createElement("option");
+        o.value = f;
+        o.textContent = VOID_LABEL[f] || FAIL_LABEL[f] || f;
+        fail.appendChild(o);
+      });
+      readHash();
+      apply();
+    })
+    .catch(function () {
+      count.textContent = "The ledger could not be loaded. Please reload the page.";
+    });
+})();
+</script>
+</body></html>

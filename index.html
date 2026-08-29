@@ -38,228 +38,7 @@
 
 <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-<style>
-/* Self-hosted fonts. Google Fonts was hotlinked, which transmits every EU
-   visitor's IP to Google without consent. Identical faces, no third party. */
-@font-face{
-  font-family:'IBM Plex Mono';
-  font-style:normal;
-  font-weight:400;
-  font-display:swap;
-  src:url('/fonts/ibm-plex-mono-400.woff2') format('woff2');
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face{
-  font-family:'IBM Plex Mono';
-  font-style:normal;
-  font-weight:500;
-  font-display:swap;
-  src:url('/fonts/ibm-plex-mono-500.woff2') format('woff2');
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face{
-  font-family:'IBM Plex Sans';
-  font-style:normal;
-  font-weight:400 600;
-  font-display:swap;
-  src:url('/fonts/ibm-plex-sans-var.woff2') format('woff2');
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face{
-  font-family:'Newsreader';
-  font-style:italic;
-  font-weight:400;
-  font-display:swap;
-  src:url('/fonts/newsreader-italic-400.woff2') format('woff2');
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-@font-face{
-  font-family:'Newsreader';
-  font-style:normal;
-  font-weight:400 600;
-  font-display:swap;
-  src:url('/fonts/newsreader-var.woff2') format('woff2');
-  unicode-range:U+0000-00FF,U+0131,U+0152-0153,U+02BB-02BC,U+02C6,U+02DA,U+02DC,U+0304,U+0308,U+0329,U+2000-206F,U+2074,U+20AC,U+2122,U+2191,U+2193,U+2212,U+2215,U+FEFF,U+FFFD;
-}
-
-  :root{
-    --paper:#FBF9F5; --paper-2:#F3EFE7; --rule:#DDD6C8;
-    --ink:#171512; --ink-2:#4A453C; --ink-3:#7A7365;
-    --kill:#8C2F1E; --live:#1F4D3A; --flag:#8A6A12;
-    --serif:"Newsreader",Georgia,"Times New Roman",serif;
-    --sans:"IBM Plex Sans",-apple-system,BlinkMacSystemFont,"Segoe UI",sans-serif;
-    --mono:"IBM Plex Mono",ui-monospace,"Cascadia Mono",Consolas,monospace;
-    --mx:min(1180px,92vw);
-  }
-  *{box-sizing:border-box}
-  html{-webkit-text-size-adjust:100%}
-  body{
-    margin:0;background:var(--paper);color:var(--ink);
-    font-family:var(--sans);font-size:17px;line-height:1.62;
-    text-wrap:pretty;
-  }
-  h1,h2,h3{font-family:var(--serif);font-weight:500;letter-spacing:-.011em;line-height:1.12;margin:0}
-  a{color:inherit}
-  .wrap{width:var(--mx);margin-inline:auto}
-  .rule{border:0;border-top:1px solid var(--rule);margin:0}
-  .mono{font-family:var(--mono);font-variant-numeric:tabular-nums}
-  .eyebrow{
-    font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;
-    color:var(--ink-3);margin:0 0 1.1rem
-  }
-
-  /* ---------- masthead ---------- */
-  .masthead{border-bottom:1px solid var(--rule);background:var(--paper)}
-  .masthead .wrap{display:flex;align-items:baseline;gap:1.4rem;padding:1.05rem 0;flex-wrap:wrap}
-  .logo{font-family:var(--serif);font-size:1.32rem;font-weight:600;letter-spacing:-.02em;text-decoration:none}
-  .logo span{color:var(--kill)}
-  .masthead nav{margin-left:auto;display:flex;gap:1.5rem;font-size:.87rem}
-  .masthead nav a{color:var(--ink-2);text-decoration:none;padding:.35rem 0;border-bottom:1px solid transparent}
-  .masthead nav a:hover,.masthead nav a:focus-visible{color:var(--ink);border-bottom-color:var(--kill);outline:none}
-
-  /* ---------- hero: asymmetric, editorial ---------- */
-  .hero{padding:5.2rem 0 3.4rem;border-bottom:1px solid var(--rule)}
-  .hero-grid{display:grid;grid-template-columns:1.55fr .95fr;gap:4.2rem;align-items:start}
-  .hero h1{font-size:clamp(2.5rem,5.4vw,4.05rem)}
-  .hero h1 em{font-style:italic;color:var(--kill)}
-  .lede{font-size:1.2rem;color:var(--ink-2);margin:1.6rem 0 0;max-width:34ch}
-  .hero-note{
-    font-size:.95rem;color:var(--ink-2);border-left:none;
-    padding-top:.9rem;margin-top:1.9rem;border-top:2px solid var(--ink)
-  }
-
-  /* the ledger tally — real numbers, presented as a record not a monument */
-  .tally{background:var(--paper-2);border:1px solid var(--rule);padding:1.5rem 1.6rem}
-  .tally h2{font-size:.72rem;font-family:var(--mono);letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1.1rem}
-  .tally dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.6rem 1rem;align-items:baseline}
-  .tally dt{font-size:.9rem;color:var(--ink-2)}
-  .tally dd{margin:0;text-align:right;font-family:var(--mono);font-size:1.02rem;font-variant-numeric:tabular-nums}
-  .tally .big{font-size:1.5rem}
-  .tally .kill{color:var(--kill)}
-  .tally .live{color:var(--live)}
-  .tally footer{margin-top:1.15rem;padding-top:.9rem;border-top:1px solid var(--rule);font-size:.8rem;color:var(--ink-3)}
-
-  /* ---------- generic section ---------- */
-  section{padding:4.4rem 0}
-  .section-head{max-width:62ch;margin-bottom:2.6rem}
-  .section-head h2{font-size:clamp(1.75rem,3.1vw,2.5rem)}
-  .section-head p{color:var(--ink-2);margin:.95rem 0 0}
-
-  /* ---------- the thesis: two columns of prose, not cards ---------- */
-  .thesis{border-bottom:1px solid var(--rule)}
-  .cols{columns:2;column-gap:3.4rem;max-width:76ch}
-  .cols p{margin:0 0 1.1rem;break-inside:avoid}
-  .cols p:first-child::first-letter{
-    font-family:var(--serif);font-size:3.3rem;float:left;line-height:.82;
-    padding:.1rem .55rem .1rem 0;color:var(--kill)
-  }
-
-  /* ---------- ledger table ---------- */
-  .ledger{border-bottom:1px solid var(--rule)}
-  .tbl-scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
-  table{width:100%;border-collapse:collapse;font-size:.94rem;min-width:720px}
-  caption{text-align:left;font-size:.8rem;color:var(--ink-3);padding-bottom:.8rem;font-family:var(--mono)}
-  th{
-    text-align:left;font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;
-    color:var(--ink-3);font-weight:400;padding:0 1rem .7rem 0;border-bottom:1px solid var(--ink);vertical-align:bottom
-  }
-  td{padding:1.05rem 1rem 1.05rem 0;border-bottom:1px solid var(--rule);vertical-align:top}
-  tbody tr:hover{background:var(--paper-2)}
-  .concept{font-family:var(--serif);font-size:1.09rem;font-weight:500;display:block;margin-bottom:.2rem}
-  .disc{font-size:.78rem;color:var(--ink-3);font-family:var(--mono)}
-  .delta{font-family:var(--mono);font-weight:500;color:var(--live);white-space:nowrap}
-  .metric{color:var(--ink-2);font-size:.89rem}
-  .verdict{font-family:var(--mono);font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
-  .verdict.pass{color:var(--live)}
-
-  /* ---------- graveyard ---------- */
-  .graveyard{background:var(--ink);color:var(--paper);border-bottom:1px solid var(--ink)}
-  .graveyard .section-head h2{color:var(--paper)}
-  .graveyard .section-head p{color:#B8B1A4}
-  .graveyard .eyebrow{color:#9A9284}
-  .kills{display:grid;grid-template-columns:repeat(auto-fit,minmax(272px,1fr));gap:0;border-top:1px solid #3A362F}
-  .kill-item{padding:1.7rem 1.7rem 1.7rem 0;border-bottom:1px solid #3A362F;border-right:1px solid #3A362F}
-  .kill-item:last-child{border-right:0}
-  .kill-code{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:#E4917F;margin-bottom:.7rem}
-  .kill-item h3{font-size:1.11rem;color:var(--paper);margin-bottom:.6rem}
-  .kill-item p{font-size:.9rem;color:#B8B1A4;margin:0}
-  .kill-item p b{color:var(--paper);font-weight:500}
-
-  /* ---------- artifacts ---------- */
-  .artifacts{border-bottom:1px solid var(--rule)}
-  .art-list{display:grid;gap:0;max-width:80ch;border-top:1px solid var(--ink)}
-  .art{display:grid;grid-template-columns:8.5rem 1fr;gap:1.8rem;padding:1.35rem 0;border-bottom:1px solid var(--rule)}
-  .art code{font-family:var(--mono);font-size:.78rem;color:var(--kill);padding-top:.15rem}
-  .art h3{font-size:1.05rem;font-family:var(--sans);font-weight:600;margin-bottom:.3rem}
-  .art p{margin:0;font-size:.93rem;color:var(--ink-2)}
-
-  /* ---------- vs trend tools ---------- */
-  .versus{background:var(--paper-2);border-bottom:1px solid var(--rule)}
-  .vs-grid{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--rule);background:var(--paper)}
-  .vs-col{padding:2.1rem}
-  .vs-col+.vs-col{border-left:1px solid var(--rule)}
-  .vs-col h3{font-size:1.28rem;margin-bottom:.35rem}
-  .vs-tag{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1.3rem}
-  .vs-col ul{margin:0;padding-left:1.15rem;color:var(--ink-2);font-size:.95rem}
-  .vs-col li{margin-bottom:.7rem}
-  .vs-col.ours{background:var(--paper)}
-  .vs-col.ours h3{color:var(--live)}
-  .vs-kicker{max-width:66ch;margin:2.1rem auto 0;text-align:center;font-family:var(--serif);font-size:1.24rem;color:var(--ink)}
-
-  /* ---------- signup ---------- */
-  .signup{padding:5rem 0}
-  .signup-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:4rem;align-items:start}
-  .signup h2{font-size:clamp(1.85rem,3.3vw,2.6rem)}
-  .signup p{color:var(--ink-2);margin:1.1rem 0 0;max-width:44ch}
-  form{margin-top:1.9rem}
-  .field{display:flex;gap:.6rem;flex-wrap:wrap}
-  input[type=email]{
-    flex:1 1 15rem;min-height:48px;padding:.75rem .95rem;font:inherit;font-size:1rem;
-    background:var(--paper);border:1px solid var(--ink-3);border-radius:0;color:var(--ink)
-  }
-  input[type=email]:focus-visible{outline:2px solid var(--kill);outline-offset:1px;border-color:var(--ink)}
-  button{
-    min-height:48px;padding:.75rem 1.5rem;font:inherit;font-weight:600;font-size:1rem;cursor:pointer;
-    background:var(--ink);color:var(--paper);border:1px solid var(--ink);border-radius:0
-  }
-  button:hover{background:var(--kill);border-color:var(--kill)}
-  button:focus-visible{outline:2px solid var(--kill);outline-offset:2px}
-  .form-note{font-size:.83rem;color:var(--ink-3);margin-top:.85rem}
-  .msg{margin-top:1rem;font-size:.93rem;min-height:1.4em}
-  .msg.ok{color:var(--live)}
-  .msg.err{color:var(--kill)}
-  .promise{background:var(--paper-2);border:1px solid var(--rule);padding:1.5rem 1.6rem}
-  .promise h3{font-family:var(--mono);font-size:.7rem;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3);margin-bottom:1rem}
-  .promise ul{margin:0;padding-left:1.1rem;font-size:.92rem;color:var(--ink-2)}
-  .promise li{margin-bottom:.62rem}
-
-  /* ---------- footer ---------- */
-  footer.site{border-top:1px solid var(--rule);padding:2.4rem 0 3.4rem;font-size:.86rem;color:var(--ink-3)}
-  footer.site .wrap{display:flex;gap:1.6rem;flex-wrap:wrap;align-items:baseline}
-  footer.site nav{margin-left:auto;display:flex;gap:1.4rem}
-  footer.site a{color:var(--ink-2);text-decoration:none}
-  footer.site a:hover{color:var(--kill)}
-  .disclaimer{max-width:78ch;margin-top:1.5rem;font-size:.79rem;line-height:1.55;color:var(--ink-3)}
-
-  .skip-link{
-    position:absolute;left:-9999px;top:0;z-index:99;background:var(--ink);color:var(--paper);
-    padding:.7rem 1.1rem;text-decoration:none;font-size:.9rem
-  }
-  .skip-link:focus{left:0}
-  form.unconfigured button{background:var(--ink-3);border-color:var(--ink-3);cursor:not-allowed}
-  form.unconfigured input[type=email]{background:var(--paper-2)}
-  @media (max-width:900px){
-    .hero-grid,.signup-grid{grid-template-columns:1fr;gap:2.6rem}
-    .cols{columns:1}
-    .vs-grid{grid-template-columns:1fr}
-    .vs-col+.vs-col{border-left:0;border-top:1px solid var(--rule)}
-    .hero{padding:3.4rem 0 2.6rem}
-    section{padding:3.2rem 0}
-    .art{grid-template-columns:1fr;gap:.4rem}
-    .kill-item{border-right:0}
-  }
-  @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
-</style>
+<link rel="stylesheet" href="/style.css">
 </head>
 <body>
 
@@ -269,7 +48,7 @@
     <a class="logo" href="#">The Absence <span>Audit</span></a>
     <nav>
       <a href="#thesis">Method</a>
-      <a href="#ledger">The ledger</a>
+      <a href="/ledger/">The ledger</a>
       <a href="#graveyard">What we killed</a>
       <a href="#join">Get it free</a>
     </nav>
@@ -337,6 +116,7 @@
 <tr><td><span class="concept">Commercial Production of Pediocin PA-1 Biopreservative via Low-CapEx Fermentation</span><span class="disc">Biotechnology / Food Safety</span></td><td class="metric">Nisin (E234)</td><td class="metric">22x lower IC50 against Listeria monocytogenes compared to Nisin (0.10-7.34 ng/mL vs 2.2-781 ng/mL)</td><td class="delta">&gt;22×</td><td class="verdict pass">Cleared</td></tr></tbody>
       </table>
     </div>
+    <p style="margin-top:1.6rem"><a href="/ledger/" style="font-weight:600">Search all 36 concepts, including every rejection &rarr;</a></p>
   </div>
 </section>
 
@@ -359,6 +139,7 @@
 <article class="kill-item"><p class="kill-code">Voided — mismatched comparison</p><h3>Recombinant Ice-Binding Proteins (IBPs) via Methylotrophic Yeast Fermentation</h3><p>The concept fails like-for-like form factor by comparing an unformulated active protein additive against a bulk solvent CPA (DMSO) or an untreated dough control. Furthermore, IBPs only partially replace cryoprotectant functions (preventing recrystallization rather than colligative ice suppression) and the report lacks a quantified head-to-head numerical viability percentage against DMSO. Named comparator: DMSO / Glycerol CPAs.</p></article>
 <article class="kill-item"><p class="kill-code">Voided — mismatched comparison</p><h3>Biochar-Supported Sulfidated Nanoscale Zero-Valent Iron (S-nZVI@BC) for Rapid TCE Groundwater Remediation</h3><p>The venture fails like-for-like form factor by comparing lab chemical degradation kinetics (Kobs) of an in-situ material composite directly against the multi-decade operating timeline of an ex-situ mechanical pumping plant. In addition, site-specific hydrogeologic permitting and field injection validation delay first paid delivery well beyond 18 months. Named comparator: Pump-and-Treat Systems (with Activated Carbon).</p></article>
 <article class="kill-item"><p class="kill-code">Voided — mismatched comparison</p><h3>Halophile-Derived Siderophores via Non-Sterile Hypersaline Fermentation</h3><p>Compares unformulated filtered fermentation broth directly against a fully formulated commercial Fe-EDDHA chelate product, violating Sub-test B (Like-for-Like). Additionally, the report fails to provide cited quantitative head-to-head field or plant performance data against Fe-EDDHA. Named comparator: Synthetic Fe-EDDHA (e.g., Sprint 138).</p></article></div>
+    <p style="margin-top:1.6rem"><a href="/ledger/?v=0" style="font-weight:600;color:var(--paper)">Browse all 29 rejections by failure mode &rarr;</a></p>
   </div>
 </section>
 
@@ -462,12 +243,12 @@
     <span>The Absence Audit</span>
     <nav>
       <a href="#thesis">Method</a>
-      <a href="#ledger">Ledger</a>
+      <a href="/ledger/">Ledger</a>
       <a href="#graveyard">Graveyard</a>
     </nav>
   </div>
   <div class="wrap">
-    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 18:39 · 36 concepts examined · 29 rejected · 7 cleared</p>
+    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 19:06 · 36 concepts examined · 29 rejected · 7 cleared</p>
     <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
   </div>
 </footer>
