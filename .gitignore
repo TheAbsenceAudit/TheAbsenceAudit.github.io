@@ -1,0 +1,9 @@
+# never let source material or secrets into the public repo
+.env
+*.key
+*_report.md
+*_economics.*
+*_validation.*
+*_audit.md
+*.orig
+__pycache__/
