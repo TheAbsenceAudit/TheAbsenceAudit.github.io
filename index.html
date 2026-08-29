@@ -5,6 +5,36 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>The Absence Audit — proven in the literature, absent from the market</title>
 <meta name="description" content="A research ledger of venture concepts that are extensively proven in peer-reviewed literature and almost entirely absent from the commercial market. We publish what we reject, and why.">
+<link rel="canonical" href="https://theabsenceaudit.github.io/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<meta name="color-scheme" content="light">
+
+<!-- Open Graph: without these, every Facebook/LinkedIn/WhatsApp share renders a bare grey box -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.github.io/">
+<meta property="og:title" content="Proven in the literature. Absent from the market.">
+<meta property="og:description" content="33 concepts examined, 27 rejected, 6 cleared. We read the peer-reviewed record for processes that work, cost almost nothing to start, and that nobody is selling — then we try to destroy them, and publish the autopsies.">
+<meta property="og:image" content="https://theabsenceaudit.github.io/og-image.png">
+<meta property="og:image:secure_url" content="https://theabsenceaudit.github.io/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="The Absence Audit — 33 concepts examined, 27 rejected, 6 cleared">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proven in the literature. Absent from the market.">
+<meta name="twitter:description" content="33 concepts examined, 27 rejected, 6 cleared. The rejections are published in full.">
+<meta name="twitter:image" content="https://theabsenceaudit.github.io/og-image.png">
+<meta name="twitter:image:alt" content="The Absence Audit ledger card">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
@@ -168,6 +198,13 @@
   footer.site a:hover{color:var(--kill)}
   .disclaimer{max-width:78ch;margin-top:1.5rem;font-size:.79rem;line-height:1.55;color:var(--ink-3)}
 
+  .skip-link{
+    position:absolute;left:-9999px;top:0;z-index:99;background:var(--ink);color:var(--paper);
+    padding:.7rem 1.1rem;text-decoration:none;font-size:.9rem
+  }
+  .skip-link:focus{left:0}
+  form.unconfigured button{background:var(--ink-3);border-color:var(--ink-3);cursor:not-allowed}
+  form.unconfigured input[type=email]{background:var(--paper-2)}
   @media (max-width:900px){
     .hero-grid,.signup-grid{grid-template-columns:1fr;gap:2.6rem}
     .cols{columns:1}
@@ -183,6 +220,7 @@
 </head>
 <body>
 
+<a class="skip-link" href="#main">Skip to content</a>
 <header class="masthead">
   <div class="wrap">
     <a class="logo" href="#">The Absence <span>Audit</span></a>
@@ -195,6 +233,7 @@
   </div>
 </header>
 
+<main id="main">
 <div class="hero">
   <div class="wrap hero-grid">
     <div>
@@ -343,12 +382,18 @@
       <p class="eyebrow">Free while the ledger is being built</p>
       <h2>Get the next audit, including everything we reject.</h2>
       <p>One email per scan. The surviving concepts in full, and the rejected ones with the specific reason they failed. No charge during the opening period.</p>
-      <form id="join-form" novalidate>
+      <form id="join-form" action="" method="POST" novalidate>
         <div class="field">
           <label for="email" class="visually-hidden" style="position:absolute;left:-9999px">Email address</label>
           <input type="email" id="email" name="email" placeholder="you@company.com" autocomplete="email" required>
           <button type="submit">Send me the ledger</button>
         </div>
+        <!-- honeypot: real people never fill this; bots usually do -->
+        <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden">
+          <label for="company_website">Leave this empty</label>
+          <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+        
         <p class="form-note">No spam, no reselling your address. Unsubscribe in one click.</p>
         <p class="msg" id="msg" role="status" aria-live="polite"></p>
       </form>
@@ -365,6 +410,7 @@
   </div>
 </section>
 
+</main>
 <footer class="site">
   <div class="wrap">
     <span>The Absence Audit</span>
@@ -375,62 +421,78 @@
     </nav>
   </div>
   <div class="wrap">
-    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 14:55 · 33 concepts examined · 27 rejected · 6 cleared</p>
+    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 15:11 · 33 concepts examined · 27 rejected · 6 cleared</p>
     <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
   </div>
 </footer>
 
 <script>
-/* ------------------------------------------------------------------
-   EMAIL CAPTURE
-   Paste your provider's form endpoint below and the form posts to it.
-   Works with Buttondown, Formspree, Mailchimp, Kit/ConvertKit, Listmonk.
-     Buttondown : https://buttondown.email/api/emails/embed-subscribe/YOURNAME
-     Formspree  : https://formspree.io/f/YOURFORMID
-   Leave it empty and the form falls back to opening a pre-filled email,
-   so the page is still functional before you have a provider.
-------------------------------------------------------------------- */
-var FORM_ENDPOINT = "";
-var FALLBACK_EMAIL = "hello@example.com";   // <- change to your address
-
+/* Email capture. Posts to a real endpoint so the visitor never has to send us
+   an email. The form ALSO works with JavaScript disabled, because its action /
+   method attributes are set server-side at publish time and the browser will
+   do a native POST. Configure in _site/site_config.json. */
 (function () {
   var form = document.getElementById("join-form");
   var input = document.getElementById("email");
   var msg = document.getElementById("msg");
+  var trap = document.getElementById("company_website");
+  var endpoint = form.getAttribute("action") || "";
+  var provider = form.getAttribute("data-provider") || "";
+  var DONE_KEY = "aa_subscribed";
 
   function say(text, kind) {
     msg.textContent = text;
     msg.className = "msg " + (kind || "");
   }
 
+  if (!endpoint) {
+    // Never fake a subscription. Say so plainly and stop.
+    form.classList.add("unconfigured");
+    input.disabled = true;
+    form.querySelector("button").disabled = true;
+    say("Signup opens shortly \u2014 the list is not accepting addresses yet.", "err");
+    return;
+  }
+
+  if (localStorage.getItem(DONE_KEY)) {
+    say("You are already on the list from this browser.", "ok");
+  }
+
   form.addEventListener("submit", function (e) {
-    e.preventDefault();
     var value = (input.value || "").trim();
-    if (!value || value.indexOf("@") < 1 || value.indexOf(".") < 0) {
+    if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+      e.preventDefault();
       say("That does not look like an email address.", "err");
       input.focus();
       return;
     }
-    if (!FORM_ENDPOINT) {
-      window.location.href = "mailto:" + FALLBACK_EMAIL +
-        "?subject=" + encodeURIComponent("Add me to the Absence Audit") +
-        "&body=" + encodeURIComponent("Please add " + value + " to the ledger.");
-      say("Opening your email client — send the message and you are on the list.", "ok");
-      return;
-    }
+    if (trap && trap.value) { e.preventDefault(); return; }   // bot
+
+    // progressive enhancement: intercept only if fetch is available
+    if (!window.fetch) return;      // otherwise let the native POST happen
+    e.preventDefault();
     var btn = form.querySelector("button");
     btn.disabled = true;
-    say("Adding you…");
-    var body = new FormData();
-    body.append("email", value);
-    fetch(FORM_ENDPOINT, { method: "POST", body: body, mode: "cors" })
+    say("Adding you\u2026");
+
+    var payload = new FormData(form);
+    payload.delete("company_website");
+    var opts = { method: "POST", body: payload };
+    if (provider === "json") {
+      var obj = {};
+      payload.forEach(function (v, k) { obj[k] = v; });
+      opts = { method: "POST", headers: { "Content-Type": "application/json" },
+               body: JSON.stringify(obj) };
+    }
+    fetch(endpoint, opts)
       .then(function (r) {
-        if (!r.ok) throw new Error("HTTP " + r.status);
+        if (!r.ok && r.status !== 0) throw new Error("HTTP " + r.status);
         form.reset();
+        localStorage.setItem(DONE_KEY, "1");
         say("You are on the list. The next audit goes out with the following scan.", "ok");
       })
       .catch(function () {
-        say("That did not go through. Email " + FALLBACK_EMAIL + " and we will add you by hand.", "err");
+        say("That did not go through. Please try again in a moment.", "err");
       })
       .finally(function () { btn.disabled = false; });
   });

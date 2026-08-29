@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://theabsenceaudit.github.io/sitemap.xml
