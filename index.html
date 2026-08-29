@@ -61,8 +61,25 @@
     <div>
       <p class="eyebrow">A research ledger, published twice daily</p>
       <h1>Proven in the literature.<br><em>Absent</em> from the market.</h1>
-      <p class="lede">We read the peer-reviewed record for processes that work, cost almost nothing to start, and that nobody is selling. Then we try to destroy them.</p>
-      <p class="hero-note">Most of them die. That is the point — and we publish the autopsies.</p>
+      <p class="lede">We read the peer-reviewed record for processes that work, cost almost
+      nothing to start, and that nobody is selling. Then we try to destroy them.</p>
+      <p class="hero-note">Most of them die. That is the point &mdash; and we publish the autopsies.</p>
+
+      <form id="join-form" action="https://app.kit.com/forms/9858660/subscriptions" method="POST" novalidate style="margin-top:2rem">
+        <div class="field">
+          <label for="email" style="position:absolute;left:-9999px">Email address</label>
+          <input type="email" id="email" name="email_address" placeholder="you@company.com" autocomplete="email" required>
+          <button type="submit">Send me the ledger</button>
+        </div>
+        <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden">
+          <label for="company_website">Leave this empty</label>
+          <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+        </div>
+        
+        <p class="form-note">Free while the ledger is being built. No spam, no reselling your address.
+        We will not promise you a return &mdash; nobody has built one of these ventures yet.</p>
+        <p class="msg" id="msg" role="status" aria-live="polite"></p>
+      </form>
     </div>
 
     <aside class="tally">
@@ -74,7 +91,8 @@
 <dt>Citations resolved</dt><dd class="">612</dd>
 <dt>Verified to DOI</dt><dd class="">164</dd>
 <dt>Words of analysis</dt><dd class="">62,271</dd></dl>
-      <footer>Every figure above is produced by the pipeline itself, not written by hand. The rejection count is the honest one — it includes 8 concepts our own scoring model passed and our audit overruled.</footer>
+      <footer>Every figure above is produced by the pipeline itself, not written by hand.
+      The rejection count is the honest one.</footer>
     </aside>
   </div>
 </div>
@@ -82,14 +100,21 @@
 <section class="thesis" id="thesis">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">The method</p>
-      <h2>Seven gates, and three that exist only to void the other seven.</h2>
+      <p class="eyebrow">Why you can trust the numbers</p>
+      <h2>Seven gates. Then three that exist only to void the other seven.</h2>
     </div>
     <div class="cols">
-      <p>A concept enters the ledger only if it clears all seven: extensively proven in the literature; almost non-existent in the open market; capable of large unit margins; startable on very low capital; fast to produce; addressing a market big enough to matter; and measurably outperforming the product the buyer already pays for.</p>
-      <p>That last gate does the killing. It is not enough to be cheaper, greener, biodegradable or novel — those are preferences, not performance. The concept has to beat a <b>named</b> incumbent, on the metric that buyer already optimises for, at the incumbent's own price, by a step change of at least two-fold.</p>
-      <p>Then three sub-tests try to void the result. Is the named comparator actually what the buyer purchases today — or is it a withdrawn product, or a rival lab technique that never reached market? Is the comparison like-for-like — a finished product against a finished product, not a raw material against a formulated one? And how many months and how much capital until the first paid delivery, counting every certification and approval?</p>
-      <p>Finally the economics are recomputed from scratch. The report supplies only sourceable inputs — feedstock cost, conversion yield, the incumbent's price, an itemised equipment list, cycle time. Margin, breakeven, payback, capital productivity and return are calculated in code, then stress-tested against price falling, yield falling and capital doubling. We never ask the research model for a rate of return: a single confident number hides a dozen invented assumptions.</p>
+      <p>A concept enters the ledger only if it clears all seven: proven in the literature;
+      absent from the market; capable of large unit margins; startable on little capital;
+      quick to produce; addressing a market big enough to matter; and measurably better than
+      the product the buyer already pays for &mdash; on that buyer's own metric, at the
+      incumbent's own price, by a step change of at least two-fold. Cheaper, greener or
+      biodegradable do not count. Those are preferences, not performance.</p>
+      <p>Then the economics are recomputed from scratch, in code, from cited inputs &mdash;
+      feedstock cost, conversion yield, itemised equipment, the incumbent's price. Payback,
+      margin and return are stress-tested against price falling, yield falling and capital
+      doubling. And every surviving claim is re-checked by an independent audit pass that
+      overrules our own scoring model when they disagree. It has done so 8 times.</p>
     </div>
   </div>
 </section>
@@ -124,116 +149,27 @@
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">The graveyard</p>
-      <h2>29 concepts failed. Here is exactly how.</h2>
-      <p>No other research service will show you this, because showing it means admitting most ideas do not survive contact with evidence. The rejections are the most useful thing we produce: each one is a trap you no longer have to fall into.</p>
+      <h2>29 concepts failed. Here is how two of them died.</h2>
+      <p>No other research service will show you this, because showing it means admitting
+      most ideas do not survive contact with evidence.</p>
     </div>
     <div class="kills"><article class="kill-item"><p class="kill-code">Voided — dead incumbent</p><h3>Biomanufactured magnetosomes for MRI contrast</h3><p>Genuinely 2.4–3.5× the relaxivity of its named comparator. That comparator was Feridex — withdrawn from the market in 2008. The margin model was anchored to the historical price of a product discontinued for lack of demand. Regulatory path priced at $35M and 84 months.</p></article>
-<article class="kill-item"><p class="kill-code">Voided — straw incumbent</p><h3>Plant-urease enzyme-induced carbonate precipitation</h3><p>Benchmarked against MICP, a rival laboratory technique that never reached market. Against the real incumbent — Portland cement and soil-cement at 1.5–8 MPa — its 6.41 MPa sits inside the ordinary range. Beating another lab proves nothing.</p></article>
-<article class="kill-item"><p class="kill-code">Voided — mismatched comparison</p><h3>Enzymatic estolide biolubricants</h3><p>Claimed a 5.6× wear advantage. The baseline turned out to be diesel fuel, not a formulated lubricant — the EN 590 fuel spec caps at 460 µm. Corrected like-for-like: ~1.9×. Recomputed honestly: 68.5% gross margin but 31.7-month payback and a 4.9% annual return, negative under any adverse assumption.</p></article>
-<article class="kill-item"><p class="kill-code">Voided — negative control</p><h3>AHPND-targeting bacteriophage for shrimp</h3><p>Survival of 78.5–90.9% against ~45% — but the ~45% bundled antibiotics together with &quot;no treatment&quot;. Beating an untreated pond shows the product does something, not that it beats what the farmer buys. The delta also fell below the 2× bar.</p></article>
-<article class="kill-item"><p class="kill-code">Voided</p><h3>PDMS/SiO2 Superhydrophobic Anti-Soiling Nanocoating for Photovoltaic Arrays</h3><p>The primary performance delta is evaluated against uncoated solar glass, which constitutes a negative control baseline under Sub-test E. Comparing against an untreated baseline forces incumbent_legitimacy=false and superiority=false. Named comparator: Uncoated solar glass / Manual cleaning.</p></article>
-<article class="kill-item"><p class="kill-code">Voided — illegitimate incumbent</p><h3>High-Purity L-Amino Acid Biostimulant via Keratinase-Driven Feather Hydrolysis</h3><p>The venture anchors its 2x L-amino acid superiority claim against chemically hydrolyzed feather meal, which is not what buyers purchase for high-purity L-amino acids (they buy soy/plant hydrolysate, which already provides 100% L-amino acids). Against the real commercial standard, the venture&#x27;s advantage is being cheaper/waste-derived rather than functionally superior. Named comparator: Chemically Hydrolyzed Feather Meal.</p></article>
-<article class="kill-item"><p class="kill-code">Voided — mismatched comparison</p><h3>Marine-Safe Biomimetic Sunscreen Filters via Ultrasound-Assisted Extraction of Mycosporine-Like Amino Acids</h3><p>The concept fails Sub-test B (Like-for-Like) because the claimed performance advantage relies on the molar extinction coefficient of pure isolated MAAs (Porphyra-334/Shinorine), whereas the commercial product being manufactured is a 17.9% semi-purified crude biomass extract. Additionally, by registering as a cosmetic extract (INCI) to avoid FDA OTC drug approval, it cannot legally perform the primary regulated UV-filtering function of Oxybenzone. Named comparator: Standard Organic UV Filters (Oxybenzone).</p></article>
-<article class="kill-item"><p class="kill-code">Voided — comparison and regulatory path</p><h3>Enteric Drug Delivery Vehicles via Phosphoric Acidolysis of Natural Plant Spores</h3><p>The concept fails low CapEx and velocity criteria due to novel excipient regulatory requirements, clinical trials, and Drug Master File filings exceeding 18 months and $5M. Furthermore, it fails like-for-like evaluation because the 249.9-fold bioavailability claim compares an enteric polymer-coated SEC against an uncoated oral drug baseline rather than a finished commercial enteric-coated formulation. Named comparator: Synthetic PLGA Microspheres / Uncoated Oral Delivery.</p></article>
-<article class="kill-item"><p class="kill-code">Voided — illegitimate incumbent</p><h3>High-Yield, Premium Hydrocolloids via Synergistic Ultrasound-Microwave-Assisted Extraction (UMAE) of Citrus Biowaste</h3><p>The concept fails incumbent legitimacy because the 2.45-fold yield superiority claim is calculated against Microwave-Assisted Extraction (MAE), a non-commercial academic lab technique, rather than the entrenched commercial industry standard of hot acid extraction. Additionally, extraction yield is an internal manufacturing efficiency metric rather than the primary product performance metric evaluated by hydrocolloid buyers. Named comparator: Microwave-Assisted Extraction (MAE) / Conventional Hot Acid Extraction.</p></article>
-<article class="kill-item"><p class="kill-code">Voided — mismatched comparison</p><h3>Recombinant Ice-Binding Proteins (IBPs) via Methylotrophic Yeast Fermentation</h3><p>The concept fails like-for-like form factor by comparing an unformulated active protein additive against a bulk solvent CPA (DMSO) or an untreated dough control. Furthermore, IBPs only partially replace cryoprotectant functions (preventing recrystallization rather than colligative ice suppression) and the report lacks a quantified head-to-head numerical viability percentage against DMSO. Named comparator: DMSO / Glycerol CPAs.</p></article>
-<article class="kill-item"><p class="kill-code">Voided — mismatched comparison</p><h3>Biochar-Supported Sulfidated Nanoscale Zero-Valent Iron (S-nZVI@BC) for Rapid TCE Groundwater Remediation</h3><p>The venture fails like-for-like form factor by comparing lab chemical degradation kinetics (Kobs) of an in-situ material composite directly against the multi-decade operating timeline of an ex-situ mechanical pumping plant. In addition, site-specific hydrogeologic permitting and field injection validation delay first paid delivery well beyond 18 months. Named comparator: Pump-and-Treat Systems (with Activated Carbon).</p></article>
-<article class="kill-item"><p class="kill-code">Voided — mismatched comparison</p><h3>Halophile-Derived Siderophores via Non-Sterile Hypersaline Fermentation</h3><p>Compares unformulated filtered fermentation broth directly against a fully formulated commercial Fe-EDDHA chelate product, violating Sub-test B (Like-for-Like). Additionally, the report fails to provide cited quantitative head-to-head field or plant performance data against Fe-EDDHA. Named comparator: Synthetic Fe-EDDHA (e.g., Sprint 138).</p></article></div>
-    <p style="margin-top:1.6rem"><a href="/ledger/?v=0" style="font-weight:600;color:var(--paper)">Browse all 29 rejections by failure mode &rarr;</a></p>
+<article class="kill-item"><p class="kill-code">Voided — straw incumbent</p><h3>Plant-urease enzyme-induced carbonate precipitation</h3><p>Benchmarked against MICP, a rival laboratory technique that never reached market. Against the real incumbent — Portland cement and soil-cement at 1.5–8 MPa — its 6.41 MPa sits inside the ordinary range. Beating another lab proves nothing.</p></article></div>
+    <p style="margin-top:1.6rem"><a href="/ledger/?v=0" style="font-weight:600;color:var(--paper)">
+      Browse all 29 rejections by failure mode &rarr;</a></p>
   </div>
 </section>
 
 <section class="versus">
   <div class="wrap">
     <div class="section-head">
-      <p class="eyebrow">Why this is not a trend newsletter</p>
+      <p class="eyebrow">How this differs from a trend newsletter</p>
       <h2>Trend tools find what is already crowded.</h2>
+      <p>They measure rising search volume or document businesses that already earn revenue.
+      We read the peer-reviewed record for processes that are proven and unbuilt. There is no
+      trend to be late to &mdash; and the value does not decay as the list grows, because the
+      barrier is capability, not awareness. Knowing about a process does not let you run one.</p>
     </div>
-    <div class="vs-grid">
-      <div class="vs-col">
-        <h3>Trend and case-study services</h3>
-        <p class="vs-tag">Signal source: the market itself</p>
-        <ul>
-          <li>Detect <b>rising search volume</b> — by definition the thing is already visible, and already being acted on.</li>
-          <li>Document <b>businesses that already earn revenue</b> — so the opportunity is to copy someone with a head start.</li>
-          <li>The value decays as the subscriber list grows: a niche shared with 50,000 readers is no longer a niche.</li>
-          <li>No mechanism exists to reject an idea. More ideas looks like more value.</li>
-        </ul>
-      </div>
-      <div class="vs-col ours">
-        <h3>The Absence Audit</h3>
-        <p class="vs-tag">Signal source: the peer-reviewed record</p>
-        <ul>
-          <li>Detects processes <b>proven in the literature and absent from the market</b> — there is no trend to be late to.</li>
-          <li>Documents businesses that <b>do not exist yet</b>, with the mechanism and operating conditions to build one.</li>
-          <li>The value does not decay with list size: the barrier is <b>capability, not awareness</b>. Knowing about a process does not let you run it.</li>
-          <li>Rejects roughly four out of five candidates, and publishes the reason for every rejection.</li>
-        </ul>
-      </div>
-    </div>
-    <p class="vs-kicker">One tells you what is working. The other tells you what is proven, unbuilt, and why nobody has built it.</p>
-  </div>
-</section>
-
-<section class="artifacts">
-  <div class="wrap">
-    <div class="section-head">
-      <p class="eyebrow">What arrives</p>
-      <h2>Four files per concept, not a paragraph.</h2>
-      <p>Every claim traces to a resolved citation. Non-peer-reviewed sources are tagged as such — repositories, theses and patents are labelled so you can weigh them yourself.</p>
-    </div>
-    <div class="art-list">
-      <div class="art">
-        <code>report.md</code>
-        <div><h3>The full analysis</h3><p>Mechanism, operating protocol with real conditions and yields, techno-economics, comparison against alternatives, the superiority table, and the absence audit explaining why it is not already on sale.</p></div>
-      </div>
-      <div class="art">
-        <code>economics.json</code>
-        <div><h3>The raw primitives</h3><p>Feedstock cost, conversion yield, incumbent price, itemised capital, cycle time — each attached to its citation. You can recompute every ratio yourself, or change an assumption and watch it break.</p></div>
-      </div>
-      <div class="art">
-        <code>economics.md</code>
-        <div><h3>Computed unit economics</h3><p>COGS, gross margin at the incumbent's price, contribution, breakeven volume, payback, capital productivity and return — plus a six-scenario stress test for price, yield, feedstock and capital.</p></div>
-      </div>
-      <div class="art">
-        <code>audit.md</code>
-        <div><h3>The red-team verdict</h3><p>An independent pass that checks the comparator and the arithmetic rather than the prose, and overrules the scoring model when they disagree. It has done so on 8 of 33 concepts so far.</p></div>
-      </div>
-    </div>
-  </div>
-</section>
-
-<section class="signup" id="join">
-  <div class="wrap signup-grid">
-    <div>
-      <p class="eyebrow">Free while the ledger is being built</p>
-      <h2>Get the next audit, including everything we reject.</h2>
-      <p>One email per scan. The surviving concepts in full, and the rejected ones with the specific reason they failed. No charge during the opening period.</p>
-      <form id="join-form" action="https://app.kit.com/forms/9858660/subscriptions" method="POST" novalidate>
-        <div class="field">
-          <label for="email" class="visually-hidden" style="position:absolute;left:-9999px">Email address</label>
-          <input type="email" id="email" name="email_address" placeholder="you@company.com" autocomplete="email" required>
-          <button type="submit">Send me the ledger</button>
-        </div>
-        <!-- honeypot: real people never fill this; bots usually do -->
-        <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden">
-          <label for="company_website">Leave this empty</label>
-          <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
-        </div>
-        
-        <p class="form-note">No spam, no reselling your address. Unsubscribe in one click.</p>
-        <p class="msg" id="msg" role="status" aria-live="polite"></p>
-      </form>
-    </div>
-    <aside class="promise">
-      <h3>What we will not do</h3>
-      <ul>
-        <li>Promise you a return. Nobody has yet built one of these concepts commercially — the literature is proven, the venture is not.</li>
-        <li>Hide the failures to make the list look stronger.</li>
-        <li>Quote a rate of return generated by a language model.</li>
-        <li>Cite a source you cannot open and check.</li>
-      </ul>
-    </aside>
   </div>
 </section>
 
@@ -244,11 +180,11 @@
     <nav>
       <a href="#thesis">Method</a>
       <a href="/ledger/">Ledger</a>
-      <a href="#graveyard">Graveyard</a>
+      <a href="#graveyard">What we killed</a>
     </nav>
   </div>
   <div class="wrap">
-    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 19:06 · 36 concepts examined · 29 rejected · 7 cleared</p>
+    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 19:43 · 36 concepts examined · 29 rejected · 7 cleared</p>
     <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
   </div>
 </footer>
