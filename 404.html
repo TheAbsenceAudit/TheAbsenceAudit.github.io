@@ -60,7 +60,7 @@
       "url": "https://theabsenceaudit.com/ledger/",
       "isAccessibleForFree": true,
       "creator": {"@type": "Organization", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
-      "dateModified": "2026-08-29T20:30:17+02:00",
+      "dateModified": "2026-08-29T20:56:44+02:00",
       "keywords": ["venture concepts","peer-reviewed literature","commercial absence","unit economics","technology transfer","research commercialisation"],
       "variableMeasured": [
         {"@type":"PropertyValue","name":"Superiority margin vs named incumbent"},
@@ -71,6 +71,26 @@
     }
   ]
 }
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — everything denied until (and unless) the visitor opts in.
+  // This keeps us cookieless, so no consent banner is required.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
 </script>
 </head>
 <body>
@@ -99,7 +119,7 @@
     </nav>
   </div>
   <div class="wrap">
-    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 20:30 · 36 concepts examined · 29 rejected · 7 cleared</p>
+    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 20:56 · 36 concepts examined · 29 rejected · 7 cleared</p>
     <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
   </div>
 </footer>
@@ -173,6 +193,77 @@
         say("That did not go through. Please try again in a moment.", "err");
       })
       .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+
+<script>
+/* Signup attribution. Answers the only marketing question that matters:
+   which channel produced this subscriber?
+
+   FIRST-touch, not last-touch: if someone arrives from Hacker News, leaves,
+   then returns via a Google search and subscribes, the credit belongs to
+   Hacker News. Last-touch would wrongly credit Google for HN's work. */
+(function () {
+  var KEY = "aa_first_touch";
+  function params() {
+    try { return new URLSearchParams(location.search); } catch (e) { return null; }
+  }
+  function capture() {
+    var stored = null;
+    try { stored = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (stored && stored.src) return stored;          // first touch already known
+
+    var q = params();
+    var src = q && (q.get("utm_source") || q.get("ref"));
+    var med = q && q.get("utm_medium");
+    var cmp = q && q.get("utm_campaign");
+    if (!src) {
+      // no explicit tag -> derive from the referring host
+      var r = document.referrer || "";
+      if (r) {
+        try {
+          var h = new URL(r).hostname.replace(/^www\./, "");
+          if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+        } catch (e) {}
+      }
+    }
+    var rec = {
+      src: src || "direct",
+      med: med || (src ? "unknown" : "none"),
+      cmp: cmp || "",
+      lp: location.pathname,
+      ts: new Date().toISOString().slice(0, 10)
+    };
+    try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch (e) {}
+    return rec;
+  }
+
+  var touch = capture();
+  var form = document.getElementById("join-form");
+  if (!form) return;
+
+  // pass it to Kit as a hidden field so attribution survives even without GA
+  function hidden(name, value) {
+    var i = document.createElement("input");
+    i.type = "hidden"; i.name = name; i.value = value || "";
+    form.appendChild(i);
+  }
+  hidden("fields[source]", touch.src);
+  hidden("fields[medium]", touch.med);
+  hidden("fields[campaign]", touch.cmp);
+  hidden("fields[landing_page]", touch.lp);
+
+  // and mirror the conversion into GA so the acquisition reports line up
+  form.addEventListener("submit", function () {
+    if (typeof gtag === "function") {
+      gtag("event", "generate_lead", {
+        source_channel: touch.src,
+        medium: touch.med,
+        campaign: touch.cmp,
+        landing_page: touch.lp
+      });
+    }
   });
 })();
 </script>
