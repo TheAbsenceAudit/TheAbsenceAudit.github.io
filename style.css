@@ -240,3 +240,20 @@
   font-size:.92rem;border:1px solid var(--ink)}
 .price-card__cta:hover{background:var(--accent);border-color:var(--accent)}
 .price-note{font-size:.82rem;color:var(--muted);margin:.5rem 0 0}
+
+
+/* ---- per-row ledger button -------------------------------------------- */
+.row-cta{text-align:right;white-space:nowrap;vertical-align:middle}
+.row-btn{display:inline-block;padding:.4rem .7rem;font-size:.78rem;font-weight:600;
+  letter-spacing:.01em;text-decoration:none;color:var(--ink);border:1px solid var(--line);
+  background:var(--bg);transition:background .12s,border-color .12s,color .12s}
+.row-btn:hover,.row-btn:focus-visible{background:var(--ink);color:var(--bg);
+  border-color:var(--ink)}
+/* Screen-reader-only: the header cell needs a name for table semantics, but a
+   visible "Full entry" label would just add noise above an obvious button. */
+.sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;
+  clip:rect(0,0,0,0);white-space:nowrap;border:0}
+@media (max-width:720px){
+  .row-cta{text-align:left}
+  .row-btn{padding:.35rem .6rem;font-size:.74rem}
+}
