@@ -39,6 +39,39 @@
 <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="stylesheet" href="/style.css">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://theabsenceaudit.com/#website",
+      "url": "https://theabsenceaudit.com/",
+      "name": "The Absence Audit",
+      "description": "A research ledger of venture concepts proven in peer-reviewed literature and absent from the commercial market. Rejections are published in full.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://theabsenceaudit.com/#ledger",
+      "name": "The Absence Audit ledger",
+      "description": "36 venture concepts screened against seven gates for scientific backing, commercial absence, unit margins, capital intensity, production velocity, market size and measured superiority over a named incumbent. 29 rejected, 7 cleared. Every rejection is published with its specific failure mode.",
+      "url": "https://theabsenceaudit.com/ledger/",
+      "isAccessibleForFree": true,
+      "creator": {"@type": "Organization", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
+      "dateModified": "2026-08-29T20:30:17+02:00",
+      "keywords": ["venture concepts","peer-reviewed literature","commercial absence","unit economics","technology transfer","research commercialisation"],
+      "variableMeasured": [
+        {"@type":"PropertyValue","name":"Superiority margin vs named incumbent"},
+        {"@type":"PropertyValue","name":"Gross margin at incumbent price"},
+        {"@type":"PropertyValue","name":"Startup capital expenditure"},
+        {"@type":"PropertyValue","name":"Payback period"}
+      ]
+    }
+  ]
+}
+</script>
 </head>
 <body>
 
@@ -184,7 +217,7 @@
     </nav>
   </div>
   <div class="wrap">
-    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 19:43 · 36 concepts examined · 29 rejected · 7 cleared</p>
+    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 29 August 2026, 20:30 · 36 concepts examined · 29 rejected · 7 cleared</p>
     <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
   </div>
 </footer>
