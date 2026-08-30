@@ -42,7 +42,7 @@
 }
 
   :root{
-    --paper:#FBF9F5; --paper-2:#F3EFE7; --rule:#DDD6C8;
+    --paper:#FBF9F5; --paper-2:#F3EFE7; --rule:#DDD6C8; --line:#DDD6C8;
     --bg:var(--paper);              /* the light field buttons sit on (used by .price-card__cta, .row-btn) */
     --ink:#171512; --ink-2:#4A453C; --ink-3:#7A7365;
     --kill:#8C2F1E; --live:#1F4D3A; --flag:#8A6A12;
@@ -246,7 +246,7 @@
 /* ---- per-row ledger button -------------------------------------------- */
 .row-cta{text-align:right;white-space:nowrap;vertical-align:middle}
 .row-btn{display:inline-block;padding:.4rem .7rem;font-size:.78rem;font-weight:600;
-  letter-spacing:.01em;text-decoration:none;color:var(--ink);border:1px solid var(--line);
+  letter-spacing:.01em;text-decoration:none;color:var(--ink);border:1px solid var(--ink);
   background:var(--bg);transition:background .12s,border-color .12s,color .12s}
 .row-btn:hover,.row-btn:focus-visible{background:var(--ink);color:var(--bg);
   border-color:var(--ink)}
@@ -259,12 +259,12 @@
   .row-btn{padding:.35rem .6rem;font-size:.74rem}
 }
 
-/* Buy variant: light background with an ink border, matching the day-to-day
+/* Buy variant: light background with a crisp ink frame, matching the day-to-day
    navigation buttons (the Free/sample buttons). The label + price carry the
-   "takes money" signal, so it reads as one button family rather than a
-   weighty brick that competes with every other button on the page. Inverts
-   to a dark fill on hover for the interactive affordance. */
-.row-btn--buy{background:var(--bg);color:var(--ink);border-color:var(--ink)}
+   "takes money" signal, so it reads as one button family rather than a weighty
+   brick that competes with every other button on the page. Inverts to a dark
+   fill on hover for the interactive affordance. */
+.row-btn--buy{background:var(--bg);color:var(--ink);border:1px solid var(--ink)}
 .row-btn--buy:hover,.row-btn--buy:focus-visible{background:var(--ink);color:var(--bg);
   border-color:var(--ink)}
 .row-btn__price{font-variant-numeric:tabular-nums;opacity:.75;margin-left:.3rem}
