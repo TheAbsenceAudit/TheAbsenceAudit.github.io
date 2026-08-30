@@ -259,9 +259,12 @@
   .row-btn{padding:.35rem .6rem;font-size:.74rem}
 }
 
-/* Buy variant: visually distinct from a plain navigation button, because a
-   button that takes money must never look like a button that just opens a page. */
-.row-btn--buy{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-.row-btn--buy:hover,.row-btn--buy:focus-visible{background:var(--accent);
-  border-color:var(--accent);color:#fff}
+/* Buy variant: light background with an ink border, matching the day-to-day
+   navigation buttons (the Free/sample buttons). The label + price carry the
+   "takes money" signal, so it reads as one button family rather than a
+   weighty brick that competes with every other button on the page. Inverts
+   to a dark fill on hover for the interactive affordance. */
+.row-btn--buy{background:var(--bg);color:var(--ink);border-color:var(--ink)}
+.row-btn--buy:hover,.row-btn--buy:focus-visible{background:var(--ink);color:var(--bg);
+  border-color:var(--ink)}
 .row-btn__price{font-variant-numeric:tabular-nums;opacity:.75;margin-left:.3rem}
