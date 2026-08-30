@@ -51,6 +51,14 @@
   .tag.fail{color:var(--kill);border-color:#E0BDB5}
   .more{display:block;width:100%;margin:2rem 0 0}
   .empty{padding:3.5rem 0;color:var(--ink-2)}
+  .rcta{margin-top:.6rem}
+  .rcta .row-btn{display:inline-block;padding:.42rem .7rem;font-size:.78rem;font-weight:600;
+    text-decoration:none;border:1px solid var(--ink);border-radius:0}
+  .rcta .row-btn--buy{background:var(--ink);color:var(--bg);border-color:var(--ink)}
+  .rcta .row-btn--buy:hover,.rcta .row-btn--buy:focus-visible{background:var(--accent);border-color:var(--accent)}
+  .rcta .row-btn__price{font-variant-numeric:tabular-nums;opacity:.75;margin-left:.3rem}
+  .rcta .row-btn--free{color:var(--ink-2)}
+  .rcta .row-btn--free:hover{background:var(--ink);color:var(--bg)}
   @media (max-width:700px){.row{grid-template-columns:1fr}.rright{text-align:left}}
 </style>
 </head>
@@ -123,6 +131,7 @@ regulatory requirement independently before committing capital.</p></div></foote
 (function () {
   var FAIL_LABEL = {"negative_control": "Negative control used as incumbent", "sub_2x": "Below the 2x step-change bar", "no_superiority_table": "No head-to-head evidence", "weak_superiority_source": "Evidence rests on non-peer-reviewed sources", "evidence_concentration": "Single-source evidence base", "duplicate_refs": "Duplicate references inflating the evidence base", "declared_parity": "Price parity asserted, not sourced", "uncited_incumbent_price": "Incumbent price uncited", "defunct_incumbent": "Comparator may have left the market"};
   var VOID_LABEL = {"A": "Illegitimate incumbent", "B": "Mismatched comparison", "C": "Capital and time to revenue", "E": "Negative control / sub-2x"};
+  var SINGLES = {"biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": {"name": "Biomimetic Nano-Hydroxyapatite (nHAp)", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/nano-hydroxyapatite"}, "biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": {"name": "Biogenic Acid-Resistant Sewer Infrastructure", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/acid-resistant-sewer"}, "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": {"name": "High-Photostability Anti-Counterfeiting Inks", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/anti-counterfeiting-inks"}, "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": {"name": "Ultra-High-Strength Underwater Adhesives", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/ultra-high-strength-underwater-adhesives"}, "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": {"name": "Sustained-Release Silk Fibroin Microneedle Matrices", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/silk-fibroin-microneedles"}, "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": {"name": "Commercial Production of Pediocin PA-1", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/commercial-production-of-pediocin-pa-1"}};
   var BATCH = 50;
   var all = [], view = [], shown = 0;
 
@@ -214,6 +223,7 @@ regulatory requirement independently before committing capital.</p></div></foote
           (r.cx ? "<div>$" + Number(r.cx).toLocaleString() + " capex</div>" : "") +
           (r.pb ? "<div>" + r.pb + " mo payback</div>" : "") +
           (r.gm ? "<div>" + r.gm + "% margin</div>" : "") +
+          cta(r) +
         "</div>";
       frag.appendChild(row);
     });
@@ -232,6 +242,23 @@ regulatory requirement independently before committing capital.</p></div></foote
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
+  }
+  function cta(r) {
+    // A cleared concept is the product (every survivor is for sale as a $49 single,
+    // EXCEPT Liquid Metal which is the free sample). A rejected concept is not for
+    // sale at all — its /c/<slug>/ page is the free cautionary read.
+    if (!r.v) return "";
+    var s = SINGLES[r.s];
+    if (s && s.checkout_url) {
+      return '<div class="rcta"><a class="row-btn row-btn--buy" href="' +
+        esc(s.checkout_url) + '" rel="noopener" ' +
+        'aria-label="Buy the full dossier for ' + esc(r.n) + ' for ' + esc(s.price) + '">' +
+        'Full dossier <span class="row-btn__price">' + esc(s.price) + "</span></a></div>";
+    }
+    // cleared but free (Liquid Metal sample): still link to the free concept page.
+    return '<div class="rcta"><a class="row-btn row-btn--free" href="/c/' +
+      esc(r.s) + '/" aria-label="Open the free full entry for ' + esc(r.n) + '">' +
+      'Free<span aria-hidden="true"> &rarr;</span></a></div>';
   }
 
   function syncHash() {
