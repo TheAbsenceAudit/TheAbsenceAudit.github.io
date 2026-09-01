@@ -14,6 +14,6 @@
 - /dossier/ and /sample/ are excluded in robots.txt; do not fetch them.
 
 ## Commercial
-- Full dossier: $299 per cleared concept (buy button on the concept page).
+- Full dossier: priced by Deal Value Score — $299 to $1,999 per cleared concept.
 - Full Ledger Access: $20,000/month, or $200,000/year (two months free).
 - Free: the newsletter, every rejection write-up, and one full sample dossier.

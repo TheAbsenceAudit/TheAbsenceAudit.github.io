@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788303409">
+<link rel="stylesheet" href="/style.css?v=1788305349">
 <style>
   .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
     border-bottom:1px solid var(--rule);padding:1.1rem 0}
@@ -246,18 +246,19 @@ regulatory requirement independently before committing capital.</p><p class="dis
     });
   }
   function cta(r) {
-    // A cleared concept is sold as a $299 single dossier (one-time) OR is in
-    // Full Ledger Access. A rejected concept is not for sale at all — its
-    // /c/<slug>/ page is the free cautionary read. Liquid Metal is the free sample.
+    // A cleared concept is sold as a single dossier (priced by its Deal Value
+    // Score) OR is in Full Ledger Access. A rejected concept is not for sale at
+    // all — its /c/<slug>/ page is the free cautionary read. Liquid Metal is free.
     if (!r.v) return "";
     var FREE = "liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati"; // the free sample
     if (r.s === FREE) return '<div class="rcta"><a class="row-btn row-btn--free" href="/sample/" aria-label="Open the free full entry for ' + esc(r.n) + '">' +
       'Free<span aria-hidden="true"> &rarr;</span></a></div>';
     var s = SINGLES[r.s];
     if (s && s.checkout_url) {
+      var price = (r.price != null) ? ("$" + Number(r.price).toLocaleString()) : (s.price || "$299");
       return '<div class="rcta"><a class="row-btn row-btn--buy" href="' + esc(s.checkout_url) + '" rel="noopener" ' +
-        'aria-label="Buy the full dossier for ' + esc(r.n) + ' for ' + esc(s.price) + '">' +
-        'Full dossier <span class="row-btn__price">' + esc(s.price) + "</span></a></div>";
+        'aria-label="Buy the full dossier for ' + esc(r.n) + ' for ' + esc(price) + '">' +
+        'Full dossier <span class="row-btn__price">' + esc(price) + "</span></a></div>";
     }
     // no live single -> route to the subscription (never free, never 404)
     var fa = FULL_ACCESS || {};
