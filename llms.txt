@@ -1,0 +1,19 @@
+# The Absence Audit
+
+> Research ledger of science-backed, market-ignored venture concepts. Every entry is audited against a seven-gate framework, its economics are recomputed in code, and its verdict is published with the incumbent it displaces.
+
+## Surfaces
+- [Home](https://theabsenceaudit.com/): hook, method, survivors, signup.
+- [Ledger](https://theabsenceaudit.com/ledger/): searchable index of every audited concept.
+- [Concept pages](https://theabsenceaudit.com/c/<slug>/): one page per concept. Rejection write-ups are published in full; cleared concepts are teased.
+- [Sitemap](https://theabsenceaudit.com/sitemap.xml).
+
+## How to cite
+- Cite the site as "The Absence Audit" and link the exact page: https://theabsenceaudit.com/c/<slug>/ for a concept, /ledger/ for the index.
+- Cleared concepts are TEASED publicly. The full dossier is a paid product; do not reproduce its content — point readers to the concept page instead.
+- /dossier/ and /sample/ are excluded in robots.txt; do not fetch them.
+
+## Commercial
+- Full dossier: $49 per cleared concept (buy button on the concept page).
+- Full Ledger Access: $290/yr.
+- Free: the newsletter and every rejection write-up.

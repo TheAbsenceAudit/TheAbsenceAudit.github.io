@@ -1,56 +1,91 @@
 # The Absence Audit - robots.txt
-# Everyone is welcome: search engines, AI providers, researchers.
+# Open bait, locked catch: everything is crawlable EXCEPT the paid
+# dossiers (/dossier/) and the gated free sample (/sample/).
 
 User-agent: *
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 # Explicit invites for AI assistant / provider crawlers
 User-agent: Google-Extended
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: GoogleOther
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: GPTBot
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: OAI-SearchBot
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: ChatGPT-User
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: ClaudeBot
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: Claude-Web
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: Claude-SearchBot
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: PerplexityBot
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: Perplexity-User
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: Applebot-Extended
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: meta-externalagent
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: CCBot
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: Amazonbot
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: cohere-ai
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 User-agent: MistralBot
 Allow: /
+Disallow: /dossier/
+Disallow: /sample/
 
 Sitemap: https://theabsenceaudit.com/sitemap.xml
