@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788300204">
+<link rel="stylesheet" href="/style.css?v=1788302419">
 <style>
   .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
     border-bottom:1px solid var(--rule);padding:1.1rem 0}
@@ -132,7 +132,7 @@ regulatory requirement independently before committing capital.</p><p class="dis
 (function () {
   var FAIL_LABEL = {"negative_control": "Negative control used as incumbent", "sub_2x": "Below the 2x step-change bar", "no_superiority_table": "No head-to-head evidence", "weak_superiority_source": "Evidence rests on non-peer-reviewed sources", "evidence_concentration": "Single-source evidence base", "duplicate_refs": "Duplicate references inflating the evidence base", "declared_parity": "Price parity asserted, not sourced", "uncited_incumbent_price": "Incumbent price uncited", "defunct_incumbent": "Comparator may have left the market"};
   var VOID_LABEL = {"A": "Illegitimate incumbent", "B": "Mismatched comparison", "C": "Capital and time to revenue", "E": "Negative control / sub-2x", "F": "Entry application mismatch", "G": "Form-factor / handling regression", "H": "Hazards undisclosed"};
-  var SINGLES = {"biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": {"name": "Biomimetic Nano-Hydroxyapatite (nHAp)", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/nano-hydroxyapatite"}, "biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": {"name": "Biogenic Acid-Resistant Sewer Infrastructure", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/acid-resistant-sewer"}, "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": {"name": "High-Photostability Anti-Counterfeiting Inks", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/anti-counterfeiting-inks"}, "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": {"name": "Ultra-High-Strength Underwater Adhesives", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/ultra-high-strength-underwater-adhesives"}, "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": {"name": "Sustained-Release Silk Fibroin Microneedle Matrices", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/silk-fibroin-microneedles"}, "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": {"name": "Commercial Production of Pediocin PA-1", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/commercial-production-of-pediocin-pa-1"}, "mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc": {"name": "CTFs for PFAS water treatment", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/ctfs-pfas-water-treatment"}, "polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi": {"name": "Polyimide-Silica Aerogel Blankets", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/polyimide-reinforced-silica-aerogel-blan"}, "cement-free-refractory-castables-via-potassium-activated-metakaolin-ge": {"name": "Cement-Free Refractory Castables", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/cement-free-refractory-castables"}, "inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion": {"name": "Inositol Hexaphosphate (IP6) Substrate Passivation", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/inositol-hexaphosphate-ip6-passivation"}, "polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial": {"name": "IPDI Self-Healing Microcapsules", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/ipdi-microcapsules"}, "compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi": {"name": "Compact Volume-Expandable Sorbents (CVES)", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/cves-polyhipe-sorbents"}, "ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via": {"name": "Ultrawhite BaSO4 Radiative Cooling Paint", "price": "$49", "checkout_url": "https://theabsenceaudit.kit.com/products/baso4-cooling-paint"}, "halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am": {"name": "Halogen-Free Ionic Liquid Boundary Lubricant", "price": "$49", "checkout_url": ""}};
+  var FULL_ACCESS = {"url": "https://theabsenceaudit.kit.com/products/full-ledger-access-monthly", "price": "$149", "label": "Full access — $149/mo"};
   var BATCH = 50;
   var all = [], view = [], shown = 0;
 
@@ -245,33 +245,18 @@ regulatory requirement independently before committing capital.</p><p class="dis
     });
   }
   function cta(r) {
-    // A cleared concept is the product: every survivor is a $49 single, EXCEPT
-    // Liquid Metal, the free sample. A rejected concept is not for sale at all —
-    // its /c/<slug>/ page is the free cautionary read.
+    // A cleared concept is the product, sold through the Full Ledger Access
+    // subscription. A rejected concept is not for sale at all — its /c/<slug>/
+    // page is the free cautionary read. Liquid Metal is the free sample.
     if (!r.v) return "";
     var FREE = "liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati"; // the free sample
     if (r.s === FREE) return '<div class="rcta"><a class="row-btn row-btn--free" href="/sample/" aria-label="Open the free full entry for ' + esc(r.n) + '">' +
       'Free<span aria-hidden="true"> &rarr;</span></a></div>';
-    var s = SINGLES[r.s];
-    if (!s) {
-      // Cleared but its single $49 Kit product is not live yet -> NOT free.
-      // Point at the Full Ledger (where every survivor is included) so no one is
-      // gifted a paid dossier and no link 404s. Swap for the real product URL the
-      // moment the single page ships.
-      return '<div class="rcta"><a class="row-btn row-btn--buy" href="/ledger/" rel="noopener" ' +
-        'aria-label="Buy the ' + esc(r.n) + ' dossier ($49) via Full Ledger Access">' +
-        'Full dossier <span class="row-btn__price">$49</span></a></div>';
-    }
-    if (s.checkout_url) {
-      return '<div class="rcta"><a class="row-btn row-btn--buy" href="' +
-        esc(s.checkout_url) + '" rel="noopener" ' +
-        'aria-label="Buy the full dossier for ' + esc(r.n) + ' for ' + esc(s.price) + '">' +
-        'Full dossier <span class="row-btn__price">' + esc(s.price) + "</span></a></div>";
-    }
-    // cleared, in SINGLES but no checkout_url yet -> not free, not 404 either.
-    return '<div class="rcta"><a class="row-btn row-btn--buy" href="/ledger/" rel="noopener" ' +
-      'aria-label="Buy the ' + esc(r.n) + ' dossier (' + esc(s.price) + ') via Full Ledger Access">' +
-      'Full dossier <span class="row-btn__price">' + esc(s.price) + "</span></a></div>";
+    var fa = FULL_ACCESS || {};
+    var url = fa.url || "/ledger/";
+    var label = fa.label || "Full access";
+    return '<div class="rcta"><a class="row-btn row-btn--buy" href="' + esc(url) + '" rel="noopener" ' +
+      'aria-label="Subscribe for full access to ' + esc(r.n) + '">' + esc(label) + "</a></div>";
   }
 
   function syncHash() {

@@ -14,6 +14,5 @@
 - /dossier/ and /sample/ are excluded in robots.txt; do not fetch them.
 
 ## Commercial
-- Full dossier: $49 per cleared concept (buy button on the concept page).
-- Full Ledger Access: $290/yr.
-- Free: the newsletter and every rejection write-up.
+- Full Ledger Access: $149/month, or $1,490/year (two months free).
+- Free: the newsletter, every rejection write-up, and one full sample dossier.
