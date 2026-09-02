@@ -13,7 +13,7 @@ Allow: /
 Disallow: /dossier/
 Disallow: /sample/
 
-User-agent: GoogleOther
+User-agent: Google-Other
 Allow: /
 Disallow: /dossier/
 Disallow: /sample/
