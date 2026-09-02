@@ -5,6 +5,7 @@
 ## Surfaces
 - [Home](https://theabsenceaudit.com/): hook, method, survivors, signup.
 - [Sample dossier](https://theabsenceaudit.com/sample/): one COMPLETE, unedited dossier — full economics, works cited, and the red-team audit arguing against it. Free and indexable; read it before judging anything else.
+- [Free studies](https://theabsenceaudit.com/studies/): three more complete dossiers, one per latest scan cycle, verdicts published honestly — the proof-of-work library.
 - [Track record](https://theabsenceaudit.com/track-record/): the verifiable operating record — dates, counts, published rejections.
 - [Method](https://theabsenceaudit.com/method/): how a concept is screened, with the due-diligence questions answered.
 - [Ledger](https://theabsenceaudit.com/ledger/): searchable index of every audited concept.
