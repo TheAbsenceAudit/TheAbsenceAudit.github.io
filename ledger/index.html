@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788330611">
+<link rel="stylesheet" href="/style.css?v=1788334802">
 <style>
   .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
     border-bottom:1px solid var(--rule);padding:1.1rem 0}
@@ -34,6 +34,11 @@
   .seg button:last-child{border-right:0}
   .seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
   .countline{font-family:var(--mono);font-size:.8rem;color:var(--ink-3)}
+  .taxbox{background:var(--paper-2);border-bottom:1px solid var(--rule)}
+  .taxbox .wrap{padding:1.1rem 1.6rem}
+  .taxbox h3{margin:0 0 .5rem;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
+  #taxline{margin:0;font-size:.88rem;color:var(--ink-2);line-height:1.7}
+  #taxline strong{color:var(--ink)}
   .results{border-top:1px solid var(--ink)}
   .row{display:grid;grid-template-columns:1fr auto;gap:1rem 1.6rem;align-items:start;
     padding:1.25rem 0;border-bottom:1px solid var(--rule)}
@@ -49,6 +54,7 @@
   .tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;
     padding:.2rem .45rem;border:1px solid var(--rule);color:var(--ink-3)}
   .tag.fail{color:var(--kill);border-color:#E0BDB5}
+  .tag.ok{color:#1D6F42;border-color:#B7D5BF}
   .more{display:block;width:100%;margin:2rem 0 0}
   .empty{padding:3.5rem 0;color:var(--ink-2)}
   .rcta{margin-top:.6rem}
@@ -110,6 +116,11 @@
   <p class="countline" id="count">Loading the ledger…</p>
 </div></div>
 
+<div class="taxbox" id="taxbox" hidden><div class="wrap">
+  <h3>The failure taxonomy — why concepts die</h3>
+  <p id="taxline"></p>
+</div></div>
+
 <div class="wrap">
   <div class="results" id="results"></div>
   <button type="button" class="more" id="more" hidden>Show more</button>
@@ -130,8 +141,8 @@ regulatory requirement independently before committing capital.</p><p class="dis
 
 <script>
 (function () {
-  var FAIL_LABEL = {"negative_control": "Negative control used as incumbent", "sub_2x": "Below the 2x step-change bar", "no_superiority_table": "No head-to-head evidence", "weak_superiority_source": "Evidence rests on non-peer-reviewed sources", "evidence_concentration": "Single-source evidence base", "duplicate_refs": "Duplicate references inflating the evidence base", "declared_parity": "Price parity asserted, not sourced", "uncited_incumbent_price": "Incumbent price uncited", "defunct_incumbent": "Comparator may have left the market"};
-  var VOID_LABEL = {"A": "Illegitimate incumbent", "B": "Mismatched comparison", "C": "Capital and time to revenue", "E": "Negative control / sub-2x", "F": "Entry application mismatch", "G": "Form-factor / handling regression", "H": "Hazards undisclosed"};
+  var FAIL_LABEL = {"negative_control": "Negative control used as incumbent", "sub_2x": "Below the 2x step-change bar", "no_superiority_table": "No head-to-head evidence", "weak_superiority_source": "Evidence rests on non-peer-reviewed sources", "evidence_concentration": "Single-source evidence base", "duplicate_refs": "Duplicate references inflating the evidence base", "declared_parity": "Price parity asserted, not sourced", "uncited_incumbent_price": "Incumbent price uncited", "defunct_incumbent": "Comparator may have left the market", "missing_application_envelope": "Entry application undeclared", "entry_application_missing": "Entry application undeclared", "missing_hazard_profile": "Hazard profile missing", "uncited_safety_claim": "Uncited safety claim", "opex_driven_margin": "Margin fails the operating-cost check", "capex_mismatch": "CapEx figures inconsistent", "missing_absence_ledger": "Absence asserted, search unreported", "absence_ledger_unquantified": "Absence search unquantified"};
+  var VOID_LABEL = {"A": "Illegitimate incumbent", "B": "Mismatched comparison", "C": "Capital and time to revenue", "E": "Negative control / sub-2x", "F": "Entry application mismatch", "G": "Form-factor / handling regression", "H": "Hazards undisclosed", "I": "Absence search missing"};
   var SINGLES = {"biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": {"name": "Biomimetic Nano-Hydroxyapatite (nHAp)", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/nano-hydroxyapatite"}, "biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": {"name": "Biogenic Acid-Resistant Sewer Infrastructure", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/acid-resistant-sewer"}, "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": {"name": "High-Photostability Anti-Counterfeiting Inks", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/anti-counterfeiting-inks"}, "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": {"name": "Ultra-High-Strength Underwater Adhesives", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/ultra-high-strength-underwater-adhesives"}, "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": {"name": "Sustained-Release Silk Fibroin Microneedle Matrices", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/silk-fibroin-microneedles"}, "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": {"name": "Commercial Production of Pediocin PA-1", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/commercial-production-of-pediocin-pa-1"}, "mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc": {"name": "CTFs for PFAS water treatment", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/ctfs-pfas-water-treatment"}, "polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi": {"name": "Polyimide-Silica Aerogel Blankets", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/polyimide-reinforced-silica-aerogel-blan"}, "cement-free-refractory-castables-via-potassium-activated-metakaolin-ge": {"name": "Cement-Free Refractory Castables", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/cement-free-refractory-castables"}, "inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion": {"name": "Inositol Hexaphosphate (IP6) Substrate Passivation", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/inositol-hexaphosphate-ip6-passivation"}, "polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial": {"name": "IPDI Self-Healing Microcapsules", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/ipdi-microcapsules"}, "compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi": {"name": "Compact Volume-Expandable Sorbents (CVES)", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/cves-polyhipe-sorbents"}, "ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via": {"name": "Ultrawhite BaSO4 Radiative Cooling Paint", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/baso4-cooling-paint"}, "halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am": {"name": "Halogen-Free Ionic Liquid Boundary Lubricant", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/halogen-free-ionic-liquid"}, "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat": {"name": "Drought-Resilient Dark Septate Endophyte (DSE) Inoculants", "price": "$999", "checkout_url": "https://theabsenceaudit.kit.com/products/drought-resilient-dark-septate-endophyte"}, "ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze": {"name": "Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR)", "price": "$499", "checkout_url": "https://theabsenceaudit.kit.com/products/ultra-low-shrinkage-ocr-resin"}, "self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca": {"name": "Self-Healable WPU/Ti3C2Tx MXene Coating", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/self-healable-mxene-coating"}, "pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech": {"name": "Pressureless Micro-Silver-Indium TLP Sintering Paste", "price": "$499", "checkout_url": "https://theabsenceaudit.kit.com/products/pressureless-ag-in-tlp-sintering-paste"}};
   var FULL_ACCESS = {"url": "https://theabsenceaudit.kit.com/products/full-ledger-access", "price": "$20,000", "label": "Full access"};
   var BATCH = 50;
@@ -218,6 +229,9 @@ regulatory requirement independently before committing capital.</p><p class="dis
           tags.push('<span class="tag fail">' + (FAIL_LABEL[f] || f) + "</span>");
         });
       }
+      if (r.abs === 1) tags.push('<span class="tag ok">absence verified</span>');
+      if (r.reg === "high") tags.push('<span class="tag fail">high regulatory</span>');
+      else if (r.reg === "med") tags.push('<span class="tag">regulatory</span>');
       row.innerHTML =
         '<div><h2><a href="/c/' + r.s + '/">' + esc(r.n) + "</a></h2>" +
         '<p class="rmeta">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") +
@@ -353,6 +367,24 @@ regulatory requirement independently before committing capital.</p><p class="dis
       });
       readHash();
       apply();
+      var tc = {};
+      all.forEach(function (r) {
+        if (r.v) return;
+        (r.f || []).forEach(function (f) { tc[f] = (tc[f] || 0) + 1; });
+        (r.o || "").split(",").forEach(function (p) {
+          p = p.trim();
+          if (p && p.toLowerCase() !== "none") { var k = "v:" + p; tc[k] = (tc[k] || 0) + 1; }
+        });
+      });
+      var tparts = Object.keys(tc).sort(function (a, b) { return tc[b] - tc[a]; }).map(function (k) {
+        var lab = k.indexOf("v:") === 0 ? (VOID_LABEL[k.slice(2)] || k.slice(2))
+                                        : (FAIL_LABEL[k] || k);
+        return "<strong>" + tc[k] + "</strong> " + lab;
+      });
+      if (tparts.length) {
+        document.getElementById("taxline").innerHTML = tparts.join(" &middot; ");
+        document.getElementById("taxbox").hidden = false;
+      }
     })
     .catch(function () {
       count.textContent = "The ledger could not be loaded. Please reload the page.";
