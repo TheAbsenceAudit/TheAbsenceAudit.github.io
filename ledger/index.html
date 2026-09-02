@@ -14,7 +14,7 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788350386">
+<link rel="stylesheet" href="/style.css?v=1788350805">
 <style>
   .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
     border-bottom:1px solid var(--rule);padding:1.1rem 0}
@@ -40,6 +40,20 @@
   #taxline{margin:0;font-size:.88rem;color:var(--ink-2);line-height:1.7}
   #taxline strong{color:var(--ink)}
   .results{border-top:1px solid var(--ink)}
+  .gridwrap{overflow-x:auto;border-top:1px solid var(--ink)}
+  table.term{width:100%;border-collapse:collapse;font-size:.85rem;min-width:1000px}
+  table.term th{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
+    text-align:left;padding:.65rem .55rem;border-bottom:1px solid var(--ink);color:var(--ink-3);white-space:nowrap}
+  table.term td{padding:.72rem .55rem;border-bottom:1px solid var(--rule);vertical-align:top}
+  table.term td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+  table.term a{color:inherit}
+  .tname{font-weight:600}
+  .tdate{display:block;font-size:.74rem;color:var(--ink-3);margin-top:.15rem}
+  .tbadge{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;
+    padding:.14rem .4rem;border:1px solid var(--rule);color:var(--ink-3);white-space:nowrap}
+  .tbadge.ok{color:#1D6F42;border-color:#B7D5BF}
+  .tbadge.dead{color:var(--kill);border-color:#E0BDB5}
+  .tdossier{font-weight:600;white-space:nowrap}
   .row{display:grid;grid-template-columns:1fr auto;gap:1rem 1.6rem;align-items:start;
     padding:1.25rem 0;border-bottom:1px solid var(--rule)}
   .row:hover{background:var(--paper-2)}
@@ -88,10 +102,14 @@
 <div class="toolbar"><div class="wrap">
   <div class="searchrow">
     <input type="search" id="q" placeholder="Search concepts, disciplines, or an incumbent (e.g. silver ink, Portland cement)" aria-label="Search the ledger">
-    <div class="seg" role="group" aria-label="Verdict">
+    <div class="seg" role="group" aria-label="Verdict" id="verdictseg">
       <button type="button" data-v="all" aria-pressed="true">All</button>
       <button type="button" data-v="sale" aria-pressed="false">For sale</button>
       <button type="button" data-v="0" aria-pressed="false">Rejected</button>
+    </div>
+    <div class="seg" role="group" aria-label="View" id="viewseg">
+      <button type="button" data-view="grid" aria-pressed="true">Grid</button>
+      <button type="button" data-view="list" aria-pressed="false">List</button>
     </div>
   </div>
   <div class="facets">
@@ -153,6 +171,7 @@ regulatory requirement independently before committing capital.</p><p class="dis
       pay = $("pay"), sort = $("sort"), results = $("results"),
       count = $("count"), more = $("more"), empty = $("empty");
   var verdict = "all";
+  var viewmode = "grid";
 
   function hay(r) {
     if (!r._h) r._h = [r.n, r.d, r.i, r.m].join(" ").toLowerCase();
@@ -202,6 +221,18 @@ regulatory requirement independently before committing capital.</p><p class="dis
       if (s === "az") return a.n.localeCompare(b.n);
       return (b.t || "").localeCompare(a.t || "") || a.n.localeCompare(b.n);
     });
+
+    if (viewmode === "grid") {
+      shown = view.length;
+      results.innerHTML = view.length ? renderGrid(view) : "";
+      more.hidden = true;
+      empty.hidden = view.length > 0;
+      count.textContent = view.length === all.length
+        ? all.length + " concepts assessed"
+        : "Showing " + view.length + " of " + all.length + " concepts";
+      syncHash();
+      return;
+    }
 
     shown = 0;
     results.innerHTML = "";
@@ -263,6 +294,48 @@ regulatory requirement independently before committing capital.</p><p class="dis
       return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
     });
   }
+  function gridCta(r) {
+    // Compact dossier link for the grid column. Same routing as cta().
+    var FREE = "liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati";
+    if (r.s === FREE) return '<a href="/sample/">Free</a>';
+    if (!r.v && !(r.p === 1)) return '<span class="tbadge dead">autopsy only</span>';
+    var s = SINGLES[r.s];
+    if (s && s.checkout_url) {
+      var price = (r.price != null) ? ("$" + Number(r.price).toLocaleString()) : (s.price || "$299");
+      return '<a class="tdossier" href="' + esc(s.checkout_url) + '" rel="noopener">Buy ' + esc(price) + "</a>";
+    }
+    var fa = FULL_ACCESS || {};
+    return '<a class="tdossier" href="' + esc(fa.url || "/ledger/") + '" rel="noopener">'
+      + esc(fa.label || "Full access") + "</a>";
+  }
+  function renderGrid(list) {
+    var h = '<div class="gridwrap"><table class="term"><thead><tr>'
+      + "<th>Concept</th><th>Status</th><th>Incumbent</th><th>Advantage</th>"
+      + "<th>Absence</th><th>CapEx</th><th>Margin</th><th>Payback</th>"
+      + "<th>Regulatory</th><th>Dossier</th></tr></thead><tbody>";
+    list.forEach(function (r) {
+      var badges = [];
+      if (r.v) badges.push('<span class="tbadge ok">cleared</span>');
+      else {
+        if (r.p === 1) badges.push('<span class="tbadge">product</span>');
+        badges.push('<span class="tbadge dead">rejected</span>');
+      }
+      h += "<tr>"
+        + '<td><a class="tname" href="/c/' + r.s + '/">' + esc(r.n) + "</a>"
+        + '<span class="tdate">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") + "</span></td>"
+        + "<td>" + badges.join(" ") + "</td>"
+        + "<td>" + (r.i ? esc(r.i) : "—") + "</td>"
+        + '<td class="num">' + ((r.v || r.p === 1) && r.x ? fmtx(r.x) : "—") + "</td>"
+        + "<td>" + (r.abs === 1 ? '<span class="tbadge ok">verified</span>' : "—") + "</td>"
+        + '<td class="num">' + (r.cx != null ? "$" + Number(r.cx).toLocaleString() : "—") + "</td>"
+        + '<td class="num">' + (r.gm != null ? r.gm + "%" : "—") + "</td>"
+        + '<td class="num">' + (r.pb != null ? r.pb + " mo" : "—") + "</td>"
+        + "<td>" + (r.reg ? esc(r.reg) : "—") + "</td>"
+        + "<td>" + gridCta(r) + "</td>"
+        + "</tr>";
+    });
+    return h + "</tbody></table></div>";
+  }
   function cta(r) {
     // A product (live Kit single) or audit-cleared concept is sold as a single
     // dossier priced by its Deal Value Score. A rejected concept without a
@@ -296,6 +369,7 @@ regulatory requirement independently before committing capital.</p><p class="dis
     if (capex.value) p.set("cx", capex.value);
     if (pay.value) p.set("pb", pay.value);
     if (sort.value !== "new") p.set("s", sort.value);
+    if (viewmode !== "grid") p.set("w", viewmode);
     var s = p.toString();
     history.replaceState(null, "", s ? "?" + s : location.pathname);
   }
@@ -309,8 +383,12 @@ regulatory requirement independently before committing capital.</p><p class="dis
     if (p.get("cx")) capex.value = p.get("cx");
     if (p.get("pb")) pay.value = p.get("pb");
     if (p.get("s")) sort.value = p.get("s");
-    document.querySelectorAll(".seg button").forEach(function (b) {
+    if (p.get("w") === "list" || p.get("w") === "grid") viewmode = p.get("w");
+    document.querySelectorAll("#verdictseg button").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.v === verdict));
+    });
+    document.querySelectorAll("#viewseg button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.view === viewmode));
     });
   }
 
@@ -322,10 +400,19 @@ regulatory requirement independently before committing capital.</p><p class="dis
   [disc, fail, capex, pay, sort].forEach(function (el) {
     el.addEventListener("change", apply);
   });
-  document.querySelectorAll(".seg button").forEach(function (b) {
+  document.querySelectorAll("#verdictseg button").forEach(function (b) {
     b.addEventListener("click", function () {
       verdict = b.dataset.v;
-      document.querySelectorAll(".seg button").forEach(function (x) {
+      document.querySelectorAll("#verdictseg button").forEach(function (x) {
+        x.setAttribute("aria-pressed", String(x === b));
+      });
+      apply();
+    });
+  });
+  document.querySelectorAll("#viewseg button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      viewmode = b.dataset.view;
+      document.querySelectorAll("#viewseg button").forEach(function (x) {
         x.setAttribute("aria-pressed", String(x === b));
       });
       apply();
