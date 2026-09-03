@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788370457">
+<link rel="stylesheet" href="/style.css?v=1788417050">
 <style>
   .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
     border-bottom:1px solid var(--rule);padding:1.1rem 0}
@@ -54,6 +54,10 @@
     background:var(--paper);color:var(--ink-2);border:0;border-right:1px solid var(--rule);cursor:pointer}
   .seg button:last-child{border-right:0}
   .seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+  .dl{display:inline-flex;align-items:center;min-height:40px;padding:.4rem .95rem;
+    font:inherit;font-size:.88rem;font-weight:600;text-decoration:none;color:var(--paper);
+    background:var(--kill);border:1px solid var(--kill)}
+  .dl:hover{opacity:.88}
   .countline{font-family:var(--mono);font-size:.8rem;color:var(--ink-3)}
   .taxbox{background:var(--paper-2);border-bottom:1px solid var(--rule)}
   .taxbox .wrap{padding:1.1rem 1.6rem}
@@ -132,6 +136,7 @@
       <button type="button" data-view="grid" aria-pressed="true">Grid</button>
       <button type="button" data-view="list" aria-pressed="false">List</button>
     </div>
+    <a class="dl" href="/ledger.csv" download>Download CSV</a>
   </div>
   <div class="facets">
     <label for="disc">Discipline</label>
