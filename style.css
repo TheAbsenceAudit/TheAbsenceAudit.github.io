@@ -79,6 +79,49 @@
   .masthead nav .aa-auth{display:inline-flex;align-items:center;gap:.9rem;font-size:.87rem}
   .aa-auth .aa-who{font-weight:600;color:var(--ink);border-bottom:0}
   .aa-auth .aa-badge{background:var(--ink);color:var(--paper);border-radius:999px;padding:.14rem .6rem;font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+  .aa-auth .aa-btn{background:var(--ink);color:#fff;border:0;border-radius:6px;padding:.4rem .9rem;font:600 .82rem/1.2 ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+  .aa-auth .aa-btn:hover{background:var(--kill)}
+  .aa-auth .aa-out{background:none;border:1px solid var(--rule);border-radius:6px;padding:.3rem .7rem;font:600 .78rem/1.2 ui-sans-serif,system-ui,sans-serif;color:var(--ink-2);cursor:pointer}
+  .aa-auth .aa-out:hover{color:var(--ink);border-color:var(--kill)}
+  .aa-badge.big{display:inline-block;margin:0 0 1rem}
+
+  /* ---------- sign-in modal ---------- */
+  #aa-modal{position:fixed;inset:0;z-index:1000;display:none;align-items:center;justify-content:center;padding:1rem}
+  #aa-modal.open{display:flex}
+  #aa-modal .aa-overlay{position:absolute;inset:0;background:rgba(20,22,26,.55)}
+  #aa-modal .aa-card{position:relative;background:var(--paper);border:1px solid var(--rule);border-radius:12px;max-width:420px;width:100%;padding:1.8rem 1.6rem 1.5rem;box-shadow:0 24px 60px rgba(20,22,26,.28)}
+  #aa-modal .aa-x{position:absolute;top:.6rem;right:.8rem;background:none;border:0;font-size:1.5rem;line-height:1;color:var(--ink-2);cursor:pointer}
+  #aa-modal .aa-kicker{font:600 .7rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--kill);margin:0 0 .5rem}
+  #aa-modal .aa-card h2{margin:0 0 .4rem;font-size:1.45rem}
+  #aa-modal .aa-sub{color:var(--ink-2);font-size:.92rem;margin:0 0 1.2rem}
+  #aa-modal .aa-gbtn{display:flex;align-items:center;justify-content:center;width:100%;padding:.75rem 1rem;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font:600 .95rem/1 ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+  #aa-modal .aa-gbtn:hover{border-color:var(--kill)}
+  #aa-modal .aa-or{text-align:center;color:var(--ink-2);font:600 .7rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;margin:1rem 0}
+  #aa-modal .aa-elink{display:flex;gap:.5rem}
+  #aa-modal .aa-elink input{flex:1;min-width:0;padding:.65rem .8rem;border:1px solid var(--rule);border-radius:8px;font:.95rem ui-sans-serif,system-ui,sans-serif}
+  #aa-modal .aa-elink button{padding:.65rem 1rem;border:0;border-radius:8px;background:var(--ink);color:#fff;font:600 .9rem/1 ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+  #aa-modal .aa-msg{font-size:.85rem;margin:1rem 0 0;color:var(--ink-2)}
+  #aa-modal .aa-msg.err{color:var(--kill)}
+
+  /* ---------- dossier gate overlay ---------- */
+  #aa-gate{position:fixed;inset:0;z-index:900;display:flex;align-items:center;justify-content:center;background:var(--paper);padding:2rem;text-align:center}
+  #aa-gate .aa-gate-card{max-width:480px}
+  #aa-gate .aa-kicker{font:600 .7rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.18em;text-transform:uppercase;color:var(--kill);margin:0 0 .8rem}
+  #aa-gate h1{font-size:clamp(1.6rem,4vw,2.2rem);margin:.2rem 0 .6rem}
+  #aa-gate .aa-sub{color:var(--ink-2);margin:0 0 1.4rem}
+  #aa-gate .aa-gbtn{display:inline-block;padding:.7rem 1.4rem;border:1px solid var(--rule);border-radius:8px;background:#fff;color:var(--ink);font:600 .95rem/1 ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+  #aa-gate .aa-note{color:var(--ink-2);font-size:.85rem;margin-top:1.4rem}
+
+  /* ---------- personal ledger ---------- */
+  .ledger-intro{max-width:520px;margin:2rem auto 0;text-align:left}
+  .ledger-user{display:flex;justify-content:space-between;align-items:center;gap:1rem;margin:0 0 2.5rem;font-size:.9rem}
+  .ledger-user .who{color:var(--ink-2)}
+  .ledger-list{list-style:none;padding:0;margin:0 0 1rem;border-top:1px solid var(--rule)}
+  .ledger-list li{display:flex;justify-content:space-between;gap:1rem;padding:.8rem 0;border-bottom:1px solid var(--rule)}
+  .ledger-list a{color:var(--ink);text-decoration:none}
+  .ledger-list a:hover{color:var(--kill)}
+  .ledger-list .tier{color:var(--ink-2);font:600 .68rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.08em;text-transform:uppercase;white-space:nowrap}
+  .ledger-h{font:600 .78rem/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-2);margin:2.2rem 0 .8rem}
 
   /* ---------- hero: asymmetric, editorial ---------- */
   .hero{padding:5.2rem 0 3.4rem;border-bottom:1px solid var(--rule)}

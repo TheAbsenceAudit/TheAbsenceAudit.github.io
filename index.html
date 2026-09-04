@@ -40,18 +40,18 @@
 <meta property="og:site_name" content="The Absence Audit">
 <meta property="og:url" content="https://theabsenceaudit.com/">
 <meta property="og:title" content="Proven in the literature. Absent from the market.">
-<meta property="og:description" content="72 concepts examined, 65 rejected, 19 for sale. We read the peer-reviewed record for processes that work, cost almost nothing to start, and that nobody is selling — then we try to destroy them, and publish the autopsies.">
+<meta property="og:description" content="73 concepts examined, 66 rejected, 19 for sale. We read the peer-reviewed record for processes that work, cost almost nothing to start, and that nobody is selling — then we try to destroy them, and publish the autopsies.">
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta property="og:image:secure_url" content="https://theabsenceaudit.com/og-image.png">
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta property="og:image:type" content="image/png">
-<meta property="og:image:alt" content="The Absence Audit — 72 concepts examined, 65 rejected, 19 for sale">
+<meta property="og:image:alt" content="The Absence Audit — 73 concepts examined, 66 rejected, 19 for sale">
 <meta property="og:locale" content="en_GB">
 
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="Proven in the literature. Absent from the market.">
-<meta name="twitter:description" content="72 concepts examined, 65 rejected, 19 for sale. The rejections are published in full.">
+<meta name="twitter:description" content="73 concepts examined, 66 rejected, 19 for sale. The rejections are published in full.">
 <meta name="twitter:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:image:alt" content="The Absence Audit ledger card">
 
@@ -63,7 +63,7 @@
 
 <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=1788533790">
+<link rel="stylesheet" href="/style.css?v=1788535834">
 
 <script type="application/ld+json">
 {
@@ -81,11 +81,11 @@
       "@type": "Dataset",
       "@id": "https://theabsenceaudit.com/#ledger",
       "name": "The Absence Audit ledger",
-      "description": "72 venture concepts screened against seven gates for scientific backing, commercial absence, unit margins, capital intensity, production velocity, market size and measured superiority over a named incumbent. 65 rejected, 19 for sale. Every rejection is published with its specific failure mode.",
+      "description": "73 venture concepts screened against seven gates for scientific backing, commercial absence, unit margins, capital intensity, production velocity, market size and measured superiority over a named incumbent. 66 rejected, 19 for sale. Every rejection is published with its specific failure mode.",
       "url": "https://theabsenceaudit.com/ledger/",
       "isAccessibleForFree": true,
       "creator": {"@type": "Organization", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
-      "dateModified": "2026-09-04T16:56:30+02:00",
+      "dateModified": "2026-09-04T17:30:33+02:00",
       "keywords": ["venture concepts","peer-reviewed literature","commercial absence","unit economics","technology transfer","research commercialisation"],
       "variableMeasured": [
         {"@type":"PropertyValue","name":"Superiority margin vs named incumbent"},
@@ -116,105 +116,6 @@
     'allow_google_signals': false,
     'allow_ad_personalization_signals': false
   });
-</script>
-<script>
-(function () {
-"use strict";
-var FB = {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"};
-var V = "10.12.2";
-var VAULT = "/do" + "ssier/";
-var host = null;
-var SIGNED = false;
-try {
-  for (var i = 0; i < localStorage.length; i++) {
-    var k = localStorage.key(i) || "";
-    if (k.indexOf("firebase:authUser:" + FB.apiKey) !== 0) continue;
-    var v = JSON.parse(localStorage.getItem(k) || "{}");
-    SIGNED = !!(v && v.value && v.value.email);
-    if (SIGNED) break;
-  }
-} catch (e) {}
-function idbSession(cb) {
-  // Firebase v9+ keeps auth state in IndexedDB (firebaseLocalStorageDb),
-  // not localStorage. Scan it so a signed-in visitor is recognised
-  // immediately on load instead of after an SDK round-trip.
-  try {
-    var req = indexedDB.open("firebaseLocalStorageDb");
-    req.onsuccess = function () {
-      var db = req.result;
-      try {
-        var store = db.transaction(["firebaseLocalStorage"], "readonly")
-                      .objectStore("firebaseLocalStorage");
-        var all = store.getAllKeys();
-        all.onsuccess = function () {
-          var found = false;
-          (all.result || []).forEach(function (x) {
-            if (String(x).indexOf("firebase:authUser:" + FB.apiKey) === 0) found = true;
-          });
-          try { db.close(); } catch (e) {}
-          cb(found);
-        };
-        all.onerror = function () { try { db.close(); } catch (e) {} cb(false); };
-      } catch (e) { try { db.close(); } catch (e2) {} cb(false); }
-    };
-    req.onerror = function () { cb(false); };
-  } catch (e) { cb(false); }
-}
-function scripts(names, cb) {
-  if (!names.length) { cb(); return; }
-  var s = document.createElement("script");
-  s.src = "https://www.gstatic.com/firebasejs/" + V + "/" + names[0];
-  s.onload = function () { scripts(names.slice(1), cb); };
-  s.onerror = function () { host.innerHTML = '<a href="' + VAULT + '">Sign in</a>'; };
-  document.head.appendChild(s);
-}
-function boot(cb) {
-  if (window.firebase && firebase.apps && firebase.apps.length) { cb(); return; }
-  scripts(["firebase-app-compat.js", "firebase-auth-compat.js",
-           "firebase-firestore-compat.js"], function () {
-    firebase.initializeApp(FB);
-    cb();
-  });
-}
-function esc(s) { return String(s).replace(/[&<>"']/g, function (c) {
-  return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
-function out() { if (host) host.innerHTML = '<a href="' + VAULT + '">Sign in</a>'; }
-function inn(em, badge) {
-  if (!host) return;
-  var b = badge ? '<span class="aa-badge">' + esc(badge) + '</span>' : "";
-  host.innerHTML = '<a class="aa-who" href="' + VAULT + '">' + esc(em) + '</a>' + b
-    + '<a href="' + VAULT + '">Your ledger</a>';
-}
-function resolve(user) {
-  if (!user) { out(); return; }
-  var em = ((user.email || ((user.providerData || [])[0] || {}).email) || "").toLowerCase();
-  if (!em) { out(); return; }
-  firebase.firestore().collection("access").doc(em).get().then(function (snap) {
-    var badge = "";
-    if (snap.exists) {
-      var d = snap.data() || {};
-      badge = d.plan === "all" ? "Full Ledger"
-        : (d.products && d.products.length)
-          ? d.products.length + (d.products.length > 1 ? " dossiers" : " dossier") : "";
-    }
-    inn(em, badge);
-  }).catch(function () { inn(em, ""); });
-}
-function ready() {
-  host = document.getElementById("aa-auth");
-  if (!host) return;
-  if (SIGNED) { boot(function () { firebase.auth().onAuthStateChanged(resolve); }); }
-  else {
-    out();
-    idbSession(function (found) {
-      if (found) boot(function () { firebase.auth().onAuthStateChanged(resolve); });
-    });
-  }
-}
-if (document.readyState === "loading") {
-  document.addEventListener("DOMContentLoaded", ready);
-} else { ready(); }
-})();
 </script>
 </head>
 <body>
@@ -264,12 +165,12 @@ if (document.readyState === "loading") {
 
     <aside class="tally">
       <h2>Ledger to date</h2>
-      <dl><dt>Concepts audited</dt><dd class="big">72</dd>
-<dt>Rejected by the audit</dt><dd class="big kill">65</dd>
+      <dl><dt>Concepts audited</dt><dd class="big">73</dd>
+<dt>Rejected by the audit</dt><dd class="big kill">66</dd>
 <dt>Dossiers for sale</dt><dd class="big live">19</dd>
-<dt>Citations resolved</dt><dd class="">2665</dd>
-<dt>Verified to DOI</dt><dd class="">463</dd>
-<dt>Words of analysis</dt><dd class="">223,957</dd></dl>
+<dt>Citations resolved</dt><dd class="">2684</dd>
+<dt>Verified to DOI</dt><dd class="">468</dd>
+<dt>Words of analysis</dt><dd class="">229,053</dd></dl>
       <footer>Every figure above is produced by the pipeline itself, not written by hand.
       The rejection count is the honest one. A concept is a dossier for sale when it has a
       live checkout; the full audit verdict is published on every concept page.</footer>
@@ -387,7 +288,7 @@ if (document.readyState === "loading") {
 <tr><td><span class="concept">Liquid Metal Nanoparticle Conductive Ink via Ultrasonic Probe Cavitation</span><span class="disc">Materials Science</span></td><td class="metric">Silver flake ink</td><td class="metric">Resistance change after 1,000 to 5,000 stretching cycles: Silver Flake Ink &gt;1,000% increase vs Liquid Metal Ink &lt;19.23% increase</td><td class="delta">&gt;50×</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati"></span><a class="row-btn" data-aa-commerce href="/sample/" aria-label="Open the free full entry for Liquid Metal Nanoparticle Conductive Ink via Ultrasonic Probe Cavitation">Free<span aria-hidden="true"> &rarr;</span></a></td></tr></tbody>
       </table>
     </div>
-    <p style="margin-top:1.6rem"><a href="/ledger/" style="font-weight:600">Search all 72 concepts, including every rejection &rarr;</a> · <a href="/ledger.csv" download data-aa-commerce style="font-weight:600">Download the full ledger (CSV)</a></p>
+    <p style="margin-top:1.6rem"><a href="/ledger/" style="font-weight:600">Search all 73 concepts, including every rejection &rarr;</a> · <a href="/ledger.csv" download data-aa-commerce style="font-weight:600">Download the full ledger (CSV)</a></p>
   </div>
 </section>
 
@@ -436,16 +337,16 @@ if (document.readyState === "loading") {
   <div class="wrap">
     <div class="section-head">
       <p class="eyebrow">The graveyard</p>
-      <h2>65 concepts failed. Here is how two of them died.</h2>
+      <h2>66 concepts failed. Here is how two of them died.</h2>
       <p>No other research service will show you this, because showing it means admitting
       most ideas do not survive contact with evidence.</p>
     </div>
     <div class="kills"><article class="kill-item"><p class="kill-code">Voided — dead incumbent</p><h3>Biomanufactured magnetosomes for MRI contrast</h3><p>Genuinely 2.4–3.5× the relaxivity of its named comparator. That comparator was Feridex — withdrawn from the market in 2008. The margin model was anchored to the historical price of a product discontinued for lack of demand. Regulatory path priced at $35M and 84 months.</p></article>
 <article class="kill-item"><p class="kill-code">Voided — straw incumbent</p><h3>Plant-urease enzyme-induced carbonate precipitation</h3><p>Benchmarked against MICP, a rival laboratory technique that never reached market. Against the real incumbent — Portland cement and soil-cement at 1.5–8 MPa — its 6.41 MPa sits inside the ordinary range. Beating another lab proves nothing.</p></article></div>
     <p class="taxline" style="margin-top:1.2rem;color:var(--paper);opacity:.85;font-size:.95rem;line-height:1.8">
-      The full taxonomy &mdash; why each of the 65 died: 33 economics undisclosed · 32 negative control / sub-2x · 31 form-factor / handling regression · 23 margin fails the operating-cost check · 21 capital and time to revenue</p>
+      The full taxonomy &mdash; why each of the 66 died: 33 economics undisclosed · 32 negative control / sub-2x · 31 form-factor / handling regression · 23 margin fails the operating-cost check · 21 capital and time to revenue</p>
     <p style="margin-top:1.6rem"><a href="/ledger/?v=0" style="font-weight:600;color:var(--paper)">
-      Browse all 65 rejections by failure mode &rarr;</a></p>
+      Browse all 66 rejections by failure mode &rarr;</a></p>
   </div>
 </section>
 
@@ -474,7 +375,7 @@ if (document.readyState === "loading") {
     </nav>
   </div>
   <div class="wrap">
-    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 04 September 2026, 16:56 · 72 concepts examined · 65 rejected · 19 for sale</p>
+    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 04 September 2026, 17:30 · 73 concepts examined · 66 rejected · 19 for sale</p>
     <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
     <p class="disclaimer">© 2026 The Absence Audit. All rights reserved. · <a href="/terms/">Terms of Use</a></p>
   </div>
