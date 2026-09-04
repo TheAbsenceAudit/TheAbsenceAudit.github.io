@@ -63,7 +63,7 @@
 
 <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=1788521432">
+<link rel="stylesheet" href="/style.css?v=1788521663">
 
 <script type="application/ld+json">
 {
@@ -85,7 +85,7 @@
       "url": "https://theabsenceaudit.com/ledger/",
       "isAccessibleForFree": true,
       "creator": {"@type": "Organization", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
-      "dateModified": "2026-09-04T13:30:31+02:00",
+      "dateModified": "2026-09-04T13:34:22+02:00",
       "keywords": ["venture concepts","peer-reviewed literature","commercial absence","unit economics","technology transfer","research commercialisation"],
       "variableMeasured": [
         {"@type":"PropertyValue","name":"Superiority margin vs named incumbent"},
@@ -123,8 +123,7 @@
 var FB = {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"};
 var V = "10.12.2";
 var VAULT = "/do" + "ssier/";
-var host = document.getElementById("aa-auth");
-if (!host) return;
+var host = null;
 var SIGNED = false;
 try {
   for (var i = 0; i < localStorage.length; i++) {
@@ -153,8 +152,9 @@ function boot(cb) {
 }
 function esc(s) { return String(s).replace(/[&<>"']/g, function (c) {
   return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
-function out() { host.innerHTML = '<a href="' + VAULT + '">Sign in</a>'; }
+function out() { if (host) host.innerHTML = '<a href="' + VAULT + '">Sign in</a>'; }
 function inn(em, badge) {
+  if (!host) return;
   var b = badge ? '<span class="aa-badge">' + esc(badge) + '</span>' : "";
   host.innerHTML = '<a class="aa-who" href="' + VAULT + '">' + esc(em) + '</a>' + b
     + '<a href="' + VAULT + '">Your ledger</a>';
@@ -174,8 +174,15 @@ function resolve(user) {
     inn(em, badge);
   }).catch(function () { inn(em, ""); });
 }
-if (SIGNED) { boot(function () { firebase.auth().onAuthStateChanged(resolve); }); }
-else { out(); }
+function ready() {
+  host = document.getElementById("aa-auth");
+  if (!host) return;
+  if (SIGNED) { boot(function () { firebase.auth().onAuthStateChanged(resolve); }); }
+  else { out(); }
+}
+if (document.readyState === "loading") {
+  document.addEventListener("DOMContentLoaded", ready);
+} else { ready(); }
 })();
 </script>
 </head>
@@ -209,7 +216,7 @@ else { out(); }
     </nav>
   </div>
   <div class="wrap">
-    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 04 September 2026, 13:30 · 71 concepts examined · 65 rejected · 19 for sale</p>
+    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 04 September 2026, 13:34 · 71 concepts examined · 65 rejected · 19 for sale</p>
     <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
     <p class="disclaimer">© 2026 The Absence Audit. All rights reserved. · <a href="/terms/">Terms of Use</a></p>
   </div>
