@@ -1,5 +1,8 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "ledger": true};</script>
+<script src="/assets/auth.js" defer></script>
+
 <script>
 (function () {
   if (document.cookie.indexOf("aa_sub=1") < 0) return;
@@ -49,179 +52,43 @@
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Your Ledger | The Absence Audit</title>
-<style>
-  :root { --ink:#14161a; --mute:#5b6470; --line:#d8dde5; --accent:#8a1c1c; --bg:#f7f8fa; }
-  *{box-sizing:border-box}
-  body { margin:0; color:var(--ink); background:var(--bg); font:16px/1.62 Georgia,'Iowan Old Style',serif; }
-  .wrap { max-width:820px; margin:0 auto; padding:32px 24px 64px; }
-  .brand { font:600 12px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.18em;
-    text-transform:uppercase; color:var(--accent); margin:0 0 6px; }
-  h1 { font-size:30px; line-height:1.2; margin:10px 0 8px; letter-spacing:-.015em; }
-  .sub { color:var(--mute); font-size:15px; margin:0 0 26px; }
-  h2 { font-size:15px; letter-spacing:.1em; text-transform:uppercase;
-    font-family:ui-sans-serif,system-ui,sans-serif; margin:30px 0 10px;
-    padding-bottom:6px; border-bottom:1px solid var(--line); }
-  ul { list-style:none; padding:0; margin:0; }
-  li { display:flex; justify-content:space-between; gap:12px; padding:12px 2px;
-    border-bottom:1px solid var(--line); }
-  li a { color:var(--ink); text-decoration:none; }
-  li a:hover { color:var(--accent); }
-  .tier { color:var(--mute); font:600 11px/1 ui-sans-serif,system-ui,sans-serif;
-    letter-spacing:.08em; text-transform:uppercase; white-space:nowrap; }
-  .note { color:var(--mute); font-size:14px; margin-top:26px; }
-  .card { background:#fff; border:1px solid var(--line); border-radius:10px;
-    padding:26px 26px 22px; max-width:440px; margin:30px auto 0; }
-  .card h2 { margin:0 0 6px; }
-  .card .sub { margin-bottom:18px; }
-  .sbtn { display:flex; align-items:center; justify-content:center; gap:10px; width:100%;
-    padding:12px 16px; margin:0 0 12px; border:1px solid var(--line); border-radius:8px;
-    background:#fff; color:var(--ink); font:600 15px/1 ui-sans-serif,system-ui,sans-serif;
-    cursor:pointer; }
-  .sbtn:hover { border-color:var(--accent); }
-  .sbtn img { width:18px; height:18px; }
-  .or { text-align:center; color:var(--mute); font:600 11px/1 ui-sans-serif,system-ui,sans-serif;
-    letter-spacing:.14em; text-transform:uppercase; margin:16px 0; }
-  .elink { display:flex; gap:8px; }
-  .elink input { flex:1; padding:11px 12px; border:1px solid var(--line); border-radius:8px;
-    font:15px ui-sans-serif,system-ui,sans-serif; }
-  .elink button { padding:11px 16px; border:0; border-radius:8px; background:var(--ink);
-    color:#fff; font:600 14px/1 ui-sans-serif,system-ui,sans-serif; cursor:pointer; }
-  .state { text-align:center; padding:40px 0; color:var(--mute); }
-  .state .err { color:var(--accent); }
-  .user { display:flex; justify-content:space-between; align-items:center; gap:10px; }
-  .user .who { color:var(--mute); font:14px ui-sans-serif,system-ui,sans-serif; }
-  .user .out { font:600 13px/1 ui-sans-serif,system-ui,sans-serif; color:var(--mute);
-    background:none; border:1px solid var(--line); border-radius:6px; padding:7px 12px;
-    cursor:pointer; }
-  .plan { display:inline-block; background:var(--ink); color:#fff; border-radius:5px;
-    padding:3px 10px; font:600 11px/1 ui-sans-serif,system-ui,sans-serif;
-    letter-spacing:.08em; text-transform:uppercase; margin:0 0 18px; }
-  .spinner { width:34px; height:34px; margin:0 auto 12px; border:3px solid var(--line);
-    border-top-color:var(--accent); border-radius:50%; animation:sp .8s linear infinite; }
-  @keyframes sp { to { transform:rotate(360deg); } }
-</style>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
-<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
-</head><body><div class="wrap">
-  <div id="app"><div class="state"><div class="spinner"></div>Loading your ledger…</div></div>
-</div>
-<script>
-(function(){
-  "use strict";
-  var FB = {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "authDomain": "the-absence-audit.firebaseapp.com", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app", "messagingSenderId": "203345891201", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "facebook": false};
-  var NAMES = {"biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": "Biogenic Acid-Resistant Sewer Infrastructure via Alkali-Activated Aluminosilicate Geopolymers", "biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": "Biomimetic Nano-Hydroxyapatite (nHAp) via Mechanochemical Attritor Milling of Waste Eggshells", "cement-free-refractory-castables-via-potassium-activated-metakaolin-ge": "Cement-Free Refractory Castables via Potassium-Activated Metakaolin Geopolymerization", "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": "Commercial Production of Pediocin PA-1 Biopreservative via Low-CapEx Fermentation", "compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi": "Compact Volume-Expandable Sorbents (CVES) via Continuous PolyHIPE Emulsion Templating", "conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a": "Conductive Inositol Hexaphosphate-Polyaniline (IP6-PANI) Hydrogels via Ambient Aqueous Polymerization", "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat": "Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues", "halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am": "Halogen-Free Orthoborate-Phosphonium Ionic Liquid ([P6,6,6,14][BMB]) via Ambient Aqueous Metathesis", "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": "High-Photostability Anti-Counterfeiting Inks via Hydrothermal Carbonization of Biomass into Carbon Quantum Dots", "inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion": "Inositol Hexaphosphate (IP6) Substrate Passivation via Ambient Immersion", "mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc": "Mechanochemical Covalent Triazine Frameworks (CTFs) via Solvent-Free Cyclotrimerization", "polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi": "Polyimide-Reinforced Silica Aerogel Blankets via Ambient Pressure Drying", "polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial": "Polyurethane-Encapsulated IPDI Microcapsules via Low-Shear Interfacial Polymerization", "pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech": "Pressureless Micro-Silver-Indium ($\\mu$Ag-In) TLP Sintering Paste via Mechanical Alloying", "self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca": "Self-Healable WPU/Ti3C2Tx MXene Coating via Mechanical Blending and Casting", "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": "Sustained-Release Silk Fibroin Microneedle Matrices via Lithium Bromide Extraction", "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": "Ultra-High-Strength Underwater Adhesives via In Situ Catechol-Polymer Co-deposition", "ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze": "Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR) via Base-Catalyzed Thiol-Epoxy Click Photopolymerization", "ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via": "Ultrawhite Barium Sulfate (BaSO4) Subambient Radiative Cooling Paint via High-Shear Emulsion Dispersion"};
-  var TIERS = {"biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": "Entry", "biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": "Standard", "cement-free-refractory-castables-via-potassium-activated-metakaolin-ge": "Entry", "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": "Standard", "compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi": "Standard", "conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a": "Premium", "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat": "Premium", "halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am": "Premium", "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": "Standard", "inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion": "Premium", "mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc": "Premium", "polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi": "Standard", "polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial": "Entry", "pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech": "Standard", "self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca": "Standard", "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": "Standard", "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": "Premium", "ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze": "Standard", "ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via": "Premium"};
-  var TOTAL = 19;
-  var SITE = "https://theabsenceaudit.com";
-  var app = firebase.initializeApp(FB);
-  var auth = firebase.auth();
-  var db = firebase.firestore();
-  var $app = document.getElementById("app");
-
-  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){
-    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
-
-  function rows(slugs){
-    var out = "";
-    slugs.forEach(function(s){
-      out += "<li><a href=\"/dossier/" + encodeURIComponent(s) + "/\">" + esc(NAMES[s] || s)
-           + "</a><span class=\"tier\">" + esc(TIERS[s] || "") + "</span></li>";
-    });
-    return out;
-  }
-
-  function signOutBtn(){
-    return '<div class="user"><span class="who">' + esc(userEmail()) + '</span>'
-         + '<button class="out" onclick="document.dispatchEvent(new CustomEvent(\'aa-signout\'))">Sign out</button></div>';
-  }
-
-  function userEmail(){ var u = auth.currentUser; return (u && (u.email || (u.providerData[0]||{}).email)) || ""; }
-
-  function render(el, html){ $app.innerHTML = html;
-    var btn = $app.querySelector(".out");
-    if (btn) btn.addEventListener("click", function(){ auth.signOut(); });
-    var gb = $app.querySelector("#goog");
-    if (gb) gb.addEventListener("click", google);
-    var fbb = $app.querySelector("#fbk");
-    if (fbb) fbb.addEventListener("click", facebook);
-    var eb = $app.querySelector("#eml");
-    if (eb) eb.addEventListener("click", emailLink);
-  }
-
-  function signInCard(){ render($app,
-    '<div class="card">'
-    + '<p class="brand">The Absence Audit</p><h1>Your ledger</h1>'
-    + '<p class="sub">Sign in to open the dossiers you bought. Use the same email as your receipt.</p>'
-    + '<button class="sbtn" id="goog"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="">Continue with Google</button>'
-    + (FB.facebook ? '<button class="sbtn" id="fbk"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg" alt="">Continue with Facebook</button>' : '')
-    + '<div class="or">or</div>'
-    + '<div class="elink"><input id="em" type="email" placeholder="you@receipt-email.com">'
-    + '<button id="eml">Email me a link</button></div>'
-    + '</div><p class="note">Problems? Reply to your purchase receipt.</p>'); }
-
-  function google(){ auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-    .catch(function(e){ err(e); }); }
-  function facebook(){ auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
-    .catch(function(e){ err(e); }); }
-
-  function emailLink(){ var el = $app.querySelector("#em"); var em = el.value.trim();
-    if (!/^[^@]+@[^@]+$/.test(em)) { el.focus(); return; }
-    localStorage.setItem("aaEmail", em);
-    auth.sendSignInLinkToEmail(em, { url: location.origin + "/dossier/", handleCodeInApp: true })
-      .then(function(){ render($app, '<div class="card"><h2>Check your inbox</h2>'
-        + '<p class="sub">We emailed ' + esc(em) + ' a sign-in link. Open it in this browser.</p></div>'); })
-      .catch(function(e){ err(e); }); }
-
-  function err(e){ render($app, '<div class="state"><p class="err">' + esc((e && e.message) || e)
-    + '</p><p><a href="javascript:location.reload()">Try again</a></p></div>'); }
-
-  function noAccess(em){ render($app,
-    '<div class="card"><h2>No purchase for this email</h2>'
-    + '<p class="sub">There is no paid access registered for ' + esc(em)
-    + '. If you bought with a different email, sign out and use that one.</p>'
-    + signOutBtn() + '</div>'
-    + '<p class="note">Reply to your purchase receipt if something looks wrong.</p>'); }
-
-  function ledger(em, d){ var all = (d.plan === "all");
-    var slugs = all ? Object.keys(NAMES) : (d.products || []).filter(function(s){ return NAMES[s]; });
-    var html = '<div class="user"><span class="who">' + esc(em) + '</span>'
-      + '<button class="out">Sign out</button></div>'
-      + '<h1>Your ledger</h1>'
-      + (all
-          ? '<span class="plan">Full Ledger Access</span>'
-            + '<p class="sub">Every dossier, past and future. New survivors appear here the moment the pipeline clears them.</p>'
-          : '<p class="sub">The dossiers you own. Buy the full ledger for everything, past and future.</p>')
-      + '<h2>Dossiers (' + slugs.length + (all ? " of " + TOTAL : "") + ')</h2><ul>'
-      + (slugs.length ? rows(slugs) : "<li>No dossiers found for this purchase — reply to your receipt.</li>")
-      + '</ul><p class="note">Dossiers are licensed for your own use — see the <a href="' + SITE + '/terms/">Terms of Use</a>.</p>';
-    render($app, html); }
-
-  function showState(user){
-    if (!user) { signInCard(); return; }
-    var em = userEmail().toLowerCase();
-    if (!em) { signInCard(); return; }
-    render($app, '<div class="state"><div class="spinner"></div>Opening ' + esc(em) + '…</div>');
-    db.collection("access").doc(em).get()
-      .then(function(snap){
-        if (!snap.exists) { noAccess(userEmail()); return; }
-        var d = snap.data() || {};
-        if (!d.plan && !(d.products && d.products.length)) { noAccess(userEmail()); return; }
-        ledger(userEmail(), d);
-      })
-      .catch(function(e){ err(e); });
-  }
-
-  if (firebase.auth().isSignInWithEmailLink(location.href)) {
-    var em = localStorage.getItem("aaEmail") || window.prompt("Confirm the email you used at checkout:");
-    if (em) {
-      auth.signInWithEmailLink(em, location.href)
-        .then(function(){ localStorage.removeItem("aaEmail"); })
-        .catch(function(e){ err(e); });
-    }
-  }
-
-  auth.onAuthStateChanged(showState);
-})();
-</script>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=1788536549">
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">The ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/#graveyard">What we killed</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/#join">Get it free</a>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap" style="max-width:820px;padding:3.5rem 1.5rem 5rem"><div id="aa-ledger"><p class="state">Loading your ledger…</p></div></div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/#graveyard">What we killed</a>
+      <a href="/track-record/">Track record</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a></p>
+  </div>
+</footer>
+<script>window.AA_LEDGER = {"names": {"biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": "Biogenic Acid-Resistant Sewer Infrastructure via Alkali-Activated Aluminosilicate Geopolymers", "biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": "Biomimetic Nano-Hydroxyapatite (nHAp) via Mechanochemical Attritor Milling of Waste Eggshells", "cement-free-refractory-castables-via-potassium-activated-metakaolin-ge": "Cement-Free Refractory Castables via Potassium-Activated Metakaolin Geopolymerization", "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": "Commercial Production of Pediocin PA-1 Biopreservative via Low-CapEx Fermentation", "compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi": "Compact Volume-Expandable Sorbents (CVES) via Continuous PolyHIPE Emulsion Templating", "conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a": "Conductive Inositol Hexaphosphate-Polyaniline (IP6-PANI) Hydrogels via Ambient Aqueous Polymerization", "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat": "Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues", "halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am": "Halogen-Free Orthoborate-Phosphonium Ionic Liquid ([P6,6,6,14][BMB]) via Ambient Aqueous Metathesis", "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": "High-Photostability Anti-Counterfeiting Inks via Hydrothermal Carbonization of Biomass into Carbon Quantum Dots", "inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion": "Inositol Hexaphosphate (IP6) Substrate Passivation via Ambient Immersion", "mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc": "Mechanochemical Covalent Triazine Frameworks (CTFs) via Solvent-Free Cyclotrimerization", "nitrogen-doped-carbon-nanodots-n-cds-via-atmospheric-microwave-pyrolys": "Nitrogen-Doped Carbon Nanodots (N-CDs) via Atmospheric Microwave Pyrolysis", "polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi": "Polyimide-Reinforced Silica Aerogel Blankets via Ambient Pressure Drying", "polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial": "Polyurethane-Encapsulated IPDI Microcapsules via Low-Shear Interfacial Polymerization", "pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech": "Pressureless Micro-Silver-Indium ($\\mu$Ag-In) TLP Sintering Paste via Mechanical Alloying", "self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca": "Self-Healable WPU/Ti3C2Tx MXene Coating via Mechanical Blending and Casting", "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": "Sustained-Release Silk Fibroin Microneedle Matrices via Lithium Bromide Extraction", "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": "Ultra-High-Strength Underwater Adhesives via In Situ Catechol-Polymer Co-deposition", "ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze": "Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR) via Base-Catalyzed Thiol-Epoxy Click Photopolymerization", "ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via": "Ultrawhite Barium Sulfate (BaSO4) Subambient Radiative Cooling Paint via High-Shear Emulsion Dispersion"}, "tiers": {"biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": "Entry", "biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": "Standard", "cement-free-refractory-castables-via-potassium-activated-metakaolin-ge": "Entry", "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": "Standard", "compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi": "Standard", "conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a": "Premium", "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat": "Premium", "halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am": "Premium", "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": "Standard", "inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion": "Premium", "mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc": "Premium", "nitrogen-doped-carbon-nanodots-n-cds-via-atmospheric-microwave-pyrolys": "Premium", "polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi": "Standard", "polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial": "Entry", "pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech": "Standard", "self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca": "Standard", "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": "Standard", "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": "Premium", "ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze": "Standard", "ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via": "Premium"}, "total": 20};</script>
 </body></html>
