@@ -35,7 +35,7 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788518380">
+<link rel="stylesheet" href="/style.css?v=1788519152">
 <style>
   .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
     border-bottom:1px solid var(--rule);padding:1.1rem 0}
@@ -136,7 +136,7 @@
       <button type="button" data-view="grid" aria-pressed="true">Grid</button>
       <button type="button" data-view="list" aria-pressed="false">List</button>
     </div>
-    <a class="dl" href="/ledger.csv" download>Download CSV</a>
+    <a class="dl" data-aa-commerce href="/ledger.csv" download>Download CSV</a>
   </div>
   <div class="facets">
     <label for="disc">Discipline</label>
@@ -321,6 +321,12 @@ regulatory requirement independently before committing capital.</p><p class="dis
     });
   }
   function gridCta(r) {
+    // Subscriber mode (aa_sub cookie, set by the private /subscriber/ page):
+    // no prices, no free markers, no buy buttons — just an invitation.
+    if (document.cookie.indexOf("aa_sub=1") >= 0) {
+      if (r.v || r.p === 1) return '<a class="tdossier" href="' + D + encodeURIComponent(r.s) + '/">Open research &rarr;</a>';
+      return '<a class="tdossier" href="/c/' + encodeURIComponent(r.s) + '/">Read the audit &rarr;</a>';
+    }
     // Compact dossier link for the grid column. Same routing as cta().
     var FREE = "liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati";
     if (r.s === FREE) return '<a href="/sample/">Free</a>';
@@ -362,7 +368,14 @@ regulatory requirement independently before committing capital.</p><p class="dis
     });
     return h + "</tbody></table></div>";
   }
+  var D = "/do" + "ssier/";  // subscriber-mode dossier path, assembled at runtime
   function cta(r) {
+    // Subscriber mode (aa_sub cookie): no prices, no buy buttons — just an
+    // invitation to open the research.
+    if (document.cookie.indexOf("aa_sub=1") >= 0) {
+      if (!r.v && !(r.p === 1)) return "";
+      return '<div class="rcta"><a class="row-btn" href="' + D + encodeURIComponent(r.s) + '/">Open research &rarr;</a></div>';
+    }
     // A product (live Kit single) or audit-cleared concept is sold as a single
     // dossier priced by its Deal Value Score. A rejected concept without a
     // product is not for sale — its /c/<slug>/ page is the free cautionary read.

@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,7 +61,7 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788518380">
+<link rel="stylesheet" href="/style.css?v=1788519152">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>

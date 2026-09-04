@@ -27,7 +27,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Subscriber ledger | The Absence Audit</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788518380">
+<link rel="stylesheet" href="/style.css?v=1788519152">
 <style>
   .subled{padding:2.6rem 0 1.4rem}
   .subled h1{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:0 0 .6rem}
@@ -70,6 +70,9 @@
     arguing against it — with nothing held back and nothing to pay.</p>
   </div>
 
+  <p id="unlocked" class="invite" hidden><strong>Unlocked.</strong> Prices and paywalls are now
+  hidden for you on every page of this site — open any dossier and read it in full.</p>
+
   <div id="gate" class="invite" hidden>
     <p><strong>This ledger is by invitation.</strong></p>
     <p style="margin:0">Use your personal invitation link to open it. If your link does not work,
@@ -92,7 +95,7 @@ regulatory requirement independently before committing capital.</p><p class="dis
 <script>
 (function () {
   "use strict";
-  var HASHES = {"532e83ac0e8d548bc58b8f123e26cd9444971208eced2927f31d4b7bdd873aed": true, "b6539f627e9a594a02e38b70eb5489aefc10e1455752a8afd8efa38269ee994b": true, "dff5d5b79cf55d852c29ae5baa44b48f4c0632b1732d2dd38f00d3b4e6f6184b": true};
+  var HASHES = {"4df7e30fe124dceb775972455a1e7c079e4d3595e8177e9bed4069c44e450647": true, "532e83ac0e8d548bc58b8f123e26cd9444971208eced2927f31d4b7bdd873aed": true, "b6539f627e9a594a02e38b70eb5489aefc10e1455752a8afd8efa38269ee994b": true, "dff5d5b79cf55d852c29ae5baa44b48f4c0632b1732d2dd38f00d3b4e6f6184b": true};
 
   function esc(s) {
     return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
@@ -108,6 +111,14 @@ regulatory requirement independently before committing capital.</p><p class="dis
         return ("0" + b.toString(16)).slice(-2);
       }).join("");
     });
+  }
+
+  // Arm subscriber mode site-wide: every page hides prices and paywalls for
+  // this browser once the invitation has been opened once.
+  function armSubscriberMode() {
+    document.cookie = "aa_sub=1; path=/; max-age=31536000; SameSite=Lax";
+    var un = document.getElementById("unlocked");
+    if (un) un.hidden = false;
   }
 
   // The dossier path is assembled at runtime so the served bytes never carry
@@ -173,8 +184,9 @@ regulatory requirement independently before committing capital.</p><p class="dis
   } else {
     sha256hex(k).then(function (hex) {
       if (!HASHES[hex]) { showGate(); return; }
-      // token accepted: scrub it from the address bar so screenshots/shares
-      // cannot leak the invitation
+      // token accepted: arm subscriber mode site-wide, then scrub the token
+      // from the address bar so screenshots/shares cannot leak the invitation
+      armSubscriberMode();
       history.replaceState(null, "", location.pathname);
       fetch("/ledger.json", { cache: "no-cache" })
         .then(function (r) { return r.json(); })

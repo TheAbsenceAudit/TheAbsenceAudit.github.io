@@ -1,5 +1,30 @@
 <!DOCTYPE html>
 <html lang="en"><head>
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -23,8 +48,8 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="robots" content="index,follow">
-<meta name="description" content="Free study 3 of 3 from The Absence Audit: Extrusion-Synthesized Urea-Calcium Sulfate (URCASU) Cocrystals via Twin-Screw Mechanochemistry — full report, recomputed economics, works cited, and the red-team audit, verdict FAIL.">
-<title>Study 3 of 3 — Extrusion-Synthesized Urea-Calcium Sulfate (URCASU) Cocrystals via Twin-Screw Mechanochemistry | The Absence Audit</title>
+<meta name="description" content="Free study 2 of 3 from The Absence Audit: Extrusion-Synthesized Urea-Calcium Sulfate (URCASU) Cocrystals via Twin-Screw Mechanochemistry — full report, recomputed economics, works cited, and the red-team audit, verdict FAIL.">
+<title>Study 2 of 3 — Extrusion-Synthesized Urea-Calcium Sulfate (URCASU) Cocrystals via Twin-Screw Mechanochemistry | The Absence Audit</title>
 <style>
   @page { size: A4; margin: 18mm 16mm; }
   :root { --ink:#14161a; --mute:#5b6470; --line:#d8dde5; --accent:#8a1c1c; --bg:#fff; }
@@ -83,12 +108,12 @@
 
 <div class="cover">
   <div class="brand">The Absence Audit</div>
-  <div class="tag">Free study 3 of 3 &middot; issued 04 September 2026 &middot; verdict FAIL</div>
+  <div class="tag">Free study 2 of 3 &middot; issued 04 September 2026 &middot; verdict FAIL</div>
   <h1>Extrusion-Synthesized Urea-Calcium Sulfate (URCASU) Cocrystals via Twin-Screw Mechanochemistry</h1>
   <p class="sub">This is a complete, unedited study — the same document format a subscriber receives. It is published free because the method is impossible to judge from a summary. Nobody has built this venture; the literature is real and the arithmetic is checked, but no operating company is cited as proof. Treat it as a researched hypothesis, not a business plan.</p>
   
   <p class="sub">Part of the public proof-of-work library. The other free studies:
-  <a href="/studies/urcasu-mechanochemical-fertilizer-via-twin-screw-extrusion/">1</a> <a href="/studies/laser-induced-porous-graphene-lig-sensor-substrates-via-direct-laser-w/">2</a>
+  <a href="/studies/laser-induced-porous-graphene-lig-sensor-substrates-via-direct-laser-w/">1</a> <a href="/studies/paraffin-functionalized-sand-pfs-mulch-via-thermal-rotary-encapsulatio/">3</a>
   &middot; <a href="/sample/">the original sample</a> &middot;
   <a href="/ledger/">the full ledger</a>.</p>
 </div>

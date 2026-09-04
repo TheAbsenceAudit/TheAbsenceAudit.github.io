@@ -1,6 +1,31 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -36,7 +61,7 @@
 <meta property="og:image" content="https://theabsenceaudit.com/images/sector/nhap.jpg">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788518380">
+<link rel="stylesheet" href="/style.css?v=1788519152">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -49,7 +74,7 @@
   <h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)">Biomimetic Nano-Hydroxyapatite (nHAp) via Mechanochemical Attritor Milling of Waste Eggshells</h1>
   <p style="margin-top:1.1rem"><span class="verdict pass">Product</span></p>
   <figure class="concept-fig"><img src="/images/sector/nhap.jpg" alt="Biomimetic Nano-Hydroxyapatite (nHAp) via Mechanochemical Attritor Milling of Waste Eggshe… — where it applies" style="width:100%;border-radius:8px;margin:1.3rem 0 0.2rem"></figure>
-  <p class="lede">A product dossier of The Absence Audit. The current audit flags this concept — reserved findings — and the full disclosure ships inside the dossier.</p><table><tbody><tr><td style="width:36%"><strong>Incumbent benchmark</strong></td><td>Potassium Nitrate (KNO3)</td></tr><tr><td style="width:36%"><strong>Entry application</strong></td><td>B2B active cosmetic dentifrice ingredient for DTC oral care toothpastes</td></tr><tr><td style="width:36%"><strong>Measured advantage</strong></td><td>Parity (No statistical difference in immediate pain reduction VAS score at 4 weeks)</td></tr><tr><td style="width:36%"><strong>Time to first revenue</strong></td><td>12 months</td></tr><tr><td style="width:36%"><strong>Regulatory risk</strong></td><td>Moderate — qualification costs reported ($150,000 estimated)</td></tr></tbody></table><div class="promise" style="margin-top:2rem"><h3>Buy the full dossier</h3><p style="margin:0 0 1rem;font-size:.95rem;color:var(--ink-2)">Mechanism, operating protocol with real conditions and yields, computed unit economics with a six-scenario stress test, the absence audit, and every resolved citation.</p><p style="margin:0"><a href="https://theabsenceaudit.kit.com/products/nano-hydroxyapatite" rel="noopener" style="font-weight:600" aria-label="Buy the full dossier for Biomimetic Nano-Hydroxyapatite (nHAp) via Mechanochemical Attritor Milling of Waste Eggshells for $499.00">Buy the full dossier — $499.00 &rarr;</a></p></div>
+  <p class="lede">A product dossier of The Absence Audit. The current audit flags this concept — reserved findings — and the full disclosure ships inside the dossier.</p><table><tbody><tr><td style="width:36%"><strong>Incumbent benchmark</strong></td><td>Potassium Nitrate (KNO3)</td></tr><tr><td style="width:36%"><strong>Entry application</strong></td><td>B2B active cosmetic dentifrice ingredient for DTC oral care toothpastes</td></tr><tr><td style="width:36%"><strong>Measured advantage</strong></td><td>Parity (No statistical difference in immediate pain reduction VAS score at 4 weeks)</td></tr><tr><td style="width:36%"><strong>Time to first revenue</strong></td><td>12 months</td></tr><tr><td style="width:36%"><strong>Regulatory risk</strong></td><td>Moderate — qualification costs reported ($150,000 estimated)</td></tr></tbody></table><span data-aa-invite="biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli"></span><div class="promise" data-aa-commerce style="margin-top:2rem"><h3>Buy the full dossier</h3><p style="margin:0 0 1rem;font-size:.95rem;color:var(--ink-2)">Mechanism, operating protocol with real conditions and yields, computed unit economics with a six-scenario stress test, the absence audit, and every resolved citation.</p><p style="margin:0"><a href="https://theabsenceaudit.kit.com/products/nano-hydroxyapatite" rel="noopener" style="font-weight:600" aria-label="Buy the full dossier for Biomimetic Nano-Hydroxyapatite (nHAp) via Mechanochemical Attritor Milling of Waste Eggshells for $499.00">Buy the full dossier — $499.00 &rarr;</a></p></div>
   <hr class="rule" style="margin:2.6rem 0 1.6rem">
   <p style="font-size:.9rem;color:var(--ink-3)">Assessed 2026-08-28 against seven gates plus the
   voiding sub-tests. <a href="/#thesis">How the method works</a> ·
