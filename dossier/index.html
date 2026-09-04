@@ -125,15 +125,15 @@
   function rows(slugs){
     var out = "";
     slugs.forEach(function(s){
-      out += "<li><a href="/dossier/" + encodeURIComponent(s) + "/">" + esc(NAMES[s] || s)
-           + "</a><span class="tier">" + esc(TIERS[s] || "") + "</span></li>";
+      out += "<li><a href=\"/dossier/" + encodeURIComponent(s) + "/\">" + esc(NAMES[s] || s)
+           + "</a><span class=\"tier\">" + esc(TIERS[s] || "") + "</span></li>";
     });
     return out;
   }
 
   function signOutBtn(){
     return '<div class="user"><span class="who">' + esc(userEmail()) + '</span>'
-         + '<button class="out" onclick="document.dispatchEvent(new CustomEvent('aa-signout'))">Sign out</button></div>';
+         + '<button class="out" onclick="document.dispatchEvent(new CustomEvent(\'aa-signout\'))">Sign out</button></div>';
   }
 
   function userEmail(){ var u = auth.currentUser; return (u && (u.email || (u.providerData[0]||{}).email)) || ""; }
