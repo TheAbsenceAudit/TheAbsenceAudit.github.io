@@ -76,6 +76,9 @@
   .masthead nav{margin-left:auto;display:flex;gap:1.5rem;font-size:.87rem}
   .masthead nav a{color:var(--ink-2);text-decoration:none;padding:.35rem 0;border-bottom:1px solid transparent}
   .masthead nav a:hover,.masthead nav a:focus-visible{color:var(--ink);border-bottom-color:var(--kill);outline:none}
+  .masthead nav .aa-auth{display:inline-flex;align-items:center;gap:.9rem;font-size:.87rem}
+  .aa-auth .aa-who{font-weight:600;color:var(--ink);border-bottom:0}
+  .aa-auth .aa-badge{background:var(--ink);color:var(--paper);border-radius:999px;padding:.14rem .6rem;font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
 
   /* ---------- hero: asymmetric, editorial ---------- */
   .hero{padding:5.2rem 0 3.4rem;border-bottom:1px solid var(--rule)}

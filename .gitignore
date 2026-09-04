@@ -8,3 +8,6 @@
 *.orig
 __pycache__/
 PUBLISH_STATUS.md
+
+# stray desktop attachments (SA keys etc.) never belong in the public repo
+.hermes/

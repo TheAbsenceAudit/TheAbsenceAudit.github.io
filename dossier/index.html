@@ -48,7 +48,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Full Ledger Access — All Dossiers | The Absence Audit</title>
+<title>Your Ledger | The Absence Audit</title>
 <style>
   :root {{ --ink:#14161a; --mute:#5b6470; --line:#d8dde5; --accent:#8a1c1c; --bg:#f7f8fa; }}
   *{{box-sizing:border-box}}
@@ -100,14 +100,128 @@
     border-top-color:var(--accent); border-radius:50%; animation:sp .8s linear infinite; }}
   @keyframes sp {{ to {{ transform:rotate(360deg); }} }}
 </style>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
 </head><body><div class="wrap">
-  <p class="brand">The Absence Audit — Full Ledger Access</p>
-  <h1>Every dossier</h1>
-  <p class="sub">You paid for the whole ledger. This is all of it — 19 dossiers, each with its full
-  economics recomputed in code and its red-team audit. New survivors are added the moment the
-  pipeline clears them.</p>
-  <h2>Dossiers</h2>
-  <ul><li><a href="biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum/">Biogenic Acid-Resistant Sewer Infrastructure via Alkali-Activated Aluminosilicate Geopolymers</a><span class="tier">Entry</span></li><li><a href="biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli/">Biomimetic Nano-Hydroxyapatite (nHAp) via Mechanochemical Attritor Milling of Waste Eggshells</a><span class="tier">Standard</span></li><li><a href="cement-free-refractory-castables-via-potassium-activated-metakaolin-ge/">Cement-Free Refractory Castables via Potassium-Activated Metakaolin Geopolymerization</a><span class="tier">Entry</span></li><li><a href="commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f/">Commercial Production of Pediocin PA-1 Biopreservative via Low-CapEx Fermentation</a><span class="tier">Standard</span></li><li><a href="compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi/">Compact Volume-Expandable Sorbents (CVES) via Continuous PolyHIPE Emulsion Templating</a><span class="tier">Standard</span></li><li><a href="conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a/">Conductive Inositol Hexaphosphate-Polyaniline (IP6-PANI) Hydrogels via Ambient Aqueous Polymerization</a><span class="tier">Premium</span></li><li><a href="drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat/">Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues</a><span class="tier">Premium</span></li><li><a href="halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am/">Halogen-Free Orthoborate-Phosphonium Ionic Liquid ([P6,6,6,14][BMB]) via Ambient Aqueous Metathesis</a><span class="tier">Premium</span></li><li><a href="high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz/">High-Photostability Anti-Counterfeiting Inks via Hydrothermal Carbonization of Biomass into Carbon Quantum Dots</a><span class="tier">Standard</span></li><li><a href="inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion/">Inositol Hexaphosphate (IP6) Substrate Passivation via Ambient Immersion</a><span class="tier">Premium</span></li><li><a href="mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc/">Mechanochemical Covalent Triazine Frameworks (CTFs) via Solvent-Free Cyclotrimerization</a><span class="tier">Premium</span></li><li><a href="polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi/">Polyimide-Reinforced Silica Aerogel Blankets via Ambient Pressure Drying</a><span class="tier">Standard</span></li><li><a href="polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial/">Polyurethane-Encapsulated IPDI Microcapsules via Low-Shear Interfacial Polymerization</a><span class="tier">Entry</span></li><li><a href="pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech/">Pressureless Micro-Silver-Indium ($\mu$Ag-In) TLP Sintering Paste via Mechanical Alloying</a><span class="tier">Standard</span></li><li><a href="self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca/">Self-Healable WPU/Ti3C2Tx MXene Coating via Mechanical Blending and Casting</a><span class="tier">Standard</span></li><li><a href="sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid/">Sustained-Release Silk Fibroin Microneedle Matrices via Lithium Bromide Extraction</a><span class="tier">Standard</span></li><li><a href="ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer/">Ultra-High-Strength Underwater Adhesives via In Situ Catechol-Polymer Co-deposition</a><span class="tier">Premium</span></li><li><a href="ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze/">Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR) via Base-Catalyzed Thiol-Epoxy Click Photopolymerization</a><span class="tier">Standard</span></li><li><a href="ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via/">Ultrawhite Barium Sulfate (BaSO4) Subambient Radiative Cooling Paint via High-Shear Emulsion Dispersion</a><span class="tier">Premium</span></li></ul>
-  <p class="note">This page is yours alone; do not share it. Dossiers are licensed for your own
-  use — see the <a href="https://theabsenceaudit.com/terms/">Terms of Use</a>.</p>
-</div></body></html>
+  <div id="app"><div class="state"><div class="spinner"></div>Loading your ledger…</div></div>
+</div>
+<script>
+(function(){
+  "use strict";
+  var FB = {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "authDomain": "the-absence-audit.firebaseapp.com", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app", "messagingSenderId": "203345891201", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "facebook": false};
+  var NAMES = {"biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": "Biogenic Acid-Resistant Sewer Infrastructure via Alkali-Activated Aluminosilicate Geopolymers", "biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": "Biomimetic Nano-Hydroxyapatite (nHAp) via Mechanochemical Attritor Milling of Waste Eggshells", "cement-free-refractory-castables-via-potassium-activated-metakaolin-ge": "Cement-Free Refractory Castables via Potassium-Activated Metakaolin Geopolymerization", "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": "Commercial Production of Pediocin PA-1 Biopreservative via Low-CapEx Fermentation", "compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi": "Compact Volume-Expandable Sorbents (CVES) via Continuous PolyHIPE Emulsion Templating", "conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a": "Conductive Inositol Hexaphosphate-Polyaniline (IP6-PANI) Hydrogels via Ambient Aqueous Polymerization", "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat": "Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues", "halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am": "Halogen-Free Orthoborate-Phosphonium Ionic Liquid ([P6,6,6,14][BMB]) via Ambient Aqueous Metathesis", "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": "High-Photostability Anti-Counterfeiting Inks via Hydrothermal Carbonization of Biomass into Carbon Quantum Dots", "inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion": "Inositol Hexaphosphate (IP6) Substrate Passivation via Ambient Immersion", "mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc": "Mechanochemical Covalent Triazine Frameworks (CTFs) via Solvent-Free Cyclotrimerization", "polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi": "Polyimide-Reinforced Silica Aerogel Blankets via Ambient Pressure Drying", "polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial": "Polyurethane-Encapsulated IPDI Microcapsules via Low-Shear Interfacial Polymerization", "pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech": "Pressureless Micro-Silver-Indium ($\\mu$Ag-In) TLP Sintering Paste via Mechanical Alloying", "self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca": "Self-Healable WPU/Ti3C2Tx MXene Coating via Mechanical Blending and Casting", "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": "Sustained-Release Silk Fibroin Microneedle Matrices via Lithium Bromide Extraction", "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": "Ultra-High-Strength Underwater Adhesives via In Situ Catechol-Polymer Co-deposition", "ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze": "Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR) via Base-Catalyzed Thiol-Epoxy Click Photopolymerization", "ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via": "Ultrawhite Barium Sulfate (BaSO4) Subambient Radiative Cooling Paint via High-Shear Emulsion Dispersion"};
+  var TIERS = {"biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": "Entry", "biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": "Standard", "cement-free-refractory-castables-via-potassium-activated-metakaolin-ge": "Entry", "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": "Standard", "compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi": "Standard", "conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a": "Premium", "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat": "Premium", "halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am": "Premium", "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": "Standard", "inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion": "Premium", "mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc": "Premium", "polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi": "Standard", "polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial": "Entry", "pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech": "Standard", "self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca": "Standard", "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": "Standard", "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": "Premium", "ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze": "Standard", "ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via": "Premium"};
+  var TOTAL = 19;
+  var SITE = "https://theabsenceaudit.com";
+  var app = firebase.initializeApp(FB);
+  var auth = firebase.auth();
+  var db = firebase.firestore();
+  var $app = document.getElementById("app");
+
+  function esc(s){ return String(s).replace(/[&<>"']/g, function(c){
+    return {"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]; }); }
+
+  function rows(slugs){
+    var out = "";
+    slugs.forEach(function(s){
+      out += "<li><a href="/dossier/" + encodeURIComponent(s) + "/">" + esc(NAMES[s] || s)
+           + "</a><span class="tier">" + esc(TIERS[s] || "") + "</span></li>";
+    });
+    return out;
+  }
+
+  function signOutBtn(){
+    return '<div class="user"><span class="who">' + esc(userEmail()) + '</span>'
+         + '<button class="out" onclick="document.dispatchEvent(new CustomEvent('aa-signout'))">Sign out</button></div>';
+  }
+
+  function userEmail(){ var u = auth.currentUser; return (u && (u.email || (u.providerData[0]||{}).email)) || ""; }
+
+  function render(el, html){ $app.innerHTML = html;
+    var btn = $app.querySelector(".out");
+    if (btn) btn.addEventListener("click", function(){ auth.signOut(); });
+    var gb = $app.querySelector("#goog");
+    if (gb) gb.addEventListener("click", google);
+    var fbb = $app.querySelector("#fbk");
+    if (fbb) fbb.addEventListener("click", facebook);
+    var eb = $app.querySelector("#eml");
+    if (eb) eb.addEventListener("click", emailLink);
+  }
+
+  function signInCard(){ render($app,
+    '<div class="card">'
+    + '<p class="brand">The Absence Audit</p><h1>Your ledger</h1>'
+    + '<p class="sub">Sign in to open the dossiers you bought. Use the same email as your receipt.</p>'
+    + '<button class="sbtn" id="goog"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/google.svg" alt="">Continue with Google</button>'
+    + (FB.facebook ? '<button class="sbtn" id="fbk"><img src="https://www.gstatic.com/firebasejs/ui/2.0.0/images/auth/facebook.svg" alt="">Continue with Facebook</button>' : '')
+    + '<div class="or">or</div>'
+    + '<div class="elink"><input id="em" type="email" placeholder="you@receipt-email.com">'
+    + '<button id="eml">Email me a link</button></div>'
+    + '</div><p class="note">Problems? Reply to your purchase receipt.</p>'); }
+
+  function google(){ auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+    .catch(function(e){ err(e); }); }
+  function facebook(){ auth.signInWithPopup(new firebase.auth.FacebookAuthProvider())
+    .catch(function(e){ err(e); }); }
+
+  function emailLink(){ var el = $app.querySelector("#em"); var em = el.value.trim();
+    if (!/^[^@]+@[^@]+$/.test(em)) { el.focus(); return; }
+    localStorage.setItem("aaEmail", em);
+    auth.sendSignInLinkToEmail(em, { url: location.origin + "/dossier/", handleCodeInApp: true })
+      .then(function(){ render($app, '<div class="card"><h2>Check your inbox</h2>'
+        + '<p class="sub">We emailed ' + esc(em) + ' a sign-in link. Open it in this browser.</p></div>'); })
+      .catch(function(e){ err(e); }); }
+
+  function err(e){ render($app, '<div class="state"><p class="err">' + esc((e && e.message) || e)
+    + '</p><p><a href="javascript:location.reload()">Try again</a></p></div>'); }
+
+  function noAccess(em){ render($app,
+    '<div class="card"><h2>No purchase for this email</h2>'
+    + '<p class="sub">There is no paid access registered for ' + esc(em)
+    + '. If you bought with a different email, sign out and use that one.</p>'
+    + signOutBtn() + '</div>'
+    + '<p class="note">Reply to your purchase receipt if something looks wrong.</p>'); }
+
+  function ledger(em, d){ var all = (d.plan === "all");
+    var slugs = all ? Object.keys(NAMES) : (d.products || []).filter(function(s){ return NAMES[s]; });
+    var html = '<div class="user"><span class="who">' + esc(em) + '</span>'
+      + '<button class="out">Sign out</button></div>'
+      + '<h1>Your ledger</h1>'
+      + (all
+          ? '<span class="plan">Full Ledger Access</span>'
+            + '<p class="sub">Every dossier, past and future. New survivors appear here the moment the pipeline clears them.</p>'
+          : '<p class="sub">The dossiers you own. Buy the full ledger for everything, past and future.</p>')
+      + '<h2>Dossiers (' + slugs.length + (all ? " of " + TOTAL : "") + ')</h2><ul>'
+      + (slugs.length ? rows(slugs) : "<li>No dossiers found for this purchase — reply to your receipt.</li>")
+      + '</ul><p class="note">Dossiers are licensed for your own use — see the <a href="' + SITE + '/terms/">Terms of Use</a>.</p>';
+    render($app, html); }
+
+  function showState(user){
+    if (!user) { signInCard(); return; }
+    var em = userEmail().toLowerCase();
+    if (!em) { signInCard(); return; }
+    render($app, '<div class="state"><div class="spinner"></div>Opening ' + esc(em) + '…</div>');
+    db.collection("access").doc(em).get()
+      .then(function(snap){
+        if (!snap.exists) { noAccess(userEmail()); return; }
+        var d = snap.data() || {};
+        if (!d.plan && !(d.products && d.products.length)) { noAccess(userEmail()); return; }
+        ledger(userEmail(), d);
+      })
+      .catch(function(e){ err(e); });
+  }
+
+  if (firebase.auth().isSignInWithEmailLink(location.href)) {
+    var em = localStorage.getItem("aaEmail") || window.prompt("Confirm the email you used at checkout:");
+    if (em) {
+      auth.signInWithEmailLink(em, location.href)
+        .then(function(){ localStorage.removeItem("aaEmail"); })
+        .catch(function(e){ err(e); });
+    }
+  }
+
+  auth.onAuthStateChanged(showState);
+})();
+</script>
+</body></html>
