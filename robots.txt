@@ -1,10 +1,12 @@
 # The Absence Audit - robots.txt
 # Open bait, locked catch: everything is crawlable EXCEPT the paid
-# dossiers (/dossier/) and the sample PDF download (email-gated).
+# dossiers (/dossier/), the sample PDF download (email-gated) and the
+# invitation-only subscriber ledger (/subscriber/).
 
 User-agent: *
 Allow: /
 Disallow: /dossier/
 Disallow: /sample/*.pdf
+Disallow: /subscriber/
 
 Sitemap: https://theabsenceaudit.com/sitemap.xml
