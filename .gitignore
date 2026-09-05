@@ -8,6 +8,6 @@
 *.orig
 __pycache__/
 PUBLISH_STATUS.md
+_tmp_idx.html
 # local desktop attachments (user uploads) never ship
 .hermes/
-_tmp_idx.html
