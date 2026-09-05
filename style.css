@@ -473,3 +473,6 @@ table.term a{color:inherit}
   margin:1.4rem 0;font-size:.92rem;color:var(--ink-2)}
 .invite strong{color:var(--ink)}
 .aa-ledger-body .wrap{width:100%;margin-inline:0}
+
+/* live hero counter (auto-computed) */
+.hero .live-count { color: var(--kill, #8C2F1E); font-weight: 700; }
