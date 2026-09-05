@@ -11,3 +11,5 @@ PUBLISH_STATUS.md
 
 # local tools
 render_report_pdfs.py
+pdf_render_report.json
+c/**/*.pdf
