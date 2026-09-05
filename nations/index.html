@@ -1,0 +1,861 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}};</script>
+<script src="/assets/auth.js" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics ON (measure traffic), advertising OFF.
+  // Non-EEA audience: the single anonymous _ga analytics cookie needs no banner.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'granted',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+</script>
+
+<link rel="stylesheet" href="/style.css?v=1788639573">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tunisia, audited — The Absence Audit at national scale</title>
+<meta name="description" content="The first nation-scale Absence Audit: Tunisia's five structural absences — monetary, cognitive, material, hydrological, nutritional — and the literature-backed engineering that fills each, wired into one closed loop. A public template for every country with the same absences.">
+<link rel="canonical" href="https://theabsenceaudit.com/nations/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/nations/">
+<meta property="og:title" content="Tunisia, audited. Five absences. One closed loop.">
+<meta property="og:description" content="The Absence Audit, applied to a nation: five structural absences, five literature-backed fills, one industrial metabolism. A public template for every country with the same absences.">
+<meta property="og:image" content="https://theabsenceaudit.com/nations/og-nations.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tunisia, audited. Five absences. One closed loop.">
+<meta name="twitter:description" content="The Absence Audit at national scale — a public template for every country with the same absences.">
+<meta name="twitter:image" content="https://theabsenceaudit.com/nations/og-nations.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Tunisia, audited — The Absence Audit at national scale",
+  "url": "https://theabsenceaudit.com/nations/",
+  "inLanguage": "en",
+  "isPartOf": {"@type": "WebSite", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
+  "description": "The first nation-scale Absence Audit: five structural absences, five literature-backed fills, one closed industrial loop. A public template for every country with the same absences."
+}
+</script>
+<style>
+  .n-hero{padding:4.2rem 0 3rem;border-bottom:1px solid var(--rule)}
+  .n-hero h1{font-size:clamp(2.6rem,6vw,4.4rem);letter-spacing:-.02em}
+  .n-hero h1 em{color:var(--kill);font-style:italic}
+  .n-hero .lede{max-width:66ch;margin:1.2rem 0 0;font-size:1.12rem;color:var(--ink-2)}
+  .n-fr{max-width:66ch;margin:1.6rem 0 0;padding:1rem 1.2rem;border-left:3px solid var(--rule);
+        background:var(--paper-2);font-size:.98rem;color:var(--ink-2)}
+  .n-stats{display:flex;flex-wrap:wrap;gap:2.4rem;margin:2.4rem 0 0;padding:0}
+  .n-stats dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+  .n-stats dd{margin:.35rem 0 0;font-family:var(--serif);font-size:1.9rem}
+  .n-section{padding:3.4rem 0;border-bottom:1px solid var(--rule)}
+  .n-section h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 1rem}
+  .n-section .n-lede{max-width:72ch;color:var(--ink-2);margin:0 0 2rem;font-size:1.05rem}
+  .n-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem}
+  .n-card{background:var(--paper-2);border:1px solid var(--rule);padding:1.5rem 1.5rem 1.3rem}
+  .n-card .n-num{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;color:var(--kill);text-transform:uppercase}
+  .n-card h3{font-size:1.25rem;margin:.5rem 0 .55rem}
+  .n-card h3 .n-missing{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;
+        letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.35rem}
+  .n-card p{margin:.55rem 0;color:var(--ink-2);font-size:.97rem}
+  .n-card ul{margin:.6rem 0 0;padding-left:1.1rem;color:var(--ink-2);font-size:.94rem}
+  .n-card ul li{margin:.3rem 0}
+  .n-card ul strong{color:var(--ink)}
+  .n-loop{counter-reset:loop}
+  .n-loop li{list-style:none;position:relative;padding:0 0 1.1rem 3rem;counter-increment:loop}
+  .n-loop li::before{content:counter(loop);position:absolute;left:0;top:.05rem;width:1.9rem;height:1.9rem;
+        border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;
+        font-family:var(--mono);font-size:.82rem;color:var(--kill)}
+  .n-loop li::after{content:"";position:absolute;left:.92rem;top:2rem;bottom:.35rem;border-left:1px dashed var(--rule)}
+  .n-loop li:last-child::after{display:none}
+  .n-loop li p{margin:.1rem 0 0;color:var(--ink-2)}
+  .n-loop li strong{font-family:var(--serif);font-size:1.06rem;color:var(--ink)}
+  .n-quote{font-family:var(--serif);font-size:1.35rem;line-height:1.45;font-style:italic;
+        border-left:3px solid var(--kill);padding-left:1.2rem;margin:2rem 0;max-width:60ch}
+  .n-quote cite{display:block;font-family:var(--mono);font-style:normal;font-size:.72rem;
+        letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:.7rem}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0 1.8rem;font-size:.93rem}
+  caption{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+        color:var(--ink-3);text-align:left;margin-bottom:.6rem}
+  th,td{text-align:left;border-bottom:1px solid var(--rule);padding:.55rem .7rem;vertical-align:top}
+  th{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+  td strong{color:var(--ink)}
+  .n-media{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.8rem;margin-top:1.6rem}
+  .n-media figure{margin:0}
+  .n-media video{width:100%;max-width:340px;background:#000;border:1px solid var(--rule)}
+  .n-media audio{width:100%;margin-top:.9rem}
+  .n-media figcaption{font-size:.9rem;color:var(--ink-2);margin-top:.7rem}
+  .n-media figcaption strong{color:var(--ink);font-family:var(--serif);font-size:1.02rem;font-weight:500}
+  .n-media .n-meta{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  details.n-tr{margin-top:1.4rem;border:1px solid var(--rule);background:var(--paper-2);padding:.9rem 1.2rem}
+  details.n-tr summary{cursor:pointer;font-weight:600;font-family:var(--sans);font-size:.95rem}
+  .n-tr-pad{max-height:420px;overflow:auto;margin-top:.9rem;padding-right:.6rem;
+        font-size:.92rem;color:var(--ink-2)}
+  .n-tr-a,.n-tr-b{margin:.45rem 0}
+  .n-tr-a strong{color:var(--kill)}
+  .n-tr-b strong{color:var(--live)}
+  .n-boundary{background:var(--paper-2);border:1px solid var(--rule);padding:1.5rem 1.6rem;margin-top:1.6rem}
+  .n-boundary h3{margin:0 0 .6rem;font-size:1.15rem}
+  .n-boundary p{color:var(--ink-2);font-size:.96rem;margin:.5rem 0}
+  .n-src{font-size:.85rem;color:var(--ink-2);columns:2;column-gap:2.4rem;padding-left:1.4rem}
+  .n-src li{margin:.35rem 0;break-inside:avoid}
+  .n-src a{word-break:break-all}
+  @media(max-width:640px){.n-src{columns:1}}
+</style>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">The ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/#graveyard">What we killed</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/nations/">Nations</a>
+      <a href="/#join">Get it free</a>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+
+<div class="n-hero">
+  <div class="wrap">
+    <p class="eyebrow">The method, at national scale</p>
+    <h1>Tunisia, <em>audited.</em></h1>
+    <p class="lede">The Absence Audit finds what is missing &mdash; and what the cited literature
+    proves can fill it. Usually the unit is a process, a material, a venture. This time the unit
+    is a <strong>nation</strong>: five structural absences, five literature-backed fills, and the
+    closed loop that turns each liability into the next solution. It is not for sale. It is
+    published free, in the open, as a <strong>template</strong> &mdash; for Tunisia, and for every
+    country that carries the same absences.</p>
+    <p class="n-fr"><strong>En bref :</strong> l'Audit de l'Absence appliqué à un pays. Cinq absences
+    structurelles &mdash; souveraineté monétaire, calcul souverain, matériaux stratégiques, eau,
+    protéines &mdash; et pour chacune, le procédé que la littérature scientifique démontre,
+    reliés en une boucle industrielle unique. Un modèle ouvert, publié pour chaque pays qui
+    partage ces absences. Rapport, vidéo et audio en français.</p>
+    <dl class="n-stats">
+      <div><dt>Absences audited</dt><dd>5</dd></div>
+      <div><dt>Energy modeled</dt><dd>5.32 TWh/yr</dd></div>
+      <div><dt>Sources cited</dt><dd>59</dd></div>
+      <div><dt>Closed loop</dt><dd>1</dd></div>
+    </dl>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">The audit</p>
+    <h2>Five absences. Five fills the literature already proves.</h2>
+    <p class="n-lede">Same discipline as every dossier in the ledger: name what is missing,
+    find the process the peer-reviewed record demonstrates, and keep the numbers where anyone
+    can re-check them.</p>
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Absence 01</p>
+        <h3><span class="n-missing">What is missing</span>Monetary sovereignty</h3>
+        <p>A debt in a currency the state cannot print. External debt of <strong>$42.9B</strong>
+        &mdash; about <strong>80% of GDP</strong>, dollar-denominated. When the Fed raises rates,
+        over <strong>20% of export revenues</strong> go to debt service; growth stays under 1.5%.</p>
+        <ul>
+          <li><strong>The trap:</strong> the &ldquo;original sin&rdquo; of borrowing in a foreign
+          currency &mdash; the playing field is rigged, and no monetary tool fixes it.</li>
+          <li><strong>The fill:</strong> stop refinancing the trap; generate hard currency from
+          exports the country owns outright: compute, strategic metals, protein.</li>
+        </ul>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 02</p>
+        <h3><span class="n-missing">What is missing</span>Sovereign compute</h3>
+        <p>World-class talent without infrastructure. InstaDeep &mdash; founded in Tunis &mdash;
+        was acquired by BioNTech for <strong>$680M</strong>. The talent is proven; the data
+        sits in foreign clouds under extraterritorial law.</p>
+        <ul>
+          <li><strong>The fix:</strong> three 100&nbsp;MW datacenters in the abandoned
+          <strong>Gafsa mines</strong> &mdash; constant 15&ndash;20&nbsp;&deg;C geothermal cooling
+          (surface cooling eats up to 40% of a datacenter's OPEX), physical protection, OPEX in dinars.</li>
+          <li><strong>The result:</strong> state data, state models, state hardware &mdash; on
+          sovereign soil.</li>
+        </ul>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 03</p>
+        <h3><span class="n-missing">What is missing</span>Strategic materials</h3>
+        <p>A toxic liability that is actually a strategic deposit. Phosphogypsum &mdash; decades of
+        phosphate-industry waste at Gab&egrave;s &mdash; costs the marine ecosystem over
+        <strong>$58M a year</strong>.</p>
+        <ul>
+          <li><strong>The discovery:</strong> over 70% of the rare earths in Gafsa phosphate rock
+          precipitate into the waste &mdash; up to <strong>1,700&nbsp;mg/kg</strong> in some strata.</li>
+          <li><strong>The extraction:</strong> HCl at 60&nbsp;&deg;C (shrinking-core kinetics,
+          Ea 20.65&nbsp;kJ&middot;mol&sup1;) recovers <strong>65.6% &Sigma;REE</strong>, up to
+          73.8% yttrium. The purified gypsum then lines the mine walls.</li>
+        </ul>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 04</p>
+        <h3><span class="n-missing">What is missing</span>Water</h3>
+        <p>Endemic water stress &mdash; dams at record lows, agriculture throttled. The plan
+        targets <strong>500 million m&sup3;</strong> of desalinated water a year.</p>
+        <ul>
+          <li><strong>The energy:</strong> 4&nbsp;kWh/m&sup3; reverse osmosis &rarr;
+          <strong>2.0&nbsp;TWh/yr</strong>; transport 300&nbsp;km inland and 400&nbsp;m uphill at
+          0.38&nbsp;kWh/m&sup3; &rarr; 0.19&nbsp;TWh/yr.</li>
+          <li><strong>The control:</strong> reinforcement-learning over millions of IoT sensors
+          modulates pump pressure in real time &mdash; the sovereign AI's first job.</li>
+        </ul>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 05</p>
+        <h3><span class="n-missing">What is missing</span>Nutrition &mdash; and the brains it builds</h3>
+        <p>Latent malnutrition caps a generation's cognitive development. The desert truffle
+        (<em>Terfezia boudieri</em>, symbiotic with <em>Helianthemum</em>) grows on
+        <strong>200&nbsp;L/m&sup2;/yr</strong> under the solar shade.</p>
+        <ul>
+          <li><strong>The yield:</strong> <strong>20&ndash;27% protein</strong>, all essential amino
+          acids, iron &mdash; the highest nutritional water productivity of any crop in the system.</li>
+          <li><strong>The loop:</strong> protein for children's neurodevelopment &rarr; the engineers
+          who build the sovereign AI. Luxury export price (&euro;20&ndash;220/kg) funds the rest.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">The loop</p>
+    <h2>L'alchimie syst&eacute;mique &mdash; each liability finances the next solution</h2>
+    <p class="n-lede">The design principle is the opposite of ministry-by-ministry
+    problem-solving: nothing is waste, and every by-product is the input of the next stage.</p>
+    <ol class="n-loop">
+      <li><strong>Toxic waste</strong><p>Phosphogypsum mountains at Gab&egrave;s &mdash; the country's
+      worst ecological liability &mdash; are mined for their rare earths.</p></li>
+      <li><strong>Strategic metals</strong><p>Yttrium, lanthanum, neodymium &mdash; the raw materials
+      of the compute era &mdash; recovered at up to 83% by nitric-acid leaching.</p></li>
+      <li><strong>Sovereign compute</strong><p>The rare earths feed three 100&nbsp;MW datacenters
+      buried in the cool, defensible Gafsa mines.</p></li>
+      <li><strong>Industrial symbiosis</strong><p>The hot leachates from metal extraction are piped
+      through heat exchangers to cool the servers &mdash; then treated. The purified gypsum becomes
+      fire-rated board that lines the very galleries housing the machines.</p></li>
+      <li><strong>Water, managed by the AI</strong><p>The sovereign AI runs the desalination and the
+      smart pipelines that push 500&nbsp;Mm&sup3;/yr across the desert.</p></li>
+      <li><strong>Agrivoltaic shade</strong><p>A 3&nbsp;GW solar park on 45&ndash;60&nbsp;km&sup2;
+      shelters the crops instead of sterilising the soil &mdash; cutting irrigation needs 20&ndash;40%
+      while the plants' transpiration cools the panels.</p></li>
+      <li><strong>Desert truffles</strong><p>Hyper-protein food from almost no water &mdash; sold
+      abroad at luxury prices, eaten at home for nutrition.</p></li>
+      <li><strong>Human capital</strong><p>Protein today is the next generation's cognition &mdash;
+      the engineers who write the sovereign algorithms of tomorrow.</p></li>
+    </ol>
+    <p class="n-quote">&laquo;&nbsp;Les scories toxiques du pass&eacute; deviennent l'or cognitif de
+    demain. C'est l'alchimie syst&eacute;mique pouss&eacute;e &agrave; la perfection.&nbsp;&raquo;
+    <cite>&mdash; L'alchimie syst&eacute;mique pour la souverainet&eacute; tunisienne, 26 min (ci-dessous)</cite></p>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">The arithmetic</p>
+    <h2>The energy budget, laid bare</h2>
+    <p class="n-lede">Every figure recomputed from cited primitives &mdash; the same discipline as
+    every dossier. Total demand: 5.32&nbsp;TWh/yr, met by a 3&nbsp;GW agrivoltaic park.</p>
+    <table>
+      <caption>Annual energy demand by strategic pole</caption>
+      <thead><tr><th>Pole</th><th>TWh/yr</th><th>Share</th></tr></thead>
+      <tbody>
+        <tr><td>Seawater desalination (500&nbsp;Mm&sup3;)</td><td>2.00</td><td>37.6%</td></tr>
+        <tr><td>Sovereign AI datacenters (300&nbsp;MW continuous)</td><td>2.63</td><td>49.4%</td></tr>
+        <tr><td>Rare-earth extraction (2&nbsp;Mt phosphogypsum)</td><td>0.50</td><td>9.4%</td></tr>
+        <tr><td>National pumping network</td><td>0.19</td><td>3.6%</td></tr>
+        <tr><td><strong>Total</strong></td><td><strong>5.32</strong></td><td><strong>100%</strong></td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--ink-2)">At a 20% capacity factor: 5.32&nbsp;TWh &divide; (8,760&nbsp;h &times; 0.20)
+    &asymp; <strong>3.03&nbsp;GW</strong> installed &mdash; 4,500&ndash;6,000&nbsp;ha of
+    agrivoltaics, a marginal fraction of national territory, producing energy, water, metals, compute
+    and protein from one piece of desert.</p>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Hear it, see it</p>
+    <h2>The brief and the deep dive (in French)</h2>
+    <p class="n-lede">The two public media pieces that accompany the report &mdash; a one-minute
+    teaser and a 26-minute deep dive.</p>
+    <div class="n-media">
+      <figure>
+        <video controls preload="metadata" playsinline poster="/nations/poster.jpg"
+               aria-label="Le mégaprojet tunisien qui réinvente l'avenir — vidéo de 75 secondes en français">
+          <source src="/nations/teaser.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="n-meta">Vidéo &middot; 1 min 15 &middot; français</span><br>
+        <strong>Le m&eacute;gaprojet tunisien qui r&eacute;invente l'avenir</strong><br>
+        The four pillars in ninety seconds: underground compute, rare earths from toxic waste,
+        AI-managed water, desert truffles.</figcaption>
+      </figure>
+      <figure>
+        <audio controls preload="none" src="/nations/deep-dive.mp3"
+               aria-label="L'alchimie systémique pour la souveraineté tunisienne — audio de 26 minutes en français"></audio>
+        <figcaption><span class="n-meta">Audio &middot; 26 min &middot; français</span><br>
+        <strong>L'alchimie syst&eacute;mique pour la souverainet&eacute; tunisienne</strong><br>
+        The full argument &mdash; from the dollar trap to the truffles that feed the engineers who
+        write the sovereign algorithms.</figcaption>
+      </figure>
+    </div>
+    <details class="n-tr">
+      <summary>Read the full transcript of the deep dive (French)</summary>
+      <div class="n-tr-pad"><p class="n-tr-a"><strong>A —</strong>  D&#x27;habitude, quand on parle d&#x27;alchimie, euh l&#x27;image qui vient immédiatement à l&#x27;esprit, bah c&#x27;est celle d&#x27;un vieux sage.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ouais, un vieux monsieur enfermé dans un laboratoire super sombre.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est ça. Avec des fioles fumantes un peu partout. Le gars qui essaie désespérément de transformer un vulgaire morceau de plomb en or massif.</p>
+<p class="n-tr-b"><strong>B —</strong>  Un classique, un mythe fascinant, hein, mais bon, franchement poussiéreux.</p>
+<p class="n-tr-a"><strong>A —</strong>  Totalement poussiéreux. Mais, en fait, imaginons un instant que cette véritable alchimie existe bel et bien aujourd&#x27;hui, au 21e siècle.</p>
+<p class="n-tr-b"><strong>B —</strong>  D&#x27;accord. Mais avec quels ingrédients du coup ?</p>
+<p class="n-tr-a"><strong>A —</strong>  Et bien, c&#x27;est là que ça devient dingue. À la place du plomb, prenez, disons, une dette nationale absolument écrasante, rajoutez un stress hydrique qui paralyse des régions entières et des montagnes de déchets industriels hautement toxiques.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ah oui, un cocktail bien réjouissant.</p>
+<p class="n-tr-a"><strong>A —</strong>  N&#x27;est-ce pas ? Et à la place de l&#x27;or, imaginez qu&#x27;on transforme toutes ces vulnérabilités en un véritable empire souverain d&#x27;intelligence artificielle, le tout euh en faisant pousser des truffes en plein milieu du désert.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est un paradoxe absolu.</p>
+<p class="n-tr-a"><strong>A —</strong>  Complètement. C&#x27;est la mission de notre exploration approfondie d&#x27;aujourd&#x27;hui. Comment une nation peut-elle prendre ses pires faiblesses structurelles et s&#x27;en servir comme carburant pour son moteur de puissance ultime ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Bah, c&#x27;est une excellente métaphore pour ouvrir cette plongée. Et ce qui est captivant, c&#x27;est qu&#x27;on n&#x27;est pas du tout en train de discuter d&#x27;un roman de science-fiction, là.</p>
+<p class="n-tr-a"><strong>A —</strong>  Non, c&#x27;est très réel.</p>
+<p class="n-tr-b"><strong>B —</strong>  Exactement. On va décortiquer un document très sérieux. C&#x27;est le fameux euh rapport stratégique : « Ingénierie macroéconomique, technologique et écologique pour la souveraineté de la Tunisie », qui date de 2026.</p>
+<p class="n-tr-a"><strong>A —</strong>  Un titre un peu à rallonge, on ne va pas se mentir.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est vrai, mais ce que ce rapport propose, c&#x27;est une ingénierie intégrée à une échelle qui donne presque le vertige. D&#x27;habitude, l&#x27;approche classique des gouvernements, c&#x27;est d&#x27;isoler un problème pour le résoudre.</p>
+<p class="n-tr-a"><strong>A —</strong>  Genre, on a un problème d&#x27;eau, on fait un ministère de l&#x27;eau.</p>
+<p class="n-tr-b"><strong>B —</strong>  Voilà, c&#x27;est ça. Mais ici, le paradigme est totalement inversé. Il s&#x27;agit d&#x27;utiliser chaque problème monumental pour financer, alimenter et résoudre le problème suivant.</p>
+<p class="n-tr-a"><strong>A —</strong>  Dans une boucle parfaitement fermée.</p>
+<p class="n-tr-b"><strong>B —</strong>  Exactement.</p>
+<p class="n-tr-a"><strong>A —</strong>  Bon, décortiquons tout ça. Pour bien saisir l&#x27;ampleur de cette boucle, il faut d&#x27;abord regarder le tableau de bord économique initial du pays.</p>
+<p class="n-tr-b"><strong>B —</strong>  Le point de départ, quoi.</p>
+<p class="n-tr-a"><strong>A —</strong>  Ouais, parce que quand on lit les données de ce rapport, les chiffres semblent, à première vue en tout cas, complètement contre-intuitifs. Je m&#x27;explique : on est en 2026, l&#x27;économie mondiale est secouée par des turbulences majeures, l&#x27;inflation fait des ravages un peu partout...</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est une période très compliquée au niveau mondial, oui.</p>
+<p class="n-tr-a"><strong>A —</strong>  Et pourtant, on observe que le dinar tunisien fait preuve d&#x27;une résilience qui défie complètement la logique. Le rapport indique qu&#x27;à la fin de l&#x27;année 2025, le dinar s&#x27;est même apprécié de 9,8 % face au dollar américain.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ce qui est énorme dans ce contexte.</p>
+<p class="n-tr-a"><strong>A —</strong>  Bah oui ! Et au premier semestre 2026, il reste ancré dans une stabilité remarquable. Il navigue très calmement entre 2,93 et 2,97 dinars pour 1 dollar.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est presque plat.</p>
+<p class="n-tr-a"><strong>A —</strong>  En parallèle, la Banque centrale de Tunisie maintient ses réserves de change à environ 8 milliards de dollars. Ça couvre à peu près 92 jours d&#x27;importations. On sait que c&#x27;est soutenu par le tourisme et la diaspora, mais...</p>
+<p class="n-tr-b"><strong>B —</strong>  Mathématiquement, ça coince.</p>
+<p class="n-tr-a"><strong>A —</strong>  Voilà. Mathématiquement parlant, comment une monnaie peut-elle rester aussi solide quand le pays porte une dette aussi lourde ? C&#x27;est quoi le mécanisme caché derrière ça ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Si on relie ça à la situation globale, il faut regarder sous le capot de la banque centrale, la BCT.</p>
+<p class="n-tr-a"><strong>A —</strong>  D&#x27;accord, on ouvre le capot.</p>
+<p class="n-tr-b"><strong>B —</strong>  Face à cette stabilité atypique, il y avait une rumeur persistante. Certains prétendaient que la Tunisie avait secrètement adopté un régime de « currency board ».</p>
+<p class="n-tr-a"><strong>A —</strong>  Une caisse d&#x27;émission stricte.</p>
+<p class="n-tr-b"><strong>B —</strong>  Exactement. Un système mécanique où chaque dinar en circulation serait adossé directement à un dollar en réserve. Mais le rapport est catégorique, c&#x27;est faux.</p>
+<p class="n-tr-a"><strong>A —</strong>  Ah ! Donc ils ont gardé la main sur leur monnaie ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Totalement. La BCT conserve son autonomie et son monopole d&#x27;émission. Ce qu&#x27;elle fait en réalité, c&#x27;est utiliser la devise hégémonique mondiale, le dollar, à son propre avantage défensif.</p>
+<p class="n-tr-a"><strong>A —</strong>  Comment ça ? Ils jouent en bourse avec l&#x27;argent de l&#x27;État ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Non, justement. L&#x27;objectif n&#x27;est pas de faire de la spéculation. Une grande partie de ces 8 milliards de dollars n&#x27;est pas dormante dans un coffre. Elle est stratégiquement investie dans des actifs ultra-sécurisés et très liquides.</p>
+<p class="n-tr-a"><strong>A —</strong>  Comme les bons du Trésor américain, j&#x27;imagine ?</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est ça. Le but, c&#x27;est de forger un bouclier financier massif. Ce bouclier permet à la banque d&#x27;intervenir sur le marché interbancaire local et de garantir le service de la dette extérieure.</p>
+<p class="n-tr-a"><strong>A —</strong>  D&#x27;accord. Je veux être sûre de bien visualiser l&#x27;image globale parce que c&#x27;est complexe. J&#x27;aime bien voir cette situation macroéconomique comme un navire en pleine tempête.</p>
+<p class="n-tr-b"><strong>B —</strong>  Une bonne image.</p>
+<p class="n-tr-a"><strong>A —</strong>  L&#x27;équipage, donc la banque centrale, écope l&#x27;eau avec une efficacité redoutable. Ils utilisent ce bouclier financier pour maintenir le bateau à flot et la monnaie stable.</p>
+<p class="n-tr-b"><strong>B —</strong>  Jusque-là, tout va bien.</p>
+<p class="n-tr-a"><strong>A —</strong>  Sauf qu&#x27;au même moment, à des milliers de kilomètres de là, la Réserve fédérale américaine, la fameuse Fed, crée un véritable tsunami. Pour combattre sa propre inflation aux États-Unis, la Fed augmente massivement ses taux d&#x27;intérêt.</p>
+<p class="n-tr-b"><strong>B —</strong>  Et là, l&#x27;eau monte très très vite.</p>
+<p class="n-tr-a"><strong>A —</strong>  Mais oui ! Du coup, je me demande, est-ce que cette politique de taux élevés que la Tunisie doit suivre d&#x27;une certaine manière pour protéger son dinar, c&#x27;est pas tout simplement en train d&#x27;asphyxier l&#x27;économie réelle à l&#x27;intérieur du pays, hein ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Ah, c&#x27;est la grande question.</p>
+<p class="n-tr-a"><strong>A —</strong>  Parce que si le crédit devient hors de prix, l&#x27;investissement privé gèle et on se retrouve avec cette croissance locale anémique bloquée sous les 1,5 % dont parle le rapport.</p>
+<p class="n-tr-b"><strong>B —</strong>  Votre analyse touche exactement au cœur du problème. C&#x27;est ce que les économistes du développement appellent le péché originel.</p>
+<p class="n-tr-a"><strong>A —</strong>  Le péché originel. Carrément.</p>
+<p class="n-tr-b"><strong>B —</strong>  Oui, le terme est fort. Ça désigne l&#x27;incapacité structurelle d&#x27;un pays émergent à s&#x27;endetter sur les marchés internationaux dans sa propre monnaie.</p>
+<p class="n-tr-a"><strong>A —</strong>  Ah, donc ils sont obligés d&#x27;emprunter en dollars ou en euros.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est ça. Et en 2026, la dette extérieure tunisienne a atteint près de 42,9 milliards de dollars.</p>
+<p class="n-tr-a"><strong>A —</strong>  Attendez, 42,9 milliards, ça représente quoi par rapport à leur richesse ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Environ 80 % de leur PIB. Et la quasi-totalité de cette dette est libellée en devises étrangères. Donc la mécanique est impitoyable, en fait.</p>
+<p class="n-tr-a"><strong>A —</strong>  Ouais. Quand la Fed américaine tousse et monte ses taux, la Tunisie s&#x27;enrhume gravement.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est pire qu&#x27;un rhume. Le coût de refinancement de cette dette explose automatiquement, sans même que le pays n&#x27;ait commis la moindre erreur de gestion en interne.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est un piège parfait.</p>
+<p class="n-tr-b"><strong>B —</strong>  Totalement. Plus de 20 % des revenus générés par les exportations du pays sont immédiatement vampirisés rien que par le service de cette dette, c&#x27;est-à-dire juste pour payer les intérêts et les échéances.</p>
+<p class="n-tr-a"><strong>A —</strong>  Mais du coup, s&#x27;ils laissent leur monnaie se déprécier, ça n&#x27;aide pas ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Surtout pas ! S&#x27;ils font ça, le coût de l&#x27;énergie et du blé qu&#x27;ils importent s&#x27;envole. Ça créerait une inflation locale dévastatrice. C&#x27;est vraiment une impasse.</p>
+<p class="n-tr-a"><strong>A —</strong>  On est coincé de partout, quoi.</p>
+<p class="n-tr-b"><strong>B —</strong>  Voilà. Le rapport conclut donc qu&#x27;on ne peut pas résoudre un problème financier par des outils purement financiers. Le terrain de jeu est truqué.</p>
+<p class="n-tr-a"><strong>A —</strong>  Et il faut changer le terrain de jeu.</p>
+<p class="n-tr-b"><strong>B —</strong>  Exactement. La souveraineté ne viendra pas des banques, elle viendra d&#x27;un saut technologique radical.</p>
+<p class="n-tr-a"><strong>A —</strong>  Et c&#x27;est là que ça devient vraiment intéressant. Donc, on est pris au piège de cette dette en dollars, on ne peut pas simplement s&#x27;acheter une porte de sortie, il faut carrément l&#x27;inventer.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est là qu&#x27;on bascule vers la géopolitique de demain.</p>
+<p class="n-tr-a"><strong>A —</strong>  Oui. Le rapport souligne un changement d&#x27;époque énorme. L&#x27;économie mondiale est en train de se sevrer du baril de pétrole. La nouvelle unité de pouvoir, le nouvel or noir, c&#x27;est le compute.</p>
+<p class="n-tr-b"><strong>B —</strong>  La puissance de calcul informatique brute.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est ça. La capacité à faire tourner des modèles d&#x27;intelligence artificielle gigantesques. Et sur ce terrain, la Tunisie possède un atout qui ne s&#x27;imprime pas dans une banque centrale : c&#x27;est son capital intellectuel.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ils ont des ingénieurs brillants, oui.</p>
+<p class="n-tr-a"><strong>A —</strong>  Le rapport rappelle d&#x27;ailleurs le rachat d&#x27;InstaDeep, une pépite tunisienne de l&#x27;IA. Elle a été rachetée par le géant allemand BioNTech pour 680 millions de dollars.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est un signal fort pour le marché mondial. Ça prouve que le talent brut est sur place.</p>
+<p class="n-tr-a"><strong>A —</strong>  Sauf que le plan de 2026 ne s&#x27;arrête pas à créer deux ou trois incubateurs de start-up. Il annonce la construction de trois mégacentres de données d&#x27;intelligence artificielle.</p>
+<p class="n-tr-b"><strong>B —</strong>  Et pas des petits. On parle de 100 mégawatts chacun.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est colossal ! Mais le détail qui m&#x27;a vraiment scotchée, c&#x27;est l&#x27;emplacement. Ils prévoient de les construire sous terre, dans les anciennes mines désaffectées du bassin de Gafsa.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ah ça, le choix de l&#x27;enfouissement minier, c&#x27;est d&#x27;une rationalité implacable.</p>
+<p class="n-tr-a"><strong>A —</strong>  Expliquez-nous, parce qu&#x27;au début on se dit : « Pourquoi aller s&#x27;enterrer au fond d&#x27;une mine ? »</p>
+<p class="n-tr-b"><strong>B —</strong>  Il faut comprendre les enjeux de la souveraineté numérique. Aujourd&#x27;hui, si vous dépendez du cloud étranger hébergé sur des serveurs en Amérique du Nord ou ailleurs, vous acceptez une vulnérabilité stratégique majeure.</p>
+<p class="n-tr-a"><strong>A —</strong>  Oui, on n&#x27;est plus maître de ses propres données.</p>
+<p class="n-tr-b"><strong>B —</strong>  Exactement. Vos données gouvernementales, médicales, industrielles, elles sont soumises à des lois extraterritoriales, comme le CLOUD Act américain qui permet carrément à d&#x27;autres États d&#x27;y accéder.</p>
+<p class="n-tr-a"><strong>A —</strong>  Donc, pour avoir une IA souveraine, il faut garder les serveurs à la maison.</p>
+<p class="n-tr-b"><strong>B —</strong>  Posséder les algorithmes ne suffit pas. Il faut posséder l&#x27;infrastructure physique sur son propre sol.</p>
+<p class="n-tr-a"><strong>A —</strong>  Sauf que, et c&#x27;est là le hic, ces supercalculateurs génèrent une chaleur infer...</p>
+<p class="n-tr-a"><strong>A —</strong>  que ces supercalculateurs génèrent une chaleur infernale. Et on est en Tunisie, il fait chaud !</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est le problème de la thermodynamique. Refroidir ces monstres en surface, sous le climat aride tunisien, ce serait un vrai suicide économique. D&#x27;ordinaire, le refroidissement engloutit jusqu&#x27;à 40 % des coûts d&#x27;exploitation d&#x27;un data center.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est presque la moitié de la facture électrique, c&#x27;est fou !</p>
+<p class="n-tr-b"><strong>B —</strong>  Mais en réhabilitant ces mines souterraines à Gafsa, on place les serveurs dans un environnement géothermique naturel. La température y est constante, entre 15 et 20 °C toute l&#x27;année.</p>
+<p class="n-tr-a"><strong>A —</strong>  Ah ! La clim gratuite, en gros.</p>
+<p class="n-tr-b"><strong>B —</strong>  On sabre les coûts de climatisation, oui, tout en offrant à ces infrastructures critiques une protection physique quasi militaire.</p>
+<p class="n-tr-a"><strong>A —</strong>  Et c&#x27;est avec cette puissance de calcul cachée sous terre que le rapport aborde un truc... Franchement, l&#x27;expression m&#x27;a fait bondir de ma chaise, il parle de « voyage spatio-temporel ».</p>
+<p class="n-tr-b"><strong>B —</strong>  Je vois exactement de quel passage vous parlez.</p>
+<p class="n-tr-a"><strong>A —</strong>  Quand j&#x27;ai lu ça, je me suis dit : « OK, on part dans la physique théorique obscure », mais l&#x27;explication est fascinante.</p>
+<p class="n-tr-b"><strong>B —</strong>  Elle est très pragmatique, en fait.</p>
+<p class="n-tr-a"><strong>A —</strong>  Oui !</p>
+<p class="n-tr-b"><strong>B —</strong>  Le rapport dit qu&#x27;un État émergent ne peut pas se permettre de brûler des centaines de milliards de dollars dans une course spatiale physique pour construire des fusées en métal...</p>
+<p class="n-tr-a"><strong>A —</strong>  ...avec une précision qui descend jusqu&#x27;à l&#x27;échelle moléculaire.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ce qu&#x27;on appelle des jumeaux numériques, mais à l&#x27;échelle cosmique.</p>
+<p class="n-tr-a"><strong>A —</strong>  Et en couplant ces simulations à des interfaces cerveau-machine pour les chercheurs, on remplace l&#x27;exploration physique ruineuse de l&#x27;espace par une exploration neuronale ultra-efficace.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est vertigineux de repenser l&#x27;exp... l&#x27;expansion humaine de cette manière, hein.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est un changement de paradigme complet.</p>
+<p class="n-tr-b"><strong>B —</strong>  Mais bon, redescendons sur Terre un instant. Parce que pour fabriquer les composants de ces supercalculateurs, il faut des minéraux très spécifiques. Il faut des terres rares.</p>
+<p class="n-tr-a"><strong>A —</strong>  Exactement. Et c&#x27;est là que l&#x27;ingénierie écologique entre en scène de manière assez spectaculaire. Parce que la Tunisie ne possède pas de mines de terres rares traditionnelles, si je ne me trompe pas.</p>
+<p class="n-tr-b"><strong>B —</strong>  Pas au sens strict du terme, non. Par contre, elle abrite un passif environnemental d&#x27;une ampleur monumentale.</p>
+<p class="n-tr-a"><strong>A —</strong>  Le fameux phosphogypse ?</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est ça. C&#x27;est un déchet industriel hautement toxique, un sous-produit de l&#x27;industrie des phosphates. Ça s&#x27;est accumulé depuis des décennies, surtout dans la région côtière de Gabès.</p>
+<p class="n-tr-a"><strong>A —</strong>  Oui, ils ont des véritables montagnes de pollution à ciel ouvert là-bas. Le rapport chiffre d&#x27;ailleurs les dégâts sur l&#x27;écosystème marin local à environ 58 millions de dollars de pertes chaque année. C&#x27;est une catastrophe écologique.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ce qui est fascinant ici, c&#x27;est le coup de génie minéralogique de ce plan. Ils ont analysé la composition de ces déchets toxiques.</p>
+<p class="n-tr-a"><strong>A —</strong>  Ils ont trouvé quoi ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Lors de la transformation des phosphates de Gafsa en acide phosphorique, environ 70 % des terres rares présentes naturellement dans la roche se retrouvent piégées dans ce déchet toxique.</p>
+<p class="n-tr-a"><strong>A —</strong>  Des éléments comme l&#x27;yttrium, le lanthane...</p>
+<p class="n-tr-b"><strong>B —</strong>  Le néodyme, oui. Les analyses montrent des concentrations atteignant jusqu&#x27;à 1 700 mg par kilo dans certaines strates du phosphogypse.</p>
+<p class="n-tr-a"><strong>A —</strong>  Attendez, je veux être sûre de bien réaliser ce que ça implique. On est littéralement en train de regarder la pire décharge toxique du pays et de dire : « Hé, regardez, c&#x27;est notre future mine d&#x27;or pour fabriquer des ordinateurs quantiques ! »</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est tout à fait ça. Le projet prévoit de traiter 2 millions de tonnes de ce phosphogypse chaque année.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est énorme !</p>
+<p class="n-tr-b"><strong>B —</strong>  Et le procédé d&#x27;extraction décrit dans le rapport, l&#x27;hydrométallurgie, est particulièrement ingénieux. L&#x27;industrie utilise souvent de l&#x27;acide sulfurique pour ça, mais ça marche pas très bien.</p>
+<p class="n-tr-a"><strong>A —</strong>  Les rendements sont mauvais.</p>
+<p class="n-tr-b"><strong>B —</strong>  Médiocres, oui. Ici, les ingénieurs proposent d&#x27;utiliser de l&#x27;acide chlorhydrique. Pour comprendre, visualisez le modèle du « noyau rétrécissant » mentionné dans le document.</p>
+<p class="n-tr-a"><strong>A —</strong>  Le « noyau rétrécissant » ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Imaginez un bonbon dur avec un cœur coulant.</p>
+<p class="n-tr-a"><strong>A —</strong>  OK, j&#x27;ai l&#x27;image.</p>
+<p class="n-tr-b"><strong>B —</strong>  Vous le laissez fondre dans votre bouche. La salive attaque la couche externe progressivement jusqu&#x27;à libérer le centre. Bah, c&#x27;est le même principe chimique.</p>
+<p class="n-tr-a"><strong>A —</strong>  L&#x27;acide joue le rôle de la salive, en fait.</p>
+<p class="n-tr-b"><strong>B —</strong>  Voilà. L&#x27;acide chlorhydrique, maintenu à une température très précise de 60 °C, agit comme un solvant chirurgical. Il grignote la matrice toxique de l&#x27;extérieur vers l&#x27;intérieur.</p>
+<p class="n-tr-a"><strong>A —</strong>  Et ça libère les terres rares piégées au cœur.</p>
+<p class="n-tr-b"><strong>B —</strong>  Exactement. Ce procédé permet d&#x27;extraire jusqu&#x27;à 73,8 % de l&#x27;yttrium présent. On transforme un désastre écologique en un levier géopolitique majeur.</p>
+<p class="n-tr-a"><strong>A —</strong>  Bon, je vais me faire l&#x27;avocate du diable une seconde, parce que ça me paraît presque trop beau.</p>
+<p class="n-tr-b"><strong>B —</strong>  Allez, dites.</p>
+<p class="n-tr-a"><strong>A —</strong>  Vous venez de dire qu&#x27;on utilise de l&#x27;acide chauffé à 60° pour traiter 2 millions de tonnes de matière par an. Chauffer de tels volumes, ça demande une énergie colossale...</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est vrai.</p>
+<p class="n-tr-a"><strong>A —</strong>  ...et surtout, une fois que c&#x27;est fait, on se retrouve avec des millions de litres de rejets liquides industriels, chauds, pleins d&#x27;acide et de résidus. Est-ce qu&#x27;on n&#x27;est pas simplement en train de déplacer le cauchemar écologique ?</p>
+<p class="n-tr-b"><strong>B —</strong>  On dépollue d&#x27;un côté pour polluer de l&#x27;autre.</p>
+<p class="n-tr-a"><strong>A —</strong>  Bah oui ! On crée des rivières de fluides industriels brûlants !</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est une objection essentielle. Mais le rapport y répond par ce qu&#x27;on appelle la symbiose industrielle. L&#x27;idée de base, c&#x27;est qu&#x27;aucun sous-produit ne doit être considéré comme un déchet final.</p>
+<p class="n-tr-a"><strong>A —</strong>  D&#x27;accord. Comment ils gèrent ces liquides chauds, alors ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Souvenez-vous des data centers souterrains dont on a parlé.</p>
+<p class="n-tr-a"><strong>A —</strong>  Oui, à Gafsa.</p>
+<p class="n-tr-b"><strong>B —</strong>  L&#x27;environnement géothermique les refroidit, certes, mais ils génèrent quand même beaucoup de chaleur. Eh bien, ces immenses volumes de rejets liquides issus de l&#x27;extraction des terres rares vont circuler à travers un réseau d&#x27;échangeurs de chaleur.</p>
+<p class="n-tr-a"><strong>A —</strong>  Attendez, les déchets liquides de la mine vont refroidir les serveurs de l&#x27;IA ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Exactement ! Le vaste volume de ces fluides souterrains agit comme un puits thermique colossal. Ils absorbent l&#x27;excès de chaleur des serveurs avant d&#x27;être envoyés vers les stations de traitement.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est super malin !</p>
+<p class="n-tr-b"><strong>B —</strong>  Et la symbiose ne s&#x27;arrête pas là. Une fois que ce phosphogypse a été purgé de ses métaux lourds, de sa radioactivité, de ses terres rares, il reste quoi, physiquement ?</p>
+<p class="n-tr-a"><strong>A —</strong>  Je sais pas, une boue inerte ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Il reste un gypse ultra-purifié. Et ce résidu ultime devient une matière première de première qualité pour fabriquer des plaques de plâtre ignifugées, des matériaux de construction.</p>
+<p class="n-tr-a"><strong>A —</strong>  Laissez-moi deviner : ces matériaux, ils vont s&#x27;en servir pour aménager les mines ?</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est ça. Pour tapisser, isoler et aménager les galeries des mines qui abritent les serveurs. La boucle est d&#x27;une élégance absolue.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est le recyclage poussé à son paroxysme ! Les déchets d&#x27;aujourd&#x27;hui construisent littéralement les murs de l&#x27;intelligence artificielle de demain.</p>
+<p class="n-tr-b"><strong>B —</strong>  Tout est interconnecté.</p>
+<p class="n-tr-a"><strong>A —</strong>  Mais on doit parler de l&#x27;éléphant dans la pièce, là : l&#x27;énergie.</p>
+<p class="n-tr-b"><strong>B —</strong>  L&#x27;électricité, oui. C&#x27;est le nerf de la guerre.</p>
+<p class="n-tr-a"><strong>A —</strong>  Tout ce mégaprojet a un appétit vorace. Le rapport modélise une demande totale de 5,32 TWh par an.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est massif pour un pays de cette taille.</p>
+<p class="n-tr-a"><strong>A —</strong>  Et il ne faut pas oublier le contexte géographique : la Tunisie souffre d&#x27;un stress hydrique endémique, très sévère. Il y a de moins en moins d&#x27;eau.</p>
+<p class="n-tr-b"><strong>B —</strong>  Oui, les barrages sont souvent au plus bas.</p>
+<p class="n-tr-a"><strong>A —</strong>  Pour faire tourner ces industries, et juste pour fournir de l&#x27;eau potable à la population, le plan prévoit de dessaler 500 millions de mètres cubes d&#x27;eau de mer par an.</p>
+<p class="n-tr-b"><strong>B —</strong>  Le dessalement, ça consomme énormément d&#x27;énergie.</p>
+<p class="n-tr-a"><strong>A —</strong>  Voilà. Et pour y parvenir sans ruiner le pays en achetant du gaz naturel à l&#x27;étranger, le rapport déploie un parc solaire colossal de 3 GW.</p>
+<p class="n-tr-b"><strong>B —</strong>  On parle d&#x27;une surface de 45 à 60 km².</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est là que j&#x27;ai besoin de pousser un peu la réflexion : des panneaux solaires dans le désert, sur 60 km², c&#x27;est un cauchemar logistique absolu.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est pas simple, effectivement.</p>
+<p class="n-tr-a"><strong>A —</strong>  Bah, il y a la poussière, les tempêtes de sable qui rayent le verre, et la chaleur extrême qui fait chuter le rendement des panneaux. Sans parler des quantités d&#x27;eau astronomiques qu&#x27;il faudrait juste pour les nettoyer. Comment on évite le fiasco technique ?</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est là que l&#x27;intelligence artificielle souveraine justifie immédiatement son existence. L&#x27;IA va orchestrer ce que le rapport appelle « la révolution hydrique ».</p>
+<p class="n-tr-a"><strong>A —</strong>  L&#x27;IA va gérer l&#x27;eau ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Exactement. Déjà, transporter cette eau dessalée depuis les côtes, comme Gabès ou Sfax, vers les régions intérieures, arides, comme Gafsa, c&#x27;est un défi titanesque.</p>
+<p class="n-tr-a"><strong>A —</strong>  Oui, l&#x27;eau, ça pèse lourd.</p>
+<p class="n-tr-b"><strong>B —</strong>  On parle de pomper des millions de mètres cubes sur 300 km avec un dénivelé positif de 400 m. Mécaniquement, le pompage seul exige énormément d&#x27;énergie.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est comme pousser une rivière à contre-courant vers le haut d&#x27;une montagne.</p>
+<p class="n-tr-b"><strong>B —</strong>  Voilà. Du coup, le réseau de pipelines ne sera pas un simple tuyau passif. Ce sera un système nerveux tapissé de millions de capteurs. L&#x27;IA utilisera l&#x27;apprentissage par renforcement pour moduler la pression des pompes en temps réel.</p>
+<p class="n-tr-a"><strong>A —</strong>  Ah ! Donc elle gère les pompes intelligemment.</p>
+<p class="n-tr-b"><strong>B —</strong>  Elle analysera la météo à la milliseconde pour prédire la production solaire, et elle lissera les pics de consommation électrique pour optimiser chaque kilowatt-heure utilisé.</p>
+<p class="n-tr-a"><strong>A —</strong>  D&#x27;accord, l&#x27;IA gère l&#x27;énergie de manière chirurgicale. Mais pour mon inquiétude sur les panneaux solaires eux-mêmes, dans la chaleur du désert ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Le rapport apporte une solution très précise : l&#x27;agrivoltaïsme.</p>
+<p class="n-tr-a"><strong>A —</strong>  L&#x27;agrivoltaïsme ? C&#x27;est-à-dire qu&#x27;on cultive sous les panneaux ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Exactement.</p>
+<p class="n-tr-a"><strong>A —</strong>  Mais comment ça résout le problème du désert ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Le rapport insiste sur le fait qu&#x27;il est hors de question d&#x27;artificialiser 60 km² de sol fragile. On ne pose pas les panneaux au ras du sable brûlant, on les surélève.</p>
+<p class="n-tr-a"><strong>A —</strong>  D&#x27;accord, on fait comme un toit ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Voilà. Ce faisant, les panneaux créent une ombrière géante, un microclimat artificiel. Cette ombre protège les sols de l&#x27;évaporation causée par le soleil, réduisant la perte d&#x27;eau d&#x27;irrigation de 20 % à 40 %.</p>
+<p class="n-tr-a"><strong>A —</strong>  Donc l&#x27;eau qu&#x27;on...</p>
+<p class="n-tr-a"><strong>A —</strong>  ...irrigation de 20 % à 40 %.</p>
+<p class="n-tr-b"><strong>B —</strong>  Donc l&#x27;eau qu&#x27;on a dessalée à grands frais ne s&#x27;évapore pas instantanément ?</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est ça. Gérée au goutte-à-goutte par l&#x27;IA, l&#x27;eau est maximisée. Et en retour, c&#x27;est là que c&#x27;est brillant, la végétation qui pousse en dessous crée de l&#x27;évapotranspiration.</p>
+<p class="n-tr-b"><strong>B —</strong>  Une fraîcheur naturelle qui remonte.</p>
+<p class="n-tr-a"><strong>A —</strong>  Exactement. Cette fraîcheur remonte vers les panneaux, refroidit le silicium et augmente, paradoxalement, le rendement électrique des panneaux de quelques pourcents cruciaux.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est dingue. Une vraie symbiose technico-biologique. Le silicium protège la plante et la plante refroidit le silicium.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est le principe.</p>
+<p class="n-tr-b"><strong>B —</strong>  Et devinez ce que le rapport prévoit de faire pousser sous ces panneaux ? J&#x27;avoue que quand j&#x27;ai lu ça, j&#x27;ai cru à une erreur de frappe.</p>
+<p class="n-tr-a"><strong>A —</strong>  Ah oui, c&#x27;est pas du tout des tomates ou du blé.</p>
+<p class="n-tr-b"><strong>B —</strong>  Non, ils misent tout sur la trufficulture, spécifiquement la culture de la truffe du désert, la Terfezia.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est un choix très spécifique, oui.</p>
+<p class="n-tr-b"><strong>B —</strong>  Alors ma première réaction a été purement économique. Je me suis dit : d&#x27;accord, c&#x27;est super malin. La truffe du désert, ça se vend entre 20 et 60 € le kilo, parfois jusqu&#x27;à 220 € sur des marchés de niche à l&#x27;international.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est très cher en effet.</p>
+<p class="n-tr-b"><strong>B —</strong>  Avec des rendements de 400 kg par hectare, c&#x27;est une culture de rente parfaite. Un produit de luxe destiné à l&#x27;exportation pour faire rentrer des devises fortes et, bah, payer cette fameuse dette en dollars dont on parlait au tout début.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est drôle que vous disiez ça, parce que ce serait la conclusion logique classique d&#x27;un économiste du XXe siècle : exporter pour rembourser.</p>
+<p class="n-tr-b"><strong>B —</strong>  Bah oui, ça semblait logique.</p>
+<p class="n-tr-a"><strong>A —</strong>  Mais le rapport de 2026 va beaucoup plus loin. Il opère un virage conceptuel majeur. Avant de parler d&#x27;économie, parlons de biologie.</p>
+<p class="n-tr-b"><strong>B —</strong>  Je vous écoute.</p>
+<p class="n-tr-a"><strong>A —</strong>  La truffe du désert, ou Terfezia boudieri, pousse en symbiose naturelle avec de petits arbustes locaux comme l&#x27;Helianthemum.</p>
+<p class="n-tr-b"><strong>B —</strong>  Un partenariat entre une plante et un champignon ?</p>
+<p class="n-tr-a"><strong>A —</strong>  Voilà. Ce champignon crée un réseau mycorhizien souterrain, une sorte d&#x27;éponge fongique vivante qui s&#x27;enroule autour des racines de l&#x27;arbuste. Ce réseau capte la moindre goutte d&#x27;eau.</p>
+<p class="n-tr-b"><strong>B —</strong>  Et comme l&#x27;IA distille l&#x27;eau au compte-gouttes...</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est parfait, car cette culture ne requiert que 200 L d&#x27;eau par mètre carré par an. C&#x27;est une toute petite fraction de ce que demande l&#x27;agriculture conventionnelle.</p>
+<p class="n-tr-b"><strong>B —</strong>  D&#x27;accord, mais la finalité, si c&#x27;est pas l&#x27;exportation ?</p>
+<p class="n-tr-a"><strong>A —</strong>  Cela soulève une question importante. C&#x27;est ici qu&#x27;intervient le concept de productivité nutritionnelle de l&#x27;eau, le NWP, Nutritional Water Productivity.</p>
+<p class="n-tr-b"><strong>B —</strong>  Le NWP, c&#x27;est-à-dire qu&#x27;on arrête de compter le rendement agricole en tonnes de matière brute par litre d&#x27;eau, on commence à le mesurer en termes d&#x27;impact biochimique sur l&#x27;humain, c&#x27;est ça ?</p>
+<p class="n-tr-a"><strong>A —</strong>  Exactement. On compte en acides aminés par goutte d&#x27;eau.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ah ouais.</p>
+<p class="n-tr-a"><strong>A —</strong>  La truffe du désert, c&#x27;est une véritable bombe biochimique. Elle contient entre 20 % et 27 % de protéines de très haute qualité.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est énorme pour un végétal ! Enfin, un champignon.</p>
+<p class="n-tr-a"><strong>A —</strong>  Elle possède l&#x27;ensemble des acides aminés essentiels, du fer, des antioxydants. Pour obtenir un profil protéique équivalent avec de l&#x27;élevage bovin, il faudrait engloutir des milliers de litres d&#x27;eau.</p>
+<p class="n-tr-b"><strong>B —</strong>  Donc c&#x27;est une alternative hyper efficace à la viande au niveau de l&#x27;eau.</p>
+<p class="n-tr-a"><strong>A —</strong>  Oui, et le rapport souligne que ces truffes sont destinées en priorité au marché intérieur, aux populations des régions rurales et marginalisées.</p>
+<p class="n-tr-b"><strong>B —</strong>  Attendez, on ne les cultive pas du tout pour les exporter aux riches d&#x27;Europe ou d&#x27;ailleurs ?</p>
+<p class="n-tr-a"><strong>A —</strong>  Non, on les cultive pour les manger localement.</p>
+<p class="n-tr-b"><strong>B —</strong>  Mais on les mange pour quoi faire ?</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est de la biopolitique à l&#x27;état pur en fait.</p>
+<p class="n-tr-b"><strong>B —</strong>  Alors, qu&#x27;est-ce que tout ça signifie au fond ? Waouh ! C&#x27;est le déclic, là.</p>
+<p class="n-tr-a"><strong>A —</strong>  Vous l&#x27;avez.</p>
+<p class="n-tr-b"><strong>B —</strong>  Je viens de comprendre l&#x27;image globale du rapport. On ne parle plus du tout d&#x27;agriculture, en fait. On parle d&#x27;ingénierie neurologique ?</p>
+<p class="n-tr-a"><strong>A —</strong>  On en est plein dedans.</p>
+<p class="n-tr-b"><strong>B —</strong>  En gros, le document dit que si une nation veut devenir une véritable superpuissance de l&#x27;intelligence artificielle, elle peut pas se contenter d&#x27;acheter ou de construire des data centers. Elle doit d&#x27;abord construire le cerveau de ses propres citoyens.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est le capital humain.</p>
+<p class="n-tr-b"><strong>B —</strong>  Bah oui. La malnutrition latente, le manque de protéines complexes ou les carences en fer pendant la petite enfance, ça bride de manière irréversible le développement cognitif et neurologique.</p>
+<p class="n-tr-a"><strong>A —</strong>  Un enfant malnutri ne deviendra pas l&#x27;ingénieur de demain.</p>
+<p class="n-tr-b"><strong>B —</strong>  Donc en cultivant cette truffe hyperprotéinée avec un minimum d&#x27;eau sous des panneaux solaires et en la distribuant localement, l&#x27;État ne fait pas de la charité agricole, il est littéralement en train de modifier la donne nutritionnelle pour élever le potentiel intellectuel de la prochaine génération.</p>
+<p class="n-tr-a"><strong>A —</strong>  Absolument.</p>
+<p class="n-tr-b"><strong>B —</strong>  On nourrit physiquement les cerveaux des futurs ingénieurs qui coderont les algorithmes souverains de demain. C&#x27;est fou !</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est exactement la conclusion du rapport. Le macroéconomique rencontre le neurologique. C&#x27;est vraiment la boucle finale du projet. Tout se rejoint. En impliquant les populations rurales dans la culture de cette truffe, on génère aussi des revenus exceptionnels pour eux. Ça permet de les bancariser, de les intégrer à l&#x27;économie numérique...</p>
+<p class="n-tr-b"><strong>B —</strong>  Et hop, l&#x27;État éradique la pauvreté structurelle au passage.</p>
+<p class="n-tr-a"><strong>A —</strong>  Voilà. On insère les agriculteurs à la base de la chaîne de valeur technologique la plus avancée du pays. La résilience de la nation ne dépend plus des fluctuations des taux d&#x27;intérêt de la Fed à Washington.</p>
+<p class="n-tr-b"><strong>B —</strong>  Fini le péché originel.</p>
+<p class="n-tr-a"><strong>A —</strong>  Elle ne dépend plus des caprices des marchés obligataires non plus. Elle repose sur la symbiose parfaite, locale et maîtrisée entre le soleil, la terre, l&#x27;eau, le code informatique et la biologie humaine.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est une chorégraphie systémique d&#x27;une complexité étourdissante, franchement.</p>
+<p class="n-tr-a"><strong>A —</strong>  Le terme est bien choisi.</p>
+<p class="n-tr-b"><strong>B —</strong>  Je propose de récapituler un instant la trajectoire de ce plan, parce que l&#x27;architecture du concept mérite qu&#x27;on s&#x27;y arrête une seconde pour bien la digérer.</p>
+<p class="n-tr-a"><strong>A —</strong>  Allez-y, refaisons le chemin.</p>
+<p class="n-tr-b"><strong>B —</strong>  On part d&#x27;un pays coincé par le péché originel d&#x27;une dette en dollars. Pour échapper à cette fatalité financière, le pays bascule vers l&#x27;économie de la puissance de calcul, le compute.</p>
+<p class="n-tr-a"><strong>A —</strong>  Première étape.</p>
+<p class="n-tr-b"><strong>B —</strong>  Mais pour fabriquer cette IA physiquement souveraine, il extrait ses propres terres rares en utilisant de l&#x27;acide chlorhydrique pour dissoudre intelligemment la pollution toxique d&#x27;un vieux passif industriel.</p>
+<p class="n-tr-a"><strong>A —</strong>  Le phosphogypse.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ensuite, les fluides chauds issus de ce nettoyage vont refroidir les serveurs informatiques géants qui sont cachés sous terre dans d&#x27;anciennes mines de phosphate.</p>
+<p class="n-tr-a"><strong>A —</strong>  Et on recycle le résidu ?</p>
+<p class="n-tr-b"><strong>B —</strong>  Oui, le résidu final purifié est transformé en plaques de plâtre pour consolider ces mêmes mines. Pour alimenter ce monstre en électricité et combattre la soif du pays, un parc solaire de 3 GW dessale la mer.</p>
+<p class="n-tr-a"><strong>A —</strong>  L&#x27;eau devient disponible ?</p>
+<p class="n-tr-b"><strong>B —</strong>  L&#x27;intelligence artificielle gère la pression de cette eau à travers le désert. Cette eau coule sous l&#x27;ombre des panneaux solaires pour faire pousser des truffes hyperprotéinées...</p>
+<p class="n-tr-a"><strong>A —</strong>  Grâce à l&#x27;agrivoltaïsme.</p>
+<p class="n-tr-b"><strong>B —</strong>  ...et ces truffes nourrissent le développement neurologique des enfants qui, plus tard, grandiront pour coder la prochaine génération d&#x27;IA. Chaque passif devient un actif, chaque déchet est le point de départ d&#x27;une nouvelle richesse.</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est la redéfinition même de ce que devrait être l&#x27;ingénierie d&#x27;État au XXIe siècle. Ce n&#x27;est plus du tout de la simple gestion de crise au coup par coup.</p>
+<p class="n-tr-b"><strong>B —</strong>  C&#x27;est du design systémique total.</p>
+<p class="n-tr-a"><strong>A —</strong>  Voilà.</p>
+<p class="n-tr-b"><strong>B —</strong>  En parvenant à maîtriser et à synchroniser simultanément les cycles de l&#x27;eau, du silicium, du carbone, des minéraux et du capital intellectuel...</p>
+<p class="n-tr-a"><strong>A —</strong>  ...la souveraineté cesse d&#x27;être un vague concept juridique qu&#x27;on agite lors des discours politiques...</p>
+<p class="n-tr-b"><strong>B —</strong>  Ça devient quelque chose de tangible.</p>
+<p class="n-tr-a"><strong>A —</strong>  Elle devient une réalité thermodynamique, biologique et mathématique concrète et mesurable.</p>
+<p class="n-tr-b"><strong>B —</strong>  Ce qui m&#x27;amène à une dernière réflexion, peut-être la plus provocatrice de toute cette exploration, et c&#x27;est vraiment une idée que je veux laisser à ceux qui nous écoutent aujourd&#x27;hui.</p>
+<p class="n-tr-a"><strong>A —</strong>  Je vous en prie.</p>
+<p class="n-tr-b"><strong>B —</strong>  Si un pays historiquement étiqueté comme émergent, acculé par les règles super rigides de la géopolitique financière traditionnelle, parvient à conceptualiser l&#x27;intégralité de son territoire comme un système d&#x27;exploitation unique, fusionnant sans couture le biologique, le numérique et le minéral, est-ce que cela ne rend pas totalement obsolète notre vieille grille de lecture qui sépare les pays développés des pays en voie de développement ?</p>
+<p class="n-tr-a"><strong>A —</strong>  C&#x27;est une excellente question à se poser.</p>
+<p class="n-tr-b"><strong>B —</strong>  Si l&#x27;avenir de la puissance mondiale appartient à ceux qui maîtrisent l&#x27;art de la symbiose écologique et technologique, plutôt qu&#x27;à ceux qui accumulent simplement des milliards sur des comptes en banque, alors les cartes de l&#x27;influence mondiale pourraient être redistribuées de manière fulgurante.</p>
+<p class="n-tr-a"><strong>A —</strong>  Les critères de la richesse changent.</p>
+<p class="n-tr-b"><strong>B —</strong>  Et tout cela en transformant les scories toxiques du passé en l&#x27;or cognitif de demain. C&#x27;est l&#x27;alchimie systémique poussée à la perfection. Gardez bien cette idée en tête pour repenser les limites et les potentiels cachés de vos propres environnements locaux. Merci de nous avoir accompagnés dans cette plongée vertigineuse. À la prochaine !</p></div>
+    </details>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap" style="max-width:76ch">
+    
+<h2 id="rapport">Le rapport complet (français)</h2>
+<p class="n-note">Rapport stratégique : <em>Ingénierie macroéconomique, technologique et écologique pour la souveraineté de la Tunisie</em> (2026). Reproduit intégralement ; téléchargement du document original en bas de page.</p>
+
+<h3>1. Dynamique macroéconomique : résilience du dinar, réserves de change et hégémonie du dollar</h3>
+<h4>1.1. Anatomie de la stabilisation du dinar tunisien</h4>
+<p>La trajectoire du dinar tunisien (TND) face aux devises de référence présente une dynamique d'apparence contre-intuitive au regard des pressions macroéconomiques mondiales. À la fin de l'année 2025, le dinar s'était apprécié de <strong>9,8 %</strong> face au dollar américain par rapport à son niveau de fin 2024. Au premier semestre 2026, les taux sont demeurés remarquablement stables : environ <strong>2,93 à 2,97 TND pour 1 USD</strong>, et <strong>3,37 à 3,38 TND pour 1 EUR</strong>.</p>
+<p>Cette résistance s'explique par des facteurs endogènes et des politiques monétaires restrictives menées par la Banque Centrale de Tunisie (BCT). Le volume des transactions sur le marché des changes a progressé de <strong>23,7 %</strong> en glissement annuel, porté par le marché interbancaire dont le volume a franchi <strong>9 milliards de dinars</strong> au premier semestre 2026. La politique de taux directeurs élevés soutient mécaniquement la valeur externe de la monnaie. La reprise touristique (plus d'<strong>1 milliard d'euros</strong> de recettes au S1 2026) et les remises de la diaspora renflouent continuellement les réserves, assurant environ <strong>92 jours d'importations</strong> de couverture.</p>
+<table>
+<caption>Indicateurs macroéconomiques (2025–2026)</caption>
+<thead><tr><th>Indicateur</th><th>Valeur</th><th>Tendance et impact structurel</th></tr></thead>
+<tbody>
+<tr><td>USD/TND (juin 2026)</td><td>2,93 – 2,97</td><td>Stabilisation / légère appréciation amortissant l'inflation importée</td></tr>
+<tr><td>EUR/TND (juin 2026)</td><td>3,37 – 3,38</td><td>Stabilité relative favorisant la compétitivité des exportations vers l'UE</td></tr>
+<tr><td>Réserves de change (brut)</td><td>~8 Mds USD</td><td>Fluctuations régulées garantissant ≈ 92 jours d'importations</td></tr>
+<tr><td>Dette extérieure (mars 2026)</td><td>42,9 Mds USD</td><td>Hausse structurelle absorbant une large part des liquidités en devises</td></tr>
+</tbody>
+</table>
+
+<h4>1.2. Le sous-jacent monétaire : bons du Trésor américains et gestion des réserves</h4>
+<p>Le rapport réfute la théorie selon laquelle la BCT achèterait massivement des bons du Trésor américain comme sous-jacent exclusif à la création monétaire : la Tunisie n'opère pas sous un régime de caisse d'émission (currency board). Conformément à la loi organique n° 2016-35, la BCT dispose du monopole de l'émission fiduciaire et mène une politique monétaire souveraine et autonome. Les réserves (23,15 à 25,65 milliards de dinars, soit ≈ 7,9 à 8 milliards de dollars à la mi-2026) sont constituées d'un panier diversifié : devises, or monétaire, droits de tirage spéciaux et actifs internationaux de haute qualité. Les détentions de bons du Trésor américain constituent le bouclier de solvabilité internationale, pas un mécanisme de « production » de dinars.</p>
+
+<h4>1.3. L'impact de la Réserve fédérale et le piège de la dette</h4>
+<p>Le resserrement monétaire américain engendre des ondes de choc asymétriques sur les économies émergentes, via deux canaux. <strong>Premier canal</strong> : l'alourdissement mécanique du service de la dette. La dette extérieure a atteint <strong>42,9 milliards de dollars</strong> en mars 2026, soit environ <strong>80 % du PIB</strong>, une part substantielle étant libellée en dollars. Le « péché originel » (Original Sin) — l'incapacité d'un pays émergent à s'endetter à long terme dans sa propre monnaie — expose dramatiquement la Tunisie au risque de change. Quand la Fed monte ses taux, le coût de refinancement grimpe en tandem ; le service de la dette absorbe alors plus de <strong>20 % des revenus d'exportation</strong> et puise dans les réserves.</p>
+<p><strong>Second canal</strong> : l'importation de l'inflation combinée à l'étranglement de la croissance. Le différentiel de taux encourage la fuite des capitaux, exerçant une pression à la dépréciation du dinar — ce qui exacerberait l'inflation importée (hydrocarbures, céréales, matières premières facturées en dollars). En réponse, la BCT maintient des taux élevés : le crédit renchérit, l'investissement privé gèle, et la croissance reste sous la barre de <strong>1,5 %</strong> à moyen terme. Face à cette impasse, des solutions disruptives s'imposent pour restaurer la souveraineté économique.</p>
+
+<h3>2. Le calcul informatique (« compute ») comme nouvel actif stratégique et l'IA souveraine</h3>
+<h4>2.1. Le changement de paradigme : l'unité de calcul remplaçant le pétrole</h4>
+<p>L'économie mondiale bascule d'un modèle thermo-industriel vers une économie de l'intelligence cognitive, où la puissance de calcul (clusters de GPU/TPU) constitue le nouvel actif géostratégique primaire. La richesse d'une nation ne se mesure plus seulement en barils, mais en capacité à générer et traiter des « tokens ». L'IA devient une infrastructure critique de souveraineté nationale, au même titre que l'énergie ou la défense.</p>
+<p>Le potentiel tunisien a été spectaculairement validé par l'acquisition d'<strong>InstaDeep</strong>, entreprise d'IA fondée en Tunisie, par BioNTech pour <strong>680 millions de dollars</strong>. Le capital intellectuel et l'ingénierie algorithmique tunisienne sont de classe mondiale — mais la dépendance aux infrastructures de calcul étrangères limite la création de valeur locale et expose les données nationales à des juridictions extraterritoriales.</p>
+<table>
+<caption>Composantes stratégiques de l'IA</caption>
+<thead><tr><th>Composante</th><th>Dépendance actuelle (cloud étranger)</th><th>Modèle d'IA souveraine tunisienne</th></tr></thead>
+<tbody>
+<tr><td>Données</td><td>Lois extraterritoriales (ex. Cloud Act)</td><td>Hébergement local, confidentialité absolue</td></tr>
+<tr><td>Algorithmes</td><td>Boîtes noires, biais culturels importés</td><td>Modèles ouverts ou propriétaires, alignement culturel</td></tr>
+<tr><td>Infrastructure</td><td>CAPEX externalisé, OPEX en dollars</td><td>Propriété de l'État / consortiums locaux, OPEX en dinars</td></tr>
+<tr><td>Sécurité nationale</td><td>Vulnérabilité aux embargos technologiques</td><td>Autonomie stratégique et résilience cybernétique</td></tr>
+</tbody>
+</table>
+
+<h4>2.2. Ingénierie quantique, simulation de la réalité et « voyage spatio-temporel »</h4>
+<p>La maîtrise de la puissance exascale permet de modéliser des interactions moléculaires et subatomiques avec une précision inégalée — précisément ce qu'InstaDeep exploite pour concevoir thérapies géniques et nouveaux matériaux. Le concept audacieux de « voyage mental et spatio-temporel » trouve ici une assise technologique : au lieu d'investir des centaines de milliards dans l'aérospatial lourd, la puissance de calcul génère des simulations physiques hyper-réalistes ; associées aux interfaces cerveau-machine, elles permettent d'explorer des espaces recréés numériquement de manière immersive. Cette substitution déplace l'empreinte financière et énergétique de la construction de fusées vers des centres de données locaux ultra-denses, le coût énergétique devenant le seul véritable goulot d'étranglement.</p>
+
+<h3>3. Centres de données souterrains, phosphogypse et ingénierie de la matière</h3>
+<h4>3.1. Réhabilitation des anciennes mines en datacenters</h4>
+<p>Le refroidissement peut représenter jusqu'à <strong>40 % des OPEX</strong> d'un centre de données conventionnel en surface. Face au climat aride tunisien, la solution thermodynamique optimale est la réhabilitation géotechnique des anciennes mines du bassin de Gafsa : les cavités souterraines offrent une température géothermique constante de <strong>15 à 20 °C</strong> toute l'année, abaissant drastiquement le PUE (réduction de la climatisation mécanique) et assurant une protection physique et militaire inégalée pour les infrastructures critiques.</p>
+
+<h4>3.2. Extraction des terres rares : l'alchimie du phosphogypse</h4>
+<p>Le phosphogypse (PG), sous-produit toxique de la fabrication d'acide phosphorique par le Groupe Chimique Tunisien, s'accumule depuis des décennies, notamment à Gabès, provoquant des désastres écologiques marins chiffrés à plus de <strong>58 millions de dollars de pertes annuelles</strong>. Or les phosphates du bassin de Gafsa sont exceptionnellement riches en terres rares : concentrations moyennes de <strong>322 mg/kg</strong>, certaines strates atteignant <strong>plus de 1 700 mg/kg</strong>. Lors du traitement à l'acide sulfurique (« voie humide »), plus de <strong>70 %</strong> de ces terres rares (yttrium, lanthane, cérium, néodyme) précipitent dans la matrice cristalline du phosphogypse.</p>
+<p>Les procédés hydrométallurgiques à l'acide chlorhydrique (HCl) ou nitrique (HNO₃) s'avèrent nettement plus performants que l'acide sulfurique. Des conditions de lixiviation à <strong>1,65 mol/L de HCl</strong>, rapport solide/liquide de <strong>1/10</strong> et <strong>60 °C</strong> atteignent <strong>65,6 %</strong> de récupération globale (ΣREE), culminant à <strong>73,8 % pour l'yttrium</strong>. La cinétique suit le modèle du noyau rétrécissant (Shrinking Core Model), avec une énergie d'activation apparente de <strong>20,65 kJ·mol⁻¹</strong>, confirmant la faisabilité industrielle à température modérée. L'irradiation micro-ondes et le broyage à haute énergie maximisent les rendements en limitant les réactifs.</p>
+<table>
+<caption>Agents de lixiviation du phosphogypse (synthèse de la littérature)</caption>
+<thead><tr><th>Agent</th><th>Concentration (mol/L)</th><th>Température (°C)</th><th>Efficacité ΣREE</th><th>Élément optimisé / taux max</th></tr></thead>
+<tbody>
+<tr><td>H₂SO₄</td><td>1,0 – 4,0</td><td>25 – 60</td><td>12 % – 40 %</td><td>Faible rentabilité globale</td></tr>
+<tr><td>HCl</td><td>1,5 – 1,65</td><td>60 – 80</td><td>50 % – 65,6 %</td><td>Yttrium (73,8 %)</td></tr>
+<tr><td>HNO₃</td><td>1,5 – 3,0</td><td>25 – 80</td><td>57 % – 83,4 %</td><td>Lanthane (73,4 %)</td></tr>
+</tbody>
+</table>
+
+<h4>3.3. Symbiose industrielle : refroidissement par les rejets et nouveaux matériaux</h4>
+<p>L'usine hydrométallurgique et les datacenters souterrains forment une boucle d'écologie industrielle : les lixiviats liquides, circulant dans des échangeurs de chaleur géants, agissent comme puits thermique massif absorbant la chaleur des serveurs avant retraitement. Une fois débarrassé de ses impuretés radioactives, métaux lourds et terres rares, le gypse résiduel ultra-purifié devient une matière première pour plaques de plâtre ignifugées, ciments spéciaux et isolants — directement réemployés pour aménager et isoler les galeries minières hébergeant les datacenters.</p>
+
+<h3>4. La révolution hydrique : dessalement intelligent, pipelines et agrivoltaïsme</h3>
+<h4>4.1. Le dessalement face au stress hydrique structurel</h4>
+<p>La Tunisie souffre d'un stress hydrique endémique qui menace sa sécurité alimentaire et son développement industriel. L'énergie théorique minimale pour vaincre la pression osmotique de l'eau de mer (≈ 27 atm) est de <strong>0,75 à 1 kWh/m³</strong> ; en exploitation réelle par osmose inverse, la consommation d'énergie spécifique se situe entre <strong>3 et 5,5 kWh/m³</strong>. Coupler les usines côtières à des sources renouvelables de très grande échelle est la seule méthode garantissant l'indépendance hydrique sans aggraver la facture énergétique.</p>
+
+<h4>4.2. Le maillage spatial : réseaux de pipelines gérés par IA</h4>
+<p>Le transport horizontal de l'eau sur 100 km consomme ≈ <strong>0,06 kWh/m³</strong> ; son élévation verticale ≈ <strong>0,05 kWh/100 m</strong>. La distribution doit être gérée par l'IA souveraine : des algorithmes d'apprentissage par renforcement, nourris par des millions de capteurs IoT, modulent la pression des pompes en temps réel selon la demande prédictive, les tarifs de l'électricité solaire, l'évaporation et la météo — prévenant les coups de bélier, détectant instantanément les fuites et lissant les pics de consommation.</p>
+
+<h4>4.3. Agrivoltaïsme : symbiose de l'ombre et de la lumière</h4>
+<p>Pour éviter l'artificialisation des sols, le parc solaire s'organise en systèmes agrivoltaïques : les cultures poussent directement sous les modules photovoltaïques surélevés. L'ombre partielle abaisse la température des feuilles et réduit l'évaporation : les systèmes agrivoltaïques diminuent les besoins d'irrigation de <strong>20 % à 40 %</strong> tout en augmentant la résilience aux vagues de chaleur. L'efficacité d'utilisation de l'eau (WUE) augmente. L'électricité alimente pipelines et datacenters, tandis que l'eau dessalée irrigue un nouveau type d'agriculture.</p>
+
+<h3>5. La truffe du désert : biosécurité, nutrition et ingénierie sociale</h3>
+<h4>5.1. La thermiculture : l'or du désert</h4>
+<p>Sous les champs solaires agrivoltaïques, irrigués au goutte-à-goutte géré par l'IA, se déploie la culture de la truffe du désert (principalement <em>Terfezia boudieri</em> et <em>T. claveryi</em>). Ces champignons hypogés poussent en symbiose mycorhizienne obligatoire avec des arbustes du genre <em>Helianthemum</em> (ex. <em>H. sessiliflorum</em>). La plante hôte mycorhizée voit photosynthèse, transpiration et respiration dopées, lui conférant une résistance exceptionnelle au stress hydrique ; le système racinaire protège les sols de l'érosion. Cette symbiose ne requiert qu'environ <strong>200 litres d'eau par m² par an</strong> (200 mm), une fraction infime des cultures traditionnelles.</p>
+
+<h4>5.2. Productivité nutritionnelle de l'eau (NWP) et lutte contre la malnutrition</h4>
+<p>Sur la base de la matière sèche, ces truffes contiennent <strong>20 % à 27 % de protéines de haute qualité</strong> (tous les acides aminés essentiels), 3 % à 8 % de lipides, des niveaux élevés de potassium, fer, fibres, vitamines et composés antioxydants et antibactériens. Le concept de Productivité Nutritionnelle de l'Eau (NWP) évalue non plus le tonnage de biomasse par m³ d'eau, mais la quantité de nutriments vitaux générée par unité d'eau consommée : produire des protéines complètes avec une fraction de l'eau de l'élevage bovin constitue un rempart absolu de sécurité alimentaire.</p>
+
+<h4>5.3. Évolution intellectuelle, inclusion financière et stabilité sociale</h4>
+<p>Un accès soutenu à des protéines de haute qualité, acides gras essentiels et fer durant les phases critiques du développement cérébral éradique les déficits cognitifs induits par la sous-nutrition latente. Pour une nation bâtissant son économie sur l'IA, renforcer le capital cognitif par la nutrition est une politique biopolitique fondamentale. Sur le plan socio-économique, la truffe du désert est un produit de luxe dont la demande internationale surpasse l'offre : <strong>20 à 60 €/kg</strong>, jusqu'à <strong>220 €/kg</strong> sur les marchés de niche, avec des rendements atteignant <strong>400 kg/ha</strong> en régime optimisé dès la cinquième ou sixième année. L'intégration des agriculteurs des régions marginalisées dans cette chaîne de valeur constitue un levier massif d'inclusion financière — en bancarisant ces communautés via l'infrastructure numérique de l'État.</p>
+
+<h3>6. Modélisation énergétique quantitative du mégaprojet</h3>
+<p>Les besoins énergétiques annuels sont calculés pour chaque macro-composant du système.</p>
+<p><strong>6.1. Révolution hydrique.</strong> Production de <strong>500 millions de m³/an</strong> (déficits des barrages, eau potable urbaine, irrigation de précision). Dessalement à 4 kWh/m³ : 500 000 000 m³ × 4 kWh/m³ = <strong>2,00 TWh/an</strong>. Pompage depuis les côtes (Gabès, Sfax) vers l'intérieur (Gafsa, Kasserine) sur ≈ 300 km avec ≈ 400 m de dénivelé : 0,06 × 3 + 0,05 × 4 = 0,38 kWh/m³, soit <strong>0,19 TWh/an</strong>.</p>
+<p><strong>6.2. Souveraineté cognitive.</strong> Trois mégacentres de données hyperscale dans des mines réhabilitées, chacun de <strong>100 MW</strong> — 300 MW au total pour entraîner les LLM de l'État, gérer la cryptographie nationale et soutenir les simulations. À pleine charge continue : 300 MW × 8 760 h = <strong>2,63 TWh/an</strong>.</p>
+<p><strong>6.3. Ingénierie de la matière.</strong> Retraitement de <strong>2 millions de tonnes de phosphogypse/an</strong>. Attaque acide (HCl/HNO₃) à 60 °C, agitation continue et centrifugation : ≈ 250 kWh/t. Soit 2 000 000 t × 250 kWh/t = <strong>0,50 TWh/an</strong>.</p>
+<table>
+<caption>Bilan énergétique global</caption>
+<thead><tr><th>Pôle stratégique</th><th>Consommation annuelle</th><th>Part du bilan</th></tr></thead>
+<tbody>
+<tr><td>Dessalement de l'eau de mer (500 Mm³)</td><td>2,00 TWh</td><td>37,6 %</td></tr>
+<tr><td>Datacenters IA souverains (300 MW continus)</td><td>2,63 TWh</td><td>49,4 %</td></tr>
+<tr><td>Extraction terres rares (2 Mt phosphogypse)</td><td>0,50 TWh</td><td>9,4 %</td></tr>
+<tr><td>Réseau de pompage national</td><td>0,19 TWh</td><td>3,6 %</td></tr>
+<tr><td><strong>Total</strong></td><td><strong>≈ 5,32 TWh/an</strong></td><td><strong>100 %</strong></td></tr>
+</tbody>
+</table>
+<p>Avec un facteur de charge photovoltaïque d'environ <strong>20 %</strong> dans le centre et le sud du pays : 5,32 TWh / (8 760 h × 0,20) ≈ <strong>3,03 GW</strong> installés. Le parc solaire agrivoltaïque surplombant les plantations d'<em>Helianthemum</em> mycorhizés nécessiterait <strong>4 500 à 6 000 hectares</strong> (45 à 60 km²) — une fraction marginale du territoire national, transformant une étendue aride en réacteur symbiotique générant simultanément énergie décarbonée, eau douce, métaux rares, puissance de calcul souveraine et une ressource alimentaire de très haute densité nutritionnelle.</p>
+
+<h3>7. Synthèse prospective et implications stratégiques</h3>
+<p>Les vulnérabilités structurelles de la Tunisie — dette extérieure libellée en dollars la soumettant aux dictats de la Fed, volatilité du dinar, inflation importée, chômage structurel, stress hydrique — ne peuvent être résolues par l'orthodoxie monétaire isolée ni par de nouveaux prêts. L'indépendance de la BCT, cruciale pour prévenir la monétisation directe du déficit, doit s'accompagner d'une politique d'industrialisation radicale de nouvelle génération, reposant sur l'hybridation des infrastructures physiques et numériques :</p>
+<ul>
+<li><strong>L'émancipation cognitive et matérielle</strong> : la puissance de calcul a supplanté les hydrocarbures comme étalon de la richesse mondiale ; une infrastructure d'IA souveraine hébergée dans la froideur géothermique des anciennes mines sécurise l'avenir technologique de la nation.</li>
+<li><strong>L'alchimie écologique et industrielle</strong> : l'extraction de terres rares (rendements dépassant 65 % par voie chlorhydrique ou nitrique) à partir du désastre écologique du phosphogypse, couplée au recyclage thermique de ses effluents pour refroidir les serveurs, restaure l'environnement tout en saisissant les composants critiques de l'économie quantique.</li>
+<li><strong>L'ingénierie du vivant et la biosécurité</strong> : le maillage du territoire par des pipelines intelligents transportant l'eau dessalée vers des structures agrivoltaïques massives (3 GW) initie une réingénierie complète de l'agriculture. La thermiculture de la truffe du désert offre un rendement financier exceptionnel désenclavant les populations rurales, réinvente la Productivité Nutritionnelle de l'Eau, combat la faim, prévient les déficits de développement neurologique infantile et élève mécaniquement le potentiel intellectuel de la population.</li>
+</ul>
+<p>En définitive, la synchronisation de ces flux technologiques, monétaires, hydriques et biologiques dote l'État tunisien d'une matrice de résilience : le pays ne subit plus les ondes de choc des marchés mondiaux, il génère sa propre valeur à l'intersection de la donnée algorithmique, des métaux stratégiques recyclés et du vivant optimisé.</p>
+
+<h4>Sources des citations</h4>
+<ol class="n-src">
+<li>BCT : Évolution du taux de change du dinar — Mosaique FM, <a href="https://www.mosaiquefm.net/fr/national-tunisie/1522891/bct-evolution-du-taux-de-change-du-dinar" rel="noopener">lien</a></li>
+<li>La BCT dément des rumeurs concernant le recul du taux de change — TAP, <a href="https://www.tap.info.tn/fr/Portail-Economie/20427161-la-bct-d%C3%A9ment" rel="noopener">lien</a></li>
+<li>USD manual exchange rate — Tunisia Economic Indicator | Markets.tn, <a href="https://www.markets.tn/en/economy/indicator/7082" rel="noopener">lien</a></li>
+<li>Cours de devises de la Banque Centrale de Tunisie — Dinar Tunisien, <a href="https://www.dinartunisien.com/fr/banque/banque-centrale-tunisie" rel="noopener">lien</a></li>
+<li>Le dinar tunisien résiste face à l'euro mais recule face au dollar — Webdo, <a href="https://www.webdo.tn/fr/actualite/national/le-dinar-tunisien-resiste-face-a-leuro-mais-recule-face-au-dollar/403349/" rel="noopener">lien</a></li>
+<li>Central Bank of Tunisia's foreign exchange reserves — Econ. Bulletin, <a href="https://ideas.repec.org/a/ebl/ecbull/eb-24-00294.html" rel="noopener">lien</a></li>
+<li>Tunisia: Foreign exchange reserves decline to around 8 billion dollars — Financial Afrik, <a href="https://www.financialafrik.com/en/2026/07/16/tunisia-foreign-exchange-reserves-decline-to-around-8-billion-dollars/" rel="noopener">lien</a></li>
+<li>Mobile financial services in Mediterranean Partner Countries — EIB, <a href="https://www.eib.org/attachments/country/femip_study_mobile_financial_services_en.pdf" rel="noopener">lien</a></li>
+<li>Tunisia: Weak macroeconomic fundamentals — Credendo, <a href="https://credendo.com/en/knowledge-hub/tunisia-weak-macroeconomic-fundamentals-will-continue-weigh-near-and-medium-term" rel="noopener">lien</a></li>
+<li>Loi n° 2016-48 relative aux banques, <a href="https://www.fgdb.gov.tn/storage/79/Loi-n%C2%B0-2016-48-du-11-juillet-2016.pdf" rel="noopener">lien</a></li>
+<li>Loi n° 2016-35 fixant le statut de la Banque Centrale de Tunisie, <a href="https://9anoun.tn/fr/kb/jorts/jort-2016-035-d2971/loi-ndeg-2016-35-du-25-avril-2016-portant-fixation-du-statut-de-la-banque-centrale-de-tunisie-3" rel="noopener">lien</a></li>
+<li>Réglementation bancaire — UBM, <a href="https://ubmonline.org/wp-content/uploads/2017/03/reg_bancaire.pdf" rel="noopener">lien</a></li>
+<li>Banque centrale de Tunisie — Wikipédia, <a href="https://fr.wikipedia.org/wiki/Banque_centrale_de_Tunisie" rel="noopener">lien</a></li>
+<li>Net foreign exchange reserves (value) — Tunisia | Markets.tn, <a href="https://www.markets.tn/en/economy/indicator/7056" rel="noopener">lien</a></li>
+<li>Investor — OMFIF Global Public Investor, <a href="https://www.omfif.org/wp-content/uploads/2023/06/GPI-2023.pdf" rel="noopener">lien</a></li>
+<li>Special Drawing Rights: The Right Tool to Use — CEPR, <a href="https://cepr.net/publications/special-drawing-rights-the-right-tool-to-use-to-respond-to-the-pandemic-and-other-challenges/" rel="noopener">lien</a></li>
+<li>Tunisia — International reserves and foreign currency liquidity — IMF, <a href="https://dsbb.imf.org/sdds/dqaf-base/country/TUN/category/ILV00" rel="noopener">lien</a></li>
+<li>Tunisian Banks Have Sufficient Liquidity — Fitch Ratings, <a href="https://www.fitchratings.com/research/banks/tunisian-banks-have-sufficient-liquidity-to-help-meet-sovereign-financing-30-01-2025" rel="noopener">lien</a></li>
+<li>Tunisia Foreign Exchange Reserves: % of GDP — CEIC, <a href="https://www.ceicdata.com/en/indicator/tunisia/foreign-exchange-reserves--of-gdp" rel="noopener">lien</a></li>
+<li>Tunisia External Debt — CEIC Data, <a href="https://www.ceicdata.com/en/indicator/tunisia/external-debt" rel="noopener">lien</a></li>
+<li>A Path Out of Tunisia's Economic Crisis — Carnegie Endowment, <a href="https://carnegieendowment.org/middle-east/research/2025/02/a-path-out-of-tunisias-economic-crisis" rel="noopener">lien</a></li>
+<li>The surge in Tunisia foreign debt: causes and possible ways out — PMC, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9901378/" rel="noopener">lien</a></li>
+<li>Tunisia — Debt Justice, <a href="https://debtjustice.org.uk/countries/tunisia" rel="noopener">lien</a></li>
+<li>The impacts of the external debt on economic growth in Tunisia, <a href="https://www.journalcra.com/article/impacts-external-debt-economic-growth-tunisia" rel="noopener">lien</a></li>
+<li>Tunisia | World Bank Group, <a href="https://www.worldbank.org/ext/en/country/tunisia" rel="noopener">lien</a></li>
+<li>Connectivity for continental power — Global Africa Tech, <a href="http://globalafricatech.com/fr/homepage-fr/" rel="noopener">lien</a></li>
+<li>The AI Landscape, Mapped · Sub-Saharan Africa — Pursuit AI Lab, <a href="https://pursuitlab.ai/resources/ai-landscape/" rel="noopener">lien</a></li>
+<li>Sovereign Large Language Models: Advantages, Strategy — arXiv, <a href="https://arxiv.org/html/2503.04745v1" rel="noopener">lien</a></li>
+<li>Sovereign Large Language Models — arXiv, <a href="https://arxiv.org/pdf/2503.04745" rel="noopener">lien</a></li>
+<li>Gabès Phosphate Fertilizers Plants of the Tunisian Chemical Group — EJAtlas, <a href="https://ejatlas.org/print/gabes-phosphate-fertilizers-plants-of-the-tunisian-chemical-group" rel="noopener">lien</a></li>
+<li>Rare earth elements characterization associated to the phosphate — INIS, <a href="https://inis.iaea.org/records/yzr2a-x6k29" rel="noopener">lien</a></li>
+<li>Characterization of phosphate rock and phosphogypsum — PubMed, <a href="https://pubmed.ncbi.nlm.nih.gov/29532384/" rel="noopener">lien</a></li>
+<li>Impact of industrial phosphate waste discharge on the marine — PLOS ONE, <a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0197731" rel="noopener">lien</a></li>
+<li>Rare Earth Elements in Phosphate Ores and Industrial By-Products — MDPI, <a href="https://www.mdpi.com/2075-163X/15/12/1232" rel="noopener">lien</a></li>
+<li>Characterization and Leaching Kinetics of Rare Earth Elements — MDPI, <a href="https://www.mdpi.com/2075-163X/12/6/703" rel="noopener">lien</a></li>
+<li>A Critical Review of the Enhanced Recovery of Rare Earth Elements — PMC, <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10488757/" rel="noopener">lien</a></li>
+<li>Phosphogypsum Processing for Rare Earths Recovery — A Review, <a href="https://www.scirp.org/journal/paperinformation?paperid=94961" rel="noopener">lien</a></li>
+<li>From Grave to Cradle: Treatment, Resource Recycling — ACS, <a href="https://pubs.acs.org/doi/abs/10.1021/acs.estlett.4c00530" rel="noopener">lien</a></li>
+<li>Predicting Sustainable Phosphogypsum Valorization in Tunisia and North Africa, <a href="https://www.researchgate.net/publication/408215362_Predicting_Sustainable_Phosphogypsum_Valorization_in_Tunisia_and_North_Africa_Based_on_Chinese_Reuse_Trends" rel="noopener">lien</a></li>
+<li>Renewable Energy Desalination — World Bank Documents, <a href="https://documents1.worldbank.org/curated/en/443161468275091537/pdf/730700PUB0EPI001200pub0date09026012.pdf" rel="noopener">lien</a></li>
+<li>How much energy does desalinisation use? Is it “absurdly cheap”? — Hannah Ritchie, <a href="https://hannahritchie.substack.com/p/how-much-energy-does-desalinisation/comments" rel="noopener">lien</a></li>
+<li>Desalination — Dr Rajiv Desai, <a href="https://drrajivdesaimd.com/2024/05/07/desalination/" rel="noopener">lien</a></li>
+<li>Second-party opinion report — Pengurusan Aset Air Berhad, <a href="https://www.paab.my/wp-content/uploads/2026/04/Pengurusan-Aset-Air-Berhad-Second-Opinion-Report-Final.pdf" rel="noopener">lien</a></li>
+<li>Reducing the Energy Footprint of the Water Sector — EurEau, <a href="https://eureau.org/wp-content/uploads/2020/03/briefing-note-on-reducing-the-energy-footprint-of-water-sector.pdf" rel="noopener">lien</a></li>
+<li>How to save water with agrivoltaics — Enel Green Power, <a href="https://www.enelgreenpower.com/media/news/2023/07/agrivoltaics-water-savings" rel="noopener">lien</a></li>
+<li>Impact of Agrivoltaics irrigation and soil moisture dynamics — ResearchGate, <a href="https://www.researchgate.net/publication/396897001_Impact_of_Agrivoltaics_irrigation_and_soil_moisture_dynamics_A_review" rel="noopener">lien</a></li>
+<li>Water and microclimate management strategies for agrivoltaics — KU Leuven, <a href="https://research.kuleuven.be/portal/en/project/3E230899" rel="noopener">lien</a></li>
+<li>Desert truffle — Innovatione, <a href="https://innovatione.eu/en/2021/10/29/desert-truffle/" rel="noopener">lien</a></li>
+<li>The Microbiome Structure of the Symbiosis between the Desert truffle — MDPI, <a href="https://www.mdpi.com/2309-608X/8/10/1062" rel="noopener">lien</a></li>
+<li>Cultivation of an edible desert truffle (Terfezia boudieri Chatin), <a href="https://www.internationalscholarsjournals.com/abstract/cultivation-of-an-edible-desert-truffle-terfezia-boudieri-chatin-65770.html" rel="noopener">lien</a></li>
+<li>Mycorrhizal association between the desert truffle Terfezia boudieri — BGU, <a href="https://cris.bgu.ac.il/en/publications/mycorrhizal-association-between-the-desert-truffle-terfezia-boudi-5/" rel="noopener">lien</a></li>
+<li>Cultivation of Desert Truffles — A Crop Suitable for Arid and Semi-Arid Zones — MDPI, <a href="https://www.mdpi.com/2073-4395/11/8/1462" rel="noopener">lien</a></li>
+<li>Cultivation of Desert Truffles (PDF) — ResearchGate, <a href="https://www.researchgate.net/publication/353406050_Cultivation_of_Desert_Truffles-A_Crop_Suitable_for_Arid_and_Semi-Arid_Zones" rel="noopener">lien</a></li>
+<li>Desert Truffles — Nutritious — Botit, <a href="https://botit.botany.wisc.edu/toms_fungi/nutritious.html" rel="noopener">lien</a></li>
+<li>Water Use and Nutritional Water Productivity — WRC South Africa, <a href="https://www.wrc.org.za/wp-content/uploads/mdocs/3223%20final.pdf" rel="noopener">lien</a></li>
+<li>A Review of Nutritional Water Productivity (NWP) in Agriculture — MDPI, <a href="https://www.mdpi.com/2073-4441/15/24/4278" rel="noopener">lien</a></li>
+<li>Water Use of Crops and Nutritional Water Productivity for Food — WRC, <a href="https://www.wrc.org.za/wp-content/uploads/mdocs/2493%20Main%20report.pdf" rel="noopener">lien</a></li>
+<li>Method for extracting rare earth elements from phosphogypsum — Patent, <a href="https://patents.google.com/patent/CN102639729B/en" rel="noopener">lien</a></li>
+<li>Indépendance de la BCT : Risques et conséquences du financement direct de l'État — IlBoursa, <a href="https://www.ilboursa.com/marches/independance-de-la-bct-risques-et-consequences-du-financement-direct-de-l-etat_42542" rel="noopener">lien</a></li>
+</ol>
+
+    <p style="margin-top:2rem"><a class="row-btn" href="/nations/rapport-megaprojet-tunisie.docx"
+      download aria-label="Télécharger le rapport original au format Word">Download the original report (.docx)</a></p>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap" style="max-width:76ch">
+    <p class="eyebrow">Honest boundaries</p>
+    <h2>What this is &mdash; and what it is not</h2>
+    <div class="n-boundary">
+      <h3>It is</h3>
+      <p>A concept-level engineering study: the audit of a nation's absences, with every fill drawn
+      from cited literature (59 sources) and the energy arithmetic shown in full. Free, public,
+      indexable &mdash; a template, not a product.</p>
+      <h3>It is not</h3>
+      <p>A commissioned state program, a feasibility study, an investment offer, or a claim that any
+      of this has been built. Nothing here is advice to any government. Parts of the report are
+      deliberately exploratory &mdash; simulation-driven &ldquo;cognitive travel&rdquo; replacing
+      physical space programs, for instance. The quantitative core (hydrometallurgical rare-earth
+      recovery, desalination energy, agrivoltaic water savings, desert-truffle agronomy) is grounded
+      in the cited literature; national-scale feasibility, financing and regulatory paths have not
+      been validated. Verify every figure and citation before relying on any of it &mdash; the same
+      rule as everything else on this site.</p>
+    </div>
+  </div>
+</div>
+
+<div class="n-section" style="border-bottom:0">
+  <div class="wrap" style="max-width:76ch">
+    <p class="eyebrow">Your nation next</p>
+    <h2>The template transfers.</h2>
+    <p class="n-lede">Dollar-denominated debt. Water stress. Compute rented from abroad.
+    Food insecurity. The same five absences recur across dozens of countries &mdash; North Africa,
+    the Sahel, the Middle East, and beyond. The audit is the same every time: name the absence,
+    find the cited process that fills it, compute the energy and the money, and close the loop
+    so each liability pays for the next fix. This page exists so the method &mdash; and the
+    ambition &mdash; can be copied. That is the point.</p>
+    <p style="margin-top:1.4rem"><a href="/#join" style="font-weight:600">Join the ledger &mdash; it is free &rarr;</a></p>
+  </div>
+</div>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/nations/">Nations</a>
+      <a href="/terms/">Terms</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a></p>
+  </div>
+</footer>
+</body>
+</html>

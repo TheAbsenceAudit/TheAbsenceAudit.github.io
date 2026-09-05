@@ -9,6 +9,7 @@
 - [Track record](https://theabsenceaudit.com/track-record/): the verifiable operating record — dates, counts, published rejections.
 - [Method](https://theabsenceaudit.com/method/): how a concept is screened, with the due-diligence questions answered.
 - [Ledger](https://theabsenceaudit.com/ledger/): searchable index of every audited concept.
+- [Nations](https://theabsenceaudit.com/nations/): the method applied at national scale — Tunisia as the first nation-scale absence audit, a public template for countries with the same absences.
 - [Concept pages](https://theabsenceaudit.com/c/<slug>/): one page per concept. Rejection write-ups are published in full; cleared concepts are teased.
 - [Sitemap](https://theabsenceaudit.com/sitemap.xml).
 
