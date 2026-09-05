@@ -75,6 +75,18 @@
   }
   function isSaleable(r) { return !!(r.v || r.p === 1); }
 
+  // IP / protectability. r.df is set by the deterministic sub-gate J audit:
+  //   "declared"   = a specific protectable contribution was named (IP confirmed)
+  //   "arbitrage"  = operational arbitrage, no patentable asset
+  //   "none"/"partial" = prior-art/novelty boundary not (fully) drawn
+  //   undefined    = report predates the Defensibility requirement (not assessed)
+  function ipBadge(r) {
+    if (r.df === "declared") return '<span class="tbadge ok">IP confirmed</span>';
+    if (r.df === "arbitrage" || r.df === "none" || r.df === "partial")
+      return '<span class="tbadge">no claim</span>';
+    return "—";
+  }
+
   // ------------------------------------------------------- attribution strip
   // The member ledger (/dossier/) is the SAME page as the public ledger — same
   // head, same toolbar, same table. The only addition is this strip between
@@ -233,7 +245,7 @@
   function renderGrid(list) {
     var h = '<div class="gridwrap"><table class="term"><thead><tr>' +
       "<th>Concept</th><th>Status</th><th>Incumbent</th><th>Advantage</th>" +
-      "<th>Absence</th><th>CapEx</th><th>Margin</th><th>Payback</th>" +
+      "<th>Absence</th><th>IP</th><th>CapEx</th><th>Margin</th><th>Payback</th>" +
       "<th>Regulatory</th><th>Dossier</th></tr></thead><tbody>";
     list.forEach(function (r) {
       var badges = [];
@@ -250,6 +262,7 @@
         "<td>" + (r.i ? esc(r.i) : "—") + "</td>" +
         '<td class="num">' + (isSaleable(r) && r.x ? fmtx(r.x) : "—") + "</td>" +
         "<td>" + (r.abs === 1 ? '<span class="tbadge ok">verified</span>' : "—") + "</td>" +
+        "<td>" + ipBadge(r) + "</td>" +
         '<td class="num">' + (r.cx != null ? "$" + Number(r.cx).toLocaleString() : "—") + "</td>" +
         '<td class="num">' + (r.gm != null ? r.gm + "%" : "—") + "</td>" +
         '<td class="num">' + (r.pb != null ? r.pb + " mo" : "—") + "</td>" +
@@ -282,6 +295,7 @@
         });
       }
       if (r.abs === 1) tags.push('<span class="tag ok">absence verified</span>');
+      if (r.df === "declared") tags.push('<span class="tag ok">IP confirmed</span>');
       if (r.reg === "high") tags.push('<span class="tag fail">high regulatory</span>');
       else if (r.reg === "med") tags.push('<span class="tag">regulatory</span>');
       row.innerHTML =

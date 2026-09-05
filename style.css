@@ -437,6 +437,9 @@ table.term a{color:inherit}
 .aa-auth .aa-out{background:none;border:1px solid var(--rule);border-radius:0;padding:.3rem .7rem;
   font:600 .78rem/1.2 var(--sans);color:var(--ink-2);cursor:pointer;min-height:0}
 .aa-auth .aa-out:hover{color:var(--ink);border-color:var(--kill)}
+.aa-auth .aa-myledger{font:600 .78rem/1.2 var(--sans);color:var(--ink);text-decoration:underline;
+  text-underline-offset:2px;border-bottom:0;white-space:nowrap}
+.aa-auth .aa-myledger:hover{color:var(--kill)}
 #aa-modal .aa-card{border-radius:0;border:1px solid var(--ink);box-shadow:0 24px 60px rgba(20,22,26,.28)}
 #aa-modal .aa-kicker{font:600 .7rem/1 var(--mono);letter-spacing:.18em;text-transform:uppercase;color:var(--kill)}
 #aa-modal .aa-card h2{font-family:var(--serif);font-weight:500}
