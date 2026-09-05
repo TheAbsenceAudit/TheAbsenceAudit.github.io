@@ -10,3 +10,4 @@ __pycache__/
 PUBLISH_STATUS.md
 # local desktop attachments (user uploads) never ship
 .hermes/
+_tmp_idx.html
