@@ -50,7 +50,7 @@
   });
 </script>
 
-<link rel="stylesheet" href="/style.css?v=1788651939">
+<link rel="stylesheet" href="/style.css?v=1788652081">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tunisia, audited — The Absence Audit at national scale</title>
@@ -171,6 +171,9 @@
   .n-phase li p{margin:.15rem 0 0;color:var(--ink-2);font-size:.95rem}
   .n-srcline{font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
   .n-note small{display:block;margin-top:.4rem}
+  .n-twrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2rem 0}
+  .n-twrap table{min-width:760px}
+  .n-twrap table.n-red{min-width:920px}
 </style>
 </head>
 <body>
@@ -375,7 +378,7 @@
     water/energy, compute/agriculture/financing — ~200 sources with citations resolved, and
     every figure on this section recomputed in code from primitives
     (the module is rerunnable — nations_arithmetic.py — and the key derivations appear in the findings below).</p>
-    <table class="n-red">
+    <div class="n-twrap"><table class="n-red">
       <caption>Layer-by-layer: what the page claims, what the research found, honest confidence</caption>
       <thead><tr><th>Layer</th><th>Claim</th><th>What the research found</th><th>Confidence</th><th>What would prove it</th></tr></thead>
       <tbody>
@@ -387,7 +390,7 @@
 <tr><td>Political</td><td>The state can execute it</td><td>The IPP framework works <sup class="n-cite">[Rc13]</sup>; agricultural land law blocks foreign ownership (40-yr leases only) <sup class="n-cite">[Rw12]</sup>; the budget (5-7% of GDP deficit) cannot fund the equity <sup class="n-cite">[Rw10]</sup>; IMF negotiations remain stalled <sup class="n-cite">[Rc12]</sup></td><td>LOW</td><td>A published national program with a funded, time-boxed pilot phase and a named agency</td></tr>
 <tr><td>System</td><td>All components reinforce each other</td><td>Eight interdependent stages, each with its own supplier, regulator and currency. At a generous 70% per-stage success: 0.7^8 &asymp; <b>5.8%</b> joint probability <sup class="n-cite">[Rc14]</sup>. The loop is a design hypothesis, not a result</td><td>HYPOTHESIS</td><td>Each module cash-positive on its own, with the loop adding value, not covering deficits</td></tr>
       </tbody>
-    </table>
+    </table></div>
     <p class="n-note" style="margin-top:1.2rem"><strong>How to read this table.</strong>
     Confidence is the grade of the <em>evidence</em>, not the feasibility of the dream. "High
     confidence, but the grade is the problem" means: the chemistry is proven and the economics
@@ -506,7 +509,7 @@
     <p class="n-lede">Same discipline as every dossier on this site: primitives in, recomputation
     in code. Run the module yourself — <span class="n-srcline">nations_arithmetic.py</span> ships
     with the page; every unit cost is a 2024-2026 sourced figure with a range.</p>
-<table class='n-feas'><caption>Bottom-up CAPEX — mid-case (each line has a source and range)</caption><thead><tr><th>Component</th><th>CAPEX (mid)</th><th>Basis and range</th></tr></thead><tbody>
+<div class="n-twrap"><table class="n-feas"><caption>Bottom-up CAPEX — mid-case (each line has a source and range)</caption><thead><tr><th>Component</th><th>CAPEX (mid)</th><th>Basis and range</th></tr></thead><tbody>
 <tr><td>REE recovery circuit (hydromet, ~290 t/yr REE)</td><td><strong>$72M</strong></td><td>excl. separation; +$244M for a solvent-extraction plant [Rm10]</td></tr>
 <tr><td>Datacenter facilities (300 MW, excl. IT)</td><td><strong>$3,450M</strong></td><td>AI-class facility $8-15M/MW [Rc4]</td></tr>
 <tr><td>Datacenters: AI accelerators (300 MW)</td><td><strong>$9,900M</strong></td><td>~300,000 GPUs; subject to BIS export controls [Rc6]</td></tr>
@@ -516,7 +519,7 @@
 <tr><td>300 km twin pipeline</td><td><strong>$1,800M</strong></td><td>$5-7M/km at this flow [Rw5]</td></tr>
 <tr><td>Grid + transmission</td><td><strong>$450M</strong></td><td>3 GW connection [Rw13]</td></tr>
 <tr><td><strong>Total system</strong></td><td><strong>~$21.4B</strong></td><td>Roughly <strong>20-45% of Tunisia's GDP</strong>; ~35% at the midpoint. Datacenter hardware is export-controlled (Finding 06 below); the water and energy lines are at the 2024-26 bottom of global benchmarks.</td></tr>
-</tbody></table>
+</tbody></table></div>
     <p class="n-note">The single biggest driver, and the one that is not a unit-cost question:
     33 M$/MW of AI accelerators is the current global
     benchmark for GPUs that a country with no US bilateral AI-security agreement
@@ -524,7 +527,7 @@
     export-controlled part; the loop's compute pillar therefore depends on a diplomatic
     agreement, not on engineering.</p>
 
-<table>
+<div class="n-twrap"><table>
 <caption>Annual OPEX and revenue, honest columns</caption>
 <thead><tr><th>Stream</th><th>Annual (mid)</th><th>Basis</th></tr></thead>
 <tbody>
@@ -535,10 +538,10 @@
 <tr><td>Truffle revenue (4,500 ha)</td><td><strong>€34-102M gross</strong></td><td>376 kg/ha avg (peak 1,069, drought 0-2) × €20-60/kg [Rc7, Rc9] — before drought seasonality and the agrivoltaic shade conflict (Finding 07); at the report's own 400 kg/ha and €20-220/kg the top end bloats, but €220/kg is scarcity-year territory</td></tr>
 <tr><td>Compute revenue</td><td><strong>0</strong></td><td>Sovereign use by definition; an anchor-tenant model would monetize capacity only after a BIS-compliant hardware path exists [Rc6]</td></tr>
 </tbody>
-</table>
+</table></div>
 
 
-<table>
+<div class="n-twrap"><table>
 <caption>Who finances what, at what terms</caption>
 <thead><tr><th>Instrument</th><th>Available for</th><th>Reality for this program</th></tr></thead>
 <tbody>
@@ -548,10 +551,10 @@
 <tr><td>IMF program</td><td>—</td><td>None active; the traditional unlock gate for institutional capital is closed [Rc12]</td></tr>
 <tr><td>Gulf / Chinese capital</td><td>Some</td><td>Exists, but swaps independence for dependency — the exact absence this page is about</td></tr>
 </tbody>
-</table>
+</table></div>
 
 
-<table>
+<div class="n-twrap"><table>
 <caption>Downside cases — what actually happens when a link fails</caption>
 <thead><tr><th>Shock</th><th>Effect</th><th>What survives</th></tr></thead>
 <tbody>
@@ -562,7 +565,7 @@
 <tr><td>Water subsidies withdrawn</td><td>500 Mm&sup3;/yr delivered at €1.10-1.40 can only be sold where buyers exist: cities, industry, tourism</td><td>A smaller, coastal, urban-scale program — the honest version of the water pillar</td></tr>
 <tr><td>One link of the loop fails (any one)</td><td>The loop was never a load-bearing structure: 0.7^8 &asymp; 5.8% joint probability</td><td>Every module that is cash-positive on its own, which is the redesign we propose below — modular by construction</td></tr>
 </tbody>
-</table>
+</table></div>
 
   </div>
 </div>
@@ -575,7 +578,7 @@
     the wrong unit of build. The right unit is the module with its own gate, financed on its own
     cash flow, and a public go/no-go criterion. This is the graveyard logic of the ledger,
     applied to a nation: the plan includes its own falsification.</p>
-    <table>
+    <div class="n-twrap"><table>
       <caption>Module gates — observable evidence, not opinions</caption>
       <thead><tr><th>Module</th><th>Go / no-go gate</th><th>Decision</th></tr></thead>
       <tbody>
@@ -585,7 +588,7 @@
         <tr><td>Truffle</td><td>3 seasons on 100 ha; average &ge;200 kg/ha at &ge;€20/kg farm-gate</td><td>Scale on full sun (Finding 07), exports first, nutrition second</td></tr>
         <tr><td>Loop</td><td>Every module cash-positive without the others</td><td>Only then may the "one industrial metabolism" language be used</td></tr>
       </tbody>
-    </table>
+    </table></div>
 
 <ol class="n-phase">
   <li><strong>P0 &mdash; Evidence (months 0-18)</strong>
