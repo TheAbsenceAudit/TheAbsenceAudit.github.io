@@ -26,6 +26,30 @@
   var chip = null;
   var modal = null;
 
+  // -------------------------------------------------- entitlement fast-cache
+  // The dossier gate resolves on a Firestore read of access/<email>, which the
+  // lazy Firebase SDK can't do until it has loaded — so an entitled account
+  // sees a "checking" overlay (or, before, a false "paid ledger" gate) for a
+  // second or two on every dossier. Cache the grant after a successful read
+  // and replay it on the next load BEFORE the SDK is up, so a returning
+  // Full-Ledger/owning account opens their dossier instantly. The SDK still
+  // loads and revalidates; a revoked grant re-locks the gate on revalidation.
+  var ACC_KEY = "aa_access_cache_v1";
+  function readAccessCache() {
+    try {
+      var s = localStorage.getItem(ACC_KEY);
+      if (!s) return null;
+      var c = JSON.parse(s);
+      return (c && c.email) ? c : null;
+    } catch (e) { return null; }
+  }
+  function writeAccessCache(c) {
+    try { localStorage.setItem(ACC_KEY, JSON.stringify(c)); } catch (e) {}
+  }
+  function clearAccessCache() {
+    try { localStorage.removeItem(ACC_KEY); } catch (e) {}
+  }
+
   // ---------------------------------------------------------------- SDK loader
   var SDK = { loading: false, loaded: false, queue: [] };
   function loadScripts(names, cb) {
@@ -111,19 +135,21 @@
   }
   function resolve() {
     firebase.auth().onAuthStateChanged(function (u) {
-      if (!u) { setState({ email: "", plan: null, products: [], signedIn: false, ready: true }); return; }
+      if (!u) { clearAccessCache(); setState({ email: "", plan: null, products: [], signedIn: false, ready: true }); return; }
       var em = userEmail(u);
-      if (!em) { setState({ email: "", plan: null, products: [], signedIn: false, ready: true }); return; }
+      if (!em) { clearAccessCache(); setState({ email: "", plan: null, products: [], signedIn: false, ready: true }); return; }
       firebase.firestore().collection("access").doc(em).get()
         .then(function (snap) {
           var d = snap.exists ? (snap.data() || {}) : {};
-          setState({
+          var st = {
             email: em,
             plan: d.plan === "all" ? "all" : null,
             products: (d.products && d.products.length) ? d.products : [],
             signedIn: true,
             ready: true
-          });
+          };
+          writeAccessCache({ email: em, plan: st.plan, products: st.products });
+          setState(st);
         })
         .catch(function () {
           setState({ email: em, plan: null, products: [], signedIn: true, ready: true });
@@ -246,22 +272,40 @@
 
   // --------------------------------------------------------------- dossier gate
   function subMode() { return document.cookie.indexOf("aa_sub=1") >= 0; }
+  function gateCard(kicker, title, sub, note) {
+    var b = '<button class="aa-gbtn" id="aa-gate-signin" type="button">Sign in</button>';
+    var n = note
+      ? '<p class="aa-note">Bought it and still locked? Reply to your purchase receipt. ' +
+        '<a href="' + VAULT + '">My ledger</a></p>'
+      : "";
+    return '<div class="aa-gate-card">' +
+      '<p class="aa-kicker">' + kicker + "</p>" +
+      "<h1>" + title + "</h1>" + "<p class=\"aa-sub\">" + sub + "</p>" +
+      (note ? b : "") + n +
+      "</div>";
+  }
   function gateDossier() {
     var slug = CFG.dossier;
     if (!slug) return;
+    // Start NEUTRAL. The auth state (SDK load + Firestore read) resolves a
+    // second or two after paint; an entitled account must never see a false
+    // "part of the paid ledger" gate before their access is confirmed. So the
+    // card first says "checking your access", then either flips to the real
+    // sign-in gate (not entitled) or is removed (entitled). Show nothing else
+    // in the gap — the report is under here too and must stay covered either
+    // way, so the overlay covers from the first paint.
     var overlay = document.createElement("div");
     overlay.id = "aa-gate";
-    overlay.innerHTML =
-      '<div class="aa-gate-card">' +
-        '<p class="aa-kicker">The Absence Audit</p>' +
-        '<h1>This dossier is part of the paid ledger.</h1>' +
-        '<p class="aa-sub">Sign in with your purchase email to read it.</p>' +
-        '<button class="aa-gbtn" id="aa-gate-signin" type="button">Sign in</button>' +
-        '<p class="aa-note">Bought it and still locked? Reply to your purchase receipt. ' +
-        '<a href="' + VAULT + '">My ledger</a></p>' +
-      '</div>';
+    overlay.innerHTML = gateCard("The Absence Audit", "Checking your access\u2026",
+                                 "Verifying your purchase and ledger access.", false);
     document.body.appendChild(overlay);
-    overlay.querySelector("#aa-gate-signin").addEventListener("click", openModal);
+    function signInCard() {
+      overlay.innerHTML = gateCard("The Absence Audit",
+                                   "This dossier is part of the paid ledger.",
+                                   "Sign in with your purchase email to read it.", true);
+      var b = overlay.querySelector("#aa-gate-signin");
+      if (b) b.addEventListener("click", openModal);
+    }
     function apply(st) {
       // Subscriber mode (aa_sub cookie, set by the invitation page) opens every
       // dossier too — the subscriber page promises "open any dossier and read
@@ -269,10 +313,16 @@
       var ok = subMode() ||
                (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
       if (ok) { overlay.remove(); }
-      else { overlay.style.display = "flex"; }
+      else { signInCard(); overlay.style.display = "flex"; }
     }
     if (state.ready) apply(state);
-    else listeners.push(apply);
+    else {
+      listeners.push(apply);
+      // Fail-closed: if auth never resolves (SDK/network), fall back to the
+      // sign-in gate rather than hanging on "Checking your access" forever —
+      // and never reveal the report beneath.
+      setTimeout(function () { if (overlay.parentNode && !state.ready) apply(state); }, 5000);
+    }
   }
 
   // -------------------------------------------------------- entitled invites
@@ -350,6 +400,16 @@
 
   function start() {
     var found = sessionInLocalStorage();
+    // Fast-path for a returning entitled account: session + cached grant in
+    // hand, open the dossier immediately (no SDK round-trip). The SDK still
+    // loads and revalidates; a revoke re-locks once Firestore answers.
+    var cache = readAccessCache();
+    if (found && cache && cache.email) {
+      setState({ email: cache.email, plan: cache.plan || null,
+                 products: cache.products || [], signedIn: true, ready: true });
+      boot(function () { completeEmailLink(); resolve(); });
+      return;
+    }
     if (found) { boot(function () { completeEmailLink(); resolve(); }); return; }
     sessionInIndexedDB(function (f) {
       if (f) { boot(function () { completeEmailLink(); resolve(); }); return; }
