@@ -27,6 +27,8 @@
 
 
 
+
+
 <link rel="stylesheet" href="/style.css?v=1788607839">
 
 
@@ -141,6 +143,15 @@
   .hero img { max-width:100%; height:auto; border:1px solid var(--line); }
   .hero figcaption { font:500 11px/1.5 ui-sans-serif,system-ui,sans-serif;
     color:var(--mute); margin-top:8px; }
+  .pdf-dl { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    border:1px solid var(--line); background:#fafbfd; padding:12px 16px; margin:18px 0 4px; }
+  .pdf-dl .pdf-btn { display:inline-block; background:var(--accent); color:#fff;
+    font:600 13px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em;
+    text-transform:uppercase; text-decoration:none; padding:11px 18px; }
+  .pdf-dl .pdf-btn:hover { background:#6f1515; text-decoration:none; }
+  .pdf-dl .pdf-note { color:var(--mute); font:13px/1.5 ui-sans-serif,system-ui,sans-serif;
+    max-width:36ch; }
+  @media print { .pdf-dl { display:none !important; } }
 </style>
 </head><body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -167,7 +178,12 @@
   <h1>Ultra-Low Stress Thiol-Ene Photopolymer Conformal Coatings (USTE-CC) via Step-Growth Radical Photopolymerization</h1>
   <p class="sub">This is a complete, unedited study — the same document format a subscriber receives. It is published free because the method is impossible to judge from a summary. Nobody has built this venture; the literature is real and the arithmetic is checked, but no operating company is cited as proof. Treat it as a researched hypothesis, not a business plan.</p>
   
-  <p class="sub">Part of the public proof-of-work library. The other free studies:
+  <div class="pdf-dl">
+    <a class="pdf-btn" href="the-absence-audit-study-1.pdf"
+       onclick="window.dataLayer &amp;&amp; window.dataLayer.push({'event':'pdf_download','study':'1 of 3','title':'Ultra-Low Stress Thiol-Ene Photopolymer Conformal Coatings (USTE-CC) via Step-Growth Radical Photopolymerization'})">Download PDF</a>
+    <span class="pdf-note">Print-ready and shareable &mdash; the same study as this page, with every section and citation.</span>
+  </div>
+<p class="sub">Part of the public proof-of-work library. The other free studies:
   <a href="/studies/urcasu-mechanochemical-fertilizer-via-twin-screw-extrusion/">2</a> <a href="/studies/laser-induced-porous-graphene-lig-sensor-substrates-via-direct-laser-w/">3</a>
   &middot; <a href="/sample/">the original sample</a> &middot;
   <a href="/ledger/">the full ledger</a>.</p>
