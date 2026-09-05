@@ -306,13 +306,21 @@
       var b = overlay.querySelector("#aa-gate-signin");
       if (b) b.addEventListener("click", openModal);
     }
+    function revealDownload() {
+      // The dossier's Download-PDF row is hidden by default (fail-closed)
+      // and only appears to entitled readers — subscriber mode, a Full-Ledger
+      // account, or an account that owns this slug. Same condition as the
+      // gate, same reveal moment: no gate, no button.
+      var dl = document.querySelector(".aa-pdf-dl");
+      if (dl) dl.style.display = "flex";
+    }
     function apply(st) {
       // Subscriber mode (aa_sub cookie, set by the invitation page) opens every
       // dossier too — the subscriber page promises "open any dossier and read
       // it in full", so the gate must honour that promise.
       var ok = subMode() ||
                (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
-      if (ok) { overlay.remove(); }
+      if (ok) { overlay.remove(); revealDownload(); }
       else { signInCard(); overlay.style.display = "flex"; }
     }
     if (state.ready) apply(state);
