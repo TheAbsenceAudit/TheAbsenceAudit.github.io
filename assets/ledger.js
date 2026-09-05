@@ -73,6 +73,14 @@
     var a = access(r);
     return a === "sub" || a === "all" || a === "own";
   }
+  // Concept names honour access: for an open row the name IS the door to the
+  // dossier (the member-area rule: the row opens in place, no detour). Everyone
+  // else gets the public presentation page — the buy CTA for products, the
+  // audit for rejections.
+  function conceptHref(r) {
+    if (isOpen(r) && isSaleable(r)) return D + encodeURIComponent(r.s) + "/";
+    return "/c/" + encodeURIComponent(r.s) + "/";
+  }
   function isSaleable(r) { return !!(r.v || r.p === 1); }
 
   // IP / protectability. r.df is set by the deterministic sub-gate J audit:
@@ -256,7 +264,7 @@
         badges.push('<span class="tbadge dead">rejected</span>');
       }
       h += "<tr" + (isOpen(r) && isSaleable(r) ? ' class="row-open"' : "") + ">" +
-        '<td><a class="tname" href="/c/' + encodeURIComponent(r.s) + '/">' + esc(r.n) + "</a>" +
+        '<td><a class="tname" href="' + conceptHref(r) + '">' + esc(r.n) + "</a>" +
         '<span class="tdate">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") + "</span></td>" +
         "<td>" + badges.join(" ") + "</td>" +
         "<td>" + (r.i ? esc(r.i) : "—") + "</td>" +
@@ -299,7 +307,7 @@
       if (r.reg === "high") tags.push('<span class="tag fail">high regulatory</span>');
       else if (r.reg === "med") tags.push('<span class="tag">regulatory</span>');
       row.innerHTML =
-        '<div><h2><a href="/c/' + encodeURIComponent(r.s) + '/">' + esc(r.n) + "</a></h2>" +
+        '<div><h2><a href="' + conceptHref(r) + '">' + esc(r.n) + "</a></h2>" +
         '<p class="rmeta">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") +
           (r.i ? " · vs " + esc(r.i) : "") + "</p>" +
         (r.m ? '<p class="rmetric">' + esc(r.m) + "</p>" : "") +

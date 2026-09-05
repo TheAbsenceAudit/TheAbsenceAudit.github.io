@@ -275,6 +275,43 @@
     else listeners.push(apply);
   }
 
+  // -------------------------------------------------------- entitled invites
+  // Subscriber mode (aa_sub cookie) turns [data-aa-invite] placeholders into
+  // "Open research" links via an inline page script. Signed-in ENTITLEMENT
+  // needs the same treatment: a Full-Ledger or owning account landing on a
+  // presentation page (/c/<slug>/) must see the door to their dossier, not a
+  // buy box for what they already own.
+  function entitledFor(st, slug) {
+    return st.signedIn &&
+      (st.plan === "all" || (st.products || []).indexOf(slug) >= 0);
+  }
+  function inviteLinks(st) {
+    if (!st.signedIn) return;
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    var shown = false;
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug || !entitledFor(st, slug)) continue;
+      // Guard against double-injection: the cookie-mode inline script may have
+      // already placed the link next to this placeholder.
+      if (el.getAttribute("data-aa-invited") === "1") continue;
+      if (el.parentNode.querySelector('a[href^="' + VAULT + '"]')) continue;
+      el.setAttribute("data-aa-invited", "1");
+      var a = document.createElement("a");
+      a.href = VAULT + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+      shown = true;
+    }
+    if (shown) {
+      var comms = document.querySelectorAll("[data-aa-commerce]");
+      for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+    }
+  }
+
   // ------------------------------------------------------------------ init
   function init() {
     chip = document.getElementById("aa-auth");
@@ -288,6 +325,7 @@
     }
     if (chip) renderChip();
     if (CFG.dossier) gateDossier();
+    listeners.push(inviteLinks);
     start();
   }
 
