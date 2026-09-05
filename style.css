@@ -337,20 +337,26 @@
 .ledger-headwrap h1{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:0}
 .ledger-headwrap .lede{max-width:60ch}
 .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
-  border-bottom:1px solid var(--rule);padding:1.1rem 0}
-.toolbar .wrap{display:grid;gap:.75rem}
+  border-bottom:1px solid var(--rule);padding:1rem 0 .85rem}
+.toolbar .wrap{display:grid;gap:.85rem}
 .searchrow{display:grid;gap:.75rem}
-.searchrow input[type=search]{width:100%;min-height:48px;padding:.7rem .95rem;font:inherit;
+.searchrow input[type=search]{width:100%;min-height:46px;padding:.65rem .9rem;font:inherit;
   font-size:1rem;background:var(--paper);border:1px solid var(--ink-3);border-radius:0;color:var(--ink)}
 .searchrow input[type=search]:focus-visible{outline:2px solid var(--kill);outline-offset:1px}
 .toolrow{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
-.facets{display:flex;gap:.7rem .55rem;flex-wrap:wrap;align-items:center}
-.facets label{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;
-  text-transform:uppercase;color:var(--ink-3)}
-.facets select,.facets input[type=number]{min-height:40px;padding:.4rem .6rem;font:inherit;
-  font-size:.9rem;background:var(--paper);border:1px solid var(--rule);border-radius:0;color:var(--ink)}
+.toolright{display:flex;gap:.6rem;align-items:center}
+/* Facets: a tidy grid of labelled controls — mono uppercase labels above
+   quiet bordered fields, all of a size, instead of ragged inline rows */
+.facets{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+  gap:.7rem 1rem;align-items:end}
+.facets label{display:block;margin:0 0 .3rem;font-family:var(--mono);font-size:.62rem;
+  letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3)}
+.facets select,.facets input[type=number]{width:100%;min-height:38px;padding:.4rem .6rem;
+  font:inherit;font-size:.9rem;background:var(--paper);border:1px solid var(--rule);
+  border-radius:0;color:var(--ink)}
+.facets .qbtn{width:100%}
 .seg{display:inline-flex;border:1px solid var(--ink-3)}
-.seg button{min-height:40px;padding:.4rem .95rem;font:inherit;font-size:.88rem;font-weight:500;
+.seg button{min-height:38px;padding:.4rem .95rem;font:inherit;font-size:.88rem;font-weight:500;
   background:var(--paper);color:var(--ink-2);border:0;border-right:1px solid var(--rule);cursor:pointer}
 .seg button:last-child{border-right:0}
 .seg button:hover{color:var(--ink)}
@@ -367,10 +373,10 @@
 .dl:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .countline{font-family:var(--mono);font-size:.8rem;color:var(--ink-3)}
 .taxbox{background:var(--paper-2);border-bottom:1px solid var(--rule)}
-.taxbox .wrap{padding:1.1rem 1.6rem}
+.taxbox .wrap{padding:1.1rem 1.6rem 1.15rem}
 .taxbox h3{margin:0 0 .5rem;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
-#taxline{margin:0;font-size:.88rem;color:var(--ink-2);line-height:1.7}
-#taxline strong{color:var(--ink)}
+#taxline{margin:0;font-size:.88rem;color:var(--ink-2);line-height:1.85;max-width:100ch}
+#taxline strong{color:var(--ink);font-family:var(--mono)}
 .results{border-top:1px solid var(--ink)}
 .gridwrap{overflow-x:auto;border-top:1px solid var(--ink)}
 table.term{width:100%;border-collapse:collapse;font-size:.85rem;min-width:1000px}
@@ -402,6 +408,7 @@ table.term a{color:inherit}
 .tag.fail{color:var(--kill);border-color:#E0BDB5}
 .tag.ok{color:#1D6F42;border-color:#B7D5BF}
 .more{display:block;width:100%;margin:2rem 0 0}
+[hidden]{display:none !important}
 .empty{padding:3.5rem 0;color:var(--ink-2)}
 .rcta{margin-top:.6rem}
 .rcta .row-btn{display:inline-block;padding:.42rem .7rem;font-size:.78rem;font-weight:600;
