@@ -215,7 +215,10 @@
     if (!/^[^@]+@[^@]+$/.test(em)) { modalMsg("Enter a valid email address.", true); return; }
     try { localStorage.setItem("aaEmail", em); } catch (e) {}
     boot(function () {
-      firebase.auth().sendSignInLinkToEmail(em, { url: location.origin + "/", handleCodeInApp: true })
+      // Return the visitor to the page they signed in from (Google popup keeps
+      // them on-page; email-link has to round-trip through the inbox, so bake
+      // the current path into the continue URL for parity with the popup flow).
+      firebase.auth().sendSignInLinkToEmail(em, { url: location.origin + location.pathname, handleCodeInApp: true })
         .then(function () {
           modalMsg("Check your inbox — we emailed " + em + " a sign-in link. Open it in this browser.");
         })
