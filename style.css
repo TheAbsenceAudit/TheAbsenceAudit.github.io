@@ -76,12 +76,13 @@
   .masthead nav{margin-left:auto;display:flex;gap:1.5rem;font-size:.87rem}
   .masthead nav a{color:var(--ink-2);text-decoration:none;padding:.35rem 0;border-bottom:1px solid transparent}
   .masthead nav a:hover,.masthead nav a:focus-visible{color:var(--ink);border-bottom-color:var(--kill);outline:none}
-  .masthead nav .aa-auth{display:inline-flex;align-items:center;gap:.9rem;font-size:.87rem}
-  .aa-auth .aa-who{font-weight:600;color:var(--ink);border-bottom:0}
-  .aa-auth .aa-badge{background:var(--ink);color:var(--paper);border-radius:999px;padding:.14rem .6rem;font-size:.7rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
-  .aa-auth .aa-btn{background:var(--ink);color:#fff;border:0;border-radius:6px;padding:.4rem .9rem;font:600 .82rem/1.2 ui-sans-serif,system-ui,sans-serif;cursor:pointer}
+  .masthead nav .aa-auth{display:inline-flex;align-items:center;gap:.85rem;font-size:.87rem}
+  .aa-auth .aa-who{font-family:var(--mono);font-size:.76rem;font-weight:500;color:var(--ink-2);border-bottom:0}
+  .aa-auth .aa-badge{background:var(--ink);color:var(--paper);border-radius:0;padding:.16rem .5rem;
+    font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .aa-auth .aa-btn{background:var(--ink);color:#fff;border:0;border-radius:0;padding:.4rem .9rem;font:600 .82rem/1.2 ui-sans-serif,system-ui,sans-serif;cursor:pointer}
   .aa-auth .aa-btn:hover{background:var(--kill)}
-  .aa-auth .aa-out{background:none;border:1px solid var(--rule);border-radius:6px;padding:.3rem .7rem;font:600 .78rem/1.2 ui-sans-serif,system-ui,sans-serif;color:var(--ink-2);cursor:pointer}
+  .aa-auth .aa-out{background:none;border:1px solid var(--rule);border-radius:0;padding:.3rem .7rem;font:600 .78rem/1.2 ui-sans-serif,system-ui,sans-serif;color:var(--ink-2);cursor:pointer}
   .aa-auth .aa-out:hover{color:var(--ink);border-color:var(--kill)}
   .aa-badge.big{display:inline-block;margin:0 0 1rem}
 
@@ -119,8 +120,8 @@
   .aa-user-line{display:flex;align-items:center;gap:.8rem;flex-wrap:wrap;margin:1.2rem 0 0;
     font-size:.92rem}
   .aa-user-line .aa-who{font-weight:600}
-  .aa-user-line .aa-badge{background:var(--ink);color:var(--paper);border-radius:999px;
-    padding:.16rem .7rem;font-size:.72rem;font-weight:600;letter-spacing:.05em;text-transform:uppercase}
+  .aa-user-line .aa-badge{background:var(--ink);color:var(--paper);border-radius:0;
+    padding:.18rem .55rem;font-family:var(--mono);font-size:.64rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
   .aa-user-line .aa-badge.owned{background:var(--live);color:#FFF}
   .aa-user-line .aa-out{background:none;border:1px solid var(--rule);padding:.32rem .8rem;
     font:inherit;font-size:.82rem;font-weight:600;color:var(--ink-2);cursor:pointer;min-height:0}
@@ -338,11 +339,12 @@
 .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
   border-bottom:1px solid var(--rule);padding:1.1rem 0}
 .toolbar .wrap{display:grid;gap:.75rem}
-.searchrow{display:flex;gap:.6rem;flex-wrap:wrap}
-.searchrow input[type=search]{flex:1 1 22rem;min-height:48px;padding:.7rem .95rem;font:inherit;
+.searchrow{display:grid;gap:.75rem}
+.searchrow input[type=search]{width:100%;min-height:48px;padding:.7rem .95rem;font:inherit;
   font-size:1rem;background:var(--paper);border:1px solid var(--ink-3);border-radius:0;color:var(--ink)}
 .searchrow input[type=search]:focus-visible{outline:2px solid var(--kill);outline-offset:1px}
-.facets{display:flex;gap:.55rem;flex-wrap:wrap;align-items:center}
+.toolrow{display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;justify-content:space-between}
+.facets{display:flex;gap:.7rem .55rem;flex-wrap:wrap;align-items:center}
 .facets label{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;
   text-transform:uppercase;color:var(--ink-3)}
 .facets select,.facets input[type=number]{min-height:40px;padding:.4rem .6rem;font:inherit;
@@ -351,11 +353,18 @@
 .seg button{min-height:40px;padding:.4rem .95rem;font:inherit;font-size:.88rem;font-weight:500;
   background:var(--paper);color:var(--ink-2);border:0;border-right:1px solid var(--rule);cursor:pointer}
 .seg button:last-child{border-right:0}
-.seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
+.seg button:hover{color:var(--ink)}
+.seg button[aria-pressed=true]{background:var(--paper-2);color:var(--ink);
+  box-shadow:inset 0 -2px 0 var(--kill)}
+/* Quiet controls: the ledger's secondary actions (download, reset) stay in
+   the ink-on-paper family instead of competing with the primary black buttons */
+.qbtn{min-height:40px;padding:.4rem .9rem;font:inherit;font-size:.88rem;font-weight:500;
+  background:var(--paper);color:var(--ink);border:1px solid var(--ink-3);border-radius:0;cursor:pointer}
+.qbtn:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .dl{display:inline-flex;align-items:center;min-height:40px;padding:.4rem .95rem;
-  font:inherit;font-size:.88rem;font-weight:600;text-decoration:none;color:var(--paper);
-  background:var(--kill);border:1px solid var(--kill)}
-.dl:hover{opacity:.88}
+  font:inherit;font-size:.88rem;font-weight:600;text-decoration:none;color:var(--ink);
+  background:var(--paper);border:1px solid var(--ink-3)}
+.dl:hover{background:var(--ink);color:var(--paper);border-color:var(--ink)}
 .countline{font-family:var(--mono);font-size:.8rem;color:var(--ink-3)}
 .taxbox{background:var(--paper-2);border-bottom:1px solid var(--rule)}
 .taxbox .wrap{padding:1.1rem 1.6rem}

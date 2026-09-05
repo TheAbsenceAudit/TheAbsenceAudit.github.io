@@ -55,7 +55,7 @@
 <link rel="icon" href="/favicon.ico" sizes="any">
 <link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="stylesheet" href="/style.css?v=1788608470">
+<link rel="stylesheet" href="/style.css?v=1788609134">
 </head><body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="masthead">
@@ -85,16 +85,18 @@
 <div class="toolbar"><div class="wrap">
   <div class="searchrow">
     <input type="search" id="q" placeholder="Search concepts, disciplines, or an incumbent (e.g. silver ink, Portland cement)" aria-label="Search the ledger">
-    <div class="seg" role="group" aria-label="Verdict" id="verdictseg">
-      <button type="button" data-v="all" aria-pressed="true">All</button>
-      <button type="button" data-v="sale" aria-pressed="false">For sale</button>
-      <button type="button" data-v="0" aria-pressed="false">Rejected</button>
+    <div class="toolrow">
+      <div class="seg" role="group" aria-label="Verdict" id="verdictseg">
+        <button type="button" data-v="all" aria-pressed="true">All</button>
+        <button type="button" data-v="sale" aria-pressed="false">For sale</button>
+        <button type="button" data-v="0" aria-pressed="false">Rejected</button>
+      </div>
+      <div class="seg" role="group" aria-label="View" id="viewseg">
+        <button type="button" data-view="grid" aria-pressed="true">Grid</button>
+        <button type="button" data-view="list" aria-pressed="false">List</button>
+      </div>
+      <a class="dl" data-aa-commerce href="/ledger.csv" download>Download CSV</a>
     </div>
-    <div class="seg" role="group" aria-label="View" id="viewseg">
-      <button type="button" data-view="grid" aria-pressed="true">Grid</button>
-      <button type="button" data-view="list" aria-pressed="false">List</button>
-    </div>
-    <a class="dl" data-aa-commerce href="/ledger.csv" download>Download CSV</a>
   </div>
   <div class="facets">
     <label for="disc">Discipline</label>
@@ -113,7 +115,7 @@
       <option value="pay">fastest payback</option>
       <option value="az">A–Z</option>
     </select>
-    <button type="button" id="reset" style="min-height:40px;padding:.4rem .9rem;font-size:.88rem">Reset</button>
+    <button type="button" id="reset" class="qbtn">Reset</button>
   </div>
   <p class="countline" id="count">Loading the ledger…</p>
 </div></div>

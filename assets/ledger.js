@@ -78,9 +78,9 @@
   // ------------------------------------------------------- attribution strip
   // The member ledger (/dossier/) is the SAME page as the public ledger — same
   // head, same toolbar, same table. The only addition is this strip between
-  // the head and the toolbar: the visitor's role, in place. Anonymous visitors
-  // see a sign-in card; owners see their account line; subscribers see the
-  // "unlocked" note. Rendered only in mine mode.
+  // the head and the toolbar: the visitor's role, in place. Identity and
+  // sign-out live in the masthead chip; the strip carries only the role badge
+  // and its status note, so nothing is said twice.
   function renderAttrib() {
     var el = $("aa-ledger-attrib");
     if (!el || !MINE) return;
@@ -94,20 +94,18 @@
       h = '<div class="aa-user-line"><span class="aa-badge owned">Subscriber</span>' +
         '<span class="aa-attrib-note">Unlocked — every dossier is open to you. No prices, no paywalls.</span></div>';
     } else if (signedIn) {
-      h = '<div class="aa-user-line"><span class="aa-who">' + esc(st.email) + "</span>" +
+      h = '<div class="aa-user-line">' +
         (planAll
-          ? '<span class="aa-badge">Full Ledger Access</span>'
-          : '<span class="aa-badge owned">' + ownedN + " of " + (META ? META.total : "") + " dossiers open</span>") +
-        '<button class="aa-out" id="aa-attrib-out" type="button">Sign out</button></div>';
+          ? '<span class="aa-badge">Full Ledger Access</span>' +
+            '<span class="aa-attrib-note">Every dossier, past and future. New survivors appear the moment the pipeline clears them.</span>'
+          : '<span class="aa-badge owned">' + ownedN + " of " + (META ? META.total : "") + " dossiers open</span>" +
+            '<span class="aa-attrib-note">The dossiers you own are open in the table below; the rest are one click away.</span>') +
+        "</div>";
     } else {
       h = '<div class="aa-signin-card"><span>Already bought a dossier? Sign in and it unlocks right here, in this table.</span>' +
         '<button class="aa-btn" id="aa-attrib-signin" type="button">Sign in</button></div>';
     }
     el.innerHTML = h;
-    var out = el.querySelector("#aa-attrib-out");
-    if (out) out.addEventListener("click", function () {
-      if (window.AA && window.AA.signOut) window.AA.signOut();
-    });
     var si = el.querySelector("#aa-attrib-signin");
     if (si && window.AA && window.AA.openSignIn) si.addEventListener("click", window.AA.openSignIn);
   }
