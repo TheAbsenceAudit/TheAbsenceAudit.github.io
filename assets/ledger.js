@@ -35,7 +35,7 @@
   var FREE = "liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati";
 
   var all = [], view = [], shown = 0;
-  var verdict = "all", viewmode = "grid";
+  var verdict = "all", viewmode = "grid", capexBand = "";
   var timer = null;
 
   var $ = function (id) { return document.getElementById(id); };
@@ -150,6 +150,15 @@
       }
       if (cx !== null && !(r.cx !== null && r.cx !== undefined && r.cx <= cx)) return false;
       if (pb !== null && !(r.pb !== null && r.pb !== undefined && r.pb <= pb)) return false;
+      // Startup-capital band: a one-click ceiling ("max" inverts to a floor).
+      // ANDs with the precise CapEx input above, so band + exact cap combine.
+      if (capexBand) {
+        if (capexBand === "max") {
+          if (!(r.cx !== null && r.cx !== undefined && r.cx > 500000)) return false;
+        } else if (!(r.cx !== null && r.cx !== undefined && r.cx <= parseInt(capexBand, 10) * 1000)) {
+          return false;
+        }
+      }
       if (terms.length) {
         var h = hay(r);
         for (var i = 0; i < terms.length; i++) if (h.indexOf(terms[i]) < 0) return false;
@@ -339,6 +348,7 @@
     if (disc.value) p.set("d", disc.value);
     if (fail.value) p.set("f", fail.value);
     if (capex.value) p.set("cx", capex.value);
+    if (capexBand) p.set("cb", capexBand);
     if (pay.value) p.set("pb", pay.value);
     if (sort.value !== "new") p.set("s", sort.value);
     if (viewmode !== "grid") p.set("w", viewmode);
@@ -354,6 +364,8 @@
     if (p.get("d")) disc.value = p.get("d");
     if (p.get("f")) fail.value = p.get("f");
     if (p.get("cx")) capex.value = p.get("cx");
+    var cb = p.get("cb");
+    if (cb === "25" || cb === "100" || cb === "500" || cb === "max") capexBand = cb;
     if (p.get("pb")) pay.value = p.get("pb");
     if (p.get("s")) sort.value = p.get("s");
     if (p.get("w") === "list" || p.get("w") === "grid") viewmode = p.get("w");
@@ -366,6 +378,9 @@
     });
     document.querySelectorAll("#viewseg button").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.view === viewmode));
+    });
+    document.querySelectorAll("#capexseg button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.cx === capexBand));
     });
   }
 
@@ -391,10 +406,17 @@
       apply();
     });
   });
+  document.querySelectorAll("#capexseg button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      capexBand = b.dataset.cx;
+      pressSegs();
+      apply();
+    });
+  });
   more.addEventListener("click", render);
   function reset() {
     q.value = ""; disc.value = ""; fail.value = ""; capex.value = ""; pay.value = "";
-    sort.value = "new"; verdict = "all";
+    sort.value = "new"; verdict = "all"; capexBand = "";
     pressSegs();
     apply();
   }
