@@ -30,49 +30,27 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Subscriber ledger | The Absence Audit</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788536608">
-<style>
-  .subled{padding:2.6rem 0 1.4rem}
-  .subled h1{font-size:clamp(1.9rem,3.6vw,2.7rem);margin:0 0 .6rem}
-  .subled .lede{max-width:60ch;color:var(--ink-2)}
-  .invite{border:1px solid var(--rule);border-top:3px solid var(--ink);padding:1.1rem 1.4rem;
-    margin:1.4rem 0;font-size:.92rem;color:var(--ink-2)}
-  .invite strong{color:var(--ink)}
-  .gridwrap{overflow-x:auto;border-top:1px solid var(--ink)}
-  table.term{width:100%;border-collapse:collapse;font-size:.85rem;min-width:1000px}
-  table.term th{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
-    text-align:left;padding:.65rem .55rem;border-bottom:1px solid var(--ink);color:var(--ink-3);white-space:nowrap}
-  table.term td{padding:.72rem .55rem;border-bottom:1px solid var(--rule);vertical-align:top}
-  table.term td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
-  table.term a{color:inherit}
-  .tname{font-weight:600}
-  .tdate{display:block;font-size:.74rem;color:var(--ink-3);margin-top:.15rem}
-  .tbadge{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;
-    padding:.14rem .4rem;border:1px solid var(--rule);color:var(--ink-3);white-space:nowrap}
-  .tbadge.ok{color:#1D6F42;border-color:#B7D5BF}
-  .tbadge.dead{color:var(--kill);border-color:#E0BDB5}
-  .tdossier{font-weight:600;white-space:nowrap}
-  .countline{font-family:var(--mono);font-size:.8rem;color:var(--ink-3)}
-  #gate{max-width:46rem;margin:2rem 0}
-</style>
+<link rel="stylesheet" href="/style.css?v=1788608470">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="masthead"><div class="wrap">
-  <a class="logo" href="/">The Absence <span>Audit</span></a>
-  <nav><a href="/#thesis">Method</a><a href="/ledger/">The ledger</a><a href="/#join">Get it free</a></nav>
-</div></header>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">The ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/#graveyard">What we killed</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/#join">Get it free</a>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
 
 <main id="main">
 <div class="wrap">
-  <div class="subled">
-    <p class="eyebrow">The Absence Audit</p>
-    <h1>Your ledger</h1>
-    <p class="lede">Open research, no price tags. Every concept below links to its full dossier —
-    the mechanism, the operating protocol, the economics recomputed in code, and the red-team audit
-    arguing against it — with nothing held back and nothing to pay.</p>
-  </div>
-
   <p id="unlocked" class="invite" hidden><strong>Unlocked.</strong> Prices and paywalls are now
   hidden for you on every page of this site — open any dossier and read it in full.</p>
 
@@ -82,31 +60,94 @@
     ask the person who invited you for a fresh one.</p>
   </div>
 
-  <div id="results">
-    <p class="countline" id="count">Loading your ledger…</p>
+  <div id="aa-ledger" class="aa-ledger-body">
+    <div class="wrap ledger-headwrap">
+      <p class="eyebrow">The ledger</p>
+      <h1>Every concept we have assessed.</h1>
+      <p class="lede">What cleared all seven gates, what we rejected, and the
+      specific reason each rejection failed. Search by concept, discipline, or the incumbent
+      product it was measured against.</p>
+      <div id="aa-ledger-attrib"></div>
+    </div>
+
+    <div class="toolbar"><div class="wrap">
+      <div class="searchrow">
+        <input type="search" id="q" placeholder="Search concepts, disciplines, or an incumbent (e.g. silver ink, Portland cement)" aria-label="Search the ledger">
+        <div class="seg" role="group" aria-label="Verdict" id="verdictseg">
+          <button type="button" data-v="all" aria-pressed="true">All</button>
+          <button type="button" data-v="sale" aria-pressed="false">For sale</button>
+          <button type="button" data-v="0" aria-pressed="false">Rejected</button>
+        </div>
+        <div class="seg" role="group" aria-label="View" id="viewseg">
+          <button type="button" data-view="grid" aria-pressed="true">Grid</button>
+          <button type="button" data-view="list" aria-pressed="false">List</button>
+        </div>
+      </div>
+      <div class="facets">
+        <label for="disc">Discipline</label>
+        <select id="disc"><option value="">any</option></select>
+        <label for="fail">Failure mode</label>
+        <select id="fail"><option value="">any</option></select>
+        <label for="capex">Max CapEx $</label>
+        <input type="number" id="capex" min="0" step="10000" placeholder="any" style="width:8rem">
+        <label for="pay">Max payback mo</label>
+        <input type="number" id="pay" min="0" step="1" placeholder="any" style="width:6rem">
+        <label for="sort">Sort</label>
+        <select id="sort">
+          <option value="new">newest first</option>
+          <option value="delta">biggest advantage</option>
+          <option value="capex">lowest CapEx</option>
+          <option value="pay">fastest payback</option>
+          <option value="az">A–Z</option>
+        </select>
+        <button type="button" id="reset" style="min-height:40px;padding:.4rem .9rem;font-size:.88rem">Reset</button>
+      </div>
+      <p class="countline" id="count">Loading the ledger…</p>
+    </div></div>
+
+    <div class="taxbox" id="taxbox" hidden><div class="wrap">
+      <h3>The failure taxonomy — why concepts die</h3>
+      <p id="taxline"></p>
+    </div></div>
+
+    <div class="wrap">
+      <div class="results" id="results"></div>
+      <button type="button" class="more" id="more" hidden>Show more</button>
+      <div class="empty" id="empty" hidden>
+        <p><strong>Nothing matches those filters.</strong></p>
+        <p style="font-size:.95rem">Try a broader search, or <button type="button" id="reset2"
+          style="min-height:auto;padding:.2rem .5rem;font-size:.9rem">reset the filters</button>.</p>
+      </div>
+    </div>
   </div>
 </div>
 </main>
 
-<footer class="site"><div class="wrap"><span>The Absence Audit</span>
-<nav><a href="/">Home</a><a href="/#thesis">Method</a><a href="/#join">Subscribe</a></nav></div>
-<div class="wrap"><p class="disclaimer">Research and educational purposes only. Not investment,
-legal, regulatory or engineering advice; no commercial outcome is promised or implied. Concepts are
-drawn from published literature and are not commercially validated. Verify every figure and
-regulatory requirement independently before committing capital.</p><p class="disclaimer">© 2026 The Absence Audit. All rights reserved. · <a href="/terms/">Terms of Use</a></p></div></footer>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/terms/">Terms</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a></p>
+  </div>
+</footer>
+
+<script>window.AA_LEDGER_PAGE = {"mine": false};</script>
+<script>window.AA_LEDGER_CFG = {"fail_labels":{"negative_control":"Negative control used as incumbent","sub_2x":"Below the 2x step-change bar","no_superiority_table":"No head-to-head evidence","weak_superiority_source":"Evidence rests on non-peer-reviewed sources","evidence_concentration":"Single-source evidence base","duplicate_refs":"Duplicate references inflating the evidence base","declared_parity":"Price parity asserted, not sourced","uncited_incumbent_price":"Incumbent price uncited","defunct_incumbent":"Comparator may have left the market","missing_application_envelope":"Entry application undeclared","entry_application_missing":"Entry application undeclared","missing_hazard_profile":"Hazard profile missing","uncited_safety_claim":"Uncited safety claim","opex_driven_margin":"Margin fails the operating-cost check","capex_mismatch":"CapEx figures inconsistent","missing_absence_ledger":"Absence asserted, search unreported","absence_ledger_unquantified":"Absence search unquantified"},"void_labels":{"A":"Illegitimate incumbent","B":"Mismatched comparison","C":"Capital and time to revenue","D":"Economics undisclosed","E":"Negative control / sub-2x","F":"Entry application mismatch","G":"Form-factor / handling regression","H":"Hazards undisclosed","I":"Absence search missing"},"singles":{},"full_access":{},"batch":50};</script>
+<script src="/assets/ledger.js" defer></script>
 
 <script>
 (function () {
   "use strict";
-  var HASHES = {"4df7e30fe124dceb775972455a1e7c079e4d3595e8177e9bed4069c44e450647": true, "532e83ac0e8d548bc58b8f123e26cd9444971208eced2927f31d4b7bdd873aed": true, "b6539f627e9a594a02e38b70eb5489aefc10e1455752a8afd8efa38269ee994b": true, "dff5d5b79cf55d852c29ae5baa44b48f4c0632b1732d2dd38f00d3b4e6f6184b": true};
-
-  function esc(s) {
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
-
-  function fmtx(x) { return (x >= 2 ? "\u2265" : "") + (Math.round(x * 10) / 10) + "\u00d7"; }
+  var HASHES = ["dff5d5b79cf55d852c29ae5baa44b48f4c0632b1732d2dd38f00d3b4e6f6184b", "532e83ac0e8d548bc58b8f123e26cd9444971208eced2927f31d4b7bdd873aed", "b6539f627e9a594a02e38b70eb5489aefc10e1455752a8afd8efa38269ee994b", "4df7e30fe124dceb775972455a1e7c079e4d3595e8177e9bed4069c44e450647"];
 
   function sha256hex(s) {
     return crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)).then(function (buf) {
@@ -122,67 +163,27 @@ regulatory requirement independently before committing capital.</p><p class="dis
     document.cookie = "aa_sub=1; path=/; max-age=31536000; SameSite=Lax";
     var un = document.getElementById("unlocked");
     if (un) un.hidden = false;
-  }
-
-  // The dossier path is assembled at runtime so the served bytes never carry
-  // the literal locked-catch path (belt-and-braces; this page is already
-  // robots-Disallowed + noindex).
-  var D = "/do" + "ssier/";
-
-  function researchCell(r) {
-    if (r.v || r.p === 1) {
-      return '<a class="tdossier" href="' + D + encodeURIComponent(r.s) + '/" '
-        + 'aria-label="Open the full research for ' + esc(r.n) + '">Open research &rarr;</a>';
-    }
-    return '<a class="tdossier" href="/c/' + encodeURIComponent(r.s) + '/" '
-      + 'aria-label="Read the published audit for ' + esc(r.n) + '">Read the audit &rarr;</a>';
-  }
-
-  function render(list) {
-    var h = '<div class="gridwrap"><table class="term"><thead><tr>'
-      + "<th>Concept</th><th>Status</th><th>Incumbent</th><th>Advantage</th>"
-      + "<th>Absence</th><th>CapEx</th><th>Margin</th><th>Payback</th>"
-      + "<th>Regulatory</th><th>Research</th></tr></thead><tbody>";
-    list.forEach(function (r) {
-      var badges = [];
-      if (r.v) badges.push('<span class="tbadge ok">cleared</span>');
-      else {
-        if (r.p === 1) badges.push('<span class="tbadge">product</span>');
-        badges.push('<span class="tbadge dead">rejected</span>');
-      }
-      h += "<tr>"
-        + '<td><a class="tname" href="/c/' + encodeURIComponent(r.s) + '/">' + esc(r.n) + "</a>"
-        + '<span class="tdate">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") + "</span></td>"
-        + "<td>" + badges.join(" ") + "</td>"
-        + "<td>" + (r.i ? esc(r.i) : "—") + "</td>"
-        + '<td class="num">' + ((r.v || r.p === 1) && r.x ? fmtx(r.x) : "—") + "</td>"
-        + "<td>" + (r.abs === 1 ? '<span class="tbadge ok">verified</span>' : "—") + "</td>"
-        + '<td class="num">' + (r.cx != null ? "$" + Number(r.cx).toLocaleString() : "—") + "</td>"
-        + '<td class="num">' + (r.gm != null ? r.gm + "%" : "—") + "</td>"
-        + '<td class="num">' + (r.pb != null ? r.pb + " mo" : "—") + "</td>"
-        + "<td>" + (r.reg ? esc(r.reg) : "—") + "</td>"
-        + "<td>" + researchCell(r) + "</td>"
-        + "</tr>";
-    });
-    return h + "</tbody></table></div>";
+    var body = document.getElementById("aa-ledger");
+    if (body) body.hidden = false;
   }
 
   function showGate() {
     document.getElementById("gate").hidden = false;
+    document.getElementById("aa-ledger").hidden = true;
     document.getElementById("count").textContent = "";
   }
 
-  function load(list) {
-    document.getElementById("results").innerHTML = render(list);
-    var n = document.createElement("p");
-    n.className = "countline";
-    n.textContent = list.length + " concepts assessed — every dossier is open to you.";
-    document.getElementById("results").prepend(n);
+  function alreadyArmed() {
+    return document.cookie.indexOf("aa_sub=1") >= 0;
   }
 
   var p = new URLSearchParams(location.search);
   var k = p.get("k");
-  if (!k || !(window.crypto && crypto.subtle)) {
+  if (!k) {
+    if (alreadyArmed()) { armSubscriberMode(); }
+    else if (window.crypto && crypto.subtle) { showGate(); }
+    else { showGate(); }
+  } else if (!(window.crypto && crypto.subtle)) {
     showGate();
   } else {
     sha256hex(k).then(function (hex) {
@@ -191,13 +192,6 @@ regulatory requirement independently before committing capital.</p><p class="dis
       // from the address bar so screenshots/shares cannot leak the invitation
       armSubscriberMode();
       history.replaceState(null, "", location.pathname);
-      fetch("/ledger.json", { cache: "no-cache" })
-        .then(function (r) { return r.json(); })
-        .then(function (data) { load(data.concepts || []); })
-        .catch(function () {
-          document.getElementById("count").textContent =
-            "The ledger could not be loaded. Please reload the page.";
-        });
     }).catch(function () { showGate(); });
   }
 })();

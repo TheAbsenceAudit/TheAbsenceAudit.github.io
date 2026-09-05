@@ -4,6 +4,31 @@
 <script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}};</script>
 <script src="/assets/auth.js" defer></script>
 
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -38,94 +63,30 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788536608">
-<style>
-  .toolbar{position:sticky;top:0;z-index:20;background:var(--paper);
-    border-bottom:1px solid var(--rule);padding:1.1rem 0}
-  .toolbar .wrap{display:grid;gap:.75rem}
-  .searchrow{display:flex;gap:.6rem;flex-wrap:wrap}
-  .searchrow input[type=search]{flex:1 1 22rem;min-height:48px;padding:.7rem .95rem;font:inherit;
-    font-size:1rem;background:var(--paper);border:1px solid var(--ink-3);border-radius:0;color:var(--ink)}
-  .searchrow input[type=search]:focus-visible{outline:2px solid var(--kill);outline-offset:1px}
-  .facets{display:flex;gap:.55rem;flex-wrap:wrap;align-items:center}
-  .facets label{font-family:var(--mono);font-size:.68rem;letter-spacing:.09em;
-    text-transform:uppercase;color:var(--ink-3)}
-  .facets select,.facets input[type=number]{min-height:40px;padding:.4rem .6rem;font:inherit;
-    font-size:.9rem;background:var(--paper);border:1px solid var(--rule);border-radius:0;color:var(--ink)}
-  .seg{display:inline-flex;border:1px solid var(--ink-3)}
-  .seg button{min-height:40px;padding:.4rem .95rem;font:inherit;font-size:.88rem;font-weight:500;
-    background:var(--paper);color:var(--ink-2);border:0;border-right:1px solid var(--rule);cursor:pointer}
-  .seg button:last-child{border-right:0}
-  .seg button[aria-pressed=true]{background:var(--ink);color:var(--paper)}
-  .dl{display:inline-flex;align-items:center;min-height:40px;padding:.4rem .95rem;
-    font:inherit;font-size:.88rem;font-weight:600;text-decoration:none;color:var(--paper);
-    background:var(--kill);border:1px solid var(--kill)}
-  .dl:hover{opacity:.88}
-  .countline{font-family:var(--mono);font-size:.8rem;color:var(--ink-3)}
-  .taxbox{background:var(--paper-2);border-bottom:1px solid var(--rule)}
-  .taxbox .wrap{padding:1.1rem 1.6rem}
-  .taxbox h3{margin:0 0 .5rem;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-2)}
-  #taxline{margin:0;font-size:.88rem;color:var(--ink-2);line-height:1.7}
-  #taxline strong{color:var(--ink)}
-  .results{border-top:1px solid var(--ink)}
-  .gridwrap{overflow-x:auto;border-top:1px solid var(--ink)}
-  table.term{width:100%;border-collapse:collapse;font-size:.85rem;min-width:1000px}
-  table.term th{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
-    text-align:left;padding:.65rem .55rem;border-bottom:1px solid var(--ink);color:var(--ink-3);white-space:nowrap}
-  table.term td{padding:.72rem .55rem;border-bottom:1px solid var(--rule);vertical-align:top}
-  table.term td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
-  table.term a{color:inherit}
-  .tname{font-weight:600}
-  .tdate{display:block;font-size:.74rem;color:var(--ink-3);margin-top:.15rem}
-  .tbadge{font-family:var(--mono);font-size:.62rem;letter-spacing:.05em;text-transform:uppercase;
-    padding:.14rem .4rem;border:1px solid var(--rule);color:var(--ink-3);white-space:nowrap}
-  .tbadge.ok{color:#1D6F42;border-color:#B7D5BF}
-  .tbadge.dead{color:var(--kill);border-color:#E0BDB5}
-  .tdossier{font-weight:600;white-space:nowrap}
-  .row{display:grid;grid-template-columns:1fr auto;gap:1rem 1.6rem;align-items:start;
-    padding:1.25rem 0;border-bottom:1px solid var(--rule)}
-  .row:hover{background:var(--paper-2)}
-  .row h2{font-size:1.14rem;font-weight:500;margin:0 0 .3rem}
-  .row h2 a{text-decoration:none}
-  .row h2 a:hover{color:var(--kill)}
-  .rmeta{font-family:var(--mono);font-size:.72rem;color:var(--ink-3);margin:0 0 .45rem}
-  .rmetric{font-size:.92rem;color:var(--ink-2);margin:0;max-width:74ch}
-  .rright{text-align:right;white-space:nowrap;font-family:var(--mono);font-size:.8rem}
-  .rdelta{font-size:1.02rem;font-weight:500;color:var(--live)}
-  .tagline{margin:.5rem 0 0;display:flex;gap:.4rem;flex-wrap:wrap}
-  .tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.05em;text-transform:uppercase;
-    padding:.2rem .45rem;border:1px solid var(--rule);color:var(--ink-3)}
-  .tag.fail{color:var(--kill);border-color:#E0BDB5}
-  .tag.ok{color:#1D6F42;border-color:#B7D5BF}
-  .more{display:block;width:100%;margin:2rem 0 0}
-  .empty{padding:3.5rem 0;color:var(--ink-2)}
-  .rcta{margin-top:.6rem}
-  .rcta .row-btn{display:inline-block;padding:.42rem .7rem;font-size:.78rem;font-weight:600;
-    text-decoration:none;border:1px solid var(--ink);border-radius:0;background:var(--bg);color:var(--ink)}
-  .rcta .row-btn:hover,.rcta .row-btn:focus-visible{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-  .rcta .row-btn--buy{background:var(--bg);color:var(--ink);border:1px solid var(--ink)}
-  .rcta .row-btn--buy:hover,.rcta .row-btn--buy:focus-visible{background:var(--ink);color:var(--bg);border-color:var(--ink)}
-  .rcta .row-btn__price{font-variant-numeric:tabular-nums;opacity:.75;margin-left:.3rem}
-  .rcta .row-btn--free{color:var(--ink-2)}
-  .rcta .row-btn--free:hover{background:var(--ink);color:var(--bg)}
-  .rright audio{width:100%;max-width:280px;height:2.1rem;margin-top:.45rem}
-  .rright .raudio-label{display:block;font-size:.72rem;color:var(--ink-3);margin-top:.35rem}
-  .taudio{font-size:.82rem;white-space:nowrap}
-  @media (max-width:700px){.row{grid-template-columns:1fr}.rright{text-align:left}}
-</style>
+<link rel="stylesheet" href="/style.css?v=1788608470">
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
-<header class="masthead"><div class="wrap">
-  <a class="logo" href="/">The Absence <span>Audit</span></a>
-  <nav><a href="/#thesis">Method</a><a href="/ledger/">The ledger</a><a href="/#join">Get it free</a></nav>
-</div></header>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">The ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/#graveyard">What we killed</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/#join">Get it free</a>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
 
 <main id="main">
-<div class="wrap" style="padding:2.6rem 0 1.4rem">
+<div class="wrap ledger-headwrap">
   <p class="eyebrow">The ledger</p>
-  <h1 style="font-size:clamp(1.9rem,3.6vw,2.7rem)">Every concept we have assessed.</h1>
-  <p class="lede" style="max-width:60ch">What cleared all seven gates, what we rejected, and the
+  <h1>Every concept we have assessed.</h1>
+  <p class="lede">What cleared all seven gates, what we rejected, and the
   specific reason each rejection failed. Search by concept, discipline, or the incumbent product
   it was measured against.</p>
 </div>
@@ -182,347 +143,25 @@
 </div>
 </main>
 
-<footer class="site"><div class="wrap"><span>The Absence Audit</span>
-<nav><a href="/">Home</a><a href="/#thesis">Method</a><a href="/#join">Subscribe</a></nav></div>
-<div class="wrap"><p class="disclaimer">Research and educational purposes only. Not investment,
-legal, regulatory or engineering advice; no commercial outcome is promised or implied. Concepts are
-drawn from published literature and are not commercially validated. Verify every figure and
-regulatory requirement independently before committing capital.</p><p class="disclaimer">© 2026 The Absence Audit. All rights reserved. · <a href="/terms/">Terms of Use</a></p></div></footer>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/terms/">Terms</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a></p>
+  </div>
+</footer>
 
-<script>
-(function () {
-  var FAIL_LABEL = {"negative_control": "Negative control used as incumbent", "sub_2x": "Below the 2x step-change bar", "no_superiority_table": "No head-to-head evidence", "weak_superiority_source": "Evidence rests on non-peer-reviewed sources", "evidence_concentration": "Single-source evidence base", "duplicate_refs": "Duplicate references inflating the evidence base", "declared_parity": "Price parity asserted, not sourced", "uncited_incumbent_price": "Incumbent price uncited", "defunct_incumbent": "Comparator may have left the market", "missing_application_envelope": "Entry application undeclared", "entry_application_missing": "Entry application undeclared", "missing_hazard_profile": "Hazard profile missing", "uncited_safety_claim": "Uncited safety claim", "opex_driven_margin": "Margin fails the operating-cost check", "capex_mismatch": "CapEx figures inconsistent", "missing_absence_ledger": "Absence asserted, search unreported", "absence_ledger_unquantified": "Absence search unquantified"};
-  var VOID_LABEL = {"A": "Illegitimate incumbent", "B": "Mismatched comparison", "C": "Capital and time to revenue", "D": "Economics undisclosed", "E": "Negative control / sub-2x", "F": "Entry application mismatch", "G": "Form-factor / handling regression", "H": "Hazards undisclosed", "I": "Absence search missing"};
-  var SINGLES = {"biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli": {"name": "Biomimetic Nano-Hydroxyapatite (nHAp)", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/nano-hydroxyapatite"}, "biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum": {"name": "Biogenic Acid-Resistant Sewer Infrastructure", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/acid-resistant-sewer"}, "high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz": {"name": "High-Photostability Anti-Counterfeiting Inks", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/anti-counterfeiting-inks"}, "ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer": {"name": "Ultra-High-Strength Underwater Adhesives", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/ultra-high-strength-underwater-adhesives"}, "sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid": {"name": "Sustained-Release Silk Fibroin Microneedle Matrices", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/silk-fibroin-microneedles"}, "commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f": {"name": "Commercial Production of Pediocin PA-1", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/commercial-production-of-pediocin-pa-1"}, "mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc": {"name": "CTFs for PFAS water treatment", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/ctfs-pfas-water-treatment"}, "polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi": {"name": "Polyimide-Silica Aerogel Blankets", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/polyimide-reinforced-silica-aerogel-blan"}, "cement-free-refractory-castables-via-potassium-activated-metakaolin-ge": {"name": "Cement-Free Refractory Castables", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/cement-free-refractory-castables"}, "inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion": {"name": "Inositol Hexaphosphate (IP6) Substrate Passivation", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/inositol-hexaphosphate-ip6-passivation"}, "polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial": {"name": "IPDI Self-Healing Microcapsules", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/ipdi-microcapsules"}, "compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi": {"name": "Compact Volume-Expandable Sorbents (CVES)", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/cves-polyhipe-sorbents"}, "ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via": {"name": "Ultrawhite BaSO4 Radiative Cooling Paint", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/baso4-cooling-paint"}, "halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am": {"name": "Halogen-Free Ionic Liquid Boundary Lubricant", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/halogen-free-ionic-liquid"}, "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat": {"name": "Drought-Resilient Dark Septate Endophyte (DSE) Inoculants", "price": "$999", "checkout_url": "https://theabsenceaudit.kit.com/products/drought-resilient-dark-septate-endophyte"}, "ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze": {"name": "Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR)", "price": "$499", "checkout_url": "https://theabsenceaudit.kit.com/products/ultra-low-shrinkage-ocr-resin"}, "self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca": {"name": "Self-Healable WPU/Ti3C2Tx MXene Coating", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/self-healable-mxene-coating"}, "pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech": {"name": "Pressureless Micro-Silver-Indium TLP Sintering Paste", "price": "$499", "checkout_url": "https://theabsenceaudit.kit.com/products/pressureless-ag-in-tlp-sintering-paste"}, "conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a": {"name": "Conductive IP6-PANI Hydrogels", "price": "$999", "checkout_url": "https://theabsenceaudit.kit.com/products/ip6-pani-hydrogels"}, "nitrogen-doped-carbon-nanodots-n-cds-via-atmospheric-microwave-pyrolys": {"name": "Nitrogen-Doped Carbon Nanodots (N-CDs)", "price": "$299", "checkout_url": "https://theabsenceaudit.kit.com/products/nitrogen-doped-carbon-nanodots"}};
-  var FULL_ACCESS = {"url": "https://theabsenceaudit.kit.com/products/full-ledger-access", "price": "$20,000", "label": "Full access"};
-  var BATCH = 50;
-  var all = [], view = [], shown = 0;
-
-  var $ = function (id) { return document.getElementById(id); };
-  var q = $("q"), disc = $("disc"), fail = $("fail"), capex = $("capex"),
-      pay = $("pay"), sort = $("sort"), results = $("results"),
-      count = $("count"), more = $("more"), empty = $("empty");
-  var verdict = "all";
-  var viewmode = "grid";
-
-  function hay(r) {
-    if (!r._h) r._h = [r.n, r.d, r.i, r.m].join(" ").toLowerCase();
-    return r._h;
-  }
-
-  function tokens(s) {
-    return s.toLowerCase().split(/\s+/).filter(function (t) { return t.length > 0; });
-  }
-
-  function apply() {
-    var terms = tokens(q.value);
-    var dv = disc.value, fv = fail.value;
-    var cx = capex.value ? parseFloat(capex.value) : null;
-    var pb = pay.value ? parseFloat(pay.value) : null;
-
-    view = all.filter(function (r) {
-      if (verdict !== "all") {
-        if (verdict === "sale") { if (!(r.p === 1 || r.v === 1)) return false; }
-        else if (String(r.v) !== verdict) return false;
-      }
-      if (dv && r.d !== dv) return false;
-      if (fv) {
-        var has = (r.f || []).indexOf(fv) >= 0 ||
-                  (r.o || "").split(",").map(function (x) { return x.trim(); }).indexOf(fv) >= 0;
-        if (!has) return false;
-      }
-      if (cx !== null && !(r.cx !== null && r.cx !== undefined && r.cx <= cx)) return false;
-      if (pb !== null && !(r.pb !== null && r.pb !== undefined && r.pb <= pb)) return false;
-      if (terms.length) {
-        var h = hay(r);
-        for (var i = 0; i < terms.length; i++) if (h.indexOf(terms[i]) < 0) return false;
-      }
-      return true;
-    });
-
-    var s = sort.value;
-    view.sort(function (a, b) {
-      // A rejected concept's delta is a DISCREDITED claim, so it must never
-      // outrank a verified one. Sorting by advantage ranks cleared first.
-      if (s === "delta") {
-        var ax = a.v ? (a.x || 0) : -1, bx = b.v ? (b.x || 0) : -1;
-        return bx - ax;
-      }
-      if (s === "capex") return (a.cx == null ? Infinity : a.cx) - (b.cx == null ? Infinity : b.cx);
-      if (s === "pay") return (a.pb == null ? Infinity : a.pb) - (b.pb == null ? Infinity : b.pb);
-      if (s === "az") return a.n.localeCompare(b.n);
-      return (b.t || "").localeCompare(a.t || "") || a.n.localeCompare(b.n);
-    });
-
-    if (viewmode === "grid") {
-      shown = view.length;
-      results.innerHTML = view.length ? renderGrid(view) : "";
-      more.hidden = true;
-      empty.hidden = view.length > 0;
-      count.textContent = view.length === all.length
-        ? all.length + " concepts assessed"
-        : "Showing " + view.length + " of " + all.length + " concepts";
-      syncHash();
-      return;
-    }
-
-    shown = 0;
-    results.innerHTML = "";
-    render();
-    syncHash();
-  }
-
-  function render() {
-    var slice = view.slice(shown, shown + BATCH);
-    var frag = document.createDocumentFragment();
-    slice.forEach(function (r) {
-      var row = document.createElement("article");
-      row.className = "row";
-      var tags = [];
-      if (r.v) {
-        tags.push('<span class="tag">cleared</span>');
-      } else {
-        if (r.p === 1) tags.push('<span class="tag">product</span>');
-        (r.o || "").split(",").forEach(function (p) {
-          p = p.trim();
-          if (p && p.toLowerCase() !== "none" && VOID_LABEL[p])
-            tags.push('<span class="tag fail">' + VOID_LABEL[p] + "</span>");
-        });
-        (r.f || []).forEach(function (f) {
-          tags.push('<span class="tag fail">' + (FAIL_LABEL[f] || f) + "</span>");
-        });
-      }
-      if (r.abs === 1) tags.push('<span class="tag ok">absence verified</span>');
-      if (r.reg === "high") tags.push('<span class="tag fail">high regulatory</span>');
-      else if (r.reg === "med") tags.push('<span class="tag">regulatory</span>');
-      row.innerHTML =
-        '<div><h2><a href="/c/' + r.s + '/">' + esc(r.n) + "</a></h2>" +
-        '<p class="rmeta">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") +
-          (r.i ? " · vs " + esc(r.i) : "") + "</p>" +
-        (r.m ? '<p class="rmetric">' + esc(r.m) + "</p>" : "") +
-        '<div class="tagline">' + tags.join("") + "</div></div>" +
-        '<div class="rright">' +
-          ((r.v || r.p === 1) && r.x ? '<div class="rdelta">' + fmtx(r.x) + "</div>" : "") +
-          (r.cx ? "<div>$" + Number(r.cx).toLocaleString() + " capex</div>" : "") +
-          (r.pb ? "<div>" + r.pb + " mo payback</div>" : "") +
-          (r.gm ? "<div>" + r.gm + "% margin</div>" : "") +
-          (r.a ? '<span class="raudio-label">&#9835; NotebookLM audio overview</span>' +
-                 '<audio controls preload="none" src="' + esc(r.a) + '"></audio>' : "") +
-          cta(r) +
-        "</div>";
-      frag.appendChild(row);
-    });
-    results.appendChild(frag);
-    shown += slice.length;
-    more.hidden = shown >= view.length;
-    more.textContent = "Show more (" + Math.max(0, view.length - shown) + " remaining)";
-    empty.hidden = view.length > 0;
-    count.textContent = view.length === all.length
-      ? all.length + " concepts assessed"
-      : "Showing " + view.length + " of " + all.length + " concepts";
-  }
-
-  function fmtx(x) { return (x >= 2 ? "\u2265" : "") + (Math.round(x * 10) / 10) + "\u00d7"; }
-  function esc(s) {
-    return String(s == null ? "" : s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
-  function gridCta(r) {
-    // Subscriber mode (aa_sub cookie, set by the private /subscriber/ page):
-    // no prices, no free markers, no buy buttons — just an invitation.
-    if (document.cookie.indexOf("aa_sub=1") >= 0) {
-      if (r.v || r.p === 1) return '<a class="tdossier" href="' + D + encodeURIComponent(r.s) + '/">Open research &rarr;</a>';
-      return '<a class="tdossier" href="/c/' + encodeURIComponent(r.s) + '/">Read the audit &rarr;</a>';
-    }
-    // Compact dossier link for the grid column. Same routing as cta().
-    var FREE = "liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati";
-    if (r.s === FREE) return '<a href="/sample/">Free</a>';
-    if (!r.v && !(r.p === 1)) return '<span class="tbadge dead">autopsy only</span>';
-    var s = SINGLES[r.s];
-    if (s && s.checkout_url) {
-      var price = (r.price != null) ? ("$" + Number(r.price).toLocaleString()) : (s.price || "$299");
-      return '<a class="tdossier" href="' + esc(s.checkout_url) + '" rel="noopener">Buy ' + esc(price) + "</a>";
-    }
-    var fa = FULL_ACCESS || {};
-    return '<a class="tdossier" href="' + esc(fa.url || "/ledger/") + '" rel="noopener">'
-      + esc(fa.label || "Full access") + "</a>";
-  }
-  function renderGrid(list) {
-    var h = '<div class="gridwrap"><table class="term"><thead><tr>'
-      + "<th>Concept</th><th>Status</th><th>Incumbent</th><th>Advantage</th>"
-      + "<th>Absence</th><th>CapEx</th><th>Margin</th><th>Payback</th>"
-      + "<th>Regulatory</th><th>Dossier</th></tr></thead><tbody>";
-    list.forEach(function (r) {
-      var badges = [];
-      if (r.v) badges.push('<span class="tbadge ok">cleared</span>');
-      else {
-        if (r.p === 1) badges.push('<span class="tbadge">product</span>');
-        badges.push('<span class="tbadge dead">rejected</span>');
-      }
-      h += "<tr>"
-        + '<td><a class="tname" href="/c/' + r.s + '/">' + esc(r.n) + "</a>"
-        + '<span class="tdate">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") + "</span></td>"
-        + "<td>" + badges.join(" ") + "</td>"
-        + "<td>" + (r.i ? esc(r.i) : "—") + "</td>"
-        + '<td class="num">' + ((r.v || r.p === 1) && r.x ? fmtx(r.x) : "—") + "</td>"
-        + "<td>" + (r.abs === 1 ? '<span class="tbadge ok">verified</span>' : "—") + "</td>"
-        + '<td class="num">' + (r.cx != null ? "$" + Number(r.cx).toLocaleString() : "—") + "</td>"
-        + '<td class="num">' + (r.gm != null ? r.gm + "%" : "—") + "</td>"
-        + '<td class="num">' + (r.pb != null ? r.pb + " mo" : "—") + "</td>"
-        + "<td>" + (r.reg ? esc(r.reg) : "—") + "</td>"
-        + "<td>" + (r.a ? '<a class="taudio" href="' + esc(r.a) + '" aria-label="Listen to the audio overview of ' + esc(r.n) + '">&#9835; audio</a> ' : "") + gridCta(r) + "</td>"
-        + "</tr>";
-    });
-    return h + "</tbody></table></div>";
-  }
-  var D = "/do" + "ssier/";  // subscriber-mode dossier path, assembled at runtime
-  function cta(r) {
-    // Subscriber mode (aa_sub cookie): no prices, no buy buttons — just an
-    // invitation to open the research.
-    if (document.cookie.indexOf("aa_sub=1") >= 0) {
-      if (!r.v && !(r.p === 1)) return "";
-      return '<div class="rcta"><a class="row-btn" href="' + D + encodeURIComponent(r.s) + '/">Open research &rarr;</a></div>';
-    }
-    // A product (live Kit single) or audit-cleared concept is sold as a single
-    // dossier priced by its Deal Value Score. A rejected concept without a
-    // product is not for sale — its /c/<slug>/ page is the free cautionary read.
-    // Liquid Metal is the free sample.
-    if (!r.v && !(r.p === 1)) return "";
-    var FREE = "liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati"; // the free sample
-    if (r.s === FREE) return '<div class="rcta"><a class="row-btn row-btn--free" href="/sample/" aria-label="Open the free full entry for ' + esc(r.n) + '">' +
-      'Free<span aria-hidden="true"> &rarr;</span></a></div>';
-    var s = SINGLES[r.s];
-    if (s && s.checkout_url) {
-      var price = (r.price != null) ? ("$" + Number(r.price).toLocaleString()) : (s.price || "$299");
-      return '<div class="rcta"><a class="row-btn row-btn--buy" href="' + esc(s.checkout_url) + '" rel="noopener" ' +
-        'aria-label="Buy the full dossier for ' + esc(r.n) + ' for ' + esc(price) + '">' +
-        'Full dossier <span class="row-btn__price">' + esc(price) + "</span></a></div>";
-    }
-    // no live single -> route to the subscription (never free, never 404)
-    var fa = FULL_ACCESS || {};
-    var url = fa.url || "/ledger/";
-    var label = fa.label || "Full access";
-    return '<div class="rcta"><a class="row-btn row-btn--buy" href="' + esc(url) + '" rel="noopener" ' +
-      'aria-label="Subscribe for full access to ' + esc(r.n) + '">' + esc(label) + "</a></div>";
-  }
-
-  function syncHash() {
-    var p = new URLSearchParams();
-    if (q.value) p.set("q", q.value);
-    if (verdict !== "all") p.set("v", verdict);
-    if (disc.value) p.set("d", disc.value);
-    if (fail.value) p.set("f", fail.value);
-    if (capex.value) p.set("cx", capex.value);
-    if (pay.value) p.set("pb", pay.value);
-    if (sort.value !== "new") p.set("s", sort.value);
-    if (viewmode !== "grid") p.set("w", viewmode);
-    var s = p.toString();
-    history.replaceState(null, "", s ? "?" + s : location.pathname);
-  }
-
-  function readHash() {
-    var p = new URLSearchParams(location.search);
-    if (p.get("q")) q.value = p.get("q");
-    if (p.get("v")) verdict = p.get("v");
-    if (p.get("d")) disc.value = p.get("d");
-    if (p.get("f")) fail.value = p.get("f");
-    if (p.get("cx")) capex.value = p.get("cx");
-    if (p.get("pb")) pay.value = p.get("pb");
-    if (p.get("s")) sort.value = p.get("s");
-    if (p.get("w") === "list" || p.get("w") === "grid") viewmode = p.get("w");
-    document.querySelectorAll("#verdictseg button").forEach(function (b) {
-      b.setAttribute("aria-pressed", String(b.dataset.v === verdict));
-    });
-    document.querySelectorAll("#viewseg button").forEach(function (b) {
-      b.setAttribute("aria-pressed", String(b.dataset.view === viewmode));
-    });
-  }
-
-  var timer;
-  q.addEventListener("input", function () {
-    clearTimeout(timer);
-    timer = setTimeout(apply, 140);
-  });
-  [disc, fail, capex, pay, sort].forEach(function (el) {
-    el.addEventListener("change", apply);
-  });
-  document.querySelectorAll("#verdictseg button").forEach(function (b) {
-    b.addEventListener("click", function () {
-      verdict = b.dataset.v;
-      document.querySelectorAll("#verdictseg button").forEach(function (x) {
-        x.setAttribute("aria-pressed", String(x === b));
-      });
-      apply();
-    });
-  });
-  document.querySelectorAll("#viewseg button").forEach(function (b) {
-    b.addEventListener("click", function () {
-      viewmode = b.dataset.view;
-      document.querySelectorAll("#viewseg button").forEach(function (x) {
-        x.setAttribute("aria-pressed", String(x === b));
-      });
-      apply();
-    });
-  });
-  more.addEventListener("click", render);
-  function reset() {
-    q.value = ""; disc.value = ""; fail.value = ""; capex.value = ""; pay.value = "";
-    sort.value = "new"; verdict = "all";
-    document.querySelectorAll(".seg button").forEach(function (x) {
-      x.setAttribute("aria-pressed", String(x.dataset.v === "all"));
-    });
-    apply();
-  }
-  $("reset").addEventListener("click", reset);
-  $("reset2").addEventListener("click", reset);
-
-  fetch("/ledger.json", { cache: "no-cache" })
-    .then(function (r) { return r.json(); })
-    .then(function (data) {
-      all = data.concepts || [];
-      var ds = {}, fs = {};
-      all.forEach(function (r) {
-        if (r.d) ds[r.d] = 1;
-        (r.f || []).forEach(function (f) { fs[f] = 1; });
-        (r.o || "").split(",").forEach(function (p) {
-          p = p.trim();
-          if (p && p.toLowerCase() !== "none") fs[p] = 1;
-        });
-      });
-      Object.keys(ds).sort().forEach(function (d) {
-        var o = document.createElement("option"); o.value = d; o.textContent = d; disc.appendChild(o);
-      });
-      Object.keys(fs).sort().forEach(function (f) {
-        var o = document.createElement("option");
-        o.value = f;
-        o.textContent = VOID_LABEL[f] || FAIL_LABEL[f] || f;
-        fail.appendChild(o);
-      });
-      readHash();
-      apply();
-      var tc = {};
-      all.forEach(function (r) {
-        if (r.v) return;
-        (r.f || []).forEach(function (f) { tc[f] = (tc[f] || 0) + 1; });
-        (r.o || "").split(",").forEach(function (p) {
-          p = p.trim();
-          if (p && p.toLowerCase() !== "none") { var k = "v:" + p; tc[k] = (tc[k] || 0) + 1; }
-        });
-      });
-      var tparts = Object.keys(tc).sort(function (a, b) { return tc[b] - tc[a]; }).map(function (k) {
-        var lab = k.indexOf("v:") === 0 ? (VOID_LABEL[k.slice(2)] || k.slice(2))
-                                        : (FAIL_LABEL[k] || k);
-        return "<strong>" + tc[k] + "</strong> " + lab;
-      });
-      if (tparts.length) {
-        document.getElementById("taxline").innerHTML = tparts.join(" &middot; ");
-        document.getElementById("taxbox").hidden = false;
-      }
-    })
-    .catch(function () {
-      count.textContent = "The ledger could not be loaded. Please reload the page.";
-    });
-})();
-</script>
-</body></html>
+<script>window.AA_LEDGER_PAGE = {"mine": false};</script>
+<script>window.AA_LEDGER_CFG = {"fail_labels":{"negative_control":"Negative control used as incumbent","sub_2x":"Below the 2x step-change bar","no_superiority_table":"No head-to-head evidence","weak_superiority_source":"Evidence rests on non-peer-reviewed sources","evidence_concentration":"Single-source evidence base","duplicate_refs":"Duplicate references inflating the evidence base","declared_parity":"Price parity asserted, not sourced","uncited_incumbent_price":"Incumbent price uncited","defunct_incumbent":"Comparator may have left the market","missing_application_envelope":"Entry application undeclared","entry_application_missing":"Entry application undeclared","missing_hazard_profile":"Hazard profile missing","uncited_safety_claim":"Uncited safety claim","opex_driven_margin":"Margin fails the operating-cost check","capex_mismatch":"CapEx figures inconsistent","missing_absence_ledger":"Absence asserted, search unreported","absence_ledger_unquantified":"Absence search unquantified"},"void_labels":{"A":"Illegitimate incumbent","B":"Mismatched comparison","C":"Capital and time to revenue","D":"Economics undisclosed","E":"Negative control / sub-2x","F":"Entry application mismatch","G":"Form-factor / handling regression","H":"Hazards undisclosed","I":"Absence search missing"},"singles":{"biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli":{"name":"Biomimetic Nano-Hydroxyapatite (nHAp)","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/nano-hydroxyapatite"},"biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum":{"name":"Biogenic Acid-Resistant Sewer Infrastructure","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/acid-resistant-sewer"},"high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz":{"name":"High-Photostability Anti-Counterfeiting Inks","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/anti-counterfeiting-inks"},"ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer":{"name":"Ultra-High-Strength Underwater Adhesives","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/ultra-high-strength-underwater-adhesives"},"sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid":{"name":"Sustained-Release Silk Fibroin Microneedle Matrices","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/silk-fibroin-microneedles"},"commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f":{"name":"Commercial Production of Pediocin PA-1","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/commercial-production-of-pediocin-pa-1"},"mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc":{"name":"CTFs for PFAS water treatment","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/ctfs-pfas-water-treatment"},"polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi":{"name":"Polyimide-Silica Aerogel Blankets","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/polyimide-reinforced-silica-aerogel-blan"},"cement-free-refractory-castables-via-potassium-activated-metakaolin-ge":{"name":"Cement-Free Refractory Castables","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/cement-free-refractory-castables"},"inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion":{"name":"Inositol Hexaphosphate (IP6) Substrate Passivation","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/inositol-hexaphosphate-ip6-passivation"},"polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial":{"name":"IPDI Self-Healing Microcapsules","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/ipdi-microcapsules"},"compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi":{"name":"Compact Volume-Expandable Sorbents (CVES)","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/cves-polyhipe-sorbents"},"ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via":{"name":"Ultrawhite BaSO4 Radiative Cooling Paint","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/baso4-cooling-paint"},"halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am":{"name":"Halogen-Free Ionic Liquid Boundary Lubricant","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/halogen-free-ionic-liquid"},"drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat":{"name":"Drought-Resilient Dark Septate Endophyte (DSE) Inoculants","price":"$999","checkout_url":"https://theabsenceaudit.kit.com/products/drought-resilient-dark-septate-endophyte"},"ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze":{"name":"Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR)","price":"$499","checkout_url":"https://theabsenceaudit.kit.com/products/ultra-low-shrinkage-ocr-resin"},"self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca":{"name":"Self-Healable WPU/Ti3C2Tx MXene Coating","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/self-healable-mxene-coating"},"pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech":{"name":"Pressureless Micro-Silver-Indium TLP Sintering Paste","price":"$499","checkout_url":"https://theabsenceaudit.kit.com/products/pressureless-ag-in-tlp-sintering-paste"},"conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a":{"name":"Conductive IP6-PANI Hydrogels","price":"$999","checkout_url":"https://theabsenceaudit.kit.com/products/ip6-pani-hydrogels"},"nitrogen-doped-carbon-nanodots-n-cds-via-atmospheric-microwave-pyrolys":{"name":"Nitrogen-Doped Carbon Nanodots (N-CDs)","price":"$299","checkout_url":"https://theabsenceaudit.kit.com/products/nitrogen-doped-carbon-nanodots"}},"full_access":{"url":"https://theabsenceaudit.kit.com/products/full-ledger-access","price":"$20,000","label":"Full access"},"batch":50};</script>
+<script src="/assets/ledger.js" defer></script>
+</body>
+</html>

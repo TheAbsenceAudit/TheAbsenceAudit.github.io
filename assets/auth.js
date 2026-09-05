@@ -11,8 +11,8 @@
  *     immediately, then load the SDKs lazily.
  *  3. Entitlements — one Firestore read of access/<email> (allowed by the
  *     security rules for the owner only) -> window.AA.state {email, plan,
- *     products}. The ledger page and the dossier gates subscribe to this.
- *  4. Personal ledger renderer (/dossier/ index) and dossier lock overlays.
+ *     products}. The ledger engine (/assets/ledger.js) and the dossier gates
+ *     subscribe to this, so signing in unlocks rows in place everywhere.
  */
 (function () {
   "use strict";
@@ -237,6 +237,7 @@
   }
 
   // --------------------------------------------------------------- dossier gate
+  function subMode() { return document.cookie.indexOf("aa_sub=1") >= 0; }
   function gateDossier() {
     var slug = CFG.dossier;
     if (!slug) return;
@@ -254,7 +255,11 @@
     document.body.appendChild(overlay);
     overlay.querySelector("#aa-gate-signin").addEventListener("click", openModal);
     function apply(st) {
-      var ok = st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0);
+      // Subscriber mode (aa_sub cookie, set by the invitation page) opens every
+      // dossier too — the subscriber page promises "open any dossier and read
+      // it in full", so the gate must honour that promise.
+      var ok = subMode() ||
+               (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
       if (ok) { overlay.remove(); }
       else { overlay.style.display = "flex"; }
     }
@@ -275,72 +280,14 @@
     }
     if (chip) renderChip();
     if (CFG.dossier) gateDossier();
-    if (CFG.ledger) ledgerInit();
     start();
   }
 
   // ------------------------------------------------------------------ ledger
-  function ledgerInit() {
-    var el = document.getElementById("aa-ledger");
-    if (!el) return;
-    var L = window.AA_LEDGER || { names: {}, tiers: {}, total: 0 };
-    function rows(slugs) {
-      var out = "";
-      slugs.forEach(function (s) {
-        out += '<li><a href="/dossier/' + encodeURIComponent(s) + '/">' + esc(L.names[s] || s) +
-               "</a><span class=\"tier\">" + esc(L.tiers[s] || "") + "</span></li>";
-      });
-      return out;
-    }
-    function render(st) {
-      if (!st.signedIn) {
-        el.innerHTML =
-          '<div class="ledger-intro">' +
-            '<p class="eyebrow">The Absence Audit</p>' +
-            '<h1>Your ledger</h1>' +
-            '<p class="lede">Sign in to open the dossiers you bought — with the same email as your purchase receipt.</p>' +
-            '<button class="row-btn" id="aa-ledger-signin" type="button">Sign in</button>' +
-          "</div>";
-        el.querySelector("#aa-ledger-signin").addEventListener("click", openModal);
-        return;
-      }
-      var all = st.plan === "all";
-      var slugs = all ? Object.keys(L.names)
-                      : (st.products || []).filter(function (s) { return L.names[s]; });
-      if (!all && !slugs.length) {
-        el.innerHTML =
-          '<div class="ledger-intro">' +
-            '<p class="eyebrow">The Absence Audit</p>' +
-            '<h1>No purchase for this email</h1>' +
-            '<p class="lede">There is no paid access registered for ' + esc(st.email) +
-            '. If you bought with a different email, sign out and use that one.</p>' +
-            '<button class="aa-out" id="aa-ledger-out" type="button">Sign out</button>' +
-            '<p class="note">Reply to your purchase receipt if something looks wrong.</p>' +
-          "</div>";
-        el.querySelector("#aa-ledger-out").addEventListener("click", function () {
-          boot(function () { firebase.auth().signOut(); });
-        });
-        return;
-      }
-      var h =
-        '<div class="ledger-user"><span class="who">' + esc(st.email) + "</span>" +
-        '<button class="aa-out" id="aa-ledger-out" type="button">Sign out</button></div>' +
-        '<p class="eyebrow">The Absence Audit</p><h1>Your ledger</h1>' +
-        (all
-          ? '<span class="aa-badge big">Full Ledger Access</span>' +
-            '<p class="lede">Every dossier, past and future. New survivors appear here the moment the pipeline clears them.</p>'
-          : '<p class="lede">The dossiers you own. Buy the full ledger for everything, past and future.</p>') +
-        '<h2 class="ledger-h">Dossiers (' + slugs.length + (all ? " of " + L.total : "") + ")</h2>" +
-        '<ul class="ledger-list">' + (slugs.length ? rows(slugs) : "<li>No dossiers found for this purchase — reply to your receipt.</li>") + "</ul>" +
-        '<p class="note">Dossiers are licensed for your own use — see the <a href="/terms/">Terms of Use</a>.</p>';
-      el.innerHTML = h;
-      el.querySelector("#aa-ledger-out").addEventListener("click", function () {
-        boot(function () { firebase.auth().signOut(); });
-      });
-    }
-    if (state.ready) render(state);
-    else listeners.push(render);
-  }
+  // The personal ledger (/dossier/) is rendered by the shared ledger engine
+  // (/assets/ledger.js), which reads this module's state and subscribes to
+  // onReady. Nothing ledger-specific lives here anymore — one engine, one
+  // access model, no drift between the public and personal surfaces.
 
   // -------------------------------------------------------------------- public
   window.AA = {
@@ -349,6 +296,9 @@
       else listeners.push(f);
     },
     openSignIn: openModal,
+    signOut: function () {
+      boot(function () { firebase.auth().signOut(); });
+    },
     getState: function () { return state; }
   };
 
