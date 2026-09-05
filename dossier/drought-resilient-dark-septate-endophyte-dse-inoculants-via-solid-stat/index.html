@@ -1,65 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "dossier": "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat"};</script>
-<script src="/assets/auth.js" defer></script>
-
-
-
-
-
-
-
-
-
-
-
-<script>
-(function () {
-  if (document.cookie.indexOf("aa_sub=1") < 0) return;
-  document.documentElement.classList.add("aa-sub");
-  function run() {
-    var invs = document.querySelectorAll("[data-aa-invite]");
-    for (var i = 0; i < invs.length; i++) {
-      var el = invs[i], slug = el.getAttribute("data-aa-invite");
-      if (!slug) continue;
-      var a = document.createElement("a");
-      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
-      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
-      a.style.fontWeight = "600";
-      a.textContent = "Open research \u2192";
-      a.setAttribute("aria-label", "Open the full research for this concept");
-      el.parentNode.insertBefore(a, el);
-    }
-    var comms = document.querySelectorAll("[data-aa-commerce]");
-    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
-  }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
-  else run();
-})();
-</script>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  // Consent Mode v2 — analytics ON (measure traffic), advertising OFF.
-  // Non-EEA audience: the single anonymous _ga analytics cookie needs no banner.
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'analytics_storage': 'granted',
-    'wait_for_update': 500
-  });
-  gtag('js', new Date());
-  gtag('config', 'G-Y2ED6MMNTT', {
-    'anonymize_ip': true,
-    'allow_google_signals': false,
-    'allow_ad_personalization_signals': false
-  });
-</script>
-
-<link rel="stylesheet" href="/style.css?v=1788623176"><meta charset="utf-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <title>Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues | The Absence Audit</title>
 <style>
@@ -122,6 +62,15 @@
   .refs a { color:var(--mute); text-decoration:none; word-break:break-all }
   footer { margin-top:36px; padding-top:16px; border-top:3px double var(--line);
     font:12.5px/1.6 ui-sans-serif,system-ui,sans-serif; color:var(--mute); }
+  .aa-pdf-dl { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    border:1px solid var(--line); background:#fafbfd; padding:12px 16px; margin:18px 0 4px; }
+  .aa-pdf-dl .pdf-btn { display:inline-block; background:var(--accent); color:#fff;
+    font:600 13px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em;
+    text-transform:uppercase; text-decoration:none; padding:11px 18px; }
+  .aa-pdf-dl .pdf-btn:hover { background:#6f1515; text-decoration:none; }
+  .aa-pdf-dl .pdf-note { color:var(--mute); font:13px/1.5 ui-sans-serif,system-ui,sans-serif;
+    max-width:36ch; }
+  @media print { .aa-pdf-dl { display:none !important; } }
   
   .math { font-style: italic; }
   .fr { display: inline-flex; flex-direction: column; vertical-align: -0.55em;
@@ -129,24 +78,7 @@
   .fn { border-bottom: 1px solid currentColor; padding: 0 .15em; }
   .fd { padding: 0 .15em; }
 
-</style></head><body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="masthead">
-  <div class="wrap">
-    <a class="logo" href="/">The Absence <span>Audit</span></a>
-    <nav>
-      <a href="/method/">Method</a>
-      <a href="/ledger/">The ledger</a>
-      <a href="/studies/">Free studies</a>
-      <a href="/#graveyard">What we killed</a>
-      <a href="/track-record/">Track record</a>
-      <a href="/#join">Get it free</a>
-      <span id="aa-auth" class="aa-auth"></span>
-    </nav>
-  </div>
-</header>
-<main id="main">
-<div class="wrap">
+</style></head><body><div class="wrap">
 
 <div class="cover">
   <div class="brand">The Absence Audit</div>
@@ -154,6 +86,11 @@
   <p class="sub">A single concept that cleared all seven gates and survived an independent
   red-team audit &mdash; mechanism, operating protocol, recomputed economics and the
   argument against it. Concept 1 of 7 cleared. Issued 05 September 2026.</p>
+  <div class="aa-pdf-dl" style="display:none">
+    <a class="pdf-btn" href="drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat.pdf"
+       onclick="window.dataLayer &amp;&amp; window.dataLayer.push({'event':'pdf_download','surface':'dossier','title':'Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues'})">Download PDF</a>
+    <span class="pdf-note">Print-ready &mdash; keep a copy for your own use, as your licence allows.</span>
+  </div>
 </div>
 
 <div class="callout">
@@ -168,7 +105,7 @@
 </div>
 
 <section class="concept">
-<h2 class="concept-h">Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues</h2><p class="disc">Agricultural Biologicals</p><div class="decision"><div class="t">60-second read</div><table><tr><th><span>What it is</span></th><td>Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues &mdash; replaces MycoApply® Ultrafine Endo (Mycorrhizal Applications / Valent Biosciences)</td></tr><tr><th><span>The one number</span></th><td>categorical 0% colonization for incumbent AMF vs &gt;30% root colonization for DSE in non-mycorrhizal Brassicaceae crops, representing a categorical capability advan…</td></tr><tr><th><span>Biggest objection</span></th><td>⚠️ **WARN / weak_superiority_source** — Superiority table rests on non-peer-reviewed source(s): ref 41 [grey]; ref 43 [dup]</td></tr></table></div><p></p>
+<h2 class="concept-h">Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues</h2><p class="disc">Agricultural Biologicals</p><div class="decision"><div class="t">60-second read</div><table><tr><th><span>What it is</span></th><td>Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues &mdash; replaces MycoApply® Ultrafine Endo (Mycorrhizal Applications / Valent Biosciences)</td></tr><tr><th><span>The one number</span></th><td>categorical 0% colonization for incumbent AMF vs &gt;30% root colonization for DSE in non-mycorrhizal Brassicaceae crops, representing a categorical capability advan…</td></tr><tr><th><span>Total cash at risk</span></th><td>$305,000</td></tr><tr><th><span>Biggest objection</span></th><td>⚠️ **WARN / weak_superiority_source** — Superiority table rests on non-peer-reviewed source(s): ref 41 [grey]; ref 43 [dup]</td></tr></table></div><p></p>
 <h4>The Underlying Scientific Mechanism</h4>
 <p>Dark Septate Endophytes (DSEs) represent a highly diverse, polyphyletic group of conidial or sterile ascomycetous fungi characterized by heavily melanized, dark-pigmented septate hyphae and the formation of densely packed intracellular resting structures known as microsclerotia [cite: 40, 42]. Unlike standard arbuscular mycorrhizal fungi (AMF) such as <em>Rhizophagus irregularis</em> (the primary active ingredient in the market-leading incumbent MycoApply) [cite: 47, 48], DSEs are frequently isolated from the roots of healthy plants thriving in extreme, arid desert environments, alpine ecosystems, and heavy-metal contaminated soils [cite: 40, 3]. Prominent DSE species, including <em>Exophiala pisciphila</em>, <em>Phialocephala fortinii</em>, and <em>Veronaeopsis simplex</em>, colonize the epidermal and cortical cells of plant roots inter- and intracellularly without causing pathogenic effects [cite: 43].</p>
 <p>The mechanism by which DSEs confer extraordinary drought and heat stress tolerance to host crops operates on multiple biochemical, physiological, and morphological axes. First, DSE colonization establishes a robust antioxidant barrier within the host plant [cite: 5]. Under severe abiotic stress—such as drought or extreme heat—plants naturally accumulate toxic levels of reactive oxygen species (ROS), leading to severe membrane lipid peroxidation, cellular degradation, and ultimate cell death. DSEs actively upregulate the host&#x27;s ROS scavenging enzymatic machinery, primarily superoxide dismutase (SOD), catalase (CAT), and ascorbate peroxidase (APX) [cite: 2]. This targeted biochemical modulation drastically reduces malondialdehyde (MDA) levels (a primary marker for lipid peroxidation) and simultaneously increases the accumulation of glutathione (GSH) and proline, which act as vital osmoregulators and cellular protectants [cite: 2, 49].</p>
@@ -289,7 +226,80 @@
 <li><strong>If the incumbent MycoApply price drops below $36.20/kg, re-run the economics.</strong> The venture&#x27;s margin is predicated on parity pricing; a price war eliminates the entry strategy [cite: 44].</li>
 <li><strong>If a field trial in waterlogged or hypoxic soil shows zero efficacy, stop selling into that environment.</strong> The report explicitly states DSEs fail in flooded or poorly drained conditions; this is a hard environmental limit, not a fixable defect.</li>
 <li><strong>If the product fails to maintain viability post-packaging (spore count drops below 1 × 10⁹ CFU/g after 6 months storage), walk away.</strong> The report flags post-packaging survival as a monitored risk; if the shelf-life claim fails, the distribution model collapses.</li>
-</ul><h3>Deterministic economics</h3><blockquote><p>This entry predates the deterministic economics pass, so no recomputed margin, payback or capital-productivity figures are available. The report's own cost and price claims above are the model's, and have <strong>not</strong> been independently recalculated. Treat them with more suspicion than the audited entries.</p></blockquote><h3>The case against it</h3><h3>Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues</h3>
+</ul><h3>Deterministic economics</h3><h3>Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues</h3>
+<p><strong>Economics verdict: PASS</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per kg</td><td>$1.67</td></tr>
+<tr><td>Price per kg (gate basis = parity)</td><td>$36.20</td></tr>
+<tr><td>Venture&#x27;s intended ask per kg</td><td>$36.20</td></tr>
+<tr><td>Incumbent price per kg</td><td>$36.20</td></tr>
+<tr><td>Price premium vs incumbent</td><td>0.0%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>95.4%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>95.4%</td></tr>
+<tr><td>Contribution per kg</td><td>$34.53</td></tr>
+<tr><td><strong>All-in OPEX per kg (itemised)</strong></td><td><strong>$1.65</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>95.4%</strong></td></tr>
+<tr><td>Annual output (kg)</td><td>21,600</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$781,920</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$745,920</td></tr>
+<tr><td>Startup CapEx</td><td>$205,000</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$100,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$305,000</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>3.81x</strong></td></tr>
+<tr><td>Breakeven volume (kg)</td><td>8,832</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>4.9</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>16.9</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>167.8%</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per kg = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 1.67  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = 95.4%</span></p>
+<p><span class="math">Contribution per kg = P<sub>parity</sub> - COGS = 34.53  USD/kg</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 3.81×</span></p>
+<p><span class="math">Breakeven volume = <span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per kg</span></span> = 8832.05  kg</span></p>
+<p><span class="math">Payback from first sale = <span class="fr"><span class="fn">total cash at risk</span><span class="fd">monthly gross profit</span></span> = 4.91  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>Steam Autoclave</td><td>1000L Industrial Batch</td><td>$45,000</td><td>$25,000</td><td>Priorclave North America</td></tr>
+<tr><td>Climate Control HVAC &amp; HEPA</td><td>Class 10000 Cleanroom Prep</td><td>$60,000</td><td>$0.00</td><td>Mecart</td></tr>
+<tr><td>Hammer Mill</td><td>Stainless Steel #50 Mesh</td><td>$25,000</td><td>$12,000</td><td>Schutte Hammermill USA</td></tr>
+<tr><td>Automated Bagging Line</td><td>Powder Auger Filler 20lb bags</td><td>$35,000</td><td>$18,000</td><td>All-Fill Inc USA</td></tr>
+<tr><td>Seed Culture Bioreactors</td><td>2x 50L Stainless Steel</td><td>$40,000</td><td>$20,000</td><td>Eppendorf</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$205,000</strong> vs sum of line items <strong>$$205,000</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$0.15</td></tr>
+<tr><td>energy</td><td>$0.50</td></tr>
+<tr><td>labor</td><td>$0.80</td></tr>
+<tr><td>water</td><td>$0.05</td></tr>
+<tr><td>maintenance</td><td>$0.05</td></tr>
+<tr><td>waste_disposal</td><td>$0.05</td></tr>
+<tr><td>packaging</td><td>$0.05</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum <strong>$$1.65/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin &gt;= 70%</td><td>95.4%</td><td>PASS</td></tr>
+<tr><td>Startup CapEx &lt;= $250,000</td><td>$205,000</td><td>PASS</td></tr>
+<tr><td>Payback &lt;= 12 mo</td><td>4.9 mo</td><td>PASS</td></tr>
+<tr><td>Capital productivity &gt;= 2.0x</td><td>3.81x</td><td>PASS</td></tr>
+<tr><td>Price parity (&lt;=10% premium)</td><td>+0.0%</td><td>PASS</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>95.4%</td><td>4.9</td><td>167.8%</td><td>3.81x</td></tr>
+<tr><td>price -25%</td><td>95.4%</td><td>4.9</td><td>167.8%</td><td>3.81x</td></tr>
+<tr><td>yield -25%</td><td>95.2%</td><td>4.9</td><td>167.6%</td><td>3.81x</td></tr>
+<tr><td>CapEx +100%</td><td>95.4%</td><td>8.2</td><td>101.9%</td><td>1.91x</td></tr>
+<tr><td>feedstock +50%</td><td>95.2%</td><td>4.9</td><td>167.5%</td><td>3.81x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>95.2%</td><td>8.2</td><td>101.8%</td><td>1.91x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p><h3>The case against it</h3><h3>Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues</h3>
 <ul>
 <li>Rubric verdict: PASS</li>
 <li><strong>Audit verdict: PASS</strong></li>
@@ -357,21 +367,4 @@ Every quantitative claim traces to one of these; check them.</p>
 </footer>
 </section>
 
-</div></main>
-<footer class="site">
-  <div class="wrap">
-    <span>The Absence Audit</span>
-    <nav>
-      <a href="/method/">Method</a>
-      <a href="/ledger/">Ledger</a>
-      <a href="/studies/">Free studies</a>
-      <a href="/track-record/">Track record</a>
-      <a href="/terms/">Terms</a>
-    </nav>
-  </div>
-  <div class="wrap">
-    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
-    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a></p>
-  </div>
-</footer>
-</body></html>
+</div></body></html>

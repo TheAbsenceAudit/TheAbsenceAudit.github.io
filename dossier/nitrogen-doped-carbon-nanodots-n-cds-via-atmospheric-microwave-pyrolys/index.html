@@ -151,6 +151,15 @@
   footer { margin-top:36px; padding-top:16px; border-top:3px double var(--line);
     font:12.5px/1.6 ui-sans-serif,system-ui,sans-serif; color:var(--mute); }
   
+  .aa-pdf-dl { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    border:1px solid var(--line); background:#fafbfd; padding:12px 16px; margin:18px 0 4px; }
+  .aa-pdf-dl .pdf-btn { display:inline-block; background:var(--accent); color:#fff;
+    font:600 13px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em;
+    text-transform:uppercase; text-decoration:none; padding:11px 18px; }
+  .aa-pdf-dl .pdf-btn:hover { background:#6f1515; text-decoration:none; }
+  .aa-pdf-dl .pdf-note { color:var(--mute); font:13px/1.5 ui-sans-serif,system-ui,sans-serif;
+    max-width:36ch; }
+  @media print { .aa-pdf-dl { display:none !important; } }
 </style></head><body>
 <a class="skip-link" href="#main">Skip to content</a>
 <header class="masthead">
@@ -176,6 +185,12 @@
   <p class="sub">A single concept that cleared all seven gates and survived an independent
   red-team audit &mdash; mechanism, operating protocol, recomputed economics and the
   argument against it. Concept 1 of 1 cleared. Issued 04 September 2026.</p>
+<div class="aa-pdf-dl" style="display:none">
+    <a class="pdf-btn" href="nitrogen-doped-carbon-nanodots-n-cds-via-atmospheric-microwave-pyrolys.pdf"
+       onclick="window.dataLayer &amp;&amp; window.dataLayer.push({'event':'pdf_download','surface':'dossier','title':'Nitrogen-Doped Carbon Nanodots (N-CDs) via Atmospheric Microwave Pyrolysis'})">Download PDF</a>
+    <span class="pdf-note">Print-ready &mdash; keep a copy for your own use, as your licence allows.</span>
+  </div>
+
 </div>
 
 <div class="callout">

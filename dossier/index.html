@@ -116,6 +116,16 @@
     <select id="disc"><option value="">any</option></select>
     <label for="fail">Failure mode</label>
     <select id="fail"><option value="">any</option></select>
+    <div class="capcell">
+      <label>Startup capital</label>
+      <div class="seg seg--wrap" role="group" aria-label="Startup capital" id="capexseg">
+        <button type="button" data-cx="" aria-pressed="true" title="Show every concept">Any</button>
+        <button type="button" data-cx="25" aria-pressed="false" title="Concepts startable with $25,000 or less">&le; $25k</button>
+        <button type="button" data-cx="100" aria-pressed="false" title="Concepts startable with $100,000 or less">&le; $100k</button>
+        <button type="button" data-cx="500" aria-pressed="false" title="Concepts startable with $500,000 or less">&le; $500k</button>
+        <button type="button" data-cx="max" aria-pressed="false" title="Concepts needing more than $500,000">$500k+</button>
+      </div>
+    </div>
     <label for="capex">Max CapEx $</label>
     <input type="number" id="capex" min="0" step="10000" placeholder="any" style="width:8rem">
     <label for="pay">Max payback mo</label>
