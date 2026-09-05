@@ -78,8 +78,8 @@
   .masthead nav a:hover,.masthead nav a:focus-visible{color:var(--ink);border-bottom-color:var(--kill);outline:none}
   .masthead nav .aa-auth{display:inline-flex;align-items:center;gap:.85rem;font-size:.87rem}
   .aa-auth .aa-who{font-family:var(--mono);font-size:.76rem;font-weight:500;color:var(--ink-2);border-bottom:0}
-  .aa-auth .aa-badge{background:var(--ink);color:var(--paper);border-radius:0;padding:.16rem .5rem;
-    font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+  .aa-auth .aa-badge{background:none;color:var(--ink);border:1px solid var(--rule);border-radius:0;
+    padding:.16rem .5rem;font-family:var(--mono);font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase}
   .aa-auth .aa-btn{background:var(--ink);color:#fff;border:0;border-radius:0;padding:.4rem .9rem;font:600 .82rem/1.2 ui-sans-serif,system-ui,sans-serif;cursor:pointer}
   .aa-auth .aa-btn:hover{background:var(--kill)}
   .aa-auth .aa-out{background:none;border:1px solid var(--rule);border-radius:0;padding:.3rem .7rem;font:600 .78rem/1.2 ui-sans-serif,system-ui,sans-serif;color:var(--ink-2);cursor:pointer}

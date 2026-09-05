@@ -141,10 +141,12 @@
       return;
     }
     var bd = badge(state);
+    // Minimal signed-in cluster: identity (which links to the member ledger),
+    // the access-level badge, and the one action. The old "My ledger" text
+    // pointed at the same URL as the email — pure duplication — so it's gone.
     chip.innerHTML =
       '<a class="aa-who" href="' + VAULT + '">' + esc(state.email) + "</a>" +
       (bd ? '<span class="aa-badge">' + esc(bd) + "</span>" : "") +
-      '<a class="aa-link" href="' + VAULT + '">My ledger</a>' +
       '<button class="aa-out" type="button">Sign out</button>';
     var o = chip.querySelector(".aa-out");
     if (o) o.addEventListener("click", function () {
