@@ -8,6 +8,10 @@
 
 
 
+
+
+
+
 <script>
 (function () {
   if (document.cookie.indexOf("aa_sub=1") < 0) return;
@@ -54,7 +58,7 @@
   });
 </script>
 
-<link rel="stylesheet" href="/style.css?v=1788656183">
+<link rel="stylesheet" href="/style.css?v=1788660395">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tunisia, audited — The Absence Audit at national scale</title>
@@ -178,7 +182,62 @@
   .n-twrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2rem 0}
   .n-twrap table{min-width:760px}
   .n-twrap table.n-red{min-width:920px}
+  .n-unlock{border-left:3px solid var(--live);background:var(--paper-2);padding:1.1rem 1.3rem;
+        margin:1.2rem 0;font-size:.96rem;color:var(--ink-2)}
+  .n-unlock strong{color:var(--ink);font-family:var(--serif);font-size:1.02rem}
+  .n-unlock .n-num{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--live);
+        text-transform:uppercase;display:block;margin-bottom:.35rem}
+  .n-unlock .n-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+        color:var(--ink-3);display:inline-block;margin-right:.5rem}
 </style>
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -193,6 +252,7 @@
       <a href="/track-record/">Track record</a>
       <a href="/nations/">Nations</a>
       <a href="/#join">Get it free</a>
+      <a class="aa-x" href="https://x.com/TheAbsenceAudit" rel="me" aria-label="Follow The Absence Audit on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg><span>Follow</span></a>
       <span id="aa-auth" class="aa-auth"></span>
     </nav>
   </div>
@@ -408,7 +468,7 @@ unproven from L2 up. That is not a defect of the method; it is the method, made 
       <tbody>
 <tr><td>Scientific</td><td>REE can be recovered from phosphogypsum (65.6% ΣREE, 73.8% Y)</td><td>Confirmed at lab scale; 60-85% of the rock's REE partitions into the PG; Gafsa grade ~322 mg/kg (peaks &gt;1,700) <sup class="n-cite">[Rm1]</sup><sup class="n-cite">[Rm2]</sup>; the 65.6%/73.8% numbers come from a 1.65 mol/L HCl bench study <sup class="n-cite">[Rm4]</sup></td><td>HIGH (chemistry)<br><span class='n-badge low'>but the grade is the problem</span></td><td>A 50 t/yr pilot acid circuit, six months of published mass balance, and the fed-grade confirmed on the specific Gabès heap</td></tr>
 <tr><td>Engineering</td><td>Scales to 2 Mt/yr</td><td>No commercial precedent on sedimentary PG <sup class="n-cite">[Rm5]</sup>. PhosAgro's pilot was on richer apatite feed (5 m³/h) <sup class="n-cite">[Rm6]</sup>; Rainbow's Phalaborwa is the only real commercial attempt and its 29.1% NdPr split makes it an anomaly <sup class="n-cite">[Rm7]</sup>. Scale-up literature: filtration, silica gel, impurity co-extraction <sup class="n-cite">[Rm5]</sup></td><td>LOW &ndash; MEDIUM</td><td>Engineering-scale pilot: continuous solids-liquid separation, acid regeneration ≥85%, published capex per tonne</td></tr>
-<tr><td>Economic</td><td>Recovered REEs are a revenue engine</td><td>~422 t/yr of REE (at lab recovery) whose basket is Cerium-dominated with Y, La; NdPr share 15-25% <sup class="n-cite">[Rm3]</sup><sup class="n-cite">[Rm8]</sup>. At real 2024-26 oxide prices: <b>$5-10M/yr</b>. The published lab recipe at S/L 1:10 needs ~1.2 Mt/yr HCl-equivalent — $125-560M/yr before regeneration <sup class="n-cite">[Rm16]</sup>. Separation to saleable oxides: $244M+ <sup class="n-cite">[Rm10]</sup></td><td>LOW</td><td>A signed offtake at a stated $/kg, with the full acid-recycle mass balance published</td></tr>
+<tr><td>Economic</td><td>Recovered REEs are a revenue engine</td><td>~422 t/yr of REE (at lab recovery) whose basket is Cerium-dominated with Y, La; NdPr share 15-25% <sup class="n-cite">[Rm3]</sup><sup class="n-cite">[Rm8]</sup>. At real 2024-26 oxide prices: <b>$5-10M/yr</b>. The published lab recipe at S/L 1:10 needs ~1.2 Mt/yr HCl-equivalent — $125-560M/yr before regeneration <sup class="n-cite">[Rm16]</sup>. Separation to saleable oxides: $244M+ <sup class="n-cite">[Rm10]</sup> (PG re-leach route; the acid-stream U+REE route is the unlock — see Unlock 01).</td><td>LOW</td><td>A signed offtake at a stated $/kg, with the full acid-recycle mass balance published</td></tr>
 <tr><td>Infrastructure</td><td>Gafsa mines are suitable for 3×100 MW (free-cooled)</td><td>No phosphate-mine datacenter exists <sup class="n-cite">[Rc1]</sup>. Gafsa: DInSAR-documented subsidence at Moulares <sup class="n-cite">[Rc2]</sup>; 23-29°C rock at 100-300 m vs ASHRAE Class H1's 18-22°C recommendation <sup class="n-cite">[Rc4]</sup>; radon-222 accumulation (Ra-226 to 375 Bq/kg soils, tailings to 7,606 Bq/kg) <sup class="n-cite">[Rc3]</sup>; thermal saturation of closed voids; the one famous success (Lefdal) cools with 8°C fjord water, not rock <sup class="n-cite">[Rc1]</sup></td><td>LOW</td><td>Radon + geotechnical survey of the actual workings; then a 10 MW pilot in a certified stable, non-radioactive site with a published PUE &lt;1.25</td></tr>
 <tr><td>Finance</td><td>Project can attract capital</td><td>Bottom-up: ~$15-25B (center ~$21B), with GPU accelerators (export-controlled) being 40-60% of it <sup class="n-cite">[Rc5]</sup><sup class="n-cite">[Rc6]</sup>. Tunisia: Caa1/B- <sup class="n-cite">[Rc11]</sup>, WACC 10-15%, public debt ~83% GDP, no active IMF program, STEG debt >$1.3B. Working counter-pattern: 500 MW of solar was financed at ~$0.031/kWh with 25-yr PPAs (Scatec, Qair, Voltalia) <sup class="n-cite">[Rc13]</sup></td><td>LOW &ndash; MEDIUM</td><td>One signed concession with MDB co-financing (EIB/AfDB/KfW/Global Gateway) for a first $500M tranche</td></tr>
 <tr><td>Political</td><td>The state can execute it</td><td>The IPP framework works <sup class="n-cite">[Rc13]</sup>; agricultural land law blocks foreign ownership (40-yr leases only) <sup class="n-cite">[Rw12]</sup>; the budget (5-7% of GDP deficit) cannot fund the equity <sup class="n-cite">[Rw10]</sup>; IMF negotiations remain stalled <sup class="n-cite">[Rc12]</sup></td><td>LOW</td><td>A published national program with a funded, time-boxed pilot phase and a named agency</td></tr>
@@ -491,7 +551,9 @@ deliverable; the snapshot is just its latest state.</p>
   3,759,938 t/yr of 32% commercial acid, at $
   564M/yr at EU spot prices, vs ~$7M/yr of metal revenue.
   Acid regeneration is the make-or-break engineering problem of the whole materials pillar —
-  and no commercial plant doing it on sedimentary PG exists.
+  and no commercial plant doing it on sedimentary PG exists. <em>The way out is to not re-digest
+  the PG at all &mdash; recover uranium + rare earths from the phosphoric-acid stream instead
+  (Unlock 01).</em>
 
   <p class="n-srcline">Evidence: Rm4 · Rm16 · Rm10 · Rm12</p>
 </div>
@@ -687,8 +749,12 @@ deliverable; the snapshot is just its latest state.</p>
   band breaks [Rc18]) and inoculum supply (~6,000 mycorrhized seedlings/ha [Rc16]; the 150 ha Saudi
   precedent largely failed [Rc17]). A 2,000-3,000 ha program is a genuine €15-45M/yr export &mdash;
   real, but bounded, not a desert-transforming industry.</p>
-  <p><strong>REE, as a research program:</strong> the chemistry is real, the EU CRMA needs non-Chinese poles [Rm14], and there is genuine scientific and policy value in a pilot. What is
-  dead is the claim that a 2 Mt/yr acid circuit pays for itself on Gd/Sm-free Cerium.</p>
+  <p><strong>Strategic metals, re-specified:</strong> the PG re-leach is dead, but the metals are
+  not. Recover uranium + heavy rare earths from the phosphoric-acid stream that GCT already runs —
+  a two-decade-proven flowsheet (Freeport, 14M lbs U3O8) now being rebuilt at ~$100M by OCP/Morocco
+  [Ru1, Ru2]. At Gafsa scale that is ~$78M/yr of clean strategic-metal revenue (uranium carries it;
+  the heavy REEs ride along), with the remaining PG REE left as a future option. That is the honest
+  fill for the "strategic materials" absence — gated on a Tunisian pilot, like every other unlock.</p>
   <p><strong>Compute, at national scale, of any kind:</strong> the deepest absence of all.
   Finland, Sweden, Iceland made the move; Tunisia has the talent (InstaDeep's $680M exit is the
   proof) — the blockers are hardware law and grid, not intelligence. Re-scoped, this is a
@@ -697,6 +763,72 @@ deliverable; the snapshot is just its latest state.</p>
 
   </div>
 </div>
+
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">The unlocks</p>
+    <h2>Every wall, and what opens it</h2>
+    <p class="n-lede">A red team that only kills reads as self-sabotage. The method's second
+    half is the same one applied to a dead-end venture: <em>re-specify the constraint, then
+    re-derive from the terrain</em>. Most of what the audit called impossible dissolves when you
+    reason from what Tunisia actually is &mdash; a coastal, sun-drenched, phosphate-rich,
+    EU-adjacent country &mdash; instead of from what the first-order plan assumed. Each unlock
+    below is tagged <span class="n-tag">terrain</span> (first-principles reasoning from the
+    country's actual geography, resources and institutions) or <span class="n-tag">research</span>
+    (a cited industrial precedent), and each carries the thing that would prove it.</p>
+
+    <div class="n-unlock">
+      <span class="n-num">Unlock 01 &mdash; the materials pillar was leaching the wrong thing</span>
+      <strong>Recover uranium and rare earths from the phosphoric-acid stream, not from re-digesting
+      the phosphogypsum.</strong>
+      The red team was right that re-leaching the PG is dead &mdash; but the PG was never the
+      resource. During wet-process acid production, <em>85-90% of the uranium and 15-40% of the
+      rare earths dissolve into the phosphoric acid</em>, while &gt;80-90% of the radium stays
+      behind in the gypsum solid <span class="n-srcline">[Rm11] [Ru1]</span>. Recover the metals
+      there and three walls vanish at once &mdash; the acid wall (the acid circuit already exists
+      at GCT's Gab&egrave;s plant), the radioactivity wall (Ra never co-precipitates with the
+      product, because it never left the gypsum), and the grade wall (uranium, not Cerium, carries
+      the value).
+      <strong>The route is proven, not hypothetical.</strong> Uranium recovery from wet-process
+      phosphoric acid ran commercially in the US for two decades &mdash; Freeport (Louisiana)
+      produced <strong>14 million lbs U3O8</strong> over 1978-99 at &gt;95% recovery via DEHPA/TOPO
+      solvent extraction, and phosphate-derived uranium supplied ~20% of US uranium in the 1980s
+      <span class="n-srcline">[Ru1]</span>. It is being revived in 2025: OCP's URANEXT is building
+      Morocco's first yellowcake plant for ~$100M at El Jadida <span class="n-srcline">[Ru2]</span>,
+      and SX operating cost is $59-83/lb against an $80-95/lb spot price <span class="n-srcline">[Ru3]</span>.
+      Applied to Gafsa's ~6.5 Mt rock/yr at ~50 ppm U <span class="n-srcline">[Ru5]</span>:
+      <strong>~325 t U3O8/yr (&asymp;$61M/yr)</strong> plus <strong>~585 t/yr of recovered REE
+      oxide (&asymp;$18M/yr)</strong>, for <strong>~$78M/yr</strong> of strategic-metal revenue
+      from a ~$100M plant &mdash; against the dead PG re-leach's $5-10M on a $125-560M acid bill.
+      The residual gypsum still holds ~65% of the REE as a future option, but the uranium and the
+      heavy-REE fraction come out clean.
+      <p class="n-srcline">Evidence: Ru1 &middot; Ru2 &middot; Ru3 &middot; Ru4 &middot; Rm11.
+      The ladder still applies: this is an L2/L3 unlock (proven precedent + published economics),
+      gated on a Tunisian pilot &mdash; not an L4 committed project.</p>
+    </div>
+
+    <div class="n-twrap"><table>
+      <caption>The remaining walls, unlocked by terrain logic</caption>
+      <thead><tr><th>Wall (from the red team)</th><th>The unlock</th><th>Basis</th><th>What would prove it</th></tr></thead>
+      <tbody>
+      <tr><td>300 MW of leading-edge GPUs is legally unavailable (BIS)</td><td>Re-scope: 10-50 MW of <em>sovereign</em> compute on less-restricted silicon (AMD MI-series, open-weight models), plus a colocation park hosting EU/Gulf tenants who bring their own BIS-cleared hardware</td><td><span class="n-tag">terrain</span> sovereignty is jurisdiction over data, not GPU ownership; the Mediterranean colocation boom needs cheap solar + EU-adjacent land</td><td>A signed hosting LOI from one compliant tenant</td></tr>
+      <tr><td>No phosphate-mine datacenter exists; Gafsa is radioactive and subsiding</td><td>Abandon the mines. Keep the free-cooling idea and move it to the coast: seawater heat-exchange (Lefdal-style, but Mediterranean ~15-18&deg;C) on flat brownfield land with ports and grid</td><td><span class="n-tag">terrain</span> seawater/deep-water cooling is commercial; the "15-20&deg;C mine" was the wrong vector</td><td>A 10 MW coastal pilot with published PUE &lt;1.25</td></tr>
+      <tr><td>500 Mm&sup3; at 300 km inland is 30-40x the price of irrigation water</td><td>Re-spatialise: coastal desal for coastal cities and industry; treat and reuse the country's existing wastewater for the interior; supplemental drip (200-250 mm) at the hectare scale for the truffle &mdash; no trans-desert aqueduct</td><td><span class="n-tag">terrain</span> the 300 km/400 m agricultural leg was the hardest and least necessary part</td><td>Tunisia's wastewater-reuse volume and a local RO pilot cost</td></tr>
+      <tr><td>~$21B is unfinanceable at Caa1/B- with no IMF program</td><td>Do not finance a loop. Finance the one bankable module (coastal solar + water) in $500M-1B tranches via the EU Global Gateway 17 GW programme and EIB &mdash; the 500 MW at $0.031/kWh already proves the route</td><td><span class="n-tag">terrain</span> + cited [Rc12, Rc13]</td><td>One signed tranche with MDB co-financing</td></tr>
+      <tr><td>Truffle market saturates at ~2,600-4,000 ha</td><td>Keep the truffle as the marquee at its natural ceiling, and run a <em>portfolio</em> of salt/drought-tolerant high-value crops on the same water+land (dates, pomegranate, capers, aloe, jojoba, moringa) &mdash; Tunisia already exports most of these</td><td><span class="n-tag">terrain</span> the desert opportunity was never one crop</td><td>100 ha truffle pilot + existing export chains scale</td></tr>
+      <tr><td>The integrated loop is a 5.8% bet (0.7^8)</td><td>The loop is <em>emergent, not built</em>: build the modules that clear their gates, and the "closed loop" is whatever the passing modules happen to reinforce &mdash; a description of the outcome, never a precondition</td><td><span class="n-tag">terrain</span> the kill-gate protocol already sequences this (P0-P3)</td><td>Two modules cash-positive, independently</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="n-srcline">Method note: "terrain" unlocks are reasoning from Tunisia's documented
+    geography, resources and institutions (each carrying its cited anchor where one exists); they
+    are the honest complement to the literature-backed red team, not a substitute for it. Every
+    unlock still terminates in a gate &mdash; the falsification ladder applies to the solution
+    exactly as it did to the problem.</p>
+  </div>
+</div>
+
 
 <div class="n-section" style="border-bottom:0">
   <div class="wrap" style="max-width:76ch">
@@ -731,7 +863,7 @@ deliverable; the snapshot is just its latest state.</p>
 <li id="rnRw9"><a href="https://www.energy-storage.news/battery-storage-system-prices-continue-to-fall-sharply-bnef-and-ember-reports-find/" rel="noopener" target="_blank">24/7 firming: 3.03 GW @20% CF = 0.606 GW avg (zero margin); 9.15 GWh/night; BESS round-trip 85% → 12-15 GWh; $110-125/kWh → ~$1.5B; solar+storage LCOE $100-130/MWh</a></li>
 <li id="rnRw10"><a href="https://www.trade.gov/country-commercial-guides/tunisia-electrical-power-systems-and-renewable-energy" rel="noopener" target="_blank">Tunisia grid: STEG 5.9 GW, ~19 TWh/yr, 95% gas-fired, renewables <5%, industrial tariff 0.352 TND/kWh; budget deficit 5-7% GDP, debt ~83% GDP</a></li>
 <li id="rnRw11"><a href="https://www.mdpi.com/1996-1073/19/1/102" rel="noopener" target="_blank">Agrivoltaics: 20-40% CAPEX premium over utility PV (+$0.30/Wp); NREL range $1.20-2.60/Wp</a></li>
-<li id="rnRw12"><a href="https://2009-2017.state.gov/e/eb/ifd/2008/101021.htm" rel="noopener" target="_blank">Tunisia land law: foreign ownership of agricultural land prohibited; 40-year leases only; state-domain conversion remains a sensitive policy area</a></li>
+<li id="rnRw12"><a href="https://2009-2017.state.gov/e/eb/ifd/2008/101021.htm" rel="noopener" target="_blank">Tunisia land law: foreign ownership of agricultural land prohibited; 40-year leases only; state-domain conversion is an administrative hurdle</a></li>
 <li id="rnRw13"><a href="https://reglobal.org/tunisia-focuses-on-grid-expansion-for-integrating-renewable-energy/" rel="noopener" target="_blank">Grid constraints: 3 GW overwhelms local 400 kV; new lines $1-2.5M/km; renewables <5% of generation; curtailment risk</a></li>
 <li id="rnRc1"><a href="https://www.lefdalmine.com/" rel="noopener" target="_blank">Underground DC precedents: Lefdal Mine (olivine; 200 MW; PUE 1.08-1.15 via 8°C fjord water); SubTropolis limestone (18°C + mechanical cooling); no phosphate-mine DC exists</a></li>
 <li id="rnRc2"><a href="https://www.researchgate.net/publication/251701016_Phosphate_mine_subsidences_deduced_from_differential_interferometry_DInSAR_The_Moulares_case_example_southern_Atlas_of_Tunisia" rel="noopener" target="_blank">Gafsa basin: DInSAR-documented subsidence at Moulares; geothermal gradient 25-30°C/km → 23-29°C at 100-300 m depth</a></li>
@@ -752,6 +884,11 @@ deliverable; the snapshot is just its latest state.</p>
 <li id="rnRc17"><a href="https://ojs.openagrar.de/index.php/JABFQ/article/download/2184/2570" rel="noopener" target="_blank">Saudi Al-Khalidiah 150-ha Tirmania plantation: largely failed (14 kg/ha after soil import; rainfall collapse)</a></li>
 <li id="rnRc18"><a href="https://www.mdpi.com/1999-4907/14/5/952" rel="noopener" target="_blank">Desert-truffle market depth: Mamora (Morocco) wild harvest peaks ~100 t/yr; luxury band breaks past ~1,000-1,500 t/yr of new supply</a></li>
 <li id="rnRc19"><a href="https://documents1.worldbank.org/curated/en/926441468778187741/pdf/multi0page.pdf" rel="noopener" target="_blank">Tunisia arid land: ~86,000 ha of state domain earmarked for 40-year agricultural leases (Law 93-120)</a></li>
+<li id="rnRu1"><a href="https://www.osti.gov/servlets/purl/1357599" rel="noopener" target="_blank">Uranium from wet-process phosphoric acid: Freeport (US) produced 14M lbs U3O8 1978-99 at >95% DEHPA/TOPO recovery; ~20% of US uranium in the 1980s came from phosphates</a></li>
+<li id="rnRu2"><a href="https://northafricapost.com/87963-uranext-to-build-moroccos-first-yellowcake-uranium-plant-in-el-jadida.html" rel="noopener" target="_blank">URANEXT/OCP (Morocco) building the first modern yellowcake-from-phosphoric-acid plant, ~$100M CAPEX, El Jadida, 2025</a></li>
+<li id="rnRu3"><a href="https://repositories.lib.utexas.edu/bitstreams/89897275-85cf-4cd6-a0c5-1d8daa353799/download" rel="noopener" target="_blank">WPA uranium SX cost $59-83/lb U3O8 (IX $46-76) vs $80-95/lb 2024-26 spot</a></li>
+<li id="rnRu4"><a href="https://www.mdpi.com/2673-4117/7/2/58" rel="noopener" target="_blank">REE from phosphoric acid: PhosAgro pilot; D2EHPA extracts >85% of heavy REEs (Dy, Y, Er) from WPA</a></li>
+<li id="rnRu5"><a href="https://www.researchgate.net/publication/380540277_Assessment_of_radiation_exposure_in_the_phosphate_mining_area_of_Gafsa_Southeastern_Tunisia" rel="noopener" target="_blank">Gafsa phosphate rock uranium content 45-140 ppm (southern basin)</a></li>
     </ol>
     <p class="n-note">Method note: references were resolved from Deep Research grounding
     redirects to their permanent URLs; each figure in the tables above traces to one of these.
@@ -859,7 +996,7 @@ deliverable; the snapshot is just its latest state.</p>
 <p class="n-tr-a"><strong>Host A —</strong> And you have to change the playing field.</p>
 <p class="n-tr-b"><strong>Host B —</strong> Exactly. Sovereignty won&#x27;t come from banks; it will come from a radical technological leap.</p>
 <p class="n-tr-a"><strong>Host A —</strong> And that&#x27;s where it gets really interesting. So, we&#x27;re trapped in this dollar debt, we can&#x27;t just buy ourselves an exit, we literally have to invent it.</p>
-<p class="n-tr-b"><strong>Host B —</strong> That&#x27;s where we shift toward tomorrow&#x27;s global supply map.</p>
+<p class="n-tr-b"><strong>Host B —</strong> That&#x27;s where we shift toward tomorrow's global supply map.</p>
 <p class="n-tr-a"><strong>Host A —</strong> Yes. The report highlights a huge epochal shift. The global economy is weaning itself off the barrel of oil. The new unit of power, the new black gold, is compute.</p>
 <p class="n-tr-b"><strong>Host B —</strong> Raw computing power.</p>
 <p class="n-tr-a"><strong>Host A —</strong> That&#x27;s it. The ability to run gigantic artificial intelligence models. And on this front, Tunisia has an asset that can&#x27;t be printed in a central bank: its intellectual capital.</p>
