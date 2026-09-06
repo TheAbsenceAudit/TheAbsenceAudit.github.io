@@ -505,6 +505,13 @@ table.term a{color:inherit}
 .hero-ledger-link{display:inline-block;margin-top:1.4rem;font-weight:600;
   color:var(--ink);border-bottom:2px solid var(--kill);text-decoration:none;padding-bottom:.1rem}
 .hero-ledger-link:hover{color:var(--kill)}
+/* Hero primary CTA — the free sample. The ask never precedes the proof. */
+.hero-cta-wrap{margin-top:1.9rem}
+.hero-cta{display:inline-block;padding:.9rem 1.6rem;font-weight:600;font-size:1.02rem;
+  background:var(--ink);color:var(--paper);text-decoration:none;border:1px solid var(--ink)}
+.hero-cta:hover{background:var(--kill);border-color:var(--kill)}
+.hero-cta:focus-visible{outline:2px solid var(--kill);outline-offset:2px}
+.hero-cta-note{font-size:.83rem;color:var(--ink-3);margin:.85rem 0 0;max-width:52ch}
 .invite{border:1px solid var(--rule);border-top:3px solid var(--ink);padding:1.1rem 1.4rem;
   margin:1.4rem 0;font-size:.92rem;color:var(--ink-2)}
 .invite strong{color:var(--ink)}
