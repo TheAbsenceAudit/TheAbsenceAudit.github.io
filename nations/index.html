@@ -50,7 +50,7 @@
   });
 </script>
 
-<link rel="stylesheet" href="/style.css?v=1788652171">
+<link rel="stylesheet" href="/style.css?v=1788654872">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Tunisia, audited — The Absence Audit at national scale</title>
@@ -357,7 +357,7 @@
     &asymp; <strong>3.03&nbsp;GW</strong> installed &mdash; 4,500&ndash;6,000&nbsp;ha of
     agrivoltaics, a marginal fraction of national territory, producing energy, water, metals, compute
     and protein from one piece of desert.</p>
-    <p class="n-note"><strong>Erratum, applied below.</strong> The pumping term in that budget has
+    <p class="n-note"><strong>Correction (v2, 2026-09-06).</strong> The pumping term in that budget has
     since been re-derived from first principles (lifting 400&nbsp;m is at minimum
     1.09&nbsp;kWh/m&sup3; &mdash; potential energy, not engineering art). The honest budget is
     <strong>5.65&nbsp;TWh/yr</strong>, with pumping at 1.03&nbsp;TWh and the solar park at
@@ -371,13 +371,33 @@
 <div class="n-section">
   <div class="wrap">
     <p class="eyebrow">The audit, turned on itself</p>
-    <h2>Red-team Tunisia: we tried to destroy our own idea</h2>
+    <h2>Red-team Tunisia &mdash; the falsification ladder</h2>
     <p class="n-lede">The first rule of the Absence Audit is <em>try to destroy the idea</em>.
-    The idea here is a country. So we ran the same falsification discipline on the audit itself:
-    three independent deep-research passes over the techno-economic literature — materials,
-    water/energy, compute/agriculture/financing — ~200 sources with citations resolved, and
-    every figure on this section recomputed in code from primitives
-    (the module is rerunnable — nations_arithmetic.py — and the key derivations appear in the findings below).</p>
+    The idea here is a country. So the falsification discipline runs on the audit itself, the same
+    way it runs on every venture in the ledger — not as a rebuttal to any single objection, but as a
+    standing structure: a ladder of proof standards, a closed taxonomy of layers, and a list of
+    watch conditions that would move each grade. Three independent deep-research passes over the
+    techno-economic literature (materials, water/energy, compute/agriculture/financing, ~200
+    sources, citations resolved) and every figure recomputed in code from primitives
+    (<span class="n-srcline">nations_arithmetic.py</span>) feed the snapshot below.</p>
+
+<div class="n-twrap"><table class="n-red">
+<caption>The falsification ladder — six proof standards, and where Tunisia sits on each (Sep 2026)</caption>
+<thead><tr><th>Rung</th><th>Standard of proof</th><th>What counts as evidence</th><th>Status</th></tr></thead>
+<tbody>
+<tr><td>L1 · Physics &amp; chemistry</td><td>Deterministic</td><td>The equation holds; the lab result is reproducible</td><td><span class="n-badge high">MET</span> REE leaching 65.6%; 1.09 kWh/m&sup3; lift floor</td></tr>
+<tr><td>L2 · Engineering precedent</td><td>A working plant at this scale, on this feed</td><td>A named operating facility</td><td><span class="n-badge low">ABSENT</span> none on sedimentary PG; Rainbow = apatite</td></tr>
+<tr><td>L3 · Techno-economic</td><td>A Class-5 / pre-feasibility study</td><td>Sourced $/unit, published</td><td><span class="n-badge low">ABSENT</span> only our bottom-up (~$21B) exists</td></tr>
+<tr><td>L4 · Financial commitment</td><td>A signed concession / PPA / offtake</td><td>The signature</td><td><span class="n-badge med">PARTIAL</span> 500 MW solar PPAs @ $0.031/kWh</td></tr>
+<tr><td>L5 · Institutional &amp; political</td><td>Enacted law + funded agency</td><td>The statute and the budget line</td><td><span class="n-badge low">ABSENT</span> IPP law exists; no program, agency or IMF</td></tr>
+<tr><td>L6 · System integration</td><td>Modules cash-positive; loop adds value</td><td>Operating cash flows, each independent</td><td><span class="n-badge unknown">UNPROVEN</span> 0.7^8 &asymp; 5.8%</td></tr>
+</tbody></table></div>
+<p class="n-note">A venture needs one kind of proof; a nation needs several, and they are different
+<em>kinds</em>, not degrees. The site's rule — <em>try to destroy the idea</em> — does not change at
+national scale; what changes is that destroying the idea now means <em>demanding the proof standard
+at each altitude and publishing where each claim sits</em>. Most of the loop is honest at L1 and
+unproven from L2 up. That is not a defect of the method; it is the method, made legible.</p>
+
     <div class="n-twrap"><table class="n-red">
       <caption>Layer-by-layer: what the page claims, what the research found, honest confidence</caption>
       <thead><tr><th>Layer</th><th>Claim</th><th>What the research found</th><th>Confidence</th><th>What would prove it</th></tr></thead>
@@ -388,6 +408,10 @@
 <tr><td>Infrastructure</td><td>Gafsa mines are suitable for 3×100 MW (free-cooled)</td><td>No phosphate-mine datacenter exists <sup class="n-cite">[Rc1]</sup>. Gafsa: DInSAR-documented subsidence at Moulares <sup class="n-cite">[Rc2]</sup>; 23-29°C rock at 100-300 m vs ASHRAE Class H1's 18-22°C recommendation <sup class="n-cite">[Rc4]</sup>; radon-222 accumulation (Ra-226 to 375 Bq/kg soils, tailings to 7,606 Bq/kg) <sup class="n-cite">[Rc3]</sup>; thermal saturation of closed voids; the one famous success (Lefdal) cools with 8°C fjord water, not rock <sup class="n-cite">[Rc1]</sup></td><td>LOW</td><td>Radon + geotechnical survey of the actual workings; then a 10 MW pilot in a certified stable, non-radioactive site with a published PUE &lt;1.25</td></tr>
 <tr><td>Finance</td><td>Project can attract capital</td><td>Bottom-up: ~$15-25B (center ~$21B), with GPU accelerators (export-controlled) being 40-60% of it <sup class="n-cite">[Rc5]</sup><sup class="n-cite">[Rc6]</sup>. Tunisia: Caa1/B- <sup class="n-cite">[Rc11]</sup>, WACC 10-15%, public debt ~83% GDP, no active IMF program, STEG debt >$1.3B. Working counter-pattern: 500 MW of solar was financed at ~$0.031/kWh with 25-yr PPAs (Scatec, Qair, Voltalia) <sup class="n-cite">[Rc13]</sup></td><td>LOW &ndash; MEDIUM</td><td>One signed concession with MDB co-financing (EIB/AfDB/KfW/Global Gateway) for a first $500M tranche</td></tr>
 <tr><td>Political</td><td>The state can execute it</td><td>The IPP framework works <sup class="n-cite">[Rc13]</sup>; agricultural land law blocks foreign ownership (40-yr leases only) <sup class="n-cite">[Rw12]</sup>; the budget (5-7% of GDP deficit) cannot fund the equity <sup class="n-cite">[Rw10]</sup>; IMF negotiations remain stalled <sup class="n-cite">[Rc12]</sup></td><td>LOW</td><td>A published national program with a funded, time-boxed pilot phase and a named agency</td></tr>
+<tr><td>Regulatory &amp; compliance</td><td>The NORM residue is handled within the law</td><td>Tunisian PG carries Ra-226 at 214-970 Bq/kg against a 1,000 Bq/kg IAEA/EU exemption line <sup class="n-cite">[Rm11]</sup><sup class="n-cite">[Rm12]</sup>; acid leaching mobilises Ra into the pregnant solution, and the REE concentrate co-precipitates it <sup class="n-cite">[Rm11]</sup>. NORM disposal runs $15-420/drum <sup class="n-cite">[Rm13]</sup>. No licensed disposal route for 2 Mt/yr of processed, acidic filter cake exists.</td><td>LOW</td><td>A NORM-classified residue stream with a licensed disposal/encapsulation route and a buyer that accepts the radiological specification</td></tr>
+<tr><td>Market &amp; offtake</td><td>A buyer exists for what the loop produces</td><td>Mixed concentrate sells at a 30-50% discount to Chinese refiners, who hold 85-90% of separation capacity <sup class="n-cite">[Rm9]</sup><sup class="n-cite">[Rm14]</sup>; selling separated oxides needs a $244M+ SX plant <sup class="n-cite">[Rm10]</sup>. Truffle offtake is real (€20-60/kg) <sup class="n-cite">[Rc9]</sup>. Sovereign compute has no offtake by definition.</td><td>LOW</td><td>A signed offtake at a stated $/kg, for the REE product specifically — without it every cost line is a bet on China's pricing</td></tr>
+<tr><td>Environmental &amp; social</td><td>Remediating the PG is a net public good</td><td>The harm is real and quantified: >$58M/yr in marine losses at Gabès <sup class="n-cite">[Rm2]</sup> and a multi-decade NORM stockpile <sup class="n-cite">[Rm11]</sup>. But remediation value is a liability-funded public good, not a metal-revenue business; Gafsa employment and social stabilisation are genuine but unquantified in the report.</td><td>MEDIUM</td><td>An environmental-liability financing (remediation bond / MDB grant) that prices the cleanup independently of the metal revenue</td></tr>
+<tr><td>Geopolitical &amp; supply chain</td><td>The inputs are obtainable, in the required quantities</td><td>China holds 85-90% of separation <sup class="n-cite">[Rm14]</sup> and controls the processing know-how; the US BIS rules make 300 MW of leading-edge GPUs legally unavailable to Tunisia today <sup class="n-cite">[Rc6]</sup>; RO membranes, HCl logistics and grid equipment are all imported and import-constrained.</td><td>LOW</td><td>A non-Chinese offtake AND a hardware-path agreement — both, because either alone leaves the loop captive</td></tr>
 <tr><td>System</td><td>All components reinforce each other</td><td>Eight interdependent stages, each with its own supplier, regulator and currency. At a generous 70% per-stage success: 0.7^8 &asymp; <b>5.8%</b> joint probability <sup class="n-cite">[Rc14]</sup>. The loop is a design hypothesis, not a result</td><td>HYPOTHESIS</td><td>Each module cash-positive on its own, with the loop adding value, not covering deficits</td></tr>
       </tbody>
     </table></div>
@@ -395,23 +419,42 @@
     Confidence is the grade of the <em>evidence</em>, not the feasibility of the dream. "High
     confidence, but the grade is the problem" means: the chemistry is proven and the economics
     are not. Confidence "High" on a layer does not mean that layer succeeds — it means we know
-    which answer to expect. That is what an audit is for. A summary of the grades:
+    which answer to expect. The taxonomy is closed: every claim on this page sits in exactly one
+    layer, and a layer with no evidence is graded LOW rather than left ungraded. A summary:
     <span class="n-badge high">1 HIGH</span>
+    <span class="n-badge med">1 MEDIUM</span>
     <span class="n-badge med">2 LOW-MEDIUM</span>
-    <span class="n-badge low">3 LOW</span>
+    <span class="n-badge low">6 LOW</span>
     <span class="n-badge unknown">1 HYPOTHESIS</span></p>
+
+<div class="n-twrap"><table>
+<caption>Watch conditions — observable events that would move a grade (checked without a laboratory)</caption>
+<thead><tr><th>Signal</th><th>Trigger</th><th>Grade it moves</th></tr></thead>
+<tbody>
+<tr><td>REE basket (NdPr/Dy/Tb)</td><td>&minus;50% vs 2026 spot</td><td>Economic &rarr; confirmed no-go for PG recovery</td></tr>
+<tr><td>Rainbow Phalaborwa (SA)</td><td>commercial commissioning result</td><td>Engineering: informative for apatite, not proof for sedimentary feed</td></tr>
+<tr><td>Tunisia sovereign rating</td><td>upgrade to investment-grade</td><td>Finance LOW-MED &rarr; MED</td></tr>
+<tr><td>US BIS / compute diplomacy</td><td>Tunisia added to a licensing tier</td><td>Geopolitical + Infrastructure: the hardware gate opens</td></tr>
+<tr><td>STEG / IPP tender</td><td>&gt;1 GW signed below $0.04/kWh</td><td>Finance + Political: the grid path becomes real</td></tr>
+<tr><td>Terfezia 100 ha pilot</td><td>3-season yield &ge;200 kg/ha</td><td>Market: the truffle leg confirms</td></tr>
+<tr><td>Sovereign rating (downgrade)</td><td>any downgrade</td><td>Finance &rarr; LOW</td></tr>
+</tbody></table></div>
+<p class="n-srcline">Last re-checked against public sources: 2026-09-06 · a moving grade triggers a dated
+update to the tables above — never a rewrite of the narrative. The falsification loop is the
+deliverable; the snapshot is just its latest state.</p>
+
   </div>
 </div>
 
 <div class="n-section">
   <div class="wrap">
-    <p class="eyebrow">Where the audit found its own errors</p>
+    <p class="eyebrow">Where the falsification bit</p>
     <h2>Seven findings
       <span style="font-weight:400;color:var(--ink-2);font-size:.95rem;font-family:var(--sans)">
-      — including two corrections to our own arithmetic</span></h2>
+      &mdash; including two corrections to the arithmetic</span></h2>
 
 <div class="n-finding">
-  <span class="n-num">Finding 01 &mdash; our own arithmetic had a hole, and it was pumping</span>
+  <span class="n-num">Finding 01 &mdash; the arithmetic had a hole, and it was pumping</span>
   <strong>The page's water transport figure is off by a factor of five.</strong>
   The report (and its arithmetic section here) states 0.38 kWh/m&sup3; for 300 km + 400 m of lift.
   Lifting water is pure physics: 1 m&sup3; x 400 m = 3.92 MJ = <b>1.09 kWh/m&sup3; at 100% efficiency</b> —
