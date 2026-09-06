@@ -260,6 +260,10 @@
   footer.site a{color:var(--ink-2);text-decoration:none}
   footer.site a:hover{color:var(--kill)}
   .disclaimer{max-width:78ch;margin-top:1.5rem;font-size:.79rem;line-height:1.55;color:var(--ink-3)}
+  footer.site .capture{margin-top:1.8rem;padding-top:1.1rem;border-top:1px dashed var(--rule);display:block}
+  footer.site .capture p{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.78rem;letter-spacing:.02em;color:var(--ink-2)}
+  footer.site .capture a{color:var(--kill);text-decoration:none}
+  footer.site .capture a:hover{text-decoration:underline}
 
   .skip-link{
     position:absolute;left:-9999px;top:0;z-index:99;background:var(--ink);color:var(--paper);

@@ -1,6 +1,6 @@
 # The Absence Audit
 
-> Research ledger of science-backed, market-ignored venture concepts. Every entry is audited against a seven-gate framework, its economics are recomputed in code, and its verdict is published with the incumbent it displaces.
+> Research ledger of science-backed, market-ignored venture concepts. The market's best-kept secrets are in the public record: every entry is audited against a seven-gate framework, its economics are recomputed in code, and its verdict is published with the incumbent it displaces.
 
 ## Surfaces
 - [Home](https://theabsenceaudit.com/): hook, method, survivors, signup.

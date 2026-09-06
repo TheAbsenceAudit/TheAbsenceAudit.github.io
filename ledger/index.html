@@ -63,7 +63,55 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788656183">
+<link rel="stylesheet" href="/style.css?v=1788659779">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
 </head>
 <body>
 <a class="skip-link" href="#main">Skip to content</a>
@@ -77,7 +125,7 @@
       <a href="/#graveyard">The filter</a>
       <a href="/track-record/">Track record</a>
       <a href="/nations/">Nations</a>
-      <a href="/#join">Get it free</a>
+      <a href="#join">Get it free</a>
       <span id="aa-auth" class="aa-auth"></span>
     </nav>
   </div>
@@ -92,6 +140,119 @@
   it was measured against.</p>
   
 </div>
+<div class="wrap" id="join" style="margin-top:1.6rem">
+  <form id="join-form" action="https://app.kit.com/forms/9858660/subscriptions" method="POST" novalidate>
+    <div class="field">
+      <label for="email" style="position:absolute;left:-9999px">Email address</label>
+      <input type="email" id="email" name="email_address" placeholder="you@company.com" autocomplete="email" required>
+      <button type="submit">Send me the ledger</button>
+    </div>
+    <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden">
+      <label for="company_website">Leave this empty</label>
+      <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+    </div>
+    <p class="form-note">Free while the ledger is being built. No spam, no reselling your address.
+    We will not promise you a return &mdash; nobody has built one of these ventures yet.</p>
+    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+  </form>
+</div>
+<script>
+/* Email capture — mirror of template.html. Keep in sync. */
+(function () {
+  var form = document.getElementById("join-form");
+  var input = document.getElementById("email");
+  var msg = document.getElementById("msg");
+  var trap = document.getElementById("company_website");
+  var endpoint = form.getAttribute("action") || "";
+  var DONE_KEY = "aa_subscribed";
+  function say(text, kind) { msg.textContent = text; msg.className = "msg " + (kind || ""); }
+  if (!endpoint) {
+    form.classList.add("unconfigured");
+    input.disabled = true;
+    form.querySelector("button").disabled = true;
+    say("Signup opens shortly \u2014 the list is not accepting addresses yet.", "err");
+    return;
+  }
+  if (localStorage.getItem(DONE_KEY)) say("You are already on the list from this browser.", "ok");
+  form.addEventListener("submit", function (e) {
+    var value = (input.value || "").trim();
+    if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+      e.preventDefault();
+      say("That does not look like an email address.", "err");
+      input.focus();
+      return;
+    }
+    if (trap && trap.value) { e.preventDefault(); return; }
+    if (!window.fetch) return;
+    e.preventDefault();
+    var btn = form.querySelector("button");
+    btn.disabled = true;
+    say("Adding you\u2026");
+    var payload = new FormData(form);
+    payload.delete("company_website");
+    fetch(endpoint, { method: "POST", body: payload })
+      .then(function (r) {
+        if (!r.ok && r.status !== 0) throw new Error("HTTP " + r.status);
+        form.reset();
+        localStorage.setItem(DONE_KEY, "1");
+        say("You are on the list. The next audit goes out with the following scan.", "ok");
+      })
+      .catch(function () { say("That did not go through. Please try again in a moment.", "err"); })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+<script>
+/* Signup attribution — mirror of template.html. Keep in sync. */
+(function () {
+  var KEY = "aa_first_touch";
+  function params() { try { return new URLSearchParams(location.search); } catch (e) { return null; } }
+  function capture() {
+    var stored = null;
+    try { stored = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (stored && stored.src) return stored;
+    var q = params();
+    var src = q && (q.get("utm_source") || q.get("ref"));
+    var med = q && q.get("utm_medium");
+    var cmp = q && q.get("utm_campaign");
+    if (!src) {
+      var r = document.referrer || "";
+      if (r) {
+        try {
+          var h = new URL(r).hostname.replace(/^www\./, "");
+          if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+        } catch (e) {}
+      }
+    }
+    var rec = { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "",
+                lp: location.pathname, ts: new Date().toISOString().slice(0, 10) };
+    try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch (e) {}
+    return rec;
+  }
+  var touch = capture();
+  var form = document.getElementById("join-form");
+  if (!form) return;
+  function hidden(name, value) {
+    var i = document.createElement("input");
+    i.type = "hidden"; i.name = name; i.value = value || "";
+    form.appendChild(i);
+  }
+  hidden("fields[source]", touch.src);
+  hidden("fields[medium]", touch.med);
+  hidden("fields[campaign]", touch.cmp);
+  hidden("fields[landing_page]", touch.lp);
+  form.addEventListener("submit", function () {
+    if (typeof gtag === "function") {
+      gtag("event", "generate_lead", {
+        source_channel: touch.src,
+        medium: touch.med,
+        campaign: touch.cmp,
+        landing_page: touch.lp
+      });
+    }
+  });
+})();
+</script>
 
 <div class="toolbar"><div class="wrap">
   <div class="searchrow">
