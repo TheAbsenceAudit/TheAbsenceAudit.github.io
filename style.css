@@ -273,6 +273,30 @@
   footer.site .capture a{color:var(--kill);text-decoration:none}
   footer.site .capture a:hover{text-decoration:underline}
 
+  /* SEO hubs: /alternatives/ + /sectors/ */
+  .hub{max-width:56rem;margin:0 auto;padding:2rem 1.4rem 1rem}
+  .hub h1{font-size:2rem;letter-spacing:-.01em}
+  .hub .eyebrow{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-2)}
+  .hub .lede{font-size:1rem;color:var(--ink-2);max-width:62ch}
+  .hub-card{border-top:1px solid var(--rule);padding:1.2rem 0;margin-top:1.4rem}
+  .hub-card h2{font-size:1.15rem;margin:0 0 .3rem}
+  .hub-card h2 a{color:var(--ink);text-decoration:none}
+  .hub-card h2 a:hover{color:var(--kill)}
+  .hub-status{display:inline-block;font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;padding:2px 8px;border:1px solid var(--rule);color:var(--ink-2)}
+  .hub-status.cleared{border-color:var(--kill);color:var(--kill)}
+  .hub-status.sale{color:var(--ink)}
+  .hub-ev{margin:.5rem 0 0;color:var(--ink-2);font-size:.95rem;max-width:72ch}
+  .hub-econ{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:.78rem;color:var(--ink-2);margin:.4rem 0 0}
+  .hub-fail{color:var(--ink-2);font-size:.88rem;max-width:72ch;margin:.3rem 0 0}
+  .hub-fail::before{content:"\2192 ";color:var(--kill)}
+  .hub-back{margin-top:2rem;padding-top:1rem;border-top:1px solid var(--rule);font-size:.9rem}
+  .hub-back a{color:var(--ink-2);margin-right:1rem}
+  .hub-list{list-style:none;padding:0;margin:1.6rem 0 0}
+  .hub-list li{padding:.7rem 0;border-top:1px solid var(--rule)}
+  .hub-list a{color:var(--ink);text-decoration:none;font-weight:600}
+  .hub-list a:hover{color:var(--kill)}
+  .hub-count{color:var(--ink-3);font-size:.82rem;margin-left:.6rem}
+
   .skip-link{
     position:absolute;left:-9999px;top:0;z-index:99;background:var(--ink);color:var(--paper);
     padding:.7rem 1.1rem;text-decoration:none;font-size:.9rem

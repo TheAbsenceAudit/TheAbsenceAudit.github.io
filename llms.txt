@@ -10,6 +10,8 @@
 - [Method](https://theabsenceaudit.com/method/): how a concept is screened, with the due-diligence questions answered.
 - [Ledger](https://theabsenceaudit.com/ledger/): searchable index of every audited concept.
 - [Nations](https://theabsenceaudit.com/nations/): the method applied at national scale — Tunisia as the first nation-scale absence audit, a public template for countries with the same absences.
+- [Alternatives](https://theabsenceaudit.com/alternatives/): every incumbent benchmark in the ledger with the concepts assessed against it. Buyer queries like 'SYLOID 244 FP alternative' land here.
+- [Sectors](https://theabsenceaudit.com/sectors/): every sector in the ledger with its concepts, survivors and published rejections.
 - [Concept pages](https://theabsenceaudit.com/c/<slug>/): one page per concept. Rejection write-ups are published in full; cleared concepts are teased.
 - [Sitemap](https://theabsenceaudit.com/sitemap.xml).
 
