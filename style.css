@@ -139,6 +139,7 @@
   .hero h1{font-size:clamp(2.5rem,5.4vw,4.05rem)}
   .hero h1 em{font-style:italic;color:var(--kill)}
   .hero-jtbd{font-size:1.28rem;font-weight:600;margin:1.2rem 0 0;max-width:38ch;color:var(--ink)}
+  .hero-banknote{font-size:.85rem;color:var(--ink-3);margin:.5rem 0 0;max-width:44ch}
   .lede{font-size:1.2rem;color:var(--ink-2);margin:1.6rem 0 0;max-width:34ch}
   .hero-note{
     font-size:.95rem;color:var(--ink-2);border-left:none;
