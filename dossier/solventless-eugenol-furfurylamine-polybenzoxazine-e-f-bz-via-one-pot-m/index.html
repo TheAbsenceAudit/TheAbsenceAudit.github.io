@@ -1,5 +1,56 @@
 <!DOCTYPE html>
-<html lang="en"><head><meta charset="utf-8">
+<html lang="en"><head>
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics ON (measure traffic), advertising OFF.
+  // Non-EEA audience: the single anonymous _ga analytics cookie needs no banner.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'granted',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+</script>
+
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "dossier": "solventless-eugenol-furfurylamine-polybenzoxazine-e-f-bz-via-one-pot-m"};</script>
+<script src="/assets/auth.js" defer></script>
+
+<link rel="stylesheet" href="/style.css">
+<meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <title>Solventless Eugenol-Furfurylamine Polybenzoxazine (E-F-Bz) via One-Pot Melt Condensation | The Absence Audit</title>
 <style>
@@ -62,6 +113,18 @@
   .refs a { color:var(--mute); text-decoration:none; word-break:break-all }
   footer { margin-top:36px; padding-top:16px; border-top:3px double var(--line);
     font:12.5px/1.6 ui-sans-serif,system-ui,sans-serif; color:var(--mute); }
+  .aa-pdf-dl { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    border:1px solid var(--line); background:#fafbfd; padding:12px 16px; margin:18px 0 4px; }
+  .aa-pdf-dl .pdf-btn { display:inline-block; background:var(--accent); color:#fff;
+    font:600 13px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em;
+    text-transform:uppercase; text-decoration:none; padding:11px 18px; }
+  .aa-pdf-dl .pdf-btn:hover { background:#6f1515; text-decoration:none; }
+  .aa-pdf-dl .pdf-note { color:var(--mute); font:13px/1.5 ui-sans-serif,system-ui,sans-serif;
+    max-width:36ch; }
+  .aa-pdf-dl .aa-audio-lbl { font:600 11px/1 ui-sans-serif,system-ui,sans-serif;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--mute); }
+  .aa-pdf-dl .aa-audio { height:38px; }
+  @media print { .aa-pdf-dl { display:none !important; } }
   
   .math { font-style: italic; }
   .fr { display: inline-flex; flex-direction: column; vertical-align: -0.55em;
@@ -69,14 +132,40 @@
   .fn { border-bottom: 1px solid currentColor; padding: 0 .15em; }
   .fd { padding: 0 .15em; }
 
-</style></head><body><div class="wrap">
+</style></head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">The ledger</a>
+      <a href="/pipeline/">Pipeline</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/#graveyard">The filter</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/nations/">Nations</a>
+      <a href="/#join">Get it free</a>
+      <a class="aa-x" href="https://x.com/TheAbsenceAudit" rel="me" aria-label="Follow The Absence Audit on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg><span>Follow</span></a>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
 
 <div class="cover">
   <div class="brand">The Absence Audit</div>
   <h1>Solventless Eugenol-Furfurylamine Polybenzoxazine (E-F-Bz) via One-Pot Melt Condensation</h1>
   <p class="sub">A single concept that cleared all seven gates and survived an independent
   red-team audit &mdash; mechanism, operating protocol, recomputed economics and the
-  argument against it. Concept 8 of 8 cleared. Issued 05 September 2026.</p>
+  argument against it. Concept 22 of 27 cleared. Issued 07 September 2026.</p>
+  <div class="aa-pdf-dl" style="display:none">
+    <a class="pdf-btn" href="solventless-eugenol-furfurylamine-polybenzoxazine-e-f-bz-via-one-pot-m.pdf"
+       onclick="window.dataLayer &amp;&amp; window.dataLayer.push({'event':'pdf_download','surface':'dossier','title':'Solventless Eugenol-Furfurylamine Polybenzoxazine (E-F-Bz) via One-Pot Melt Condensation'})">Download PDF</a>
+    <span class="aa-audio-lbl">Listen &mdash; full audio brief</span><audio class="aa-audio" controls preload="none" src="/subscriber/audio/20260905_run2_c1_strategic-analysis-of-unexploited-commercial-opportunit.mp3"></audio>
+    <span class="pdf-note">Print-ready &mdash; keep a copy for your own use, as your licence allows.</span>
+  </div>
 </div>
 
 <div class="callout">
@@ -256,7 +345,7 @@
 <p>4. <strong>If incumbent BMI manufacturers (e.g., Huntsman, ABR) develop and patent a highly toughened, zero-shrinkage BMI variant</strong> that solves the residual stress problem at the same price point, walk away.</p><h3>Commercial Execution Strategy</h3>
 <p>The commercialization path bypasses the impossibly slow adoption cycles of primary airframe manufacturers (like Boeing or Airbus) by targeting the fragmented, fast-moving Tier 2 and Tier 3 composite suppliers who fabricate secondary structures. These manufacturers suffer immediate, localized financial pain from the high scrap rates and cold-chain logistics associated with incumbent BMI resins. By supplying E-F-Bz as a stable, room-temperature powder, the venture instantly eliminates the buyer&#x27;s freezer storage costs and drastically reduces their defective part rates, ensuring a rapid path to first paid delivery.</p>
 <p>The framework systematically strips out execution risk by relying exclusively on widely available, commodity-priced inputs (eugenol, furfurylamine, paraformaldehyde) and basic, low-CapEx process equipment (heated mixing tanks and standard pin mills). This eliminates the massive technical and financial risks associated with toxic solvent handling, pressurized reactions, or custom chemical engineering. The venture is purely an operational integration play.</p>
-<p>Ultimately, the continuous production of solventless E-F-Bz redefines the economics of high-temperature aerospace composites by decoupling extreme thermal stability from severe volumetric shrinkage and complex supply-chain logistics. By bridging the gap between isolated &quot;green chemistry&quot; research and desperate aerospace engineering needs, this venture secures a highly profitable, scalable, and defensible beachhead in a multi-billion dollar materials market.</p><h3>Deterministic economics</h3><h3>Solventless Eugenol-Furfurylamine Polybenzoxazine (E-F-Bz)</h3>
+<p>Ultimately, the continuous production of solventless E-F-Bz redefines the economics of high-temperature aerospace composites by decoupling extreme thermal stability from severe volumetric shrinkage and complex supply-chain logistics. By bridging the gap between isolated &quot;green chemistry&quot; research and desperate aerospace engineering needs, this venture secures a highly profitable, scalable, and defensible beachhead in a multi-billion dollar materials market.</p><h3>Deterministic economics</h3><h3>Solventless Eugenol-Furfurylamine Polybenzoxazine (E-F-Bz) via One-Pot Melt Condensation</h3>
 <p><strong>Economics verdict: PASS</strong></p>
 <table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
 <tr><td>COGS per kg</td><td>$25.27</td></tr>
@@ -275,7 +364,7 @@
 <tr><td>Startup CapEx</td><td>$124,000</td></tr>
 <tr><td>Cash to first revenue (qualification)</td><td>$120,000</td></tr>
 <tr><td>Total cash at risk (CapEx + qualification)</td><td>$244,000</td></tr>
-<tr><td><strong>Capital productivity</strong> (rev/CapEx)</td><td><strong>181.11x</strong></td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>181.11x</strong></td></tr>
 <tr><td>Breakeven volume (kg)</td><td>3,499</td></tr>
 <tr><td>Payback from first sale (mo)</td><td>0.2</td></tr>
 <tr><td>Payback incl. qualification wait (mo)</td><td>9.2</td></tr>
@@ -335,11 +424,103 @@
 <p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p><h3>The case against it</h3><h3>Solventless Eugenol-Furfurylamine Polybenzoxazine (E-F-Bz) via One-Pot Melt Condensation</h3>
 <ul>
 <li>Rubric verdict: PASS</li>
-<li><strong>Audit verdict: PASS</strong></li>
+<li><strong>Audit verdict: FAIL</strong></li>
 </ul>
 <ul>
 <li>⚠️ <strong>WARN / declared_parity</strong> — Price parity is DECLARED, not demonstrated: product and incumbent price are both 95.0 citing the same ref (66). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+<li>❌ <strong>FAIL / self_declared_arbitrage</strong> — The Defensibility Position self-classifies the contribution as &#x27;(ii) operational/infrastructure arbitrage&#x27; — the prompt&#x27;s own marker for a NON-protectable position. The report is honest that it holds no patentable technical asset: trade-secret know-how and a known class characteristic are not IP recognition. Do not label an arbitrage as defensible IP; treat as NO_CLAIM and fail the defensibility gate (fail-closed, never re-asked — re-asking would only invite an invented contribution).</li>
+</ul><h3>Institutional capital-formation pack</h3><h3>Solventless Eugenol-Furfurylamine Polybenzoxazine (E-F-Bz) via One-Pot Melt Condensation</h3>
+<p><strong>Purchase profile:</strong> oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($22,458,000 annual revenue at capacity).</p>
+<h4>Pro-forma P&amp;L, cash flow and debt service (5 years)</h4>
+<table><thead><tr><th>Year</th><th>Revenue</th><th>Gross profit</th><th>EBITDA</th><th>Interest</th><th>Principal</th><th>Tax</th><th>FCF</th><th>DSCR</th></tr></thead><tbody>
+<tr><td>Y1</td><td>$8,983,200</td><td>$6,593,411</td><td>$5,245,931</td><td>$29,280</td><td>$35,852</td><td>$1,101,645</td><td>$4,079,154</td><td>63.63x</td></tr>
+<tr><td>Y2</td><td>$14,597,700</td><td>$10,714,293</td><td>$8,524,638</td><td>$24,978</td><td>$40,154</td><td>$1,790,174</td><td>$6,669,332</td><td>103.40x</td></tr>
+<tr><td>Y3</td><td>$19,089,300</td><td>$14,010,998</td><td>$11,147,603</td><td>$20,159</td><td>$44,972</td><td>$2,340,997</td><td>$8,741,475</td><td>135.21x</td></tr>
+<tr><td>Y4</td><td>$21,335,100</td><td>$15,659,351</td><td>$12,459,086</td><td>$14,763</td><td>$50,369</td><td>$2,616,408</td><td>$9,777,546</td><td>151.12x</td></tr>
+<tr><td>Y5</td><td>$22,458,000</td><td>$16,483,527</td><td>$13,114,827</td><td>$8,718</td><td>$56,413</td><td>$2,754,114</td><td>$10,295,582</td><td>159.07x</td></tr>
+</tbody></table>
+<p><strong>Minimum DSCR over the term:</strong> 63.63x — free cash flow turns positive in year 1.</p>
+<h4>Debt structure and amortization</h4>
+<p>Senior amortizing term loan: principal <strong>$244,000</strong>, 5-year term, 12.0% APR, monthly annuity payment <strong>$5,428</strong> (total debt service $65,132/yr). Sized so the worst year still clears a 1.25x DSCR, and capped at 80% of hard assets + working capital ($2,892,795).</p>
+<table><thead><tr><th>Year</th><th>Opening balance</th><th>Payment</th><th>Interest</th><th>Principal</th><th>Closing balance</th></tr></thead><tbody>
+<tr><td>Y1</td><td>$244,000</td><td>$65,132</td><td>$29,280</td><td>$35,852</td><td>$208,148</td></tr>
+<tr><td>Y2</td><td>$208,148</td><td>$65,132</td><td>$24,978</td><td>$40,154</td><td>$167,994</td></tr>
+<tr><td>Y3</td><td>$167,994</td><td>$65,132</td><td>$20,159</td><td>$44,972</td><td>$123,022</td></tr>
+<tr><td>Y4</td><td>$123,022</td><td>$65,132</td><td>$14,763</td><td>$50,369</td><td>$72,653</td></tr>
+<tr><td>Y5</td><td>$72,653</td><td>$65,132</td><td>$8,718</td><td>$56,413</td><td>$16,239</td></tr>
+</tbody></table>
+<p><strong>Use of proceeds:</strong> startup CapEx $124,000 · qualification/pre-revenue spend $120,000 · working capital $2,768,795 · total raise <strong>$244,000</strong>.</p>
+<h4>Bankability</h4>
+<p><strong>Verdict: BANKABLE (model)</strong> — min DSCR 63.63x.</p>
+<ul>
+<li>contracted-floor sensitivity raises min DSCR from 63.63 to 120.90 — an offtake/PPA-style floor materially improves bankability</li>
 </ul>
+<h4>Contracted-revenue sensitivity (the PPA test)</h4>
+<p>With 60% of nameplate revenue under a multi-year offtake contract from year 1, debt capacity stays at the use-of-proceeds cap ($244,000), but min DSCR headroom rises from 63.63x to <strong>120.90x</strong>.</p>
+<p>Contracted revenue is what converts a good margin into a bankable cash flow: it is the single most valuable document in the capital-formation file.</p>
+<h4>Valuation (derived from the pro-forma)</h4>
+<table><thead><tr><th>Method</th><th>Value</th></tr></thead><tbody>
+<tr><td>DCF @ 15%, no terminal value</td><td>$25,046,792</td></tr>
+<tr><td>DCF @ 25%, no terminal value</td><td>$19,385,870</td></tr>
+<tr><td>DCF @ 15%, terminal 4x EBITDA</td><td>$51,128,340</td></tr>
+<tr><td>DCF @ 25%, terminal 4x EBITDA</td><td>$36,575,736</td></tr>
+<tr><td>Revenue multiple 2x–4x on Y5</td><td>$44,916,000 – $89,832,000</td></tr>
+</tbody></table>
+<p><strong>Indicative enterprise value band: $19,385,870 – $89,832,000.</strong> This is a ranging device computed from the pro-forma, not a negotiated price — a tokenization platform will re-value independently.</p>
+<h4>Token structure recommendation</h4>
+<p><strong>Amortizing debt token (bond-like).</strong> min DSCR 63.63 &gt;= floor 1.25 and the debt capacity (244,000 USD, 100% of the raise) is material — fixed coupon, fixed maturity, monthly principal amortization is the structure the cash flow supports.</p>
+<p><strong>Morpho Blue LLTV recommendation: 77.0%</strong> (from the governance-approved set 0%, 38.5%, 62.5%, 77%, 86%, 91.5%, 94.5%, 96.5%, 98%) — bankable cash flow at the stated assumptions supports the standard commercial band (77% of the approved set); higher LLTVs trade liquidation margin for leverage.</p>
+<p><strong>Maximum sustainable annual borrow cost: 1698.5%</strong> — the worst-year after-tax EBITDA expressed against the debt principal. Borrowing above this rate inverts coverage at the stated assumptions.</p>
+<h4>Platform due-diligence readiness</h4>
+<p><strong>Brickken</strong> — items below marked <em>covered</em> are answered by this dossier (report section or this pack); items marked <em>operator must supply</em> are legal/regulatory documents only the venture operator can produce:</p>
+<table><thead><tr><th>DD item</th><th>Status</th></tr></thead><tbody>
+<tr><td>Corporate entity &amp; KYB/KYC pack</td><td>operator must supply</td></tr>
+<tr><td>Business plan &amp; market evidence</td><td>covered by the report</td></tr>
+<tr><td>Financial statements / projections (3-5y)</td><td>covered by this pack</td></tr>
+<tr><td>Independent valuation &amp; pricing rationale</td><td>covered by this pack</td></tr>
+<tr><td>Tokenomics design (supply, class, rights)</td><td>covered by this pack</td></tr>
+<tr><td>Legal review of the token instrument</td><td>operator must supply</td></tr>
+<tr><td>Smart-contract security audit</td><td>independent third party</td></tr>
+<tr><td>Marketing &amp; investor-acquisition plan</td><td>covered by the report</td></tr>
+</tbody></table>
+<p><strong>Centrifuge</strong> — items below marked <em>covered</em> are answered by this dossier (report section or this pack); items marked <em>operator must supply</em> are legal/regulatory documents only the venture operator can produce:</p>
+<table><thead><tr><th>DD item</th><th>Status</th></tr></thead><tbody>
+<tr><td>Pool type chosen (Closed/Portfolio avoids the POP governance vote)</td><td>covered by this pack</td></tr>
+<tr><td>SPV / asset-originator entity (bankruptcy-remote, true sale)</td><td>operator must supply</td></tr>
+<tr><td>POP-grade issuer pack (team, named legal/accounting partners, 2y origination history)</td><td>operator must supply</td></tr>
+<tr><td>Asset valuation &amp; NAV methodology (DCF mark-to-model)</td><td>covered by this pack</td></tr>
+<tr><td>Cash-flow projections + covenant reporting</td><td>covered by this pack</td></tr>
+<tr><td>Senior/junior tranche structure + subordination ratio</td><td>covered by this pack</td></tr>
+<tr><td>Independent auditor / trustee / servicer</td><td>independent third party</td></tr>
+<tr><td>Investor KYC/AML (ID, W-8BEN/W-9, accredited-investor check)</td><td>operator must supply</td></tr>
+</tbody></table>
+<blockquote>
+<p>Centrifuge expects institutional scale for OPEN pools (≥ $25M at launch, ≥ $100M within 12 months ideal, ~$5M first-loss junior, senior pre-committed). A micro-venture should structure as a CLOSED or PORTFOLIO pool, which skips the governance vote entirely. One SPV per pool, assets true-sold to it.</p>
+</blockquote>
+<p><strong>Morpho Blue</strong> — items below marked <em>covered</em> are answered by this dossier (report section or this pack); items marked <em>operator must supply</em> are legal/regulatory documents only the venture operator can produce:</p>
+<table><thead><tr><th>DD item</th><th>Status</th></tr></thead><tbody>
+<tr><td>Collateral/loan asset pairing (ERC-20s; loan asset not ERC-4626)</td><td>operator must supply</td></tr>
+<tr><td>Oracle availability &amp; quality for the pair (immutable at creation)</td><td>operator must supply</td></tr>
+<tr><td>LLTV from the governance-approved set, with rationale</td><td>covered by this pack</td></tr>
+<tr><td>Liquidation depth — liquidators must be able to sell the collateral (LIF economics)</td><td>operator must supply</td></tr>
+<tr><td>Curator path: caps, timelocks ≥ 3 days, interface listing policy</td><td>covered by this pack</td></tr>
+<tr><td>RWA route: tokenized equity/debt is not directly usable — enter via Centrifuge vault tokens</td><td>covered by this pack</td></tr>
+<tr><td>Underlying cash-flow coverage of borrow cost</td><td>covered by this pack</td></tr>
+</tbody></table>
+<blockquote>
+<p>Morpho Blue markets are permissionless and immutable: one collateral asset, one loan asset, an LLTV from the approved set (0 / 38.5 / 62.5 / 77 / 86 / 91.5 / 94.5 / 96.5 / 98%), a fixed oracle, and a governance-approved IRM. An illiquid RWA token cannot be posted as collateral directly — the realistic financing path is: Brickken/Centrifuge issuance -&gt; vault token -&gt; Morpho Blue market. This pack&#x27;s LLTV recommendation assumes that route.</p>
+</blockquote>
+<p><em>Checklist basis — Brickken: tokenization onboarding (KYB/KYC, corporate docs, financials, business plan, valuation, legal review, smart-contract audit) per brickken.com; EU framework: Regulation (EU) 2023/1114 (MiCA), Prospectus Regulation (EU) 2017/1129, Securitisation Regulation (EU) 2017/2402; smart-contract audit practice per ConsenSys Diligence (consensys.net/diligence). Centrifuge: pool types + POP v3 (CP68), legal offering / SPV true-sale, multi-tranche + subordination breach, pool valuation &amp; NAV, investor onboarding per docs.centrifuge.io and gov.centrifuge.io. Morpho Blue: market parameters, oracle, liquidation incentive factor, curator &amp; vaults per docs.morpho.org. Project-finance bankability: DSCR floor and debt sizing conventions from solar PPA / project-finance practice.</em></p>
+<h4>Model assumptions (one table, every concept)</h4>
+<table><thead><tr><th>Assumption</th><th>Value</th><th>Provenance</th></tr></thead><tbody>
+<tr><td>Nameplate revenue / gross margin</td><td>$22,458,000 / 73.4%</td><td>MEASURED (report economics block)</td></tr>
+<tr><td>Revenue ramp by purchase frequency (oneoff)</td><td>40%, 65%, 85%, 95%, 100% of nameplate</td><td>ASSUMED (pack default)</td></tr>
+<tr><td>SG&amp;A</td><td>15% of revenue</td><td>ASSUMED (pack default)</td></tr>
+<tr><td>Tax</td><td>21% flat, losses carried forward</td><td>ASSUMED (pack default)</td></tr>
+<tr><td>Debt</td><td>5y, 12.0% APR, monthly annuity</td><td>ASSUMED (pack default)</td></tr>
+<tr><td>DSCR floor / LTV cap</td><td>1.25x / 80%</td><td>ASSUMED (institutional convention)</td></tr>
+</tbody></table>
+<p><em>Everything not marked MEASURED is a declared model assumption, identical across all concepts so comparisons are like-for-like. No figure in this pack is invented per-concept; every number is either the report&#x27;s cited primitive or arithmetic on it.</em></p><p class="pack-note">Pro-forma, debt and valuation figures are computed deterministically from this report's cited economics primitives (institutional.py). Provenance: MEASURED = the report's cited primitive; DERIVED = arithmetic on measured values; ASSUMED = a declared pack default, identical across every concept.</p>
 </section>
 
 <section class="concept">
@@ -380,4 +561,30 @@ Every quantitative claim traces to one of these; check them.</p>
 </footer>
 </section>
 
-</div></body></html>
+</div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/pipeline/">Pipeline</a>
+      <a href="/alternatives/">Alternatives</a>
+      <a href="/sectors/">Sectors</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/nations/">Nations</a>
+      <a href="/terms/">Terms</a>
+      <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap capture">
+    <p>Proven in the literature. Absent from the market. The ledger lands in your inbox at 08:45 and 17:45 &mdash; free while it is being built. <a href="/#join">Get it &rarr;</a></p>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a></p>
+  </div>
+</footer>
+</body></html>
