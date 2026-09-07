@@ -13,7 +13,7 @@
 - [Nations](https://theabsenceaudit.com/nations/): the method applied at national scale — Tunisia as the first nation-scale absence audit, a public template for countries with the same absences.
 - [Alternatives](https://theabsenceaudit.com/alternatives/): every incumbent benchmark in the ledger with the concepts assessed against it. Buyer queries like 'SYLOID 244 FP alternative' land here.
 - [Sectors](https://theabsenceaudit.com/sectors/): every sector in the ledger with its concepts, survivors and published studies.
-- [Concept pages](https://theabsenceaudit.com/c/<slug>/): one page per concept. Study write-ups are published in full; cleared concepts are teased.
+- [Concept pages](https://theabsenceaudit.com/c/<slug>/): one page per concept. Study write-ups publish the full failure record; the complete report opens in place for buyers and subscribers. Cleared concepts are teased.
 - [Sitemap](https://theabsenceaudit.com/sitemap.xml).
 
 ## How to cite

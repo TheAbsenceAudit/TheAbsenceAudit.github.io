@@ -461,6 +461,91 @@
     }
   }
 
+  // ------------------------------------------------- post-pay recognition
+  // (2026-09-08) Stripe appends ?session_id=cs_... to the after_completion
+  // redirect. The claim Cloud Function retrieves the session server-side and,
+  // when paid, grants access to the CHECKOUT email (the webhook does the same
+  // async — either path suffices). If the visitor is signed in with that
+  // email, entitlements re-resolve and the report opens in place; otherwise a
+  // banner points them to sign in with the email they paid with. SILENT on
+  // any failure — the webhook covers it and the page must never be blocked
+  // by post-pay plumbing. The param is scrubbed only after a confirmed grant
+  // so a refresh retries a failed claim.
+  var CLAIMED_KEY = "aa_claimed_session_v1";
+  function ensureClaimStyle() {
+    if (document.getElementById("aa-claim-style")) return;
+    var st = document.createElement("style");
+    st.id = "aa-claim-style";
+    st.textContent =
+      "#aa-claim{position:fixed;left:0;right:0;bottom:0;z-index:900;" +
+      "display:flex;gap:.9rem;align-items:center;justify-content:center;" +
+      "padding:.65rem 1rem;background:var(--paper-2,#faf9f6);" +
+      "border-top:1px solid var(--line,#d8d4c8);" +
+      "font-family:var(--mono,ui-monospace,monospace);font-size:.85rem;" +
+      "color:var(--ink,#16181d)}" +
+      "#aa-claim .aa-claim-acts{display:flex;gap:.6rem;align-items:center}" +
+      "#aa-claim button{font-size:.8rem}";
+    document.head.appendChild(st);
+  }
+  function showClaimBar(d) {
+    if (document.getElementById("aa-claim")) return;
+    ensureClaimStyle();
+    var mine = state.signedIn && state.email === String(d.email || "").toLowerCase();
+    var bar = document.createElement("div");
+    bar.id = "aa-claim";
+    bar.setAttribute("role", "status");
+    var msg = "Purchase confirmed for " + (d.emailMasked || d.email) + ".";
+    msg += mine ? " Opening your report\u2026" : " Sign in with that email to open it.";
+    bar.innerHTML =
+      '<span class="aa-claim-msg">' + msg.replace(/</g, "&lt;") + "</span>" +
+      '<span class="aa-claim-acts">' +
+      (mine ? "" : '<button class="aa-btn" id="aa-claim-signin" type="button">Sign in</button>') +
+      '<button class="aa-out" id="aa-claim-x" type="button" aria-label="Dismiss">&times;</button>' +
+      "</span>";
+    document.body.appendChild(bar);
+    var b = bar.querySelector("#aa-claim-signin");
+    if (b) b.addEventListener("click", function () {
+      var m = ensureModal();
+      m.classList.add("open");
+      var em = m.querySelector("#aa-em");
+      if (em) em.value = d.email;
+      setTimeout(function () { if (em) em.focus(); }, 50);
+    });
+    bar.querySelector("#aa-claim-x").addEventListener("click", function () {
+      if (bar.parentNode) bar.parentNode.removeChild(bar);
+    });
+  }
+  function maybeClaim() {
+    var m = (location.search || "").match(/[?&]session_id=(cs_(?:test|live)_[a-zA-Z0-9]+)/);
+    if (!m) return;
+    var sid = decodeURIComponent(m[1]);
+    try {
+      if (localStorage.getItem(CLAIMED_KEY) === sid) return;
+    } catch (e) {}
+    var fn = CFG.claimFn;
+    if (!fn) return;
+    setTimeout(function () {
+      fetch(fn + "?session_id=" + encodeURIComponent(sid))
+        .then(function (r) {
+          if (!r.ok) throw new Error("http " + r.status);
+          return r.json();
+        })
+        .then(function (d) {
+          if (!d || !d.ok || d.status !== "granted" || !d.email) return;
+          try { localStorage.setItem(CLAIMED_KEY, sid); } catch (e) {}
+          try { history.replaceState(null, "", location.pathname + location.hash); } catch (e) {}
+          showClaimBar(d);
+          if (state.signedIn
+              && state.email === String(d.email).toLowerCase()) {
+            // The access doc was just written server-side: re-resolve so the
+            // gate opens in place without a reload.
+            boot(function () { resolve(); });
+          }
+        })
+        .catch(function () { /* silent: webhook covers it; refresh retries */ });
+    }, 800);
+  }
+
   // ------------------------------------------------------------------ init
   function init() {
     chip = document.getElementById("aa-auth");
@@ -482,6 +567,7 @@
     else if (window.AA_AGENT) revealAgent();
     listeners.push(inviteLinks);
     start();
+    maybeClaim();
   }
 
   // ------------------------------------------------------------------ ledger
