@@ -243,11 +243,14 @@
         }
       }
       // Bankability band (owner 2026-09-07): the model pack's verdict.
-      // "NONE" = pre-model report (no pack could be computed). ANDs with the
-      // verdict segments so the honest cuts compose (e.g. Rejected × Bankable).
+      // Values arrive as "BANKABLE (model)" etc. — normalize the suffix off.
+      // "NONE" = pre-model report (no pack). "NOT ASSESSABLE" = pack exists
+      // but the primitives can't support a verdict. ANDs with the verdict
+      // segments so the honest cuts compose (e.g. Rejected × Bankable).
       if (bankBand) {
-        if (bankBand === "NONE") { if (r.bk != null) return false; }
-        else if (r.bk !== bankBand) return false;
+        var bv = r.bk != null ? String(r.bk).split(" (")[0] : null;
+        if (bankBand === "NONE") { if (bv != null) return false; }
+        else if (bv !== bankBand) return false;
       }
       return true;
     });
@@ -401,12 +404,13 @@
 
   function bankBadge(r) {
     if (!r.bk) return "";
-    var cls = r.bk === "BANKABLE" ? "ok" : (r.bk === "NOT BANKABLE" ? "dead" : "");
-    var t = "Model bankability: " + r.bk +
+    var bv = String(r.bk).split(" (")[0];
+    var cls = bv === "BANKABLE" ? "ok" : (bv === "NOT BANKABLE" ? "dead" : "");
+    var t = "Model bankability: " + bv +
       (r.bkd != null ? " \u2014 min DSCR " + r.bkd + "\u00d7" : "") +
       ". Computed by the institutional pack, not a bank decision.";
     return '<span class="tbadge ' + cls + '" title="' + t + '">' +
-      esc(r.bk) + (r.bkd != null ? " " + r.bkd + "\u00d7" : "") + "</span>";
+      esc(bv) + (r.bkd != null ? " " + r.bkd + "\u00d7" : "") + "</span>";
   }
 
   function ownedBadge(r) {
@@ -531,7 +535,8 @@
     var cb = p.get("cb");
     if (cb === "25" || cb === "100" || cb === "500" || cb === "max") capexBand = cb;
     var bk = p.get("bk");
-    if (bk === "BANKABLE" || bk === "NOT BANKABLE" || bk === "CONDITIONAL" || bk === "NONE") bankBand = bk;
+    if (bk === "BANKABLE" || bk === "NOT BANKABLE" || bk === "CONDITIONAL" ||
+        bk === "NOT ASSESSABLE" || bk === "NONE") bankBand = bk;
     if (p.get("pb")) pay.value = p.get("pb");
     if (p.get("s")) sort.value = p.get("s");
     if (p.get("w") === "list" || p.get("w") === "grid") viewmode = p.get("w");
