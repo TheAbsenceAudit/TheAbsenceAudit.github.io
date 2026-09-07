@@ -201,6 +201,94 @@
 <h4>Target Market and Mass Adoption Path</h4>
 <p>The target market is B2B cosmetic ingredient distributors and indie-to-mid-tier clinical skincare brands. The global AHA/PHA market exceeds $2.5 billion. The adoption path involves targeting brands that specifically market to sensitive-skin demographics (e.g., rosacea and eczema sufferers) who cannot tolerate Glycolic acid. Supplying these brands with a premium PHA (LBA) at a price normally reserved for commodity AHAs will force rapid formulation switching.</p>
 <hr>
+<h3>Deterministic economics</h3>
+<h3>Microbial Lactobionic Acid (LBA) via Whole-Cell Dairy Byproduct Fermentation</h3>
+<p><strong>Economics verdict: FAIL</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per kg</td><td>$2.50</td></tr>
+<tr><td>Price per kg (gate basis = parity)</td><td>$15.00</td></tr>
+<tr><td>Venture&#x27;s intended ask per kg</td><td>$30.00</td></tr>
+<tr><td>Incumbent price per kg</td><td>$15.00</td></tr>
+<tr><td>Price premium vs incumbent</td><td>100.0%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>83.3%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>91.7%</td></tr>
+<tr><td>Contribution per kg</td><td>$12.50</td></tr>
+<tr><td><strong>All-in OPEX per kg (itemised)</strong></td><td><strong>—</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>—</strong></td></tr>
+<tr><td>Annual output (kg)</td><td>12,960</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$194,400</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$162,000</td></tr>
+<tr><td>Startup CapEx</td><td>$202,000</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$65,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$267,000</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>0.96x</strong></td></tr>
+<tr><td>Breakeven volume (kg)</td><td>21,360</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>19.8</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>25.8</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>52.5%</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per kg = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 2.5  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = 83.33%</span></p>
+<p><span class="math">Contribution per kg = P<sub>parity</sub> - COGS = 12.5  USD/kg</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 0.96×</span></p>
+<p><span class="math">Breakeven volume = <span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per kg</span></span> = 21360  kg</span></p>
+<p><span class="math">Payback from first sale = <span class="fr"><span class="fn">total cash at risk</span><span class="fd">monthly gross profit</span></span> = 19.78  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>2000L Bioreactor System</td><td></td><td>—</td><td>—</td><td></td></tr>
+<tr><td>Disc-Stack Centrifuge</td><td></td><td>—</td><td>—</td><td></td></tr>
+<tr><td>Evaporator/Crystallizer</td><td></td><td>—</td><td>—</td><td></td></tr>
+<tr><td>Compressor/Sparging</td><td></td><td>—</td><td>—</td><td></td></tr>
+<tr><td>HPLC &amp; QA Suite</td><td></td><td>—</td><td>—</td><td></td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$202,000</strong> vs sum of line items <strong>$$202,000</strong>: RECONCILES — a line item is missing vendor; a line item is missing source; a line item is missing vendor; a line item is missing source; a line item is missing vendor; a line item is missing source; a line item is missing vendor; a line item is missing source; a line item is missing vendor; a line item is missing source.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>—</td></tr>
+<tr><td>energy</td><td>—</td></tr>
+<tr><td>labor</td><td>—</td></tr>
+<tr><td>water</td><td>—</td></tr>
+<tr><td>maintenance</td><td>—</td></tr>
+<tr><td>waste_disposal</td><td>—</td></tr>
+<tr><td>packaging</td><td>—</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum <strong>$—/unit</strong>. ⚠️ Components do NOT reconcile to the stated total — verify the opex block.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin &gt;= 70%</td><td>83.3%</td><td>PASS</td></tr>
+<tr><td>Startup CapEx &lt;= $250,000</td><td>$202,000</td><td>PASS</td></tr>
+<tr><td>Payback &lt;= 12 mo</td><td>19.8 mo</td><td>FAIL</td></tr>
+<tr><td>Capital productivity &gt;= 2.0x</td><td>0.96x</td><td>FAIL</td></tr>
+<tr><td>Price parity (&lt;=10% premium)</td><td>+100.0%</td><td>FAIL</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>83.3%</td><td>19.8</td><td>52.5%</td><td>0.96x</td></tr>
+<tr><td>price -25%</td><td>83.3%</td><td>19.8</td><td>52.5%</td><td>0.96x</td></tr>
+<tr><td>yield -25%</td><td>81.1%</td><td>20.3</td><td>50.6%</td><td>0.96x</td></tr>
+<tr><td>CapEx +100%</td><td>83.3%</td><td>34.7</td><td>18.4%</td><td>0.48x</td></tr>
+<tr><td>feedstock +50%</td><td>80.0%</td><td>20.6</td><td>49.6%</td><td>0.96x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>81.1%</td><td>35.7</td><td>17.1%</td><td>0.48x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+<h3>The case against it</h3>
+<h3>Microbial Lactobionic Acid (LBA) via Whole-Cell Dairy Byproduct Fermentation</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Audit verdict: FAIL</strong></li>
+</ul>
+<ul>
+<li>⚠️ <strong>WARN / weak_superiority_source</strong> — Superiority table rests on non-peer-reviewed source(s): ref 27 [grey]</li>
+<li>⚠️ <strong>WARN / declared_parity</strong> — Price parity is DECLARED, not demonstrated: product and incumbent price are both 15.0 citing the same ref (34). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+<li>⚠️ <strong>WARN / no_production_runsheet</strong> — No &#x27;Production Runsheet&#x27; section. Without a mass-balance (feed quantities, stepwise yields, output, as-sold specification) the &#x27;low-CapEx, buildable&#x27; claim is not operationally verifiable.</li>
+<li>⚠️ <strong>WARN / unsourced_equipment</strong> — Equipment list has line items missing vendor/source/spec: a line item is missing source; a line item is missing vendor</li>
+<li>⚠️ <strong>WARN / no_opex</strong> — No itemised opex_per_unit block with a stated total. Without the value of OPEX the margin claim is untestable — a &#x27;massive margin&#x27; depends on what it actually costs to run.</li>
+</ul>
 <h3>Institutional capital-formation pack</h3>
 <h3>Microbial Lactobionic Acid (LBA) via Whole-Cell Dairy Byproduct Fermentation</h3>
 <p><strong>Purchase profile:</strong> oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($194,400 annual revenue at capacity).</p>

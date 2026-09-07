@@ -234,6 +234,86 @@
 <p>1.  <strong>Pilot-Scale Downstream Losses:</strong> Academic literature bounds the production of heterotrophic <em>G. sulphuraria</em> C-PC at roughly 2 mg per gram of carbon substrate using bench-scale freeze-thaw or sonication protocols [cite: 79, 80]. Exact yield losses transitioning from bench-scale bead milling to industrial continuous high-pressure homogenization at pH 2.0 remain proprietary to consortia like Fermentalg/Givaudan. Thus, the 5 kg yield per 25,000 L batch represents an optimistic upper bound.</p>
 <p>2.  <strong>Energetic Load of Cooling vs. Heating:</strong> While operating at 45°C generally reduces the cooling water utility load compared to cultivating standard mesophilic bacteria (e.g., <em>E. coli</em> at 37°C), the massive oxygen demand required to metabolize 100 g/L of maltodextrin heterotrophically will generate intense metabolic heat and high agitation friction. Precise thermal models comparing the heating/cooling OpEx of <em>Galdieria</em> fermentation versus standard yeast or bacterial platforms are currently absent from the literature.</p>
 <p>3.  <strong>Mixotrophic Alternative Data:</strong> While <em>mixotrophic</em> (oxygen balanced, light-supplemented) cultivation of <em>Galdieria</em> boasts intracellular C-Phycocyanin concentrations as high as 10% [cite: 72], scaling light-penetrating photobioreactors to compete with the sheer volume of a 25,000 L dark fermenter introduces vastly different CapEx and land-use metrics, fundamentally altering the venture model.</p>
+<h3>Deterministic economics</h3>
+<h3>C-Phycocyanin via Heterotrophic Cultivation of Galdieria sulphuraria</h3>
+<p><strong>Economics verdict: FAIL</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per kg</td><td>$405.00</td></tr>
+<tr><td>Price per kg (gate basis = parity)</td><td>$130.00</td></tr>
+<tr><td>Venture&#x27;s intended ask per kg</td><td>$500.00</td></tr>
+<tr><td>Incumbent price per kg</td><td>$130.00</td></tr>
+<tr><td>Price premium vs incumbent</td><td>284.6%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>-211.5%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>19.0%</td></tr>
+<tr><td>Contribution per kg</td><td>$-275.00</td></tr>
+<tr><td><strong>All-in OPEX per kg (itemised)</strong></td><td><strong>$405.00</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>-211.5%</strong></td></tr>
+<tr><td>Annual output (kg)</td><td>360</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$46,800</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$-99,000</td></tr>
+<tr><td>Startup CapEx</td><td>$1,250,000</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$850,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$2,100,000</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>0.04x</strong></td></tr>
+<tr><td>Breakeven volume (kg)</td><td>—</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>—</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>—</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>—</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per kg = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 405  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = -211.54%</span></p>
+<p><span class="math">Contribution per kg = P<sub>parity</sub> - COGS = -275  USD/kg</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 0.04×</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>25,000L Hastelloy Bioreactor</td><td>Acid-resistant pH 2 rating</td><td>$600,000</td><td>$350,000</td><td>De Dietrich, Germany</td></tr>
+<tr><td>Continuous Disc-Stack Centrifuge</td><td>Industrial solids separation</td><td>$200,000</td><td>$100,000</td><td>Alfa Laval, Sweden</td></tr>
+<tr><td>High-Pressure Homogenizer</td><td>Cell disruption unit</td><td>$150,000</td><td>$80,000</td><td>GEA Group, Germany</td></tr>
+<tr><td>TFF / Ultrafiltration Skid</td><td>Protein dialysis and purification</td><td>$150,000</td><td>$75,000</td><td>Pall Corporation, USA</td></tr>
+<tr><td>Industrial Spray Dryer</td><td>Pharmaceutical grade evaporation</td><td>$150,000</td><td>$80,000</td><td>Buchi, Switzerland</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$1,250,000</strong> vs sum of line items <strong>$$1,250,000</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$250.00</td></tr>
+<tr><td>energy</td><td>$60.00</td></tr>
+<tr><td>labor</td><td>$50.00</td></tr>
+<tr><td>water</td><td>$10.00</td></tr>
+<tr><td>maintenance</td><td>$20.00</td></tr>
+<tr><td>waste_disposal</td><td>$10.00</td></tr>
+<tr><td>packaging</td><td>$5.00</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum <strong>$$405.00/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin &gt;= 70%</td><td>-211.5%</td><td>FAIL</td></tr>
+<tr><td>Startup CapEx &lt;= $250,000</td><td>$1,250,000</td><td>FAIL</td></tr>
+<tr><td>Payback &lt;= 12 mo</td><td>NOT STATED</td><td>NOT STATED</td></tr>
+<tr><td>Capital productivity &gt;= 2.0x</td><td>0.04x</td><td>FAIL</td></tr>
+<tr><td>Price parity (&lt;=10% premium)</td><td>+284.6%</td><td>FAIL</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>-211.5%</td><td>—</td><td>n/m</td><td>0.04x</td></tr>
+<tr><td>price -25%</td><td>-211.5%</td><td>—</td><td>n/m</td><td>0.04x</td></tr>
+<tr><td>yield -25%</td><td>-275.6%</td><td>—</td><td>n/m</td><td>0.04x</td></tr>
+<tr><td>CapEx +100%</td><td>-211.5%</td><td>—</td><td>n/m</td><td>0.02x</td></tr>
+<tr><td>feedstock +50%</td><td>-307.7%</td><td>—</td><td>n/m</td><td>0.04x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>-275.6%</td><td>—</td><td>n/m</td><td>0.02x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+<h3>The case against it</h3>
+<h3>C-Phycocyanin via Heterotrophic Cultivation of Galdieria sulphuraria</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Audit verdict: FAIL</strong></li>
+</ul>
+<p>No findings — comparator legitimate, step-change ≥2x, evidence distributed, parity sourced.</p>
 <h3>Institutional capital-formation pack</h3>
 <h3>C-Phycocyanin via Heterotrophic Cultivation of Galdieria sulphuraria</h3>
 <p><strong>Purchase profile:</strong> oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($46,800 annual revenue at capacity).</p>

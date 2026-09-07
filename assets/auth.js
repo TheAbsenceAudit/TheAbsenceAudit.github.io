@@ -273,65 +273,38 @@
 
   // --------------------------------------------------------------- dossier gate
   function subMode() { return document.cookie.indexOf("aa_sub=1") >= 0; }
-  function gateCard(kicker, title, sub, note) {
-    var b = '<button class="aa-gbtn" id="aa-gate-signin" type="button">Sign in</button>';
-    var n = note
-      ? '<p class="aa-note">Bought it and still locked? Reply to your purchase receipt. ' +
-        '<a href="' + VAULT + '">My ledger</a></p>'
-      : "";
-    return '<div class="aa-gate-card">' +
-      '<p class="aa-kicker">' + kicker + "</p>" +
-      "<h1>" + title + "</h1>" + "<p class=\"aa-sub\">" + sub + "</p>" +
-      (note ? b : "") + n +
-      "</div>";
+  // Owner order 2026-09-07: full reports are PUBLIC — every /dossier/<slug>/
+  // page renders for every visitor, no overlay, no wall. What stays gated
+  // are the paid EXTRAS: the Download-PDF row and the full audio brief.
+  // Both are hidden by default (fail-closed) and revealed here for
+  // entitled readers — subscriber cookie, a Full-Ledger account, or an
+  // account that owns this slug. Same condition as before, same reveal
+  // moment; the gate convention now covers extras only.
+  function revealGated() {
+    var g = document.querySelectorAll("[data-aa-gated]");
+    for (var i = 0; i < g.length; i++) g[i].style.display = "";
+  }
+  function revealDownload() {
+    // The dossier's Download-PDF row is hidden by default (fail-closed)
+    // and only appears to entitled readers — subscriber mode, a Full-Ledger
+    // account, or an account that owns this slug. Same condition as the
+    // other gated extras, same reveal moment.
+    var dl = document.querySelector(".aa-pdf-dl");
+    if (dl) dl.style.display = "flex";
   }
   function gateDossier() {
     var slug = CFG.dossier;
     if (!slug) return;
-    // Start NEUTRAL. The auth state (SDK load + Firestore read) resolves a
-    // second or two after paint; an entitled account must never see a false
-    // "part of the paid ledger" gate before their access is confirmed. So the
-    // card first says "checking your access", then either flips to the real
-    // sign-in gate (not entitled) or is removed (entitled). Show nothing else
-    // in the gap — the report is under here too and must stay covered either
-    // way, so the overlay covers from the first paint.
-    var overlay = document.createElement("div");
-    overlay.id = "aa-gate";
-    overlay.innerHTML = gateCard("The Absence Audit", "Checking your access\u2026",
-                                 "Verifying your purchase and ledger access.", false);
-    document.body.appendChild(overlay);
-    function signInCard() {
-      overlay.innerHTML = gateCard("The Absence Audit",
-                                   "This dossier is part of the paid ledger.",
-                                   "Sign in with your purchase email to read it.", true);
-      var b = overlay.querySelector("#aa-gate-signin");
-      if (b) b.addEventListener("click", openModal);
-    }
-    function revealDownload() {
-      // The dossier's Download-PDF row is hidden by default (fail-closed)
-      // and only appears to entitled readers — subscriber mode, a Full-Ledger
-      // account, or an account that owns this slug. Same condition as the
-      // gate, same reveal moment: no gate, no button.
-      var dl = document.querySelector(".aa-pdf-dl");
-      if (dl) dl.style.display = "flex";
-    }
     function apply(st) {
       // Subscriber mode (aa_sub cookie, set by the invitation page) opens every
       // dossier too — the subscriber page promises "open any dossier and read
-      // it in full", so the gate must honour that promise.
+      // it in full", so the extras must honour that promise.
       var ok = subMode() ||
                (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
-      if (ok) { overlay.remove(); revealDownload(); revealAgent(); }
-      else { signInCard(); overlay.style.display = "flex"; }
+      if (ok) { revealDownload(); revealGated(); revealAgent(); }
     }
     if (state.ready) apply(state);
-    else {
-      listeners.push(apply);
-      // Fail-closed: if auth never resolves (SDK/network), fall back to the
-      // sign-in gate rather than hanging on "Checking your access" forever —
-      // and never reveal the report beneath.
-      setTimeout(function () { if (overlay.parentNode && !state.ready) apply(state); }, 5000);
-    }
+    else listeners.push(apply);
   }
 
   // --------------------------------------------------------- dossier agent

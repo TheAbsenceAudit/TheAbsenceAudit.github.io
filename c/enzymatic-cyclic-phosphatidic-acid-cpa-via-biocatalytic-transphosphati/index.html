@@ -223,6 +223,88 @@
 <li><strong>Direct Head-to-Head Clinical Trials:</strong> The clinical efficacy of cPA in cosmetic applications is heavily reliant on studies pairing it with microneedle delivery (DA-MNP) [cite: 143, 144] and comparing it to placebos. There is an absence of large-scale, double-blind human clinical trials comparing topical cPA <em>directly</em> against topical Retinol for wrinkle effacement in identical base vehicles.</li>
 <li><strong>Continuous Flow Processing Data:</strong> The literature details batch conversions of LPC to cPA [cite: 157, 159]. Data regarding continuous-flow immobilized PLD reactors—which would be necessary to drive down the excessive OPEX and CapEx—remains elusive in public domains.</li>
 </ul>
+<h3>Deterministic economics</h3>
+<h3>Enzymatic Cyclic Phosphatidic Acid (cPA) via Biocatalytic Transphosphatidylation</h3>
+<p><strong>Economics verdict: FAIL</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per kg</td><td>$82.94</td></tr>
+<tr><td>Price per kg (gate basis = parity)</td><td>$70.00</td></tr>
+<tr><td>Venture&#x27;s intended ask per kg</td><td>$350.00</td></tr>
+<tr><td>Incumbent price per kg</td><td>$70.00</td></tr>
+<tr><td>Price premium vs incumbent</td><td>400.0%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>-18.5%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>76.3%</td></tr>
+<tr><td>Contribution per kg</td><td>$-12.94</td></tr>
+<tr><td><strong>All-in OPEX per kg (itemised)</strong></td><td><strong>$82.94</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>-18.5%</strong></td></tr>
+<tr><td>Annual output (kg)</td><td>10,200</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$714,000</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$-132,000</td></tr>
+<tr><td>Startup CapEx</td><td>$270,000</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$150,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$420,000</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>2.64x</strong></td></tr>
+<tr><td>Breakeven volume (kg)</td><td>—</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>—</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>—</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>—</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per kg = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 82.94  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = -18.49%</span></p>
+<p><span class="math">Contribution per kg = P<sub>parity</sub> - COGS = -12.94  USD/kg</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 2.64×</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>500L Stirred Tank Bioreactor</td><td>316L Stainless Steel, Jacketed</td><td>$120,000</td><td>$75,000</td><td>Sartorius Germany</td></tr>
+<tr><td>Industrial Centrifuge</td><td>Continuous Decanter 1000L/hr</td><td>$60,000</td><td>$35,000</td><td>Alfa Laval Sweden</td></tr>
+<tr><td>Lyophilizer</td><td>50kg ice capacity, GMP</td><td>$90,000</td><td>$45,000</td><td>Martin Christ Germany</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$270,000</strong> vs sum of line items <strong>$$270,000</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$52.94</td></tr>
+<tr><td>energy</td><td>$5.00</td></tr>
+<tr><td>labor</td><td>$15.00</td></tr>
+<tr><td>water</td><td>$1.00</td></tr>
+<tr><td>maintenance</td><td>$4.00</td></tr>
+<tr><td>waste_disposal</td><td>$3.00</td></tr>
+<tr><td>packaging</td><td>$2.00</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum <strong>$$82.94/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin &gt;= 70%</td><td>-18.5%</td><td>FAIL</td></tr>
+<tr><td>Startup CapEx &lt;= $250,000</td><td>$270,000</td><td>FAIL</td></tr>
+<tr><td>Payback &lt;= 12 mo</td><td>NOT STATED</td><td>NOT STATED</td></tr>
+<tr><td>Capital productivity &gt;= 2.0x</td><td>2.64x</td><td>PASS</td></tr>
+<tr><td>Price parity (&lt;=10% premium)</td><td>+400.0%</td><td>FAIL</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>-18.5%</td><td>—</td><td>n/m</td><td>2.64x</td></tr>
+<tr><td>price -25%</td><td>-18.5%</td><td>—</td><td>n/m</td><td>2.64x</td></tr>
+<tr><td>yield -25%</td><td>-43.7%</td><td>—</td><td>n/m</td><td>2.64x</td></tr>
+<tr><td>CapEx +100%</td><td>-18.5%</td><td>—</td><td>n/m</td><td>1.32x</td></tr>
+<tr><td>feedstock +50%</td><td>-56.3%</td><td>—</td><td>n/m</td><td>2.64x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>-43.7%</td><td>—</td><td>n/m</td><td>1.32x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+<h3>The case against it</h3>
+<h3>Enzymatic Cyclic Phosphatidic Acid (cPA) via Biocatalytic Transphosphatidylation</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Audit verdict: FAIL</strong></li>
+</ul>
+<ul>
+<li>⚠️ <strong>WARN / duplicate_refs</strong> — Cites duplicate reference(s) [108] that restate a source already counted, inflating the apparent evidence base.</li>
+<li>⚠️ <strong>WARN / declared_parity</strong> — Price parity is DECLARED, not demonstrated: product and incumbent price are both 70.0 citing the same ref (64). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+<li>❌ <strong>FAIL / opex_driven_margin</strong> — All-in OPEX is $82.9400/unit at a parity price of $70.00 — gross margin -18.5% &lt; 70%. The &#x27;massive margin&#x27; claim does not survive the operating-cost check.</li>
+</ul>
 <h3>Institutional capital-formation pack</h3>
 <h3>Enzymatic Cyclic Phosphatidic Acid (cPA) via Biocatalytic Transphosphatidylation</h3>
 <p><strong>Purchase profile:</strong> oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($714,000 annual revenue at capacity).</p>

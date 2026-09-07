@@ -218,6 +218,94 @@
 <li>[x] <strong>CapEx Line Items Sum to Total:</strong> The CapEx items ($85k + $60k + $120k + $55k) sum precisely to $320,000.</li>
 <li>[x] <strong>Honesty Declaration:</strong> The fact that CapEx &gt; $250k, Time-to-Revenue &gt; 18 months, Margin &lt; 70% (it is 56.6%), and the Delta is &lt; 2x are explicitly highlighted at the very top of the report.</li>
 </ul>
+<h3>Deterministic economics</h3>
+<h3>Self-Healable WPU/Ti3C2Tx MXene Coating via Mechanical Blending and Casting</h3>
+<p><strong>Economics verdict: FAIL</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per kg</td><td>$48.48</td></tr>
+<tr><td>Price per kg (gate basis = parity)</td><td>$106.00</td></tr>
+<tr><td>Venture&#x27;s intended ask per kg</td><td>$90.00</td></tr>
+<tr><td>Incumbent price per kg</td><td>$106.00</td></tr>
+<tr><td>Price premium vs incumbent</td><td>-15.1%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>54.3%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>46.1%</td></tr>
+<tr><td>Contribution per kg</td><td>$57.52</td></tr>
+<tr><td><strong>All-in OPEX per kg (itemised)</strong></td><td><strong>$46.00</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>56.6%</strong></td></tr>
+<tr><td>Annual output (kg)</td><td>122,400</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$12,974,400</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$7,040,661</td></tr>
+<tr><td>Startup CapEx</td><td>$320,000</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$150,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$470,000</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>40.55x</strong></td></tr>
+<tr><td>Breakeven volume (kg)</td><td>8,171</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>0.8</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>24.8</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>n/a — not meaningful (payback 0.8 mo — IRR unstable below 3 mo)</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per kg = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 48.48  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = 54.27%</span></p>
+<p><span class="math">Contribution per kg = P<sub>parity</sub> - COGS = 57.52  USD/kg</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 40.55×</span></p>
+<p><span class="math">Breakeven volume = <span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per kg</span></span> = 8170.82  kg</span></p>
+<p><span class="math">Payback from first sale = <span class="fr"><span class="fn">total cash at risk</span><span class="fd">monthly gross profit</span></span> = 0.8  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>High-Shear Vacuum Mixer</td><td>1000L, 316L SS, Ex-proof</td><td>$85,000</td><td>$50,000</td><td>Ross Mixers USA</td></tr>
+<tr><td>Fume Hood and Scrubber System</td><td>Acid-gas rated for HF/HCl fumes</td><td>$60,000</td><td>$35,000</td><td>HEMCO USA</td></tr>
+<tr><td>Vector Network Analyzer</td><td>10 MHz - 40 GHz for EMI testing</td><td>$120,000</td><td>$65,000</td><td>Keysight Technologies USA</td></tr>
+<tr><td>Automated Bottling Line</td><td>Solvent/Viscous fluid rated, 20 bottles/min</td><td>$55,000</td><td>$30,000</td><td>Liquid Packaging Solutions USA</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$320,000</strong> vs sum of line items <strong>$$320,000</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$28.50</td></tr>
+<tr><td>energy</td><td>$1.50</td></tr>
+<tr><td>labor</td><td>$8.50</td></tr>
+<tr><td>water</td><td>$0.10</td></tr>
+<tr><td>maintenance</td><td>$2.50</td></tr>
+<tr><td>waste_disposal</td><td>$3.40</td></tr>
+<tr><td>packaging</td><td>$1.50</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum <strong>$$46.00/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Capital productivity of 41x is not a return — it is a signal that capital is no longer the binding constraint.</strong> At this level the limiting factor is whether 122,400 kg/yr can actually be SOLD. Treat annual revenue as a capacity ceiling and verify it against the report&#x27;s own SAM before believing any of it. The low CapEx is real; the revenue is a hypothesis.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin &gt;= 70%</td><td>54.3%</td><td>FAIL</td></tr>
+<tr><td>Startup CapEx &lt;= $250,000</td><td>$320,000</td><td>FAIL</td></tr>
+<tr><td>Payback &lt;= 12 mo</td><td>0.8 mo</td><td>PASS</td></tr>
+<tr><td>Capital productivity &gt;= 2.0x</td><td>40.55x</td><td>PASS</td></tr>
+<tr><td>Price parity (&lt;=10% premium)</td><td>-15.1%</td><td>FAIL</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>54.3%</td><td>0.8</td><td>n/m</td><td>40.55x</td></tr>
+<tr><td>price -25%</td><td>54.3%</td><td>0.8</td><td>n/m</td><td>40.55x</td></tr>
+<tr><td>yield -25%</td><td>44.5%</td><td>1.0</td><td>n/m</td><td>40.55x</td></tr>
+<tr><td>CapEx +100%</td><td>54.3%</td><td>1.3</td><td>n/m</td><td>20.27x</td></tr>
+<tr><td>feedstock +50%</td><td>39.7%</td><td>1.1</td><td>n/m</td><td>40.55x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>44.5%</td><td>1.6</td><td>n/m</td><td>20.27x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+<h3>The case against it</h3>
+<h3>Self-Healable WPU/Ti3C2Tx MXene Coating via Mechanical Blending and Casting</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Audit verdict: FAIL</strong></li>
+</ul>
+<ul>
+<li>⚠️ <strong>WARN / duplicate_refs</strong> — Cites duplicate reference(s) [23] that restate a source already counted, inflating the apparent evidence base.</li>
+<li>⚠️ <strong>WARN / declared_parity</strong> — Price parity is DECLARED, not demonstrated: product and incumbent price are both 106.0 citing the same ref (28). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+<li>❌ <strong>FAIL / opex_driven_margin</strong> — All-in OPEX is $46.0000/unit at a parity price of $106.00 — gross margin 56.6% &lt; 70%. The &#x27;massive margin&#x27; claim does not survive the operating-cost check.</li>
+</ul>
 <h3>Institutional capital-formation pack</h3>
 <h3>Self-Healable WPU/Ti3C2Tx MXene Coating via Mechanical Blending and Casting</h3>
 <p><strong>Purchase profile:</strong> oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($12,974,400 annual revenue at capacity).</p>

@@ -237,6 +237,99 @@
 <li>  Test a statistical sample of each batch for pure water permeability (must meet minimum &gt; 300 LMH/bar threshold) and conduct a bubble-point test to confirm the absence of macroscopic defects.</li>
 <li>  Package the brittle, heavy membrane panels in high-density foam-lined crates (allocating $0.30 per m$^2$ for specialized packaging) to prevent vibration-induced edge chipping during transport.</li>
 </ul>
+<h3>Deterministic economics</h3>
+<h3>Ice-Templated Portland Cement via Directional Freeze-Casting</h3>
+<p><strong>Economics verdict: FAIL</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per m2</td><td>$12.58</td></tr>
+<tr><td>Price per m2 (gate basis = parity)</td><td>$500.00</td></tr>
+<tr><td>Venture&#x27;s intended ask per m2</td><td>$150.00</td></tr>
+<tr><td>Incumbent price per m2</td><td>$500.00</td></tr>
+<tr><td>Price premium vs incumbent</td><td>-70.0%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>97.5%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>91.6%</td></tr>
+<tr><td>Contribution per m2</td><td>$487.42</td></tr>
+<tr><td><strong>All-in OPEX per m2 (itemised)</strong></td><td><strong>$13.50</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>97.3%</strong></td></tr>
+<tr><td>Annual output (m2)</td><td>18,000</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$9,000,000</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$8,773,488</td></tr>
+<tr><td>Startup CapEx</td><td>$91,200</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$45,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$136,200</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>98.68x</strong></td></tr>
+<tr><td>Breakeven volume (m2)</td><td>279</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>0.2</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>6.2</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>n/a — not meaningful (payback 0.2 mo — IRR unstable below 3 mo)</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per m2 = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 12.58  USD/m2</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = 97.48%</span></p>
+<p><span class="math">Contribution per m2 = P<sub>parity</sub> - COGS = 487.42  USD/m2</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 98.68×</span></p>
+<p><span class="math">Breakeven volume = <span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per m2</span></span> = 279.43  m2</span></p>
+<p><span class="math">Payback from first sale = <span class="fr"><span class="fn">total cash at risk</span><span class="fd">monthly gross profit</span></span> = 0.19  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>Directional Freeze Caster</td><td>100L capacity, -80C rating</td><td>$45,000</td><td>$30,000</td><td>Millrock Technology USA</td></tr>
+<tr><td>Vacuum Freeze Dryer</td><td>FD-1A-80</td><td>$25,000</td><td>$15,000</td><td>Boyikang China</td></tr>
+<tr><td>High-shear slurry mixer</td><td>50L stainless steel</td><td>$10,000</td><td>$5,000</td><td>Silverson UK</td></tr>
+<tr><td>Curing humidity chamber</td><td>100 percent RH, 25C control</td><td>$11,200</td><td>$6,000</td><td>Thermotron USA</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$91,200</strong> vs sum of line items <strong>$$91,200</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$0.94</td></tr>
+<tr><td>energy</td><td>$5.00</td></tr>
+<tr><td>labor</td><td>$5.26</td></tr>
+<tr><td>water</td><td>$0.50</td></tr>
+<tr><td>maintenance</td><td>$1.00</td></tr>
+<tr><td>waste_disposal</td><td>$0.50</td></tr>
+<tr><td>packaging</td><td>$0.30</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum <strong>$$13.50/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Capital productivity of 99x is not a return — it is a signal that capital is no longer the binding constraint.</strong> At this level the limiting factor is whether 18,000 m2/yr can actually be SOLD. Treat annual revenue as a capacity ceiling and verify it against the report&#x27;s own SAM before believing any of it. The low CapEx is real; the revenue is a hypothesis.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin &gt;= 70%</td><td>97.5%</td><td>PASS</td></tr>
+<tr><td>Startup CapEx &lt;= $250,000</td><td>$91,200</td><td>PASS</td></tr>
+<tr><td>Payback &lt;= 12 mo</td><td>0.2 mo</td><td>PASS</td></tr>
+<tr><td>Capital productivity &gt;= 2.0x</td><td>98.68x</td><td>PASS</td></tr>
+<tr><td>Price parity (&lt;=10% premium)</td><td>-70.0%</td><td>FAIL</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>97.5%</td><td>0.2</td><td>n/m</td><td>98.68x</td></tr>
+<tr><td>price -25%</td><td>97.5%</td><td>0.2</td><td>n/m</td><td>98.68x</td></tr>
+<tr><td>yield -25%</td><td>97.5%</td><td>0.2</td><td>n/m</td><td>98.68x</td></tr>
+<tr><td>CapEx +100%</td><td>97.5%</td><td>0.3</td><td>n/m</td><td>49.34x</td></tr>
+<tr><td>feedstock +50%</td><td>97.5%</td><td>0.2</td><td>n/m</td><td>98.68x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>97.5%</td><td>0.3</td><td>n/m</td><td>49.34x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+<h3>The case against it</h3>
+<h3>Ice-Templated Portland Cement via Directional Freeze-Casting</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Audit verdict: FAIL</strong></li>
+</ul>
+<ul>
+<li>❌ <strong>FAIL / weak_superiority_source</strong> — Superiority table rests on non-peer-reviewed source(s): ref 6 [grey]; ref 7 [grey]; ref 10 [grey]. The superiority delta is the one number the report rests on; it must trace to a peer-reviewed source.</li>
+<li>⚠️ <strong>WARN / runsheet_no_quantities</strong> — Production Runsheet section exists but carries no quantitative yield/output/quantity column — the mass balance is not actually stated.</li>
+<li>❌ <strong>FAIL / missing_absence_ledger</strong> — No &#x27;Market Absence Ledger&#x27; section. &#x27;Absent from the market&#x27; is the hardest claim in the framework and the easiest to assert dishonestly — a paper is easy to find, a competitor quietly manufacturing in China or selling B2B under a different name is not. The search that failed to find a commercial implementation must be reported, not asserted.</li>
+<li>⚠️ <strong>WARN / defensibility_partial</strong> — The Defensibility Position section is only partially drawn: it names one of (published baseline, specific technical contribution) but not both, so the prior-art/novelty boundary is incomplete.</li>
+<li>⚠️ <strong>WARN / weak_ip_hook</strong> — The Invention &amp; Patent Position leans on a well-known class characteristic or unverified superlative (drop-in replacement, drop-in) — such a characteristic may not even be unique to this chemistry, so it cannot alone establish inventive step. Verify the protectable asset is a measurable COMBINATION of parameters, not the characteristic itself.</li>
+<li>⚠️ <strong>WARN / patent_prior_art_missing</strong> — The Invention &amp; Patent Position names no PATENT prior art (no US/EP/CN/WO number detected) — only papers, if anything. Novelty is unverified against the live patent landscape; order a structure search (Google Patents / Espacenet) before any filing.</li>
+<li>⚠️ <strong>WARN / no_comparative_matrix</strong> — No comparative data matrix — the report does not name the side-by-side experiments (this system vs the control vs the baseline) that would demonstrate the unexpected effect. A claim needs a demonstrated, not an assumed, technical effect.</li>
+<li>⚠️ <strong>WARN / no_claim_hierarchy</strong> — No claim hierarchy — the report does not order the claims (method -&gt; product -&gt; system -&gt; fallback) or name the trade-secret vs patent split. A defensible filing needs a claim ladder, not just a contribution name.</li>
+</ul>
 <h3>Institutional capital-formation pack</h3>
 <h3>Ice-Templated Portland Cement via Directional Freeze-Casting</h3>
 <p><strong>Purchase profile:</strong> oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($9,000,000 annual revenue at capacity).</p>

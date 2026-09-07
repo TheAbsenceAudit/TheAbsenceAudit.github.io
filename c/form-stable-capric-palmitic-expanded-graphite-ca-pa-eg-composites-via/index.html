@@ -301,6 +301,92 @@
 <li><strong>If the incumbent price of $150/kg cannot be verified against an independent market source</strong> — the audit flags that price parity is declared, not demonstrated: product and incumbent price both cite the same reference [cite: 22]. If the true market price for premium medical EEG paste is materially below $150/kg, the 94.4% gross margin collapses. Verify before committing.</li>
 <li><strong>If the all-in OPEX cannot be itemised and reconciled</strong> — the audit flags that no itemised opex_per_unit block exists with a stated total. The margin claim is untestable without knowing what it actually costs to run. If true all-in OPEX pushes the gross margin below 70%, the venture fails the threshold check. Walk away if you cannot document costs.</li>
 </ul>
+<h3>Deterministic economics</h3>
+<h3>Form-Stable Capric-Palmitic/Expanded Graphite (CA-PA/EG) Composites via Vacuum Impregnation</h3>
+<p><strong>Economics verdict: FAIL</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per kg</td><td>$3.79</td></tr>
+<tr><td>Price per kg (gate basis = parity)</td><td>$6.50</td></tr>
+<tr><td>Venture&#x27;s intended ask per kg</td><td>$6.50</td></tr>
+<tr><td>Incumbent price per kg</td><td>$6.50</td></tr>
+<tr><td>Price premium vs incumbent</td><td>0.0%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>41.6%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>41.6%</td></tr>
+<tr><td>Contribution per kg</td><td>$2.71</td></tr>
+<tr><td><strong>All-in OPEX per kg (itemised)</strong></td><td><strong>$3.73</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>42.6%</strong></td></tr>
+<tr><td>Annual output (kg)</td><td>72,000</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$468,000</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$194,914</td></tr>
+<tr><td>Startup CapEx</td><td>$44,000</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$30,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$74,000</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>10.64x</strong></td></tr>
+<tr><td>Breakeven volume (kg)</td><td>27,335</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>4.6</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>10.6</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>309.4%</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per kg = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 3.79  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = 41.65%</span></p>
+<p><span class="math">Contribution per kg = P<sub>parity</sub> - COGS = 2.71  USD/kg</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 10.64×</span></p>
+<p><span class="math">Breakeven volume = <span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per kg</span></span> = 27335.09  kg</span></p>
+<p><span class="math">Payback from first sale = <span class="fr"><span class="fn">total cash at risk</span><span class="fd">monthly gross profit</span></span> = 4.56  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>200L Jacketed Mixing Tank</td><td>304SS, 100C rating</td><td>$9,500</td><td>$6,000</td><td>Machinio USA</td></tr>
+<tr><td>500L Vacuum Chamber &amp; Pump</td><td>-0.1 MPa rating</td><td>$18,000</td><td>$10,000</td><td>Busch Vacuum</td></tr>
+<tr><td>Cooling Conveyor</td><td>10m ambient</td><td>$4,500</td><td>$2,000</td><td>Conveyor Systems Inc</td></tr>
+<tr><td>Powder Mill / Packager</td><td>50kg/hr continuous</td><td>$12,000</td><td>$7,500</td><td>Uline</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$44,000</strong> vs sum of line items <strong>$$44,000</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$3.08</td></tr>
+<tr><td>energy</td><td>$0.25</td></tr>
+<tr><td>labor</td><td>$0.30</td></tr>
+<tr><td>water</td><td>$0.00</td></tr>
+<tr><td>maintenance</td><td>$0.05</td></tr>
+<tr><td>waste_disposal</td><td>$0.02</td></tr>
+<tr><td>packaging</td><td>$0.03</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum <strong>$$3.73/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin &gt;= 70%</td><td>41.6%</td><td>FAIL</td></tr>
+<tr><td>Startup CapEx &lt;= $250,000</td><td>$44,000</td><td>PASS</td></tr>
+<tr><td>Payback &lt;= 12 mo</td><td>4.6 mo</td><td>PASS</td></tr>
+<tr><td>Capital productivity &gt;= 2.0x</td><td>10.64x</td><td>PASS</td></tr>
+<tr><td>Price parity (&lt;=10% premium)</td><td>+0.0%</td><td>PASS</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>41.6%</td><td>4.6</td><td>309.4%</td><td>10.64x</td></tr>
+<tr><td>price -25%</td><td>41.6%</td><td>4.6</td><td>309.4%</td><td>10.64x</td></tr>
+<tr><td>yield -25%</td><td>25.5%</td><td>7.4</td><td>177.9%</td><td>10.64x</td></tr>
+<tr><td>CapEx +100%</td><td>41.6%</td><td>7.3</td><td>174.3%</td><td>5.32x</td></tr>
+<tr><td>feedstock +50%</td><td>17.5%</td><td>10.9</td><td>115.3%</td><td>10.64x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>25.5%</td><td>11.9</td><td>100.6%</td><td>5.32x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+<h3>The case against it</h3>
+<h3>Form-Stable Capric-Palmitic/Expanded Graphite (CA-PA/EG) Composites via Vacuum Impregnation</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Audit verdict: FAIL</strong></li>
+</ul>
+<ul>
+<li>⚠️ <strong>WARN / weak_superiority_source</strong> — Superiority table rests on non-peer-reviewed source(s): ref 48 [grey]</li>
+<li>⚠️ <strong>WARN / duplicate_refs</strong> — Cites duplicate reference(s) [56] that restate a source already counted, inflating the apparent evidence base.</li>
+<li>⚠️ <strong>WARN / declared_parity</strong> — Price parity is DECLARED, not demonstrated: product and incumbent price are both 6.5 citing the same ref (36). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+<li>❌ <strong>FAIL / opex_driven_margin</strong> — All-in OPEX is $3.7300/unit at a parity price of $6.50 — gross margin 42.6% &lt; 70%. The &#x27;massive margin&#x27; claim does not survive the operating-cost check.</li>
+</ul>
 <h3>Institutional capital-formation pack</h3>
 <h3>Form-Stable Capric-Palmitic/Expanded Graphite (CA-PA/EG) Composites via Vacuum Impregnation</h3>
 <p><strong>Purchase profile:</strong> oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($468,000 annual revenue at capacity).</p>

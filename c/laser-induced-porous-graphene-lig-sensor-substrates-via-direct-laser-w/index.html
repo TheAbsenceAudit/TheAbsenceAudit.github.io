@@ -223,6 +223,96 @@
 <li>  <strong>Honesty Maintained?</strong> Yes. The financial margins are excellent, CapEx is low (&lt;$250k), and time-to-revenue is short (&lt;18 months). Thus, no failure conditions were met, but the <em>form-factor regression</em> and <em>ecosystem lock-in</em> were deeply criticized and explicitly stated.</li>
 <li>  <strong>Application Envelope &amp; Hazards Included?</strong> Yes. Both required sections are fully populated, detailing food-safety entry, biofouling failures, and dangerous VOC emissions requiring fume extraction.</li>
 </ul>
+<h3>Deterministic economics</h3>
+<h3>Laser-Induced Porous Graphene (LIG) Sensor Substrates via Direct-Laser Writing</h3>
+<p><strong>Economics verdict: FAIL</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per electrode</td><td>$0.20</td></tr>
+<tr><td>Price per electrode (gate basis = parity)</td><td>$4.50</td></tr>
+<tr><td>Venture&#x27;s intended ask per electrode</td><td>$4.00</td></tr>
+<tr><td>Incumbent price per electrode</td><td>$4.50</td></tr>
+<tr><td>Price premium vs incumbent</td><td>-11.1%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>95.5%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>94.9%</td></tr>
+<tr><td>Contribution per electrode</td><td>$4.30</td></tr>
+<tr><td><strong>All-in OPEX per electrode (itemised)</strong></td><td><strong>$0.25</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>94.4%</strong></td></tr>
+<tr><td>Annual output (electrode)</td><td>1,920,000</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$8,640,000</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$8,250,947</td></tr>
+<tr><td>Startup CapEx</td><td>$45,000</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$30,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$75,000</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>192.00x</strong></td></tr>
+<tr><td>Breakeven volume (electrode)</td><td>17,453</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>0.1</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>9.1</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>n/a — not meaningful (payback 0.1 mo — IRR unstable below 3 mo)</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per electrode = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 0.2  USD/electrode</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = 95.5%</span></p>
+<p><span class="math">Contribution per electrode = P<sub>parity</sub> - COGS = 4.3  USD/electrode</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 192×</span></p>
+<p><span class="math">Breakeven volume = <span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per electrode</span></span> = 17452.54  electrode</span></p>
+<p><span class="math">Payback from first sale = <span class="fr"><span class="fn">total cash at risk</span><span class="fd">monthly gross profit</span></span> = 0.11  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>CO2 Laser Engraver</td><td>60W continuous CO2 with automated staging</td><td>$35,000</td><td>$20,000</td><td>Universal Laser Systems USA</td></tr>
+<tr><td>Fume Extraction System</td><td>Industrial HEPA plus activated carbon</td><td>$10,000</td><td>$5,000</td><td>BOFA International UK</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$45,000</strong> vs sum of line items <strong>$$45,000</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$0.05</td></tr>
+<tr><td>energy</td><td>$0.01</td></tr>
+<tr><td>labor</td><td>$0.10</td></tr>
+<tr><td>water</td><td>$0.00</td></tr>
+<tr><td>maintenance</td><td>$0.02</td></tr>
+<tr><td>waste_disposal</td><td>$0.02</td></tr>
+<tr><td>packaging</td><td>$0.05</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum <strong>$$0.25/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Capital productivity of 192x is not a return — it is a signal that capital is no longer the binding constraint.</strong> At this level the limiting factor is whether 1,920,000 electrode/yr can actually be SOLD. Treat annual revenue as a capacity ceiling and verify it against the report&#x27;s own SAM before believing any of it. The low CapEx is real; the revenue is a hypothesis.</p>
+</blockquote>
+<blockquote>
+<p>ℹ️ <code>cash_to_first_revenue</code> was reported as $75,000, which is ≥ startup CapEx, so it was treated as CapEx-INCLUSIVE and CapEx was subtracted out to avoid double-counting. Qualification-only spend therefore taken as $30,000.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin &gt;= 70%</td><td>95.5%</td><td>PASS</td></tr>
+<tr><td>Startup CapEx &lt;= $250,000</td><td>$45,000</td><td>PASS</td></tr>
+<tr><td>Payback &lt;= 12 mo</td><td>0.1 mo</td><td>PASS</td></tr>
+<tr><td>Capital productivity &gt;= 2.0x</td><td>192.00x</td><td>PASS</td></tr>
+<tr><td>Price parity (&lt;=10% premium)</td><td>-11.1%</td><td>FAIL</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>95.5%</td><td>0.1</td><td>n/m</td><td>192.00x</td></tr>
+<tr><td>price -25%</td><td>95.5%</td><td>0.1</td><td>n/m</td><td>192.00x</td></tr>
+<tr><td>yield -25%</td><td>95.1%</td><td>0.1</td><td>n/m</td><td>192.00x</td></tr>
+<tr><td>CapEx +100%</td><td>95.5%</td><td>0.2</td><td>n/m</td><td>96.00x</td></tr>
+<tr><td>feedstock +50%</td><td>94.9%</td><td>0.1</td><td>n/m</td><td>192.00x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>95.1%</td><td>0.2</td><td>n/m</td><td>96.00x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+<h3>The case against it</h3>
+<h3>Laser-Induced Porous Graphene (LIG) Sensor Substrates via Direct-Laser Writing</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Audit verdict: FAIL</strong></li>
+</ul>
+<ul>
+<li>❌ <strong>FAIL / weak_superiority_source</strong> — Superiority table rests on non-peer-reviewed source(s): ref 12 [grey]. The superiority delta is the one number the report rests on; it must trace to a peer-reviewed source.</li>
+<li>⚠️ <strong>WARN / declared_parity</strong> — Price parity is DECLARED, not demonstrated: product and incumbent price are both 4.5 citing the same ref (36). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+<li>⚠️ <strong>WARN / runsheet_no_quantities</strong> — Production Runsheet section exists but carries no quantitative yield/output/quantity column — the mass balance is not actually stated.</li>
+<li>❌ <strong>FAIL / missing_absence_ledger</strong> — No &#x27;Market Absence Ledger&#x27; section. &#x27;Absent from the market&#x27; is the hardest claim in the framework and the easiest to assert dishonestly — a paper is easy to find, a competitor quietly manufacturing in China or selling B2B under a different name is not. The search that failed to find a commercial implementation must be reported, not asserted.</li>
+</ul>
 <h3>Institutional capital-formation pack</h3>
 <h3>Laser-Induced Porous Graphene (LIG) Sensor Substrates via Direct-Laser Writing</h3>
 <p><strong>Purchase profile:</strong> oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($8,640,000 annual revenue at capacity).</p>
