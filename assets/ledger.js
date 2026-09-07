@@ -55,9 +55,79 @@
   function tokens(s) {
     return s.toLowerCase().split(/\s+/).filter(function (t) { return t.length > 0; });
   }
+  // The search haystack: name, discipline, incumbent, and the failure/void
+  // labels spelled out (so "negative control" finds rows by reason, not code).
   function hay(r) {
-    if (!r._h) r._h = [r.n, r.d, r.i, r.m].join(" ").toLowerCase();
+    if (!r._h) {
+      var parts = [r.n, r.d, r.i, r.m];
+      (r.f || []).forEach(function (f) { parts.push(FAIL_LABEL[f] || f); });
+      (r.o || "").split(",").forEach(function (c) {
+        c = c.trim();
+        if (c) parts.push(VOID_LABEL[c] || "");
+      });
+      r._h = parts.join(" ").toLowerCase();
+    }
     return r._h;
+  }
+  // Levenshtein distance (capped): the typo budget for token matching.
+  function editDist(a, b) {
+    if (a === b) return 0;
+    if (Math.abs(a.length - b.length) > 2) return 99;
+    var m = a.length, n = b.length, d = [], i, j;
+    for (i = 0; i <= m; i++) { d[i] = [i]; }
+    for (j = 0; j <= n; j++) d[0][j] = j;
+    for (i = 1; i <= m; i++) for (j = 1; j <= n; j++) {
+      d[i][j] = Math.min(d[i - 1][j] + 1, d[i][j - 1] + 1,
+        d[i - 1][j - 1] + (a[i - 1] === b[j - 1] ? 0 : 1));
+    }
+    return d[m][n];
+  }
+  // How well one term matches a row's haystack: substring > word-prefix > typo.
+  function tokenHits(term, text) {
+    if (text.indexOf(term) >= 0) return 1;
+    var words = text.split(/\s+/);
+    for (var i = 0; i < words.length; i++) {
+      var w = words[i];
+      if (!w) continue;
+      if (w.indexOf(term) >= 0) return 0.85;
+      if (term.length >= 4 && w.length >= 4 && editDist(w, term) <= 2) return 0.7;
+    }
+    return 0;
+  }
+  // "25", "$25k", "25,000", "1.5m" -> a number, so a query like "start with
+  // 25k" can match rows by CapEx / payback, not just by text.
+  function numToken(term) {
+    var m = /^\$?(\d{1,3}(?:,\d{3})+(?:\.\d+)?|\d+(?:\.\d+)?)([km]?)$/i.exec(term);
+    if (!m) return null;
+    var v = parseFloat(m[1].replace(/,/g, ""));
+    if (m[2] === "k") v *= 1000;
+    else if (m[2] === "m") v *= 1000000;
+    return v;
+  }
+  // Fuzzy AND score: every term must land somewhere (numeric ranges included),
+  // and the score carries match quality so search results can be ranked.
+  function searchScore(r, terms, numTerms) {
+    var h = hay(r), sc = 0, ok = true;
+    for (var i = 0; i < terms.length; i++) {
+      var t = terms[i];
+      if (numTerms[t] !== undefined) {
+        var v = numTerms[t];
+        // >60 reads as dollars (CapEx ceiling); <=60 as months (payback).
+        var hitNum = v > 60
+          ? (r.cx != null && r.cx <= v)
+          : (r.pb != null && r.pb <= v);
+        if (hitNum || h.indexOf(t) >= 0) sc += 1;
+        else ok = false;
+      } else {
+        var hit = tokenHits(t, h);
+        if (!hit) { ok = false; }
+        else {
+          var nl = (r.n || "").toLowerCase();
+          sc += hit * (nl.indexOf(t) >= 0 ? 1.5 : 1);
+        }
+      }
+    }
+    return ok ? sc : 0;
   }
 
   // The single access model. Every CTA and badge on the page derives from it.
@@ -72,6 +142,19 @@
   function isOpen(r) {
     var a = access(r);
     return a === "sub" || a === "all" || a === "own";
+  }
+  // Priority window: a row with a future public release date ("rel") is open
+  // to subscribers/owners now and to everyone else only after rel passes.
+  // Public visitors see the concept, the verdict and the release date — but
+  // no buy button. The pursuit window opens before the crowd.
+  function inWindow(r) {
+    if (!r.rel) return false;
+    var today = new Date().toISOString().slice(0, 10);
+    return r.rel > today;
+  }
+  function relBadge(r) {
+    if (!inWindow(r)) return "";
+    return '<span class="tag">priority &mdash; public ' + esc(r.rel) + "</span>";
   }
   // Concept names honour access: for an open row the name IS the door to the
   // dossier (the member-area rule: the row opens in place, no detour). Everyone
@@ -159,15 +242,26 @@
           return false;
         }
       }
-      if (terms.length) {
-        var h = hay(r);
-        for (var i = 0; i < terms.length; i++) if (h.indexOf(terms[i]) < 0) return false;
-      }
       return true;
     });
 
+    // Search terms: fuzzy AND over the haystack, with numeric tokens matching
+    // CapEx/payback ranges. Rows can also be admitted by the semantic layer
+    // (SEM, cosine scores from the ask function) even when no token lands —
+    // that is what makes natural-language questions work.
+    if (terms.length) {
+      var numTerms = {};
+      terms.forEach(function (t) { var v = numToken(t); if (v !== null) numTerms[t] = v; });
+      view = view.map(function (r) {
+        r._fs = searchScore(r, terms, numTerms);
+        return r;
+      }).filter(function (r) {
+        return r._fs > 0 || (SEM[r.s] != null && SEM[r.s] >= SEM_MIN);
+      });
+    }
+
     var s = sort.value;
-    view.sort(function (a, b) {
+    function chosenCmp(a, b) {
       // A rejected concept's delta is a DISCREDITED claim, so it must never
       // outrank a verified one. Sorting by advantage ranks cleared first.
       if (s === "delta") {
@@ -178,7 +272,23 @@
       if (s === "pay") return (a.pb == null ? Infinity : a.pb) - (b.pb == null ? Infinity : b.pb);
       if (s === "az") return a.n.localeCompare(b.n);
       return (b.t || "").localeCompare(a.t || "") || a.n.localeCompare(b.n);
-    });
+    }
+    // With a search active, relevance outranks the chosen sort: 45% fuzzy
+    // quality + 55% semantic cosine (SEM absent for rows the function did
+    // not rank). The chosen sort breaks ties. Without a search, the chosen
+    // sort alone governs, exactly as before.
+    if (terms.length) {
+      var maxFs = 1;
+      view.forEach(function (r) { if (r._fs > maxFs) maxFs = r._fs; });
+      view.sort(function (a, b) {
+        var ca = ((a._fs || 0) / maxFs) * 0.45 + (SEM[a.s] || 0) * 0.55;
+        var cb = ((b._fs || 0) / maxFs) * 0.45 + (SEM[b.s] || 0) * 0.55;
+        if (ca !== cb) return cb - ca;
+        return chosenCmp(a, b);
+      });
+    } else {
+      view.sort(chosenCmp);
+    }
 
     if (viewmode === "grid") {
       shown = view.length;
@@ -213,6 +323,12 @@
         'Open<span aria-hidden="true"> &rarr;</span></a></div>';
     }
     if (!isSaleable(r)) return "";
+    // Priority window: no anonymous checkout until the public release date.
+    if (inWindow(r)) {
+      return '<div class="rcta"><span class="row-btn row-btn--wait" aria-label="' +
+        esc(r.n) + ' opens publicly on ' + esc(r.rel) + '">Priority &mdash; public ' +
+        esc(r.rel) + "</span></div>";
+    }
     if (r.s === FREE) {
       return '<div class="rcta"><a class="row-btn row-btn--free" href="/sample/" ' +
         'aria-label="Open the free full entry for ' + esc(r.n) + '">' +
@@ -240,6 +356,9 @@
     }
     if (r.s === FREE) return '<a href="/sample/">Free</a>';
     if (!isSaleable(r)) return '<span class="tbadge dead">autopsy only</span>';
+    if (inWindow(r)) {
+      return '<span class="tbadge">priority &mdash; public ' + esc(r.rel) + "</span>";
+    }
     var s = SINGLES[r.s];
     if (s && s.checkout_url) {
       var price = (r.price != null) ? ("$" + Number(r.price).toLocaleString()) : (s.price || "$299");
@@ -272,6 +391,7 @@
         if (r.p === 1) badges.push('<span class="tbadge">product</span>');
         badges.push('<span class="tbadge dead">rejected</span>');
       }
+      badges.push(relBadge(r));
       h += "<tr" + (isOpen(r) && isSaleable(r) ? ' class="row-open"' : "") + ">" +
         '<td><a class="tname" href="' + conceptHref(r) + '">' + esc(r.n) + "</a>" +
         '<span class="tdate">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") + "</span></td>" +
@@ -313,6 +433,7 @@
       }
       if (r.abs === 1) tags.push('<span class="tag ok">absence verified</span>');
       if (r.df === "declared") tags.push('<span class="tag ok">IP confirmed</span>');
+      if (inWindow(r)) tags.push(relBadge(r));
       if (r.reg === "high") tags.push('<span class="tag fail">high regulatory</span>');
       else if (r.reg === "med") tags.push('<span class="tag">regulatory</span>');
       row.innerHTML =
@@ -388,6 +509,10 @@
   q.addEventListener("input", function () {
     clearTimeout(timer);
     timer = setTimeout(apply, 140);
+    if (AAS) {
+      clearTimeout(semTimer);
+      semTimer = setTimeout(semanticRank, 300);
+    }
   });
   [disc, fail, capex, pay, sort].forEach(function (el) {
     el.addEventListener("change", apply);
@@ -417,11 +542,102 @@
   function reset() {
     q.value = ""; disc.value = ""; fail.value = ""; capex.value = ""; pay.value = "";
     sort.value = "new"; verdict = "all"; capexBand = "";
+    SEM = {}; semToken++;
+    var area = $("answerarea"); if (area) area.hidden = true;
     pressSegs();
     apply();
   }
   var rb = $("reset"); if (rb) rb.addEventListener("click", reset);
   var rb2 = $("reset2"); if (rb2) rb2.addEventListener("click", reset);
+
+  // ------------------------------------------------------- semantic search
+  // The search config is injected by the page (AA_LEDGER_CFG.search); an
+  // explicit window.AA_SEARCH overrides it (QA/debug). The ask function ranks
+  // queries by cosine similarity over precomputed concept embeddings and
+  // answers questions citing corpus concepts only. Everything below degrades
+  // silently: without the function, fuzzy local search still works.
+  var AAS = (window.AA_SEARCH && window.AA_SEARCH.enabled !== false && window.AA_SEARCH.fn)
+    ? window.AA_SEARCH
+    : ((DATA.search && DATA.search.enabled !== false && DATA.search.fn) ? DATA.search : null);
+  var SEM = {};                     // slug -> cosine score
+  var SEM_MIN = 0.30;
+  var semTimer = null, semToken = 0, askToken = 0;
+
+  function semanticRank() {
+    if (!AAS) return;
+    var tq = q.value.trim();
+    if (!tq || tq.length < 3) { SEM = {}; return; }
+    var tok = ++semToken;
+    var sig = null;
+    try { sig = AbortSignal.timeout(7000); } catch (e) {}
+    fetch(AAS.fn + "?mode=rank&q=" + encodeURIComponent(tq), { method: "GET", signal: sig })
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        if (!j || !j.ok || tok !== semToken) return;
+        SEM = {};
+        (j.results || []).forEach(function (x) { SEM[x.s] = x.score; });
+        apply();
+      })
+      .catch(function () { /* semantic layer unavailable — fuzzy search stands */ });
+  }
+
+  function renderAnswer(j) {
+    var area = $("answerarea"), st = $("answerstate"), body = $("answerbody"), srcs = $("answersrcs");
+    if (!area) return;
+    area.hidden = false;
+    st.hidden = true;
+    body.innerHTML = esc(j.answer).replace(/\n/g, "<br>");
+    var links = (j.sources || []).map(function (x) {
+      var meta = x.v ? "cleared" : "rejected";
+      if (x.cx != null) meta += " &middot; capEx $" + Number(x.cx).toLocaleString();
+      return '<a class="answer-src" href="' + esc(x.url) + '"><span class="answer-src-name">' +
+        esc(x.n) + '</span><span class="answer-src-meta">' + meta + "</span></a>";
+    });
+    srcs.innerHTML = links.join("");
+    if (!links.length) {
+      body.innerHTML += '<p class="answer-nosrc" style="margin-top:.6rem">No cited sources &mdash; treat this answer as noise.</p>';
+    }
+  }
+
+  function askLedger() {
+    if (!AAS) return;
+    var ai = $("askinput"), area = $("answerarea"), st = $("answerstate");
+    var tq = ((ai && ai.value) || q.value).trim();
+    if (!tq) return;
+    if (area) area.hidden = false;
+    if (st) { st.hidden = false; st.textContent = "Asking the ledger\u2026"; }
+    var tok = ++askToken;
+    var sig = null;
+    try { sig = AbortSignal.timeout(25000); } catch (e) {}
+    fetch(AAS.fn, {
+      method: "POST",
+      headers: { "content-type": "application/json" },
+      body: JSON.stringify({ mode: "answer", q: tq }),
+      signal: sig
+    }).then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (j) {
+        if (tok !== askToken) return;
+        if (!j || !j.ok) {
+          if (st) { st.hidden = false; st.textContent = "The answer engine is unavailable \u2014 search still works."; }
+          return;
+        }
+        renderAnswer(j);
+      })
+      .catch(function () {
+        if (tok === askToken && st) {
+          st.hidden = false;
+          st.textContent = "The answer engine is unavailable \u2014 search still works.";
+        }
+      });
+  }
+
+  var askbtn = $("askbtn"), askinput = $("askinput");
+  if (AAS && askbtn && askinput) {
+    askbtn.addEventListener("click", askLedger);
+    askinput.addEventListener("keydown", function (e) {
+      if (e.key === "Enter") { e.preventDefault(); askLedger(); }
+    });
+  }
 
   // --------------------------------------------------------- auth wiring
   // The access model re-reads state on every render, so a re-render after any
@@ -501,6 +717,10 @@
     }, 250);
   }
 
-  // QA/debug affordance: force a re-render with the current auth state.
-  window.AALedger = { refresh: onAuthChange };
+  // QA/debug affordance: force a re-render with the current auth state, or
+  // repoint the ask function (e.g. at the local devserver).
+  window.AALedger = {
+    refresh: onAuthChange,
+    setSearchFn: function (url) { AAS = url ? { enabled: true, fn: url } : null; },
+  };
 })();

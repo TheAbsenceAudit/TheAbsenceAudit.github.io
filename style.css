@@ -150,11 +150,15 @@
   .hero-grid{display:grid;grid-template-columns:1.55fr .95fr;gap:4.2rem;align-items:start}
   .hero h1{font-size:clamp(2.5rem,5.4vw,4.05rem)}
   .hero h1 em{font-style:italic;color:var(--kill)}
+  .hero-jtbd{font-size:1.28rem;font-weight:600;margin:1.2rem 0 0;max-width:38ch;color:var(--ink)}
   .lede{font-size:1.2rem;color:var(--ink-2);margin:1.6rem 0 0;max-width:34ch}
   .hero-note{
     font-size:.95rem;color:var(--ink-2);border-left:none;
     padding-top:.9rem;margin-top:1.9rem;border-top:2px solid var(--ink)
   }
+  .hero-econ{font-size:.95rem;color:var(--ink-2);margin:.9rem 0 0;max-width:48ch}
+  .hero-signin-note{font-size:.85rem;color:var(--ink-3);margin:1.1rem 0 0}
+  .hero-signin-note a{font-weight:600;color:var(--ink);text-decoration:underline}
 
   /* the ledger tally — real numbers, presented as a record not a monument */
   .tally{background:var(--paper-2);border:1px solid var(--rule);padding:1.5rem 1.6rem}
@@ -462,6 +466,11 @@ table.term a{color:inherit}
 .rcta .row-btn__price{font-variant-numeric:tabular-nums;opacity:.75;margin-left:.3rem}
 .rcta .row-btn--free{color:var(--ink-2)}
 .rcta .row-btn--free:hover{background:var(--ink);color:var(--bg)}
+/* priority window: a waiting state, not a button — no hover inversion, a
+   dashed rule so it reads as "not purchasable yet" instead of disabled */
+.rcta .row-btn--wait{background:transparent;color:var(--ink-2);border:1px dashed var(--ink-3);
+  cursor:default;white-space:nowrap}
+.rcta .row-btn--wait:hover{background:transparent;color:var(--ink-2);border-color:var(--ink-3)}
 .rright audio{width:100%;max-width:280px;height:2.1rem;margin-top:.45rem}
 .rright .raudio-label{display:block;font-size:.72rem;color:var(--ink-3);margin-top:.35rem}
 .taudio{font-size:.82rem;white-space:nowrap}

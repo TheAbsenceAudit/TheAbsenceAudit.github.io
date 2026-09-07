@@ -30,7 +30,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Subscriber ledger | The Absence Audit</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=1788763233">
+<link rel="stylesheet" href="/style.css?v=1788775188">
 <script id="aa-checkout-tracking">
 (function () {
   function isKit(href) {
@@ -88,6 +88,7 @@
     <nav>
       <a href="/method/">Method</a>
       <a href="/ledger/">The ledger</a>
+      <a href="/pipeline/">Pipeline</a>
       <a href="/studies/">Free studies</a>
       <a href="/#graveyard">The filter</a>
       <a href="/track-record/">Track record</a>
@@ -108,6 +109,18 @@
     <p><strong>This ledger is by invitation.</strong></p>
     <p style="margin:0">Use your personal invitation link to open it. If your link does not work,
     ask the person who invited you for a fresh one.</p>
+  </div>
+
+  <div id="aa-subscribe" class="invite">
+    <p><strong>What a subscriber gets.</strong></p>
+    <ul style="margin:.4rem 0 0;padding-left:1.2rem;line-height:1.7">
+      <li><strong>Every dossier, past and future</strong> — opened with one click, in this table.</li>
+      <li><strong>The priority window</strong> — new dossiers open to you 7 days before their
+      public release. The pursuit window opens before the crowd.</li>
+      <li><strong>The pipeline feed</strong> — everything that entered the pipeline this month,
+      verdicts included, the moment it clears. See <a href="/pipeline/">/pipeline/</a>.</li>
+      <li><strong>No prices, no paywalls</strong> — subscriber mode follows you site-wide.</li>
+    </ul>
   </div>
 
   <div id="aa-ledger" class="aa-ledger-body">
@@ -183,6 +196,7 @@
     <nav>
       <a href="/method/">Method</a>
       <a href="/ledger/">Ledger</a>
+      <a href="/pipeline/">Pipeline</a>
       <a href="/alternatives/">Alternatives</a>
       <a href="/sectors/">Sectors</a>
       <a href="/studies/">Free studies</a>
@@ -227,6 +241,9 @@
     if (un) un.hidden = false;
     var body = document.getElementById("aa-ledger");
     if (body) body.hidden = false;
+    // the benefits pitch is for the un-invited; once armed it is redundant
+    var sub = document.getElementById("aa-subscribe");
+    if (sub) sub.hidden = true;
   }
 
   function showGate() {

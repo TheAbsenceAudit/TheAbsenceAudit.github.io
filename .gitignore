@@ -9,5 +9,10 @@
 __pycache__/
 PUBLISH_STATUS.md
 _tmp_idx.html
+# foreign build artifacts dumped into the site root (2026-09-07
+# incident: ~65 webpack chunk_*.js + config.js appeared untracked
+# and hard-blocked the apolitical gate) — never commit these
+/chunk_*.js
+/config.js
 # local desktop attachments (user uploads) never ship
 .hermes/

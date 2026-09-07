@@ -25,6 +25,7 @@
   var listeners = [];
   var chip = null;
   var modal = null;
+  var agentRevealed = false;
 
   // -------------------------------------------------- entitlement fast-cache
   // The dossier gate resolves on a Firestore read of access/<email>, which the
@@ -320,7 +321,7 @@
       // it in full", so the gate must honour that promise.
       var ok = subMode() ||
                (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
-      if (ok) { overlay.remove(); revealDownload(); }
+      if (ok) { overlay.remove(); revealDownload(); revealAgent(); }
       else { signInCard(); overlay.style.display = "flex"; }
     }
     if (state.ready) apply(state);
@@ -331,6 +332,36 @@
       // and never reveal the report beneath.
       setTimeout(function () { if (overlay.parentNode && !state.ready) apply(state); }, 5000);
     }
+  }
+
+  // --------------------------------------------------------- dossier agent
+  // Each paid dossier page may carry window.AA_AGENT (injected by the publish
+  // pipeline from agents.json; build_agents.py). The ElevenLabs conversational
+  // widget appears ONLY at the entitled-reader moment — the same condition
+  // that lifts the gate — so anonymous visitors never get an agent that has
+  // read the full paid report. The agent is text-only (no mic permission,
+  // billed per message, not per audio minute). The agent id is not a secret:
+  // the dossier text is in the served bytes already; the widget reveal is the
+  // gate convention, same as the Download-PDF row.
+  function revealAgent() {
+    var A = window.AA_AGENT;
+    if (!A || !A.id || agentRevealed) return;
+    agentRevealed = true;
+    var el = document.createElement("elevenlabs-convai");
+    el.setAttribute("agent-id", A.id);
+    el.setAttribute("dismissible", "true");
+    el.setAttribute("action-text", "Ask the report");
+    el.setAttribute("start-call-text", "Ask a question");
+    el.setAttribute("end-call-text", "Close");
+    el.setAttribute("expand-text", "Ask this report");
+    // ink-on-paper orb, per the site palette
+    el.setAttribute("avatar-orb-color-1", "#16181d");
+    el.setAttribute("avatar-orb-color-2", "#6b7280");
+    document.body.appendChild(el);
+    var s = document.createElement("script");
+    s.src = "https://unpkg.com/@elevenlabs/convai-widget-embed";
+    s.async = true;
+    document.body.appendChild(s);
   }
 
   // -------------------------------------------------------- entitled invites
