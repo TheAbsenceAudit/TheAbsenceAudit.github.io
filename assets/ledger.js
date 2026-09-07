@@ -35,7 +35,7 @@
   var FREE = "liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati";
 
   var all = [], view = [], shown = 0;
-  var verdict = "all", viewmode = "grid", capexBand = "";
+  var verdict = "all", viewmode = "grid", capexBand = "", bankBand = "";
   var timer = null;
 
   var $ = function (id) { return document.getElementById(id); };
@@ -242,6 +242,13 @@
           return false;
         }
       }
+      // Bankability band (owner 2026-09-07): the model pack's verdict.
+      // "NONE" = pre-model report (no pack could be computed). ANDs with the
+      // verdict segments so the honest cuts compose (e.g. Rejected × Bankable).
+      if (bankBand) {
+        if (bankBand === "NONE") { if (r.bk != null) return false; }
+        else if (r.bk !== bankBand) return false;
+      }
       return true;
     });
 
@@ -310,6 +317,20 @@
     count.textContent = view.length === all.length
       ? all.length + " concepts assessed"
       : "Showing " + view.length + " of " + all.length + " concepts";
+    bankline();
+  }
+
+  // The insight line under the count: a measured statement for the active
+  // verdict × bankability combination (computed at publish from the census,
+  // never hardcoded prose). "Rejected × Bankable" is the thesis the filter
+  // exists to expose: the debt math works, the venture case didn't.
+  function bankline() {
+    var el = $("bankline");
+    if (!el) return;
+    var key = verdict + "|" + bankBand;
+    var ins = (DATA.bank_insights || {})[key];
+    el.hidden = !ins;
+    el.textContent = ins || "";
   }
 
   // ------------------------------------------------------------ CTA cells
@@ -378,6 +399,16 @@
       esc(fa.label || "Full access") + "</a>";
   }
 
+  function bankBadge(r) {
+    if (!r.bk) return "";
+    var cls = r.bk === "BANKABLE" ? "ok" : (r.bk === "NOT BANKABLE" ? "dead" : "");
+    var t = "Model bankability: " + r.bk +
+      (r.bkd != null ? " \u2014 min DSCR " + r.bkd + "\u00d7" : "") +
+      ". Computed by the institutional pack, not a bank decision.";
+    return '<span class="tbadge ' + cls + '" title="' + t + '">' +
+      esc(r.bk) + (r.bkd != null ? " " + r.bkd + "\u00d7" : "") + "</span>";
+  }
+
   function ownedBadge(r) {
     if (!isSaleable(r)) return "";
     var a = access(r);
@@ -401,6 +432,7 @@
         badges.push('<span class="tbadge dead">rejected</span>');
       }
       badges.push(relBadge(r));
+      badges.push(bankBadge(r));
       h += "<tr" + (isOpen(r) && isSaleable(r) ? ' class="row-open"' : "") + ">" +
         '<td><a class="tname" href="' + conceptHref(r) + '">' + esc(r.n) + "</a>" +
         '<span class="tdate">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") + "</span></td>" +
@@ -442,6 +474,7 @@
       }
       if (r.abs === 1) tags.push('<span class="tag ok">absence verified</span>');
       if (r.df === "declared") tags.push('<span class="tag ok">IP confirmed</span>');
+      if (r.bk) tags.push(bankBadge(r));
       if (inWindow(r)) tags.push(relBadge(r));
       if (r.reg === "high") tags.push('<span class="tag fail">high regulatory</span>');
       else if (r.reg === "med") tags.push('<span class="tag">regulatory</span>');
@@ -479,6 +512,7 @@
     if (fail.value) p.set("f", fail.value);
     if (capex.value) p.set("cx", capex.value);
     if (capexBand) p.set("cb", capexBand);
+    if (bankBand) p.set("bk", bankBand);
     if (pay.value) p.set("pb", pay.value);
     if (sort.value !== "new") p.set("s", sort.value);
     if (viewmode !== "grid") p.set("w", viewmode);
@@ -496,6 +530,8 @@
     if (p.get("cx")) capex.value = p.get("cx");
     var cb = p.get("cb");
     if (cb === "25" || cb === "100" || cb === "500" || cb === "max") capexBand = cb;
+    var bk = p.get("bk");
+    if (bk === "BANKABLE" || bk === "NOT BANKABLE" || bk === "CONDITIONAL" || bk === "NONE") bankBand = bk;
     if (p.get("pb")) pay.value = p.get("pb");
     if (p.get("s")) sort.value = p.get("s");
     if (p.get("w") === "list" || p.get("w") === "grid") viewmode = p.get("w");
@@ -511,6 +547,9 @@
     });
     document.querySelectorAll("#capexseg button").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.cx === capexBand));
+    });
+    document.querySelectorAll("#bankseg button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(b.dataset.bk === bankBand));
     });
   }
 
@@ -547,10 +586,17 @@
       apply();
     });
   });
+  document.querySelectorAll("#bankseg button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      bankBand = b.dataset.bk;
+      pressSegs();
+      apply();
+    });
+  });
   more.addEventListener("click", render);
   function reset() {
     q.value = ""; disc.value = ""; fail.value = ""; capex.value = ""; pay.value = "";
-    sort.value = "new"; verdict = "all"; capexBand = "";
+    sort.value = "new"; verdict = "all"; capexBand = ""; bankBand = "";
     SEM = {}; semToken++;
     var area = $("answerarea"); if (area) area.hidden = true;
     pressSegs();
