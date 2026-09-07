@@ -29,7 +29,7 @@
 
   var V = "10.12.2";
   var VAULT = "/do" + "ssier/"; // assembled at runtime; never a literal
-  var state = { email: "", plan: null, products: [], signedIn: false, ready: false };
+  var state = { email: "", uid: null, plan: null, products: [], signedIn: false, ready: false };
   var freshSignIn = false; // armed by an explicit sign-in ACTION (Google popup
                            // or email link), never by session restore; consumed
                            // by resolve() to land the visitor on their ledger.
@@ -145,22 +145,24 @@
         return;
       }
       var em = userEmail(u);
-      if (!em) { clearAccessCache(); setState({ email: "", plan: null, products: [], signedIn: false, ready: true }); return; }
+      if (!em) { clearAccessCache(); setState({ email: "", uid: null, plan: null, products: [], signedIn: false, ready: true }); return; }
+      var uid = u.uid || null;
       firebase.firestore().collection("access").doc(em).get()
         .then(function (snap) {
           var d = snap.exists ? (snap.data() || {}) : {};
           var st = {
             email: em,
+            uid: uid,
             plan: d.plan === "all" ? "all" : null,
             products: (d.products && d.products.length) ? d.products : [],
             signedIn: true,
             ready: true
           };
-          writeAccessCache({ email: em, plan: st.plan, products: st.products });
+          writeAccessCache({ email: em, uid: uid, plan: st.plan, products: st.products });
           setState(st);
         })
         .catch(function () {
-          setState({ email: em, plan: null, products: [], signedIn: true, ready: true });
+          setState({ email: em, uid: uid, plan: null, products: [], signedIn: true, ready: true });
         });
     });
   }
@@ -586,6 +588,9 @@
     signOut: function () {
       boot(function () { firebase.auth().signOut(); });
     },
+    // The lazy-SDK loader, shared with the ledger engine's favorites layer:
+    // call AA.boot(cb) to run after firebase.app/auth/firestore are ready.
+    boot: boot,
     getState: function () { return state; }
   };
 
@@ -596,7 +601,7 @@
     // loads and revalidates; a revoke re-locks once Firestore answers.
     var cache = readAccessCache();
     if (found && cache && cache.email) {
-      setState({ email: cache.email, plan: cache.plan || null,
+      setState({ email: cache.email, uid: cache.uid || null, plan: cache.plan || null,
                  products: cache.products || [], signedIn: true, ready: true });
       boot(function () { completeEmailLink(); resolve(); });
       return;

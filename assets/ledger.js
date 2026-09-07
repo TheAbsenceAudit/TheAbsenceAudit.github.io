@@ -42,6 +42,151 @@
   var verdict = "all", viewmode = "grid", capexBand = "", bankBand = "";
   var timer = null;
 
+  // ------------------------------------------------------------- favorites
+  // Member-only (owner 2026-09-08): a star on every row and a Favorites
+  // segment, so a member who finds a concept worth returning to never has
+  // to search for it again. Signed-in members sync the list to Firestore
+  // (users/<uid>, the one doc the security rules let an account write);
+  // cookie subscribers (no Firebase account) keep a per-browser list in
+  // localStorage. Anonymous visitors never see the surface — the public
+  // ledger stays unchanged, and the member ledger diverges only at runtime
+  // for entitled readers (the 2026-09-05 same-surface doctrine).
+  var FAV_LS = "aa_favs_v1";
+  var favs = {};         // slug -> 1 (the saved set)
+  var favOnly = false;   // the Favorites segment is active
+  var favMode = "none";  // "none" | "local" (cookie subscriber) | "cloud" (signed in)
+  var favUid = null;     // the Firestore identity the cloud list belongs to
+  var favLoaded = false; // a store has been read for the current identity
+
+  function favList() { return Object.keys(favs); }
+  function favLoadLocal() {
+    favs = {};
+    try {
+      var a = JSON.parse(localStorage.getItem(FAV_LS) || "[]");
+      if (!Array.isArray(a)) a = [];
+      a.forEach(function (s) { favs[s] = 1; });
+    } catch (e) {}
+    favLoaded = true;
+  }
+  function favStore() {
+    try { localStorage.setItem(FAV_LS, JSON.stringify(favList())); } catch (e) {}
+  }
+  function favDoc() {
+    return firebase.firestore().collection("users").doc(favUid);
+  }
+  function favWrite(slug, add) {
+    var op = add ? firebase.firestore.FieldValue.arrayUnion(slug)
+                 : firebase.firestore.FieldValue.arrayRemove(slug);
+    favDoc().set({
+      favorites: op,
+      updated_at: firebase.firestore.FieldValue.serverTimestamp()
+    }, { merge: true })
+      .catch(function (e) { if (window.console) console.warn("favorites write failed", e); });
+  }
+  function favLoadCloud() {
+    favDoc().get()
+      .then(function (snap) {
+        var arr = snap.exists ? ((snap.data() || {}).favorites || []) : [];
+        if (!Array.isArray(arr)) arr = [];
+        var cloud = {};
+        arr.forEach(function (s) { cloud[s] = 1; });
+        // Migration nicety: a list saved before signing in follows the
+        // account instead of being orphaned in this browser.
+        try {
+          var a = JSON.parse(localStorage.getItem(FAV_LS) || "[]");
+          if (Array.isArray(a)) a.forEach(function (s) { cloud[s] = 1; });
+        } catch (e) {}
+        var merged = Object.keys(cloud);
+        favs = cloud;
+        favLoaded = true;
+        if (merged.length !== arr.length) {
+          // browser had slugs the cloud list lacks — push the union once
+          favDoc().set({
+            favorites: merged,
+            updated_at: firebase.firestore.FieldValue.serverTimestamp()
+          }, { merge: true }).catch(function () {});
+        }
+        apply();
+      })
+      .catch(function () {
+        // Rules or network denied the read: keep whatever we have; the star
+        // surface stays live, the list just degrades to this session.
+        favLoaded = true;
+        apply();
+      });
+  }
+  function favoritesSync() {
+    var st = authState();
+    var signedIn = !!(st && st.signedIn);
+    var sub = subMode();
+    var uid = (st && st.uid) || null;
+    var fs = $("favseg");
+    if (!signedIn && !sub) {
+      favMode = "none"; favUid = null; favLoaded = false;
+      favs = {}; favOnly = false;
+      if (fs) fs.hidden = true;
+      apply();
+      return;
+    }
+    if (fs) fs.hidden = false;
+    if (!signedIn) {
+      // Cookie subscriber: local list, no account to sync to.
+      if (favMode !== "local" || !favLoaded) {
+        favMode = "local"; favUid = null; favLoaded = false;
+        favLoadLocal();
+      }
+      apply();
+      return;
+    }
+    // Signed in: the list lives under the account uid. The uid can lag the
+    // ready state on the fast cache path — resolve via the shared boot when
+    // it is not on the state yet.
+    if (!uid) {
+      if (window.AA && window.AA.boot) {
+        window.AA.boot(function () {
+          var u = firebase.auth().currentUser;
+          var id = (u && u.uid) || null;
+          if (id) {
+            favMode = "cloud"; favUid = id; favLoaded = false;
+            favLoadCloud();
+          } else {
+            apply();
+          }
+        });
+      }
+      return;
+    }
+    if (favMode !== "cloud" || favUid !== uid || !favLoaded) {
+      favMode = "cloud"; favUid = uid; favLoaded = false;
+      favLoadCloud();
+      return;
+    }
+    apply();
+  }
+  function toggleFav(slug) {
+    if (!slug || favMode === "none") return;
+    var add = !favs[slug];
+    if (add) favs[slug] = 1; else delete favs[slug];
+    if (favMode === "cloud") favWrite(slug, add);
+    else favStore();
+    apply();
+  }
+  function favBtn(r) {
+    if (favMode === "none") return "";
+    var on = !!favs[r.s];
+    return '<button type="button" class="favbtn' + (on ? " on" : "") + '" data-slug="' + esc(r.s) +
+      '" aria-pressed="' + (on ? "true" : "false") + '" aria-label="' +
+      (on ? "Remove " : "Save ") + esc(r.n) + (on ? " from" : " to") + ' favorites" title="' +
+      (on ? "Remove from favorites" : "Save to favorites") + '">' +
+      (on ? "&#9733;" : "&#9734;") + "</button>";
+  }
+  function favLabel() {
+    var b = document.querySelector("#favseg button");
+    if (!b) return;
+    var n = favList().length;
+    b.innerHTML = n ? "&#9733; Favorites (" + n + ")" : "&#9733; Favorites";
+  }
+
   var $ = function (id) { return document.getElementById(id); };
   var results = $("results"), count = $("count"), more = $("more"), empty = $("empty");
   var q = $("q"), disc = $("disc"), fail = $("fail"), capex = $("capex"), pay = $("pay"), sort = $("sort");
@@ -227,6 +372,7 @@
     var pb = pay.value ? parseFloat(pay.value) : null;
 
     view = all.filter(function (r) {
+      if (favOnly && favMode !== "none" && !favs[r.s]) return false;
       if (verdict !== "all") {
         if (verdict === "sale") { if (!isSaleable(r)) return false; }
         else if (String(r.v) !== verdict) return false;
@@ -327,6 +473,13 @@
       ? all.length + " concepts assessed"
       : "Showing " + view.length + " of " + all.length + " concepts";
     bankline();
+    favLabel();
+    var es = empty ? empty.querySelector("strong") : null;
+    if (es) {
+      es.textContent = (favOnly && favMode !== "none" && !favList().length)
+        ? "No favorites yet — tap the ☆ on any concept and it stays here."
+        : "Nothing matches those filters.";
+    }
   }
 
   // The insight line under the count: a measured statement for the active
@@ -486,7 +639,7 @@
       badges.push(relBadge(r));
       if (r.v) badges.push(bankBadge(r));
       h += "<tr" + (isOpen(r) && isSaleable(r) ? ' class="row-open"' : "") + ">" +
-        '<td><a class="tname" href="' + conceptHref(r) + '">' + esc(r.n) + "</a>" +
+        "<td>" + favBtn(r) + '<a class="tname" href="' + conceptHref(r) + '">' + esc(r.n) + "</a>" +
         '<span class="tdate">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") + "</span></td>" +
         "<td>" + badges.join(" ") + "</td>" +
         "<td>" + (r.i ? esc(r.i) : "—") + "</td>" +
@@ -532,7 +685,8 @@
       if (r.reg === "high") tags.push('<span class="tag fail">high regulatory</span>');
       else if (r.reg === "med") tags.push('<span class="tag">regulatory</span>');
       row.innerHTML =
-        '<div><h2><a href="' + conceptHref(r) + '">' + esc(r.n) + "</a></h2>" +
+        "<div>" + favBtn(r) +
+        '<h2><a href="' + conceptHref(r) + '">' + esc(r.n) + "</a></h2>" +
         '<p class="rmeta">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") +
           (r.i ? " · vs " + esc(r.i) : "") + "</p>" +
         (r.m ? '<p class="rmetric">' + esc(r.m) + "</p>" : "") +
@@ -567,6 +721,7 @@
     if (capexBand) p.set("cb", capexBand);
     if (bankBand) p.set("bk", bankBand);
     if (pay.value) p.set("pb", pay.value);
+    if (favOnly) p.set("fav", "1");
     if (sort.value !== "new") p.set("s", sort.value);
     if (viewmode !== "grid") p.set("w", viewmode);
     var s = p.toString();
@@ -587,6 +742,7 @@
     if (bk === "BANKABLE" || bk === "NOT BANKABLE" || bk === "CONDITIONAL" ||
         bk === "NOT ASSESSABLE" || bk === "NONE") bankBand = bk;
     if (p.get("pb")) pay.value = p.get("pb");
+    if (p.get("fav") === "1") favOnly = true;
     if (p.get("s")) sort.value = p.get("s");
     if (p.get("w") === "list" || p.get("w") === "grid") viewmode = p.get("w");
     pressSegs();
@@ -604,6 +760,9 @@
     });
     document.querySelectorAll("#bankseg button").forEach(function (b) {
       b.setAttribute("aria-pressed", String(b.dataset.bk === bankBand));
+    });
+    document.querySelectorAll("#favseg button").forEach(function (b) {
+      b.setAttribute("aria-pressed", String(favOnly));
     });
   }
 
@@ -647,10 +806,25 @@
       apply();
     });
   });
+  document.querySelectorAll("#favseg button").forEach(function (b) {
+    b.addEventListener("click", function () {
+      favOnly = !favOnly;
+      pressSegs();
+      apply();
+    });
+  });
+  // Star toggles re-render with every apply(), so clicks are delegated to the
+  // results container — the buttons themselves are never long-lived.
+  results.addEventListener("click", function (e) {
+    var t = e.target;
+    var b = t && t.closest ? t.closest(".favbtn") : null;
+    if (!b) return;
+    toggleFav(b.getAttribute("data-slug"));
+  });
   more.addEventListener("click", render);
   function reset() {
     q.value = ""; disc.value = ""; fail.value = ""; capex.value = ""; pay.value = "";
-    sort.value = "new"; verdict = "all"; capexBand = ""; bankBand = "";
+    sort.value = "new"; verdict = "all"; capexBand = ""; bankBand = ""; favOnly = false;
     SEM = {}; semToken++;
     var area = $("answerarea"); if (area) area.hidden = true;
     pressSegs();
@@ -753,6 +927,7 @@
   // auth change is all it takes for rows to lock/unlock in place.
   function onAuthChange() {
     renderAttrib();
+    favoritesSync();
     pressSegs();
     apply();
   }
@@ -782,6 +957,7 @@
       });
       readHash();
       renderAttrib();
+      favoritesSync();
       pressSegs();
       apply();
 
@@ -831,5 +1007,6 @@
   window.AALedger = {
     refresh: onAuthChange,
     setSearchFn: function (url) { AAS = url ? { enabled: true, fn: url } : null; },
+    toggleFav: toggleFav // QA/debug affordance for the favorites layer
   };
 })();

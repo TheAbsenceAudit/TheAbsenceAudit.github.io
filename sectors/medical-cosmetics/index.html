@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
 <script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
-<script src="/assets/auth.js" defer></script>
+<script src="/assets/auth.js?v=82d0d6f5" defer></script>
 
 <script>
 (function () {
@@ -33,13 +33,12 @@
 <script>
   window.dataLayer = window.dataLayer || [];
   function gtag(){dataLayer.push(arguments);}
-  // Consent Mode v2 — analytics ON (measure traffic), advertising OFF.
-  // Non-EEA audience: the single anonymous _ga analytics cookie needs no banner.
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
   gtag('consent', 'default', {
     'ad_storage': 'denied',
     'ad_user_data': 'denied',
     'ad_personalization': 'denied',
-    'analytics_storage': 'granted',
+    'analytics_storage': 'denied',
     'wait_for_update': 500
   });
   gtag('js', new Date());
@@ -48,9 +47,71 @@
     'allow_google_signals': false,
     'allow_ad_personalization_signals': false
   });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
 </script>
 
-<link rel="stylesheet" href="/style.css?v=dca220bd">
+<link rel="stylesheet" href="/style.css?v=75f7014d">
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Medical &amp; Cosmetics concepts — 3 assessed</title>
@@ -150,7 +211,7 @@
 <p class="hub-fail">Absence asserted, search unreported</p>
 <p class="hub-fail">G, I</p>
 </article>
-<p class="hub-back">Other sectors: <a href="/sectors/materials/">Materials</a> · <a href="/sectors/agriculture/">Agriculture</a> · <a href="/sectors/biotechnology/">Biotechnology</a> · <a href="/sectors/polymers/">Polymers</a> · <a href="/sectors/chemical-engineering/">Chemical Engineering</a> · <a href="/sectors/environmental/">Environmental</a> · <a href="/sectors/specialty-chemicals-tribology/">Specialty Chemicals / Tribology</a> · <a href="/sectors/energy-electronics/">Energy &amp; Electronics</a> · <a href="/sectors/unclassified/">Unclassified</a></p></div>
+<p class="hub-back">Other sectors: <a href="/sectors/materials/">Materials</a> · <a href="/sectors/agriculture/">Agriculture</a> · <a href="/sectors/biotechnology/">Biotechnology</a> · <a href="/sectors/polymers/">Polymers</a> · <a href="/sectors/chemical-engineering/">Chemical Engineering</a> · <a href="/sectors/environmental/">Environmental</a> · <a href="/sectors/energy-electronics/">Energy &amp; Electronics</a> · <a href="/sectors/unclassified/">Unclassified</a> · <a href="/sectors/specialty-chemicals-tribology/">Specialty Chemicals / Tribology</a></p></div>
 </main>
 <footer class="site">
   <div class="wrap">
@@ -165,6 +226,8 @@
       <a href="/track-record/">Track record</a>
       <a href="/nations/">Nations</a>
       <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
       <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
       <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
     </nav>
@@ -174,7 +237,7 @@
   </div>
   <div class="wrap">
     <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
-    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a></p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a> &middot; <a href="#" data-aa-consent-open>Cookie settings</a></p>
   </div>
 </footer>
 </body>

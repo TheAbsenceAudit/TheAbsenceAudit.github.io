@@ -540,3 +540,26 @@ table.term a{color:inherit}
 
 /* live hero counter (auto-computed) */
 .hero .live-count { color: var(--kill, #8C2F1E); font-weight: 700; }
+
+/* Consent banner (2026-09-08): analytics consent for EEA visitors.
+   Rendered by the inline consent manager inside the GA4 tag block. */
+#aa-consent {
+  position: fixed; left: 0; right: 0; bottom: 0; z-index: 1000;
+  background: var(--ink, #171512); color: var(--paper, #FBF9F5);
+  box-shadow: 0 -10px 34px rgba(23, 21, 18, .28);
+}
+.aa-consent-inner {
+  max-width: 76ch; margin: 0 auto; padding: 1.05rem 1.4rem;
+  display: flex; gap: 1.2rem; align-items: center; flex-wrap: wrap;
+}
+.aa-consent-inner p { margin: 0; flex: 1 1 300px; font-size: .95rem; line-height: 1.5; }
+.aa-consent-inner p strong { display: block; margin-bottom: .15rem; }
+.aa-consent-actions { display: flex; gap: .6rem; }
+.aa-consent-actions button {
+  font: inherit; padding: .5rem 1.15rem; border-radius: 6px; cursor: pointer;
+  border: 1px solid var(--paper, #FBF9F5); background: transparent;
+  color: var(--paper, #FBF9F5);
+}
+.aa-consent-actions button:hover { background: rgba(251, 249, 245, .12); }
+.aa-consent-actions #aa-consent-ok { background: var(--paper, #FBF9F5); color: var(--ink, #171512); }
+.aa-consent-actions #aa-consent-ok:hover { background: #e8e3d7; }

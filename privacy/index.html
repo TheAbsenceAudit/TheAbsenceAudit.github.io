@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=82d0d6f5" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=75f7014d">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Privacy Policy — The Absence Audit</title>
+<meta name="description" content="How theabsenceaudit.com collects and handles personal data: newsletter, accounts, purchases and analytics. No selling, no advertising — ever.">
+<link rel="canonical" href="https://theabsenceaudit.com/privacy/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ledger/">Ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/method/">Method</a>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="wrap" style="padding:3.2rem 0 4rem;max-width:76ch">
+<p class="eyebrow">Legal</p>
+<h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)">Privacy Policy</h1>
+<p class="lede">What we collect, why, who we share it with, and how to exercise your rights. Short version: as little as possible, never sold, no advertising.</p>
+<h3>1. Who we are</h3>
+<p>The Absence Audit (theabsenceaudit.com), operated by Sofian Jeridi, is the data controller for personal data collected through this site. Contact for any privacy matter: <strong>aa@theabsenceaudit.com</strong>.</p>
+<h3>2. What we collect and why</h3>
+<ul>
+<li><strong>Email address</strong> — when you subscribe to the research ledger. Basis: your consent. Used only to send the twice-daily ledger and to let you unsubscribe. Processed by Kit (kit.com, United States). Kept until you unsubscribe.</li>
+<li><strong>Account email</strong> — when you sign in (Google or email-link sign-in) to read dossiers you purchased. Basis: the purchase contract. Processed by Google Firebase Authentication (United States). Kept while your account exists; you can ask us to delete it.</li>
+<li><strong>Entitlement record</strong> — your email, your plan, and which dossiers you may read. Basis: the purchase contract. Processed by Google Firestore. Kept while your account exists.</li>
+<li><strong>Purchase records</strong> — product, price, currency, date and payment status. Basis: the purchase contract and our legal accounting obligations. Checkout is hosted entirely by Stripe (United States); we never see or store full card details. Records kept for the statutory accounting period.</li>
+<li><strong>Analytics data</strong> — pages visited, referrer, device category, country-level location derived from an anonymised IP address. No advertising identifiers, no cross-site tracking. Basis: your consent, given or declined in the cookie banner. Processed by Google Analytics (United States).</li>
+<li><strong>Attribution</strong> — the source of your visit (e.g. a link you followed), stored in your browser and sent to Kit only if you subscribe. Basis: your consent when subscribing.</li>
+</ul>
+<p>We do not sell personal data. We run no advertising and share nothing with ad networks. Where the law requires a legal basis, we rely on your consent or the purchase contract — we do not claim "legitimate interest".</p>
+<h3>3. Cookies and local storage</h3>
+<ul>
+<li><strong>_ga</strong> — analytics measurement cookie. Set only after you Accept in the banner; first-party to Google Analytics. Expires per Google's settings.</li>
+<li><strong>aa_consent_v1</strong> — remembers your cookie choice. Functional; stored in your browser.</li>
+<li><strong>aa_sub / aa_subscribed</strong> — remembers that this browser is on the list. Functional.</li>
+<li><strong>aa_first_touch</strong> — attribution, in your browser's local storage; sent only when you subscribe.</li>
+<li><strong>Firebase Auth session</strong> — keeps you signed in on this browser. Functional.</li>
+<li><strong>Stripe checkout cookies</strong> — set by Stripe during checkout only; see Stripe's own cookie policy.</li>
+</ul>
+<p>You can change your analytics choice at any time from the <em>Cookie settings</em> link in the footer — withdrawing consent is as easy as giving it.</p>
+<h3>4. Who we share with</h3>
+<p>Only these processors, each under contract: <strong>Stripe</strong> (payments), <strong>Kit</strong> (newsletter delivery), <strong>Google</strong> (Firebase authentication and database, and Analytics). They may store data in the United States; where the GDPR applies, transfers are safeguarded by the EU Standard Contractual Clauses. We disclose to nobody else, and only respond to law-enforcement requests where the law actually requires it.</p>
+<h3>5. How long we keep it</h3>
+<ul>
+<li>Newsletter address: until you unsubscribe.</li>
+<li>Account and entitlement records: while your account exists.</li>
+<li>Purchase records: the statutory accounting retention period.</li>
+<li>Analytics data: per Google Analytics' retention settings.</li>
+</ul>
+<h3>6. Your rights (EEA and UK)</h3>
+<p>You have the right to access, rectify, erase, restrict and port your personal data, to object to processing, and to withdraw consent at any time (unsubscribe links are in every email; analytics consent via the footer link). You may also complain to the supervisory authority in your country. Write to <strong>aa@theabsenceaudit.com</strong> — we respond within one month, as the GDPR requires, and may ask you to confirm your identity first.</p>
+<h3>7. Security</h3>
+<p>HTTPS everywhere; no card data on our servers; the database rules allow each signed-in reader to read only their own record; paid reports are delivered server-side after verification of your entitlement. No system is perfect — if you see a problem, tell us at the address above.</p>
+<h3>8. Children</h3>
+<p>This site is not directed at people under 16, and we do not knowingly collect their data.</p>
+<h3>9. Changes</h3>
+<p>This policy is updated on this page with its date. Material changes will be flagged on the site.</p>
+<p style="margin-top:2rem"><em>Last updated: 8 September 2026.</em></p>
+</div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/pipeline/">Pipeline</a>
+      <a href="/alternatives/">Alternatives</a>
+      <a href="/sectors/">Sectors</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/nations/">Nations</a>
+      <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap capture">
+    <p>Proven in the literature. Absent from the market. Bankable on the numbers. The ledger lands in your inbox at 08:45 and 17:45 &mdash; free while it is being built. <a href="/#join">Get it &rarr;</a></p>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a> &middot; <a href="#" data-aa-consent-open>Cookie settings</a></p>
+  </div>
+</footer>
+</body>
+</html>
