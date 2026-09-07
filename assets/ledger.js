@@ -421,6 +421,30 @@
       esc(bv) + (ds != null ? " " + ds + "\u00d7" : "") + "</span>";
   }
 
+  // The cross as ONE chip (owner 2026-09-07): a rejected row never shows the
+  // rejection alone — the audit verdict and the capital verdict share a single
+  // status token ("rejected · BANKABLE 22.49×") so the honest cross reads at a
+  // glance. Cleared rows keep their separate chips (positive-first already).
+  function verdictChip(r) {
+    var bv = String(r.bk).split(" (")[0];
+    var ds = r.bkd != null ? String(r.bkd) : null;
+    if (ds != null && ds.indexOf(".") >= 0) {
+      var f = Number(ds).toFixed(2);
+      f = f.indexOf(".") >= 0 ? f.replace(/0+$/, "").replace(/\.$/, "") : f;
+      ds = f;
+    }
+    var capped = ds != null && Number(ds) >= 5;
+    var t = "Audit verdict: rejected. Model bankability: " + bv +
+      (ds != null ? " \u2014 min DSCR " + ds + "\u00d7" : "") +
+      (capped ? " (the loan is capped by use-of-proceeds \u2014 the business barely needs debt; see the pack for debt capacity)" : "") +
+      ". Computed by the institutional pack, not a bank decision.";
+    var bankCls = bv === "BANKABLE" ? "bx-bank-ok" :
+      (bv === "NOT BANKABLE" ? "bx-bank-dead" : "bx-bank-mid");
+    return '<span class="tbadge bx" title="' + t + '"><span class="bx-rej">rejected</span>' +
+      '<span class="bx-sep"> \u00b7 </span><span class="' + bankCls + '">' +
+      esc(bv) + (ds != null ? " " + ds + "\u00d7" : "") + "</span></span>";
+  }
+
   function ownedBadge(r) {
     if (!isSaleable(r)) return "";
     var a = access(r);
@@ -441,10 +465,10 @@
       if (r.v) badges.push('<span class="tbadge ok">cleared</span>');
       else {
         if (r.p === 1) badges.push('<span class="tbadge">product</span>');
-        badges.push('<span class="tbadge dead">rejected</span>');
+        badges.push(r.bk ? verdictChip(r) : '<span class="tbadge dead">rejected</span>');
       }
       badges.push(relBadge(r));
-      badges.push(bankBadge(r));
+      if (r.v) badges.push(bankBadge(r));
       h += "<tr" + (isOpen(r) && isSaleable(r) ? ' class="row-open"' : "") + ">" +
         '<td><a class="tname" href="' + conceptHref(r) + '">' + esc(r.n) + "</a>" +
         '<span class="tdate">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") + "</span></td>" +
@@ -475,6 +499,7 @@
         tags.push('<span class="tag">cleared</span>');
       } else {
         if (r.p === 1) tags.push('<span class="tag">product</span>');
+        if (r.bk) tags.push(verdictChip(r));
         (r.o || "").split(",").forEach(function (p) {
           p = p.trim();
           if (p && p.toLowerCase() !== "none" && VOID_LABEL[p])
@@ -486,7 +511,7 @@
       }
       if (r.abs === 1) tags.push('<span class="tag ok">absence verified</span>');
       if (r.df === "declared") tags.push('<span class="tag ok">IP confirmed</span>');
-      if (r.bk) tags.push(bankBadge(r));
+      if (r.v && r.bk) tags.push(bankBadge(r));
       if (inWindow(r)) tags.push(relBadge(r));
       if (r.reg === "high") tags.push('<span class="tag fail">high regulatory</span>');
       else if (r.reg === "med") tags.push('<span class="tag">regulatory</span>');
