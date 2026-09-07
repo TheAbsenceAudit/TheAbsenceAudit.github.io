@@ -4,8 +4,8 @@
  *   window.AA_AUTH = { fb: {...}, ledger: bool, dossier: "<slug>" }
  *
  * Responsibilities:
- *  1. Masthead chip — "Sign in" button, or (signed in) name + plan badge +
- *     "My ledger" / "Sign out". Never navigates away: sign-in is a MODAL.
+ *  1. Masthead chip — "Sign in" button, or (signed in) "My ledger" door +
+ *     "Sign out". Never navigates away: sign-in is a MODAL.
  *  2. Session restore — Firebase v9+ keeps auth state in IndexedDB; we scan
  *     it synchronously-ish so the chip flips to the signed-in state
  *     immediately, then load the SDKs lazily.
@@ -112,20 +112,8 @@
   }
 
   // ------------------------------------------------------------------- helpers
-  function esc(s) {
-    return String(s).replace(/[&<>"']/g, function (c) {
-      return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c];
-    });
-  }
   function userEmail(u) {
     return ((u && (u.email || ((u.providerData || [])[0] || {}).email)) || "").toLowerCase();
-  }
-  function badge(st) {
-    if (!st.signedIn) return "";
-    if (st.plan === "all") return "Full Ledger";
-    if (st.products && st.products.length)
-      return st.products.length + (st.products.length > 1 ? " dossiers" : " dossier");
-    return "";
   }
 
   // --------------------------------------------------------------------- state
@@ -167,15 +155,13 @@
       if (b) b.addEventListener("click", openModal);
       return;
     }
-    var bd = badge(state);
-    // Signed-in cluster: identity (plain), access-level badge, the member-area
-    // link, and sign out. The member link is the explicit door — user testing
-    // showed the email-as-link read as plain text (no underline), so customers
-    // could not find their ledger. Identity ("who I am") and action ("my
-    // things") are separate affordances now.
+    // Signed-in cluster: ONE action and one exit. Identity and access level
+    // (email, plan badge) moved to the ledger itself — the /dossier/
+    // attribution strip carries the role and access badges — so the masthead
+    // shows only the door, not the paperwork. The door is a solid button:
+    // user testing showed an underlined text link read as plain text and
+    // customers could not find their ledger.
     chip.innerHTML =
-      '<span class="aa-who">' + esc(state.email) + "</span>" +
-      (bd ? '<span class="aa-badge">' + esc(bd) + "</span>" : "") +
       '<a class="aa-myledger" href="' + VAULT + '">My ledger</a>' +
       '<button class="aa-out" type="button">Sign out</button>';
     var o = chip.querySelector(".aa-out");
