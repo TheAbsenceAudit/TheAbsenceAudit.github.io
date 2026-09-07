@@ -1,55 +1,5 @@
 <!DOCTYPE html>
-<html lang="en"><head>
-<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "dossier": "drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat"};</script>
-<script src="/assets/auth.js" defer></script>
-
-<script>
-(function () {
-  if (document.cookie.indexOf("aa_sub=1") < 0) return;
-  document.documentElement.classList.add("aa-sub");
-  function run() {
-    var invs = document.querySelectorAll("[data-aa-invite]");
-    for (var i = 0; i < invs.length; i++) {
-      var el = invs[i], slug = el.getAttribute("data-aa-invite");
-      if (!slug) continue;
-      var a = document.createElement("a");
-      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
-      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
-      a.style.fontWeight = "600";
-      a.textContent = "Open research \u2192";
-      a.setAttribute("aria-label", "Open the full research for this concept");
-      el.parentNode.insertBefore(a, el);
-    }
-    var comms = document.querySelectorAll("[data-aa-commerce]");
-    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
-  }
-  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
-  else run();
-})();
-</script>
-
-<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
-<script>
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){dataLayer.push(arguments);}
-  // Consent Mode v2 — analytics ON (measure traffic), advertising OFF.
-  // Non-EEA audience: the single anonymous _ga analytics cookie needs no banner.
-  gtag('consent', 'default', {
-    'ad_storage': 'denied',
-    'ad_user_data': 'denied',
-    'ad_personalization': 'denied',
-    'analytics_storage': 'granted',
-    'wait_for_update': 500
-  });
-  gtag('js', new Date());
-  gtag('config', 'G-Y2ED6MMNTT', {
-    'anonymize_ip': true,
-    'allow_google_signals': false,
-    'allow_ad_personalization_signals': false
-  });
-</script>
-
-<link rel="stylesheet" href="/style.css?v=1788763233"><meta charset="utf-8">
+<html lang="en"><head><meta charset="utf-8">
 <meta name="robots" content="noindex,nofollow">
 <title>Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues | The Absence Audit</title>
 <style>
@@ -131,74 +81,7 @@
   .fn { border-bottom: 1px solid currentColor; padding: 0 .15em; }
   .fd { padding: 0 .15em; }
 
-</style><script id="aa-checkout-tracking">
-(function () {
-  function isKit(href) {
-    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
-  }
-  function touch() {
-    var t = null;
-    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
-    if (t && t.src) return t;
-    var q = {};
-    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
-    var src = q.utm_source || q.ref || "";
-    var med = q.utm_medium || "";
-    var cmp = q.utm_campaign || "";
-    if (!src) {
-      try {
-        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
-        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
-      } catch (e) {}
-    }
-    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
-  }
-  document.addEventListener("click", function (e) {
-    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
-    if (!a || !isKit(a.href)) return;
-    var t = touch();
-    var slug = "";
-    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
-    try {
-      var u = new URL(a.href);
-      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
-      if (t.med) u.searchParams.set("utm_medium", t.med);
-      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
-      u.searchParams.set("utm_content", slug || location.pathname);
-      a.href = u.toString();
-    } catch (e) {}
-    if (typeof gtag === "function") {
-      gtag("event", "begin_checkout", {
-        item_id: slug,
-        source_channel: t.src,
-        medium: t.med,
-        campaign: t.cmp,
-        landing_page: location.pathname
-      });
-    }
-  }, true);
-})();
-</script>
-</head><body>
-<a class="skip-link" href="#main">Skip to content</a>
-<header class="masthead">
-  <div class="wrap">
-    <a class="logo" href="/">The Absence <span>Audit</span></a>
-    <nav>
-      <a href="/method/">Method</a>
-      <a href="/ledger/">The ledger</a>
-      <a href="/studies/">Free studies</a>
-      <a href="/#graveyard">The filter</a>
-      <a href="/track-record/">Track record</a>
-      <a href="/nations/">Nations</a>
-      <a href="/#join">Get it free</a>
-      <a class="aa-x" href="https://x.com/TheAbsenceAudit" rel="me" aria-label="Follow The Absence Audit on X"><svg viewBox="0 0 24 24" width="14" height="14" aria-hidden="true" focusable="false"><path fill="currentColor" d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.451-6.231zm-1.161 17.52h1.833L7.084 4.126H5.117l11.966 15.644z"/></svg><span>Follow</span></a>
-      <span id="aa-auth" class="aa-auth"></span>
-    </nav>
-  </div>
-</header>
-<main id="main">
-<div class="wrap">
+</style></head><body><div class="wrap">
 
 <div class="cover">
   <div class="brand">The Absence Audit</div>
@@ -429,7 +312,88 @@
 <li>⚠️ <strong>WARN / weak_superiority_source</strong> — Superiority table rests on non-peer-reviewed source(s): ref 41 [grey]; ref 43 [dup]</li>
 <li>⚠️ <strong>WARN / duplicate_refs</strong> — Cites duplicate reference(s) [43] that restate a source already counted, inflating the apparent evidence base.</li>
 <li>⚠️ <strong>WARN / declared_parity</strong> — Price parity is DECLARED, not demonstrated: product and incumbent price are both 36.2 citing the same ref (45). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+</ul><h3>Institutional capital-formation pack</h3><h3>Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues</h3>
+<p><strong>Purchase profile:</strong> oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($781,920 annual revenue at capacity).</p>
+<h4>Pro-forma P&amp;L, cash flow and debt service (5 years)</h4>
+<table><thead><tr><th>Year</th><th>Revenue</th><th>Gross profit</th><th>EBITDA</th><th>Interest</th><th>Principal</th><th>Tax</th><th>FCF</th><th>DSCR</th></tr></thead><tbody>
+<tr><td>Y1</td><td>$312,768</td><td>$298,368</td><td>$251,453</td><td>$28,935</td><td>$35,429</td><td>$52,805</td><td>$134,285</td><td>3.09x</td></tr>
+<tr><td>Y2</td><td>$508,248</td><td>$484,848</td><td>$408,611</td><td>$24,683</td><td>$39,680</td><td>$85,808</td><td>$258,439</td><td>5.02x</td></tr>
+<tr><td>Y3</td><td>$664,632</td><td>$634,032</td><td>$534,337</td><td>$19,921</td><td>$44,442</td><td>$112,211</td><td>$357,763</td><td>6.56x</td></tr>
+<tr><td>Y4</td><td>$742,824</td><td>$708,624</td><td>$597,200</td><td>$14,588</td><td>$49,775</td><td>$125,412</td><td>$407,425</td><td>7.33x</td></tr>
+<tr><td>Y5</td><td>$781,920</td><td>$745,920</td><td>$628,632</td><td>$8,615</td><td>$55,748</td><td>$132,013</td><td>$432,256</td><td>7.72x</td></tr>
+</tbody></table>
+<p><strong>Minimum DSCR over the term:</strong> 3.09x — free cash flow turns positive in year 1.</p>
+<h4>Debt structure and amortization</h4>
+<p>Senior amortizing term loan: principal <strong>$241,121</strong>, 5-year term, 12.0% APR, monthly annuity payment <strong>$5,364</strong> (total debt service $64,363/yr). Sized so the worst year still clears a 1.25x DSCR, and capped at 80% of hard assets + working capital ($301,401).</p>
+<table><thead><tr><th>Year</th><th>Opening balance</th><th>Payment</th><th>Interest</th><th>Principal</th><th>Closing balance</th></tr></thead><tbody>
+<tr><td>Y1</td><td>$241,121</td><td>$64,363</td><td>$28,935</td><td>$35,429</td><td>$205,692</td></tr>
+<tr><td>Y2</td><td>$205,692</td><td>$64,363</td><td>$24,683</td><td>$39,680</td><td>$166,012</td></tr>
+<tr><td>Y3</td><td>$166,012</td><td>$64,363</td><td>$19,921</td><td>$44,442</td><td>$121,570</td></tr>
+<tr><td>Y4</td><td>$121,570</td><td>$64,363</td><td>$14,588</td><td>$49,775</td><td>$71,795</td></tr>
+<tr><td>Y5</td><td>$71,795</td><td>$64,363</td><td>$8,615</td><td>$55,748</td><td>$16,048</td></tr>
+</tbody></table>
+<p><strong>Use of proceeds:</strong> startup CapEx $205,000 · qualification/pre-revenue spend $100,000 · working capital $96,401 · total raise <strong>$305,000</strong>.</p>
+<h4>Bankability</h4>
+<p><strong>Verdict: BANKABLE (model)</strong> — min DSCR 3.09x.</p>
+<ul>
+<li>contracted-floor sensitivity raises min DSCR from 3.09 to 5.86 — an offtake/PPA-style floor materially improves bankability</li>
 </ul>
+<h4>Contracted-revenue sensitivity (the PPA test)</h4>
+<p>With 60% of nameplate revenue under a multi-year offtake contract from year 1, debt capacity stays at the use-of-proceeds cap ($241,121), but min DSCR headroom rises from 3.09x to <strong>5.86x</strong>.</p>
+<p>Contracted revenue is what converts a good margin into a bankable cash flow: it is the single most valuable document in the capital-formation file.</p>
+<h4>Valuation (derived from the pro-forma)</h4>
+<table><thead><tr><th>Method</th><th>Value</th></tr></thead><tbody>
+<tr><td>DCF @ 15%, no terminal value</td><td>$995,276</td></tr>
+<tr><td>DCF @ 25%, no terminal value</td><td>$764,527</td></tr>
+<tr><td>DCF @ 15%, terminal 4x EBITDA</td><td>$2,245,441</td></tr>
+<tr><td>DCF @ 25%, terminal 4x EBITDA</td><td>$1,588,487</td></tr>
+<tr><td>Revenue multiple 2x–4x on Y5</td><td>$1,563,840 – $3,127,680</td></tr>
+</tbody></table>
+<p><strong>Indicative enterprise value band: $764,527 – $3,127,680.</strong> This is a ranging device computed from the pro-forma, not a negotiated price — a tokenization platform will re-value independently.</p>
+<h4>Token structure recommendation</h4>
+<p><strong>Amortizing debt token (bond-like).</strong> min DSCR 3.09 &gt;= floor 1.25 and the debt capacity (241,121 USD, 79% of the raise) is material — fixed coupon, fixed maturity, monthly principal amortization is the structure the cash flow supports.</p>
+<h4>Platform due-diligence readiness</h4>
+<p><strong>Brickken</strong> — items below marked <em>covered</em> are answered by this dossier (report section or this pack); items marked <em>operator must supply</em> are legal/regulatory documents only the venture operator can produce:</p>
+<table><thead><tr><th>DD item</th><th>Status</th></tr></thead><tbody>
+<tr><td>Corporate entity &amp; KYB/KYC pack</td><td>operator must supply</td></tr>
+<tr><td>Business plan &amp; market evidence</td><td>covered by the report</td></tr>
+<tr><td>Financial statements / projections (3-5y)</td><td>covered by this pack</td></tr>
+<tr><td>Independent valuation &amp; pricing rationale</td><td>covered by this pack</td></tr>
+<tr><td>Tokenomics design (supply, class, rights)</td><td>covered by this pack</td></tr>
+<tr><td>Legal review of the token instrument</td><td>operator must supply</td></tr>
+<tr><td>Smart-contract security audit</td><td>independent third party</td></tr>
+<tr><td>Marketing &amp; investor-acquisition plan</td><td>covered by the report</td></tr>
+</tbody></table>
+<p><strong>Centrifuge</strong> — items below marked <em>covered</em> are answered by this dossier (report section or this pack); items marked <em>operator must supply</em> are legal/regulatory documents only the venture operator can produce:</p>
+<table><thead><tr><th>DD item</th><th>Status</th></tr></thead><tbody>
+<tr><td>SPV / asset-originator entity (bankruptcy-remote)</td><td>operator must supply</td></tr>
+<tr><td>Asset valuation &amp; NAV methodology</td><td>covered by this pack</td></tr>
+<tr><td>Cash-flow projections + covenant reporting</td><td>covered by this pack</td></tr>
+<tr><td>Senior/junior tranche structure proposal</td><td>covered by this pack</td></tr>
+<tr><td>Independent auditor / trustee / servicer</td><td>independent third party</td></tr>
+<tr><td>Investor KYC/AML &amp; compliance program</td><td>operator must supply</td></tr>
+<tr><td>Waterfall &amp; loss-allocation mechanics</td><td>covered by this pack</td></tr>
+</tbody></table>
+<p><strong>Morpho Blue</strong> — items below marked <em>covered</em> are answered by this dossier (report section or this pack); items marked <em>operator must supply</em> are legal/regulatory documents only the venture operator can produce:</p>
+<table><thead><tr><th>DD item</th><th>Status</th></tr></thead><tbody>
+<tr><td>Collateral asset defined &amp; measurable</td><td>covered by the report</td></tr>
+<tr><td>Oracle availability / price feed for the asset</td><td>operator must supply</td></tr>
+<tr><td>Recommended LLTV band with rationale</td><td>covered by this pack</td></tr>
+<tr><td>Liquidation depth &amp; bid-side liquidity</td><td>operator must supply</td></tr>
+<tr><td>Market curator / risk parameters proposal</td><td>covered by this pack</td></tr>
+<tr><td>Underlying cash-flow coverage of borrow cost</td><td>covered by this pack</td></tr>
+</tbody></table>
+<p><em>Checklist basis — Brickken: tokenization onboarding (KYB/KYC, corporate docs, financials, business plan, valuation, legal review, smart-contract audit) per brickken.com; EU framework: Regulation (EU) 2023/1114 (MiCA), Prospectus Regulation (EU) 2017/1129, Securitisation Regulation (EU) 2017/2402; smart-contract audit practice per ConsenSys Diligence (consensys.net/diligence). Centrifuge: pool onboarding (SPV/originator, asset valuation + NAV, tranches, auditor/trustee, KYC) per docs.centrifuge.io. Morpho Blue: permissionless market creation (oracle, collateral, LLTV, curator) per docs.morpho.org. Project-finance bankability: DSCR floor and debt sizing conventions from solar PPA / project-finance practice (sunraisecapital.com/blog/utility-scale-solar-project-finance-debt-sizing-dscr).</em></p>
+<h4>Model assumptions (one table, every concept)</h4>
+<table><thead><tr><th>Assumption</th><th>Value</th><th>Provenance</th></tr></thead><tbody>
+<tr><td>Nameplate revenue / gross margin</td><td>$781,920 / 95.4%</td><td>MEASURED (report economics block)</td></tr>
+<tr><td>Revenue ramp by purchase frequency (oneoff)</td><td>40%, 65%, 85%, 95%, 100% of nameplate</td><td>ASSUMED (pack default)</td></tr>
+<tr><td>SG&amp;A</td><td>15% of revenue</td><td>ASSUMED (pack default)</td></tr>
+<tr><td>Tax</td><td>21% flat, losses carried forward</td><td>ASSUMED (pack default)</td></tr>
+<tr><td>Debt</td><td>5y, 12.0% APR, monthly annuity</td><td>ASSUMED (pack default)</td></tr>
+<tr><td>DSCR floor / LTV cap</td><td>1.25x / 80%</td><td>ASSUMED (institutional convention)</td></tr>
+</tbody></table>
+<p><em>Everything not marked MEASURED is a declared model assumption, identical across all concepts so comparisons are like-for-like. No figure in this pack is invented per-concept; every number is either the report&#x27;s cited primitive or arithmetic on it.</em></p><p class="pack-note">Pro-forma, debt and valuation figures are computed deterministically from this report's cited economics primitives (institutional.py). Provenance: MEASURED = the report's cited primitive; DERIVED = arithmetic on measured values; ASSUMED = a declared pack default, identical across every concept.</p>
 </section>
 
 <section class="concept">
@@ -488,29 +452,4 @@ Every quantitative claim traces to one of these; check them.</p>
 </footer>
 </section>
 
-</div></main>
-<footer class="site">
-  <div class="wrap">
-    <span>The Absence Audit</span>
-    <nav>
-      <a href="/method/">Method</a>
-      <a href="/ledger/">Ledger</a>
-      <a href="/alternatives/">Alternatives</a>
-      <a href="/sectors/">Sectors</a>
-      <a href="/studies/">Free studies</a>
-      <a href="/track-record/">Track record</a>
-      <a href="/nations/">Nations</a>
-      <a href="/terms/">Terms</a>
-      <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
-      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
-    </nav>
-  </div>
-  <div class="wrap capture">
-    <p>Proven in the literature. Absent from the market. The ledger lands in your inbox at 08:45 and 17:45 &mdash; free while it is being built. <a href="/#join">Get it &rarr;</a></p>
-  </div>
-  <div class="wrap">
-    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
-    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a></p>
-  </div>
-</footer>
-</body></html>
+</div></body></html>
