@@ -6,14 +6,14 @@
 - [Home](https://theabsenceaudit.com/): hook, method, survivors, signup.
 - [Sample dossier](https://theabsenceaudit.com/sample/): one COMPLETE, unedited dossier — full economics, works cited, and the red-team audit arguing against it. Free and indexable; read it before judging anything else.
 - [Free studies](https://theabsenceaudit.com/studies/): three more complete dossiers, one per latest scan cycle, verdicts published honestly — the proof-of-work library.
-- [Track record](https://theabsenceaudit.com/track-record/): the verifiable operating record — dates, counts, published rejections, and the hit-rate ledger answering the seven deal-flow diligence questions in public.
-- [Pipeline](https://theabsenceaudit.com/pipeline/): the live funnel — what entered, what cleared, what was rejected and why, recomputed from the corpus at every publish.
+- [Track record](https://theabsenceaudit.com/track-record/): the verifiable operating record — dates, counts, published studies, and the hit-rate ledger answering the seven deal-flow diligence questions in public.
+- [Pipeline](https://theabsenceaudit.com/pipeline/): the live funnel — what entered, what cleared, what didn't and why, recomputed from the corpus at every publish.
 - [Method](https://theabsenceaudit.com/method/): how a concept is screened, with the due-diligence questions answered.
 - [Ledger](https://theabsenceaudit.com/ledger/): searchable index of every audited concept.
 - [Nations](https://theabsenceaudit.com/nations/): the method applied at national scale — Tunisia as the first nation-scale absence audit, a public template for countries with the same absences.
 - [Alternatives](https://theabsenceaudit.com/alternatives/): every incumbent benchmark in the ledger with the concepts assessed against it. Buyer queries like 'SYLOID 244 FP alternative' land here.
-- [Sectors](https://theabsenceaudit.com/sectors/): every sector in the ledger with its concepts, survivors and published rejections.
-- [Concept pages](https://theabsenceaudit.com/c/<slug>/): one page per concept. Rejection write-ups are published in full; cleared concepts are teased.
+- [Sectors](https://theabsenceaudit.com/sectors/): every sector in the ledger with its concepts, survivors and published studies.
+- [Concept pages](https://theabsenceaudit.com/c/<slug>/): one page per concept. Study write-ups are published in full; cleared concepts are teased.
 - [Sitemap](https://theabsenceaudit.com/sitemap.xml).
 
 ## How to cite
@@ -24,4 +24,4 @@
 ## Commercial
 - Full dossier: priced by Deal Value Score — $299 to $1,999 per cleared concept.
 - Technology scouting mandate: $20,000 per mandate (billed monthly), or $200,000/year (two months free).
-- Free: the newsletter, every rejection verdict and its public summary, and one full sample dossier. Full reports — rejected and cleared alike — are priced by the content inside them.
+- Free: the newsletter, every verdict and its public summary, and one full sample dossier. Full reports — cleared and not — are priced by the content inside them.

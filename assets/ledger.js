@@ -434,13 +434,13 @@
       ds = f;
     }
     var capped = ds != null && Number(ds) >= 5;
-    var t = "Audit verdict: rejected. Model bankability: " + bv +
+    var t = "Audit verdict: didn&rsquo;t clear. Model bankability: " + bv +
       (ds != null ? " \u2014 min DSCR " + ds + "\u00d7" : "") +
       (capped ? " (the loan is capped by use-of-proceeds \u2014 the business barely needs debt; see the pack for debt capacity)" : "") +
       ". Computed by the institutional pack, not a bank decision.";
     var bankCls = bv === "BANKABLE" ? "bx-bank-ok" :
       (bv === "NOT BANKABLE" ? "bx-bank-dead" : "bx-bank-mid");
-    return '<span class="tbadge bx" title="' + t + '"><span class="bx-rej">rejected</span>' +
+    return '<span class="tbadge bx" title="' + t + '"><span class="bx-rej">didn&rsquo;t clear</span>' +
       '<span class="bx-sep"> \u00b7 </span><span class="' + bankCls + '">' +
       esc(bv) + (ds != null ? " " + ds + "\u00d7" : "") + "</span></span>";
   }
@@ -465,7 +465,7 @@
       if (r.v) badges.push('<span class="tbadge ok">cleared</span>');
       else {
         if (r.p === 1) badges.push('<span class="tbadge">product</span>');
-        badges.push(r.bk ? verdictChip(r) : '<span class="tbadge dead">rejected</span>');
+        badges.push(r.bk ? verdictChip(r) : '<span class="tbadge dead">didn&rsquo;t clear</span>');
       }
       badges.push(relBadge(r));
       if (r.v) badges.push(bankBadge(r));
@@ -681,7 +681,7 @@
     st.hidden = true;
     body.innerHTML = esc(j.answer).replace(/\n/g, "<br>");
     var links = (j.sources || []).map(function (x) {
-      var meta = x.v ? "cleared" : "rejected";
+      var meta = x.v ? "cleared" : "didn&rsquo;t clear";
       if (x.cx != null) meta += " &middot; capEx $" + Number(x.cx).toLocaleString();
       return '<a class="answer-src" href="' + esc(x.url) + '"><span class="answer-src-name">' +
         esc(x.n) + '</span><span class="answer-src-meta">' + meta + "</span></a>";
