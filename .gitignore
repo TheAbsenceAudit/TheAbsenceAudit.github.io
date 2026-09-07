@@ -16,3 +16,15 @@ _tmp_idx.html
 /config.js
 # local desktop attachments (user uploads) never ship
 .hermes/
+# SECURITY (owner 2026-09-07 AM + PM): static hosting cannot gate —
+# paid bytes never enter the public repo. Full dossiers (subfolders of
+# /dossier/; the member-ledger index stays public), gated audio, and
+# report PDFs stay local-only / email-delivered. NOTE: this template is
+# the canonical .gitignore — hand-edits to the generated repo's copy are
+# overwritten by every publish, so security entries MUST live here.
+/dossier/*/
+/subscriber/audio/
+c/**/*.pdf
+case-study/*.pdf
+track-record/*.pdf
+pdf_render_report.json

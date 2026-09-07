@@ -10,11 +10,14 @@
  *                                                 personalized in place
  *
  * Access model, evaluated per row:
- *   "sub"  aa_sub=1 cookie (invited subscriber)      -> open, no prices
- *   "all"  signed in, plan=all (Full Ledger Access)  -> open, no prices
- *   "own"  signed in, owns this dossier              -> open
+ *   "sub"  aa_sub=1 cookie (invited subscriber)      -> open + price chip
+ *   "all"  signed in, plan=all (Full Ledger Access)  -> open + price chip
+ *   "own"  signed in, owns this dossier              -> open + price chip
  *   "in"   signed in, does not own this dossier      -> buy CTA
  *   "none" anonymous                                 -> buy / free / autopsy
+ * Every row shows its EUR price for every visitor class (owner 2026-09-07:
+ * concepts must be priced in the ledger, full stop). Stripe charges EUR —
+ * the engine mirrors the charge currency, never the old USD display.
  *
  * The engine subscribes to window.AA (the auth module) and re-renders the
  * moment the signed-in state changes, so sign-in and sign-out are felt on
@@ -195,7 +198,7 @@
     var h;
     if (sub) {
       h = '<div class="aa-user-line"><span class="aa-badge owned">Subscriber</span>' +
-        '<span class="aa-attrib-note">Unlocked — every dossier is open to you. No prices, no paywalls.</span></div>';
+        '<span class="aa-attrib-note">Unlocked — every dossier is open to you. No paywalls; prices shown are informational.</span></div>';
     } else if (signedIn) {
       h = '<div class="aa-user-line">' +
         (planAll
@@ -337,20 +340,33 @@
   }
 
   // ------------------------------------------------------------ CTA cells
+  // Every row carries its EUR price for every visitor class (owner
+  // 2026-09-07: concepts must be priced in the ledger). Entitled rows keep
+  // the frictionless Open CTA; the price chip is informational. Stripe
+  // charges EUR, so the engine mirrors the charge currency — singles.price
+  // ("€999") is the authoritative string, never a reconstructed "$" price.
+  function apBadges(r) {
+    var ap = (r.ap != null) ? ("€" + Number(r.ap).toLocaleString()) : "";
+    return '<span class="tbadge dead">autopsy</span>'
+      + (ap ? '<span class="tbadge" aria-label="Full report priced by Autopsy Value Score">' + esc(ap) + "</span>" : "");
+  }
+  function rowPrice(r) {
+    var s = SINGLES[r.s];
+    if (s && s.price) return s.price;
+    if (r.price != null) return "€" + Number(r.price).toLocaleString();
+    return "€299";
+  }
   function cta(r) {
     var a = access(r);
-    // Owner/subscriber: the row IS the door. No prices, no friction.
     if (a === "sub" || a === "all" || a === "own") {
-      if (!isSaleable(r)) return ""; // rejections open via the audit link in the title
+      if (!isSaleable(r)) return '<div class="rcta">' + apBadges(r) + "</div>";
       return '<div class="rcta"><a class="row-btn row-btn--open" href="' + D +
         encodeURIComponent(r.s) + '/" aria-label="Open the full dossier for ' + esc(r.n) + '">' +
-        'Open<span aria-hidden="true"> &rarr;</span></a></div>';
+        'Open<span aria-hidden="true"> &rarr;</span></a>' +
+        '<span class="tbadge" aria-label="Priced at ' + esc(rowPrice(r)) + '">' + esc(rowPrice(r)) + "</span></div>";
     }
     if (!isSaleable(r)) {
-      var ap = (r.ap != null) ? ("$" + Number(r.ap).toLocaleString()) : "";
-      return '<div class="rcta"><span class="tbadge dead">autopsy</span>'
-        + (ap ? '<span class="tbadge" aria-label="Full report priced by Autopsy Value Score">' + esc(ap) + "</span>" : "")
-        + "</div>";
+      return '<div class="rcta">' + apBadges(r) + "</div>";
     }
     // Priority window: no anonymous checkout until the public release date.
     if (inWindow(r)) {
@@ -365,7 +381,7 @@
     }
     var s = SINGLES[r.s];
     if (s && s.checkout_url) {
-      var price = (r.price != null) ? ("$" + Number(r.price).toLocaleString()) : (s.price || "$299");
+      var price = rowPrice(r);
       return '<div class="rcta"><a class="row-btn row-btn--buy" href="' + esc(s.checkout_url) +
         '" rel="noopener" aria-label="Buy the full dossier for ' + esc(r.n) + " for " + esc(price) + '">' +
         'Full dossier <span class="row-btn__price">' + esc(price) + "</span></a></div>";
@@ -380,22 +396,19 @@
   function gridCta(r) {
     var a = access(r);
     if (a === "sub" || a === "all" || a === "own") {
-      if (!isSaleable(r)) return '<a class="tdossier" href="/c/' + encodeURIComponent(r.s) + '/">Read the audit &rarr;</a>';
-      return '<a class="tdossier" href="' + D + encodeURIComponent(r.s) + '/">Open &rarr;</a>';
+      if (!isSaleable(r)) return apBadges(r) + '<a class="tdossier" href="/c/' + encodeURIComponent(r.s) + '/">Read the audit &rarr;</a>';
+      return '<a class="tdossier" href="' + D + encodeURIComponent(r.s) + '/">Open &rarr;</a> <span class="tbadge">' + esc(rowPrice(r)) + "</span>";
     }
     if (r.s === FREE) return '<a href="/sample/">Free</a>';
     if (!isSaleable(r)) {
-      var ap = (r.ap != null) ? ("$" + Number(r.ap).toLocaleString()) : "";
-      return '<span class="tbadge dead">autopsy</span>'
-        + (ap ? '<span class="tbadge" aria-label="Full report priced by Autopsy Value Score">' + esc(ap) + "</span>" : "");
+      return apBadges(r);
     }
     if (inWindow(r)) {
       return '<span class="tbadge">priority &mdash; public ' + esc(r.rel) + "</span>";
     }
     var s = SINGLES[r.s];
     if (s && s.checkout_url) {
-      var price = (r.price != null) ? ("$" + Number(r.price).toLocaleString()) : (s.price || "$299");
-      return '<a class="tdossier" href="' + esc(s.checkout_url) + '" rel="noopener">Buy ' + esc(price) + "</a>";
+      return '<a class="tdossier" href="' + esc(s.checkout_url) + '" rel="noopener">Buy ' + esc(rowPrice(r)) + "</a>";
     }
     var fa = FULL_ACCESS || {};
     return '<a class="tdossier" href="' + esc(fa.url || "/ledger/") + '" rel="noopener">' +
