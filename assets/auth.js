@@ -414,6 +414,10 @@
     }
     if (chip) renderChip();
     if (CFG.dossier) gateDossier();
+    // Public pages (concept pages, owner order 2026-09-07): the agent widget
+    // is open to every visitor — the full report is public on the page, so
+    // the agent holds nothing that isn't already in the served bytes.
+    else if (window.AA_AGENT) revealAgent();
     listeners.push(inviteLinks);
     start();
   }
