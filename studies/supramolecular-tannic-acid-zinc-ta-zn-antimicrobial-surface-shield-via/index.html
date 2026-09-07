@@ -3,9 +3,6 @@
 <script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
 <script src="/assets/auth.js" defer></script>
 
-<link rel="stylesheet" href="/style.css?v=1788607839">
-
-
 <script>
 (function () {
   if (document.cookie.indexOf("aa_sub=1") < 0) return;
@@ -16,7 +13,7 @@
       var el = invs[i], slug = el.getAttribute("data-aa-invite");
       if (!slug) continue;
       var a = document.createElement("a");
-      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
       a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
       a.style.fontWeight = "600";
       a.textContent = "Open research \u2192";
@@ -30,6 +27,10 @@
   else run();
 })();
 </script>
+<link rel="stylesheet" href="/style.css?v=1788607839">
+
+
+
 
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
 <script>

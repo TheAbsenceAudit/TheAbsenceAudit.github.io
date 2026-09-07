@@ -34,7 +34,8 @@
   var SINGLES = DATA.singles || {};
   var FULL_ACCESS = DATA.full_access || {};
   var BATCH = DATA.batch || 50;
-  var D = "/do" + "ssier/"; // dossier path assembled at runtime; never a literal
+  var D = "/c/"; // the public concept page is the dossier door (vault pages are
+  // local-only by SECURITY doctrine — option D delivers the report server-side)
   var FREE = "liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati";
 
   var all = [], view = [], shown = 0;
@@ -160,11 +161,13 @@
     return '<span class="tag">priority &mdash; public ' + esc(r.rel) + "</span>";
   }
   // Concept names honour access: for an open row the name IS the door to the
-  // dossier (the member-area rule: the row opens in place, no detour). Everyone
-  // else gets the public presentation page — the buy CTA for products, the
-  // audit for rejections.
+  // dossier (the member-area rule: the row opens in place, no detour). The
+  // dossier vault pages are local-only by SECURITY doctrine (06bfa70f: static
+  // hosting cannot gate; option D delivers report bytes server-side), so the
+  // door is the public concept page, where the server-gated report opens in
+  // place for the entitled visitor. Everyone else gets the same public
+  // presentation page — the buy CTA for products, the audit for rejections.
   function conceptHref(r) {
-    if (isOpen(r) && isSaleable(r)) return D + encodeURIComponent(r.s) + "/";
     return "/c/" + encodeURIComponent(r.s) + "/";
   }
   function isSaleable(r) { return !!(r.v || r.p === 1); }

@@ -15,7 +15,7 @@
       var el = invs[i], slug = el.getAttribute("data-aa-invite");
       if (!slug) continue;
       var a = document.createElement("a");
-      a.href = "/do" + "ssier/" + encodeURIComponent(slug) + "/";
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
       a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
       a.style.fontWeight = "600";
       a.textContent = "Open research \u2192";

@@ -4,6 +4,31 @@
 <script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
 <script src="/assets/auth.js" defer></script>
 
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -223,66 +248,8 @@
 </footer>
 
 <script>window.AA_LEDGER_PAGE = {"mine": false};</script>
-<script>window.AA_LEDGER_CFG = {"fail_labels":{"negative_control":"Negative control used as incumbent","sub_2x":"Below the 2x step-change bar","no_superiority_table":"No head-to-head evidence","weak_superiority_source":"Evidence rests on non-peer-reviewed sources","evidence_concentration":"Single-source evidence base","duplicate_refs":"Duplicate references inflating the evidence base","declared_parity":"Price parity asserted, not sourced","uncited_incumbent_price":"Incumbent price uncited","defunct_incumbent":"Comparator may have left the market","retracted_reference":"Cites a retracted reference","no_switching_analysis":"Customer switching incentive not analyzed","missing_application_envelope":"Entry application undeclared","entry_application_missing":"Entry application undeclared","missing_hazard_profile":"Hazard profile missing","uncited_safety_claim":"Uncited safety claim","opex_driven_margin":"Margin fails the operating-cost check","capex_mismatch":"CapEx figures inconsistent","payback_over":"Payback horizon exceeds the model's ceiling","capital_productivity_under":"Capital productivity below the model's floor","missing_absence_ledger":"Absence asserted, search unreported","absence_ledger_unquantified":"Absence search unquantified","missing_defensibility_position":"No protectable contribution declared","prior_art_not_delineated":"Prior-art / novelty boundary not drawn","self_declared_arbitrage":"Self-declared operational arbitrage (no patentable asset)","defensibility_partial":"Prior-art / novelty boundary incomplete","moat_is_operational_only":"Operational arbitrage, no IP moat","weak_ip_hook":"Weak hook — known class characteristic / unverified superlative","patent_prior_art_missing":"No patent prior art identified (FTO unverified)","no_comparative_matrix":"No comparative data matrix","no_claim_hierarchy":"No claim hierarchy"},"void_labels":{"A":"Illegitimate incumbent","B":"Mismatched comparison","C":"Capital and time to revenue","D":"Economics undisclosed","E":"Negative control / sub-2x","F":"Entry application mismatch","G":"Form-factor / handling regression","H":"Hazards undisclosed","I":"Absence search missing","J":"No defensible contribution declared"},"singles":{},"full_access":{},"batch":50,"bank_insights":{"sale|BANKABLE":"8 of 8 for-sale concepts are model-bankable &mdash; the debt math works. The audit's objections decide, not the model.","sale|NOT BANKABLE":"0 of 8 for-sale concepts fail the model DSCR floor &mdash; the pack publishes that. Read it before buying.","sale|CONDITIONAL":"0 for-sale concept is model-bankable only under the stated conditions.","sale|NOT ASSESSABLE":"0 for-sale concept has a pack whose primitives can't support a verdict.","sale|NONE":"0 for-sale concept predates the economics model &mdash; no pack could be computed.","0|BANKABLE":"53 of 80 studies are model-bankable &mdash; the debt math works, the venture case didn't. The audit's reasons are published on each page.","0|NOT BANKABLE":"14 of 80 studies also fail the model DSCR.","0|CONDITIONAL":"5 studies are conditionally bankable.","0|NOT ASSESSABLE":"1 studies carry a pack whose primitives can't support a verdict.","0|NONE":"7 studies predate the economics model &mdash; no pack.","all|BANKABLE":"61 concepts are model-bankable &mdash; 53 of them didn't clear the audit: the debt math works, the venture case didn't.","all|NOT BANKABLE":"14 concepts fail the model DSCR floor &mdash; every one of them carries a didn't-clear verdict; 0 are still sold as dossiers. The pack publishes that.","all|CONDITIONAL":"5 concepts are model-bankable only under stated conditions.","all|NOT ASSESSABLE":"1 concepts carry a pack whose primitives can't support a verdict.","all|NONE":"7 concepts predate the economics model &mdash; no pack."}};</script>
+<script>window.AA_LEDGER_CFG = {"fail_labels":{"negative_control":"Negative control used as incumbent","sub_2x":"Below the 2x step-change bar","no_superiority_table":"No head-to-head evidence","weak_superiority_source":"Evidence rests on non-peer-reviewed sources","evidence_concentration":"Single-source evidence base","duplicate_refs":"Duplicate references inflating the evidence base","declared_parity":"Price parity asserted, not sourced","uncited_incumbent_price":"Incumbent price uncited","defunct_incumbent":"Comparator may have left the market","retracted_reference":"Cites a retracted reference","no_switching_analysis":"Customer switching incentive not analyzed","missing_application_envelope":"Entry application undeclared","entry_application_missing":"Entry application undeclared","missing_hazard_profile":"Hazard profile missing","uncited_safety_claim":"Uncited safety claim","opex_driven_margin":"Margin fails the operating-cost check","capex_mismatch":"CapEx figures inconsistent","payback_over":"Payback horizon exceeds the model's ceiling","capital_productivity_under":"Capital productivity below the model's floor","missing_absence_ledger":"Absence asserted, search unreported","absence_ledger_unquantified":"Absence search unquantified","missing_defensibility_position":"No protectable contribution declared","prior_art_not_delineated":"Prior-art / novelty boundary not drawn","self_declared_arbitrage":"Self-declared operational arbitrage (no patentable asset)","defensibility_partial":"Prior-art / novelty boundary incomplete","moat_is_operational_only":"Operational arbitrage, no IP moat","weak_ip_hook":"Weak hook — known class characteristic / unverified superlative","patent_prior_art_missing":"No patent prior art identified (FTO unverified)","no_comparative_matrix":"No comparative data matrix","no_claim_hierarchy":"No claim hierarchy"},"void_labels":{"A":"Illegitimate incumbent","B":"Mismatched comparison","C":"Capital and time to revenue","D":"Economics undisclosed","E":"Negative control / sub-2x","F":"Entry application mismatch","G":"Form-factor / handling regression","H":"Hazards undisclosed","I":"Absence search missing","J":"No defensible contribution declared"},"singles":{},"full_access":{},"batch":50,"bank_insights":{"sale|BANKABLE":"19 of 23 for-sale concepts are model-bankable &mdash; the debt math works. The audit's objections decide, not the model.","sale|NOT BANKABLE":"3 of 23 for-sale concepts fail the model DSCR floor &mdash; the pack publishes that. Read it before buying.","sale|CONDITIONAL":"1 for-sale concept is model-bankable only under the stated conditions.","sale|NOT ASSESSABLE":"0 for-sale concept has a pack whose primitives can't support a verdict.","sale|NONE":"0 for-sale concept predates the economics model &mdash; no pack could be computed.","0|BANKABLE":"53 of 80 studies are model-bankable &mdash; the debt math works, the venture case didn't. The audit's reasons are published on each page.","0|NOT BANKABLE":"14 of 80 studies also fail the model DSCR.","0|CONDITIONAL":"5 studies are conditionally bankable.","0|NOT ASSESSABLE":"1 studies carry a pack whose primitives can't support a verdict.","0|NONE":"7 studies predate the economics model &mdash; no pack.","all|BANKABLE":"61 concepts are model-bankable &mdash; 53 of them didn't clear the audit: the debt math works, the venture case didn't.","all|NOT BANKABLE":"14 concepts fail the model DSCR floor &mdash; every one of them carries a didn't-clear verdict; 3 are still sold as dossiers. The pack publishes that.","all|CONDITIONAL":"5 concepts are model-bankable only under stated conditions.","all|NOT ASSESSABLE":"1 concepts carry a pack whose primitives can't support a verdict.","all|NONE":"7 concepts predate the economics model &mdash; no pack."}};</script>
 <script src="/assets/ledger.js" defer></script>
 
-<script>
-(function () {
-  "use strict";
-  var HASHES = ["dff5d5b79cf55d852c29ae5baa44b48f4c0632b1732d2dd38f00d3b4e6f6184b", "532e83ac0e8d548bc58b8f123e26cd9444971208eced2927f31d4b7bdd873aed", "b6539f627e9a594a02e38b70eb5489aefc10e1455752a8afd8efa38269ee994b", "4df7e30fe124dceb775972455a1e7c079e4d3595e8177e9bed4069c44e450647"];
 
-  function sha256hex(s) {
-    return crypto.subtle.digest("SHA-256", new TextEncoder().encode(s)).then(function (buf) {
-      return Array.prototype.map.call(new Uint8Array(buf), function (b) {
-        return ("0" + b.toString(16)).slice(-2);
-      }).join("");
-    });
-  }
-
-  // Arm subscriber mode site-wide: every page hides prices and paywalls for
-  // this browser once the invitation has been opened once.
-  function armSubscriberMode() {
-    document.cookie = "aa_sub=1; path=/; max-age=31536000; SameSite=Lax";
-    var un = document.getElementById("unlocked");
-    if (un) un.hidden = false;
-    var body = document.getElementById("aa-ledger");
-    if (body) body.hidden = false;
-    // the benefits pitch is for the un-invited; once armed it is redundant
-    var sub = document.getElementById("aa-subscribe");
-    if (sub) sub.hidden = true;
-  }
-
-  function showGate() {
-    document.getElementById("gate").hidden = false;
-    document.getElementById("aa-ledger").hidden = true;
-    document.getElementById("count").textContent = "";
-  }
-
-  function alreadyArmed() {
-    return document.cookie.indexOf("aa_sub=1") >= 0;
-  }
-
-  var p = new URLSearchParams(location.search);
-  var k = p.get("k");
-  if (!k) {
-    if (alreadyArmed()) { armSubscriberMode(); }
-    else if (window.crypto && crypto.subtle) { showGate(); }
-    else { showGate(); }
-  } else if (!(window.crypto && crypto.subtle)) {
-    showGate();
-  } else {
-    sha256hex(k).then(function (hex) {
-      if (!HASHES[hex]) { showGate(); return; }
-      // token accepted: arm subscriber mode site-wide, then scrub the token
-      // from the address bar so screenshots/shares cannot leak the invitation.
-      // The raw token is stashed for the server-side report gate (2026-09-08,
-      // option D): the Cloud Function verifies sha256(token) itself — the
-      // cookie alone is a client-side convenience, not server evidence.
-      try { localStorage.setItem("aa_subtok", k); } catch (e) {}
-      armSubscriberMode();
-      history.replaceState(null, "", location.pathname);
-    }).catch(function () { showGate(); });
-  }
-})();
-</script>
 </body></html>
