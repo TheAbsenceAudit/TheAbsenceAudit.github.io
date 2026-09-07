@@ -1,8 +1,14 @@
 /* The Absence Audit — shared auth module (loaded on every page).
  *
  * One module, injected once per page by the publish pipeline:
- *   window.AA_AUTH = { fb: {...}, ledger: bool, dossier: "<slug>" }
+ *   window.AA_AUTH = { fb: {...}, ledger: bool, dossier: "<slug>", report: "<slug>" }
  *
+ *   ledger  -> /dossier/ (the personal ledger surface)
+ *   dossier -> /dossier/<slug>/ (paid dossier pages; gated extras + report)
+ *   report  -> /c/<slug>/ for cleared products (owner order 2026-09-07
+ *              evening: the full report is no longer free text on product
+ *              pages — it hides behind the entitlement check and reveals
+ *              in place for dossier owners / subscribers)
  * Responsibilities:
  *  1. Masthead chip — "Sign in" button, or (signed in) "My ledger" door +
  *     "Sign out". Never navigates away: sign-in is a MODAL.
@@ -259,16 +265,21 @@
 
   // --------------------------------------------------------------- dossier gate
   function subMode() { return document.cookie.indexOf("aa_sub=1") >= 0; }
-  // Owner order 2026-09-07: full reports are PUBLIC — every /dossier/<slug>/
-  // page renders for every visitor, no overlay, no wall. What stays gated
-  // are the paid EXTRAS: the Download-PDF row and the full audio brief.
-  // Both are hidden by default (fail-closed) and revealed here for
-  // entitled readers — subscriber cookie, a Full-Ledger account, or an
-  // account that owns this slug. Same condition as before, same reveal
-  // moment; the gate convention now covers extras only.
+  // Owner order 2026-09-07 (evening amendment): the full report on paid
+  // product pages — dossier pages AND product concept pages — is no longer
+  // free text. It hides behind the entitlement check (fail-closed,
+  // data-aa-gated) alongside the paid EXTRAS: the Download-PDF row and the
+  // full audio brief. All of them reveal at the same entitled moment —
+  // subscriber cookie, a Full-Ledger account, or an account that owns this
+  // slug. Rejected autopsies and the free sample stay fully public.
   function revealGated() {
     var g = document.querySelectorAll("[data-aa-gated]");
     for (var i = 0; i < g.length; i++) g[i].style.display = "";
+    // The locked stand-in (data-aa-locked) is the anonymous placeholder for
+    // the gated report on product concept pages; once the report reveals,
+    // the stand-in goes away — never both at once.
+    var l = document.querySelectorAll("[data-aa-locked]");
+    for (var j = 0; j < l.length; j++) l[j].style.display = "none";
   }
   function revealDownload() {
     // The dossier's Download-PDF row is hidden by default (fail-closed)
@@ -288,6 +299,23 @@
       var ok = subMode() ||
                (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
       if (ok) { revealDownload(); revealGated(); revealAgent(); }
+    }
+    if (state.ready) apply(state);
+    else listeners.push(apply);
+  }
+
+  // --------------------------------------------------------- product report gate
+  // Cleared-product concept pages (/c/<slug>/) carry the same entitlement
+  // check as the dossier (CFG.report): the full report and the chat agent
+  // reveal in place for owners / subscribers; everyone else gets the locked
+  // stand-in and the buy CTA. Same condition, same reveal moment.
+  function gateReport() {
+    var slug = CFG.report;
+    if (!slug) return;
+    function apply(st) {
+      var ok = subMode() ||
+               (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
+      if (ok) { revealGated(); revealAgent(); }
     }
     if (state.ready) apply(state);
     else listeners.push(apply);
@@ -382,9 +410,11 @@
     }
     if (chip) renderChip();
     if (CFG.dossier) gateDossier();
-    // Public pages (concept pages, owner order 2026-09-07): the agent widget
-    // is open to every visitor — the full report is public on the page, so
-    // the agent holds nothing that isn't already in the served bytes.
+    else if (CFG.report) gateReport();
+    // Public pages (rejected autopsies, the free sample — owner orders
+    // 2026-09-07): the agent widget is open to every visitor — the full
+    // report is public on the page, so the agent holds nothing that isn't
+    // already in the served bytes.
     else if (window.AA_AGENT) revealAgent();
     listeners.push(inviteLinks);
     start();
