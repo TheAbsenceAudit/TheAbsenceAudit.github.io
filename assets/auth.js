@@ -323,17 +323,26 @@
     var el = document.createElement("elevenlabs-convai");
     el.setAttribute("agent-id", A.id);
     el.setAttribute("dismissible", "true");
-    el.setAttribute("action-text", "Ask the report");
-    el.setAttribute("start-call-text", "Ask a question");
-    el.setAttribute("end-call-text", "Close");
-    el.setAttribute("expand-text", "Ask this report");
     // ink-on-paper orb, per the site palette
     el.setAttribute("avatar-orb-color-1", "#16181d");
     el.setAttribute("avatar-orb-color-2", "#6b7280");
     document.body.appendChild(el);
+    // The widget bundle is SELF-HOSTED (/assets/elevenlabs-convai.js, vendored
+    // convai-widget-embed 0.18.0, copied by publish.py) so the widget renders
+    // even where third-party CDNs (unpkg) are blocked by ad-blockers/VPN
+    // threat-protection — that was the "agent never displays" failure mode.
+    // The unpinned @latest CDN build had also drifted (attribute renames),
+    // so the vendored copy pins the behaviour. The pinned unpkg URL is only a
+    // load-failure fallback, never the primary path.
     var s = document.createElement("script");
-    s.src = "https://unpkg.com/@elevenlabs/convai-widget-embed";
+    s.src = "/assets/elevenlabs-convai.js";
     s.async = true;
+    s.onerror = function () {
+      var f = document.createElement("script");
+      f.src = "https://unpkg.com/@elevenlabs/convai-widget-embed@0.18.0/dist/index.js";
+      f.async = true;
+      document.body.appendChild(f);
+    };
     document.body.appendChild(s);
   }
 
