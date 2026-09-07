@@ -88,7 +88,7 @@
       "url": "https://theabsenceaudit.com/ledger/",
       "isAccessibleForFree": true,
       "creator": {"@type": "Organization", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
-      "dateModified": "2026-09-07T15:51:23+02:00",
+      "dateModified": "2026-09-07T16:07:23+02:00",
       "keywords": ["venture concepts","peer-reviewed literature","commercial absence","unit economics","technology transfer","research commercialisation"],
       "variableMeasured": [
         {"@type":"PropertyValue","name":"Superiority margin vs named incumbent"},
@@ -241,22 +241,22 @@
              rel="noopener">Choose any concept in the ledger</a>
         </article>
         <article class="price-card">
-          <h3>Full Ledger Access</h3>
+          <h3>Technology scouting mandate</h3>
           <p class="price-card__amount">$20,000
-            <span>per month</span></p>
-          <p class="price-card__pitch">Every concept the pipeline clears, in full — past and future. These are processes proven in the literature and absent from the market; several are blue-ocean with worldwide reach. You are paying for the diligence nobody else does.</p>
-          <ul class="price-card__features"><li>Every surviving dossier, past and future</li><li>New concepts twice daily, delivered by email</li><li>Full rejection archive with failure taxonomy</li><li>Cancel any time</li></ul>
+            <span>per mandate</span></p>
+          <p class="price-card__pitch">Tell us what you are trying to manufacture, improve or replace. We search the scientific and commercial landscape, identify the technologies that could materially change your economics, and hand you an independently challenged investigation plan — plus every dossier, past and future. For teams whose decisions cost more than the mandate.</p>
+          <ul class="price-card__features"><li>Every surviving dossier, past and future</li><li>A named scouting question your team cannot search itself</li><li>Decision lanes on every concept — pursue / investigate / watch / don&#x27;t touch</li><li>Cancel any time</li></ul>
           <a class="price-card__cta" href="https://theabsenceaudit.kit.com/products/full-ledger-access"
-             rel="noopener">Subscribe monthly</a>
+             rel="noopener">Commission a mandate</a>
         </article>
         <article class="price-card price-card--featured">
-          <h3>Full Ledger Access — Annual</h3>
+          <h3>Technology scouting mandate — Annual</h3>
           <p class="price-card__amount">$200,000
             <span>per year</span></p>
-          <p class="price-card__pitch">The same full access, billed once — two months free against monthly. For the builder or investor who knows one actionable concept pays for a decade of this.</p>
+          <p class="price-card__pitch">The same mandate, billed once — two months free against monthly. For the corporate R&amp;D or strategy team that knows one caught technology pays for a decade of this.</p>
           <ul class="price-card__features"><li>Everything in monthly, two months free</li><li>Every surviving dossier, past and future</li><li>New concepts twice daily, delivered by email</li><li>Full rejection archive with failure taxonomy</li></ul>
           <a class="price-card__cta" href="https://theabsenceaudit.kit.com/products/full-ledger-access"
-             rel="noopener">Subscribe annually — 2 months free</a>
+             rel="noopener">Commission annually — 2 months free</a>
         </article></div>
       <p class="price-note">Prices in US dollars. No sales tax or VAT is added. Rejected reports are priced $9&ndash;$49 by
       their content, computed by the same pipeline that prices the dossiers. Nobody
@@ -451,7 +451,7 @@
     </nav>
   </div>
   <div class="wrap">
-    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 07 September 2026, 15:51 · 88 concepts examined · 80 rejected · 22 for sale</p>
+    <p class="disclaimer" style="margin-bottom:.9rem">Ledger last updated 07 September 2026, 16:07 · 88 concepts examined · 80 rejected · 22 for sale</p>
     <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
     <p class="disclaimer">© 2026 The Absence Audit. All rights reserved. · <a href="/terms/">Terms of Use</a></p>
   </div>
@@ -506,7 +506,7 @@
     btn.disabled = true;
     say("Adding you\u2026");
 
-    var payload = new FormData(form);
+    var payload = new URLSearchParams(new FormData(form));
     payload.delete("company_website");
     var opts = { method: "POST", body: payload };
     if (provider === "json") {
