@@ -11,7 +11,9 @@
  *              in place for dossier owners / subscribers)
  * Responsibilities:
  *  1. Masthead chip — "Sign in" button, or (signed in) "My ledger" door +
- *     "Sign out". Never navigates away: sign-in is a MODAL.
+ *     "Sign out". Sign-in lands the visitor on their ledger (/dossier/) —
+ *     the modal promises it and the code delivers it (owner order
+ *     2026-09-07). Sign-out never navigates away.
  *  2. Session restore — Firebase v9+ keeps auth state in IndexedDB; we scan
  *     it synchronously-ish so the chip flips to the signed-in state
  *     immediately, then load the SDKs lazily.
@@ -28,6 +30,9 @@
   var V = "10.12.2";
   var VAULT = "/do" + "ssier/"; // assembled at runtime; never a literal
   var state = { email: "", plan: null, products: [], signedIn: false, ready: false };
+  var freshSignIn = false; // armed by an explicit sign-in ACTION (Google popup
+                           // or email link), never by session restore; consumed
+                           // by resolve() to land the visitor on their ledger.
   var listeners = [];
   var chip = null;
   var modal = null;
@@ -131,6 +136,14 @@
   function resolve() {
     firebase.auth().onAuthStateChanged(function (u) {
       if (!u) { clearAccessCache(); setState({ email: "", plan: null, products: [], signedIn: false, ready: true }); return; }
+      // A fresh sign-in ACTION (popup or email link — never session restore)
+      // lands the visitor on their ledger: the modal promises "your ledger
+      // opens", so signing in takes you home. Already on /dossier/? Stay.
+      if (freshSignIn) {
+        freshSignIn = false;
+        if (location.pathname !== VAULT) location.assign(VAULT);
+        return;
+      }
       var em = userEmail(u);
       if (!em) { clearAccessCache(); setState({ email: "", plan: null, products: [], signedIn: false, ready: true }); return; }
       firebase.firestore().collection("access").doc(em).get()
@@ -189,7 +202,7 @@
         '<button class="aa-x" type="button" aria-label="Close">&times;</button>' +
         '<p class="aa-kicker">The Absence Audit</p>' +
         '<h2>Sign in</h2>' +
-        '<p class="aa-sub">Your ledger opens with the email on your purchase receipt.</p>' +
+        '<p class="aa-sub">Sign in and your ledger opens.</p>' +
         '<button class="aa-gbtn" id="aa-google" type="button">Continue with Google</button>' +
         '<div class="aa-or">or</div>' +
         '<form class="aa-elink" id="aa-elinkform">' +
@@ -227,7 +240,7 @@
   function googleSignIn() {
     boot(function () {
       firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
-        .then(function () { closeModal(); resolve(); })
+        .then(function () { freshSignIn = true; closeModal(); resolve(); })
         .catch(function (e) { modalMsg((e && e.message) || String(e), true); });
     });
   }
@@ -256,6 +269,7 @@
     firebase.auth().signInWithEmailLink(em, location.href)
       .then(function () {
         try { localStorage.removeItem("aaEmail"); } catch (e) {}
+        freshSignIn = true;
         history.replaceState(null, "", location.pathname);
         resolve();
       })
