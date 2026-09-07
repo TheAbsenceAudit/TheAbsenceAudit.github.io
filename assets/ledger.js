@@ -406,11 +406,17 @@
     if (!r.bk) return "";
     var bv = String(r.bk).split(" (")[0];
     var cls = bv === "BANKABLE" ? "ok" : (bv === "NOT BANKABLE" ? "dead" : "");
+    var ds = r.bkd != null ? String(r.bkd) : null;
+    if (ds != null && ds.indexOf(".") >= 0) {
+      var f = Number(ds).toFixed(2);
+      f = f.indexOf(".") >= 0 ? f.replace(/0+$/, "").replace(/\.$/, "") : f;
+      ds = f;
+    }
     var t = "Model bankability: " + bv +
-      (r.bkd != null ? " \u2014 min DSCR " + r.bkd + "\u00d7" : "") +
+      (ds != null ? " \u2014 min DSCR " + ds + "\u00d7" : "") +
       ". Computed by the institutional pack, not a bank decision.";
     return '<span class="tbadge ' + cls + '" title="' + t + '">' +
-      esc(bv) + (r.bkd != null ? " " + r.bkd + "\u00d7" : "") + "</span>";
+      esc(bv) + (ds != null ? " " + ds + "\u00d7" : "") + "</span>";
   }
 
   function ownedBadge(r) {
