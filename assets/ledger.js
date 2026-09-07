@@ -322,7 +322,12 @@
         encodeURIComponent(r.s) + '/" aria-label="Open the full dossier for ' + esc(r.n) + '">' +
         'Open<span aria-hidden="true"> &rarr;</span></a></div>';
     }
-    if (!isSaleable(r)) return "";
+    if (!isSaleable(r)) {
+      var ap = (r.ap != null) ? ("$" + Number(r.ap).toLocaleString()) : "";
+      return '<div class="rcta"><span class="tbadge dead">autopsy</span>'
+        + (ap ? '<span class="tbadge" aria-label="Full report priced by Autopsy Value Score">' + esc(ap) + "</span>" : "")
+        + "</div>";
+    }
     // Priority window: no anonymous checkout until the public release date.
     if (inWindow(r)) {
       return '<div class="rcta"><span class="row-btn row-btn--wait" aria-label="' +
@@ -355,7 +360,11 @@
       return '<a class="tdossier" href="' + D + encodeURIComponent(r.s) + '/">Open &rarr;</a>';
     }
     if (r.s === FREE) return '<a href="/sample/">Free</a>';
-    if (!isSaleable(r)) return '<span class="tbadge dead">autopsy only</span>';
+    if (!isSaleable(r)) {
+      var ap = (r.ap != null) ? ("$" + Number(r.ap).toLocaleString()) : "";
+      return '<span class="tbadge dead">autopsy</span>'
+        + (ap ? '<span class="tbadge" aria-label="Full report priced by Autopsy Value Score">' + esc(ap) + "</span>" : "");
+    }
     if (inWindow(r)) {
       return '<span class="tbadge">priority &mdash; public ' + esc(r.rel) + "</span>";
     }
