@@ -300,6 +300,8 @@
   .hub-list a{color:var(--ink);text-decoration:none;font-weight:600}
   .hub-list a:hover{color:var(--kill)}
   .hub-count{color:var(--ink-3);font-size:.82rem;margin-left:.6rem}
+  .countline{color:var(--ink-2);font-size:.93rem;margin:.8rem 0 0}
+  .bankline{color:var(--ink-2);font-size:.93rem;margin:.55rem 0 0;max-width:62ch;line-height:1.55}
 
   .skip-link{
     position:absolute;left:-9999px;top:0;z-index:99;background:var(--ink);color:var(--paper);
