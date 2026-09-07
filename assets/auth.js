@@ -329,10 +329,60 @@
     function apply(st) {
       var ok = subMode() ||
                (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
-      if (ok) { revealGated(); revealAgent(); }
+      if (!ok) return;
+      revealAgent();
+      openServerReport(slug, st);
     }
     if (state.ready) apply(state);
     else listeners.push(apply);
+  }
+
+  // Server-delivered report (owner 2026-09-08, option D): the full report is
+  // no longer in the served bytes on paid product pages — the static page
+  // carries the locked stand-in and an empty [data-aa-report] target. The
+  // entitled reader fetches the report from the Cloud Function, which
+  // re-checks the entitlement server-side (Firebase ID token OR subscriber
+  // invite token) and returns the HTML. Fail-closed: any failure keeps the
+  // locked stand-in in place with an honest error note, never stale bytes.
+  function openServerReport(slug, st) {
+    var box = document.querySelector("[data-aa-report]");
+    if (!box) return;
+    var lock = document.querySelector("[data-aa-locked]");
+    function fail(msg) {
+      box.innerHTML = '<p style="margin:1rem 0;color:var(--ink-2)">The full report '
+        + 'could not be loaded: ' + String(msg || "unknown error").replace(/</g, "&lt;")
+        + '. Refresh to retry, or email info@theabsenceaudit.com.</p>';
+      box.style.display = "";
+    }
+    boot(function () {
+      var headers = { "Content-Type": "application/json" };
+      var subTok = null;
+      try { subTok = localStorage.getItem("aa_subtok"); } catch (e) {}
+      if (subMode() && subTok) headers["X-Sub-Token"] = subTok;
+      function doFetch(h) {
+        var fn = CFG.reportFn;
+        if (!fn) { fail("delivery not configured"); return; }
+        fetch(fn + "?slug=" + encodeURIComponent(slug), { headers: h })
+          .then(function (r) {
+            if (!r.ok) throw new Error("http " + r.status);
+            return r.json();
+          })
+          .then(function (d) {
+            if (!d || !d.ok || !d.html) throw new Error("no report");
+            box.innerHTML = d.html;
+            box.style.display = "";
+            if (lock) lock.style.display = "none";
+          })
+          .catch(function (e) { fail(e && e.message); });
+      }
+      if (st.signedIn && firebase.auth().currentUser) {
+        firebase.auth().currentUser.getIdToken()
+          .then(function (tok) { headers["Authorization"] = "Bearer " + tok; doFetch(headers); })
+          .catch(function () { doFetch(headers); });
+      } else {
+        doFetch(headers);
+      }
+    });
   }
 
   // --------------------------------------------------------- dossier agent

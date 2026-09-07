@@ -274,7 +274,11 @@
     sha256hex(k).then(function (hex) {
       if (!HASHES[hex]) { showGate(); return; }
       // token accepted: arm subscriber mode site-wide, then scrub the token
-      // from the address bar so screenshots/shares cannot leak the invitation
+      // from the address bar so screenshots/shares cannot leak the invitation.
+      // The raw token is stashed for the server-side report gate (2026-09-08,
+      // option D): the Cloud Function verifies sha256(token) itself — the
+      // cookie alone is a client-side convenience, not server evidence.
+      try { localStorage.setItem("aa_subtok", k); } catch (e) {}
       armSubscriberMode();
       history.replaceState(null, "", location.pathname);
     }).catch(function () { showGate(); });
