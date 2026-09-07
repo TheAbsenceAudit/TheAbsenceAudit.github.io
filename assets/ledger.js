@@ -412,8 +412,10 @@
       f = f.indexOf(".") >= 0 ? f.replace(/0+$/, "").replace(/\.$/, "") : f;
       ds = f;
     }
+    var capped = ds != null && Number(ds) >= 5;
     var t = "Model bankability: " + bv +
       (ds != null ? " \u2014 min DSCR " + ds + "\u00d7" : "") +
+      (capped ? " (the loan is capped by use-of-proceeds \u2014 the business barely needs debt; see the pack for debt capacity)" : "") +
       ". Computed by the institutional pack, not a bank decision.";
     return '<span class="tbadge ' + cls + '" title="' + t + '">' +
       esc(bv) + (ds != null ? " " + ds + "\u00d7" : "") + "</span>";
