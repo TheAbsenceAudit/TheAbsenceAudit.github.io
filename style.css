@@ -207,6 +207,16 @@
   .vcell--pass .vword{color:var(--live)}
   .vsynth{grid-column:1/-1;margin:0;padding:.6rem .95rem;background:var(--paper);
           font-size:.9rem;line-height:1.5;color:var(--ink-2)}
+  @media (max-width:760px){
+    /* Mobile responsiveness (owner 2026-09-08): tables carry min-widths
+       (720px/1000px) that overflow the phone viewport and push everything
+       wide — including the chat orb off-screen right. On small screens each
+       table becomes its own horizontally scrollable block; the page itself
+       stops overflowing. */
+    table{display:block;overflow-x:auto;min-width:0}
+    table.term{min-width:0}
+    figure img{max-width:100%;height:auto}
+  }
   @media (max-width:640px){ .vbar{grid-template-columns:1fr} }
 
   /* ---------- graveyard ---------- */

@@ -432,6 +432,10 @@
     // the widget on mobile; placement pinned for the small viewport.
     el.setAttribute("show-avatar-when-collapsed", "true");
     el.setAttribute("placement", "bottom-right");
+    // Display mode: the server config runs variant "full" (a full-width bottom
+    // sheet); on phones that host box spans the layout width and the orb ends
+    // up off-screen. "expanded" = compact orb + expandable sheet (max 600px).
+    el.setAttribute("variant", "expanded");
     // ink-on-paper orb, per the site palette
     el.setAttribute("avatar-orb-color-1", "#16181d");
     el.setAttribute("avatar-orb-color-2", "#6b7280");
