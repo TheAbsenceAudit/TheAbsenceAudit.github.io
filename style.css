@@ -217,6 +217,13 @@
     table.term{min-width:0}
     figure img{max-width:100%;height:auto}
   }
+  /* Research-grade pricing banner (owner 2026-09-08): dated, honest — no
+     fake countdowns. */
+  .price-banner{max-width:var(--prose,#52rem);margin:1.2rem auto 0;padding:.9rem 1.1rem;
+                border:1px solid var(--rule);border-radius:10px;
+                background:var(--paper-2,#f6f2ea);font-size:.92rem;
+                color:var(--ink-2)}
+  .price-banner strong{color:var(--ink)}
   /* Floating voice badge (owner 2026-09-08, "Steve Jobs" direction): a small
      ink badge, fixed to the viewport — follows the scroll, tap to talk. The
      panel opens above it, compact and calm. */
