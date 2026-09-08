@@ -415,13 +415,11 @@
   }
 
   function makeVoiceCard(agentId, title) {
-    var card = document.createElement("div");
-    card.className = "aa-voice-card";
-    card.setAttribute("data-agent", agentId);
-    card.setAttribute("data-title", title);
-    var mount = document.querySelector("main figure") ||
-                document.querySelector("main") || document.body;
-    mount.insertAdjacentElement("afterend", card);
+    var badge = document.createElement("div");
+    badge.className = "aa-voice-badge";
+    badge.setAttribute("data-agent", agentId);
+    badge.setAttribute("data-title", title);
+    document.body.appendChild(badge);
     loadVoiceAssets();
   }
 
@@ -441,12 +439,12 @@
     var A = window.AA_AGENT;
     if (!A || !A.id || agentRevealed) return;
     agentRevealed = true;
-    // Upgrade the public card to the full agent when the gate lifts.
-    var card = document.querySelector(".aa-voice-card");
-    if (card) {
-      card.setAttribute("data-agent", A.id);
-      card.setAttribute("data-title", "Ask this report — the agent has read it in full");
-      var t = card.querySelector(".aa-voice-title");
+    // Upgrade the public badge to the full agent when the gate lifts.
+    var badge = document.querySelector(".aa-voice-badge");
+    if (badge) {
+      badge.setAttribute("data-agent", A.id);
+      badge.setAttribute("data-title", "Ask this report — the agent has read it in full");
+      var t = document.querySelector(".aa-voice-title");
       if (t) t.textContent = "Ask this report — the agent has read it in full";
     } else {
       makeVoiceCard(A.id, "Ask this report — the agent has read it in full");

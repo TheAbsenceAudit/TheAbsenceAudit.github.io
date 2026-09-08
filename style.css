@@ -217,26 +217,50 @@
     table.term{min-width:0}
     figure img{max-width:100%;height:auto}
   }
-  /* Inline voice assistant card (owner 2026-09-08): the chat lives inside
-     the report flow — a paper card under the report figure, no corner pill. */
-  .aa-voice-card{border:1px solid var(--rule);background:var(--paper-2,#f6f2ea);
-                 border-radius:10px;padding:1.1rem 1.25rem;margin:1.5rem auto;
-                 max-width:600px}
-  .aa-voice-title{font-weight:650;font-size:.86rem;letter-spacing:.04em;
-                  text-transform:uppercase;color:var(--ink)}
-  .aa-voice-body{display:flex;align-items:center;gap:.9rem;margin-top:.7rem}
-  .aa-voice-btn{flex:0 0 auto;width:52px;height:52px;border-radius:50%;
-                border:1px solid var(--rule);background:var(--paper,#fff);
-                color:var(--ink);font-size:1.25rem;cursor:pointer;
-                display:flex;align-items:center;justify-content:center}
-  .aa-voice-btn:active{transform:scale(.96)}
-  .aa-voice-live{background:var(--ink);color:var(--paper,#fff);
-                 animation:aa-pulse 1.6s infinite}
+  /* Floating voice badge (owner 2026-09-08, "Steve Jobs" direction): a small
+     ink badge, fixed to the viewport — follows the scroll, tap to talk. The
+     panel opens above it, compact and calm. */
+  .aa-voice-badge{position:fixed;right:18px;bottom:18px;z-index:99990;
+                  width:52px;height:52px;border-radius:50%;
+                  background:var(--ink,#16181d);color:var(--paper,#f6f2ea);
+                  display:flex;align-items:center;justify-content:center;
+                  cursor:pointer;border:1px solid rgba(255,255,255,.08);
+                  box-shadow:0 4px 18px rgba(22,24,29,.30);
+                  transition:transform .22s cubic-bezier(.2,.8,.2,1),
+                             box-shadow .22s}
+  .aa-voice-badge:hover{box-shadow:0 6px 24px rgba(22,24,29,.38)}
+  .aa-voice-badge:active{transform:scale(.94)}
+  .aa-voice-live{animation:aa-pulse 1.6s infinite}
   @keyframes aa-pulse{0%,100%{box-shadow:0 0 0 0 rgba(22,24,29,.25)}
-                      50%{box-shadow:0 0 0 8px rgba(22,24,29,0)}}
-  .aa-voice-status{font-size:.88rem;color:var(--ink-2)}
+                      50%{box-shadow:0 0 0 9px rgba(22,24,29,0)}}
+  .aa-voice-panel{position:fixed;right:18px;bottom:82px;z-index:99990;
+                  width:min(340px,calc(100vw - 36px));
+                  background:var(--paper,#fff);border:1px solid var(--rule);
+                  border-radius:14px;padding:1rem 1.1rem;
+                  box-shadow:0 12px 38px rgba(22,24,29,.24);
+                  opacity:0;transform:translateY(10px);pointer-events:none;
+                  transition:opacity .22s ease,transform .24s cubic-bezier(.2,.8,.2,1)}
+  .aa-voice-panel.open{opacity:1;transform:none;pointer-events:auto}
+  .aa-voice-top{display:flex;align-items:center;justify-content:space-between;
+                gap:.6rem;margin-bottom:.5rem}
+  .aa-voice-title{font-weight:650;font-size:.8rem;letter-spacing:.04em;
+                  text-transform:uppercase;color:var(--ink)}
+  .aa-voice-close{border:0;background:transparent;font-size:1.2rem;
+                  color:var(--ink-2);cursor:pointer;line-height:1;padding:.2rem}
+  .aa-voice-status{font-size:.88rem;color:var(--ink-2);margin:.35rem 0 .7rem}
   .aa-voice-err{color:#8a2b1f}
+  .aa-voice-actions{display:flex;align-items:center;gap:.8rem}
+  .aa-voice-btn{flex:0 0 auto;width:48px;height:48px;border-radius:50%;
+                border:1px solid var(--rule);background:var(--paper,#fff);
+                color:var(--ink);cursor:pointer;display:flex;align-items:center;
+                justify-content:center;transition:transform .18s}
+  .aa-voice-btn:active{transform:scale(.94)}
+  .aa-voice-btn.aa-voice-live{background:var(--ink);color:var(--paper,#fff)}
   .aa-voice-powered{font-size:.72rem;color:var(--ink-2);margin-top:.6rem}
+  @media (max-width:640px){
+    .aa-voice-badge{right:14px;bottom:14px}
+    .aa-voice-panel{right:14px;bottom:74px;width:calc(100vw - 28px)}
+  }
   @media (max-width:640px){ .vbar{grid-template-columns:1fr} }
 
   /* ---------- graveyard ---------- */
