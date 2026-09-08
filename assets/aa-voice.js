@@ -11,8 +11,45 @@
  */
 (function () {
   "use strict";
-  var badge = document.querySelector(".aa-voice-badge");
+  // Defensive mount (owner 2026-09-08): the badge must exist even when the
+  // page's auth.js is a stale cached copy or a concurrent publish dropped the
+  // reveal call. If auth.js did not mount the badge, create it here from the
+  // page's own agent config (or the public ledger agent as the fallback).
+  var PUBLIC_AGENT_ID = "agent_5001m209j2fge31snrs6s4tkxs6z";
+  function pageWantsVoice() {
+    var cfg = window.AA_AUTH;
+    return !!(window.AA_AGENT ||
+              (cfg && (cfg.report || cfg.dossier)));
+  }
+  function ensureBadge() {
+    if (!pageWantsVoice()) return null;
+    var b = document.querySelector(".aa-voice-badge");
+    if (b) return b;
+    var agent = (window.AA_AGENT && window.AA_AGENT.id) || PUBLIC_AGENT_ID;
+    var title = window.AA_AGENT
+      ? "Ask this report — the agent has read it in full"
+      : "Ask the ledger — any concept, any verdict";
+    b = document.createElement("div");
+    b.className = "aa-voice-badge";
+    b.setAttribute("data-agent", agent);
+    b.setAttribute("data-title", title);
+    document.body.appendChild(b);
+    return b;
+  }
+  var badge = ensureBadge();
   if (!badge) return;
+  // auth.js may reveal (or upgrade) the badge slightly later than this
+  // script runs — re-check once after the auth boot window and re-ensure.
+  setTimeout(function () {
+    var again = ensureBadge();
+    if (again !== badge) {
+      // auth.js created/upgraded a badge after us — prefer its agent id.
+      badge.setAttribute("data-agent", again.getAttribute("data-agent"));
+      badge.setAttribute("data-title", again.getAttribute("data-title"));
+      var t = document.querySelector(".aa-voice-title");
+      if (t) t.textContent = again.getAttribute("data-title");
+    }
+  }, 4000);
 
   var sdkLoading = false;
   var conv = null, busy = false, retries = 0;
