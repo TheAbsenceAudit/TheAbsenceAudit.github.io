@@ -189,7 +189,7 @@
 
   var $ = function (id) { return document.getElementById(id); };
   var results = $("results"), count = $("count"), more = $("more"), empty = $("empty");
-  var q = $("q"), disc = $("disc"), fail = $("fail"), capex = $("capex"), pay = $("pay"), sort = $("sort");
+  var q = $("q"), disc = $("disc"), fail = $("fail"), pay = $("pay"), sort = $("sort");
   if (!results || !q) return; // not a ledger page (safety)
 
   // ---------------------------------------------------------------- helpers
@@ -368,7 +368,6 @@
   function apply() {
     var terms = tokens(q.value);
     var dv = disc.value, fv = fail.value;
-    var cx = capex.value ? parseFloat(capex.value) : null;
     var pb = pay.value ? parseFloat(pay.value) : null;
 
     view = all.filter(function (r) {
@@ -383,7 +382,6 @@
                   (r.o || "").split(",").map(function (x) { return x.trim(); }).indexOf(fv) >= 0;
         if (!has) return false;
       }
-      if (cx !== null && !(r.cx !== null && r.cx !== undefined && r.cx <= cx)) return false;
       if (pb !== null && !(r.pb !== null && r.pb !== undefined && r.pb <= pb)) return false;
       // Startup-capital band: a one-click ceiling ("max" inverts to a floor).
       // ANDs with the precise CapEx input above, so band + exact cap combine.
@@ -396,13 +394,13 @@
       }
       // Bankability band (owner 2026-09-07): the model pack's verdict.
       // Values arrive as "BANKABLE (model)" etc. — normalize the suffix off.
-      // "NONE" = pre-model report (no pack). "NOT ASSESSABLE" = pack exists
-      // but the primitives can't support a verdict. ANDs with the verdict
-      // segments so the honest cuts compose (e.g. Rejected × Bankable).
+      // "NO VERDICT" folds the two verdict-less states: pre-model reports
+      // (no pack) and packs whose primitives can't support a verdict.
       if (bankBand) {
         var bv = r.bk != null ? String(r.bk).split(" (")[0] : null;
-        if (bankBand === "NONE") { if (bv != null) return false; }
-        else if (bv !== bankBand) return false;
+        if (bankBand === "NO VERDICT") {
+          if (!(bv == null || bv === "NOT ASSESSABLE")) return false;
+        } else if (bv !== bankBand) return false;
       }
       return true;
     });
@@ -726,7 +724,6 @@
     if (verdict !== "all") p.set("v", verdict);
     if (disc.value) p.set("d", disc.value);
     if (fail.value) p.set("f", fail.value);
-    if (capex.value) p.set("cx", capex.value);
     if (capexBand) p.set("cb", capexBand);
     if (bankBand) p.set("bk", bankBand);
     if (pay.value) p.set("pb", pay.value);
@@ -744,12 +741,12 @@
     if (v === "sale" || v === "0" || v === "all") verdict = v;
     if (p.get("d")) disc.value = p.get("d");
     if (p.get("f")) fail.value = p.get("f");
-    if (p.get("cx")) capex.value = p.get("cx");
     var cb = p.get("cb");
     if (cb === "25" || cb === "100" || cb === "500" || cb === "max") capexBand = cb;
     var bk = p.get("bk");
+    if (bk === "NOT ASSESSABLE" || bk === "NONE") bk = "NO VERDICT";
     if (bk === "BANKABLE" || bk === "NOT BANKABLE" || bk === "CONDITIONAL" ||
-        bk === "NOT ASSESSABLE" || bk === "NONE") bankBand = bk;
+        bk === "NO VERDICT") bankBand = bk;
     if (p.get("pb")) pay.value = p.get("pb");
     if (p.get("fav") === "1") favOnly = true;
     if (p.get("s")) sort.value = p.get("s");
@@ -784,7 +781,7 @@
       semTimer = setTimeout(semanticRank, 300);
     }
   });
-  [disc, fail, capex, pay, sort].forEach(function (el) {
+  [disc, fail, pay, sort].forEach(function (el) {
     el.addEventListener("change", apply);
   });
   document.querySelectorAll("#verdictseg button").forEach(function (b) {
@@ -832,7 +829,7 @@
   });
   more.addEventListener("click", render);
   function reset() {
-    q.value = ""; disc.value = ""; fail.value = ""; capex.value = ""; pay.value = "";
+    q.value = ""; disc.value = ""; fail.value = ""; pay.value = "";
     sort.value = "new"; verdict = "all"; capexBand = ""; bankBand = ""; favOnly = false;
     SEM = {}; semToken++;
     var area = $("answerarea"); if (area) area.hidden = true;

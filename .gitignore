@@ -28,3 +28,5 @@ c/**/*.pdf
 case-study/*.pdf
 track-record/*.pdf
 pdf_render_report.json
+
+studies/*.pdf

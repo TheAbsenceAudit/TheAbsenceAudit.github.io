@@ -116,7 +116,7 @@
 <meta name="robots" content="noindex,nofollow">
 <title>Subscriber ledger | The Absence Audit</title>
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=fa8db5b4">
+<link rel="stylesheet" href="/style.css?v=6d3b7322">
 <script id="aa-checkout-tracking">
 (function () {
   function isKit(href) {
@@ -225,6 +225,14 @@
             <button type="button" aria-pressed="false">&#9733; Favorites</button>
           </div>
           <div class="toolright">
+            <label class="sortlabel" for="sort">Sort</label>
+            <select id="sort" class="sortsel">
+              <option value="new">newest first</option>
+              <option value="delta">biggest advantage</option>
+              <option value="capex">lowest CapEx</option>
+              <option value="pay">fastest payback</option>
+              <option value="az">A&ndash;Z</option>
+            </select>
             <div class="seg" role="group" aria-label="View" id="viewseg">
               <button type="button" data-view="grid" aria-pressed="true">Grid</button>
               <button type="button" data-view="list" aria-pressed="false">List</button>
@@ -233,33 +241,34 @@
         </div>
       </div>
       <div class="facets">
+        <p class="fghead">What it is</p>
         <label for="disc">Discipline</label>
         <select id="disc"><option value="">any</option></select>
         <label for="fail">Failure mode</label>
         <select id="fail"><option value="">any</option></select>
-        <label for="capex">Max CapEx $</label>
-        <input type="number" id="capex" min="0" step="10000" placeholder="any" style="width:8rem">
-        <label for="pay">Max payback mo</label>
-        <input type="number" id="pay" min="0" step="1" placeholder="any" style="width:6rem">
+        <p class="fghead">Money</p>
         <div class="capcell">
-          <label>Bankability</label>
+          <label>Startup capital</label>
+          <div class="seg seg--wrap" role="group" aria-label="Startup capital" id="capexseg">
+            <button type="button" data-cx="" aria-pressed="true" title="Show every concept">Any</button>
+            <button type="button" data-cx="25" aria-pressed="false" title="Concepts startable with $25,000 or less">&le; $25k</button>
+            <button type="button" data-cx="100" aria-pressed="false" title="Concepts startable with $100,000 or less">&le; $100k</button>
+            <button type="button" data-cx="500" aria-pressed="false" title="Concepts startable with $500,000 or less">&le; $500k</button>
+            <button type="button" data-cx="max" aria-pressed="false" title="Concepts needing more than $500,000">$500k+</button>
+          </div>
+        </div>
+        <label for="pay">Max payback, mo</label>
+        <input type="number" id="pay" min="0" step="1" placeholder="any" style="width:6rem">
+        <p class="fghead">Bankability</p>
+        <div class="capcell">
           <div class="seg seg--wrap" role="group" aria-label="Bankability (model)" id="bankseg">
             <button type="button" data-bk="" aria-pressed="true" title="Show every concept">Any</button>
             <button type="button" data-bk="BANKABLE" aria-pressed="false" title="Model debt math passes the DSCR floor">Bankable (model)</button>
             <button type="button" data-bk="NOT BANKABLE" aria-pressed="false" title="Model debt math fails the DSCR floor">Not bankable (model)</button>
             <button type="button" data-bk="CONDITIONAL" aria-pressed="false" title="Bankable only under the stated conditions">Conditional (model)</button>
-            <button type="button" data-bk="NOT ASSESSABLE" aria-pressed="false" title="A pack exists but the primitives can't support a verdict">Not assessable</button>
-            <button type="button" data-bk="NONE" aria-pressed="false" title="Pre-model report: no economics primitives, no pack">No model</button>
+            <button type="button" data-bk="NO VERDICT" aria-pressed="false" title="No pack, or primitives that can&rsquo;t support a verdict">No verdict</button>
           </div>
         </div>
-        <label for="sort">Sort</label>
-        <select id="sort">
-          <option value="new">newest first</option>
-          <option value="delta">biggest advantage</option>
-          <option value="capex">lowest CapEx</option>
-          <option value="pay">fastest payback</option>
-          <option value="az">A–Z</option>
-        </select>
         <button type="button" id="reset" class="qbtn">Reset</button>
       </div>
       <p class="countline" id="count">Loading the ledger&hellip;</p>
@@ -314,8 +323,8 @@
 </footer>
 
 <script>window.AA_LEDGER_PAGE = {"mine": false};</script>
-<script>window.AA_LEDGER_CFG = {"fail_labels":{"negative_control":"Negative control used as incumbent","sub_2x":"Below the 2x step-change bar","no_superiority_table":"No head-to-head evidence","weak_superiority_source":"Evidence rests on non-peer-reviewed sources","evidence_concentration":"Single-source evidence base","duplicate_refs":"Duplicate references inflating the evidence base","declared_parity":"Price parity asserted, not sourced","uncited_incumbent_price":"Incumbent price uncited","defunct_incumbent":"Comparator may have left the market","retracted_reference":"Cites a retracted reference","no_switching_analysis":"Customer switching incentive not analyzed","missing_application_envelope":"Entry application undeclared","entry_application_missing":"Entry application undeclared","missing_hazard_profile":"Hazard profile missing","uncited_safety_claim":"Uncited safety claim","opex_driven_margin":"Margin fails the operating-cost check","capex_mismatch":"CapEx figures inconsistent","payback_over":"Payback horizon exceeds the model's ceiling","capital_productivity_under":"Capital productivity below the model's floor","missing_absence_ledger":"Absence asserted, search unreported","absence_ledger_unquantified":"Absence search unquantified","missing_defensibility_position":"No protectable contribution declared","prior_art_not_delineated":"Prior-art / novelty boundary not drawn","self_declared_arbitrage":"Self-declared operational arbitrage (no patentable asset)","defensibility_partial":"Prior-art / novelty boundary incomplete","moat_is_operational_only":"Operational arbitrage, no IP moat","weak_ip_hook":"Weak hook — known class characteristic / unverified superlative","patent_prior_art_missing":"No patent prior art identified (FTO unverified)","no_comparative_matrix":"No comparative data matrix","no_claim_hierarchy":"No claim hierarchy"},"void_labels":{"A":"Illegitimate incumbent","B":"Mismatched comparison","C":"Capital and time to revenue","D":"Economics undisclosed","E":"Negative control / sub-2x","F":"Entry application mismatch","G":"Form-factor / handling regression","H":"Hazards undisclosed","I":"Absence search missing","J":"No defensible contribution declared"},"singles":{},"full_access":{},"batch":50,"bank_insights":{"sale|BANKABLE":"20 of 24 for-sale concepts are model-bankable &mdash; the debt math works. The audit's objections decide, not the model.","sale|NOT BANKABLE":"3 of 24 for-sale concepts fail the model DSCR floor &mdash; the pack publishes that. Read it before buying.","sale|CONDITIONAL":"1 for-sale concept is model-bankable only under the stated conditions.","sale|NOT ASSESSABLE":"0 for-sale concept has a pack whose primitives can't support a verdict.","sale|NONE":"0 for-sale concept predates the economics model &mdash; no pack could be computed.","0|BANKABLE":"54 of 81 studies are model-bankable &mdash; the debt math works, the venture case didn't. The audit's reasons are published on each page.","0|NOT BANKABLE":"14 of 81 studies also fail the model DSCR.","0|CONDITIONAL":"5 studies are conditionally bankable.","0|NOT ASSESSABLE":"1 studies carry a pack whose primitives can't support a verdict.","0|NONE":"7 studies predate the economics model &mdash; no pack.","all|BANKABLE":"63 concepts are model-bankable &mdash; 54 of them didn't clear the audit: the debt math works, the venture case didn't.","all|NOT BANKABLE":"14 concepts fail the model DSCR floor &mdash; every one of them carries a didn't-clear verdict; 3 are still sold as dossiers. The pack publishes that.","all|CONDITIONAL":"5 concepts are model-bankable only under stated conditions.","all|NOT ASSESSABLE":"1 concepts carry a pack whose primitives can't support a verdict.","all|NONE":"7 concepts predate the economics model &mdash; no pack."}};</script>
-<script src="/assets/ledger.js?v=4dcd2427" defer></script>
+<script>window.AA_LEDGER_CFG = {"fail_labels":{"evidence_concentration":"Single-source evidence base","duplicate_refs":"Duplicate references inflating the evidence base","retracted_reference":"Cites a retracted reference","missing_absence_ledger":"Absence asserted, search unreported","absence_ledger_unquantified":"Absence search unquantified","opex_driven_margin":"Margin fails the operating-cost check","capex_mismatch":"CapEx figures inconsistent","payback_over":"Payback horizon exceeds the model's ceiling","capital_productivity_under":"Capital productivity below the model's floor","missing_application_envelope":"Entry application undeclared","entry_application_missing":"Entry application undeclared","negative_control":"Negative control used as incumbent","defunct_incumbent":"Comparator may have left the market","declared_parity":"Price parity asserted, not sourced","uncited_incumbent_price":"Incumbent price uncited","no_switching_analysis":"Customer switching incentive not analyzed","sub_2x":"Below the 2x step-change bar","no_superiority_table":"No head-to-head evidence","weak_superiority_source":"Evidence rests on non-peer-reviewed sources","missing_hazard_profile":"Hazard profile missing","uncited_safety_claim":"Uncited safety claim","missing_defensibility_position":"No protectable contribution declared","prior_art_not_delineated":"Prior-art / novelty boundary not drawn","self_declared_arbitrage":"Self-declared operational arbitrage (no patentable asset)","defensibility_partial":"Prior-art / novelty boundary incomplete","moat_is_operational_only":"Operational arbitrage, no IP moat","weak_ip_hook":"Weak hook — known class characteristic / unverified superlative","patent_prior_art_missing":"No patent prior art identified (FTO unverified)","no_comparative_matrix":"No comparative data matrix","no_claim_hierarchy":"No claim hierarchy"},"void_labels":{"A":"Illegitimate incumbent","B":"Mismatched comparison","C":"Capital and time to revenue","D":"Economics undisclosed","E":"Negative control / sub-2x","F":"Entry application mismatch","G":"Form-factor / handling regression","H":"Hazards undisclosed","I":"Absence search missing","J":"No defensible contribution declared"},"singles":{},"full_access":{},"batch":50,"bank_insights":{"sale|BANKABLE":"20 of 24 for-sale concepts are model-bankable &mdash; the debt math works. The audit's objections decide, not the model.","sale|NOT BANKABLE":"3 of 24 for-sale concepts fail the model DSCR floor &mdash; the pack publishes that. Read it before buying.","sale|CONDITIONAL":"1 for-sale concept is model-bankable only under the stated conditions.","sale|NOT ASSESSABLE":"0 for-sale concept has a pack whose primitives can't support a verdict.","sale|NONE":"0 for-sale concept predates the economics model &mdash; no pack could be computed.","0|BANKABLE":"54 of 81 studies are model-bankable &mdash; the debt math works, the venture case didn't. The audit's reasons are published on each page.","0|NOT BANKABLE":"14 of 81 studies also fail the model DSCR.","0|CONDITIONAL":"5 studies are conditionally bankable.","0|NOT ASSESSABLE":"1 studies carry a pack whose primitives can't support a verdict.","0|NONE":"7 studies predate the economics model &mdash; no pack.","all|BANKABLE":"63 concepts are model-bankable &mdash; 54 of them didn't clear the audit: the debt math works, the venture case didn't.","all|NOT BANKABLE":"14 concepts fail the model DSCR floor &mdash; every one of them carries a didn't-clear verdict; 3 are still sold as dossiers. The pack publishes that.","all|CONDITIONAL":"5 concepts are model-bankable only under stated conditions.","all|NOT ASSESSABLE":"1 concepts carry a pack whose primitives can't support a verdict.","all|NONE":"7 concepts predate the economics model &mdash; no pack."}};</script>
+<script src="/assets/ledger.js?v=4949132e" defer></script>
 
 
 </body></html>
