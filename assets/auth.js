@@ -408,6 +408,12 @@
   function loadVoiceAssets() {
     if (voiceAssetsLoaded) return;
     voiceAssetsLoaded = true;
+    // Every page already carries the versioned aa-voice.js tag in <head>
+    // (publish.py normalize_auth injects it into all pages). The dynamic
+    // load below is legacy: skip it when the tag exists, or the badge script
+    // boots twice (two panels, two live conversations per tap). Kept as a
+    // fallback only for pages somehow missing the tag.
+    if (document.querySelector('script[src*="aa-voice.js"]')) return;
     var s = document.createElement("script");
     s.src = "/assets/aa-voice.js";
     s.async = true;

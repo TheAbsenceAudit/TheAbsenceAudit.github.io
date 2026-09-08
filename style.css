@@ -252,7 +252,25 @@
   .aa-voice-close{border:0;background:transparent;font-size:1.2rem;
                   color:var(--ink-2);cursor:pointer;line-height:1;padding:.2rem}
   .aa-voice-status{font-size:.88rem;color:var(--ink-2);margin:.35rem 0 .7rem}
-  .aa-voice-err{color:#8a2b1f}
+  .aa-voice-err{color:var(--kill)}
+  /* Live transcript (owner 2026-09-08): every word written down — agent
+     replies left on paper, the visitor's own words right on ink. Survives
+     the call; cleared when a new call starts. */
+  .aa-voice-msgs{display:none;margin:0 0 .7rem;max-height:34vh;overflow-y:auto;
+                 border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);
+                 padding:.6rem .1rem .3rem;-webkit-overflow-scrolling:touch}
+  .aa-voice-msgs.has-msgs{display:block}
+  .aa-voice-msg{max-width:88%;margin:0 0 .55rem;font-size:.85rem;line-height:1.42}
+  .aa-voice-who{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;
+                color:var(--ink-3);margin:0 0 .15rem .05rem}
+  .aa-voice-body{padding:.42rem .6rem;word-break:break-word;white-space:pre-wrap}
+  .aa-voice-msg.agent{margin-right:auto}
+  .aa-voice-msg.agent .aa-voice-body{background:var(--paper-2,#F3EFE7);
+                border:1px solid var(--rule,#DDD6C8)}
+  .aa-voice-msg.user{margin-left:auto;text-align:right}
+  .aa-voice-msg.user .aa-voice-who{margin:0 .05rem .15rem 0}
+  .aa-voice-msg.user .aa-voice-body{display:inline-block;text-align:left;
+                background:var(--ink,#171512);color:var(--paper,#FBF9F5)}
   .aa-voice-actions{display:flex;align-items:center;gap:.8rem}
   .aa-voice-btn{flex:0 0 auto;width:48px;height:48px;border-radius:50%;
                 border:1px solid var(--rule);background:var(--paper,#fff);
