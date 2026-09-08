@@ -500,17 +500,31 @@
   // charges EUR, so the engine mirrors the charge currency — singles.price
   // ("€999") is the authoritative string, never a reconstructed "$" price.
   function apBadges(r) {
+    var su = SINGLES[r.s];
+    if (su && su.unpriced) {
+      return '<span class="tbadge" aria-label="Pricing withheld — integrity gate">Under re-audit</span>';
+    }
+    if (su && su.price) {
+      return '<span class="tbadge dead">autopsy</span>'
+        + '<span class="tbadge" aria-label="Full report priced by the public mechanism">' + esc(su.price) + "</span>";
+    }
     var ap = (r.ap != null) ? ("€" + Number(r.ap).toLocaleString()) : "";
     return '<span class="tbadge dead">autopsy</span>'
       + (ap ? '<span class="tbadge" aria-label="Full report priced by Autopsy Value Score">' + esc(ap) + "</span>" : "");
   }
   function rowPrice(r) {
     var s = SINGLES[r.s];
+    if (s && s.unpriced) return "—";
+    if (r.s === FREE) return "Free";
     if (s && s.price) return s.price;
     if (r.price != null) return "€" + Number(r.price).toLocaleString();
-    return "€299";
+    return "";
   }
   function cta(r) {
+    var su0 = SINGLES[r.s];
+    if (su0 && su0.unpriced) {
+      return '<div class="rcta"><span class="tbadge" aria-label="Pricing withheld — integrity gate">Under re-audit</span></div>';
+    }
     var a = access(r);
     if (a === "sub" || a === "all" || a === "own") {
       if (!isSaleable(r)) return '<div class="rcta">' + apBadges(r) + "</div>";
@@ -557,6 +571,10 @@
   }
 
   function gridCta(r) {
+    var su0 = SINGLES[r.s];
+    if (su0 && su0.unpriced) {
+      return '<span class="tbadge" aria-label="Pricing withheld — integrity gate">Under re-audit</span>';
+    }
     var a = access(r);
     if (a === "sub" || a === "all" || a === "own") {
       if (!isSaleable(r)) return apBadges(r) + '<a class="tdossier" href="/c/' + encodeURIComponent(r.s) + '/">Read the audit &rarr;</a>';
