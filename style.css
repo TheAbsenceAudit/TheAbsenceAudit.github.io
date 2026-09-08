@@ -226,8 +226,12 @@
                   display:flex;align-items:center;justify-content:center;
                   cursor:pointer;border:1px solid rgba(255,255,255,.08);
                   box-shadow:0 4px 18px rgba(22,24,29,.30);
+                  transform:translateZ(0);
                   transition:transform .22s cubic-bezier(.2,.8,.2,1),
                              box-shadow .22s}
+  @supports (bottom:env(safe-area-inset-bottom)){
+    .aa-voice-badge{bottom:calc(18px + env(safe-area-inset-bottom))}
+  }
   .aa-voice-badge:hover{box-shadow:0 6px 24px rgba(22,24,29,.38)}
   .aa-voice-badge:active{transform:scale(.94)}
   .aa-voice-live{animation:aa-pulse 1.6s infinite}
