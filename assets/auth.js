@@ -597,6 +597,13 @@
     // report is public on the page, so the agent holds nothing that isn't
     // already in the served bytes.
     else if (window.AA_AGENT) revealAgent();
+    // Public-content agent for anonymous visitors on GATED pages: revealed
+    // IMMEDIATELY, before any Firebase boot, because the public ledger voice
+    // needs no entitlement — waiting on auth left phone visitors with no
+    // widget whenever the auth boot stalled (blocked gstatic, privacy mode).
+    // gateReport/gateDossier upgrade it to the full agent at the entitled
+    // moment; revealAgent() swaps the element.
+    if (CFG.dossier || CFG.report) revealPublicAgent();
     listeners.push(inviteLinks);
     start();
     maybeClaim();
