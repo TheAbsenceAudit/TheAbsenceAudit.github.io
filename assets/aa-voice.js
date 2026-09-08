@@ -175,12 +175,13 @@
     lastAgentBody = null;
   }
 
-  // Page context for the agent (owner 2026-09-08: "it needs to be aware of
-  // the report we're looking at"): the concept slug + title of the page the
-  // visitor is reading, shipped to the session as dynamic variables. The
-  // public ledger agent's prompt references {{slug}} / {{page_title}} so it
-  // can anchor answers to the concept on screen; the per-report agents
-  // ignore them (their prompts don't use the placeholders).
+  // Page context for the agent (owner 2026-09-08): the concept slug + title
+  // of the page the visitor is reading. ENTITLEMENT LAW: page context is
+  // shipped ONLY to per-report agents (entitled readers — their prompts hold
+  // the report itself). The PUBLIC ledger agent gets NO page context — it
+  // stays ledger-aware only, so non-payers can never use the voice channel
+  // to probe a report they haven't bought. Per-report prompts don't
+  // reference the variables yet; the mechanism is ready for them.
   function pageContext() {
     var cfg = window.AA_AUTH || {};
     var slug = cfg.report || cfg.dossier || "";
@@ -261,10 +262,13 @@
         if (err) { busy = false; setStatus("Voice is unavailable right now — try again in a moment.", true); return; }
         var cb = sessionCallbacks(seq);
         try {
-          window.ElevenLabsClient.Conversation.startSession(Object.assign({
-            agentId: badge.getAttribute("data-agent"),
-            dynamicVariables: pageContext()
-          }, cb)).then(function (c) {
+          var agentId = badge.getAttribute("data-agent");
+          var opts = Object.assign({ agentId: agentId }, cb);
+          // Entitlement law: page context goes to per-report agents only —
+          // never to the public ledger agent (non-payers must not get a
+          // report-probing channel through voice).
+          if (agentId !== PUBLIC_AGENT_ID) opts.dynamicVariables = pageContext();
+          window.ElevenLabsClient.Conversation.startSession(opts).then(function (c) {
             if (seq !== sessionSeq) { try { c.endSession(); } catch (e) {} return; }
             conv = c;
             retries = 0;
