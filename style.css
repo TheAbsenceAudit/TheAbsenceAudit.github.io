@@ -217,11 +217,26 @@
     table.term{min-width:0}
     figure img{max-width:100%;height:auto}
   }
-  /* Chat widget host: the bundle positions it fixed at a screen corner.
-     Owner 2026-09-08: it belongs INSIDE the report area, in the reading
-     flow — static inline block, centered under the report figure. */
-  elevenlabs-convai{position:static!important;display:block;margin:1.6rem auto;
-                    max-width:600px;inset:auto!important}
+  /* Inline voice assistant card (owner 2026-09-08): the chat lives inside
+     the report flow — a paper card under the report figure, no corner pill. */
+  .aa-voice-card{border:1px solid var(--rule);background:var(--paper-2,#f6f2ea);
+                 border-radius:10px;padding:1.1rem 1.25rem;margin:1.5rem auto;
+                 max-width:600px}
+  .aa-voice-title{font-weight:650;font-size:.86rem;letter-spacing:.04em;
+                  text-transform:uppercase;color:var(--ink)}
+  .aa-voice-body{display:flex;align-items:center;gap:.9rem;margin-top:.7rem}
+  .aa-voice-btn{flex:0 0 auto;width:52px;height:52px;border-radius:50%;
+                border:1px solid var(--rule);background:var(--paper,#fff);
+                color:var(--ink);font-size:1.25rem;cursor:pointer;
+                display:flex;align-items:center;justify-content:center}
+  .aa-voice-btn:active{transform:scale(.96)}
+  .aa-voice-live{background:var(--ink);color:var(--paper,#fff);
+                 animation:aa-pulse 1.6s infinite}
+  @keyframes aa-pulse{0%,100%{box-shadow:0 0 0 0 rgba(22,24,29,.25)}
+                      50%{box-shadow:0 0 0 8px rgba(22,24,29,0)}}
+  .aa-voice-status{font-size:.88rem;color:var(--ink-2)}
+  .aa-voice-err{color:#8a2b1f}
+  .aa-voice-powered{font-size:.72rem;color:var(--ink-2);margin-top:.6rem}
   @media (max-width:640px){ .vbar{grid-template-columns:1fr} }
 
   /* ---------- graveyard ---------- */

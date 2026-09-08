@@ -397,57 +397,32 @@
   // billed per message, not per audio minute). The agent id is not a secret:
   // the dossier text is in the served bytes already; the widget reveal is the
   // gate convention, same as the Download-PDF row.
-  // -------------------------------------------------- widget bundle loader
-  // The widget bundle is SELF-HOSTED (/assets/elevenlabs-convai.js, vendored
-  // convai-widget-embed 0.18.0, copied by publish.py) so the widget renders
-  // even where third-party CDNs (unpkg) are blocked by ad-blockers/VPN
-  // threat-protection — that was the "agent never displays" failure mode.
-  // The unpinned @latest CDN build had also drifted (attribute renames),
-  // so the vendored copy pins the behaviour. The pinned unpkg URL is only a
-  // load-failure fallback, never the primary path.
-  var widgetLoaded = false;
-  function loadWidget() {
-    if (widgetLoaded) return;
-    widgetLoaded = true;
+  // -------------------------------------------------- inline voice card
+  // Owner 2026-09-08: the ElevenLabs chat must sit INSIDE the report area,
+  // in the reading flow — the widget bundle is hard-wired to a fixed screen
+  // corner (and hides its orb on phones when collapsed), so we mount our own
+  // inline card instead: a .aa-voice-card stub after the report figure,
+  // rendered and wired by /assets/aa-voice.js on the official JS SDK
+  // (@elevenlabs/client, self-hosted; loaded lazily on first tap).
+  var voiceAssetsLoaded = false;
+  function loadVoiceAssets() {
+    if (voiceAssetsLoaded) return;
+    voiceAssetsLoaded = true;
     var s = document.createElement("script");
-    s.src = "/assets/elevenlabs-convai.js";
+    s.src = "/assets/aa-voice.js";
     s.async = true;
-    s.onerror = function () {
-      var f = document.createElement("script");
-      f.src = "https://unpkg.com/@elevenlabs/convai-widget-embed@0.18.0/dist/index.js";
-      f.async = true;
-      document.body.appendChild(f);
-    };
     document.body.appendChild(s);
   }
 
-  function makeWidget(agentId) {
-    var el = document.createElement("elevenlabs-convai");
-    el.setAttribute("agent-id", agentId);
-    el.setAttribute("dismissible", "true");
-    // Attribute overrides (docs: SDK overrides beat dashboard UI config). The
-    // server config has show_avatar_when_collapsed=false + variant "full" —
-    // on phones the widget therefore starts collapsed with NO orb and nothing
-    // to tap: invisible. Forcing the orb on in the collapsed state restores
-    // the widget on mobile; placement pinned for the small viewport.
-    el.setAttribute("show-avatar-when-collapsed", "true");
-    el.setAttribute("placement", "bottom-right");
-    // Display mode: the server config runs variant "full" (a full-width bottom
-    // sheet); on phones that host box spans the layout width and the orb ends
-    // up off-screen. "expanded" = compact orb + expandable sheet (max 600px).
-    el.setAttribute("variant", "expanded");
-    // ink-on-paper orb, per the site palette
-    el.setAttribute("avatar-orb-color-1", "#16181d");
-    el.setAttribute("avatar-orb-color-2", "#6b7280");
-    // Owner 2026-09-08: the widget must sit INSIDE the report area (inline in
-    // the reading flow), not float in a screen corner. Mount it after the
-    // first figure (the report's subject image / audio block); style.css pins
-    // the host to static flow with !important so the bundle's fixed corner
-    // positioning cannot override it.
+  function makeVoiceCard(agentId, title) {
+    var card = document.createElement("div");
+    card.className = "aa-voice-card";
+    card.setAttribute("data-agent", agentId);
+    card.setAttribute("data-title", title);
     var mount = document.querySelector("main figure") ||
                 document.querySelector("main") || document.body;
-    mount.insertAdjacentElement("afterend", el);
-    loadWidget();
+    mount.insertAdjacentElement("afterend", card);
+    loadVoiceAssets();
   }
 
   // Public-content agent (owner 2026-09-08): anonymous visitors on gated
@@ -459,19 +434,23 @@
   function revealPublicAgent() {
     if (publicAgentRevealed || agentRevealed) return;
     publicAgentRevealed = true;
-    makeWidget(PUBLIC_AGENT_ID);
+    makeVoiceCard(PUBLIC_AGENT_ID, "Ask the ledger — any concept, any verdict");
   }
 
   function revealAgent() {
     var A = window.AA_AGENT;
     if (!A || !A.id || agentRevealed) return;
     agentRevealed = true;
-    // Replace the public widget with the full agent when the gate lifts.
-    var old = document.querySelector("elevenlabs-convai");
-    if (old && old.getAttribute("agent-id") === PUBLIC_AGENT_ID) {
-      old.remove();
+    // Upgrade the public card to the full agent when the gate lifts.
+    var card = document.querySelector(".aa-voice-card");
+    if (card) {
+      card.setAttribute("data-agent", A.id);
+      card.setAttribute("data-title", "Ask this report — the agent has read it in full");
+      var t = card.querySelector(".aa-voice-title");
+      if (t) t.textContent = "Ask this report — the agent has read it in full";
+    } else {
+      makeVoiceCard(A.id, "Ask this report — the agent has read it in full");
     }
-    makeWidget(A.id);
   }
 
   // -------------------------------------------------------- entitled invites
