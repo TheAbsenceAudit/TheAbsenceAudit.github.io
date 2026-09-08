@@ -315,6 +315,7 @@
       var ok = subMode() ||
                (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
       if (ok) { revealDownload(); revealGated(); revealAgent(); }
+      else { revealPublicAgent(); }
     }
     if (state.ready) apply(state);
     else listeners.push(apply);
@@ -331,7 +332,7 @@
     function apply(st) {
       var ok = subMode() ||
                (st.signedIn && (st.plan === "all" || (st.products || []).indexOf(slug) >= 0));
-      if (!ok) return;
+      if (!ok) { revealPublicAgent(); return; }
       revealAgent();
       openServerReport(slug, st);
     }
@@ -396,24 +397,18 @@
   // billed per message, not per audio minute). The agent id is not a secret:
   // the dossier text is in the served bytes already; the widget reveal is the
   // gate convention, same as the Download-PDF row.
-  function revealAgent() {
-    var A = window.AA_AGENT;
-    if (!A || !A.id || agentRevealed) return;
-    agentRevealed = true;
-    var el = document.createElement("elevenlabs-convai");
-    el.setAttribute("agent-id", A.id);
-    el.setAttribute("dismissible", "true");
-    // ink-on-paper orb, per the site palette
-    el.setAttribute("avatar-orb-color-1", "#16181d");
-    el.setAttribute("avatar-orb-color-2", "#6b7280");
-    document.body.appendChild(el);
-    // The widget bundle is SELF-HOSTED (/assets/elevenlabs-convai.js, vendored
-    // convai-widget-embed 0.18.0, copied by publish.py) so the widget renders
-    // even where third-party CDNs (unpkg) are blocked by ad-blockers/VPN
-    // threat-protection — that was the "agent never displays" failure mode.
-    // The unpinned @latest CDN build had also drifted (attribute renames),
-    // so the vendored copy pins the behaviour. The pinned unpkg URL is only a
-    // load-failure fallback, never the primary path.
+  // -------------------------------------------------- widget bundle loader
+  // The widget bundle is SELF-HOSTED (/assets/elevenlabs-convai.js, vendored
+  // convai-widget-embed 0.18.0, copied by publish.py) so the widget renders
+  // even where third-party CDNs (unpkg) are blocked by ad-blockers/VPN
+  // threat-protection — that was the "agent never displays" failure mode.
+  // The unpinned @latest CDN build had also drifted (attribute renames),
+  // so the vendored copy pins the behaviour. The pinned unpkg URL is only a
+  // load-failure fallback, never the primary path.
+  var widgetLoaded = false;
+  function loadWidget() {
+    if (widgetLoaded) return;
+    widgetLoaded = true;
     var s = document.createElement("script");
     s.src = "/assets/elevenlabs-convai.js";
     s.async = true;
@@ -424,6 +419,41 @@
       document.body.appendChild(f);
     };
     document.body.appendChild(s);
+  }
+
+  function makeWidget(agentId) {
+    var el = document.createElement("elevenlabs-convai");
+    el.setAttribute("agent-id", agentId);
+    el.setAttribute("dismissible", "true");
+    // ink-on-paper orb, per the site palette
+    el.setAttribute("avatar-orb-color-1", "#16181d");
+    el.setAttribute("avatar-orb-color-2", "#6b7280");
+    document.body.appendChild(el);
+    loadWidget();
+  }
+
+  // Public-content agent (owner 2026-09-08): anonymous visitors on gated
+  // report/dossier pages get a PUBLIC ledger voice — prompt built from the
+  // public verdicts only, so the paid report bytes are never exposed through
+  // chat. The full agent (which has read the report) stays entitled-only.
+  var PUBLIC_AGENT_ID = "agent_5001m209j2fge31snrs6s4tkxs6z";
+  var publicAgentRevealed = false;
+  function revealPublicAgent() {
+    if (publicAgentRevealed || agentRevealed) return;
+    publicAgentRevealed = true;
+    makeWidget(PUBLIC_AGENT_ID);
+  }
+
+  function revealAgent() {
+    var A = window.AA_AGENT;
+    if (!A || !A.id || agentRevealed) return;
+    agentRevealed = true;
+    // Replace the public widget with the full agent when the gate lifts.
+    var old = document.querySelector("elevenlabs-convai");
+    if (old && old.getAttribute("agent-id") === PUBLIC_AGENT_ID) {
+      old.remove();
+    }
+    makeWidget(A.id);
   }
 
   // -------------------------------------------------------- entitled invites
