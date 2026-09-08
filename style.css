@@ -217,6 +217,11 @@
     table.term{min-width:0}
     figure img{max-width:100%;height:auto}
   }
+  /* Chat widget host: the bundle positions it fixed at a screen corner.
+     Owner 2026-09-08: it belongs INSIDE the report area, in the reading
+     flow — static inline block, centered under the report figure. */
+  elevenlabs-convai{position:static!important;display:block;margin:1.6rem auto;
+                    max-width:600px;inset:auto!important}
   @media (max-width:640px){ .vbar{grid-template-columns:1fr} }
 
   /* ---------- graveyard ---------- */

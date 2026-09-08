@@ -439,7 +439,14 @@
     // ink-on-paper orb, per the site palette
     el.setAttribute("avatar-orb-color-1", "#16181d");
     el.setAttribute("avatar-orb-color-2", "#6b7280");
-    document.body.appendChild(el);
+    // Owner 2026-09-08: the widget must sit INSIDE the report area (inline in
+    // the reading flow), not float in a screen corner. Mount it after the
+    // first figure (the report's subject image / audio block); style.css pins
+    // the host to static flow with !important so the bundle's fixed corner
+    // positioning cannot override it.
+    var mount = document.querySelector("main figure") ||
+                document.querySelector("main") || document.body;
+    mount.insertAdjacentElement("afterend", el);
     loadWidget();
   }
 
