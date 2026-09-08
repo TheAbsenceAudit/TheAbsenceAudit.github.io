@@ -175,13 +175,15 @@
     lastAgentBody = null;
   }
 
-  // Page context for the agent (owner 2026-09-08): the concept slug + title
-  // of the page the visitor is reading. ENTITLEMENT LAW: page context is
-  // shipped ONLY to per-report agents (entitled readers — their prompts hold
-  // the report itself). The PUBLIC ledger agent gets NO page context — it
-  // stays ledger-aware only, so non-payers can never use the voice channel
-  // to probe a report they haven't bought. Per-report prompts don't
-  // reference the variables yet; the mechanism is ready for them.
+  // Page context for the agent (owner 2026-09-08, revised): the concept
+  // slug + title of the page the visitor is reading — PUBLIC identity only
+  // (the slug is in the URL, the title is on the page). ENTITLEMENT LAW:
+  // page IDENTITY ships to EVERY agent, including the public ledger agent —
+  // identity is public, so anchoring the public agent to the page costs
+  // nothing. What never ships here is report CONTENT: the full text lives
+  // only inside the per-report agents' prompts, and auth.js reveals those
+  // agents only to entitled readers. Non-payers keep exactly the knowledge
+  // surface the public page itself shows.
   function pageContext() {
     var cfg = window.AA_AUTH || {};
     var slug = cfg.report || cfg.dossier || "";
@@ -190,6 +192,14 @@
       if (m) slug = m[2];
     }
     var title = (window.AA_AGENT && window.AA_AGENT.title) || "";
+    if (!title) {
+      var h1 = document.querySelector("h1");
+      if (h1) title = h1.textContent.replace(/\s+/g, " ").trim();
+    }
+    if (!title) {
+      title = String(document.title || "")
+        .replace(/\s*\|\s*The Absence Audit\s*$/, "").trim();
+    }
     return { slug: slug, page_title: title };
   }
 
@@ -264,10 +274,11 @@
         try {
           var agentId = badge.getAttribute("data-agent");
           var opts = Object.assign({ agentId: agentId }, cb);
-          // Entitlement law: page context goes to per-report agents only —
-          // never to the public ledger agent (non-payers must not get a
-          // report-probing channel through voice).
-          if (agentId !== PUBLIC_AGENT_ID) opts.dynamicVariables = pageContext();
+          // Entitlement law (revised): page identity (slug + title — public,
+          // on screen) ships to every agent, public ledger agent included.
+          // Report content never ships as variables — it lives only in the
+          // per-report agents' prompts, revealed by auth.js to the entitled.
+          opts.dynamicVariables = pageContext();
           window.ElevenLabsClient.Conversation.startSession(opts).then(function (c) {
             if (seq !== sessionSeq) { try { c.endSession(); } catch (e) {} return; }
             conv = c;
