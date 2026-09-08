@@ -425,6 +425,13 @@
     var el = document.createElement("elevenlabs-convai");
     el.setAttribute("agent-id", agentId);
     el.setAttribute("dismissible", "true");
+    // Attribute overrides (docs: SDK overrides beat dashboard UI config). The
+    // server config has show_avatar_when_collapsed=false + variant "full" —
+    // on phones the widget therefore starts collapsed with NO orb and nothing
+    // to tap: invisible. Forcing the orb on in the collapsed state restores
+    // the widget on mobile; placement pinned for the small viewport.
+    el.setAttribute("show-avatar-when-collapsed", "true");
+    el.setAttribute("placement", "bottom-right");
     // ink-on-paper orb, per the site palette
     el.setAttribute("avatar-orb-color-1", "#16181d");
     el.setAttribute("avatar-orb-color-2", "#6b7280");
