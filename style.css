@@ -436,7 +436,13 @@ table.term{width:100%;border-collapse:collapse;font-size:.85rem;min-width:1000px
 table.term th{font-family:var(--mono);font-size:.64rem;letter-spacing:.08em;text-transform:uppercase;
   text-align:left;padding:.65rem .55rem;border-bottom:1px solid var(--ink);color:var(--ink-3);white-space:nowrap}
 table.term td{padding:.72rem .55rem;border-bottom:1px solid var(--rule);vertical-align:top}
-table.term td.num{font-variant-numeric:tabular-nums;white-space:nowrap}
+table.term td.num{font-variant-numeric:tabular-nums;white-space:nowrap;font-size:.95rem}
+/* The money columns get guaranteed floors: the digits are the ledger, so the
+   table may scroll before a number gets crushed (gridwrap handles the scroll). */
+table.term td.tdcx{min-width:112px}
+table.term td.tdgm{min-width:84px}
+table.term td.tdpb{min-width:92px}
+.edgeval{font-variant-numeric:tabular-nums;font-weight:600}
 table.term a{color:inherit}
 .tname{font-weight:600}
 .tdate{display:block;font-size:.74rem;color:var(--ink-3);margin-top:.15rem}
@@ -450,6 +456,20 @@ table.term a{color:inherit}
 .tbadge.bx .bx-bank-ok{color:#1D6F42}
 .tbadge.bx .bx-bank-dead{color:var(--kill)}
 .tbadge.bx .bx-bank-mid{color:var(--ink-2)}
+/* The cross chip (verdict · bankability) is allowed to break lines inside —
+   one token, but it must not force the Status column to 240px. */
+.tbadge.bx{white-space:normal}
+/* Member favorites (2026-09-08): the star on every row + the Favorites
+   segment. A quiet ink star; pressing fills it with the site red. The
+   segment is hidden for anonymous visitors — the public ledger stays
+   unchanged, the surface only opens for signed-in members and subscribers. */
+.favbtn{display:inline-block;min-height:auto;padding:.12rem .3rem .16rem;margin:0;
+  background:none;border:0;border-radius:0;cursor:pointer;color:var(--ink-3);
+  font-size:1.02rem;line-height:1;vertical-align:-1px}
+.favbtn:hover,.favbtn:focus-visible{color:var(--ink);outline:none}
+.favbtn.on{color:var(--kill)}
+table.term td .favbtn{margin-right:.35rem;padding-left:.15rem}
+.row .favbtn{display:block;margin:0 0 .18rem;padding-left:0}
 .tdossier{font-weight:600;white-space:nowrap}
 .row{display:grid;grid-template-columns:1fr auto;gap:1rem 1.6rem;align-items:start;
   padding:1.25rem 0;border-bottom:1px solid var(--rule)}

@@ -549,6 +549,15 @@
       'aria-label="Subscribe for full access to ' + esc(r.n) + '">' + esc(label) + "</a></div>";
   }
 
+  // The merged Edge cell: advantage vs incumbent (saleable rows only — a
+  // failure never claims an edge) + the absence-verified marker. One column
+  // instead of two, so the numeric columns can keep room to breathe.
+  function edgeCell(r) {
+    var adv = isSaleable(r) && r.x ? '<span class="edgeval">' + fmtx(r.x) + "</span>" : "";
+    var abs = r.abs === 1 ? '<span class="tbadge ok" title="Absence search verified">verified</span>' : "";
+    return adv + (adv && abs ? " " : "") + abs + (adv || abs ? "" : "—");
+  }
+
   function gridCta(r) {
     var a = access(r);
     if (a === "sub" || a === "all" || a === "own") {
@@ -625,8 +634,9 @@
   // -------------------------------------------------------------- rendering
   function renderGrid(list) {
     var h = '<div class="gridwrap"><table class="term"><thead><tr>' +
-      "<th>Concept</th><th>Status</th><th>Incumbent</th><th>Advantage</th>" +
-      "<th>Absence</th><th>IP</th><th>CapEx</th><th>Margin</th><th>Payback</th>" +
+      "<th>Concept</th><th>Status</th><th>Incumbent</th>" +
+      '<th title="Advantage vs incumbent · absence search verified">Edge</th>' +
+      "<th>IP</th><th>CapEx</th><th>Margin</th><th>Payback</th>" +
       "<th>Regulatory</th><th>Dossier</th></tr></thead><tbody>";
     list.forEach(function (r) {
       var badges = [];
@@ -643,12 +653,11 @@
         '<span class="tdate">' + esc(r.t) + (r.d ? " · " + esc(r.d) : "") + "</span></td>" +
         "<td>" + badges.join(" ") + "</td>" +
         "<td>" + (r.i ? esc(r.i) : "—") + "</td>" +
-        '<td class="num">' + (isSaleable(r) && r.x ? fmtx(r.x) : "—") + "</td>" +
-        "<td>" + (r.abs === 1 ? '<span class="tbadge ok">verified</span>' : "—") + "</td>" +
+        "<td>" + edgeCell(r) + "</td>" +
         "<td>" + ipBadge(r) + "</td>" +
-        '<td class="num">' + (r.cx != null ? "$" + Number(r.cx).toLocaleString() : "—") + "</td>" +
-        '<td class="num">' + (r.gm != null ? r.gm + "%" : "—") + "</td>" +
-        '<td class="num">' + (r.pb != null ? r.pb + " mo" : "—") + "</td>" +
+        '<td class="num tdcx">' + (r.cx != null ? "$" + Number(r.cx).toLocaleString() : "—") + "</td>" +
+        '<td class="num tdgm">' + (r.gm != null ? r.gm + "%" : "—") + "</td>" +
+        '<td class="num tdpb">' + (r.pb != null ? r.pb + " mo" : "—") + "</td>" +
         "<td>" + (r.reg ? esc(r.reg) : "—") + "</td>" +
         "<td>" + (r.a ? '<a class="taudio" href="' + esc(r.a) + '" aria-label="Listen to the audio overview of ' + esc(r.n) + '">&#9835; audio</a> ' : "") + gridCta(r) + "</td>" +
         "</tr>";
