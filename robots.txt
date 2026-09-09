@@ -1,9 +1,8 @@
 # The Absence Audit - robots.txt
-# Open bait, locked catch: everything is crawlable EXCEPT the paid
-# dossiers (/dossier/), the sample PDF download (email-gated), the
-# invitation-only subscriber ledger (/subscriber/), and the concept
-# page PDF exports (c/*.pdf — full-report renders, server-gated now;
-# the files themselves are no longer published at all).
+# Public pages are open to search engines. Paid research paths
+# (/dossier/, subscriber vault, PDF exports) are disallowed for
+# every crawler. AI-training and assistant crawlers are opted out
+# of the ENTIRE site: the research may not feed model training.
 
 User-agent: *
 Allow: /
@@ -11,5 +10,38 @@ Disallow: /dossier/
 Disallow: /sample/*.pdf
 Disallow: /subscriber/
 Disallow: /c/*.pdf
+
+User-agent: Google-Extended
+Disallow: /
+
+User-agent: GPTBot
+Disallow: /
+
+User-agent: ChatGPT-User
+Disallow: /
+
+User-agent: ClaudeBot
+Disallow: /
+
+User-agent: Claude-Web
+Disallow: /
+
+User-agent: anthropic-ai
+Disallow: /
+
+User-agent: PerplexityBot
+Disallow: /
+
+User-agent: CCBot
+Disallow: /
+
+User-agent: Amazonbot
+Disallow: /
+
+User-agent: Bytespider
+Disallow: /
+
+User-agent: cohere-ai
+Disallow: /
 
 Sitemap: https://theabsenceaudit.com/sitemap.xml
