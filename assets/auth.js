@@ -82,6 +82,15 @@
       if (typeof firebase === "undefined" || SDK.loaded) return;
       firebase.initializeApp(CFG.fb);
       SDK.loaded = true;
+      // Popup-blocked redirect fallback (2026-09-09): after a
+      // signInWithRedirect the browser returns here — complete the sign-in
+      // BEFORE any queued auth work runs (getRedirectResult must be the
+      // first auth call on the page, or the result is lost).
+      try {
+        firebase.auth().getRedirectResult().then(function (res) {
+          if (res && res.user) { freshSignIn = true; resolve(); }
+        }).catch(function () { /* account-exists conflicts stay on the email-link path */ });
+      } catch (e2) {}
       var q = SDK.queue; SDK.queue = [];
       for (var i = 0; i < q.length; i++) q[i]();
     });
@@ -241,9 +250,28 @@
   }
   function googleSignIn() {
     boot(function () {
-      firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+      var provider = new firebase.auth.GoogleAuthProvider();
+      firebase.auth().signInWithPopup(provider)
         .then(function () { freshSignIn = true; closeModal(); resolve(); })
-        .catch(function (e) { modalMsg((e && e.message) || String(e), true); });
+        .catch(function (e) {
+          var code = (e && e.code) || "";
+          // Browser or a security extension blocked the popup (owner bug
+          // report 2026-09-09: auth/popup-blocked): fall back to the
+          // full-page redirect flow — no popup blocker can stop a redirect.
+          // cancelled-popup-request = a stale pending popup; redirect
+          // supersedes it cleanly. popup-closed-by-user is the visitor's own
+          // choice and gets the honest message instead.
+          if (code === "auth/popup-blocked" || code === "auth/cancelled-popup-request") {
+            modalMsg("Popup blocked — opening Google in this tab instead.", false);
+            try {
+              firebase.auth().signInWithRedirect(provider);
+            } catch (e2) {
+              modalMsg((e2 && e2.message) || String(e2), true);
+            }
+            return;
+          }
+          modalMsg((e && e.message) || String(e), true);
+        });
     });
   }
   function emailLink() {
