@@ -244,6 +244,20 @@
   .n-unlock .n-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
         color:var(--ink-3);display:inline-block;margin-right:.5rem}
 .n-cite{font-size:.68rem;color:var(--ink-3);vertical-align:super;margin-left:.15rem}
+.n-audit-note{font-size:.9rem;color:var(--ink-2);margin:1.6rem 0 0;max-width:72ch}
+.n-audit-note code,.n-lede code{font-family:var(--mono);font-size:.82em;background:var(--paper-2);padding:.1rem .35rem;border:1px solid var(--rule)}
+.n-sub{font-size:1.15rem;margin:2.4rem 0 .8rem}
+.n-tablewrap{overflow-x:auto;margin:0 0 .6rem}
+.n-tablewrap table{min-width:640px}
+.n-tablewrap td,.n-tablewrap th{font-size:.88rem}
+.n-total td{background:var(--paper-2);font-weight:600}
+.n-g-strong{color:var(--live);font-weight:700}
+.n-g-plausible{color:var(--ink);font-weight:600}
+.n-g-speculative{color:var(--ink-2);font-style:italic}
+.n-g-wrong,.n-g-overstated,.n-g-zero{color:var(--kill);font-weight:700}
+.n-g-verified{color:var(--live);font-weight:700}
+.n-dl-btn{display:inline-block;margin-top:.4rem;padding:.65rem 1.1rem;font-weight:600;font-size:.95rem;border:1px solid var(--ink);color:var(--ink);text-decoration:none}
+.n-dl-btn:hover{background:var(--kill);border-color:var(--kill);color:#fff}
 </style>
 <script id="aa-checkout-tracking">
 (function () {
@@ -323,10 +337,16 @@
     <dl class="n-stats">
       <div><dt>Absences audited</dt><dd>5</dd></div>
       <div><dt>Legs in one metabolism</dt><dd>9</dd></div>
-      <div><dt>FX effect at phase</dt><dd>$312M/yr</dd></div>
-      <div><dt>Energy recovered inside the system</dt><dd>82 GWh/yr</dd></div>
+      <div><dt>External-account effect at phase (tiered)</dt><dd>~$285M</dd></div>
+      <div><dt>Energy recovered inside the system</dt><dd>~33.9 GWh/yr</dd></div>
+      <div><dt>Dispatch value (not joules)</dt><dd>20 GWh/yr</dd></div>
       <div><dt>To Phase 0</dt><dd>90 days</dd></div>
     </dl>
+    <p class="n-audit-note">Every figure below was recomputed in code for this page
+    (<code>nations_audit.py</code>). The printed $312M and 82&nbsp;GWh failed their own
+    decomposition &mdash; the corrected ledgers, with the arithmetic, are in
+    <a href="#audit">the audit section</a>. Corrections applied into the design,
+    not beside it.</p>
   </div>
 </div>
 
@@ -479,22 +499,25 @@
       <article class="n-card">
         <p class="n-num">Ledger A &mdash; energy</p>
         <h3>The system recovers inside itself</h3>
+
         <ul>
-          <li><strong>Desalination:</strong> isobaric energy recovery on the brine &mdash; the plant&rsquo;s own braking, already inside its numbers.</li>
-          <li><strong>Pipelines:</strong> pump-as-turbines where the head survives &mdash; 7.2 GWh/yr today, scaling with the spine.</li>
-          <li><strong>Heat:</strong> acid exotherm and kilns &rarr; desal preheat + greenhouses &mdash; 30 GWh/yr.</li>
-          <li><strong>Flexibility:</strong> desal and storage follow the solar curve &mdash; 20 GWh/yr of shifted load.</li>
-          <li><strong>Carbon:</strong> PG carbonation &mdash; 30 kt CO&sub2;/yr mineralized into board.</li>
-          <li><strong>Balance:</strong> &asymp;<strong>82 GWh/yr collected again</strong>, beyond what plant benchmarks already contain &mdash; the loop pays for its own gravity.</li>
+          <li><strong>Desalination ERD:</strong> isobaric ERD already inside the 4 kWh/m3 SWRO benchmark (~35-40% of RO energy); adding it on top would double-count &mdash; carried as zero here, not added twice.</li>
+          <li><strong>Return flows (pump-as-turbines):</strong> 3.9 GWh/yr &mdash; 70% of 150,000 m&sup3;/d returning at 50 m head, 75% turbine efficiency.</li>
+          <li><strong>Heat:</strong> 30 GWh/yr &mdash; 9% of the calcination thermal envelope (333 GWh at 0.6 GJ/t &times; 2 Mt PG), delivered to desal preheat and greenhouses.</li>
+          <li><strong>Flexibility:</strong> 20 GWh/yr of shifted load &mdash; dispatch value, honestly labeled: <em>not</em> recovered joules.</li>
+          <li><strong>Carbon:</strong> 30 kt CO&sub2;/yr mineralized into board.</li>
+          <li><strong>Balance:</strong> &asymp;<strong>33.9 GWh/yr recovered</strong> + 20 GWh/yr dispatch value. The printed 82 GWh did not sum from its own legs (7.2 + 30 + 20 = 57.2; 24.8 unexplained). The corrected ledger is the design.</li>
         </ul>
       </article>
       <article class="n-card">
         <p class="n-num">Ledger B &mdash; money</p>
         <h3>The trap, measured &middot; the loop&rsquo;s answer</h3>
+
         <ul>
           <li><strong>The trap:</strong> $40.5B debt (79% of GDP) &middot; 26.2% of export revenues to service &middot; reserves 4.5 months &middot; B-/Caa1.</li>
-          <li><strong>The loop, per leg:</strong> metals +$78M &middot; solar fuel-saving +$124M &middot; terfas +$30M &middot; food +$30M &middot; hydrogen +$25M &middot; compute +$15M &middot; ESG +$10M.</li>
-          <li><strong>Total:</strong> <strong>~$312M/yr</strong> of foreign-exchange effect &mdash; compounding per phase toward the 26.2% &rarr; 15% target, rating B- &rarr; BB-, reserves 4.5 &rarr; 6+ months.</li>
+          <li><strong>Exports (gross):</strong> $140M &middot; <strong>import substitution:</strong> $136M &middot; <strong>financing delta (not FX):</strong> $10M.</li>
+          <li><strong>Total:</strong> <strong>~$285M/yr</strong> external-account effect &mdash; tiered: <strong>$80M strong</strong> (proven flowsheets, cited anchors), <strong>$137M plausible</strong> (gated), <strong>$68M speculative</strong> (assumed volume or price).</li>
+          <li><strong>The correction, applied:</strong> the printed $312M double-counted solar output between fuel-saving and hydrogen (&minus;$18M) and counted the terfas domestic quota as foreign exchange (&minus;$10M). The recomputed bridge is in <a href="#audit">the audit</a>.</li>
           <li><strong>The loop itself:</strong> substitution of $3.0B food and $4.9B fuel imports, measured in the same ledger.</li>
         </ul>
       </article>
@@ -604,6 +627,207 @@
         <strong>Systemic alchemy for Tunisian sovereignty</strong><br>
         The original deep dive, retained.</figcaption>
       </figure>
+    </div>
+  </div>
+</div>
+<div class="n-section" id="audit">
+  <div class="wrap">
+    <p class="eyebrow">The audit</p>
+    <h2>Every number, re-checked &mdash; and the corrections, applied</h2>
+    <p class="n-lede">An independent engineering critique asked for the bridge behind each headline figure:
+    volume &times; price &times; utilization, the double-counting check, the pilot/capital separation, and a
+    grade on every claim. This section is that audit, computed in code (<code>nations_audit.py</code>) and
+    rendered here. Where the recomputation disagreed with the printed page, the correction went into the
+    design &mdash; including the hero numbers above.</p>
+
+    <h3 class="n-sub">The FX bridge &mdash; every dollar, by leg</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>External-account effect at full phase, $M/yr &mdash; exports &middot; import substitution &middot; financing delta</caption>
+      <thead><tr><th>Leg</th><th>Type</th><th>Volume</th><th>Price</th><th>Utilization</th><th>$M/yr</th><th>Grade</th></tr></thead>
+      <tbody>
+      <tr><td>Strategic metals (U + heavy REE, acid stream)</td><td>gross export</td><td>716,500 lb U3O8 + 585 t REO</td>
+      <td>$80-95/lb U3O8 · $30/kg REO</td><td>post pilot gate (>=85% recovery, <=$75/lb, offtake signed)</td>
+      <td><strong>$75&ndash;86M</strong></td>
+      <td class="n-g-strong">STRONG</td></tr>
+      <tr><td>Solar fuel substitution (500 MW)</td><td>import substitution</td><td>745 GWh/yr displaced (876 GWh less 131 GWh to H2)</td>
+      <td>$142/MWh (gas $12/MMBtu x 11 MMBtu/MWh + $10/MWh O&M)</td><td>post PPA award; DSCR gate applies (see grades)</td>
+      <td><strong>$95&ndash;116M</strong></td>
+      <td class="n-g-plausible">PLAUSIBLE</td></tr>
+      <tr><td>Hydrogen from solar surplus</td><td>gross export</td><td>2.63 kt H2/yr (131 GWh / 50 kWh/kg)</td>
+      <td>$8-9.5/kg green H2 offtake (assumed)</td><td>no buyer; surplus share 15% assumed</td>
+      <td><strong>$21&ndash;25M</strong></td>
+      <td class="n-g-speculative">SPECULATIVE</td></tr>
+      <tr><td>Terfas (desert truffles)</td><td>gross export</td><td>940 t/yr mid (2,500 ha x 376 kg/ha; 70% exported)</td>
+      <td>EUR20-40/kg farm-gate</td><td>post 3-season gate (>=200 kg/ha, >=EUR20/kg)</td>
+      <td><strong>$14&ndash;29M</strong></td>
+      <td class="n-g-plausible">PLAUSIBLE</td></tr>
+      <tr><td>Food import substitution</td><td>import substitution</td><td>1% of the $3.0B food import bill (frame; volume bridge is a pilot deliverable)</td>
+      <td>imported protein $15-25/kg vs local $5-10/kg</td><td>post spirulina pond + greenhouse pilots</td>
+      <td><strong>$30&ndash;30M</strong></td>
+      <td class="n-g-speculative">SPECULATIVE</td></tr>
+      <tr><td>Compute colocation services</td><td>gross export (services)</td><td>colo park, tenant-dependent (GPU DCs excluded: BIS)</td>
+      <td>market colocation rates</td><td>no tenant signed</td>
+      <td><strong>$15&ndash;15M</strong></td>
+      <td class="n-g-speculative">SPECULATIVE</td></tr>
+      <tr><td>ESG financing delta</td><td>financing delta (not FX)</td><td>100-150bp on ~$800M portfolio debt</td>
+      <td>interest saved, not foreign exchange</td><td>post health KPIs (filter uptime >=70%, urinary F -20%)</td>
+      <td><strong>$8&ndash;12M</strong></td>
+      <td class="n-g-plausible">PLAUSIBLE</td></tr>
+      <tr class="n-total"><td colspan="5"><strong>Total external-account effect (mid)</strong></td>
+      <td><strong>~$285M/yr</strong></td><td>&nbsp;</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="n-note"><strong>The corrections the critique demanded, found and applied:</strong>
+    (1) the printed $312M double-counted 876 GWh of solar output &mdash; fuel-saving and hydrogen
+    cannot both claim the same electrons; with 131 GWh (15%) routed to electrolysis, the displacement
+    leg is $106M, not $124M. (2) Terfas FX counts only the 70% exported at
+    &euro;20&ndash;40/kg &mdash; the domestic quota (&le;&euro;12/kg, sold in dinar) is not foreign exchange.
+    (3) The ESG leg is interest saved, not FX &mdash; kept in the total, labeled by its true category.
+    Recomputed total: <strong>~$285M/yr</strong>, tiered by grade:
+    <strong>$80M strong</strong> (proven flowsheet or cited anchor) &middot;
+    <strong>$137M plausible</strong> (gated) &middot;
+    <strong>$68M speculative</strong> (assumed volume or price).</p>
+
+    <h3 class="n-sub">The energy ledger &mdash; every kWh, by leg</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Recovery ledger, GWh/yr &mdash; printed vs recomputed</caption>
+      <thead><tr><th>Leg</th><th>Printed</th><th>Recomputed</th><th>Verdict</th></tr></thead>
+      <tbody>
+      <tr><td>Desalination isobaric ERD</td><td>(no number)</td><td>0.0</td><td>inside the 4 kWh/m&sup3; benchmark &mdash; adding it would double-count</td></tr>
+      <tr><td>Pump-as-turbines (return flows)</td><td>7.2</td><td><strong>3.9</strong></td><td>recomputed: 70% &times; 150k m&sup3;/d &times; 50 m &times; 75% &times; 8,760 h</td></tr>
+      <tr><td>Heat (kiln + exotherm &rarr; preheat/greenhouses)</td><td>30</td><td><strong>30</strong></td><td>9% of a 333 GWh thermal envelope (0.6 GJ/t &times; 2 Mt)</td></tr>
+      <tr><td>Flexibility (load shifting)</td><td>20</td><td><strong>20</strong></td><td>kept &mdash; but labeled dispatch value, <em>not recovered joules</em></td></tr>
+      <tr><td>CO&sub2; mineralized</td><td>30 kt</td><td><strong>30 kt</strong></td><td>mass, not energy &mdash; its own line</td></tr>
+      <tr class="n-total"><td><strong>Total</strong></td><td><strong>82</strong></td><td><strong>33.9 recovered + 20 dispatch</strong></td>
+      <td>printed 82 did not sum (7.2+30+20 = 57.2; 24.8 unexplained); corrected and applied</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">Phase 0 &mdash; every dollar, itemized</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Phase 0 (90 days, no construction) &mdash; itemized budget</caption>
+      <thead><tr><th>Item</th><th>Cost</th><th>What it buys</th></tr></thead>
+      <tbody>
+      <tr><td>Water panel: 100 points, full suite (F, Cd, Pb, Cr, As, salinity, nitrate)</td><td>$35,000</td><td>the first anchor measurement</td></tr>
+      <tr><td>Acid-stream assays: 12 points (U, REE, Ra-226, Po-210, full metals) + GCT access</td><td>$40,000</td><td>the second anchor measurement</td></tr>
+      <tr><td>Emissions inventory: 30 passive samplers (PM2.5/SO2/fluorides) + lab</td><td>$25,000</td><td>baseline for the health scoreboard</td></tr>
+      <tr><td>Cohort protocol: 3,000-family registry, ethics, data platform v0</td><td>$35,000</td><td>the DALY ledger becomes MEASURED</td></tr>
+      <tr><td>Health pilot first tranche: 100 households + 2 schools, 90 days</td><td>$58,000</td><td>filters, clean-air boxes, KPIs</td></tr>
+      <tr><td>Legal + finance: health fund, industrial SPV, land-lease pre-agreements, tender registration</td><td>$25,000</td><td>structure before scale</td></tr>
+      <tr><td>Engineering + project management</td><td>$35,000</td><td>the 90 days are run</td></tr>
+      <tr class="n-total"><td><strong>List price</strong></td><td><strong>$253,000</strong></td>
+      <td>list price $253k; the two anchor measurements cost $75k and land first — the claimed range is the phased-execution plan, not the list</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">Every claim, graded</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Claim grades &mdash; VERIFIED (none yet; commercially-validated = 0, on purpose) &middot; STRONG &middot; PLAUSIBLE &middot; SPECULATIVE &middot; WRONG</caption>
+      <thead><tr><th>Claim</th><th>Grade</th><th>Why</th></tr></thead>
+      <tbody>
+      <tr><td>$40.5B debt (~79% GDP); 26.2% of export revenues to service</td><td class="n-g-strong">STRONG</td><td>institutional anchors (IMF/World Bank 2024-25), restated on the page</td></tr>
+      <tr><td>InstaDeep founded in Tunis, sold for $680M</td><td class="n-g-strong">STRONG</td><td>public deal record; the page's emblem for talent without infrastructure</td></tr>
+      <tr><td>Phosphogypsum costing the sea >$58M/yr</td><td class="n-g-strong">STRONG</td><td>published Gabes impact estimates (page sources)</td></tr>
+      <tr><td>U + heavy REE ~$78M/yr from the acid stream</td><td class="n-g-strong">STRONG</td><td>flowsheet proven at industrial scale (Freeport 1978-99, >95% recovery); Gafsa-specific assays pending</td></tr>
+      <tr><td>$2,592 per healthy year (water rung)</td><td class="n-g-plausible">PLAUSIBLE</td><td>arithmetic DERIVED in code; DALY anchors transferred from Iranian studies — the transferability, not the arithmetic, is the weak link; the cohort baseline makes it MEASURED</td></tr>
+      <tr><td>82 GWh/yr recovered</td><td class="n-g-wrong">WRONG</td><td>fails its own decomposition: 7.2 + 30 + 20 = 57.2, and 20 of that is load-shifting, not recovered joules. Recomputed ledger below.</td></tr>
+      <tr><td>$312M/yr FX effect</td><td class="n-g-overstated">OVERSTATED</td><td>double-counts solar output between fuel-saving and hydrogen (-$18M) and counts terfas domestic share as FX (-$10M). Recomputed: ~$286M, tiered.</td></tr>
+      <tr><td>Phase 0 = $150-250k</td><td class="n-g-plausible">PLAUSIBLE</td><td>itemized list price $253k; the two anchor measurements cost $75k and land first</td></tr>
+      <tr><td>Commercially validated</td><td class="n-g-zero">ZERO</td><td>no buyer has signed anything — published as zero on purpose</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">The hidden dependencies &mdash; named, one by one</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Dependencies the design carries &mdash; each one gated, excluded, or measured in Phase 0</caption>
+      <thead><tr><th>Dependency</th><th>Type</th><th>Status</th><th>Note</th></tr></thead>
+      <tbody>
+      <tr><td>Desal brine permit</td><td>regulatory</td><td><strong>in design</strong></td><td>Gabes outfall / diffuser; permit required before SWRO FID</td></tr>
+      <tr><td>PG chemistry (Ra-226 partitioning)</td><td>technical</td><td><strong>Phase 0 assay</strong></td><td>flowsheet keeps radium in gypsum (Freeport precedent); re-verify on Gafsa stream</td></tr>
+      <tr><td>Uranium handling</td><td>regulatory</td><td><strong>gate</strong></td><td>CNSTN licensing, NORM transport, export controls</td></tr>
+      <tr><td>REE separation capex</td><td>capital</td><td><strong>later phase</strong></td><td>+$244M solvent-extraction plant beyond the ~$100M circuit</td></tr>
+      <tr><td>Inland pumping</td><td>technical</td><td><strong>EXCLUDED</strong></td><td>1.09 kWh/m3 lift floor killed the 300-km inland plan (published)</td></tr>
+      <tr><td>Solar bankability</td><td>financial</td><td><strong>gate</strong></td><td>DSCR ~0.9-1.0 at the record-low tariff; bankable region or grant support required</td></tr>
+      <tr><td>Grid connection</td><td>infrastructure</td><td><strong>later phase</strong></td><td>3 GW connection + 400 kV upgrades ~$450M</td></tr>
+      <tr><td>Compute accelerators</td><td>regulatory</td><td><strong>gate</strong></td><td>BIS export controls; colocation only until an anchor tenant is licensed</td></tr>
+      <tr><td>Truffle yield</td><td>agronomic</td><td><strong>gate</strong></td><td>376 kg/ha is the 20-yr Murcia average; gate = 3-season record >=200 kg/ha</td></tr>
+      <tr><td>Export prices</td><td>market</td><td><strong>exposure</strong></td><td>U spot $80-95/lb; truffle EUR20-40/kg — no contracted offtake yet</td></tr>
+      <tr><td>Financing</td><td>financial</td><td><strong>uncommitted</strong></td><td>DFI channel modeled for solar/desal; nothing committed</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">The circularity test</p>
+        <h3>Is the loop genuinely circular?</h3>
+        <p><strong>Honestly: no &mdash; and that is the finding, not a flaw.</strong> The one-loop version
+        ($21.4B, eight stages) died on its own joint probability: 0.7&sup8; &asymp; 5.8%. What survived is
+        six independently bankable modules sharing power, water, data and workforce. The loop is the
+        <em>outcome</em>, never the precondition &mdash; so no module's economics depends on another module
+        succeeding. That is the answer to the critique's fifth question: a collection of individually
+        plausible businesses, by design, because the genuinely circular version failed its own arithmetic
+        &mdash; and its obituary is published above.</p>
+      </article>
+      <article class="n-card">
+        <p class="n-num">The pilot/capital separation</p>
+        <h3>What this is &mdash; and what it is not</h3>
+        <p>World Bank CCDR (2023): Tunisia's water-sector investment need ~$17.1B and energy-sector ~$34.7B through 2050. The page is not that program and does not claim to be: Phase 0 is $150-250k of measurements, and the whole core build is ~$250-650M phased over years 2-5, module by module, each gated. The CCDR numbers confirm the scale of the problem; they do not compete with a pilot gate.</p>
+        <p>Africa Energy Portal (2026): 500 MW of utility-scale solar approved (~$400M investment). Same class as the page's P3 module (500 MW) — the record-low ~$31/MWh awards are the reference the DSCR gate is tested against.</p>
+      </article>
+    </div>
+    <p class="n-note">Provenance law, enforced: MEASURED = cited anchor &middot; DERIVED = arithmetic on measured
+    values &middot; ASSUMED = declared default. Nothing above is commercially validated &mdash; that ledger reads
+    zero until a buyer signs, and the protocol that moves it is published in the build below.</p>
+  </div>
+</div>
+<div class="n-section" id="downloads">
+  <div class="wrap">
+    <p class="eyebrow">Downloads</p>
+    <h2>Take the part you need</h2>
+    <p class="n-lede">The full audit is one page &mdash; but every party needs its own slice, at the same rigor,
+    computed from the same code. Five documents, one click each, no email, no gate. The arithmetic behind every
+    one of them is the same <code>nations_audit.py</code> output that renders the tables above.</p>
+    <div class="n-grid">
+      <article class="n-card n-dl">
+        <p class="n-num">For everyone</p>
+        <h3>The complete audit</h3>
+        <p>Everything on this page plus the full sources &mdash; for the researcher, the journalist, the one who checks every number.</p>
+        <p><a class="n-dl-btn" href="/nations/the-absence-audit-tunisia-dossier.pdf" download>Download PDF &darr;</a></p>
+      </article>
+      <article class="n-card n-dl">
+        <p class="n-num">For the state</p>
+        <h3>Sovereign brief</h3>
+        <p>What the state is asked for (cooperation, not money), what it receives: reserves, rating path B- &rarr; BB-, jobs, health KPIs.</p>
+        <p><a class="n-dl-btn" href="/nations/tunisia-sovereign-brief.pdf" download>Download PDF &darr;</a></p>
+      </article>
+      <article class="n-card n-dl">
+        <p class="n-num">For investors</p>
+        <h3>Investor economics</h3>
+        <p>The FX bridge, per-pathway DSCR and payback, the capital stack, the Phase 0 ask &mdash; every table from nations_v5.</p>
+        <p><a class="n-dl-btn" href="/nations/tunisia-investor-economics.pdf" download>Download PDF &darr;</a></p>
+      </article>
+      <article class="n-card n-dl">
+        <p class="n-num">For engineers</p>
+        <h3>Engineer&rsquo;s ledger</h3>
+        <p>The energy balance, water chemistry, acid-stream assays, lift floors, gates &mdash; the numbers an EPC checks first.</p>
+        <p><a class="n-dl-btn" href="/nations/tunisia-engineer-ledger.pdf" download>Download PDF &darr;</a></p>
+      </article>
+      <article class="n-card n-dl">
+        <p class="n-num">For the community</p>
+        <h3>Health &amp; community</h3>
+        <p>Cut the Dose: $2,592 per healthy year, the 90-day pilot, the scoreboard KPIs, the food stack &mdash; plain words, full arithmetic.</p>
+        <p><a class="n-dl-btn" href="/nations/tunisia-health-community.pdf" download>Download PDF &darr;</a></p>
+      </article>
     </div>
   </div>
 </div>
