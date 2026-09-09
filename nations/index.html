@@ -798,6 +798,73 @@
     <p class="n-note">the mountains enter the loop as storage, rainfall and free cooling &mdash; and as the land where the truffle belongs (freeing the lowlands that grow today's food). Fog harvesting from pipe meshes stays off the program: the moisture is not there to collect, and the honest scientist does not plant a net under a cloudless sky.</p>
   </div>
 </div>
+<div class="n-section" id="ai-control">
+  <div class="wrap">
+    <p class="eyebrow">The AI regulation</p>
+    <h2>How the machine runs the machine &mdash; five layers, down to the drippers</h2>
+    <p class="n-lede">The realistic architecture, built the way a control mathematician builds it: physics in
+    the local controllers, economics in the dispatcher, learning in the twin, humans on the gates &mdash;
+    and every node below has a defined sense, control, timescale and layer. Nothing is run by faith.</p>
+
+    <div class="n-tablewrap">
+    <table>
+      <caption>The five layers &mdash; timescale-decomposed, lexicographic, safe by construction</caption>
+      <thead><tr><th>Layer</th><th>What it does</th><th>The mathematician's note</th></tr></thead>
+      <tbody>
+      <tr><td>Layer 0 &mdash; the instrumented field</td><td>every node is a sensor + an actuator: membrane pressure and conductivity, brine concentration, pond pH and temperature, electrolyzer stack voltage, kiln thermocouples, PAT speed, reservoir levels, household-filter telemetry, the grid tie, the weather station</td><td>the stream inventory above is the measured state &mdash; the mass balances are the constraints the controller must never violate</td></tr>
+      <tr><td>Layer 1 &mdash; node controllers (edge, millisecond-to-second)</td><td>local closed loops of PID class: membrane pressure, pond dosing, kiln temperature, pump speed &mdash; with hard-wired safety interlocks</td><td>functional safety is never on the AI: a controller that fails safe is a relay, not a model</td></tr>
+      <tr><td>Layer 2 &mdash; the dispatcher (model predictive control, 15-minute receding horizon)</td><td>a multi-variable MPC: state = solar forecast, reservoir inventory, brine concentration, electrolyzer turndown, DC load, grid price, offtake commitments; decisions = pump flows, setpoints, brine routing, dispatch; forecasts 36&ndash;48 h weather, 24 h load</td><td>objective: minimize loop energy cost + degradation + gate-violation penalties, subject to mass balances, storage states and contract floors &mdash; lexicographic, never weighted: safety &gt; contracts &gt; economics. Its measured output is the 20 GWh/yr dispatch value and the routing-dependent water credits</td></tr>
+      <tr><td>Layer 3 &mdash; the digital twin (simulation, learning, audit)</td><td>a physics-calibrated model of every balance: trains the dispatcher offline, audits every decision after the fact, simulates before any physical change</td><td>unmeasured states (membrane fouling, pond bloom state) are estimated with a Kalman-class filter from pressure-flow and optical residuals; the twin&rsquo;s prediction error is a published KPI &mdash; the AI&rsquo;s accuracy is measured, not claimed</td></tr>
+      <tr><td>Layer 4 &mdash; the governance layer (the boundary, unchanged)</td><td>the scoreboard computes and publishes every gate number from Layer 0 telemetry with provenance; the price index; the results framework; anomaly flags to humans</td><td>the AI never sets a gate, never signs, never prices &mdash; the falsification ladder is mechanical thresholds, not a learned model. The nervous system is a servant, not a master</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="n-note"><strong>what the AI is honestly worth: the 20 GWh/yr dispatch (~$0.8M/yr) + the routing-dependent water credits it executes (~$0.05-0.08/m&sup3; &mdash; DC heat, kiln heat, brine heat, dispatch) + a DERIVED 1&ndash;3% park OPEX from multi-variable coupling no manual schedule can follow &mdash; and the scoreboard, which is the program's entire credibility.</strong></p>
+    <p class="n-note">if the AI is down, the loop does not stop: Layer 1 runs every node in safe, suboptimal mode &mdash; the degraded cascade already computed ($0.521/m&sup3; water, gate still clear). AI uptime is a KPI, not a dependency.</p>
+
+    <div class="n-tablewrap">
+    <table>
+      <caption>The touch inventory &mdash; every node the AI reads and writes, to the emitter</caption>
+      <thead><tr><th>Node</th><th>What it senses</th><th>What it controls</th><th>Timescale</th><th>Layer</th></tr></thead>
+      <tbody>
+      <tr><td>PV field</td><td>irradiance, string current, panel temperature, soiling sensors</td><td>inverter setpoints, curtailment, cleaning scheduling</td><td>seconds&ndash;minutes</td><td>L1&ndash;L2</td></tr>
+      <tr><td>Desal trains</td><td>feed pressure, permeate conductivity, ERD pressure, CIP condition</td><td>high-pressure pump, ERD bypass, antiscalant dosing, CIP cycles</td><td>seconds&ndash;hours</td><td>L1&ndash;L2</td></tr>
+      <tr><td>Membrane health</td><td>pressure-flow residuals (fouling inferred by Kalman filter)</td><td>maintenance scheduling, train rotation</td><td>days</td><td>L3</td></tr>
+      <tr><td>Brine line</td><td>concentration, temperature, Mg saturation</td><td>evaporator feed rate, Mg(OH)&sb2; precipitation setpoints</td><td>minutes</td><td>L1&ndash;L2</td></tr>
+      <tr><td>Electrolyzer</td><td>stack voltage, current, purity, water feed</td><td>turndown, ramp rate, O&sb2; vent routing to ponds, reject routing</td><td>seconds</td><td>L1&ndash;L2</td></tr>
+      <tr><td>Board kilns</td><td>temperature profile, feed rate, offcut fraction</td><td>burner setpoints, retardant dosing, offcut recycle</td><td>minutes</td><td>L1&ndash;L2</td></tr>
+      <tr><td>Metals plant</td><td>SX stream assays, raffinate quality</td><td>extraction/stripping setpoints, raffinate return to fertilizer</td><td>minutes&ndash;hours</td><td>L1&ndash;L2</td></tr>
+      <tr><td>DC park</td><td>cooling-loop temperature, PUE, workload mix</td><td>seawater flow to racks, batch-workload scheduling to solar peaks</td><td>minutes</td><td>L2</td></tr>
+      <tr><td>Water mesh</td><td>reservoir levels, pump status, pressure heads, PAT speed</td><td>pump scheduling, zone valves, PAT bypass, the solar-following curve</td><td>15-minute dispatch</td><td>L2</td></tr>
+      <tr><td>Spirulina ponds</td><td>pH, salinity, temperature, optical density</td><td>aeration timing, CO&sb2; injection, medium exchange, harvest scheduling</td><td>hours</td><td>L1&ndash;L2</td></tr>
+      <tr><td>Greenhouses</td><td>EC, pH, humidity, CO&sb2;, soil moisture</td><td>fertigation dosing (spent medium), ventilation, CO&sb2; enrichment from the kiln stream</td><td>minutes</td><td>L1&ndash;L2</td></tr>
+      <tr><td>Establishment drip &mdash; to the emitter</td><td>per-zone capacitance soil-moisture probes, per-zone flow meters, weather forecast</td><td>zone valve actuators per management block, pump pressure, fertigation dosing &mdash; emitters stay passive pressure-compensated; clogged drippers detected from per-zone flow residuals</td><td>hourly&ndash;daily</td><td>L1&ndash;L2</td></tr>
+      <tr><td>Household filters</td><td>usage telemetry, replacement flags</td><td>fleet logistics: replacement routing, spare inventory, the pilot's uptime KPI</td><td>days</td><td>L2&ndash;L4</td></tr>
+      <tr><td>Grid tie</td><td>import/export price, solar forecast, offtake commitments</td><td>import vs. dispatch decisions</td><td>15-minute</td><td>L2</td></tr>
+      <tr><td>Scoreboard + cohort</td><td>every KPI stream above, provenance-hashed</td><td>gate computation, price index, anomaly flags to humans</td><td>continuous</td><td>L4</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">The irrigation system &mdash; to the dripper, honestly</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Water for the fields &mdash; the ladder that ends at zero demand</caption>
+      <thead><tr><th>Tier</th><th>Design</th><th>The number</th></tr></thead>
+      <tbody>
+      <tr><td>Year 1-2 &mdash; establishment drip</td><td>2 L per seedling per week &times; 6,000 seedlings/ha</td><td>624 m&sup3;/ha/yr &rarr; 4,274 m&sup3;/d for 2,500 ha &mdash; from inland brackish desal + treated reuse, never the coastal spine</td></tr>
+      <tr><td>Year 3+ &mdash; rainfed</td><td>the mycorrhized host plants live on the mountains' own rainfall + micro-catchments; dew adds 10-40 mm/yr in arid zones</td><td>the mature truffle field's irrigation demand tends to ZERO &mdash; that is the point of the drought-proof chain</td></tr>
+      <tr><td>Greenhouses &mdash; closed-loop fertigation</td><td>spent pond medium (nutrient-rich) + recovered drainage, dosed by soil-moisture sensors</td><td>hydroponic-class water efficiency; nothing discarded &mdash; the stream inventory above already routes it</td></tr>
+      <tr><td>Greywater + treated reuse</td><td>municipal 30%+ reuse tier feeds the nursery, windbreaks and greenhouse support crops</td><td>the water ladder: potable &rarr; process &rarr; irrigation &rarr; zero &mdash; every drop used at least twice</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="n-note">the fields drink at establishment, then live on rain &mdash; and the greenhouse loop runs on the pond's own spent nutrients. The irrigation system is designed the way the truffle itself is: drought-proof by architecture, not by subsidy.</p>
+
+    <h3 class="n-sub">Cloud generation &mdash; the honest version</h3>
+    <p class="n-note">our 12 km&sup2; array absorbs ~156 MW more sunlight than the bare soil (albedo &Delta;0.05) &mdash; a persistent local heat source, plus the ponds' evaporation placed upwind of the fields. Li et al. (Pg34) measured the class of effect at continental scale; at ours it is a designed microclimate, not a rain machine: soil shaded by panels retains moisture, the updraft adds marginal convective activity, and the dew that follows is free water on the host plants. The honest claim is directional and modest &mdash; and it costs nothing extra: the array was being built anyway.</p>
+  </div>
+</div>
 <div class="n-section">
   <div class="wrap">
     <p class="eyebrow">The two futures</p>
@@ -1572,6 +1639,7 @@
 <li id="rnPg31"><a href="https://www.taylorfrancis.com/books/mono/10.1201/9781482272970/spirulina-platensis-arthrospira-amos-richmond" rel="noopener" target="_blank">Vonshak — Spirulina platensis (Arthrospira): physiology, cell-biology and biotechnology (1997): the alkaliphile's salinity window — optimal growth far below SWRO-brine salinity</a></li>
 <li id="rnPg32"><a href="https://wmo.int/activities/weather-modification" rel="noopener" target="_blank">WMO — Statement on Weather Modification: cloud seeding's efficacy remains unproven and case-dependent; no reliable routine precipitation gain</a></li>
 <li id="rnPg33"><a href="https://link.springer.com/article/10.1007/s13280-012-0247-8" rel="noopener" target="_blank">Klemm et al. — Fog as a Fresh-Water Resource (Ambio 2012): fog collection yields 10-20 L/m&sup2;/day where fog is frequent, near coasts and humid highlands — not in arid interiors</a></li>
+<li id="rnPg34"><a href="https://www.science.org/doi/10.1126/science.aar5629" rel="noopener" target="_blank">Li et al. — Climate model shows large-scale wind and solar farms in the Sahara increase rain and vegetation (Science 2018): panels darken the surface, strengthen convection, and measurably increase local rainfall at scale</a></li>
 <li id="rnH1"><a href="https://pubmed.ncbi.nlm.nih.gov/28284958/" rel="noopener" target="_blank">Guissouma 2017 (Chemosphere): Tunisia tap-water fluoride 0-2.4 mg/L; 25% of population at dental-fluorosis risk, 20% at skeletal-fluorosis risk (WHO limits)</a></li>
 <li id="rnH2"><a href="https://doi.org/10.3390/toxics14050438" rel="noopener" target="_blank">Bouchiba 2026 (Toxics 14(5):438): Mdhilla beneficiation effluent Cd 0.49, Pb 0.71, Cr 3.09 mg/L — exceeding discharge limits; risk driven by Cd, Co, Tl</a></li>
 <li id="rnH3"><a href="https://pubmed.ncbi.nlm.nih.gov/8942013/" rel="noopener" target="_blank">Gupta 1996 RCT: fluorosis REVERSED in children (Ca + VitD3 + ascorbic acid; n=25; water 4.5 ppm F; double-blind)</a></li>
