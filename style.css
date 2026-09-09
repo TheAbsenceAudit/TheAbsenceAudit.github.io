@@ -740,3 +740,9 @@ table.term td .favbtn{margin-right:.35rem;padding-left:.15rem}
   .aa-src{display:none}
   .aa-bc-label{min-width:0;width:100%}
 }
+
+/* --- language switcher (masthead) --- */
+.masthead nav .aa-langs{display:inline-flex;gap:.55rem;margin-left:.55rem;font-size:.82rem;opacity:.78}
+.masthead nav .aa-langs a{color:inherit;text-decoration:none}
+.masthead nav .aa-langs a:hover{opacity:1;text-decoration:underline}
+@media (max-width:720px){.masthead nav{flex-wrap:wrap;row-gap:.4rem}}
