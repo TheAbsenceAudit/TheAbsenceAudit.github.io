@@ -678,3 +678,65 @@ table.term td .favbtn{margin-right:.35rem;padding-left:.15rem}
 .aa-consent-actions button:hover { background: rgba(251, 249, 245, .12); }
 .aa-consent-actions #aa-consent-ok { background: var(--paper, #FBF9F5); color: var(--ink, #171512); }
 .aa-consent-actions #aa-consent-ok:hover { background: #e8e3d7; }
+
+/* ============ The stakeholder briefcase (2026-09-09 redesign) ============ */
+.aa-briefcase{
+  margin:1.4rem 0 .8rem;
+  border:1px solid var(--rule,#DDD6C8);
+  border-radius:12px;
+  background:var(--paper-2,#F3EFE7);
+  padding:1rem 1.1rem .9rem;
+}
+.aa-bc-row{display:flex;align-items:baseline;gap:.8rem;flex-wrap:wrap}
+.aa-bc-row + .aa-bc-row{margin-top:.55rem;padding-top:.55rem;border-top:1px solid var(--rule,#DDD6C8)}
+.aa-bc-label{
+  font:600 11px/1 ui-sans-serif,system-ui,sans-serif;
+  letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3,#7d7668);
+  min-width:4.6rem;
+}
+.aa-bc-pills{display:flex;gap:.4rem;flex-wrap:wrap}
+.aa-bc-tabs{display:flex;gap:.3rem;flex-wrap:wrap}
+.aa-pill{
+  font:600 12.5px/1 ui-sans-serif,system-ui,sans-serif;
+  padding:.5rem .8rem;border-radius:999px;cursor:pointer;
+  border:1px solid var(--ink,#171512);background:var(--paper,#FBF9F5);color:var(--ink,#171512);
+}
+.aa-pill:hover{background:var(--ink,#171512);color:var(--paper,#FBF9F5)}
+.aa-pill-full{background:var(--ink,#171512);color:var(--paper,#FBF9F5)}
+.aa-pill-full:hover{background:#3a352d;border-color:#3a352d}
+.aa-tab{
+  font:500 12.5px/1.4 ui-sans-serif,system-ui,sans-serif;
+  padding:.34rem .65rem;border-radius:7px;cursor:pointer;border:1px solid transparent;
+  background:transparent;color:var(--ink-2,#55504a);
+}
+.aa-tab:hover{border-color:var(--rule,#DDD6C8);color:var(--ink,#171512)}
+.aa-tab-on{background:var(--paper,#FBF9F5);border-color:var(--rule,#DDD6C8);color:var(--ink,#171512);font-weight:600}
+/* bounded document viewer — the page stays short, the document scrolls */
+.aa-viewer{
+  max-height:72vh;overflow:auto;
+  border:1px solid var(--rule,#DDD6C8);border-radius:10px;
+  background:var(--paper,#FBF9F5);
+  padding:1.2rem 1.3rem;
+}
+.aa-viewer > h2:first-child{margin-top:0}
+/* cover cards inside bundles */
+.aa-cover{border:1px solid var(--rule,#DDD6C8);border-radius:10px;padding:1rem 1.1rem;margin:0 0 1.4rem;background:var(--paper-2,#F3EFE7)}
+.aa-cover-top{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;border-bottom:1px solid var(--rule,#DDD6C8);padding-bottom:.6rem;margin-bottom:.5rem;flex-wrap:wrap}
+.aa-cover-title{margin:0 0 .25rem;font-size:1.08rem}
+.aa-cover-sub{margin:0;font-size:.85rem;color:var(--ink-2,#55504a)}
+.aa-tally{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end}
+.aa-party{margin:1.3rem 0 .2rem;font-size:1rem}
+.aa-role{margin:0 0 .6rem;font-size:.9rem;color:var(--ink-2,#55504a)}
+.aa-reqs{list-style:none;margin:0;padding:0}
+.aa-reqs li{display:grid;grid-template-columns:1fr auto 10.5rem;gap:.7rem;align-items:baseline;padding:.45rem 0;border-bottom:1px solid var(--rule,#DDD6C8);font-size:.92rem}
+.aa-src{color:var(--ink-3,#7d7668);font-size:.8rem;text-align:right}
+.aa-chip{font:600 10.5px/1 ui-sans-serif,system-ui,sans-serif;padding:.26rem .55rem;border-radius:999px;white-space:nowrap;letter-spacing:.02em}
+.aa-chip.ok{background:#e8f4ea;color:#1d6b2e;border:1px solid #b9ddc0}
+.aa-chip.fr{background:#eef2fa;color:#2b4a8d;border:1px solid #c3cfe8}
+.aa-chip.op{background:#f6efe4;color:#8a5a1d;border:1px solid #e4cfae}
+.aa-chip.tp{background:#f5eeee;color:#8d3b3b;border:1px solid #e0c3c3}
+@media (max-width:760px){
+  .aa-reqs li{grid-template-columns:1fr auto}
+  .aa-src{display:none}
+  .aa-bc-label{min-width:0;width:100%}
+}

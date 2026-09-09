@@ -458,9 +458,29 @@
     w.document.write(
       "<!doctype html><html><head><meta charset=\"utf-8\"><title>"
       + String(label || "Bundle").replace(/</g, "&lt;") + " — The Absence Audit</title>"
-      + "<style>body{font-family:Georgia,serif;max-width:820px;margin:2rem auto;padding:0 1rem;color:#1a1a1a;line-height:1.55}"
-      + "table{border-collapse:collapse;width:100%;font-size:.85rem}td,th{border-bottom:1px solid #ccc;padding:.3rem .5rem;text-align:left}"
-      + "h3,h4{font-family:ui-sans-serif,system-ui,sans-serif}@media print{body{margin:0}}</style></head><body>"
+      + "<style>"
+      + "body{font-family:Georgia,'Times New Roman',serif;max-width:820px;margin:2rem auto;padding:0 1rem;color:#1a1a1a;line-height:1.55;font-size:15px}"
+      + "h3,h4{font-family:ui-sans-serif,system-ui,sans-serif;margin:1.2rem 0 .4rem;page-break-after:avoid}"
+      + "h4.aa-party{margin-top:1.5rem;font-size:1.05rem}"
+      + "p.aa-role{margin:0 0 .8rem;color:#555;font-size:.92rem}"
+      + ".aa-cover{border:1px solid #d8d3c8;border-radius:10px;padding:1.1rem 1.2rem;margin-bottom:1.6rem;background:#faf8f3;page-break-inside:avoid}"
+      + ".aa-cover-top{display:flex;justify-content:space-between;gap:1rem;align-items:flex-start;border-bottom:1px solid #e3ded2;padding-bottom:.7rem;margin-bottom:.7rem}"
+      + ".aa-cover-title{margin:0 0 .3rem;font-size:1.15rem}"
+      + ".aa-cover-sub{margin:0;color:#666;font-size:.85rem}"
+      + ".aa-tally{display:flex;gap:.4rem;flex-wrap:wrap;justify-content:flex-end}"
+      + ".aa-chip{font:600 10.5px/1 ui-sans-serif,system-ui,sans-serif;padding:.28rem .55rem;border-radius:999px;white-space:nowrap}"
+      + ".aa-chip.ok{background:#e8f4ea;color:#1d6b2e;border:1px solid #b9ddc0}"
+      + ".aa-chip.fr{background:#eef2fa;color:#2b4a8d;border:1px solid #c3cfe8}"
+      + ".aa-chip.op{background:#f6efe4;color:#8a5a1d;border:1px solid #e4cfae}"
+      + ".aa-chip.tp{background:#f5eeee;color:#8d3b3b;border:1px solid #e0c3c3}"
+      + ".aa-reqs{list-style:none;margin:0;padding:0}"
+      + ".aa-reqs li{display:grid;grid-template-columns:1fr auto 11rem;gap:.7rem;align-items:baseline;padding:.42rem 0;border-bottom:1px solid #eee8dc;font-size:.9rem;page-break-inside:avoid}"
+      + ".aa-src{color:#8a8478;font-size:.8rem;text-align:right}"
+      + "table{border-collapse:collapse;width:100%;font-size:.85rem;margin:.6rem 0}"
+      + "td,th{border-bottom:1px solid #ccc;padding:.3rem .5rem;text-align:left}"
+      + ".pack-note{font-size:.82rem;color:#666;border-top:1px solid #ddd;padding-top:.7rem;margin-top:1.2rem}"
+      + "@media print{body{margin:0;font-size:12.5px}}"
+      + "</style></head><body>"
       + "<p style=\"font-size:.8rem;color:#555\">The Absence Audit — party bundle. Provenance: MEASURED = cited primitive; DERIVED = arithmetic on measured values; ASSUMED = declared pack default.</p>"
       + html + "</body></html>"
     );
@@ -470,24 +490,30 @@
 
   function partsShowFull() {
     if (!partsHost) return;
+    partsSetTab("full");
     if (partsFullHtml) partsHost.innerHTML = partsFullHtml;
   }
 
-  function partsOpen(slug, bundleId, label) {
-    if (!partsHost) return;
-    if (bundleId === "full") { partsShowFull(); return; }
-    if (partsLoaded[bundleId]) {
-      partsHost.innerHTML = "";
-      partsHost.appendChild(partsToolbar(label, bundleId));
-      partsHost.insertAdjacentHTML("beforeend", partsLoaded[bundleId]);
-      if (partsHost.scrollIntoView) partsHost.scrollIntoView({ block: "start", behavior: "smooth" });
+  function partsSetTab(bundleId) {
+    var tabs = document.querySelectorAll("[data-aa-parts] .aa-tab");
+    for (var i = 0; i < tabs.length; i++) {
+      var on = tabs[i].getAttribute("data-aa-part") === bundleId;
+      tabs[i].setAttribute("aria-pressed", on ? "true" : "false");
+      if (on) tabs[i].classList.add("aa-tab-on");
+      else tabs[i].classList.remove("aa-tab-on");
+    }
+  }
+
+  function partsGet(slug, bundleId, label, cb) {
+    // shared fetch: cache hit -> cb(html) immediately; else CF ?part=
+    // with the same headers as the full-report fetch. cb(html) or cb(null).
+    if (bundleId === "full") {
+      cb(partsLoaded["full"] || partsFullHtml || null);
       return;
     }
+    if (partsLoaded[bundleId]) { cb(partsLoaded[bundleId]); return; }
     var fn = CFG.reportFn;
-    if (!fn) {
-      partsHost.innerHTML = "<p style=\"color:var(--ink-2)\">Bundle delivery is not configured yet — the full report below contains every part.</p>";
-      return;
-    }
+    if (!fn) { cb(null); return; }
     function go(h) {
       fetch(fn + "?slug=" + encodeURIComponent(slug) + "&part=" + encodeURIComponent(bundleId), { headers: h })
         .then(function (r) {
@@ -498,15 +524,9 @@
         .then(function (d) {
           if (!d || !d.ok || !d.html) throw new Error("no bundle");
           partsLoaded[bundleId] = d.html;
-          partsHost.innerHTML = "";
-          partsHost.appendChild(partsToolbar(label, bundleId));
-          partsHost.insertAdjacentHTML("beforeend", d.html);
-          if (partsHost.scrollIntoView) partsHost.scrollIntoView({ block: "start", behavior: "smooth" });
+          cb(d.html);
         })
-        .catch(function (e) {
-          partsHost.innerHTML = "<p style=\"color:var(--ink-2)\">Could not open the bundle: "
-            + String(e && e.message).replace(/</g, "&lt;") + ".</p>";
-        });
+        .catch(function (e) { cb(null, e && e.message); });
     }
     var h = partsHeaders();
     if (state.signedIn && firebase.auth().currentUser) {
@@ -516,6 +536,35 @@
     } else {
       go(h);
     }
+  }
+
+  function partsDownload(slug, bundleId, label) {
+    // ONE click = download. Fetch (if needed) and open the print view
+    // directly — no view swap, no ceremony (owner redesign 2026-09-09).
+    partsGet(slug, bundleId, label, function (html, err) {
+      if (!html) {
+        alert("Could not prepare the download: " + String(err || "delivery not configured"));
+        return;
+      }
+      partsPrint(label, html);
+    });
+  }
+
+  function partsOpen(slug, bundleId, label) {
+    if (!partsHost) return;
+    partsSetTab(bundleId);
+    if (bundleId === "full") { partsShowFull(); return; }
+    partsGet(slug, bundleId, label, function (html, err) {
+      if (!html) {
+        partsHost.innerHTML = "<p style=\"color:var(--ink-2)\">Could not open the bundle: "
+          + String(err || "delivery not configured").replace(/</g, "&lt;") + ".</p>";
+        return;
+      }
+      partsHost.innerHTML = "";
+      partsHost.appendChild(partsToolbar(label, bundleId));
+      partsHost.insertAdjacentHTML("beforeend", html);
+      if (partsHost.scrollIntoView) partsHost.scrollIntoView({ block: "start", behavior: "smooth" });
+    });
   }
 
   function wirePartsMenu() {
@@ -544,7 +593,7 @@
           box.insertBefore(menu, box.firstChild);
           menu.hidden = false;
           var vp = document.createElement("div");
-          vp.className = "aa-part-viewport";
+          vp.className = "aa-part-viewport aa-viewer";
           vp.innerHTML = partsFullHtml;
           box.appendChild(vp);
           partsHost = vp;
@@ -557,9 +606,14 @@
     }
     menu.addEventListener("click", function (ev) {
       var t = ev.target;
-      while (t && t !== menu && !(t.getAttribute && t.getAttribute("data-aa-part"))) t = t.parentNode;
+      while (t && t !== menu && !(t.getAttribute && (t.getAttribute("data-aa-part") || t.getAttribute("data-aa-dl")))) t = t.parentNode;
       if (!t || t === menu) return;
       ev.preventDefault();
+      var dl = t.getAttribute("data-aa-dl");
+      if (dl) {
+        partsDownload(slug, dl, t.getAttribute("data-aa-label") || "Bundle");
+        return;
+      }
       partsOpen(slug, t.getAttribute("data-aa-part"), t.getAttribute("data-aa-label") || "Bundle");
     });
   }
