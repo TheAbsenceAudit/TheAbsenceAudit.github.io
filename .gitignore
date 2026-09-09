@@ -28,3 +28,9 @@ c/**/*.pdf
 case-study/*.pdf
 track-record/*.pdf
 pdf_render_report.json
+
+# full autopsy audio (breach #3 class, 2026-09-08): the FULL mp3 of
+# anything that sells reads the gated report aloud — private in
+# _nlm/audio; only the 60s public teasers ship. Negation keeps them.
+/audio/*.mp3
+!audio/teaser-*.mp3
