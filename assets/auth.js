@@ -388,6 +388,154 @@
     });
   }
 
+  // --------------------------------------------------- stakeholder briefcase
+  // Party-scoped bundles (owner 2026-09-09): the menu advertises the parts;
+  // clicking one fetches it from the report Cloud Function (?part=) and
+  // swaps it into the report host. Public pages (full report in the page
+  // bytes) fetch without entitlement (the CF's public flag); gated pages
+  // send the same headers as the full-report fetch. Download PDF = a clean
+  // print view (native browser print-to-PDF, zero server cost).
+  var partsHost = null;      // the element a bundle view replaces
+  var partsMenu = null;
+  var partsFullHtml = null;  // the full report bytes (public: page; gated: fetched)
+  var partsLoaded = {};      // bundleId -> html, session cache
+
+  function partsHeaders() {
+    var h = { "Content-Type": "application/json" };
+    try {
+      if (subMode() && localStorage.getItem("aa_subtok")) {
+        h["X-Sub-Token"] = localStorage.getItem("aa_subtok");
+      }
+    } catch (e) {}
+    return h;
+  }
+
+  function partsToolbar(label, bundleId) {
+    var bar = document.createElement("div");
+    bar.style.cssText = "display:flex;gap:.6rem;flex-wrap:wrap;align-items:center;margin:0 0 .8rem;padding:.6rem .8rem;background:var(--paper-2);border:1px solid var(--rule);border-radius:8px";
+    bar.innerHTML = "<strong style=\"font-size:.9rem\">"
+      + String(label || "Bundle").replace(/</g, "&lt;") + " &mdash; party bundle</strong>"
+      + "<button type=\"button\" data-aa-print>Download PDF</button>"
+      + "<button type=\"button\" data-aa-back>Full report</button>";
+    bar.querySelector("[data-aa-print]").addEventListener("click", function () {
+      partsPrint(label, partsLoaded[bundleId] || "");
+    });
+    bar.querySelector("[data-aa-back]").addEventListener("click", partsShowFull);
+    return bar;
+  }
+
+  function partsPrint(label, html) {
+    var w = window.open("", "_blank");
+    if (!w) { alert("Pop-up blocked — allow pop-ups to download the bundle PDF."); return; }
+    w.document.write(
+      "<!doctype html><html><head><meta charset=\"utf-8\"><title>"
+      + String(label || "Bundle").replace(/</g, "&lt;") + " — The Absence Audit</title>"
+      + "<style>body{font-family:Georgia,serif;max-width:820px;margin:2rem auto;padding:0 1rem;color:#1a1a1a;line-height:1.55}"
+      + "table{border-collapse:collapse;width:100%;font-size:.85rem}td,th{border-bottom:1px solid #ccc;padding:.3rem .5rem;text-align:left}"
+      + "h3,h4{font-family:ui-sans-serif,system-ui,sans-serif}@media print{body{margin:0}}</style></head><body>"
+      + "<p style=\"font-size:.8rem;color:#555\">The Absence Audit — party bundle. Provenance: MEASURED = cited primitive; DERIVED = arithmetic on measured values; ASSUMED = declared pack default.</p>"
+      + html + "</body></html>"
+    );
+    w.document.close();
+    setTimeout(function () { try { w.focus(); w.print(); } catch (e) {} }, 350);
+  }
+
+  function partsShowFull() {
+    if (!partsHost) return;
+    if (partsFullHtml) partsHost.innerHTML = partsFullHtml;
+  }
+
+  function partsOpen(slug, bundleId, label) {
+    if (!partsHost) return;
+    if (bundleId === "full") { partsShowFull(); return; }
+    if (partsLoaded[bundleId]) {
+      partsHost.innerHTML = "";
+      partsHost.appendChild(partsToolbar(label, bundleId));
+      partsHost.insertAdjacentHTML("beforeend", partsLoaded[bundleId]);
+      if (partsHost.scrollIntoView) partsHost.scrollIntoView({ block: "start", behavior: "smooth" });
+      return;
+    }
+    var fn = CFG.reportFn;
+    if (!fn) {
+      partsHost.innerHTML = "<p style=\"color:var(--ink-2)\">Bundle delivery is not configured yet — the full report below contains every part.</p>";
+      return;
+    }
+    function go(h) {
+      fetch(fn + "?slug=" + encodeURIComponent(slug) + "&part=" + encodeURIComponent(bundleId), { headers: h })
+        .then(function (r) {
+          if (r.status === 403) throw new Error("entitlement — buy the report to open its bundles");
+          if (!r.ok) throw new Error("http " + r.status);
+          return r.json();
+        })
+        .then(function (d) {
+          if (!d || !d.ok || !d.html) throw new Error("no bundle");
+          partsLoaded[bundleId] = d.html;
+          partsHost.innerHTML = "";
+          partsHost.appendChild(partsToolbar(label, bundleId));
+          partsHost.insertAdjacentHTML("beforeend", d.html);
+          if (partsHost.scrollIntoView) partsHost.scrollIntoView({ block: "start", behavior: "smooth" });
+        })
+        .catch(function (e) {
+          partsHost.innerHTML = "<p style=\"color:var(--ink-2)\">Could not open the bundle: "
+            + String(e && e.message).replace(/</g, "&lt;") + ".</p>";
+        });
+    }
+    var h = partsHeaders();
+    if (state.signedIn && firebase.auth().currentUser) {
+      firebase.auth().currentUser.getIdToken()
+        .then(function (tok) { h["Authorization"] = "Bearer " + tok; go(h); })
+        .catch(function () { go(h); });
+    } else {
+      go(h);
+    }
+  }
+
+  function wirePartsMenu() {
+    var menu = document.querySelector("[data-aa-parts]");
+    if (!menu) return;
+    var slug = menu.getAttribute("data-aa-slug") || CFG.report || "";
+    if (!slug) return;
+    partsMenu = menu;
+    var box = document.querySelector("[data-aa-report]");
+    var wrap = document.querySelector("[data-aa-reportwrap]");
+    if (wrap) {
+      // Public page: the full report is in the page bytes; the menu sits
+      // above the wrap and stays put — part views swap the wrap only.
+      partsHost = wrap;
+      partsFullHtml = wrap.innerHTML;
+      partsLoaded["full"] = partsFullHtml;
+    } else if (box) {
+      // Gated page: when the server report lands, stash it as the full view,
+      // lift the menu to the top of the revealed report, and route part
+      // views into a dedicated viewport so the menu survives every swap.
+      partsHost = box;
+      var ob = new MutationObserver(function () {
+        if (box.innerHTML && !box.querySelector(".aa-part-viewport")) {
+          partsFullHtml = box.innerHTML;
+          partsLoaded["full"] = partsFullHtml;
+          box.insertBefore(menu, box.firstChild);
+          menu.hidden = false;
+          var vp = document.createElement("div");
+          vp.className = "aa-part-viewport";
+          vp.innerHTML = partsFullHtml;
+          box.appendChild(vp);
+          partsHost = vp;
+          ob.disconnect();
+        }
+      });
+      ob.observe(box, { childList: true, attributes: true, attributeFilter: ["style"] });
+    } else {
+      return;
+    }
+    menu.addEventListener("click", function (ev) {
+      var t = ev.target;
+      while (t && t !== menu && !(t.getAttribute && t.getAttribute("data-aa-part"))) t = t.parentNode;
+      if (!t || t === menu) return;
+      ev.preventDefault();
+      partsOpen(slug, t.getAttribute("data-aa-part"), t.getAttribute("data-aa-label") || "Bundle");
+    });
+  }
+
   // --------------------------------------------------------- dossier agent
   // Each paid dossier page may carry window.AA_AGENT (injected by the publish
   // pipeline from agents.json; build_agents.py). The ElevenLabs conversational
@@ -598,6 +746,7 @@
     // report is public on the page, so the agent holds nothing that isn't
     // already in the served bytes.
     else if (window.AA_AGENT) revealAgent();
+    wirePartsMenu();
     // Public-content agent for anonymous visitors on GATED pages: revealed
     // IMMEDIATELY, before any Firebase boot, because the public ledger voice
     // needs no entitlement — waiting on auth left phone visitors with no
