@@ -13,35 +13,79 @@ Disallow: /c/*.pdf
 
 User-agent: Google-Extended
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: GPTBot
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: ChatGPT-User
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: ClaudeBot
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: Claude-Web
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: anthropic-ai
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: PerplexityBot
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: CCBot
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: Amazonbot
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: Bytespider
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 User-agent: cohere-ai
 Disallow: /
+Disallow: /dossier/
+Disallow: /sample/*.pdf
+Disallow: /subscriber/
+Disallow: /c/*.pdf
 
 Sitemap: https://theabsenceaudit.com/sitemap.xml
