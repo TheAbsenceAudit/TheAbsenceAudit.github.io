@@ -449,7 +449,7 @@
         <p class="n-num">Tier 1 &mdash; months to years</p>
         <h3>Coastal desal for the cities &middot; brackish for the basin</h3>
         <p>150,000 m&sup3;/d coastal SWRO serves the coast at
-        <strong>$0.35/m&sup3; integrated</strong> &mdash; 35% of SONEDE&rsquo;s own
+        <strong>$0.35/m&sup3; integrated</strong> &mdash; 28% of SONEDE&rsquo;s own
         produced cost, every credit from inside the loop&rsquo;s pipework. Inland, the basin runs on
         brackish-water RO at <strong>~$0.34/m&sup3;</strong> &mdash; inside SONEDE&rsquo;s own
         brackish band ($0.10&ndash;0.70/m&sup3;, Pg16) &mdash; and reuse at 30%+ turns every drop twice.
@@ -940,22 +940,22 @@
     assumed.</strong></p>
     <div class="n-tablewrap">
     <table>
-      <caption>The integrated water stack, per m&sup3; &mdash; 150,000 m&sup3;/d coastal SWRO</caption>
-      <thead><tr><th>Line</th><th>$/m&sup3;</th><th>Provenance</th></tr></thead>
+      <caption>The integrated water stack, per m&sup3; &mdash; 150,000 m&sup3;/d coastal SWRO &middot; line-by-line, with each credit&rsquo;s failure mode</caption>
+      <thead><tr><th>Line</th><th>$/m&sup3;</th><th>Provenance</th><th>What makes it fail</th></tr></thead>
       <tbody>
-      <tr><td>Base &mdash; solar energy 4 kWh/m&sup3; at the loop's own PPA + capex + O&amp;M</td><td>$0.567</td><td>MEASURED anchors (Rc13/Rw2/Rw3)</td></tr>
-      <tr><td>DC reject heat &rarr; RO feed preheat &mdash; one seawater pipe cools the servers, then arrives warm at the membranes (SEC &minus;2.5%/&deg;C)</td><td>&minus;$0.007</td><td>DERIVED &mdash; Leg 03 + Leg 01, same pipework</td></tr>
-      <tr><td>Kiln/exotherm preheat &mdash; the acid plant and board kilns warm the same feed</td><td>&minus;$0.000</td><td>DERIVED &mdash; Leg 04/05 waste heat</td></tr>
-      <tr><td>Brine valorization &mdash; salt/Mg evaporated on the loop's own free heat, sold at the park gate (of-take signed; nothing hauled)</td><td>&minus;$0.137</td><td>DERIVED &mdash; brine is the desal's own by-product</td></tr>
-      <tr><td>Shared civil works &mdash; one intake, one outfall, one grid connection serves RO + DC + metals in the same park</td><td>&minus;$0.032</td><td>DERIVED &mdash; 12% capex sharing</td></tr>
-      <tr><td>Dispatch value &mdash; the desal's own flexibility follows the loop's own solar curve</td><td>&minus;$0.015</td><td>DERIVED &mdash; 20 GWh shifted</td></tr>
-      <tr><td>ESG financing delta &mdash; the health leg's public KPIs reprice the loop's own debt (100&ndash;150bp)</td><td>&minus;$0.026</td><td>DERIVED &mdash; nations_v3</td></tr>
-      <tr><td>Brine pump-as-turbine &mdash; the desal's own residual pressure</td><td>&minus;$0.002</td><td>DERIVED &mdash; 2.5 bar &times; 75%</td></tr>
-      <tr class="n-total"><td><strong>Integrated water cost</strong></td><td><strong>$0.347/m&sup3;</strong></td><td>35% of SONEDE&rsquo;s own $1.00&ndash;1.50 (Pg16)</td></tr>
+      <tr><td>Base &mdash; solar energy 4 kWh/m&sup3; at the loop's own PPA + capex + O&amp;M</td><td>$0.567</td><td>MEASURED anchors (Rc13/Rw2/Rw3)</td><td>holds &mdash; if even the PPA lapses, grid power takes the base to $0.88, still under SONEDE</td></tr>
+      <tr><td>DC reject heat &rarr; RO feed preheat &mdash; one seawater pipe cools the servers, then arrives warm at the membranes (SEC &minus;2.5%/&deg;C)</td><td>&minus;$0.007</td><td>DERIVED &mdash; Leg 03 + Leg 01, same pipework</td><td>fails only if no compute anchor tenant &mdash; and costs $0.007</td></tr>
+      <tr><td>Kiln/exotherm preheat &mdash; the acid plant and board kilns warm the same feed</td><td>&minus;$0.000</td><td>DERIVED &mdash; Leg 04/05 waste heat</td><td>negligible by design &mdash; carried at zero margin</td></tr>
+      <tr><td>Brine valorization &mdash; salt/Mg evaporated on the loop's own free heat, sold at the park gate (of-take signed; nothing hauled)</td><td>&minus;$0.137</td><td>DERIVED &mdash; brine is the desal's own by-product</td><td>if the of-take is not signed by FID, the credit degrades to &minus;$0.03 (disposal avoided only) &mdash; the biggest single sensitivity</td></tr>
+      <tr><td>Shared civil works &mdash; one intake, one outfall, one grid connection serves RO + DC + metals in the same park</td><td>&minus;$0.032</td><td>DERIVED &mdash; 12% capex sharing</td><td>if the park phases one module at a time, halve it to &minus;$0.016</td></tr>
+      <tr><td>Dispatch value &mdash; the desal's own flexibility follows the loop's own solar curve</td><td>&minus;$0.015</td><td>DERIVED &mdash; 20 GWh shifted</td><td>fails to zero if the STEG contract does not reward flexibility &mdash; contractual, not hoped</td></tr>
+      <tr><td>ESG financing delta &mdash; the health leg's public KPIs reprice the loop's own debt (100&ndash;150bp)</td><td>&minus;$0.026</td><td>DERIVED &mdash; nations_v3</td><td>fails to zero if lenders do not accept the KPI track record &mdash; bankable-region fallback keeps the module alive</td></tr>
+      <tr><td>Brine pump-as-turbine &mdash; the desal's own residual pressure</td><td>&minus;$0.002</td><td>DERIVED &mdash; 2.5 bar &times; 75%</td><td>fails to zero &mdash; immaterial</td></tr>
+      <tr class="n-total"><td><strong>Integrated water cost</strong></td><td><strong>$0.347/m&sup3;</strong></td><td>28% of SONEDE&rsquo;s own $1.00&ndash;1.50 (Pg16)</td><td>the degraded cascade: if every soft credit fails, water still lands at $0.521/m&sup3; &mdash; under SONEDE's own $1.00&ndash;1.50, and the $0.68 gate still clears with margin. The credits are the margin, not the plan.</td></tr>
       </tbody>
     </table>
     </div>
-    <p class="n-note">integrated water cost ~$0.35/m&sup3; &mdash; 35% of SONEDE's own produced cost ($1.00-1.50/m3, Pg16). Every credit is a yield of the loop's own pipework; nothing moves, nothing is hauled, no external sale is assumed. The $0.68 gate then clears with ~$0.33/m&sup3; of margin.</p>
+    <p class="n-note">integrated water cost ~$0.35/m&sup3; &mdash; 28% of SONEDE's own produced cost ($1.00-1.50/m3, Pg16). Every credit is a yield of the loop's own pipework; nothing moves, nothing is hauled, no external sale is assumed. The $0.68 gate then clears with ~$0.33/m&sup3; of margin.</p>
 
     <h3 class="n-sub">The uranium bridge &mdash; the 716,500 lbs, derived</h3>
     <p class="n-note">The metals volume is derived from cited primitives: GCT&rsquo;s 6.5 Mt/yr rock throughput (Rm17) &times; 45&ndash;140 ppm
