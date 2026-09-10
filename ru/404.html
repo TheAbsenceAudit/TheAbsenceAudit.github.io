@@ -29,10 +29,11 @@
   else run();
 })();
 </script>
-
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Translation system — The Absence Audit</title>
+<title>**Страница не найдена — Диптек-проекты, прошедшие аудит и готовые к финансированию — The Absence Audit**
+
+*(Либо более лаконичный вариант начала: **Не найдено — Диптек-проекты, прошедшие аудит и готовые к финансированию — The Absence Audit**)*</title>
 <meta name="description" content="Deeptech ventures proven in the peer-reviewed literature, absent from the commercial market, and bankable on the numbers we compute. 91 deeptech concepts audited against seven gates; every one published as a full study with its economics, its citations, and its verdict.">
 <link rel="canonical" href="https://theabsenceaudit.com/">
 <meta name="robots" content="index, follow">
@@ -89,7 +90,7 @@
       "url": "https://theabsenceaudit.com/ledger/",
       "isAccessibleForFree": true,
       "creator": {"@type": "Organization", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
-      "dateModified": "2026-09-10T12:06:17+02:00",
+      "dateModified": "2026-09-10T12:00:21+02:00",
       "keywords": ["venture concepts","peer-reviewed literature","commercial absence","unit economics","technology transfer","research commercialisation"],
       "variableMeasured": [
         {"@type":"PropertyValue","name":"Superiority margin vs named incumbent"},
@@ -233,57 +234,49 @@
 </head>
 <body>
 
-<a class="skip-link" href="#main">Skip to content</a>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
 <header class="masthead">
   <div class="wrap">
-    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
     <nav>
-      <a href="/ledger/">Ledger</a>
-      <a href="/studies/">Free studies</a>
-      <a href="/method/">Method</a>
-      <a href="/nations/">Nations</a>
-      <a href="/translation/">Translation</a>
-      <span class="aa-langs"><a href="/translation/" hreflang="en">EN</a> <a href="/fr/translation/" hreflang="fr">FR</a> <a href="/zh/translation/" hreflang="zh">中文</a> <a href="/ru/translation/" hreflang="ru">RU</a></span>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"><a href="/ru/">EN</a> <a href="/ru/fr/">FR</a> <a href="/ru/zh/">中文</a> <a href="/ru/ru/">RU</a></span>
       <span id="aa-auth" class="aa-auth"></span>
     </nav>
   </div>
 </header>
 
-<main id="main"><div class="wrap" style="padding:3.2rem 0 4rem;max-width:76ch"><p class="eyebrow">Infrastructure</p><h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)">The translation system</h1><p class="lede">v1 &mdash; the closed loop that puts the research record into French, Chinese and Russian. Every unit is translated by our own pipeline, verified by measurement, repaired or quarantined. Nothing is published that has not passed the loop.</p><h3>The closed loop</h3><p>Each page is split into units with stable identities, and every unit travels the same six stations:</p><p><strong>1. Extract</strong> &mdash; the page is segmented into units; each unit keeps the markup it belongs to.</p><p><strong>2. Protect</strong> &mdash; numbers, DOIs, URLs, chemical identifiers and markup are masked before translation. Translation may move words, but these invariants must survive byte-identical, with number formatting localized (decimal comma for French and Russian, Western format for Chinese).</p><p><strong>3. Translate</strong> &mdash; units are translated with a locked terminology base. Domain terms, UI vocabulary and product names are fixed once per language, then enforced on every unit.</p><p><strong>4. Verify</strong> &mdash; four gates, described below.</p><p><strong>5. Repair</strong> &mdash; a failing unit is retranslated with the reviewer&rsquo;s specific criticisms attached, a bounded number of times.</p><p><strong>6. Quarantine</strong> &mdash; a unit that still fails is quarantined. A quarantined unit is never published; it is listed in the run record and retried in a later release.</p><h3>The four gates</h3><p><strong>Integrity.</strong> Every masked invariant must return byte-identical. A lost DOI, a changed number or an invented placeholder fails the unit.</p><p><strong>Glossary lock.</strong> Every locked term present in the source must appear as its locked translation. The machine cannot silently reword a term &mdash; it fails the gate.</p><p><strong>Reverse-translation review.</strong> The translation is translated back into English and scored against the original on four axes: meaning, terminology, completeness and register. A unit that fails the pass mark goes back through the loop with the reviewer&rsquo;s criticisms.</p><p><strong>Script check.</strong> The output must actually be in the target language &mdash; a Chinese or Russian page that is still mostly Latin text fails.</p><h3>What the loop is sovereign over</h3><p><strong>Data.</strong> The research record never leaves this machine except as calls to our own model account. No translation agency, no platform and no freelancer ever holds a copy of the corpus, the glossary or a single translated sentence. The glossary and the translation memory are plain files in our source tree &mdash; assets we own outright.</p><p><strong>Authority.</strong> Terminology is locked by us and enforced mechanically. The definition of &ldquo;correct&rdquo; is our glossary and our review rubric, not a vendor&rsquo;s defaults.</p><p><strong>Verification.</strong> Quality is proven by measurement &mdash; mechanical gates on everything, a review pass on everything &mdash; not assumed from a model&rsquo;s reputation.</p><p><strong>Reproducibility.</strong> Runs are deterministic and incremental: the same input yields the same output, and a re-run translates only what changed.</p><p><strong>Economics and engines.</strong> Cost is metered in tokens per run, not per-word agency rates. The harness is engine-agnostic and already falls back to a second engine on failure &mdash; the translation engine can be swapped without touching the glossary, the memory or the gates.</p><h3>v1 scope</h3><p>Languages: French, Simplified Chinese, Russian. Coverage: the site&rsquo;s pages and the ledger. Dossier PDF exports remain English in v1. The per-run verification record &mdash; pass rates, repairs, quarantines and metered cost &mdash; is published with each release. This page itself is translated by the loop it describes.</p></div></main>
+<main id="main"><div class="wrap" style="padding:6rem 0 7rem"><p class="eyebrow">404</p><h1 style="font-size:clamp(2rem,4vw,3rem)">Такой страницы нет в реестре.</h1><p class="lede">Возможно, ссылка повреждена или этой записи никогда не существовало. Здесь нет никакой тайны &mdash; страница просто отсутствует. Актуальный реестр находится на главной странице.</p><p style="margin-top:2rem"><a href="/ru/" style="font-weight:600">&larr; Назад к реестру</a></p></div></main>
 <footer class="site">
   <div class="wrap">
     <span>The Absence Audit</span>
     <nav>
-      <a href="/method/">Method</a>
-      <a href="/ledger/">Ledger</a>
-      <a href="/pipeline/">Pipeline</a>
-      <a href="/alternatives/">Alternatives</a>
-      <a href="/sectors/">Sectors</a>
-      <a href="/studies/">Free studies</a>
-      <a href="/track-record/">Track record</a>
-      <a href="/translation/">Translation</a>
-      <a href="/nations/">Nations</a>
-      <a href="/terms/">Terms</a>
-      <a href="/privacy/">Privacy</a>
-      <a href="/contact/">Contact</a>
-      <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
       <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
     </nav>
   </div>
-  <div class="wrap capture">
-    <p>Proven in the literature. Absent from the market. Bankable on the numbers. The ledger lands in your inbox when new studies clear &mdash; free while it is being built. <a href="/#join">Get it &rarr;</a></p>
-  </div>
   <div class="wrap">
-    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
-    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a> &middot; <a href="#" data-aa-consent-open>Cookie settings</a></p>
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
   </div>
 </footer>
 
-<script>
-/* Email capture. Posts to a real endpoint so the visitor never has to send us
-   an email. The form ALSO works with JavaScript disabled, because its action /
-   method attributes are set server-side at publish time and the browser will
-   do a native POST. Configure in _site/site_config.json. */
+<script>/* Сбор адресов электронной почты. Отправляет данные на реальный эндпоинт, поэтому посетителю не нужно отправлять нам
+   электронное письмо. Форма ТАКЖЕ работает с отключённым JavaScript, поскольку её атрибуты action /
+   method задаются на стороне сервера во время публикации, и браузер выполнит
+   нативный POST-запрос. Настройка в _site/site_config.json. */
 (function () {
   var form = document.getElementById("join-form");
   var input = document.getElementById("email");
@@ -299,34 +292,34 @@
   }
 
   if (!endpoint) {
-    // Never fake a subscription. Say so plainly and stop.
+    // Никогда не имитировать подписку. Сказать прямо и остановиться.
     form.classList.add("unconfigured");
     input.disabled = true;
     form.querySelector("button").disabled = true;
-    say("Signup opens shortly \u2014 the list is not accepting addresses yet.", "err");
+    say("Регистрация скоро откроется \u2014 список пока не принимает адреса.", "err");
     return;
   }
 
   if (localStorage.getItem(DONE_KEY)) {
-    say("You are already on the list from this browser.", "ok");
+    say("Вы уже внесены в список из этого браузера.", "ok");
   }
 
   form.addEventListener("submit", function (e) {
     var value = (input.value || "").trim();
     if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
       e.preventDefault();
-      say("That does not look like an email address.", "err");
+      say("Это не похоже на адрес электронной почты.", "err");
       input.focus();
       return;
     }
-    if (trap && trap.value) { e.preventDefault(); return; }   // bot
+    if (trap && trap.value) { e.preventDefault(); return; }   // бот
 
-    // progressive enhancement: intercept only if fetch is available
-    if (!window.fetch) return;      // otherwise let the native POST happen
+    // прогрессивное улучшение: перехватывать только если доступен fetch
+    if (!window.fetch) return;      // иначе позволить выполниться нативному POST-запросу
     e.preventDefault();
     var btn = form.querySelector("button");
     btn.disabled = true;
-    say("Adding you\u2026");
+    say("Добавляем вас\u2026");
 
     var payload = new URLSearchParams(new FormData(form));
     payload.delete("company_website");
@@ -342,23 +335,21 @@
         if (!r.ok && r.status !== 0) throw new Error("HTTP " + r.status);
         form.reset();
         localStorage.setItem(DONE_KEY, "1");
-        say("You are on the list. The next audit goes out with the following scan.", "ok");
+        say("Вы внесены в список. Следующий аудит будет отправлен со следующим сканированием.", "ok");
       })
       .catch(function () {
-        say("That did not go through. Please try again in a moment.", "err");
+        say("Не удалось выполнить отправку. Пожалуйста, попробуйте ещё раз через минуту.", "err");
       })
       .finally(function () { btn.disabled = false; });
   });
-})();
-</script>
+})();</script>
 
-<script>
-/* Signup attribution. Answers the only marketing question that matters:
-   which channel produced this subscriber?
+<script>/* Атрибуция регистраций. Отвечает на единственный важный вопрос маркетинга:
+   какой канал привёл этого подписчика?
 
-   FIRST-touch, not last-touch: if someone arrives from Hacker News, leaves,
-   then returns via a Google search and subscribes, the credit belongs to
-   Hacker News. Last-touch would wrongly credit Google for HN's work. */
+   FIRST-touch, а не last-touch: если кто-то приходит с Hacker News, уходит,
+   а затем возвращается через поиск в Google и подписывается, заслуга принадлежит
+   Hacker News. Last-touch ошибочно приписал бы Google результат работы HN. */
 (function () {
   var KEY = "aa_first_touch";
   function params() {
@@ -367,14 +358,14 @@
   function capture() {
     var stored = null;
     try { stored = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
-    if (stored && stored.src) return stored;          // first touch already known
+    if (stored && stored.src) return stored;          // первое касание уже известно
 
     var q = params();
     var src = q && (q.get("utm_source") || q.get("ref"));
     var med = q && q.get("utm_medium");
     var cmp = q && q.get("utm_campaign");
     if (!src) {
-      // no explicit tag -> derive from the referring host
+      // нет явной метки -> определяем по источнику перехода
       var r = document.referrer || "";
       if (r) {
         try {
@@ -398,7 +389,7 @@
   var form = document.getElementById("join-form");
   if (!form) return;
 
-  // pass it to Kit as a hidden field so attribution survives even without GA
+  // передаём в Kit как скрытое поле, чтобы атрибуция сохранялась даже без GA
   function hidden(name, value) {
     var i = document.createElement("input");
     i.type = "hidden"; i.name = name; i.value = value || "";
@@ -409,7 +400,7 @@
   hidden("fields[campaign]", touch.cmp);
   hidden("fields[landing_page]", touch.lp);
 
-  // and mirror the conversion into GA so the acquisition reports line up
+  // и дублируем конверсию в GA, чтобы отчёты по привлечению совпадали
   form.addEventListener("submit", function () {
     if (typeof gtag === "function") {
       gtag("event", "generate_lead", {
@@ -420,7 +411,6 @@
       });
     }
   });
-})();
-</script>
+})();</script>
 </body>
 </html>

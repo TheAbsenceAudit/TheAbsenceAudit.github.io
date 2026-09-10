@@ -1,0 +1,664 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>**Диптек-проекты, прошедшие аудит и готовые к финансированию — The Absence Audit**
+
+*(Либо более лаконичный вариант: **Диптек-проекты: проверенные и инвестиционно надежные — The Absence Audit**)*</title>
+<meta name="description" content="Deeptech ventures proven in the peer-reviewed literature, absent from the commercial market, and bankable on the numbers we compute. 91 deeptech concepts audited against seven gates; every one published as a full study with its economics, its citations, and its verdict.">
+<link rel="canonical" href="https://theabsenceaudit.com/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<meta name="color-scheme" content="light">
+
+<!-- Open Graph: without these, every Facebook/LinkedIn/WhatsApp share renders a bare grey box -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/">
+<meta property="og:title" content="Deeptech ventures, audited and bankable — The Absence Audit">
+<meta property="og:description" content="The market's best-kept secrets are in the public record. 20 battle-tested build dossiers for sale — proven in the literature, absent from the market, bankable on the numbers. The 82 studies are published in full, autopsy included.">
+<meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
+<meta property="og:image:secure_url" content="https://theabsenceaudit.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="The Absence Audit — 91 concepts examined, 82 published as studies, 20 for sale">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proven in the literature. Absent from the market. Bankable on the numbers.">
+<meta name="twitter:description" content="91 concepts examined, 82 published as studies, 20 for sale — every survivor carries a computed bankability verdict. Every study is published in full.">
+<meta name="twitter:image" content="https://theabsenceaudit.com/og-image.png">
+<meta name="twitter:image:alt" content="The Absence Audit ledger card">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+
+<link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://theabsenceaudit.com/#website",
+      "url": "https://theabsenceaudit.com/",
+      "name": "The Absence Audit",
+      "description": "A research ledger of venture concepts proven in peer-reviewed literature, absent from the commercial market, and bankable on the numbers we compute — debt sizing and DSCR for every surviving dossier. Every study is published in full, with the specific failure that killed it.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://theabsenceaudit.com/#ledger",
+      "name": "The Absence Audit ledger",
+      "description": "91 venture concepts screened against seven gates for scientific backing, commercial absence, unit margins, capital intensity, production velocity, market size and measured superiority over a named incumbent. 82 published as studies, 20 for sale. Every study is published with its specific failure mode.",
+      "url": "https://theabsenceaudit.com/ledger/",
+      "isAccessibleForFree": true,
+      "creator": {"@type": "Organization", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
+      "dateModified": "2026-09-10T12:00:21+02:00",
+      "keywords": ["venture concepts","peer-reviewed literature","commercial absence","unit economics","technology transfer","research commercialisation"],
+      "variableMeasured": [
+        {"@type":"PropertyValue","name":"Superiority margin vs named incumbent"},
+        {"@type":"PropertyValue","name":"Gross margin at incumbent price"},
+        {"@type":"PropertyValue","name":"Startup capital expenditure"},
+        {"@type":"PropertyValue","name":"Payback period"}
+      ]
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"><a href="/ru/./">EN</a> <a href="/ru/fr/">FR</a> <a href="/ru/zh/">中文</a> <a href="/ru/ru/">RU</a></span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <p class="eyebrow">Аналитический отдел деептех-проектов —<strong class="live-count">91 концепция прошла аудит</strong>, ранжирована по финансируемости, публикации дважды в день</p>
+      <h1>Доказано в научной литературе.<br><em>Отсутствует</em>на рынке.<br>Финансируемый по расчётам.</h1>
+      <p class="hero-jtbd">Найдите деептех-проект, который вы можете запустить, — доказанный наукой, отсутствующий на рынке, где каждая цифра пересчитана и опубликована.</p>
+      <p class="hero-banknote">&ldquo;Финансируемый&rdquo; — это долговая математика модели; банк принимает решение самостоятельно.</p>
+      <p class="lede">The Absence Audit — это аналитический отдел исследований и финансового анализа в сфере деептех. Мы сканируем рецензируемую литературу в поисках работающих глубоких технологий — передовые материалы, промышленная биотехнология, «умные» жидкости — сопоставляем каждую из них с рынком, на котором её ещё нет, и определяем цену того, что прошло отбор, исходя из объёма капитала, который оно способно направлять. Досье деептех-проекта — это сам механизм, экономика, пересчитанная в коде, конкретный действующий игрок на рынке и обоснование кредитоспособности, а не просто рассказ о них.</p>
+      <p class="hero-note">Каждая концепция деептех, которую мы публикуем, — это рецензируемая технология, которую рынок пропустил. То, что не прошло отбор, публикуется полностью вместе с детальным разбором причин, чтобы работа фильтра была наглядна.</p>
+      <p class="hero-econ">Одно досье, превратившееся в действующий бизнес, окупает весь каталог, а 82 опубликованных исследования — это более доступная половина: каждое из них описывает ловушку с её точной арифметикой, в которую вам больше не придётся попадать.</p>
+      <p class="hero-cta-wrap">
+        <a class="hero-cta" href="/ru/sample/">Читать бесплатное примерное досье — без email, без карты &rarr;</a>
+      </p>
+      <p class="hero-cta-note">Одно полное досье, бесплатно: научные доказательства, конкретный действующий игрок и прямое сравнение показателей, экономика, пересчитанная в коде, и аудит с контраргументами.</p>
+      <a class="hero-ledger-link" href="/ru/ledger/">Искать по всему реестру — все 91 концепция, каждый вердикт и рейтинг финансируемости &rarr;</a>
+      <p class="hero-signin-note">Купили досье?<a href="/ru/ledger/">Войти</a>&mdash; оно откроется прямо в реестре.</p>
+    </div>
+
+    <aside class="tally">
+      <h2>Реестр на сегодняшний день</h2>
+      <p class="snapshot">Срез данных: 10 Sep 2026, 10:00 UTC &middot; 91 концепция &middot; 9 одобрено &middot; 82 исследования &middot; 20 досье в продаже &middot; 61 аналитический отчёт &middot; 3261 источник &middot; 583 DOI &middot; 30,418 учтённых цитирований</p>
+      <dl><dt>Concepts audited</dt><dd class="big">91</dd>
+<dt>Published as studies</dt><dd class="big kill">82</dd>
+<dt>Dossiers for sale</dt><dd class="big live">20</dd>
+<dt>Citations resolved</dt><dd class="">3261</dd>
+<dt>Verified to DOI</dt><dd class="">583</dd>
+<dt>Citations of record</dt><dd class="">30,418</dd>
+<dt>Words of analysis</dt><dd class="">309,197</dd></dl>
+      <footer>Every figure above is produced by the pipeline itself, not written by hand.
+      What's for sale is only what survives the audit &mdash; and the surviving dossiers are the
+      point: processes that work for people, with the verdict published in full.<a href="/ru/pipeline/">See the whole pipeline &rarr;</a></footer>
+    </aside>
+  </div>
+</div>
+
+<div data-aa-commerce>
+
+    <div class="price-banner" role="note">Research-grade pricing is<strong>live</strong>— every dossier price is computed by the public
+      mechanism from the venture's own numbers. Records that fail the
+      integrity gates are unpriced, never hand-waved.</div>
+    <section class="section" id="pricing" aria-labelledby="pricing-h">
+      <p class="eyebrow">THE PAID LEDGER</p>
+      <h2 id="pricing-h">Research-grade deeptech intelligence, priced by the capital it guides.</h2>
+      <p class="section__lede">Every dossier price is computed from the venture's own
+      numbers — gross margin, payback, capital productivity — through one public
+      mechanism, never by hand:<strong>PRIME &euro;4,999</strong>(90%+ GM,
+      sub-month payback),<strong>HIGH &euro;2,999</strong>,<strong>BASE
+      &euro;1,999</strong>. The Diligence Pack adds the financial model, the IP
+      gate and one analyst call. A record that fails the integrity gates is
+      unpriced — never sold on a hand-waved number. The 20 that survived are the
+      product &mdash; and you can read one of them in full, free, before deciding.</p>
+      <div class="price-grid">
+        <article class="price-card">
+          <h3>One survivor, in full</h3>
+          <p class="price-card__amount">€1,999–€4,999<span>per concept, one-time</span></p>
+          <p class="price-card__pitch">Any single concept that cleared every gate, at full depth: mechanism, operating protocol, economics recomputed in code, the absence audit, the red-team case against it and every resolved citation. Priced by the public mechanism from the venture&#x27;s own economics — from €1,999 base to €4,999 prime (90%+ GM, sub-month payback). Charged once, yours to keep.</p>
+          <ul class="price-card__features"><li>One complete dossier, same depth as the free sample</li><li>Economics recomputed in code from cited primitives</li><li>Sensitivity tables: price -25%, yield -25%, CapEx x2</li><li>The red-team audit&#x27;s case against that one concept</li></ul>
+          <a class="price-card__cta" href="#ledger"
+             rel="noopener">Choose any concept in the ledger</a>
+        </article>
+        <article class="price-card">
+          <h3>Technology scouting mandate</h3>
+          <p class="price-card__amount">€20,000<span>per mandate</span></p>
+          <p class="price-card__pitch">Tell us what you are trying to manufacture, improve or replace. We search the scientific and commercial landscape, identify the technologies that could materially change your economics, and hand you an independently challenged investigation plan — plus every dossier, past and future. For teams whose decisions cost more than the mandate.</p>
+          <ul class="price-card__features"><li>Every surviving dossier, past and future</li><li>A named scouting question your team cannot search itself</li><li>Decision lanes on every concept — pursue / investigate / watch / don&#x27;t touch</li><li>Charged once per mandate</li></ul>
+          <a class="price-card__cta" href="https://buy.stripe.com/4gM28r6x53gw4CAbyCg7e1N"
+             rel="noopener">Commission a mandate</a>
+        </article>
+        <article class="price-card price-card--featured">
+          <h3>Technology scouting mandate — Annual</h3>
+          <p class="price-card__amount">€200,000<span>per year</span></p>
+          <p class="price-card__pitch">The same mandate, billed once — two months free against monthly. For the corporate R&amp;D or strategy team that knows one caught technology pays for a decade of this.</p>
+          <ul class="price-card__features"><li>Everything in monthly, two months free</li><li>Every surviving dossier, past and future</li><li>New concepts twice daily, delivered by email</li><li>The complete study archive with the failure taxonomy</li></ul>
+          <a class="price-card__cta" href="https://buy.stripe.com/9B69AT7B93gw3yw6eig7e1O"
+             rel="noopener">Commission annually — 2 months free</a>
+        </article></div>
+      <p class="price-note">All prices are in euros. No sales tax or VAT is added. The studies are priced &euro;250&ndash;&euro;1,000 by
+      their content &mdash; computed by the same pipeline that prices the
+      dossiers (&euro;1,999&ndash;&euro;4,999). Every concept in the ledger carries its price.
+      Nobody has built one of these ventures yet; you are buying research, not
+      a business plan or any promise of return.</p>
+    </section>
+</div>
+
+<section class="thesis" id="usecases">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">What you can do with this</p>
+      <h2>Find bankable businesses hiding inside the scientific literature.</h2>
+      <p>We don't sell trade secrets. We search for experimentally demonstrated capabilities
+      that have not yet become products &mdash; we attempt to disprove the commercial case,
+      and compute the bankability numbers, before you spend money building them. Built for corporate R&amp;D and technology-transfer
+      teams that can move fast, deep-tech investors hunting deal flow &mdash; and founders who want to build it themselves.</p>
+    </div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.4rem">
+      <article style="background:var(--paper-2);border:1px solid var(--rule);padding:1.4rem 1.5rem">
+        <h3 style="margin:0 0 .6rem;font-size:1.05rem">Build</h3>
+        <p style="margin:0;color:var(--ink-2)">Find your next deep-tech venture &mdash; a process that
+        works in the lab, beats what buyers use today, and can be started on little capital.</p>
+      </article>
+      <article style="background:var(--paper-2);border:1px solid var(--rule);padding:1.4rem 1.5rem">
+        <h3 style="margin:0 0 .6rem;font-size:1.05rem">Invest</h3>
+        <p style="margin:0;color:var(--ink-2)">Generate differentiated technical diligence &mdash; the
+        incumbent comparison and the economics, checked against the papers, before you write the cheque.</p>
+      </article>
+      <article style="background:var(--paper-2);border:1px solid var(--rule);padding:1.4rem 1.5rem">
+        <h3 style="margin:0 0 .6rem;font-size:1.05rem">Инновации</h3>
+        <p style="margin:0;color:var(--ink-2)">Находите технологии, которые ваши конкуренты ещё не коммерциализируют, &mdash; возможности, скрытые в научной литературе, которых они не заметили.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="thesis" id="free-proof">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Начните здесь &mdash; без email, без карты</p>
+      <h2>Прочтите полное досье бесплатно.</h2>
+      <p>Никаких тизеров. Никаких недомолвок. Полный документ: научные доказательства, названный действующий игрок и прямые сравнительные показатели, пересчитанная в коде экономика, аудит красной команды с контраргументами и использованные источники. Тот же формат, что получает подписчик.</p>
+    </div>
+    <p style="margin:0 0 .8rem">
+      <a href="/ru/sample/" style="font-weight:600;font-size:1.05rem">Читать бесплатный образец досье &rarr;</a>
+    </p>
+    <p style="margin:0 0 1.6rem;color:var(--ink-2)">Ещё три полных исследования опубликованы бесплатно в<a href="/ru/studies/">библиотеке доказательств работы</a>&mdash; включая вердикты, неудачи и всё остальное.</p>
+    <p style="color:var(--ink-2)">Одно бесплатное досье &mdash; это образец; четыре &mdash; закономерность. Остальная часть реестра &mdash; платный продукт.<a href="#pricing" data-aa-commerce>Узнайте, сколько стоят досье.</a></p>
+  </div>
+</section>
+
+<section class="thesis" id="join">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Реестр прямо на вашей почте</p>
+      <h2>Реестр приходит на вашу почту, когда новые исследования проходят отбор</h2>
+      <p>Every concept, every verdict, every autopsy. Free while it is being built.</p>
+    </div>
+    <form id="join-form" action="https://us-central1-the-absence-audit.cloudfunctions.net/subscribe" method="POST" novalidate>
+      <div class="field">
+        <label for="email" style="position:absolute;left:-9999px">Email address</label>
+        <input type="email" id="email" name="email_address" placeholder="you@company.com" autocomplete="email" required>
+        <button type="submit">Send me the ledger</button>
+      </div>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden">
+        <label for="company_website">Leave this empty</label>
+        <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+      </div>
+      
+      <p class="form-note">Free while the ledger is being built. No spam, no reselling your address.
+      We will not promise you a return &mdash; nobody has built one of these ventures yet.</p>
+      <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    </form>
+  </div>
+</section>
+
+<section class="thesis" id="thesis">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">Why you can trust the numbers</p>
+      <h2>Seven gates. Then three that exist only to void the other seven.</h2>
+    </div>
+    <div class="cols">
+      <p>A concept enters the ledger only if it clears all seven: proven in the literature;
+      absent from the market; capable of large unit margins; startable on little capital;
+      quick to produce; addressing a market big enough to matter; and measurably better than
+      the product the buyer already pays for &mdash; on that buyer's own metric, at the
+      incumbent's own price, by a step change of at least two-fold. Cheaper, greener or
+      biodegradable do not count. Those are preferences, not performance.</p>
+      <p>Then the economics are recomputed from scratch, in code, from cited inputs &mdash;
+      feedstock cost, conversion yield, itemised equipment, the incumbent's price. Payback,
+      margin and return are stress-tested against price falling, yield falling and capital
+      doubling. And every surviving claim is re-checked by an independent audit pass that
+      overrules our own scoring model when they disagree. It has done so 8 times.</p>
+      <p>&ldquo;The Absence Audit&rdquo; is the name of this method &mdash; an audit of what is
+      absent: processes proven in the literature and missing from the market. The full
+      method, and the record behind it, are published at<a href="/ru/method/">/method/</a>and<a href="/ru/track-record/">/track-record/</a>.</p>
+    </div>
+  </div>
+</section>
+
+<section class="ledger" id="ledger">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The ledger</p>
+      <h2>The 20 dossiers for sale.</h2>
+      <p>Each one names the incumbent it beats and the measured margin of victory, taken from the cited literature. These are the entries subscribers receive in full — mechanism, operating protocol, economics, absence audit and sources.</p>
+    </div>
+    <div class="tbl-scroll">
+      <table>
+        <caption>Surviving concepts, 2026-08-27 to 2026-09-09. Full reports available to the list.</caption>
+        <thead>
+          <tr><th style="width:28%">Concept</th><th style="width:18%">Incumbent it displaces</th><th style="width:26%">Measured on</th><th style="width:10%">Margin</th><th style="width:9%">Verdict</th><th style="width:9%"><span class="sr-only">Full entry</span></th></tr>
+        </thead>
+        <tbody><tr><td><span class="concept">High-Fidelity Bidisperse Magnetorheological Fluids via Vacuum Centrifugal Dispersal</span><span class="disc">Smart Rheological Materials</span></td><td class="metric">Lord MRF-132DG</td><td class="metric">2.07x turn-up ratio improvement (850 vs 409) over market-leading Lord MRF-132DG</td><td class="delta">&gt;2.07×</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="high-fidelity-bidisperse-magnetorheological-fluids-via-vacuum-centrifu"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/cNi3cvbRp4kAedabyCg7e3o" rel="noopener" aria-label="Buy the full dossier for High-Fidelity Bidisperse Magnetorheological Fluids via Vacuum Centrifugal Dispersal for €2,999">Full dossier<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Polyaspartate-Stabilized Amorphous Calcium Phosphate (PAsp-ACP) via Low-Shear Vacuum PIFP Blending</span><span class="disc">Biomaterials &amp; Dental Therapeutics</span></td><td class="metric">MI Paste (GC America)</td><td class="metric">7.0x greater dentin lesion remineralization depth (140 µm vs 10-20 µm) and 91% elastic modulus recovery compared to CPP-ACP (MI Paste).</td><td class="delta">&gt;7×</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="polyaspartate-stabilized-amorphous-calcium-phosphate-pasp-acp-via-low"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/aFa6oH7B9aIY8SQ0TYg7e3p" rel="noopener" aria-label="Buy the full dossier for Polyaspartate-Stabilized Amorphous Calcium Phosphate (PAsp-ACP) via Low-Shear Vacuum PIFP Blending for €4,999">Full dossier<span class="row-btn__price">€4,999</span></a></td></tr>
+<tr><td><span class="concept">Nitrogen-Doped Carbon Nanodots (N-CDs) via Atmospheric Microwave Pyrolysis</span><span class="disc">Agrochemicals / Nanotechnology</span></td><td class="metric">Mancozeb 75 WP</td><td class="metric">40 µg/mL MIC for N-CD active vs &gt;500 µg/mL for Mancozeb 75 WP</td><td class="delta">categorical</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="nitrogen-doped-carbon-nanodots-n-cds-via-atmospheric-microwave-pyrolys"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/cNi4gzcVt18oc521Y2g7e3q" rel="noopener" aria-label="Buy the full dossier for Nitrogen-Doped Carbon Nanodots (N-CDs) via Atmospheric Microwave Pyrolysis for €2,999">Full dossier<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Silver-Nanowire / Polyvinyl Alcohol / Melamine Sponge (AgPHMS) Electro-Ionic Semi-Dry Electrodes via Template-Directed Freeze-Thaw Polymerization</span><span class="disc">Brain-Computer Interfaces / Materials Science</span></td><td class="metric">Sintered Ag/AgCl wet disc electrode</td><td class="metric">&gt;5.0x increase in duration of stable, ultra-low impedance (&lt;15 kΩ) continuous signal acquisition (&gt;10 hours vs. ~1 to 2 hours for sintered Ag/AgCl wet…</td><td class="delta">&gt;5×</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="silver-nanowire-polyvinyl-alcohol-melamine-sponge-agphms-electro-ionic"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/fZu5kD9Jh6sI7OM8mqg7e3r" rel="noopener" aria-label="Buy the full dossier for Silver-Nanowire / Polyvinyl Alcohol / Melamine Sponge (AgPHMS) Electro-Ionic Semi-Dry Electrodes via Template-Directed Freeze-Thaw Polymerization for €4,999">Full dossier<span class="row-btn__price">€4,999</span></a></td></tr>
+<tr><td><span class="concept">Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR) via Base-Catalyzed Thiol-Epoxy Click Photopolymerization</span><span class="disc">Materials Science</span></td><td class="metric">Premium Acrylic UV-Curable LOCA (e.g., Loctite DSP 3196)</td><td class="metric">~0% volumetric shrinkage vs 3.0%-5.0%+ for premium acrylic LOCA</td><td class="delta">&gt;5×</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/5kQdR99Jh6sIedadGKg7e3s" rel="noopener" aria-label="Buy the full dossier for Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR) via Base-Catalyzed Thiol-Epoxy Click Photopolymerization for €2,999">Full dossier<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Self-Healable WPU/Ti3C2Tx MXene Coating via Mechanical Blending and Casting</span><span class="disc">Materials Science</span></td><td class="metric">MG Chemicals 841AR Super Shield Nickel Conductive Paint</td><td class="metric">EMI Shielding Effectiveness: ~51.37 dB for venture vs 50-60 dB for MG Chemicals 841AR (Parity, &lt; 2x delta).</td><td class="delta">&gt;2×</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/3cI8wP2gP7wM7OM0TYg7e3t" rel="noopener" aria-label="Buy the full dossier for Self-Healable WPU/Ti3C2Tx MXene Coating via Mechanical Blending and Casting for €2,999">Full dossier<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Pressureless Micro-Silver-Indium (μAg-In) TLP Sintering Paste via Mechanical Alloying</span><span class="disc">Semiconductor Packaging / Power Electronics</span></td><td class="metric">MacDermid Alpha Argomax 2148</td><td class="metric">&gt;2.6x die shear strength after 1000h at 300°C under pressureless conditions (53 MPa vs &lt;20 MPa for incumbent MacDermid Argomax 2148)</td><td class="delta">&gt;2.6×</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/14A7sL8Fd7wMc52cCGg7e3u" rel="noopener" aria-label="Buy the full dossier for Pressureless Micro-Silver-Indium (μAg-In) TLP Sintering Paste via Mechanical Alloying for €2,999">Full dossier<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Cement-Free Refractory Castables via Potassium-Activated Metakaolin Geopolymerization</span><span class="disc">Materials Science</span></td><td class="metric">HarbisonWalker Mizzou® Castable Plus</td><td class="metric">Maximum service temperature of ~1250°C vs incumbent&#x27;s 1650°C</td><td class="delta">0.75×</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="cement-free-refractory-castables-via-potassium-activated-metakaolin-ge"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/7sY8wPaNl6sI2usauyg7e3v" rel="noopener" aria-label="Buy the full dossier for Cement-Free Refractory Castables via Potassium-Activated Metakaolin Geopolymerization for €1,999">Full dossier<span class="row-btn__price">€1,999</span></a></td></tr>
+<tr><td><span class="concept">Inositol Hexaphosphate (IP6) Substrate Passivation via Ambient Immersion</span><span class="disc">Materials Science / Chemical Engineering</span></td><td class="metric">Henkel BONDERITE M-ZN 4333</td><td class="metric">ASTM B117 Neutral Salt Spray resistance on bare steel: ~72-120 hours for silane-doped IP6 vs 120+ hours for Henkel BONDERITE M-ZN 4333</td><td class="delta">1×</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/cNiaEX7B98AQd961Y2g7e3w" rel="noopener" aria-label="Buy the full dossier for Inositol Hexaphosphate (IP6) Substrate Passivation via Ambient Immersion for €4,999">Full dossier<span class="row-btn__price">€4,999</span></a></td></tr>
+<tr><td><span class="concept">Polyurethane-Encapsulated IPDI Microcapsules via Low-Shear Interfacial Polymerization</span><span class="disc">Materials Science / Chemical Engineering</span></td><td class="metric">Xypex Admix C-1000 NF</td><td class="metric">87.8% compressive strength recovery vs &lt;50% for Xypex Admix C-1000 NF</td><td class="delta">1.7×</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/cNifZh6x5aIY8SQ8mqg7e3x" rel="noopener" aria-label="Buy the full dossier for Polyurethane-Encapsulated IPDI Microcapsules via Low-Shear Interfacial Polymerization for €1,999">Full dossier<span class="row-btn__price">€1,999</span></a></td></tr>
+<tr><td><span class="concept">Compact Volume-Expandable Sorbents (CVES) via Continuous PolyHIPE Emulsion Templating</span><span class="disc">Материаловедение</span></td><td class="metric">3M HP-156 High Capacity Petroleum Sorbent Pad</td><td class="metric">Преимущество в 10.2x по объемной эффективности сорбции (20 L нефти/L объема хранения против 1.96 L нефти/L объема хранения для 3M HP-156)</td><td class="delta">&gt;10.2×</td><td class="verdict pass">Продукт</td><td class="row-cta"><span data-aa-invite="compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/eVq7sL4oX6sI7OMdGKg7e3y" rel="noopener" aria-label="Buy the full dossier for Compact Volume-Expandable Sorbents (CVES) via Continuous PolyHIPE Emulsion Templating for €1,999">Полное досье<span class="row-btn__price">€1,999</span></a></td></tr>
+<tr><td><span class="concept">Ультрабелая краска для радиационного охлаждения ниже температуры окружающей среды на основе сульфата бария (BaSO4), полученная методом эмульсионного диспергирования с высоким сдвигом</span><span class="disc">Материаловедение</span></td><td class="metric">Henry 887 Tropi-Cool 100% Silicone White Roof Coating</td><td class="metric">Коэффициент отражения солнечного излучения 98.1% против 88.0%</td><td class="delta">&gt;6.3×</td><td class="verdict pass">Продукт</td><td class="row-cta"><span data-aa-invite="ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/bJedR93kT5oE3yw8mqg7e3z" rel="noopener" aria-label="Buy the full dossier for Ultrawhite Barium Sulfate (BaSO4) Subambient Radiative Cooling Paint via High-Shear Emulsion Dispersion for €2,999">Полное досье<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Безгалогенная ортобо</span><span class="disc">Specialty Chemicals / Tribology</span></td><td class="metric">Chemours Krytox GPL 106</td><td class="metric">&gt;10x reduction in ball wear volume under 150 N extreme load (wear scar diameter approximately equals theoretical Hertzian contact diameter compared to…</td><td class="delta">&gt;10×</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/00w28r9Jh5oE5GEbyCg7e3A" rel="noopener" aria-label="Buy the full dossier for Halogen-Free Orthoborate-Phosphonium Ionic Liquid ([P6,6,6,14][BMB]) via Ambient Aqueous Metathesis for €2,999">Full dossier<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Mechanochemical Covalent Triazine Frameworks (CTFs) via Solvent-Free Cyclotrimerization</span><span class="disc">Polymer Chemistry / Water Remediation</span></td><td class="metric">Premium Coconut Shell Granular Activated Carbon (GAC)</td><td class="metric">903.0 mg/g PFOA adsorption capacity vs 43.4 mg/g for Premium GAC</td><td class="delta">&gt;20.8×</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/3cIfZh1cLaIY3yw6eig7e3B" rel="noopener" aria-label="Buy the full dossier for Mechanochemical Covalent Triazine Frameworks (CTFs) via Solvent-Free Cyclotrimerization for €2,999">Full dossier<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Polyimide-Reinforced Silica Aerogel Blankets via Ambient Pressure Drying</span><span class="disc">Materials Science / Thermal Insulation</span></td><td class="metric">Aspen Aerogels Pyrogel XTE</td><td class="metric">Thermal conductivity of 0.018 W/mK vs Pyrogel XTE&#x27;s 0.014 W/mK (28% performance regression) and maximum temperature rating of 500°C vs 650°C</td><td class="delta">categorical</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/dRmeVd7B9dVa2usgSWg7e3C" rel="noopener" aria-label="Buy the full dossier for Polyimide-Reinforced Silica Aerogel Blankets via Ambient Pressure Drying for €2,999">Full dossier<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Conductive Inositol Hexaphosphate-Polyaniline (IP6-PANI) Hydrogels via Ambient Aqueous Polymerization</span><span class="disc">Biomedical Engineering / Materials Science</span></td><td class="metric">Ag/AgCl wet conductive electrode gel (Ten20 paste)</td><td class="metric">Impedance shift after 48 hours continuous wear: Incumbent 2.57x increase vs IP6-PANI &lt;1.10x increase</td><td class="delta">&gt;2.57×</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/cNidR9f3B5oE9WUbyCg7e3D" rel="noopener" aria-label="Buy the full dossier for Conductive Inositol Hexaphosphate-Polyaniline (IP6-PANI) Hydrogels via Ambient Aqueous Polymerization for €4,999">Full dossier<span class="row-btn__price">€4,999</span></a></td></tr>
+<tr><td><span class="concept">High-Photostability Anti-Counterfeiting Inks via Hydrothermal Carbonization of Biomass into Carbon Quantum Dots</span><span class="disc">Nanomaterials</span></td><td class="metric">Shenzhen Goosam UV Fluorescent Water-Based Invisible Ink (L3258/L3151 series)</td><td class="metric">Retains &gt;90% signal after 55 hours continuous UV exposure versus incumbent losing &gt;70% signal in a few hours</td><td class="delta">&gt;10×</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/dRmaEX5t18AQ8SQfOSg7e3E" rel="noopener" aria-label="Buy the full dossier for High-Photostability Anti-Counterfeiting Inks via Hydrothermal Carbonization of Biomass into Carbon Quantum Dots for €1,999">Full dossier<span class="row-btn__price">€1,999</span></a></td></tr>
+<tr><td><span class="concept">Ultra-High-Strength Underwater Adhesives via In Situ Catechol-Polymer Co-deposition</span><span class="disc">Materials Science</span></td><td class="metric">Belzona 1212</td><td class="metric">0.146 MPa vs 17.2 MPa underwater pull-off adhesion (-99.1% inferior)</td><td class="delta">categorical</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/8x23cv8Fd7wMd96eKOg7e3F" rel="noopener" aria-label="Buy the full dossier for Ultra-High-Strength Underwater Adhesives via In Situ Catechol-Polymer Co-deposition for €4,999">Full dossier<span class="row-btn__price">€4,999</span></a></td></tr>
+<tr><td><span class="concept">Sustained-Release Silk Fibroin Microneedle Matrices via Lithium Bromide Extraction</span><span class="disc">Biomedical Materials</span></td><td class="metric">Hyaluronic Acid (HA) microneedle matrices</td><td class="metric">&gt;100x increase in delivery duration (up to 100 days vs. &lt;60 minutes for HA)</td><td class="delta">&gt;100×</td><td class="verdict pass">Product</td><td class="row-cta"><span data-aa-invite="sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/6oU7sL8Fd7wM3ywdGKg7e3G" rel="noopener" aria-label="Buy the full dossier for Sustained-Release Silk Fibroin Microneedle Matrices via Lithium Bromide Extraction for €1,999">Full dossier<span class="row-btn__price">€1,999</span></a></td></tr>
+<tr><td><span class="concept">Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues</span><span class="disc">Agricultural Biologicals</span></td><td class="metric">MycoApply® Ultrafine Endo (Mycorrhizal Applications / Valent Biosciences)</td><td class="metric">0% colonization for incumbent AMF vs &gt;30% root colonization for DSE in non-mycorrhizal Brassicaceae crops, representing a categorical capability advan…</td><td class="delta">categorical</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat"></span><a class="row-btn row-btn--buy" data-aa-commerce href="https://buy.stripe.com/4gM00j8FdcR69WU0TYg7e3H" rel="noopener" aria-label="Buy the full dossier for Drought-Resilient Dark Septate Endophyte (DSE) Inoculants via Solid-State Fermentation of Agro-Medicinal Residues for €2,999">Full dossier<span class="row-btn__price">€2,999</span></a></td></tr>
+<tr><td><span class="concept">Liquid Metal Nanoparticle Conductive Ink via Ultrasonic Probe Cavitation</span><span class="disc">Materials Science</span></td><td class="metric">Silver flake ink</td><td class="metric">Resistance change after 1,000 to 5,000 stretching cycles: Silver Flake Ink &gt;1,000% increase vs Liquid Metal Ink &lt;19.23% increase</td><td class="delta">&gt;50×</td><td class="verdict pass">Cleared</td><td class="row-cta"><span data-aa-invite="liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati"></span><a class="row-btn" data-aa-commerce href="/ru/sample/" aria-label="Open the free full entry for Liquid Metal Nanoparticle Conductive Ink via Ultrasonic Probe Cavitation">Free<span aria-hidden="true">&rarr;</span></a></td></tr></tbody>
+      </table>
+    </div>
+    <p style="margin-top:1.6rem"><a href="/ru/ledger/" style="font-weight:600">Search all 91 concepts, including every study &rarr;</a>·<a href="/ledger.csv" download data-aa-commerce style="font-weight:600">Download the full ledger (CSV)</a></p>
+  </div>
+</section>
+
+  <section class="graveyard" id="graveyard">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">The full record</p>
+      <h2>Every dossier for sale first survived this. Here is the filter at work.</h2>
+      <p>No other research service publishes the concepts it didn't clear, because publishing them means proving
+      the survivors earned their place. Each study maps a trap you no longer have to fall into.</p>
+    </div>
+    <div class="kills"><article class="kill-item"><p class="kill-code">Voided — dead incumbent</p><h3>Biomanufactured magnetosomes for MRI contrast</h3><p>Genuinely 2.4–3.5× the relaxivity of its named comparator. That comparator was Feridex — withdrawn from the market in 2008. The margin model was anchored to the historical price of a product discontinued for lack of demand. Regulatory path priced at $35M and 84 months.</p></article>
+<article class="kill-item"><p class="kill-code">Voided — straw incumbent</p><h3>Plant-urease enzyme-induced carbonate precipitation</h3><p>Benchmarked against MICP, a rival laboratory technique that never reached market. Against the real incumbent — Portland cement and soil-cement at 1.5–8 MPa — its 6.41 MPa sits inside the ordinary range. Beating another lab proves nothing.</p></article></div>
+    <p class="taxline" style="margin-top:1.2rem;color:var(--paper);opacity:.85;font-size:.95rem;line-height:1.8">The full taxonomy &mdash; why each of the 82 died: 42 negative control / sub-2x · 38 economics undisclosed · 38 form-factor / handling regression · 29 margin fails the operating-cost check · 24 capital and time to revenue</p>
+    <p style="margin-top:1.6rem"><a href="/ru/ledger/?v=0" style="font-weight:600;color:var(--paper)">Browse all 82 studies by failure mode &rarr;</a></p>
+  </div>
+</section>
+
+<section class="versus">
+  <div class="wrap">
+    <div class="section-head">
+      <p class="eyebrow">How this differs from a trend newsletter</p>
+      <h2>Trend tools find what is already crowded.</h2>
+      <p>They measure rising search volume or document businesses that already earn revenue.
+      We read the peer-reviewed record for processes that are proven and unbuilt. There is no
+      trend to be late to &mdash; and the value does not decay as the list grows, because the
+      barrier is capability, not awareness. Knowing about a process does not let you run one.</p>
+    </div>
+  </div>
+</section>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+
+<script>/* Email capture. Posts to a real endpoint so the visitor never has to send us
+   an email. The form ALSO works with JavaScript disabled, because its action /
+   method attributes are set server-side at publish time and the browser will
+   do a native POST. Configure in _site/site_config.json. */
+(function () {
+  var form = document.getElementById("join-form");
+  var input = document.getElementById("email");
+  var msg = document.getElementById("msg");
+  var trap = document.getElementById("company_website");
+  var endpoint = form.getAttribute("action") || "";
+  var provider = form.getAttribute("data-provider") || "";
+  var DONE_KEY = "aa_subscribed";
+
+  function say(text, kind) {
+    msg.textContent = text;
+    msg.className = "msg " + (kind || "");
+  }
+
+  if (!endpoint) {
+    // Never fake a subscription. Say so plainly and stop.
+    form.classList.add("unconfigured");
+    input.disabled = true;
+    form.querySelector("button").disabled = true;
+    say("Signup opens shortly \u2014 the list is not accepting addresses yet.", "err");
+    return;
+  }
+
+  if (localStorage.getItem(DONE_KEY)) {
+    say("You are already on the list from this browser.", "ok");
+  }
+
+  form.addEventListener("submit", function (e) {
+    var value = (input.value || "").trim();
+    if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+      e.preventDefault();
+      say("That does not look like an email address.", "err");
+      input.focus();
+      return;
+    }
+    if (trap && trap.value) { e.preventDefault(); return; }   // bot
+
+    // progressive enhancement: intercept only if fetch is available
+    if (!window.fetch) return;      // otherwise let the native POST happen
+    e.preventDefault();
+    var btn = form.querySelector("button");
+    btn.disabled = true;
+    say("Adding you\u2026");
+
+    var payload = new URLSearchParams(new FormData(form));
+    payload.delete("company_website");
+    var opts = { method: "POST", body: payload };
+    if (provider === "json") {
+      var obj = {};
+      payload.forEach(function (v, k) { obj[k] = v; });
+      opts = { method: "POST", headers: { "Content-Type": "application/json" },
+               body: JSON.stringify(obj) };
+    }
+    fetch(endpoint, opts)
+      .then(function (r) {
+        if (!r.ok && r.status !== 0) throw new Error("HTTP " + r.status);
+        form.reset();
+        localStorage.setItem(DONE_KEY, "1");
+        say("You are on the list. The next audit goes out with the following scan.", "ok");
+      })
+      .catch(function () {
+        say("That did not go through. Please try again in a moment.", "err");
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+})();</script>
+
+<script>/* Атрибуция регистраций. Отвечает на единственный маркетинговый вопрос, который имеет значение:
+   какой канал привёл этого подписчика?
+
+   FIRST-touch, а не last-touch: если кто-то приходит с Hacker News, уходит,
+   затем возвращается через поиск Google и подписывается, заслуга принадлежит
+   Hacker News. Last-touch ошибочно приписал бы Google результат работы HN. */
+(function () {
+  var KEY = "aa_first_touch";
+  function params() {
+    try { return new URLSearchParams(location.search); } catch (e) { return null; }
+  }
+  function capture() {
+    var stored = null;
+    try { stored = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (stored && stored.src) return stored;          // первое касание уже известно
+
+    var q = params();
+    var src = q && (q.get("utm_source") || q.get("ref"));
+    var med = q && q.get("utm_medium");
+    var cmp = q && q.get("utm_campaign");
+    if (!src) {
+      // нет явного тега — определяем по ссылающемуся хосту
+      var r = document.referrer || "";
+      if (r) {
+        try {
+          var h = new URL(r).hostname.replace(/^www\./, "");
+          if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+        } catch (e) {}
+      }
+    }
+    var rec = {
+      src: src || "direct",
+      med: med || (src ? "unknown" : "none"),
+      cmp: cmp || "",
+      lp: location.pathname,
+      ts: new Date().toISOString().slice(0, 10)
+    };
+    try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch (e) {}
+    return rec;
+  }
+
+  var touch = capture();
+  var form = document.getElementById("join-form");
+  if (!form) return;
+
+  // передаём это в Kit в виде скрытого поля, чтобы атрибуция сохранялась даже без GA
+  function hidden(name, value) {
+    var i = document.createElement("input");
+    i.type = "hidden"; i.name = name; i.value = value || "";
+    form.appendChild(i);
+  }
+  hidden("fields[source]", touch.src);
+  hidden("fields[medium]", touch.med);
+  hidden("fields[campaign]", touch.cmp);
+  hidden("fields[landing_page]", touch.lp);
+
+  // и дублируем конверсию в GA, чтобы согласовать отчёты по привлечению
+  form.addEventListener("submit", function () {
+    if (typeof gtag === "function") {
+      gtag("event", "generate_lead", {
+        source_channel: touch.src,
+        medium: touch.med,
+        campaign: touch.cmp,
+        landing_page: touch.lp
+      });
+    }
+  });
+})();</script>
+</body>
+</html>
