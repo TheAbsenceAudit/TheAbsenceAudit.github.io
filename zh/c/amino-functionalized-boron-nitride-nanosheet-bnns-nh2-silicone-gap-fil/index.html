@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<script>window.AA_AGENT = {"id": "agent_7501m1xq255zetqa86nb6phk79ns", "title": "Amino-Functionalized Boron Nitride Nanosheet (BNNS-NH2) Silicone Gap Fillers via Urea-Assisted Ball Milling"};</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>氨基功能化氮化硼纳米片 (BNNS-NH2) 有机硅 … — 深科技创投研究 | The Absence Audit</title>
+<meta name="description" content="Study — Venture thermal conductivity of 1.16-1.94 W/mK is 51% to 71% below Bergquist TGF 4000 (4.0 W/mK).">
+<link rel="canonical" href="https://theabsenceaudit.com/c/amino-functionalized-boron-nitride-nanosheet-bnns-nh2-silicone-gap-fil/">
+<meta name="theme-color" content="#FBF9F5">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/c/amino-functionalized-boron-nitride-nanosheet-bnns-nh2-silicone-gap-fil/">
+<meta property="og:title" content="Amino-Functionalized Boron Nitride Nanosheet (BNNS-NH2) Silicone Gap Fillers via Urea-Assi…">
+<meta property="og:description" content="Study — Venture thermal conductivity of 1.16-1.94 W/mK is 51% to 71% below Bergquist TGF 4000 (4.0 W/mK).">
+<meta property="og:image" content="https://theabsenceaudit.com/images/concepts/amino-functionalized-boron-nitride-nanosheet-bnns-nh2-silicone-gap-fil.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳至内容</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/zh/zh/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/zh/zh/ledger/">账本</a>
+      <a href="/zh/zh/studies/">免费研究</a>
+      <a href="/zh/zh/method/">方法</a>
+      <a href="/zh/zh/nations/">国家</a>
+      <a href="/zh/zh/translation/">翻译</a>
+      <span class="aa-langs"><a href="/zh/c/amino-functionalized-boron-nitride-nanosheet-bnns-nh2-silicone-gap-fil/">EN</a> <a href="/zh/fr/">FR</a> <a href="/zh/zh/">中文</a> <a href="/zh/ru/">RU</a></span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main"><div class="wrap" style="padding:3.2rem 0 4rem;max-width:76ch">
+  <p class="eyebrow"><a href="/zh/ledger/" style="color:inherit">账本</a>· 2026-09-05 · 材料科学</p>
+  <h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)">基于尿素辅助球磨的氨基功能化氮化硼纳米片（BNNS-NH2）有机硅导热填缝剂</h1>
+  <div class="vbar"><div class="vcell vcell--fail"><span class="vlabel">深科技项目案例</span><span class="vword">未通过</span></div><div class="vcell vcell--pass"><span class="vlabel">资本方案</span><span class="vword">可融资</span><span class="vsub">最小 DSCR 8.57&times; &mdash; 模型测算，非银行决定</span></div><p class="vsynth">债务测算成立；但所呈交的深科技项目案例未获通过。如果建设者修复了指出的缺陷 &mdash; 或在价格上重新定位 &mdash; 模型表明其所构建的业务具备可融资性。</p></div>
+  <figure class="concept-fig"><img src="/images/concepts/amino-functionalized-boron-nitride-nanosheet-bnns-nh2-silicone-gap-fil.jpg" alt="Amino-Functionalized Boron Nitride Nanosheet (BNNS-NH2) Silicone Gap Fillers via Urea-Assi…" style="width:100%;border-radius:8px;margin:1.3rem 0 0.2rem"></figure>
+  <div style="margin:1.4rem 0 0.6rem;padding:12px 16px;border:1px solid var(--rule);background:var(--paper-2);border-radius:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)">收听 &mdash; 60秒简报</span><audio controls preload="none" style="height:38px" src="/audio/teaser-amino-functionalized-boron-nitride-nanosheet-bnns-nh2-silicone-gap-fil.mp3"></audio><span style="font:12.5px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--ink-3);max-width:34ch">AI 生成的概述。完整的音频简报随报告一同提供。</span></div>
+  <p class="lede">完整的审计 &mdash; 机制、计算出的经济模型、资本方案及每项引用文献 &mdash; 在下方针对买方和订阅者完整开放。上述结论是框架对该概念的坦诚定论，下方的未通过记录为公开内容。</p><h3>实测概况</h3><table><tbody><tr><td style="width:36%"><strong>现有基准产品</strong></td><td>Bergquist Gap Filler TGF 4000 (Henkel)</td></tr><tr><td style="width:36%"><strong>验证信号</strong></td><td>6 篇参考文献，325 次记录引用，无撤稿 (OpenAlex)</td></tr><tr><td style="width:36%"><strong>切入应用</strong></td><td>电动汽车电池组导热填缝剂</td></tr><tr><td style="width:36%"><strong>实测优势</strong></td><td>深科技项目导热系数为 1.16-1.94 W/mK，比 Bergquist TGF 4000 (4.0 W/mK) 低 51% 至 71%。</td></tr><tr><td style="width:36%"><strong>首次实现收入所需时间</strong></td><td>6 个月</td></tr><tr><td style="width:36%"><strong>同等价格下的毛利润率</strong></td><td>95.1%</td></tr><tr><td style="width:36%"><strong>启动资本支出</strong></td><td>$65,000</td></tr><tr><td style="width:36%"><strong>风险敞口资金总额</strong></td><td>$110,000</td></tr><tr><td style="width:36%"><strong>首次销售起投资回收期</strong></td><td>1.4 个月</td></tr><tr><td style="width:36%"><strong>含资质认证投资回收期</strong></td><td>7.4 个月</td></tr><tr><td style="width:36%"><strong>资本生产率</strong></td><td>15.29x</td></tr><tr><td style="width:36%"><strong>可融资性</strong></td><td>可融资（模型测算）&mdash; 最小 DSCR 8.57x</td></tr><tr><td style="width:36%"><strong>监管风险</strong></td><td>中等 — 已报告认证成本（预估 $45,000）</td></tr><tr><td style="width:36%"><strong>可保护性</strong></td><td>未申报 — 除已发表的基准之外无具体的可保护贡献</td></tr></tbody></table><h3>知识产权与专利态势</h3><p>防御性：<strong>无权利要求声明</strong>。Lightbringer 外部评审：<strong>待定</strong>&mdash; 外部评审尚未针对此报告运行。完整的发明与专利态势 &mdash; 具名贡献、专利号、对比矩阵、权利要求层级 &mdash; 在下方报告中发布。</p><p>逆向工程评审：<strong>待定</strong>&mdash; 逆向工程评审尚未针对此报告运行</p><h3>为什么深科技项目案例未通过</h3><ul><li>判定无效原因：阴性对照/未达2倍优势、缺失项检索遗漏</li><li>证据依赖于非同行评审来源</li><li>仅声称缺失，未报告检索情况</li><li>未申报可保护贡献</li></ul><h3>评估指出</h3><p>该深科技项目在性能上明确承认不及格，其导热系数仅达到 1.16-1.94 W/mK，而 Henkel 市场领先的 Bergquist TGF 4000 则为 4.0 W/mK。此外，由于缺乏包含数字检索计数的结构化市场缺失账本，该报告未能通过市场缺失门。</p><h3>同时标记</h3><ul><li>重复参考文献虚增证据基础</li><li>仅声称价格持平，未注明来源</li><li>envelope_after_superiority</li></ul><p style="margin-top:1.6rem;font-size:.93rem;color:var(--ink-2)">该结论并不代表科学结论有误。它意味着深科技项目案例未能成立：对标品不是买方实际采购的产品、对比不是同类比较、优势未达到阶跃式提升、抑或实现首次收入所需的资本和时间成本过高。</p><h3>仍然成立的方案</h3><p>资本方案独立于深科技项目结论获得通过：模型测算结果为<strong>可融资</strong>，最小 DSCR 为 8.57× — 在既定假设下债务测算成立。未通过意味着深科技项目案例未达到框架的标准；但这并不意味着该业务无法建立。</p><p>上述所有原因均为具体的、量化的缺陷 — 在花费下一分钱之前，修复方案便已明确。在未通过后，有两条可行的推进路径：修复缺陷并重新测试，或者重新定位 — 在缺乏阶跃式技术提升时，低成本替代路线则无需该优势：即作为可直接替代的产品，在价格上压低现有产品并推动客户转换。未通过的原因就是路线图；重新计算的经济模型明确了单位成本定位（详见完整报告）。如果您能修复前者或推销后者，本报告就是完整的蓝图 — 机制、操作规程、经济模型、资本方案包、参考文献。</p><div data-aa-locked style="margin:2rem 0;padding:1.1rem 1.2rem;background:var(--paper-2);border:1px solid var(--rule);border-radius:8px"><h2 style="margin:0 0 .6rem">完整报告</h2><p style="margin:0;font-size:.95rem;color:var(--ink-2)">完整研究报告 &mdash; 机制与操作</p></div><div data-aa-report style="display:none"></div><div data-aa-parts hidden><div class="aa-briefcase" data-aa-parts data-aa-slug="amino-functionalized-boron-nitride-nanosheet-bnns-nh2-silicone-gap-fil"><div class="aa-bc-row"><span class="aa-bc-label">Download</span><div class="aa-bc-pills"><button type="button" class="aa-pill" data-aa-dl="financial" data-aa-label="Financial plan" title="Lender · bank · debt committee">Financial plan</button><button type="button" class="aa-pill" data-aa-dl="centrifuge" data-aa-label="Centrifuge pack" title="Pool onboarding · Credit Group">Centrifuge pack</button><button type="button" class="aa-pill" data-aa-dl="morpho" data-aa-label="Morpho pack" title="Curators · market creation">Morpho pack</button><button type="button" class="aa-pill" data-aa-dl="brickken" data-aa-label="Brickken pack" title="Tokenization onboarding">Brickken pack</button><button type="button" class="aa-pill" data-aa-dl="investor" data-aa-label="Investor pack" title="Senior & junior LPs">Investor pack</button><button type="button" class="aa-pill" data-aa-dl="offtake" data-aa-label="Offtake pack" title="Contract counterparty">Offtake pack</button><button type="button" class="aa-pill" data-aa-dl="mica" data-aa-label="MiCA & regulatory pack" title="Offeror · competent authority">MiCA & regulatory pack</button><button type="button" class="aa-pill" data-aa-dl="technical" data-aa-label="Technical & IP pack" title="Engineering · patent counsel">Technical & IP pack</button><button type="button" class="aa-pill" data-aa-dl="ops" data-aa-label="Operations & audit pack" title="Operator · trustee · auditor">Operations & audit pack</button><button type="button" class="aa-pill aa-pill-full" data-aa-dl="full" data-aa-label="Full report" title="Every section &amp; citation">Full report</button></div></div><div class="aa-bc-row"><span class="aa-bc-label">Read</span><div class="aa-bc-tabs"><button type="button" class="aa-tab" data-aa-part="financial" data-aa-label="Financial plan" title="Lender · bank · debt committee">Financial plan</button><button type="button" class="aa-tab" data-aa-part="centrifuge" data-aa-label="Centrifuge pack" title="Pool onboarding · Credit Group">Centrifuge pack</button><button type="button" class="aa-tab" data-aa-part="morpho" data-aa-label="Morpho pack" title="Curators · market creation">Morpho pack</button><button type="button" class="aa-tab" data-aa-part="brickken" data-aa-label="Brickken pack" title="Tokenization onboarding">Brickken pack</button><button type="button" class="aa-tab" data-aa-part="investor" data-aa-label="Investor pack" title="Senior & junior LPs">Investor pack</button><button type="button" class="aa-tab" data-aa-part="offtake" data-aa-label="Offtake pack" title="Contract counterparty">Offtake pack</button><button type="button" class="aa-tab" data-aa-part="mica" data-aa-label="MiCA & regulatory pack" title="Offeror · competent authority">MiCA & regulatory pack</button><button type="button" class="aa-tab" data-aa-part="technical" data-aa-label="Technical & IP pack" title="Engineering · patent counsel">Technical & IP pack</button><button type="button" class="aa-tab" data-aa-part="ops" data-aa-label="Operations & audit pack" title="Operator · trustee · auditor">Operations & audit pack</button><button type="button" class="aa-tab aa-tab-on" data-aa-part="full" data-aa-label="Full report" title="Every section &amp; citation" aria-pressed="true">Full report</button></div></div></div></div><h3>The decision</h3><p><strong style="color:var(--ink-2)">INVESTIGATE</strong>&mdash; the capital case cleared independently — fix the quantified defects below, then re-run the gate.</p><p style="margin:0 0 .3rem">The next cheapest experiments, from the unresolved flags:</p><ul><li>Clean the citation set — remove duplicates, verify the originals</li><li>Prove price parity with an independent quote, not a declaration</li></ul><p style="font-size:.9rem;color:var(--ink-2)">Validation log: no customer interviews or pilots logged yet &mdash; the buyer-outcome loop publishes here as it fills. Nothing on this page is externally validated until it says so.</p><div class="promise" data-aa-commerce style="margin-top:2rem"><h3>This report is €500 &mdash; priced by the score, not the verdict</h3><p style="margin:0 0 .8rem">The verdict is honest, and so is the value:<strong>Deep autopsy (Autopsy Value Score)</strong>, computed from the content that survives the failure, never from the verdict. Not clearing is a specific, quantified claim about the venture case &mdash; not about the science, which opens in full above for buyers and subscribers. What survives: 18,643 characters of audit + 29 works cited + computed economics + regulatory estimate + defensibility analysis + named incumbent + 6 measured failure modes. The capital case is<strong>BANKABLE (model)</strong>&mdash; the numbers service the debt at the stated assumptions, and the pack inside is a usable capital-formation document.</p><p style="margin:0"><a href="https://buy.stripe.com/dRm4gz5t104k0mk326g7e3K" rel="noopener" style="font-weight:600" aria-label="Buy the full research report for Amino-Functionalized Boron Nitride Nanosheet (BNNS-NH2) Silicone Gap Fillers via Urea-Assisted Ball Milling, priced at €500">Buy the full report &rarr;</a></p></div>
+  <hr class="rule" style="margin:2.6rem 0 1.6rem">
+  <p style="font-size:.9rem;color:var(--ink-3)">Assessed 2026-09-05 against seven gates plus the
+  voiding sub-tests.<a href="/zh/#thesis">该方法如何运作</a>·<a href="/zh/ledger/">浏览所有概念</a></p>
+</div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/zh/zh/method/">方法</a>
+      <a href="/zh/zh/nations/">国家</a>
+      <a href="/zh/zh/ledger/">账本</a>
+      <a href="/zh/zh/#graveyard">过滤器</a>
+      <a href="/zh/zh/track-record/">业绩记录</a>
+      <a href="/zh/zh/terms/">条款</a>
+      <a href="/zh/zh/privacy/">隐私</a>
+      <a href="/zh/zh/contact/">联系</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">本文仅供研究与教育之用。其中任何内容均不构成投资、法律、监管或工程建议，也不承诺或暗示任何商业结果。在投入资金之前，请独立核实每一项数据、引文和监管要求。</p>
+    <p class="disclaimer">© 2026 The Absence Audit。保留所有权利。· <a href="/zh/zh/terms/">条款</a> · <a href="/zh/zh/privacy/">隐私</a> · <a href="/zh/zh/contact/">联系</a> · <a href="#" data-aa-consent-open>Cookie 设置</a></p>
+  </div>
+</footer>
+</body></html>

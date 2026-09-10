@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<script>window.AA_AGENT = {"id": "agent_1301m1xq8qvbf1x8pg8q7s42ey41", "title": "Sulfur-Rich Chalcogenide Hybrid Inorganic/Organic Polymer (CHIP) Lenses via Inverse Vulcanization"};</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>富硫硫属化物无机/有机杂化聚合物 (CHIP) … — 深科技创投研究 | The Absence Audit</title>
+<meta name="description" content="Study — Inferior optical performance on primary dimension (refractive index n=1.8 to 1.9 vs Germanium n=4.0); advantage is based on 1,554x lower raw material …">
+<link rel="canonical" href="https://theabsenceaudit.com/c/sulfur-rich-chalcogenide-hybrid-inorganic-organic-polymer-chip-lenses/">
+<meta name="theme-color" content="#FBF9F5">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/c/sulfur-rich-chalcogenide-hybrid-inorganic-organic-polymer-chip-lenses/">
+<meta property="og:title" content="Sulfur-Rich Chalcogenide Hybrid Inorganic/Organic Polymer (CHIP) Lenses via Inverse Vulcan…">
+<meta property="og:description" content="Study — Inferior optical performance on primary dimension (refractive index n=1.8 to 1.9 vs Germanium n=4.0); advantage is based on 1,554x lower raw material …">
+<meta property="og:image" content="https://theabsenceaudit.com/images/concepts/sulfur-rich-chalcogenide-hybrid-inorganic-organic-polymer-chip-lenses.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳至正文</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/zh/zh/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/zh/zh/ledger/">账本</a>
+      <a href="/zh/zh/studies/">免费研究</a>
+      <a href="/zh/zh/method/">方法</a>
+      <a href="/zh/zh/nations/">国家</a>
+      <a href="/zh/zh/translation/">翻译</a>
+      <span class="aa-langs"><a href="/zh/c/sulfur-rich-chalcogenide-hybrid-inorganic-organic-polymer-chip-lenses/">EN</a> <a href="/zh/fr/">FR</a> <a href="/zh/zh/">中文</a> <a href="/zh/ru/">RU</a></span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main"><div class="wrap" style="padding:3.2rem 0 4rem;max-width:76ch">
+  <p class="eyebrow"><a href="/zh/ledger/" style="color:inherit">账本</a>· 2026-09-06 · 材料科学 / 光学</p>
+  <h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)">基于逆向硫化的高硫硫属化物杂化无机/有机聚合物（CHIP）透镜</h1>
+  <div class="vbar"><div class="vcell vcell--fail"><span class="vlabel">深科技项目案例</span><span class="vword">未通过</span></div><div class="vcell vcell--pass"><span class="vlabel">资本案例</span><span class="vword">可融资</span><span class="vsub">最低 DSCR 637.98&times; &mdash; 模型测算，非银行最终决策</span></div><p class="vsynth">债务测算成立；所呈报的深科技项目案例则未获通过。若创业者能修复所列缺陷&mdash;&mdash;或在价格上重新定位&mdash;&mdash;模型显示其正在构建的项目是可获得融资的。</p></div>
+  <figure class="concept-fig"><img src="/images/concepts/sulfur-rich-chalcogenide-hybrid-inorganic-organic-polymer-chip-lenses.jpg" alt="Sulfur-Rich Chalcogenide Hybrid Inorganic/Organic Polymer (CHIP) Lenses via Inverse Vulcan…" style="width:100%;border-radius:8px;margin:1.3rem 0 0.2rem"></figure>
+  <div style="margin:1.4rem 0 0.6rem;padding:12px 16px;border:1px solid var(--rule);background:var(--paper-2);border-radius:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)">聆听 &mdash; 60 秒简报</span><audio controls preload="none" style="height:38px" src="/audio/teaser-sulfur-rich-chalcogenide-hybrid-inorganic-organic-polymer-chip-lenses.mp3"></audio><span style="font:12.5px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--ink-3);max-width:34ch">AI 生成概览。完整音频简报随报告一同附上。</span></div>
+  <p class="lede">完整审计&mdash;&mdash;包含机理、计算所得的经济效益、资本案例及每条参考文献&mdash;&mdash;在下方对买方和订阅者完整开放。上述结论是本评估框架对该概念的客观评定，下方的失败记录已公开发布。</p><h3>测定画像</h3><table><tbody><tr><td style="width:36%"><strong>现存基准</strong></td><td>锗（Ge）光学透镜</td></tr><tr><td style="width:36%"><strong>验证信号</strong></td><td>5 篇参考文献，收录 781 次引用，无撤稿（OpenAlex）</td></tr><tr><td style="width:36%"><strong>切入应用</strong></td><td>商业和民用中波红外（MWIR，3–5 µm）热成像系统</td></tr><tr><td style="width:36%"><strong>测定优势</strong></td><td>主要指标光学性能劣势（折射率 n=1.8 至 1.9，相比锗的 n=4.0）；优势建立在原材料成本降低 1,554x（$5.53/kg 对比 $8,597.50/kg）。</td></tr><tr><td style="width:36%"><strong>首次产生收入所需时间</strong></td><td>9 个月</td></tr><tr><td style="width:36%"><strong>平价毛利润率</strong></td><td>99.8%</td></tr><tr><td style="width:36%"><strong>启动资本支出</strong></td><td>$94,800</td></tr><tr><td style="width:36%"><strong>风险敞口资金总额</strong></td><td>$129,800</td></tr><tr><td style="width:36%"><strong>自首次销售起的投资回收期</strong></td><td>0.0 个月</td></tr><tr><td style="width:36%"><strong>含认证的投资回收期</strong></td><td>9.0 个月</td></tr><tr><td style="width:36%"><strong>资本生产率</strong></td><td>870.63x</td></tr><tr><td style="width:36%"><strong>可融资性</strong></td><td>可融资（模型）&mdash; 最低 DSCR 637.98x</td></tr><tr><td style="width:36%"><strong>监管风险</strong></td><td>低 — 未见实质性监管资本支出报告（预估 $0）</td></tr><tr><td style="width:36%"><strong>可防御性</strong></td><td>部分勾勒 — 标明了现有技术/新颖性边界的一侧</td></tr></tbody></table><h3>知识产权与专利态势</h3><p>防御力：<strong>无权利要求</strong>。Lightbringer 外部评审：<strong>待定</strong>&mdash; 外部评审尚未针对本报告运行。完整的发明与专利态势&mdash;&mdash;包含具名贡献、专利号、对比矩阵、权利要求层级&mdash;&mdash;发布于下方报告中。</p><p>逆向工程评审：<strong>待定</strong>&mdash; 逆向工程评审尚未针对本报告运行</p><h3>深科技项目案例未通过原因</h3><ul><li>否决项：阴性对照 / 低于 2x、外形规格 / 处理性能退化、缺失搜索遗漏</li><li>证据依赖于非同行评审来源</li><li>宣称存在缺失，但未呈报搜索过程</li></ul><h3>评估重点说明</h3><p>该深科技项目未通过优越性关口，原因是其优势仅基于较低的成本与重量，而其核心光学性能指标（折射率 n=1.8 对比 n=4.0）绝对劣于锗。此外，报告缺乏包含定量搜索计数的结构化市场缺失账本，且熔融硫的处理存在外形规格处理性能退化。</p><h3>其它警示标记</h3><ul><li>宣称价格持平，但未注明来源</li><li>runsheet_no_quantities</li><li>缺少对比数据矩阵</li><li>缺少权利要求层级</li></ul><p style="margin-top:1.6rem;font-size:.93rem;color:var(--ink-2)">该结论并非认定科学原理有误。其含义是该深科技项目案例未能经受考验：对比标的并非买方实际采购之物、对比非同类对等、优势未达飞跃性改变（step change），抑或资本规模与首次产生收入所需时间令人望而却步。</p><h3>尚存的立论路径</h3><p>资本案例独立于深科技项目结论而获通过：模型计算为<strong>可融资</strong>，最低 DSCR 为 637.98× — 在所设假设下债务测算成立。未通过意味着深科技项目案例未达评估框架的准绳；但这并不意味着该业务无法构建。</p><p>上述每一条原因均为明确、定量的缺陷 — 在多花一分钱之前，修复方案便已明了。未通过后尚存两条构建路径：修复缺陷并重新测试，或者重新定位 — 缺乏飞跃性改变时，成本替代路线根本不需要它：采用可在价格上压低现存产品并促成转换的直接替换品（drop-in）。失败原因即是路线图；重新测算的经济效益给出了单位成本态势（详见完整报告内）。若您能修复前者或推销后者，本报告便是完整的蓝图 — 涵盖机理、操作规程、经济效益、资本包及参考文献。</p><div data-aa-locked style="margin:2rem 0;padding:1.1rem 1.2rem;background:var(--paper-2);border:1px solid var(--rule);border-radius:8px"><h2 style="margin:0 0 .6rem">完整报告</h2><p style="margin:0;font-size:.95rem;color:var(--ink-2)">完整研究报告&mdash;&mdash;机理与操作规程、带数量的生产作业表、含六种情景压力测试的重测经济效益、审计本身的异议、机构资本形成包及每条已校验参考文献&mdash;&mdash;在此向买方和订阅者全面开放。点击下方的购买行动号召以就地展开阅读。</p></div><div data-aa-report style="display:none"></div><div data-aa-parts hidden><div class="aa-briefcase" data-aa-parts data-aa-slug="sulfur-rich-chalcogenide-hybrid-inorganic-organic-polymer-chip-lenses"><div class="aa-bc-row"><span class="aa-bc-label">下载</span><div class="aa-bc-pills"><button type="button" class="aa-pill" data-aa-dl="financial" data-aa-label="Financial plan" title="Lender · bank · debt committee">财务计划</button><button type="button" class="aa-pill" data-aa-dl="centrifuge" data-aa-label="Centrifuge pack" title="Pool onboarding · Credit Group">Centrifuge 资料包</button><button type="button" class="aa-pill" data-aa-dl="morpho" data-aa-label="Morpho pack" title="Curators · market creation">Morpho 资料包</button><button type="button" class="aa-pill" data-aa-dl="brickken" data-aa-label="Brickken pack" title="Tokenization onboarding">Brickken 资料包</button><button type="button" class="aa-pill" data-aa-dl="investor" data-aa-label="Investor pack" title="Senior & junior LPs">投资者资料包</button><button type="button" class="aa-pill" data-aa-dl="offtake" data-aa-label="Offtake pack" title="Contract counterparty">包销资料包</button><button type="button" class="aa-pill" data-aa-dl="mica" data-aa-label="MiCA & regulatory pack" title="Offeror · competent authority">MiCA 与监管资料包</button><button type="button" class="aa-pill" data-aa-dl="technical" data-aa-label="Technical & IP pack" title="Engineering · patent counsel">技术与知识产权资料包</button><button type="button" class="aa-pill" data-aa-dl="ops" data-aa-label="Operations & audit pack" title="Operator · trustee · auditor">运营与审计资料包</button><button type="button" class="aa-pill aa-pill-full" data-aa-dl="full" data-aa-label="Full report" title="Every section &amp; citation">完整报告</button></div></div><div class="aa-bc-row"><span class="aa-bc-label">阅读</span><div class="aa-bc-tabs"><button type="button" class="aa-tab" data-aa-part="financial" data-aa-label="Financial plan" title="Lender · bank · debt committee">财务计划</button><button type="button" class="aa-tab" data-aa-part="centrifuge" data-aa-label="Centrifuge pack" title="Pool onboarding · Credit Group">Centrifuge 资料包</button><button type="button" class="aa-tab" data-aa-part="morpho" data-aa-label="Morpho pack" title="Curators · market creation">Morpho 资料包</button><button type="button" class="aa-tab" data-aa-part="brickken" data-aa-label="Brickken pack" title="Tokenization onboarding">Brickken 资料包</button><button type="button" class="aa-tab" data-aa-part="investor" data-aa-label="Investor pack" title="Senior & junior LPs">投资者资料包</button><button type="button" class="aa-tab" data-aa-part="offtake" data-aa-label="Offtake pack" title="Contract counterparty">包销资料包</button><button type="button" class="aa-tab" data-aa-part="mica" data-aa-label="MiCA & regulatory pack" title="Offeror · competent authority">MiCA 与监管资料包</button><button type="button" class="aa-tab" data-aa-part="technical" data-aa-label="Technical & IP pack" title="Engineering · patent counsel">技术与知识产权资料包</button><button type="button" class="aa-tab" data-aa-part="ops" data-aa-label="Operations & audit pack" title="Operator · trustee · auditor">运营与审计资料包</button><button type="button" class="aa-tab aa-tab-on" data-aa-part="full" data-aa-label="Full report" title="Every section &amp; citation" aria-pressed="true">完整报告</button></div></div></div></div><h3>决策</h3><p><strong style="color:var(--ink-2)">调研</strong>&mdash; 资本案例已独立通过 — 修复下方量化缺陷后，重新运行淘汰门。</p><p style="margin:0 0 .3rem">基于未解决警示标记的下一批成本最低实验：</p><ul><li>用独立报价证明价格持平，而非仅凭声明</li></ul><p style="font-size:.9rem;color:var(--ink-2)">验证日志：尚无客户访谈或试点记录&mdash;&mdash;买方成效闭环将随进展在此发布。在明确标明之前，本页面内容均未经过外部验证。</p><div class="promise" data-aa-commerce style="margin-top:2rem"><h3>本报告售价 €500 &mdash; 按分值定价，而非按结论定价</h3><p style="margin:0 0 .8rem">结论讲求求真，价值亦然：<strong>深度剖析（剖析价值分值）</strong>，根据未受失败影响的存续内容测算，绝非源于结论。未通过是对深科技项目案例提出的具体、量化断言&mdash;&mdash;而非针对科学原理，其科学内容在上方对买方和订阅者完整开放。留存内容包括：22,222 字符审计 + 35 篇参考文献 + 测算经济效益 + 监管预估 + 防御力分析 + 具名现存产品 + 6 种测定的失效模式。资本案例为<strong>可融资（模型）</strong>&mdash; 在既定假设下，该数字足以偿还债务，且内附资料包是立即可用的资本形成文件。</p><p style="margin:0"><a href="https://buy.stripe.com/6oUdR9bRp3gwb0YfOSg7f0i" rel="noopener" style="font-weight:600" aria-label="Buy the full research report for Sulfur-Rich Chalcogenide Hybrid Inorganic/Organic Polymer (CHIP) Lenses via Inverse Vulcanization, priced at €500">购买完整报告 &rarr;</a></p></div>
+  <hr class="rule" style="margin:2.6rem 0 1.6rem">
+  <p style="font-size:.9rem;color:var(--ink-3)">于 2026-09-06 对照七个淘汰门及否决子测试完成评估。<a href="/zh/#thesis">方法运作机制</a>·<a href="/zh/ledger/">浏览所有概念</a></p>
+</div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/zh/zh/method/">方法</a>
+      <a href="/zh/zh/nations/">国家</a>
+      <a href="/zh/zh/ledger/">账本</a>
+      <a href="/zh/zh/#graveyard">过滤器</a>
+      <a href="/zh/zh/track-record/">业绩记录</a>
+      <a href="/zh/zh/terms/">条款</a>
+      <a href="/zh/zh/privacy/">隐私</a>
+      <a href="/zh/zh/contact/">联系</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">本文仅供研究与教育之用。其中任何内容均不构成投资、法律、监管或工程建议，也不承诺或暗示任何商业结果。在投入资金之前，请独立核实每一项数据、引文和监管要求。</p>
+    <p class="disclaimer">© 2026 The Absence Audit。保留所有权利。· <a href="/zh/zh/terms/">条款</a> · <a href="/zh/zh/privacy/">隐私</a> · <a href="/zh/zh/contact/">联系</a> · <a href="#" data-aa-consent-open>Cookie 设置</a></p>
+  </div>
+</footer>
+</body></html>

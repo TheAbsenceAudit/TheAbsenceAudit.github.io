@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<script>window.AA_AGENT = {"id": "agent_7101m1xq9csaee0a50fj94384vge", "title": "Thermoresponsive In-Situ Gelling Biogel via Polyacrylamide/Gelatin Co-Polymerization"};</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>基于聚丙烯酰胺/明胶…的热响应原位成胶生物凝胶 — 深科技创投研究 | The Absence Audit</title>
+<meta name="description" content="Study — 2.36x SNR improvement (25.2 dB vs 10.64 dB) and &gt;4.8x impedance reduction (310 Ω vs 1.5–5.0 kΩ)">
+<link rel="canonical" href="https://theabsenceaudit.com/c/thermoresponsive-in-situ-gelling-biogel-via-polyacrylamide-gelatin-co/">
+<meta name="theme-color" content="#FBF9F5">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/c/thermoresponsive-in-situ-gelling-biogel-via-polyacrylamide-gelatin-co/">
+<meta property="og:title" content="Thermoresponsive In-Situ Gelling Biogel via Polyacrylamide/Gelatin Co-Polymerization">
+<meta property="og:description" content="Study — 2.36x SNR improvement (25.2 dB vs 10.64 dB) and &gt;4.8x impedance reduction (310 Ω vs 1.5–5.0 kΩ)">
+<meta property="og:image" content="https://theabsenceaudit.com/images/concepts/thermoresponsive-in-situ-gelling-biogel-via-polyacrylamide-gelatin-co.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳至正文</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/zh/zh/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/zh/zh/ledger/">账本</a>
+      <a href="/zh/zh/studies/">免费研究</a>
+      <a href="/zh/zh/method/">方法</a>
+      <a href="/zh/zh/nations/">国家</a>
+      <a href="/zh/zh/translation/">翻译</a>
+      <span class="aa-langs"><a href="/zh/c/thermoresponsive-in-situ-gelling-biogel-via-polyacrylamide-gelatin-co/">EN</a> <a href="/zh/fr/">FR</a> <a href="/zh/zh/">中文</a> <a href="/zh/ru/">RU</a></span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main"><div class="wrap" style="padding:3.2rem 0 4rem;max-width:76ch">
+  <p class="eyebrow"><a href="/zh/ledger/" style="color:inherit">账本</a>· 2026-09-04 · 生物医学工程</p>
+  <h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)">通过聚丙烯酰胺/明胶共聚制备温敏型原位凝胶生物凝胶</h1>
+  <div class="vbar"><div class="vcell vcell--fail"><span class="vlabel">深科技项目案例</span><span class="vword">未通过</span></div><div class="vcell vcell--pass"><span class="vlabel">资本案例</span><span class="vword">可融资</span><span class="vsub">最低 DSCR 38.38×——模型测算，非银行决策</span></div><p class="vsynth">债务测算可行；但所呈现的深科技项目案例未能通过。若构建者能够修复指出的缺陷——或在价格上重新定位——模型表明其所构建的项目是可融资的。</p></div>
+  <figure class="concept-fig"><img src="/images/concepts/thermoresponsive-in-situ-gelling-biogel-via-polyacrylamide-gelatin-co.jpg" alt="Thermoresponsive In-Situ Gelling Biogel via Polyacrylamide/Gelatin Co-Polymerization" style="width:100%;border-radius:8px;margin:1.3rem 0 0.2rem"></figure>
+  <div style="margin:1.4rem 0 0.6rem;padding:12px 16px;border:1px solid var(--rule);background:var(--paper-2);border-radius:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)">收听——60秒简报</span><audio controls preload="none" style="height:38px" src="/audio/teaser-thermoresponsive-in-situ-gelling-biogel-via-polyacrylamide-gelatin-co.mp3"></audio><span style="font:12.5px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--ink-3);max-width:34ch">AI生成概述。完整音频简报随报告提供。</span></div>
+  <p class="lede">完整的审计——包含机制、测算的经济性指标、资本案例及每篇引文——在下方对买方和订阅者完整开放。上述结论是该框架对这一概念的客观评价，下方的未通过记录亦向公众公开。</p><h3>测定画像</h3><table><tbody><tr><td style="width:36%"><strong>现有基准</strong></td><td>Weaver Ten20 Conductive Paste</td></tr><tr><td style="width:36%"><strong>验证信号</strong></td><td>5篇参考文献，156次记录在案的引用，无撤稿（OpenAlex）</td></tr><tr><td style="width:36%"><strong>切入应用</strong></td><td>长期连续动态脑电图（EEG）监测</td></tr><tr><td style="width:36%"><strong>测定优势</strong></td><td>信噪比（SNR）提升 2.36 倍（25.2 dB 对比 10.64 dB），阻抗降低 >4.8 倍（310 Ω 对比 1.5–5.0 kΩ）</td></tr><tr><td style="width:36%"><strong>首笔收入达成时间</strong></td><td>16 个月</td></tr><tr><td style="width:36%"><strong>同等价位下的毛利润率</strong></td><td>87.2%</td></tr><tr><td style="width:36%"><strong>启动资本支出</strong></td><td>$215,000</td></tr><tr><td style="width:36%"><strong>总风险现金</strong></td><td>$450,000</td></tr><tr><td style="width:36%"><strong>自首销起投资回收期</strong></td><td>0.3 个月</td></tr><tr><td style="width:36%"><strong>包含资质认证的投资回收期</strong></td><td>16.3 个月</td></tr><tr><td style="width:36%"><strong>资本生产率</strong></td><td>94.01x</td></tr><tr><td style="width:36%"><strong>可融资性</strong></td><td>可融资（模型）——最低 DSCR 38.38x</td></tr><tr><td style="width:36%"><strong>监管风险</strong></td><td>中等——报告了资质认证成本（预计 $450,000）</td></tr></tbody></table><h3>知识产权与专利态势</h3><p>防御性：<strong>未评估</strong>。Lightbringer 外部评审：<strong>待定</strong>——本报告尚未开展外部评审。该报告早于防御性评估要求的设立时间——目前态势作为披露发布，未主张专利地位。</p><p>逆向工程评审：<strong>待定</strong>——本报告尚未开展逆向工程评审</p><h3>深科技项目案例未通过的原因</h3><ul><li>判定无效原因：外形规格/操作便利性退步，缺失检索遗漏</li><li>证据依赖非同行评审来源</li><li>主张存在缺失，但未报告检索情况</li></ul><h3>评估指出</h3><p>该概念展现出显著的信号优势和高利润率，但由于与现有常温工作流程相比需要冷藏储存以及用冷水/冰去除，未能在外形与使用规格上达到同等水平。此外，它缺乏包含数值检索计数的结构化市场缺失账本部分。</p><h3>其他警示项</h3><ul><li>未分析客户转换动机</li><li>价格同等为主张陈述，未列明出处</li><li>runsheet_no_quantities</li></ul><p style="margin-top:1.6rem;font-size:.93rem;color:var(--ink-2)">该结论并不意味着科学本身有误。它表明该深科技项目案例未能成立：对标物并非买方实际采购的产品、对比未做到同等对等、优势未达到质的飞跃，或是资本与首笔收入达成时间要求过高。</p><h3>仍然成立的案例</h3><p>资本案例独立于深科技项目结论而获得通过：模型测算结果为<strong>可融资</strong>，最低 DSCR 为 38.38×——在既定假设下债务测算完全可行。未通过意味着深科技项目案例未能达到框架标准；但这并不意味着该业务无法落地。</p><p>上述每一条原因都是具体且量化的缺陷——在投入更多资金之前，解决方案便已清晰明确。未通过后仍有两条推进路径：修复缺陷并重新测试，或者重新定位——在缺乏质的飞跃时，成本替代路径无需质变：只需提供一个在价格上击败现有产品并促成转换的直接替代品。未通过的原因即是路线图；重新测算的经济性指标阐明了单位成本地位（见完整报告）。如果您能修复缺陷或推动替代品销售，本报告就是完整的蓝图——机制、操作规程、经济性指标、资本方案包以及参考文献。</p><div data-aa-locked style="margin:2rem 0;padding:1.1rem 1.2rem;background:var(--paper-2);border:1px solid var(--rule);border-radius:8px"><h2 style="margin:0 0 .6rem">完整报告</h2><p style="margin:0;font-size:.95rem;color:var(--ink-2)">完整研究报告——机制与操作规程、带数量的生产流程表、包含六种情景压力测试的重新测算经济性指标、审计本身的异议、机构资本募集方案包以及每篇已验证参考文献——在此处向买方和订阅者完整开放。点击下方的购买按钮即可就地查阅。</p></div><div data-aa-report style="display:none"></div><div data-aa-parts hidden><div class="aa-briefcase" data-aa-parts data-aa-slug="thermoresponsive-in-situ-gelling-biogel-via-polyacrylamide-gelatin-co"><div class="aa-bc-row"><span class="aa-bc-label">下载</span><div class="aa-bc-pills"><button type="button" class="aa-pill" data-aa-dl="financial" data-aa-label="Financial plan" title="Lender · bank · debt committee">财务计划</button><button type="button" class="aa-pill" data-aa-dl="centrifuge" data-aa-label="Centrifuge pack" title="Pool onboarding · Credit Group">Centrifuge 方案包</button><button type="button" class="aa-pill" data-aa-dl="morpho" data-aa-label="Morpho pack" title="Curators · market creation">Morpho 方案包</button><button type="button" class="aa-pill" data-aa-dl="brickken" data-aa-label="Brickken pack" title="Tokenization onboarding">Brickken 方案包</button><button type="button" class="aa-pill" data-aa-dl="investor" data-aa-label="Investor pack" title="Senior & junior LPs">投资者方案包</button><button type="button" class="aa-pill" data-aa-dl="offtake" data-aa-label="Offtake pack" title="Contract counterparty">承销包</button><button type="button" class="aa-pill" data-aa-dl="mica" data-aa-label="MiCA & regulatory pack" title="Offeror · competent authority">MiCA 及监管方案包</button><button type="button" class="aa-pill" data-aa-dl="technical" data-aa-label="Technical & IP pack" title="Engineering · patent counsel">技术与知识产权方案包</button><button type="button" class="aa-pill" data-aa-dl="ops" data-aa-label="Operations & audit pack" title="Operator · trustee · auditor">运营与审计方案包</button><button type="button" class="aa-pill aa-pill-full" data-aa-dl="full" data-aa-label="Full report" title="Every section &amp; citation">完整报告</button></div></div><div class="aa-bc-row"><span class="aa-bc-label">阅读</span><div class="aa-bc-tabs"><button type="button" class="aa-tab" data-aa-part="financial" data-aa-label="Financial plan" title="Lender · bank · debt committee">财务计划</button><button type="button" class="aa-tab" data-aa-part="centrifuge" data-aa-label="Centrifuge pack" title="Pool onboarding · Credit Group">Centrifuge 方案包</button><button type="button" class="aa-tab" data-aa-part="morpho" data-aa-label="Morpho pack" title="Curators · market creation">Morpho 方案包</button><button type="button" class="aa-tab" data-aa-part="brickken" data-aa-label="Brickken pack" title="Tokenization onboarding">Brickken 方案包</button><button type="button" class="aa-tab" data-aa-part="investor" data-aa-label="Investor pack" title="Senior & junior LPs">投资者方案包</button><button type="button" class="aa-tab" data-aa-part="offtake" data-aa-label="Offtake pack" title="Contract counterparty">承销包</button><button type="button" class="aa-tab" data-aa-part="mica" data-aa-label="MiCA & regulatory pack" title="Offeror · competent authority">MiCA 及监管方案包</button><button type="button" class="aa-tab" data-aa-part="technical" data-aa-label="Technical & IP pack" title="Engineering · patent counsel">技术与知识产权方案包</button><button type="button" class="aa-tab" data-aa-part="ops" data-aa-label="Operations & audit pack" title="Operator · trustee · auditor">运营与审计方案包</button><button type="button" class="aa-tab aa-tab-on" data-aa-part="full" data-aa-label="Full report" title="Every section &amp; citation" aria-pressed="true">完整报告</button></div></div></div></div><h3>决策建议</h3><p><strong style="color:var(--ink-2)">深入调查</strong>——资本案例已独立通过——修复下方量化的缺陷，然后重新运行淘汰门测试。</p><p style="margin:0 0 .3rem">基于尚未解决的警示项，成本最低的后续实验：</p><ul><li>访谈 5 位目标客户以了解转换阻力——资质认证、工作流程、总拥有成本</li><li>通过独立报价证明价格同等，而非单方面声明</li></ul><p style="font-size:.9rem;color:var(--ink-2)">验证日志：尚未记录客户访谈或试点——买方成果闭环将在此逐步发布。在明确声明之前，本页面上的任何内容均未经外部验证。</p><div class="promise" data-aa-commerce style="margin-top:2rem"><h3>本报告售价 €250——依评分定价，而非依据结论</h3><p style="margin:0 0 .8rem">结论秉持客观，价值同样真实：<strong>深度剖析（剖析价值评分）</strong>，基于从失败中留存下来的内容计算，绝非源自结论本身。未通过是对深科技项目案例具体、量化的判定——而非对科学本身的否定，后者在上方对买方和订阅者完整开放。留存内容包括：19,709 字审计内容 + 17 篇参考文献 + 测算的经济性指标 + 监管预估 + 明确列出的现有竞品 + 5 项测定的失效模式。资本案例为<strong>可融资（模型）</strong>——在既定假设下，数据能够覆盖债务偿付，其中的方案包是一份可实操的资本募集文件。</p><p style="margin:0"><a href="https://buy.stripe.com/3cI7sL8Fd18oeda5aeg7e2X" rel="noopener" style="font-weight:600" aria-label="Buy the full research report for Thermoresponsive In-Situ Gelling Biogel via Polyacrylamide/Gelatin Co-Polymerization, priced at €250">购买完整报告 &rarr;</a></p></div>
+  <hr class="rule" style="margin:2.6rem 0 1.6rem">
+  <p style="font-size:.9rem;color:var(--ink-3)">于 2026-09-04 依据七项淘汰门及判定无效子测试完成评估。<a href="/zh/#thesis">方法运作原理</a>·<a href="/zh/ledger/">浏览所有概念</a></p>
+</div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/zh/zh/method/">方法</a>
+      <a href="/zh/zh/nations/">国家</a>
+      <a href="/zh/zh/ledger/">账本</a>
+      <a href="/zh/zh/#graveyard">过滤器</a>
+      <a href="/zh/zh/track-record/">业绩记录</a>
+      <a href="/zh/zh/terms/">条款</a>
+      <a href="/zh/zh/privacy/">隐私</a>
+      <a href="/zh/zh/contact/">联系</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">本文仅供研究与教育之用。其中任何内容均不构成投资、法律、监管或工程建议，也不承诺或暗示任何商业结果。在投入资金之前，请独立核实每一项数据、引文和监管要求。</p>
+    <p class="disclaimer">© 2026 The Absence Audit。保留所有权利。· <a href="/zh/zh/terms/">条款</a> · <a href="/zh/zh/privacy/">隐私</a> · <a href="/zh/zh/contact/">联系</a> · <a href="#" data-aa-consent-open>Cookie 设置</a></p>
+  </div>
+</footer>
+</body></html>
