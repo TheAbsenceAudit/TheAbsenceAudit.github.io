@@ -344,7 +344,7 @@
       <div><dt>To Phase 0</dt><dd>90 days</dd></div>
     </dl>
     <p class="n-audit-note">Every figure on this page is computed in code
-    (<code>nations_audit.py</code>) from the cited primitives &mdash; the full works-cited register
+    (the audit engine) from the cited primitives &mdash; the full works-cited register
     closes the page, and every number resolves to it. The grades below separate what is established
     from what is modeled.</p>
   </div>
@@ -1500,8 +1500,8 @@
       <tbody>
       <tr><td>Phase 0 ($1.5M complete)</td><td>grant / founder / early mandate</td><td>no DFI needed; 90 days</td></tr>
       <tr><td>Health pilot ($58k)</td><td>ESG/grant</td><td>the first scoreboard numbers</td></tr>
-      <tr><td>Metals plant (~$100M)</td><td>60% debt @7% + offtake security; MIGA</td><td>DSCR >=1.2 at contract prices (nations_v5)</td></tr>
-      <tr><td>Solar (500 MW, ~$550M)</td><td>DFI stack: EIB/AfDB/WB-IFC at 4.5% + MIGA; or lean build</td><td>DSCR gate inside the bankable region (nations_v5)</td></tr>
+      <tr><td>Metals plant (~$100M)</td><td>60% debt @7% + offtake security; MIGA</td><td>DSCR >=1.2 at contract prices</td></tr>
+      <tr><td>Solar (500 MW, ~$550M)</td><td>DFI stack: EIB/AfDB/WB-IFC at 4.5% + MIGA; or lean build</td><td>DSCR gate inside the bankable region</td></tr>
       <tr><td>Desal (~$165M)</td><td>70% debt @6% + municipal offtake + sovereign backstop</td><td>blended >=$0.68/m3, >=60% pre-sold</td></tr>
       <tr><td>Terfas + food ($7-35M)</td><td>concessional agri + founder</td><td>nursery first</td></tr>
       <tr><td>EU Global Gateway (17 GW)</td><td>the national envelope this program plugs into</td><td>Pg7</td></tr>
@@ -1853,7 +1853,7 @@
     <h2>Every number, bridged &mdash; the engineering audit</h2>
     <p class="n-lede">Each headline figure carries its bridge &mdash; volume &times; price &times; utilization,
     the double-counting checks, the pilot/capital separation, and a grade on every claim &mdash; computed in
-    code (<code>nations_audit.py</code>) and rendered here. Where the system breaks, the resolution is on
+    code (the audit engine) and rendered here. Where the system breaks, the resolution is on
     this page: every gate is a number, and every number resolves to the works-cited register below.</p>
 
     <h3 class="n-sub">Tier 1 &mdash; what is established, with its source</h3>
@@ -1891,7 +1891,7 @@
       <tr><td>Brine valorization &mdash; NaCl by solar-crystallization ponds (free sun); Mg(OH)&#8322; by lime precipitation from the loop's own kilns (134 t/yr lime, 0.14 GWh/yr &mdash; no evaporation), 100 kt to the board's fire retardant + 40 kt surplus sold at the park gate</td><td>&minus;$0.137</td><td>DERIVED &mdash; process specified, CARMEn-anchored cost; the Mg(OH)&#8322; VALUE books in the board's own ledger, zero here until offtake signs</td><td>if the Mg(OH)&#8322; of-take is not signed by FID, the credit degrades to &minus;$0.03 (disposal avoided only) &mdash; the biggest single sensitivity</td></tr>
       <tr><td>Shared civil works &mdash; one intake, one outfall, one grid connection serves RO + DC + metals in the same park</td><td>&minus;$0.032</td><td>DERIVED &mdash; 12% capex sharing</td><td>if the park phases one module at a time, halve it to &minus;$0.016</td></tr>
       <tr><td>Dispatch value &mdash; the desal's own flexibility follows the loop's own solar curve</td><td>&minus;$0.015</td><td>DERIVED &mdash; 20 GWh shifted</td><td>fails to zero if the STEG contract does not reward flexibility &mdash; contractual, not hoped</td></tr>
-      <tr><td>ESG financing delta &mdash; the health leg's public KPIs reprice the loop's own debt (100&ndash;150bp)</td><td>&minus;$0.026</td><td>DERIVED &mdash; nations_v3</td><td>fails to zero if lenders do not accept the KPI track record &mdash; bankable-region fallback keeps the module alive</td></tr>
+      <tr><td>ESG financing delta &mdash; the health leg's public KPIs reprice the loop's own debt (100&ndash;150bp)</td><td>&minus;$0.026</td><td>DERIVED</td><td>fails to zero if lenders do not accept the KPI track record &mdash; bankable-region fallback keeps the module alive</td></tr>
       <tr><td>Brine pump-as-turbine &mdash; the desal's own residual pressure</td><td>&minus;$0.002</td><td>DERIVED &mdash; 2.5 bar &times; 75%</td><td>fails to zero &mdash; immaterial</td></tr>
       <tr class="n-total"><td><strong>Integrated water cost</strong></td><td><strong>$0.352/m&sup3;</strong></td><td>28% of SONEDE&rsquo;s own $1.00&ndash;1.50 (Pg16)</td><td>the degraded cascade: if every soft credit fails, water still lands at $0.521/m&sup3; &mdash; under SONEDE's own $1.00&ndash;1.50, and the $0.68 gate still clears with margin. The credits are the margin, not the plan.</td></tr>
       </tbody>
@@ -2251,7 +2251,7 @@
     <h2>Take the part you need</h2>
     <p class="n-lede">The full audit is one page &mdash; but every party needs its own slice, at the same rigor,
     computed from the same code. Five documents, one click each, no email, no gate. The arithmetic behind every
-    one of them is the same <code>nations_audit.py</code> output that renders the tables above.</p>
+    one of them is the same audit engine output that renders the tables above.</p>
     <div class="n-grid">
       <article class="n-card n-dl">
         <p class="n-num">For everyone</p>
@@ -2268,7 +2268,7 @@
       <article class="n-card n-dl">
         <p class="n-num">For investors</p>
         <h3>Investor economics</h3>
-        <p>The FX bridge, per-pathway DSCR and payback, the capital stack, the Phase 0 ask &mdash; every table from nations_v5.</p>
+        <p>The FX bridge, per-pathway DSCR and payback, the capital stack, the Phase 0 ask &mdash; every table from the same engine.</p>
         <p><a class="n-dl-btn" href="/nations/tunisia-investor-economics.pdf" download>Download PDF &darr;</a></p>
       </article>
       <article class="n-card n-dl">
