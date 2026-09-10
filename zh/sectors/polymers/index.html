@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>聚合物概念 — 已评估 7 项</title>
+<meta name="description" content="The Absence Audit assessed 7 Polymers concepts from peer-reviewed literature: 1 survived the gates, the rest rejected with published autopsies.">
+<link rel="canonical" href="https://theabsenceaudit.com/sectors/polymers/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">跳至内容</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/zh/zh/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/zh/zh/ledger/">账本</a>
+      <a href="/zh/zh/studies/">免费研究</a>
+      <a href="/zh/zh/method/">方法</a>
+      <a href="/zh/zh/nations/">国家</a>
+      <a href="/zh/zh/translation/">翻译</a>
+      <span class="aa-langs"><a href="/zh/sectors/polymers/">EN</a> <a href="/zh/fr/">FR</a> <a href="/zh/zh/">中文</a> <a href="/zh/ru/">RU</a></span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="wrap hub">
+<p class="eyebrow">行业中心 ·<a href="/zh/ledger/">完整账本</a></p>
+<h1>聚合物</h1>
+<p class="lede">本行业共评估了 7 个概念；1 个已通过或待售。每次否决均附带其特定的失效模式。</p>
+<article class="hub-card cleared">
+<h2><a href="/zh/c/mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc/">基于无溶剂环三聚反应的机械化学共价三嗪骨架 (CTFs)</a></h2>
+<p class="hub-status cleared">已通过</p>
+<p class="hub-ev">903.0 mg/g PFOA 吸附容量，相比之下优质 GAC 仅为 43.4 mg/g（相差 20.8x）</p>
+<p class="hub-econ">毛利润率 71.2% · 资本支出 $85,000 · 投资回收期 8.1 个月</p>
+<p class="hub-fail">无</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/zh/c/high-impact-polydicyclopentadiene-pdcpd-resins-via-frontal-ring-openin/">基于前沿开环易位聚合 (FROMP) 的高抗冲聚双环戊二烯 (pDCPD) 树脂</a></h2>
+<p class="hub-status rejected">已否决</p>
+<p class="hub-ev">与结构环氧树脂相比，防弹能量吸收 (KE50) 提高 300%-400%（3-4x），分层面积减少 50%</p>
+<p class="hub-econ">毛利润率 60.7% · 资本支出 $134,500 · 投资回收期 1.9 个月</p>
+<p class="hub-fail">利润率未通过运营成本检验</p>
+<p class="hub-fail">无</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/zh/c/lignosulfonate-acrylamide-graft-copolymers-ls-g-paam-via-redox-initiat/">基于氧化还原引发水相聚合的木质素磺酸盐-丙烯酰胺接枝共聚物 (LS-g-PAAm)</a></h2>
+<p class="hub-status rejected">已否决</p>
+<p class="hub-ev">在 200°C 下高温高压 (HTHP) 滤失量降低 3.84x（LS-g-PAAm 为 7.5 mL，而 Driscal D 为 28.8 mL）</p>
+<p class="hub-econ">毛利润率 87.7% · 资本支出 $92,000 · 投资回收期 0.6 个月</p>
+<p class="hub-fail">无</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/zh/c/premium-high-barrier-packaging-plastics-phbv-via-non-sterile-halophili/">基于非无菌嗜盐菌发酵的优质高阻隔包装塑料 (PHBV)</a></h2>
+<p class="hub-status rejected">已否决</p>
+<p class="hub-ev">PHBV 的 OTR 为 218.4 cm³/m²/day，而聚乙烯的 OTR 为 1543.09 cm³/m²/day（透氧率低 7.0x）。</p>
+<p class="hub-fail">B</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/zh/c/terephthalaldehyde-crosslinked-polyimine-vitrimers-via-catalyst-free-s/">基于无催化剂溶液流延的对苯二甲醛交联聚亚胺类玻璃高分子 (Vitrimers)</a></h2>
+<p class="hub-status rejected">已否决</p>
+<p class="hub-ev">拉伸强度为 97.0 MPa，而 BPA 环氧树脂为 70-80 MPa（提升 1.2x）；可重复加工循环达 5 次，而 BPA 环氧树脂为 0 次</p>
+<p class="hub-econ">毛利润率 70.0% · 资本支出 $85,000 · 投资回收期 1.4 个月</p>
+<p class="hub-fail">无</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/zh/c/thermoreversible-diels-alder-poly-vinyl-alcohol-hot-melt-adhesive-via/">基于呋喃-马来酰亚胺环加成的热可逆 Diels-Alder 聚乙烯醇热熔胶</a></h2>
+<p class="hub-status rejected">已否决</p>
+<p class="hub-ev">43.33 N/mm 剥离强度，相比之下 3M Scotch-Weld PUR TE040 仅为 9.1 N/mm（相差 4.76x）</p>
+<p class="hub-econ">毛利润率 46.4% · 资本支出 $220,000 · 投资回收期 1.5 个月</p>
+<p class="hub-fail">证据基于未经同行评议的来源</p>
+<p class="hub-fail">利润率未通过运营成本检验</p>
+<p class="hub-fail">断言存在缺失，但未报告检索情况</p>
+<p class="hub-fail">D, I, J</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/zh/c/wpua-pam-eg-organohydrogel-coatings-via-uv-initiated-free-radical-poly/">基于紫外光引发自由基聚合的 WPUA-PAM@EG 有机水凝胶涂层</a></h2>
+<p class="hub-status rejected">已否决</p>
+<p class="hub-ev">在 -30°C 下液滴冻结延迟达 322s，相比之下现有产品 &lt;20s（延迟 &gt;16x）；在 -50°C 下冰粘附力为 39.8 kPa，相比之下基准值 &gt;500 kPa（降低 &gt;12x）</p>
+<p class="hub-econ">毛利润率 46.4% · 资本支出 $315,000 · 投资回收期 2.0 个月</p>
+<p class="hub-fail">利润率未通过运营成本检验</p>
+<p class="hub-fail">B, C, D, F, G</p>
+</article>
+<p class="hub-back">其他行业：<a href="/zh/sectors/materials/">材料</a>·<a href="/zh/sectors/agriculture/">农业</a>·<a href="/zh/sectors/biotechnology/">生物技术</a>·<a href="/zh/sectors/chemical-engineering/">化学工程</a>·<a href="/zh/sectors/medical-cosmetics/">医疗与化妆品</a>·<a href="/zh/sectors/environmental/">环境</a>·<a href="/zh/sectors/energy-electronics/">能源与电子</a>·<a href="/zh/sectors/unclassified/">未分类</a>·<a href="/zh/sectors/specialty-chemicals-tribology/">特种化学品 / 摩擦学</a></p></div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/zh/zh/method/">方法</a>
+      <a href="/zh/zh/nations/">国家</a>
+      <a href="/zh/zh/ledger/">账本</a>
+      <a href="/zh/zh/#graveyard">过滤器</a>
+      <a href="/zh/zh/track-record/">业绩记录</a>
+      <a href="/zh/zh/terms/">条款</a>
+      <a href="/zh/zh/privacy/">隐私</a>
+      <a href="/zh/zh/contact/">联系</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">本文仅供研究与教育之用。其中任何内容均不构成投资、法律、监管或工程建议，也不承诺或暗示任何商业结果。在投入资金之前，请独立核实每一项数据、引文和监管要求。</p>
+    <p class="disclaimer">© 2026 The Absence Audit。保留所有权利。· <a href="/zh/zh/terms/">条款</a> · <a href="/zh/zh/privacy/">隐私</a> · <a href="/zh/zh/contact/">联系</a> · <a href="#" data-aa-consent-open>Cookie 设置</a></p>
+  </div>
+</footer>
+</body>
+</html>
