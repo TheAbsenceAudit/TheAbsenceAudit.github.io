@@ -38,9 +38,3 @@ c/**/*.pdf
 case-study/*.pdf
 track-record/*.pdf
 pdf_render_report.json
-# nations v2 source films (143/154 MB) exceed GitHub's 100 MB blob limit and are
-# referenced by no published page (the site uses /nations/last-drop-*.mp4 and the
-# archived /nations/v1/ copies). A publish commit swept them in on 2026-09-11 and
-# blocked every push; never stage them.
-nations/closed-loop-en.mp4
-nations/closed-loop-fr.mp4
