@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>**Альтернативы инкумбентам** 
+
+*(или более описательный вариант: **Альтернативы действующим игрокам**)*</title>
+<meta name="description" content="Every incumbent product benchmarked in the ledger, with the concepts assessed against it — survivors and rejections alike.">
+<link rel="canonical" href="https://theabsenceaudit.com/alternatives/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"> <a href="/alternatives/" hreflang="en">EN</a> <a href="/fr/alternatives/" hreflang="fr">FR</a> <a href="/zh/alternatives/" hreflang="zh">中文</a> <a href="/ru/alternatives/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="wrap hub">
+<p class="eyebrow">Индекс SEO-хаба</p>
+<h1>Традиционные альтернативы</h1>
+<p class="lede">Каждый традиционный продукт, сопоставленный в реестре, с концепциями, оцененными против него — как выдержавшими отбор, так и отсеянными.</p>
+<ul class="hub-list"><li><a href="/ru/alternatives/lord-mrf-132dg/">Lord MRF-132DG</a> <span class="hub-count">1 концепция · 1 выдержала</span></li>
+<li><a href="/ru/alternatives/freeze-dried-lyophilized-powder/">Лиофилизированный (высушенный вымораживанием) порошок</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/sulfur-dioxide-so2-generating-pads-e-g-uvasys/">Вкладыши, выделяющие диоксид серы (SO2) (например, Uvasys)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/novita-drift-control/">Novita Drift Control</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/h2so4-hydrometallurgy/">Гидрометаллургия H2SO4</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/mi-paste-gc-america/">MI Paste (GC America)</a> <span class="hub-count">1 концепция · 1 выдержала</span></li>
+<li><a href="/ru/alternatives/commercial-alumina-al2o3-ceramic-membrane/">Коммерческая керамическая мембрана из оксида алюминия (α-Al2O3)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/loctite-ea-9394-aero/">Loctite EA 9394 AERO</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/germanium-ge-optical-lenses/">Германиевые (Ge) оптические линзы</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/anionic-polyacrylamide-apam/">Анионный полиакриламид (APAM)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/6061-t6-aluminum-plate/">Алюминиевая пластина 6061-T6</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/bergquist-gap-filler-tgf-4000-henkel/">Bergquist Gap Filler TGF 4000 (Henkel)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/bismaleimide-bmi-resin-abron-br-720/">Бисмалеимидная (BMI) смола (Abron BR 720)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/40-liquid-lithium-chloride-licl-solution/">40%-й жидкий раствор хлорида лития (LiCl)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/gf-120-nf-naturalyte-fruit-fly-bait/">GF-120 NF Naturalyte Fruit Fly Bait</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/3m-scotch-weld-pur-te040/">3M Scotch-Weld PUR TE040</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/regenesis-orc-advanced/">Regenesis ORC Advanced®</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/cuprous-oxide-cu2o/">Оксид меди(I) (Cu2O)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/rigid-polyurethane-foam-rpuf/">Жесткий пенополиуретан (RPUF)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/conventional-zno-bi2o3-varistors-tdk-littelfuse/">Традиционные варисторы ZnO-Bi2O3 (TDK/Littelfuse)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/3m-tape-primer-94/">3M Tape Primer 94</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/humiseal-uv40/">HumiSeal UV40</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/polymer-coated-urea-turf-maker-duration-44-0-0/">Карбамид с полимерным покрытием (Turf-Maker Duration 44-0-0)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/metrohm-dropsens-drp-110-screen-printed-carbon-electrode/">Трафаретный углеродный электрод Metrohm DropSens DRP-110</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/lesco-44-0-0-100-polyplus-opti-turfgrass-granular-fertilizer/">Гранулированное удобрение для газонов LESCO 44-0-0 100% PolyPlus OPTI</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/low-density-polyethylene-ldpe-black-mulch-film/">Черная мульчирующая пленка из полиэтилена низкой плотности (LDPE)</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/mancozeb-75-wp/">Mancozeb 75 WP</a> <span class="hub-count">1 концепция · 1 выдержала</span></li>
+<li><a href="/ru/alternatives/zoono-microbe-shield/">Zoono Microbe Shield</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/sintered-ag-agcl-wet-disc-electrode/">Спеченный дисковый жидкостный электрод Ag/AgCl</a> <span class="hub-count">1 концепция · 1 выдержала</span></li>
+<li><a href="/ru/alternatives/weaver-ten20-conductive-paste/">Проводящая паста Weaver Ten20</a> <span class="hub-count">1 концепция · 0 выдержало</span></li>
+<li><a href="/ru/alternatives/premium-acrylic-uv-curable-loca-e-g-loctite-dsp-3196/">Премиа</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/mg-chemicals-841ar-super-shield-nickel-conductive-paint/">MG Chemicals 841AR Super Shield Nickel Conductive Paint</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/macdermid-alpha-argomax-2148/">MacDermid Alpha Argomax 2148</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/commercial-bulk-solid-state-sral2o4-eu-dy/">Commercial bulk solid-state SrAl2O4:Eu,Dy</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/structural-epoxy-resin/">Structural Epoxy Resin</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/harbisonwalker-mizzou-castable-plus/">HarbisonWalker Mizzou® Castable Plus</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/bisphenol-a-bpa-epoxy-resin/">Bisphenol A (BPA) Epoxy Resin</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/henkel-bonderite-m-zn-4333/">Henkel BONDERITE M-ZN 4333</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/driscal-d-chevron-phillips-chemical/">Driscal D (Chevron Phillips Chemical)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/xypex-admix-c-1000-nf/">Xypex Admix C-1000 NF</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/3m-hp-156-high-capacity-petroleum-sorbent-pad/">3M HP-156 High Capacity Petroleum Sorbent Pad</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/henry-887-tropi-cool-100-silicone-white-roof-coating/">Henry 887 Tropi-Cool 100% Silicone White Roof Coating</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/bergolin-1-component-topcoat-6p1600/">Bergolin 1-Component Topcoat 6P1600</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/commercial-polyurethane-adhesive-sealants-e-g-3m-550-polyurethane-henk/">Commercial Polyurethane Adhesive Sealants (e.g. 3M 550 Polyurethane, Henkel Loctite Hysol)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/chemours-krytox-gpl-106/">Chemours Krytox GPL 106</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/premium-coconut-shell-granular-activated-carbon-gac/">Premium Coconut Shell Granular Activated Carbon (GAC)</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/spherical-alumina/">Spherical Alumina</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/aspen-aerogels-pyrogel-xte/">Aspen Aerogels Pyrogel XTE</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/acadian-plant-health-ascophyllum-nodosum-extract-ascostar-stella-maris/">Acadian Plant Health Ascophyllum nodosum extract (AscoStar / Stella Maris)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/glycolic-acid/">Glycolic Acid</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/bulk-retinol-vitamin-a/">Bulk Retinol (Vitamin A)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/ag-agcl-wet-conductive-electrode-gel-ten20-paste/">Ag/AgCl wet conductive electrode gel (Ten20 paste)</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/puretemp-20/">PureTemp 20</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/spray-dried-maltodextrin-sd-md/">Spray-dried maltodextrin (SD-MD)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/synthetic-plga-microspheres-uncoated-oral-delivery/">Synthetic PLGA Microspheres / Uncoated Oral Delivery</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/conventional-hot-acid-extraction-ce/">Conventional Hot Acid Extraction (CE)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/astm-c76-class-iii-reinforced-concrete-pipe-rcp-made-with-ordinary-por/">ASTM C76 Class III Reinforced Concrete Pipe (RCP) made with Ordinary Portland Cement (OPC)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/shenzhen-goosam-uv-fluorescent-water-based-invisible-ink-l3258-l3151-s/">Shenzhen Goosam UV Fluorescent Water-Based Invisible Ink (L3258/L3151 series)</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/standard-organic-uv-filters-oxybenzone/">Standard Organic UV Filters (Oxybenzone)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/belzona-1212/">Belzona 1212</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/silver-flake-ink/">Silver flake ink</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/hyaluronic-acid-ha-microneedle-matrices/">Hyaluronic Acid (HA) microneedle matrices</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/ru/alternatives/florfenicol-20-premix/">Florfenicol 20% premix</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/opti-form-corbion/">Opti.Form (Corbion)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/chemitek-solar-wash-protect-swp/">ChemiTek Solar Wash Protect (SWP)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/enzymatic-plant-soy-amino-acids/">Enzymatic plant/soy amino acids</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/penicillium-bilaiae-jumpstart-by-novonesis/">Penicillium bilaiae (JumpStart by Novonesis)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/sequestrene-138-fe/">Sequestrene 138 Fe</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/chemical-anti-transpirants-e-g-vapor-gard-generic-pgpr-bacillus-subtil/">Chemical Anti-Transpirants (e.g., Vapor-Gard) / Generic PGPR (Bacillus subtilis)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/polyethylene-pe/">Polyethylene (PE)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/bulk-mg-oh-2-or-ath-at-9-loading/">Bulk Mg(OH)2 or ATH at 9% loading</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/granular-calcite-ground-calcium-carbonate-gcc/">Granular Calcite / Ground Calcium Carbonate (GCC)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/polyalphaolefin-pao-pao-4-pao-6-and-mineral-oil/">Polyalphaolefin (PAO / PAO 4 / PAO 6) and Mineral Oil</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/ordinary-portland-cement-opc/">Ordinary Portland Cement (OPC)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/feridex-resovist-gadolinium-chelates/">Feridex / Resovist / Gadolinium Chelates</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/cryostor-cs10-biolife-solutions/">CryoStor® CS10 (BioLife Solutions)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/potassium-nitrate-kno3/">Potassium Nitrate (KNO3)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/pump-and-treat-systems-with-activated-carbon/">Pump-and-Treat Systems (with Activated Carbon)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/yarrowia-lipolytica-submerged-liquid-fermentation-of-castor-oil/">Yarrowia lipolytica submerged liquid fermentation of castor oil</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/syloid-244-fp-w-r-grace-co/">SYLOID® 244 FP (W.R. Grace &amp; Co.)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/inorganic-optically-variable-pigments-merck-iriodin-or-multichrome-cha/">Inorganic Optically Variable Pigments (Merck Iriodin or multichrome chameleon pigments)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/mesoporous-silica-nanoparticles-msns/">Mesoporous Silica Nanoparticles (MSNs)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/98-shikonin-api-derived-from-traditional-field-grown-gromwell-root-cas/">98% Shikonin API derived from traditional field-grown Gromwell root (CAS 517-89-5)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/alkyl-polyglucoside-apg/">Alkyl Polyglucoside (APG)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/ru/alternatives/phytocelltec-malus-domestica/">PhytoCellTec Malus Domestica</a> <span class="hub-count">1 концепция · 0 выжило</span></li>
+<li><a href="/ru/alternatives/bitop-ag-ectoin-natural/">Bitop AG (Ectoin® natural)</a> <span class="hub-count">1 концепция · 0 выжило</span></li>
+<li><a href="/ru/alternatives/spirulina-extract-c-phycocyanin-e25-grade/">Экстракт спирулины (C-Phycocyanin, сорт E25)</a> <span class="hub-count">1 концепция · 0 выжило</span></li>
+<li><a href="/ru/alternatives/mycoapply-ultrafine-endo-mycorrhizal-applications-valent-biosciences/">MycoApply® Ultrafine Endo (Mycorrhizal Applications / Valent Biosciences)</a> <span class="hub-count">1 концепция · 1 выжила</span></li></ul>
+<p class="hub-back"><a href="/ru/ledger/">Искать по всему реестру &rarr;</a>·<a href="/ru/sectors/">Обзор по секторам &rarr;</a></p></div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+</body>
+</html>

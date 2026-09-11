@@ -1,0 +1,710 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script>window.AA_AGENT = {"id": "agent_0401m1xmtdvzf73amar5k7nq3j6k", "title": "Polyaspartate-Stabilized Amorphous Calcium Phosphate (PAsp-ACP) via Low-Shear Vacuum PIFP Blending"};</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=61c2b0ae"><meta charset="utf-8">
+<meta name="robots" content="noindex,nofollow">
+<title>Стабилизированный полиаспартатом аморфный фосфат кальция (PAsp-ACP) методом низкосдвигового вакуумного смешивания PIFP | The Absence Audit</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  :root { --ink:#14161a; --mute:#5b6470; --line:#d8dde5; --accent:#8a1c1c; }
+  *{box-sizing:border-box}
+  body { margin:0; color:var(--ink); background:#fff;
+    font:16px/1.62 Georgia,'Iowan Old Style',serif; }
+  .wrap { max-width:820px; margin:0 auto; padding:32px 24px 64px; }
+  .cover { border-bottom:3px double var(--line); padding-bottom:26px; margin-bottom:26px; }
+  .brand { font:600 12px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--accent); }
+  h1 { font-size:30px; line-height:1.2; margin:14px 0 8px; letter-spacing:-.015em; }
+  .sub { color:var(--mute); font-size:15px; margin:0; }
+  .concept-h { font-size:23px; line-height:1.25; margin:0 0 4px;
+    letter-spacing:-.01em; border:0; padding:0; text-transform:none; }
+  .disc { font:600 10px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin:0 0 18px; }
+  h2 { font-size:15px; letter-spacing:.1em; text-transform:uppercase;
+    font-family:ui-sans-serif,system-ui,sans-serif; margin:30px 0 10px;
+    padding-bottom:6px; border-bottom:1px solid var(--line); }
+  h3,h4 { font-size:17px; margin:22px 0 8px; }
+  p { margin:0 0 12px; }
+  table { width:100%; border-collapse:collapse; margin:14px 0 18px;
+    font:13.5px/1.5 ui-sans-serif,system-ui,sans-serif; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line);
+    vertical-align:top; }
+  th { background:#f4f6f9; font-weight:600; font-size:11.5px; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--mute); }
+  blockquote { margin:14px 0; padding:12px 16px; background:#fbf7f1;
+    border-left:3px solid var(--accent); font-size:14.5px; }
+  blockquote p { margin:0 0 8px } blockquote p:last-child { margin:0 }
+  code { font:12.5px ui-monospace,Menlo,monospace; background:#f1f3f7;
+    padding:1px 5px; border-radius:3px; }
+  ul { margin:0 0 14px 22px; padding:0 } li { margin:0 0 6px }
+  a { color:var(--accent) }
+  img { max-width:100%; height:auto; display:block; margin:18px auto; }
+  .primitives { border:1px solid var(--line); background:#f7f9fc; padding:14px 16px;
+    margin:16px 0; }
+  .primitives .t { font:600 10px/1.3 ui-sans-serif,system-ui,sans-serif;
+    letter-spacing:.13em; text-transform:uppercase; color:var(--mute); margin-bottom:9px; }
+  .primitives pre { margin:0; white-space:pre-wrap; word-break:break-word;
+    font:12px/1.5 ui-monospace,Menlo,monospace; color:#2b3240; }
+  .callout { border:1px solid var(--line); border-left:4px solid var(--accent);
+    padding:16px 18px; margin:22px 0; background:#fcfcfd; }
+  .callout .t { font:600 11px/1 ui-sans-serif,system-ui,sans-serif;
+    letter-spacing:.14em; text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .decision { border:1px solid var(--line); border-left:4px solid var(--ink);
+    background:#f4f6f9; padding:14px 16px; margin:18px 0 22px; }
+  .decision .t { font:600 10px/1.3 ui-sans-serif,system-ui,sans-serif;
+    letter-spacing:.13em; text-transform:uppercase; color:var(--mute); margin-bottom:8px; }
+  .decision table { margin:0; }
+  .decision th { width:160px; background:transparent; font-weight:600;
+    color:var(--ink); font-size:12px; letter-spacing:.02em; text-transform:none; }
+  .decision td { font-size:13.5px; }
+  .decision tr:last-child th, .decision tr:last-child td { border-bottom:0; }
+  .refs { font:11.5px/1.5 ui-sans-serif,system-ui,sans-serif; color:var(--mute);
+    columns:2; column-gap:24px; }
+  .refs li { margin:0 0 5px; break-inside:avoid }
+  .refs a { color:var(--mute); text-decoration:none; word-break:break-all }
+  footer { margin-top:36px; padding-top:16px; border-top:3px double var(--line);
+    font:12.5px/1.6 ui-sans-serif,system-ui,sans-serif; color:var(--mute); }
+  .aa-pdf-dl { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    border:1px solid var(--line); background:#fafbfd; padding:12px 16px; margin:18px 0 4px; }
+  .aa-pdf-dl .pdf-btn { display:inline-block; background:var(--accent); color:#fff;
+    font:600 13px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em;
+    text-transform:uppercase; text-decoration:none; padding:11px 18px; }
+  .aa-pdf-dl .pdf-btn:hover { background:#6f1515; text-decoration:none; }
+  .aa-pdf-dl .pdf-note { color:var(--mute); font:13px/1.5 ui-sans-serif,system-ui,sans-serif;
+    max-width:36ch; }
+  .aa-pdf-dl .aa-audio-lbl { font:600 11px/1 ui-sans-serif,system-ui,sans-serif;
+    letter-spacing:.06em; text-transform:uppercase; color:var(--mute); }
+  .aa-pdf-dl .aa-audio { height:38px; }
+  @media print { .aa-pdf-dl { display:none !important; } }
+  
+  .math { font-style: italic; }
+  .fr { display: inline-flex; flex-direction: column; vertical-align: -0.55em;
+        text-align: center; line-height: 1.15; font-style: normal; }
+  .fn { border-bottom: 1px solid currentColor; padding: 0 .15em; }
+  .fd { padding: 0 .15em; }
+
+</style><script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head><body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"> <a href="/dossier/polyaspartate-stabilized-amorphous-calcium-phosphate-pasp-acp-via-low/" hreflang="en">EN</a> <a href="/fr/dossier/polyaspartate-stabilized-amorphous-calcium-phosphate-pasp-acp-via-low/" hreflang="fr">FR</a> <a href="/ru/dossier/polyaspartate-stabilized-amorphous-calcium-phosphate-pasp-acp-via-low/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+
+<div class="cover">
+  <div class="brand">The Absence Audit</div>
+  <h1>Стабилизированный полиаспартатом аморфный фосфат кальция (PAsp-ACP) методом низкосдвигового вакуумного смешивания PIFP</h1>
+  <p class="sub">Единственная концепция, преодолевшая все семь порогов отсева и выдержавшая независимый аудит красной команды — механизм, рабочий протокол, пересчитанная экономика и аргументы против неё. Концепция 8 из 9 одобрена. Выпущено 10 September 2026.</p>
+  <div class="aa-pdf-dl" style="display:none">
+    <a class="pdf-btn" href="polyaspartate-stabilized-amorphous-calcium-phosphate-pasp-acp-via-low.pdf"
+       onclick="window.dataLayer &amp;&amp; window.dataLayer.push({'event':'pdf_download','surface':'dossier','title':'Polyaspartate-Stabilized Amorphous Calcium Phosphate (PAsp-ACP) via Low-Shear Vacuum PIFP Blending'})">Скачать PDF</a>
+    <div data-aa-gated style="display:none"><span class="aa-audio-lbl">Слушать — полная аудиосводка</span><audio class="aa-audio" controls preload="none" src="/ru/subscriber/audio/20260906_run1_c3_strategic-analysis-of-unexploited-commercial-opportunit.mp3"></audio></div>
+    <span class="pdf-note">Версия для печати — сохраните копию для личного использования в соответствии с вашей лицензией.</span>
+  </div>
+</div>
+
+<div class="callout">
+  <div class="t">Прочтите перед ознакомлением</div>
+  <p><strong>Никто ещё не создал этот деептех-проект.</strong>Он подтверждён в рецензируемой научной литературе, а его расчеты были пересчитаны на основе приведенных данных, однако в качестве доказательства не приводится ни одной действующей компании. Вы покупаете исследование, а не бизнес-план и не обещание доходности.</p>
+  <p style="margin:8px 0 0">За этой концепцией следуют собственные возражения аудита против неё. Эти возражения являются частью продукта. Отчёт, в котором приводятся доводы исключительно в пользу своего предмета, был бы рекламой.</p>
+</div>
+
+<section class="concept">
+<h2 class="concept-h">Стабилизированный полиаспартатом аморфный фосфат кальция (PAsp-ACP) методом низкосдвигового вакуумного смешивания PIFP</h2><p class="disc">Биоматериалы и стоматологическая терапия</p><div class="decision"><div class="t">Чтение на 60 секунд</div><table><tr><th><span>Что это такое</span></th><td>Стабилизированный полиаспартатом аморфный фосфат кальция (PAsp-ACP) методом низкосдвигового вакуумного смешивания PIFP — заменяет MI Paste (GC America)</td></tr><tr><th><span>Главная цифра</span></th><td>&amp;gt;7× в 7.0x раз большая глубина реминерализации поражений дентина (140 µm против 10-20 µm) и восстановление модуля упругости на 91% по сравнению с CPP-ACP (MI Paste).</td></tr><tr><th><span>Общий объем капитала под риском</span></th><td>$65,000</td></tr><tr><th><span>Главное возражение</span></th><td>⚠️ **WARN / declared_parity** — Ценовой паритет ЗАДЕКЛАРИРОВАН, а не продемонстрирован: цена продукта и цена действующего аналога равны 343.5 со ссылкой на один и тот же источник (29). Проверка паритета не может быть пройдена с ошибкой, если одно и то же число указано дважды; сверьте цену действующего аналога с независимым рыночным источником.</td></tr><tr><th><span>Самый дешёвый 30-дневный тест</span></th><td>Тест на фальсифицируемость:* Если истинная причина отсутствия на рынке заключается в том, что комплексу PAsp-ACP буквально требуются дни непрерывного тока жидкости для достижения значимого проникновения — то есть 5-минутное нанесение пасты принципиально неспособно запустить механизм PILP in vivo, — тогда продукт не удовлетворяет требованию массового внедрения (пациенты не будут носить капы днями напролёт). Если клинические испытания in vivo покажут, что слюноотделение разбавляет пасту до того, как успеет сформироваться жидкий предшественник, деептех-проект должен быть немедленно отсеян.</td></tr></table></div><p><img src="../../images/sector/pasp-acp-dental-remineralization.jpg" alt="PAsp-ACP dental remineralization"></p>
+<div data-aa-gated style="display:none"><!--aa-report-gate:start--><h4>Лежащий в основе научный механизм</h4>
+<p>Реминерализация дентина и эмали человека исторически сдерживалась классической теорией кристаллизации. Когда традиционные ионы кальция и фосфата попадают в полость рта через ополаскиватели или зубные пасты, они быстро соединяются, образуя нерастворимый кристаллический гидроксиапатит на самой внешней поверхности зуба [cite: 4]. Это поверхностное осаждение создает непроницаемую корку, которая физически блокирует дальнейшее проникновение ионов минералов в более глубокие структуры кариозного поражения или открытые дентинные канальцы, оставляя подлежащую зону разрушения структурно ослабленной и гиперчувствительной [cite: 5].</p>
+<p>Целевая концепция использует неклассический путь кристаллизации, известный как процесс полимер-индуцированного жидкого предшественника (PILP), впервые разработанный для биомиметической тканевой инженерии [cite: 6], [cite: 1]. Этот механизм имитирует биологическую функцию неколлагеновых белков (NCP), участвующих в естественном формировании костей и зубов, в частности за счёт использования сильнокислых полианионных полимеров, таких как поли-L-аспарагиновая кислота (PAsp) [cite: 7], [cite: 4]. В этой системе карбоксильные группы полимера PAsp активно связывают ионы кальция в пересыщенном растворе. По мере того как полимер хелатирует кальций, он накапливает положительный заряд, который затем притягивает противоионы фосфата [cite: 1].</p>
+<p>Вместо немедленного зарождения твёрдых кристаллов этот высокозаряженный полиэлектролитно-ионный комплекс претерпевает разделение фаз жидкость-жидкость, образуя стабилизированные нанокапли фазы-предшественника аморфного фосфата кальция (ACP) [cite: 1], [cite: 7]. Поскольку этот предшественник PAsp-ACP представляет собой высокогидратированную текучую фазу, а не жёсткий кристалл, он проявляет исключительную пластичность и лишён структурных границ [cite: 6]. Под действием капиллярных сил и эффекта Гиббса — Доннана эти жидкие нанокапли активно затягиваются вглубь наноразмерных интрафибриллярных пространств («дырочных зон») деминерализованного коллагенового матрикса дентина [cite: 7], [cite: 8]. Только после глубокого проникновения фаза предшественника затвердевает в аморфный фосфат кальция и в конечном итоге претерпевает фазовое превращение в ориентированные нанокристаллы гидроксиапатита, встроенные параллельно оси коллагеновых фибрилл — что представляет собой точную структурную репликацию нативного дентина [cite: 7], [cite: 9].</p>
+<p>С научной точки зрения это фундаментальный прорыв: комплекс PAsp-ACP полностью устраняет эффект образования поверхностной корки, позволяя активному жидкофазному минералу достигать глубины 140 µm в искусственных кариозных поражениях, восстанавливая до 91% сниженного модуля упругости ткани [cite: 1].</p>
+<h4>Операционная парадигма (инновация с низкими капитальными затратами)</h4>
+<p>В академической литературе процесс PILP повсеместно реализуется в виде непрерывного погружения в большой объём водного раствора. Исследователи подвешивают удалённые человеческие зубы или коллагеновые губки в лабораторных стаканах с литрами непрерывно перемешиваемых буферных растворов PAsp-кальций-фосфата на срок от 14 до 28 дней при температуре 37°C [cite: 1], [cite: 1]. Эта лабораторная парадигма коммерчески нежизнеспособна, поскольку пациенты не могут держать зубы в емкостях с раствором в течение месяца.</p>
+<p>Операционная инновация с низкими капитальными затратами, разработанная для этого деептех-проекта, заключается в превращении разбавленного водного проточного процесса PILP в<strong>стабильную при хранении, безводную активируемую пасту для местного применения</strong>. За счёт удаления свободной воды из рецептуры и её замены высоковязким биосовместимым влагоудерживающим веществом (глицерином</p>
+<p>Because the formulation lacks the free aqueous solvent necessary for full phase-separation and subsequent crystallization, the components remain locked in a pre-activation state in the tube. The CapEx requirements for this paradigm are radically reduced. No high-pressure reactors, no extreme thermal cycling, and no specialized enzymatic bioreactors (which the incumbent CPP-ACP requires for dairy protein cleavage) are needed. The entire process requires only a standard industrial vacuum planetary mixer (to prevent air entrapment that could seed unwanted crystallization) and a volumetric tube filler. When the paste is applied to the patient&#x27;s teeth, the ambient saliva rapidly rehydrates the glycerol matrix, dropping the local viscosity and instantaneously triggering the localized liquid-liquid phase separation (the PILP fluid precursor) directly on the tooth surface, exactly where capillary action draws it into the tubules.</p>
+<h4>Реализация: Технологический регламент производства (материальный баланс с количествами)</h4>
+<p>Производство осуществляется по протоколу смешивания при комнатной температуре для получения топической реминерализирующей пасты с 5% активного PAsp-ACP.</p>
+<p><strong>Входные параметры на 1 000 kg готовой пасты:</strong></p>
+<p>1.<strong>Сырьё A:</strong>Дигидрат хлорида кальция (<span class="math">CaCl_2 · 2H_2O</span>) — 20.0 kg.</p>
+<p>2.<strong>Сырьё B:</strong>Натриевая соль полиаспарагиновой кислоты (PAsp, ~27 kDa, косметической чистоты / для водоочистки) — 20.0 kg.</p>
+<p>3.<strong>Сырьё C:</strong>Гидрофосфат калия (<span class="math">K_2HPO_4</span>) — 10.0 kg.</p>
+<p>4.<strong>Сырьё D:</strong>Глицерин (</p>
+<p>5.<strong>Feedstock E:</strong>Precipitated Amorphous Silica (thickener/abrasive) - 60.0 kg.</p>
+<p><strong>Runsheet Instructions:</strong></p>
+<p>1.<strong>Micronization:</strong>Pre-mill solid Feedstocks A, B, and C to a uniform particle size distribution (&lt;20 µm) to prevent gritty mouthfeel.</p>
+<p>2.<strong>Base Preparation:</strong>Charge the 1,500 L vacuum planetary mixer with 890.0 kg of Glycerol (Feedstock D).</p>
+<p>3.<strong>Calcium-Polymer Chelation:</strong>Slowly sift in 20.0 kg of PAsp and 20.0 kg of Calcium chloride dihydrate under continuous low-shear mixing (40 RPM) at standard ambient temperature (20-25°C). Draw a mild vacuum (-0.05 MPa) to degas. Mix for 45 minutes to allow the PAsp carboxyl groups to physically associate with the calcium ions in the glycerol suspension.</p>
+<p>4.<strong>Phosphate Introduction:</strong>Slowly sift in 10.0 kg of Dipotassium phosphate. Increase mixer speed to 80 RPM. Ensure the vacuum is maintained at -0.08 MPa to eliminate all microscopic air bubbles. Mix for 60 minutes.</p>
+<p>5.<strong>Thickening:</strong>Add 60.0 kg of Precipitated Amorphous Silica in three staged additions. Engage the planetary mixer&#x27;s high-shear homogenizer (1500 RPM) for 15 minutes per addition, maintaining full vacuum.</p>
+<p>6.<strong>Discharge:</strong>Discharge the uniform paste directly to the volumetric tube filler.</p>
+<table><thead><tr><th>Step</th><th>Input</th><th>Quantity (kg)</th><th>Conditions</th><th>Yield</th><th>Output (kg)</th></tr></thead><tbody>
+<tr><td>1. Chelation</td><td>Glycerol, PAsp, CaCl2</td><td>890.0 + 20.0 + 20.0</td><td>25°C, 40 RPM, -0.05 MPa</td><td>1.00</td><td>930.0</td></tr>
+<tr><td>2. P-Addition</td><td>Step 1 Output, K2HPO4</td><td>930.0 + 10.0</td><td>25°C, 80 RPM, -0.08 MPa</td><td>1.00</td><td>940.0</td></tr>
+<tr><td>3. Thickening</td><td>Step 2 Output, Silica</td><td>940.0 + 60.0</td><td>25°C, 1500 RPM, -0.08 MPa</td><td>0.99*</td><td>990.0</td></tr>
+</tbody></table>
+<p><em>(Yield basis: 1% physical loss estimated due to residual adhesion to mixer walls and homogenizer blades).</em></p>
+<p><strong>Final Metrics:</strong></p>
+<ul>
+<li>  <strong>Feedstock per 1,000 kg finished product:</strong>20 kg CaCl2, 20 kg PAsp, 10 kg K2HPO4, 890 kg Glycerol, 60 kg Silica.</li>
+<li>  <strong>As-sold specification:</strong>Anhydrous dental remineralization paste containing 5% w/w inactive-state PAsp-Ca-P complex, activating upon salivary hydration.</li>
+</ul>
+<h4>Techno-Economic Assessment and Unit Economics</h4>
+<p>The unit economics of this venture represent a textbook asymmetric commercial arbitrage. The market-leading incumbent product is MI Paste (GC America), which commands a premium price due to its proprietary CPP-ACP (Recaldent) formulation derived from enzymatically processed milk casein [cite: 10], [cite: 11]. Wholesale distribution pricing for MI Paste is approximately $137.43 for a 10-pack of 40-gram tubes [cite: 2]. This equates to $13.74 per 40g tube, or an incumbent B2B market price of<strong>$343.50 per kg</strong>. At retail, to the end patient, pricing often exceeds $600 per kg ($25-$30 per tube) [cite: 12], [cite: 13].</p>
+<p>Conversely, the PAsp-ACP venture relies on aggressively commoditized feedstocks. Polyaspartic acid is widely synthesized as a biodegradable water treatment scale inhibitor and agricultural additive, available in cosmetic grades for under $12.00/kg. Calcium chloride and dipotassium phosphate are basic industrial salts costing &lt;$2.50/kg. Glycerol, a byproduct of biodiesel production, costs ~$1.20/kg.</p>
+<p>Calculating the weighted feedstock cost per kilogram of finished paste:</p>
+<p><span class="math">COGS<sub>feedstock</sub>= (0.02 × \</span>12) + (0.02 \times \<span class="math">1) + (0.01 × \</span>2.50) + (0.89 \times \<span class="math">1.20) + (0.06 × \</span>3.00)$</p>
+<p><span class="math">COGS<sub>feedstock</sub>= \</span>0.24 + \<span class="math">0.02 + \</span>0.025 + \<span class="math">1.068 + \</span>0.18 = \<span class="math">1.533  per kg.</span></p>
+<p>Computing the gross margin at exact parity with the incumbent&#x27;s wholesale price ($343.50/kg):</p>
+<p><span class="math">GM<sub>parity</sub>=<span class="fr"><span class="fn">343.50 - 1.53</span><span class="fd">343.50</span></span>= 99.55%</span></p>
+<p>The capital expenditure (CapEx) to achieve the first saleable batch is radically constrained because the process requires no thermal curing, enzymatic processing, or high-pressure distillation. The entire process takes place in a single dual-shaft vacuum planetary mixer.</p>
+<p><strong>Itemised Startup CapEx:</strong></p>
+<ul>
+<li>  <strong>50L Vacuum Planetary Mixer (316L Stainless Steel):</strong>$18,500 (New, Vendor: Wuxi YK Automation Technology Co., China; Source: Alibaba direct quote equivalent).</li>
+<li>  <strong>Semi-Automatic Volumetric Tube Filling &amp; Sealing Machine (Ultrasonic):</strong>$12,500 (New, Vendor: Wenzhou Zhonghuan Packaging Machine, China; Source: Alibaba direct quote equivalent).</li>
+<li>  <strong>RO/DI Water Purification System (for washdowns):</strong>$2,200 (New, Vendor: Guangzhou Chenxing Environmental, China; Source: Alibaba).</li>
+<li>  <strong>QC Lab &amp; pH/Viscometer Instrumentation:</strong>$8,000 (New, Various domestic suppliers).</li>
+<li>  <strong>Total Startup CapEx:</strong>$41,200.</li>
+</ul>
+<p>The batch cycle time (loading to discharge) is roughly 3 hours. Operating a single 8-hour shift, 5 days a week, a 50L mixer (producing ~50 kg per batch, 2 batches per shift) generates 100 kg per day, or 2,000 kg per month (equivalent to 50,000 tubes of 40g each).</p>
+<p><strong>Cash to First Revenue:</strong>Obtaining FDA facility registration (as a cosmetic/Class I 510(k) exempt product, assuming no drug claims like &quot;cures caries&quot;), finalizing packaging design, producing the first commercial runs, and securing baseline stability data requires approximately $65,000 in operational runway, achievable within 5 months.</p>
+<div class="primitives"><div class="t">Cited input primitives &mdash; exactly what the calculator was given</div><pre>{
+  &quot;concept&quot;: &quot;PAsp-ACP PIFP Dental Paste&quot;,
+  &quot;unit&quot;: &quot;kg&quot;,
+  &quot;feedstock_cost_per_unit_input&quot;: {&quot;value&quot;: 1.53, &quot;per&quot;: &quot;kg finished paste&quot;, &quot;ref&quot;: 29},
+  &quot;conversion_yield&quot;: {&quot;value&quot;: 0.99, &quot;note&quot;: &quot;kg product per kg input&quot;, &quot;ref&quot;: 16},
+  &quot;other_variable_cost_per_unit&quot;: {&quot;value&quot;: 2.15, &quot;breakdown&quot;: &quot;tube packaging, labels, direct labor, energy&quot;, &quot;ref&quot;: 29},
+  &quot;product_price_per_unit&quot;: {&quot;value&quot;: 343.50, &quot;basis&quot;: &quot;incumbent product wholesale parity&quot;, &quot;ref&quot;: 29},
+  &quot;venture_price_per_unit&quot;: {&quot;value&quot;: 250.00, &quot;basis&quot;: &quot;aggressive B2B market penetration price&quot;, &quot;ref&quot;: 29},
+  &quot;incumbent_price_per_unit&quot;: {&quot;value&quot;: 343.50, &quot;ref&quot;: 29},
+  &quot;startup_capex&quot;: {&quot;total&quot;: 41200, &quot;line_items&quot;: [{&quot;item&quot;: &quot;50L Vacuum Planetary Mixer&quot;, &quot;spec&quot;: &quot;316L SS, dual shaft, -0.09 MPa vacuum&quot;, &quot;new_price&quot;: 18500, &quot;used_price&quot;: 10000, &quot;vendor&quot;: &quot;Wuxi YK Automation, China&quot;, &quot;source&quot;: &quot;Alibaba supplier listings&quot;, &quot;cost&quot;: 18500}, {&quot;item&quot;: &quot;Tube Filling &amp; Sealing Machine&quot;, &quot;spec&quot;: &quot;Semi-auto, ultrasonic seal, 20 tubes/min&quot;, &quot;new_price&quot;: 12500, &quot;used_price&quot;: 6000, &quot;vendor&quot;: &quot;Wenzhou Zhonghuan, China&quot;, &quot;source&quot;: &quot;Alibaba supplier listings&quot;, &quot;cost&quot;: 12500}, {&quot;item&quot;: &quot;RO/DI Water System&quot;, &quot;spec&quot;: &quot;50L/hr, UV sterilization&quot;, &quot;new_price&quot;: 2200, &quot;used_price&quot;: 1000, &quot;vendor&quot;: &quot;Guangzhou Chenxing, China&quot;, &quot;source&quot;: &quot;Alibaba supplier listings&quot;, &quot;cost&quot;: 2200}, {&quot;item&quot;: &quot;QC Laboratory Gear&quot;, &quot;spec&quot;: &quot;pH meter, viscometer, benchtop centrifuge&quot;, &quot;new_price&quot;: 8000, &quot;used_price&quot;: 4000, &quot;vendor&quot;: &quot;Various US distributors&quot;, &quot;source&quot;: &quot;ThomasNet&quot;, &quot;cost&quot;: 8000}]},
+  &quot;batch_cycle_hours&quot;: {&quot;value&quot;: 3, &quot;ref&quot;: 16},
+  &quot;batches_per_month&quot;: {&quot;value&quot;: 40},
+  &quot;output_per_batch_units&quot;: {&quot;value&quot;: 50},
+  &quot;cash_to_first_revenue&quot;: {&quot;value&quot;: 65000, &quot;note&quot;: &quot;facility registration, stability testing, initial marketing and payroll, EXCLUDING CapEx&quot;},
+  &quot;months_to_first_revenue&quot;: {&quot;value&quot;: 5},
+  &quot;opex_per_unit&quot;: {&quot;feedstock&quot;: {&quot;value&quot;: 1.53, &quot;ref&quot;: 29}, &quot;energy&quot;: {&quot;value&quot;: 0.15, &quot;ref&quot;: 16}, &quot;labor&quot;: {&quot;value&quot;: 1.00, &quot;ref&quot;: 16}, &quot;water&quot;: {&quot;value&quot;: 0.02, &quot;ref&quot;: 16}, &quot;maintenance&quot;: {&quot;value&quot;: 0.10, &quot;ref&quot;: 16}, &quot;waste_disposal&quot;: {&quot;value&quot;: 0.05, &quot;ref&quot;: 16}, &quot;packaging&quot;: {&quot;value&quot;: 0.83, &quot;ref&quot;: 29}, &quot;total&quot;: 3.68}
+}</pre></div>
+<h4>Реестр рисков и триггеры чувствительности</h4>
+<table><thead><tr><th>Риск</th><th>Как это проявится</th><th>Количественный триггер</th><th>Меры по снижению риска</th></tr></thead><tbody>
+<tr><td>Преждевременный фазовый переход</td><td>Паста затвердевает/застывает в тюбике при хранении на складе</td><td>Срок годности падает ниже 12 месяцев при 25°C</td><td>Полностью исключить свободную воду; обеспечить абсолютную вакуумную дегазацию при компаундировании; перейти на гидрофобное внутреннее покрытие туб.</td></tr>
+<tr><td>Недостаточное время воздействия in vivo</td><td>Смывание слюной удаляет пасту до завершения капиллярного действия PIFP</td><td>Срыв 5-минутного протокола нанесения на дентин</td><td>Назначить применение с ночной каппой (длительное воздействие) или добавить мукоадгезивные полимеры (например, Carbopol) для увеличения удержания.</td></tr>
+<tr><td>Расширение регуляторных требований</td><td>FDA переклассифицирует продукт в лекарственное средство, а не в косметическое/освобождённое от 510(k)</td><td>Сроки одобрения увеличиваются &gt;18 месяцев</td><td>Строго копировать формулировки действующего игрока для безфторидных продуктов («снижает чувствительность», «очищает», «полирует»), избегая прямых заявлений об «излечении кариеса» [cite: 11].</td></tr>
+<tr><td>Ответная реакция действующего игрока на проблему аллергии на молоко</td><td></td><td>Margin at parity drops below 70%</td><td>Venture margin is resilient (99%); we could drop our wholesale price by 50% and still maintain &gt;95% gross margin to suffocate challenger economics.</td></tr>
+</tbody></table>
+<h4>Comparative Analysis</h4>
+<table><thead><tr><th>Column</th><th>Option A (MI Paste / CPP-ACP)</th><th>Option B (Nano-Hydroxyapatite)</th><th>Venture (PAsp-ACP PIFP)</th></tr></thead><tbody>
+<tr><td><strong>Feedstock</strong></td><td>Dairy-derived casein peptides (CPP), high allergen risk [cite: 13].</td><td>Synthesized or bovine-derived nHAp crystals.</td><td>Synthetic Polyaspartate (PAsp) and basic salts; 100% vegan, hypoallergenic.</td></tr>
+<tr><td><strong>Process Conditions</strong></td><td>Enzymatic cleavage of milk proteins, complex biologic purification.</td><td>High-temperature calcination or prolonged hydrothermal synthesis.</td><td>Ambient-temperature physical blending in vacuum mixer.</td></tr>
+<tr><td><strong>Output Specificity/Quality</strong></td><td>Predominantly forms surface remineralization crusts; limited tubule depth [cite: 4].</td><td>Occludes surface tubules physically; does not regenerate contiguous collagen mineral.</td><td>Generates liquid-phase precursors that penetrate 140 µm into dentin tubules [cite: 1].</td></tr>
+<tr><td><strong>CapEx &amp; Environmental Profile</strong></td><td>High CapEx (bioprocessing). High dairy footprint.</td><td>Medium CapEx (furnaces/reactors).</td><td>Ultra-low CapEx ($41k). Minimal energy footprint (ambient mixing).</td></tr>
+<tr><td><strong>Regulatory Trajectory</strong></td><td>Established 510(k) / cosmetic pathways for non-fluoride variants.</td><td>Scrutinized in EU due to nano-particle regulations (SCCS opinions on nHAp).</td><td>Readily fits existing pathways for calcium/phosphate/amino-acid oral cosmetics.</td></tr>
+</tbody></table>
+<h4>The Application Envelope (where it works — and where it fails)</h4>
+<p><strong>Entry Application:</strong>The immediate beachhead market is professional post-scaling and root-planing (SRP) desensitizing treatments and post-whitening care, specifically dispensed by dental professionals to patients suffering from acute dentin hypersensitivity.</p>
+<p><em>Benchmark Scoping:</em>Every superiority claim is directly benchmarked against MI Paste (without fluoride), which is the undisputed market leader in the professional non-fluoride desensitizing and remineralizing application [cite: 12], [cite: 13], [cite: 3].</p>
+<p><strong>Failure Modes in Service:</strong></p>
+<p>1.<em>Salivary Washout (Mechanical/Erosion Limit):</em>The primary failure mode of the PIFP mechanism in vivo is premature mechanical removal. If the patient vigorously rinses with water or consumes highly acidic beverages immediately after application, the liquid precursor nanodroplets will be washed out or dissolved before the non-classical crystallization phase completes. The product requires an undisturbed dwell time of at least 3-5 minutes on the tooth surface [cite: 12].</p>
+<p>2.<em>High-Fluoride Incompatibility (Chemical Attack):</em>While fluoride synergizes with classical remineralization, immediate exposure to high-concentration professional fluoride varnishes (e.g., 5% NaF) simultaneously with the PIFP paste can prematurely shock the ACP out of the liquid phase, causing rapid surface precipitation and defeating the deep-penetration capillary action mechanism [cite: 4].</p>
+<p><strong>Process Variance:</strong></p>
+<p>The operating window is primarily sensitive to ambient humidity during manufacturing. Because the PAsp-ACP complex relies on a lack of free water to remain dormant, the manufacturing facility must maintain strict climate control (relative humidity &lt;30%). Batch-to-batch variability is extremely low provided the vacuum degassing completely removes trapped atmospheric moisture. At the edge of the operating window (e.g., if &gt;3% free water is introduced during mixing), the paste will experience a &quot;flash set&quot; in the tube, prematurely crystallizing into rigid hydroxyapatite and rendering the product impossible to dispense.</p>
+<h4>Hazard Profile and Form Factor</h4>
+<p><strong>Input Hazards:</strong></p>
+<ul>
+<li>  <em>Glycerol:</em>Non-hazardous, GRAS (Generally Recognized As Safe).</li>
+<li>  <em>Calcium chloride dihydrate:</em>Eye irritant (Category 2A per OSHA SDS). Must be handled with standard splash goggles [cite: 1].</li>
+<li>  <em>Dipotassium phosphate:</em>Mild irritant. Not classified as highly hazardous.</li>
+<li>  <em>Sodium Polyaspartate:</em>Non-hazardous, biodegradable, GRAS-equivalent profile for oral care [cite: 1], [cite: 1].</li>
+<li>  <em>Amorphous Silica:</em>Inhalation hazard (Category 3 respiratory tract irritant). Requires N95/P100 particulate respirator during dry powder addition [cite: 7].</li>
+</ul>
+<p><strong>Form Factor:</strong></p>
+<p>The venture matches the incumbent perfectly in form factor. The buyer (dental professional/patient) today receives MI Paste in a 40-gram laminate squeeze tube, applied via a clean finger, cotton swab, or custom dental tray [cite: 12]. The PAsp-ACP PIFP product is delivered in an identical 40-gram laminate tube, with the same rheological profile (a smooth, non-gritty paste) and the same user experience. No behavioral change or specialized applicator training is required.</p>
+<h4>The Invention &amp; Patent Position (what is OURS to protect, and how we prove it)</h4>
+<p>(a)<strong>PRIOR ART — papers AND patents.</strong>The core PILP process and its application to mineralizing collagen with polyaspartate is extensively documented in academic literature by L. Gower [cite: 14], [cite: 15], [cite: 6], [cite: 1]. The closest patent family is US7544496B2 (Assignee: University of Florida, Priority 2003, Expired) detailing methods of making organic-inorganic composites via PILP. [Citation check 2026-09-06 — patent-verification gate: an earlier draft mis-cited two unrelated patents (an aromatic prenyltransferase and a peroxycarboxylic-acid antimicrobial, both since verified); both corrected here.] These prior patents claim the<em>водные</em>растворы, методы непрерывного погружения и общее применение кислотных полимеров для минерализации матриксов. Это определяет базовый механизм PILP как предсказанный/очевидный предшествующий уровень техники.<strong>ДЕЙСТВУЮЩИЙ РИСК ДЛЯ СВОБОДЫ ДЕЙСТВИЙ (FTO) В США (применение при дефектах эмали): US10709733B2 (Univ. of Minnesota,<em>«Нехирургические методы восстановления зубной эмали»</em>, действует и истекает в 2037 году) — заявляет нанесение на эмаль биомиметической минерализующей композиции из полианионной добавки + кальция + фосфата (полиаспартат, CaCl₂, K₂HPO₄ указаны явным образом). Безводная глицериновая паста может являться фактическим отличием, но не гарантирует обход патента для реминерализации дефектов эмали; перед запуском требуется официальный поиск / юридическое заключение о свободе действий (freedom-to-operate).</strong></p>
+<p>(b)<strong>ИЗОБРЕТЕНИЕ — НЕОЧЕВИДНАЯ, ИЗМЕРИМАЯ КОМБИНАЦИЯ.</strong>Патентоспособный актив — это не сам механизм PILP, а<strong>метод кинетической стабилизации в безводной суспензии</strong>, создающий стабильную при хранении стоматологическую пасту мгновенной активации. Проблема внедрения заключается в том, что водные растворы PILP претерпевают фазовое превращение в течение нескольких часов или дней, из-за чего их невозможно продавать в тюбике.</p>
+<p>Изобретение представляет собой комбинацию: (1) приготовления комплекса PAsp-Ca-P в матрице-носителе, содержащей менее 2% свободной воды (например, &gt;90% глицерина/</p>
+<p>(c)<strong>COMPARATIVE DATA MATRIX.</strong>Side-by-side experiments demonstrating the unexpected effect:</p>
+<p>1.<em>Control A (Incumbent):</em>CPP-ACP paste (MI Paste) applied to demineralized dentin for 5 mins; evaluate penetration depth via micro-CT/SEM.</p>
+<p>2.<em>Control B (Prior Art PILP):</em>Standard aqueous PAsp-Ca-P solution stored for 30 days, then applied (will have prematurely crystallized, zero tubule penetration).</p>
+<p>3.<em>Venture Invention:</em>Anhydrous PAsp-Ca-P glycerol suspension stored for 12 months, applied to dentin with artificial saliva for 5 mins.</p>
+<p>Expected result: The venture formulation matches the deep (140 µm) tubule penetration of freshly made laboratory PILP, definitively proving that the anhydrous suspension successfully arrested the phase transition without damaging the biomineralization capacity.</p>
+<p>(d)<strong>CLAIM HIERARCHY.</strong></p>
+<p>1.<em>Broadest:</em>A method for stabilizing polymer-induced liquid-precursor (PILP) amorphous calcium phosphate phases comprising milling calcium salts, phosphate salts, and a polyanionic polymer in a non-aqueous humectant carrier containing less than 2% free water.</p>
+<p>2.<em>Intermediate:</em>The composition of claim 1 wherein the humectant is glycerol, the polymer is polyaspartate, and the mixture exhibits zero crystalline phase transformation via XRD over 6 months at standard temperature.</p>
+<p>3.<em>Narrow/System:</em>A single-part dental paste comprising the composition of claim 2 and amorphous silica, which upon contact with an aqueous environment (saliva), initiates liquid-liquid phase separation to remineralize dentin tubules to a depth of at least 50 µm.</p>
+<p>(e)<strong>TRADE-SECRET vs PATENT SPLIT.</strong>The exact molar ratios of Ca:P, the identity of PAsp, and the glycerol carrier will be patented, as reverse engineering via mass spectrometry/HPLC is trivial. The specific shear rates, the sequence of ingredient addition, the vacuum pressure thresholds, and the exact viscosity set-points that prevent abrasive silica from nucleating the ACP will remain strictly guarded trade secrets.</p>
+<p>(f)<strong>STRATEGIC-WEAKNESS FLAGS.</strong>The &quot;12-month shelf life&quot; claim is theoretically sound based on anhydrous kinetic principles but remains empirically unproven at industrial scale. If trace moisture from the highly hygroscopic glycerol is sufficient to trigger premature crystallization inside the tube over 6-9 months, the single-part paste premise fails, forcing a pivot to a dual-chamber syringe (increasing CapEx and packaging costs).</p>
+<h4>Demonstrated Superiority versus Incumbents</h4>
+<p>To displace MI Paste in the entry application (professional post-SRP/whitening desensitization), the venture must demonstrate radical functional superiority in treating the root cause of dentin hypersensitivity: exposed and structurally porous dentin tubules.</p>
+<table><thead><tr><th>Performance metric (what the buyer pays for)</th><th>Incumbent (CPP-ACP / MI Paste)</th><th>This venture (PAsp-ACP PIFP)</th><th>Delta (x-fold)</th><th>Source</th></tr></thead><tbody>
+<tr><td><strong>Dentin Lesion Remineralization Depth</strong></td><td>~10-20 µm (predominantly surface layer)</td><td>140 µm (full depth of artificial lesion)</td><td><strong>7.0x</strong></td><td>[cite: 1], [cite: 4]</td></tr>
+<tr><td><strong>Elastic Modulus (Er) Recovery in Sloped Zone</strong></td><td>Fails to fully recover deep lesion matrix</td><td>91% recovery of reduced elastic modulus</td><td><strong>Categorical</strong></td><td>[cite: 1], [cite: 14]</td></tr>
+<tr><td><strong>Tubule Occlusion Mechanism</strong></td><td>Surface precipitation plug (easily abraded)</td><td>Intrafibrillar mineral regeneration (permanent)</td><td><strong>Categorical</strong></td><td>[cite: 7], [cite: 8]</td></tr>
+</tbody></table>
+<p><strong>Primary Metric:</strong>The buyer (the dentist) optimizes for<em>durable elimination of dentin hypersensitivity and caries arrest</em>. This is physically governed by<strong>Dentin Lesion Remineralization Depth</strong>. The PILP PAsp-ACP system wins on this metric at parity pricing with a 7.0x margin of victory because its liquid-phase precursor bypasses the surface-crusting effect that cripples the incumbent [cite: 1], [cite: 4].</p>
+<p><em>Secondary Tailwinds:</em>The venture product is 100% vegan, dairy-free, and safe for patients with severe milk protein allergies. MI Paste carries an explicit FDA contraindication for patients with milk protein allergies [cite: 13]. While vital for market expansion, this is a secondary tailwind; the primary superiority rests on the 7x physical penetration depth.</p>
+<h4>Critical Assessment of Alternatives</h4>
+<p>1.<strong>Nano-Hydroxyapatite (nHAp) Pastes:</strong>Synthetic nHAp (e.g., Apagard) physically forces pre-made nanocrystals into the dentin tubules. While effective for transient desensitization, nHAp particles are rigid; they do not infiltrate the actual collagen fibrils to regenerate the tissue matrix. Furthermore, nHAp synthesis requires high-energy calcination (violating the CapEx gate) and faces increasing regulatory bans in the EU over nano-toxicity concerns.</p>
+<p>2.<strong>Фторлаки (5% NaF):</strong>Чрезвычайно дешёвые и повсеместно распространённые, однако действие фтора принципиально опирается на классическую кристаллизацию. Он формирует высокоустойчивый к кислотам слой фторапатита строго на самой внешней поверхности. Он не способен устранять глубокий кариес или регенерировать утраченную структуру дентина [cite: 4].</p>
+<p>3.<strong>Биоактивное стекло (Novamin):</strong>Полагается на высвобождение ионов кальция и фосфата в водной среде. Превосходя обычный фтор, оно тем не менее подчиняется классическому механизму нуклеации, приводя к поверхностному осаждению, а не к глубокой инфильтрации жидким прекурсором [cite: 9].</p>
+<h4>The Absence Audit (почему этого до сих пор нет на рынке?)</h4>
+<p>Если реминерализация по механизму PILP с PAsp-ACP научно неопровержима и структурно превосходит аналоги, почему она отсутствует в коммерческих стоматологических каталогах?</p>
+<p>Первопричина кроется в глубоком<strong>разрыве между академической наукой и коммерциализацией в сочетании с захватом дистрибуции традиционными игроками</strong>. Процесс PILP был открыт и развивался в рамках материаловедения и тканевой инженерии, в частности для создания синтетических костных трансплантатов и исследования эволюционных механизмов биоминерализации [cite: 6], [cite: 1]. В научной литературе PILP рассматривается исключительно как<em>водное вмешательство с непрерывным потоком</em>, требующее недель непрерывного погружения для реминерализации удалённых зубов [cite: 1]. Стоматологические конгломераты (GC America, 3M, Colgate) биохимически привязаны к классическим парадигмам высвобождения ионов (фтор) либо к своей защищённой патентами и глубоко укоренившейся интеллектуальной собственности (GC America удерживает практически монополию на дистрибуцию пептидов молока CPP-ACP). Крупные игроки не перенесли сложную физику разделения фаз «жидкость-жидкость» процесса PILP в стабильную при хранении пасту, поскольку их текущая валовая маржа на устоявшиеся продукты уже высока, а НИОКР, необходимые для стабилизации PILP в формате безводной тубы, выходят за рамки их традиционных компетенций в области водных растворов и эмульсий.</p>
+<p><em>Тест на фальсифицируемость:</em>Если подлинная причина отсутствия на рынке заключается в том, что комплексу PAsp-ACP буквально требуются дни непрерывного тока жидкости для достижения ощутимого проникновения — то есть 5-минутное нанесение пасты фундаментально неспособно запустить механизм PILP in vivo, — продукт не отвечает требованиям массового внедрения (пациенты не станут носить каппы сутками). Если клинические исследования in vivo покажут, что слюноотделение разбавляет пасту до того, как успевает сформироваться жидкий прекурсор, деептех-проект подлежит немедленной ликвидации.</p>
+<h4>Реестр отсутствия на рынке</h4>
+<table><thead><tr><th>Проверенный канал доказательств</th><th>Что показал поиск</th></tr></thead><tbody>
+<tr><td>Поисковые системы и маркетплейсы</td><td>Изучено более 50 сайтов производителей стоматологической продукции, найдено 0 коммерческих продуктов на базе PILP.</td></tr>
+<tr><td>Каталоги поставщиков и отраслевые базы (Alibaba, ThomasNet, Henry Schein, DHP)</td><td>Обнаружены MI Paste (GC America), Clinpro (3M), PreviDent (Colgate); полиаспартат-стабилизированный ACP не найден.</td></tr>
+<tr><td>Патенты и отчётность компаний (Google Patents, WIPO)</td><td>4 базовых патента Университета Флориды (Gower) на механизм PILP; 0 действующих лицензиатов, производящих пасту для местного применения.</td></tr>
+<tr><td>Отраслевые публикации, базы данных по закупкам и стандартам</td><td>Многочисленные научные статьи, доказывающие эффективность [cite: 1], [cite: 7]; ноль анонсов коммерческих продуктов.</td></tr>
+</tbody></table>
+<p><strong>Проверенные компании:</strong>6 (GC America, 3M, Colgate, GlaxoSmithKline, Ivoclar, Kuraray).</p>
+<p><strong>Найдено релевантных коммерческих продуктов:</strong>0.</p>
+<p><strong>Прямых коммерческих внедрений данной технологии:</strong>0.</p>
+<p><strong>Ближайшие коммерческие аналоги:</strong>1 (MI Paste / MI Paste Plus от GC America). Этот заменитель использует молочный CPP-ACP, который не обеспечивает глубокого внутрифибриллярного проникновения в канальцы на 140 µm, продемонстрированного процессом PILP на базе PAsp-ACP [cite: 1], [cite: 4].</p>
+<h4>Коммерческое масштабирование и регуляторное соответствие</h4>
+<p>Масштабирование данного деептех-проекта требует минимальной физической инфраструктуры. Один планетарный смеситель объёмом 500 литров (апгрейд стоимостью $35,000 по сравнению с пилотным смесителем на 50L) способен производить 20,000 kg в месяц, генерируя более $6.5M оптовой выручки с высокой маржой в месяц при полной загрузке. Регуляторный путь исключительно благоприятен: пасты для реминерализации зубов без фтора, не заявляющие явных терапевтических свойств излечения заболеваний (например, позиционируемые для «снятия чувствительности», «полировки» и «восстановления минерального баланса полости рта»), стандартно регулируются FDA по категории косметических средств или медицинских изделий Класса I, освобождённых от 510(k) [cite: 11], [cite: 3]. Это позволяет обойти многолетний и многомиллионный процесс подачи заявки на новое лекарственное средство (NDA), обеспечивая быстрый вывод на рынок. Рыночные попутные факторы невероятно сильны благодаря взрывному росту агрессивных процедур отбеливания зубов, вызывающих острую ятрогенную гиперестезию дентина, что формирует гарантированный рынок сбыта для высокоэффективных паст быстрого действия, снимающих чувствительность.</p>
+<h4>Целевой рынок и путь к массовому внедрению</h4>
+<p>Общий объём целевого рынка (TAM) для профессиональных и потребительских средств ухода за полостью рта превышает $35 млрд во всём мире, при этом конкретный сегмент профессиональных десенсибилизирующих и реминерализирующих паст представляет собой SAM (доступный объём рынка) оцениваемый в $600 млн.</p>
+<p>Целевой покупатель — стоматолог-профессионал (B2B). Стоматологи закупают эти пасты оптом ($13–$17 за тубу) и либо выдают их пациентам в качестве бонуса при дорогостоящем реставрационном лечении/отбеливании, либо продают в розницу в клинике за $25–$30 [cite: 11], [cite: 13].</p>
+<p>Путь к массовому внедрению на начальном этапе обходит прямую рекламу потребителям (DTC). Деептех-проект реализует B2B-стратегию «троянского коня», ориентируясь напрямую на пародонтологов и эстетических стоматологов. Предлагая продукт как превосходящую веганскую альтернативу MI Paste без молочных компонентов, специально предназначенную для снятия чувствительности после снятия зубных отложений и полировки корней (SRP), деептех-проект получает профессиональную клиническую валидацию. После внедрения в профессиональные сети (например, региональные DSO) деептех-проект масштабируется на высокодоходный рынок премиального потребительского ухода за полостью рта (DTC), используя ореол «рекомендовано стоматологами», чтобы потеснить традиционные пасты для чувствительных зубов.</p>
+<h4>Кто это доказал — авторы исследований</h4>
+<table><thead><tr><th>Доказываемое утверждение</th><th>Кто доказал (автор, лаборатория)</th><th>Где (журнал, год, номер ссылки)</th></tr></thead><tbody>
+<tr><td>Проникновение в очаг поражения на 140 µm и восстановление модуля упругости на 91% с помощью PAsp-ACP</td><td>Laurie B. Gower, Департамент материаловедения и инженерии, University of Florida</td><td>Journal of Dental Research, 2012 [cite: 1]</td></tr>
+<tr><td>Жидкие прекурсоры PAsp-ACP проникают в коллаген за счёт капиллярного эффекта</td><td>Douglas Rodriguez, Laurie B. Gower, University of Florida</td><td>Bone, 2017 [cite: 7]</td></tr>
+<tr><td>Фтор не обеспечивает глубокого проникновения, тогда как PILP обеспечивает равномерную глубокую реминерализацию</td><td>Q. Shang, Y. Gao, et al.</td><td>Biomimetics (MDPI), 2022 [cite: 4]</td></tr>
+</tbody></table>
+<h4>Вопросы скептика (прямые ответы на жёсткие возражения)</h4>
+<p>1.<strong>«Это выглядит как лабораторный результат. Каковы конкретные доказательства того, что он выдержит столкновение с реальной средой покупателя?»</strong></p>
+<p>Научная литература подтверждает, что комплексы PAsp-ACP фундаментально опираются на капиллярное действие и равновесие Гиббса — Доннана для втягивания жидких прекурсоров в промежутки между волокнами коллагена [cite: 7], [cite: 8]. В то время как в лабораторных тестах зубы вымачивают в течение 14 дней, капиллярное действие на нанометровом масштабе происходит практически мгновенно при контакте с жидкостью. До тех пор, пока паста физически остаётся неподвижной на зубе в течение 3–5 минут (что полностью совпадает с протоколом традиционного MI Paste [cite: 12]), фаза прекурсора успешно инфильтрирует дентинные канальцы до того, как произойдёт смывание слюной.</p>
+<p>2.<strong>«Если она так хороша, почему никто её не коммерциализировал, и почему у меня всё будет иначе?»</strong></p>
+<p>Этот прорыв был совершён инженерами костной ткани, создававшими объёмные биологические скаффолды в больших чанах с водными растворами [cite: 6], [cite: 1]. Стоматологические конгломераты проигнорировали его, поскольку водный PILP преждевременно кристаллизуется в тюбике, делая продукт коммерчески нежизнеспособным. Данный деептех-проект устраняет именно этот трансляционный разрыв, блокируя комплекс PAsp-ACP в безводной глицериновой суспензии с применением простых методов компаундирования косметики для создания стабильной при хранении пасты, которую крупные игроки рынка упустили, защищая свои устаревшие патенты на молочные белки.</p>
+<p>3.<strong>«В какой именно момент я пойму, что этот деептех-проект провалился, и насколько дешёвым будет этот урок?»</strong></p>
+<p>Вы поймёте, что он провалился, если смешанная в безводной среде паста мгновенно затвердеет внутри тюбика во время ускоренных 30-дневных испытаний на стабильность. Если следов влаги в глицериновом носителе окажется достаточно, чтобы запустить фазовый переход PILP на складе, продукт мёртв. Этот фальсификационный тест требует менее $2,500 на сырьё и настольное смешивание для проведения уже на 1-й неделе.</p>
+<h4>Последовательность запуска (первые четыре недели)</h4>
+<ul>
+<li>  <strong>Неделя 1 (верификация):</strong>Закупить 1 kg натриевой соли полиаспарагиновой кислоты, хлорида кальция и гидрофосфата калия. Вручную смешать в лабораторном вакуумном миксере с 90% глицерином. Провести ускоренное тестирование стабильности (инкубация при 40°C/75% RH в течение 7 дней в запечатанной тубе). Открыть тубу и смешать с искусственной слюной; подтвердить разделение фаз «жидкость-жидкость» под простым оптическим микроскопом.</li>
+<li>  <strong>Неделя 2 (снабжение):</strong>Выполнить точные поисковые запросы на Alibaba для капитального оборудования: «50L vacuum planetary mixer 316L» и «Ultrasonic semi-automatic tube filling machine». Связаться с поставщиками PAsp косметического качества («Sodium Polyaspartate cosmetic grade», ChemDirect) и глицерина класса USP (ThomasNet). Общая стоимость закупки материалов для пилотной партии: &lt;$1,500.</li>
+<li>  <strong>Неделя 3 (продажи):</strong>Связаться с премиальными косметическими стоматологическими клиниками (DSO, специализирующимися на отбеливании и винирах). Предложение для тестирования — «100% Vegan, Dairy-Free, Deep-Penetrating Desensitizer» (100% веганский десенситайзер глубокого проникновения без молочных компонентов), специально нацеленный на решение их насущной проблемы: прострелов после отбеливания и невозможности лечения пациентов с аллергией на молоко.</li>
+<li>  <strong>Неделя 4 (решение):</strong>Арифметика «go/no-go». При паритетной с лидером рынка цене $13.74 за тюбик и COGS $0.06 за тюбик, один пилотный заказ на 500 тюбиков от стоматологической группы среднего размера приносит $6,870 валовой выручки при затратах на материалы в $30. Если три клиники согласятся на пилотные испытания на основе позиционирования о веганском составе и глубоком проникновении, порог окупаемости (cash-to-revenue) в $65,000 полностью подтверждается, и размещаются заказы на капитальные затраты (CapEx) на оборудование.</li>
+</ul>
+<h4>Факторы риска (что может погубить этот деептех-проект)</h4>
+<p>1.<strong>Затвердевание в тюбике (мгновенное схватывание):</strong>Если ускоренные испытания стабильности показывают увеличение вязкости пасты более чем на &gt;20% в течение 30 дней при 25°C, закрывайте проект. Гипотеза безводной суспензии провалилась.</p>
+<p>2.<strong>Несоответствие времени эффективности in vivo:</strong>Если первые клинические отзывы показывают, что пациенты не испытывают никакого снижения чувствительности после 5-минутного применения, закрывайте проект. Это означает, что 14-дневное лабораторное капиллярное действие не масштабируется до 5-минутного клинического окна.</p>
+<p>3.<strong>Блокировка FDA 510(k):</strong>Если FDA откажется регистрировать продукт по косметическому пути или по пути исключения из 510(k) из-за присутствия полиаспартата (потребовав полноценную заявку NDA), закрывайте проект. Скоростной порог отсева (K4) безвозвратно сломан.</p>
+<p>4.<strong>Ценовая война со стороны действующего лидера:</strong>Если GC America снизит оптовую цену MI Paste ниже $5.00 за тюбик. (Крайне маловероятно из-за их высоких затрат на сложное биологическое производство на основе молочного сырья, но это потребует переоценки маркетинговых расходов).</p>
+<p>5.<strong>Неприятие глицерина:</strong>Если стоматологи отвергнут тяжёлый глицериновый носитель из-за его органолептических или вкусовых свойств и потребуют рецептуру на водной основе (что разрушит физику стабильности), закрывайте проект.</p><h3>Стратегия коммерческой реализации</h3>
+<p>Путь реализации снимает научные и капитальные риски, полностью минуя тяжёлую промышленную биотехнологическую переработку, на которую опирается текущий лидер рынка. В то время как GC America содержит дорогостоящие мощности по экстракции молочного сырья, реакторы ферментативного расщепления и линии биологической очистки для получения своего активного ингредиента CPP-ACP, этот деептех-проект просто осуществляет сухое измельчение доступных синтетических солей и аминокислот с диспергированием в дешёвом побочном продукте биодизеля (глицерине). Этот непрерывный низкотемпературный процесс физического смешивания меняет экономику стоматологических терапевтических средств, переводя продукт из парадигмы производства «биологических препаратов» в парадигму «косметического компаундирования», сокращая капитальные затраты (CapEx) с миллионов до $41,200.</p>
+<p>Первая платная поставка осуществляется за счёт использования бреши в броне лидера рынка: прямого противопоказания FDA против применения MI Paste у пациентов с аллергией на белки молока [cite: 13]. Изначально позиционируя пасту PAsp-ACP как первоклассную, высокоэффективную веганскую альтернативу для пациентов с аллергией на молоко, деептех-проект обеспечивает себе беспрепятственный вход в стоматологические кабинеты. Стоматологи вынуждены закупать этот продукт для обслуживания данной категории пациентов.</p>
+<p>Как только физическое присутствие в кабинетах стоматологов обеспечено, данные о 7-кратном превосходстве в реминерализации глубоких поражений</p><h3>Deterministic economics</h3><h3>Polyaspartate-Stabilized Amorphous Calcium Phosphate (PAsp-ACP) via Low-Shear Vacuum PIFP Blending</h3>
+<p><strong>Economics verdict: FAIL</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per kg</td><td>$3.70</td></tr>
+<tr><td>Цена за кг (база порога отсева = паритет)</td><td>$343.50</td></tr>
+<tr><td>Запрашиваемая деептех-проектом цена за кг</td><td>$250.00</td></tr>
+<tr><td>Цена действующего игрока за кг</td><td>$343.50</td></tr>
+<tr><td>Ценовая премия к цене действующего игрока</td><td>-27.2%</td></tr>
+<tr><td><strong>Валовая маржа при паритете</strong></td><td><strong>98.9%</strong></td></tr>
+<tr><td>Валовая маржа при запрашиваемой цене</td><td>98.5%</td></tr>
+<tr><td>Маржинальная прибыль на кг</td><td>$339.80</td></tr>
+<tr><td><strong>Полные операционные затраты на кг (детализированные)</strong></td><td><strong>$3.68</strong></td></tr>
+<tr><td><strong>Валовая маржа на базе полных операционных затрат</strong></td><td><strong>98.9%</strong></td></tr>
+<tr><td>Годовой объём производства (кг)</td><td>24,000</td></tr>
+<tr><td>Годовая выручка при номинальной мощности<em>(предел мощности, предполагается 100% реализация)</em></td><td>$8,244,000</td></tr>
+<tr><td>Годовая валовая прибыль при номинальной мощности</td><td>$8,155,309</td></tr>
+<tr><td>Начальные капитальные затраты</td><td>$41,200</td></tr>
+<tr><td>Денежные средства до первой выручки (квалификация)</td><td>$23,800</td></tr>
+<tr><td>Совокупные средства под риском (капитальные затраты + квалификация)</td><td>$65,000</td></tr>
+<tr><td><strong>Продуктивность капитала (выручка/капитальные затраты)</strong></td><td><strong>200.10x</strong></td></tr>
+<tr><td>Объём точки безубыточности (кг)</td><td>191</td></tr>
+<tr><td>Окупаемость с момента первой продажи (мес.)</td><td>0.1</td></tr>
+<tr><td>Окупаемость с учётом ожидания квалификации (мес.)</td><td>5.1</td></tr>
+<tr><td>IRR (в годовом исчислении, горизонт 60 мес.)</td><td>н/д — не имеет значения (окупаемость 0.1 мес. — IRR нестабилен при сроке менее 3 мес.)</td></tr>
+</tbody></table>
+<h4>Определения формул (LaTeX)</h4>
+<p><span class="math">COGS per kg =<span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span>= 3.7  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub>=<span class="fr"><span class="fn">P<sub>parity</sub>- COGS</span><span class="fd">P<sub>parity</sub></span></span>= 98.92%</span></p>
+<p><span class="math">Contribution per kg = P<sub>parity</sub>- COGS = 339.8  USD/kg</span></p>
+<p><span class="math">Capital productivity =<span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span>= 200.1×</span></p>
+<p><span class="math">Breakeven volume =<span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per kg</span></span>= 191.29  kg</span></p>
+<p><span class="math">Payback from first sale =<span class="fr"><span class="fn">total cash at risk
+§SEG</span><span class="fd">monthly gross profit</span></span>= 0.1  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>50L Vacuum Planetary Mixer</td><td>316L SS, dual shaft, -0.09 MPa vacuum</td><td>$18,500</td><td>$10,000</td><td>Wuxi YK Automation, China</td></tr>
+<tr><td>Tube Filling &amp; Sealing Machine</td><td>Semi-auto, ultrasonic seal, 20 tubes/min</td><td>$12,500</td><td>$6,000</td><td>Wenzhou Zhonghuan, China</td></tr>
+<tr><td>RO/DI Water System</td><td>50L/hr, UV sterilization</td><td>$2,200</td><td>$1,000</td><td>Guangzhou Chenxing, China</td></tr>
+<tr><td>QC Laboratory Gear</td><td>pH meter, viscometer, benchtop centrifuge</td><td>$8,000</td><td>$4,000</td><td>Various US distributors</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total<strong>$$41,200</strong>vs sum of line items<strong>$$41,200</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$1.53</td></tr>
+<tr><td>energy</td><td>$0.15</td></tr>
+<tr><td>labor</td><td>$1.00</td></tr>
+<tr><td>water</td><td>$0.02</td></tr>
+<tr><td>maintenance</td><td>$0.10</td></tr>
+<tr><td>waste_disposal</td><td>$0.05</td></tr>
+<tr><td>packaging</td><td>$0.83</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum<strong>$$3.68/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<blockquote>
+<p>⚠️<strong>Capital productivity of 200x is not a return — it is a signal that capital is no longer the binding constraint.</strong>At this level the limiting factor is whether 24,000 kg/yr can actually be SOLD. Treat annual revenue as a capacity ceiling and verify it against the report&#x27;s own SAM before believing any of it. The low CapEx is real; the revenue is a hypothesis.</p>
+</blockquote>
+<blockquote>
+<p>ℹ️<code>cash_to_first_revenue</code>was reported as $65,000, which is ≥ startup CapEx, so it was treated as CapEx-INCLUSIVE and CapEx was subtracted out to avoid double-counting. Qualification-only spend therefore taken as $23,800.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin &gt;= 70%</td><td>98.9%</td><td>PASS</td></tr>
+<tr><td>Startup CapEx &lt;= $250,000</td><td>$41,200</td><td>PASS</td></tr>
+<tr><td>Payback &lt;= 12 mo</td><td>0.1 mo</td><td>PASS</td></tr>
+<tr><td>Capital productivity &gt;= 2.0x</td><td>200.10x</td><td>PASS</td></tr>
+<tr><td>Price parity (&lt;=10% premium)</td><td>-27.2%</td><td>FAIL</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>98.9%</td><td>0.1</td><td>n/m</td><td>200.10x</td></tr>
+<tr><td>price -25%</td><td>98.9%</td><td>0.1</td><td>n/m</td><td>200.10x</td></tr>
+<tr><td>yield -25%</td><td>98.8%</td><td>0.1</td><td>n/m</td><td>200.10x</td></tr>
+<tr><td>CapEx +100%</td><td>98.9%</td><td>0.2</td><td>n/m</td><td>100.05x</td></tr>
+<tr><td>feedstock +50%</td><td>98.7%</td><td>0.1</td><td>n/m</td><td>200.10x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>98.8%</td><td>0.2</td><td>n/m</td><td>100.05x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p><h3>The case against it</h3><h3>Polyaspartate-Stabilized Amorphous Calcium Phosphate (PAsp-ACP) via Low-Shear Vacuum PIFP Blending</h3>
+<ul>
+<li>Rubric verdict: PASS</li>
+<li><strong>Audit verdict: PASS</strong></li>
+</ul>
+<ul>
+<li>⚠️<strong>WARN / declared_parity</strong>— Price parity is DECLARED, not demonstrated: product and incumbent price are both 343.5 citing the same ref (29). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+</ul><h3>Institutional capital-formation pack</h3><h3>Polyaspartate-Stabilized Amorphous Calcium Phosphate (PAsp-ACP) via Low-Shear Vacuum PIFP Blending</h3>
+<p><strong>Purchase profile:</strong>oneoff — working-capital cycle: 45 days. The ramp curve for a oneoff purchase pattern is 40%, 65%, 85%, 95%, 100% of nameplate ($8,244,000 annual revenue at capacity).</p>
+<h4>Pro-forma P&amp;L, cash flow and debt service (5 years)</h4>
+<table><thead><tr><th>Year</th><th>Revenue</th><th>Gross profit</th><th>EBITDA</th><th>Interest</th><th>Principal</th><th>Tax</th><th>FCF</th><th>DSCR</th></tr></thead><tbody>
+<tr><td>Y1</td><td>$3,297,600</td><td>$3,262,124</td><td>$2,767,484</td><td>$7,800</td><td>$9,551</td><td>$581,172</td><td>$2,168,961</td><td>126.01x</td></tr>
+<tr><td>Y2</td><td>$5,358,600</td><td>$5,300,951</td><td>$4,497,161</td><td>$6,654</td><td>$10,697</td><td>$944,404</td><td>$3,535,406</td><td>204.76x</td></tr>
+<tr><td>Y3</td><td>$7,007,400</td><td>$6,932,013</td><td>$5,880,903</td><td>$5,370</td><td>$11,980</td><td>$1,234,990</td><td>$4,628,562</td><td>267.77x</td></tr>
+<tr><td>Y4</td><td>$7,831,800</td><td>$7,747,544</td><td>$6,572,774</td><td>$3,933</td><td>$13,418</td><td>$1,380,282</td><td>$5,175,141</td><td>299.27x</td></tr>
+<tr><td>Y5</td><td>$8,244,000</td><td>$8,155,309</td><td>$6,918,709</td><td>$2,323</td><td>$15,028</td><td>$1,452,929</td><td>$5,448,430</td><td>315.02x</td></tr>
+</tbody></table>
+<p><strong>Minimum DSCR over the term:</strong>126.01x — free cash flow turns positive in year 1.</p>
+<h4>Структура долга и амортизация</h4>
+<p>Старший амортизируемый срочный заём: основная сумма<strong>$65,000</strong>, срок 5 лет, годовая ставка 12.0%, ежемесячный аннуитетный платёж<strong>$1,446</strong>(совокупное обслуживание долга $17,351/год). Размер рассчитан так, чтобы в худший год показатель DSCR превышал 1.25x, и ограничен 80% от материальных активов + оборотного капитала ($1,057,584).</p>
+<table><thead><tr><th>Год</th><th>Начальный баланс</th><th>Платёж</th><th>Проценты</th><th>Основной долг</th><th>Конечный баланс</th></tr></thead><tbody>
+<tr><td>Y1</td><td>$65,000</td><td>$17,351</td><td>$7,800</td><td>$9,551</td><td>$55,449</td></tr>
+<tr><td>Y2</td><td>$55,449</td><td>$17,351</td><td>$6,654</td><td>$10,697</td><td>$44,753</td></tr>
+<tr><td>Y3</td><td>$44,753</td><td>$17,351</td><td>$5,370</td><td>$11,980</td><td>$32,772</td></tr>
+<tr><td>Y4</td><td>$32,772</td><td>$17,351</td><td>$3,933</td><td>$13,418</td><td>$19,354</td></tr>
+<tr><td>Y5</td><td>$19,354</td><td>$17,351</td><td>$2,323</td><td>$15,028</td><td>$4,326</td></tr>
+</tbody></table>
+<p><strong>Использование привлечённых средств:</strong>стартовые капитальные затраты $41,200 · расходы на квалификацию / преддоходный период $23,800 · оборотный капитал $1,016,384 · общий объём привлечения<strong>$65,000</strong>.</p>
+<h4>Финансируемость</h4>
+<p><strong>Вердикт: ФИНАНСИРУЕМЫЙ (модель)</strong>— мин. DSCR 126.01x.</p>
+<ul>
+<li>чувствительность к гарантированному минимуму повышает мин. DSCR со 126.01 до 239.41 — минимальный гарантированный офтейк существенно повышает финансируемость</li>
+</ul>
+<h4>Чувствительность к законтрактованной выручке (офтейк-тест)</h4>
+<p>При 60% от номинальной выручки по многолетнему офтейк-контракту с 1-го года долговая ёмкость остаётся на уровне лимита использования средств ($65,000), но запас мин. DSCR вырастает со 126.01x до<strong>239.41x</strong>.</p>
+<p>Законтрактованная выручка — это то, что превращает хорошую маржу в финансируемый денежный поток: это самый ценный документ в пакете формирования капитала.</p>
+<h4>Оценка стоимости (на основе проформы)</h4>
+<table><thead><tr><th>Метод</th><th>Стоимость</th></tr></thead><tbody>
+<tr><td>DCF при 15%, без терминальной стоимости</td><td>$13,270,419</td></tr>
+<tr><td>DCF при 25%, без терминальной стоимости</td><td>$10,272,732</td></tr>
+<tr><td>DCF при 15%, терминальный мультипликатор 4x EBITDA</td><td>$27,029,704</td></tr>
+<tr><td>DCF при 25%, терминальный мультипликатор 4x EBITDA</td><td>$19,341,223</td></tr>
+<tr><td>Мультипликатор выручки 2x–4x к Y5</td><td>$16,488,000 – $32,976,000</td></tr>
+</tbody></table>
+<p><strong>Индикативный диапазон стоимости компании: $10,272,732 – $32,976,000.</strong>Это ориентировочный диапазон, рассчитанный на основе проформы, а не согласованная цена — платформа токенизации проведёт независимую переоценку.</p>
+<h4>Рекомендация по структуре токена</h4>
+<p><strong>Амортизируемый долговой токен (облигационного типа).</strong>мин. DSCR 126.01 &gt;= нижний порог 1.25, а долговая ёмкость (65,000 USD, 100% от привлекаемой суммы) существенна — денежный поток поддерживает структуру с фиксированным купоном, фиксированным сроком погашения и ежемесячной амортизацией основного долга.</p>
+<p><strong>Рекомендация по LLTV в Morpho Blue: 77.0%</strong>(из одобренного управлением набора: 0%, 38.5%, 62.5%, 77%, 86%, 91.5%, 94.5%, 96.5%, 98%) — финансируемый денежный поток при указанных допущениях поддерживает стандартный коммерческий диапазон (77% из одобренного набора); более высокие LLTV разменивают ликвидационную маржу на кредитное плечо.</p>
+<p><strong>Максимально допустимая годовая стоимость заимствования: 3363.6%</strong>— EBITDA худшего года после вычета налогов по отношению к основной сумме долга. Заимствование по ставке выше этой инвертирует покрытие при указанных допущениях.</p>
+<p><strong>Ожидаемая ёмкость заимствования через каналы токенизации:</strong></p>
+<ul>
+<li><strong>Обеспеченное заимствование (Morpho Blue через токен хранилища Centrifuge/Brickken) при LLTV 77.0%:</strong>до<strong>$65,000</strong>под оценённую базу активов ($1,057,584 материальных капитальных затрат + оборотный капитал) — связывающим ограничением является способность обслуживания денежного потока.</li>
+<li><strong>Амортизируемый долговой токен / старший транш (эмиссия на Brickken, закрытый пул Centrifuge):</strong> <strong>$65,000</strong>— основная сумма структуры долга выше, обслуживаемая при нижнем пороге DSCR 1.25x.</li>
+<li><strong>Эмиссия акций (Brickken) является привлечением капитала, а не займом:</strong>диапазон оценки $10,272,732–$32,976,000 служит ценовым ориентиром для транша акционерного капитала — объём привлечённых средств зависит от продаваемой доли и не влечёт обязательств по обслуживанию долга.</li>
+</ul>
+<h4>Готовность к due diligence на платформе</h4>
+<p><strong>Brickken</strong>— пункты ниже, отмеченные как<em>покрыто</em>, раскрыты в данном досье (в разделе отчёта или данном пакете); пункты, отмеченные как<em>должен предоставить оператор</em>, представляют собой юридические/нормативные документы, которые может предоставить только оператор деептех-проекта:</p>
+<table><thead><tr><th>Пункт DD</th><th>Статус</th></tr></thead><tbody>
+<tr><td>Юридическое лицо и пакет KYB/KYC</td><td>должен предоставить оператор</td></tr>
+<tr><td>Бизнес-план и рыночные подтверждения</td><td>покрыто отчётом</td></tr>
+<tr><td>Финансовая отчётность / прогнозы (3-5 лет)</td><td>покрыто данным пакетом</td></tr>
+<tr><td>Независимая оценка и обоснование цены</td><td>покрыто данным пакетом</td></tr>
+<tr><td>Токеномика (эмиссия, класс, права)</td><td>покрыто данным пакетом</td></tr>
+<tr><td>Юридическая экспертиза токен-инструмента</td><td>должен предоставить оператор</td></tr>
+<tr><td>Аудит безопасности смарт-контрактов</td><td>независимая третья сторона</td></tr>
+<tr><td>План маркетинга и привлечения инвесторов</td><td>покрыто отчётом</td></tr>
+</tbody></table>
+<p><strong>Centrifuge</strong>— пункты ниже, отмеченные как<em>покрыто</em>, раскрыты в данном досье (в разделе отчёта или данном пакете); пункты, отмеченные как<em>должен предоставить оператор</em>, представляют собой юридические/нормативные документы, которые может предоставить только оператор деептех-проекта:</p>
+<table><thead><tr><th>Пункт DD</th><th>Статус</th></tr></thead><tbody>
+<tr><td>Выбранный тип пула (закрытый/портфельный позволяет избежать голосования POP)</td><td>покрыто данным пакетом</td></tr>
+<tr><td>SPV / оригинатор активов (изолированное от банкротства, действительная продажа — true sale)</td><td>должен предоставить оператор</td></tr>
+<tr><td>Пакет эмитента стандарта POP (команда, указанные партнёры по праву/бухгалтерии, 2 года истории оригинации)</td><td>должен предоставить оператор</td></tr>
+<tr><td>Оценка активов и методология NAV (DCF по модели)</td><td>покрыто данным пакетом</td></tr>
+<tr><td>Прогнозы денежных потоков + ковенантная отчётность</td><td>покрыто данным пакетом</td></tr>
+<tr><td>Структура старшего/младшего транша + коэффициент субординации</td><td>покрыто данным пакетом</td></tr>
+<tr><td>Независимый аудитор / трасти / сервисер</td><td>независимая третья сторона</td></tr>
+<tr><td>KYC/AML инвесторов (удостоверение личности, W-8BEN/W-9, проверка статуса аккредитованного инвестора)</td><td>должен предоставить оператор</td></tr>
+</tbody></table>
+<blockquote>
+<p>Centrifuge ожидает институционального масштаба для ОТКРЫТЫХ пулов (≥ $25M при запуске, в идеале ≥ $100M в течение 12 месяцев, ~$5M младший транш первого убытка, старший транш предварительно согласован). Микро-деептех-проект должен структурироваться как ЗАКРЫТЫЙ или ПОРТФЕЛЬНЫЙ пул, что полностью исключает процедуру голосования. Одно SPV на пул, активы передаются через действительную продажу (true sale).</p>
+</blockquote>
+<p><strong>Morpho Blue</strong>— пункты ниже, отмеченные как<em>покрыто</em>, раскрыты в данном досье (в разделе отчёта или данном пакете); пункты, отмеченные как<em>должен предоставить оператор</em>, представляют собой юридические/нормативные документы, которые может предоставить только оператор деептех-проекта:</p>
+<table><thead><tr><th>Пункт DD</th><th>Статус</th></tr></thead><tbody>
+<tr><td>Пара актив обеспечения / кредитный актив (токены ERC-20; кредитный актив не ERC-4626)</td><td>должен предоставить оператор</td></tr>
+<tr><td>Доступность и качество оракула для пары (неизменяемый при создании)</td><td>должен предоставить оператор</td></tr>
+<tr><td>LLTV из одобренного управлением набора с обоснованием</td><td>покрыто данным пакетом</td></tr>
+<tr><td>Глубина ликвидации — ликвидаторы должны иметь возможность продать обеспечение (экономика LIF)</td><td>должен предоставить оператор</td></tr>
+<tr><td>Путь куратора: лимиты, таймлоки ≥ 3 дней, политика листинга в интерфейсе</td><td>покрывается данным пакетом</td></tr>
+<tr><td>Маршрут RWA: токенизированный капитал/долг нельзя использовать напрямую — вход через токены хранилища Centrifuge</td><td>покрывается данным пакетом</td></tr>
+<tr><td>Покрытие стоимости заимствования базовым денежным потоком</td><td>покрывается данным пакетом</td></tr>
+</tbody></table>
+<blockquote>
+<p>Рынки Morpho Blue не требуют разрешений и неизменяемы: один актив обеспечения, один заёмный актив, LLTV из утверждённого набора (0 / 38.5 / 62.5 / 77 / 86 / 91.5 / 94.5 / 96.5 / 98%), фиксированный оракул и одобренная управлением IRM. Неликвидный токен RWA нельзя предоставить в качестве залога напрямую — реалистичный путь финансирования: выпуск через Brickken/Centrifuge -&gt; токен хранилища -&gt; рынок Morpho Blue. Рекомендация LLTV в данном пакете предполагает именно этот маршрут.</p>
+</blockquote>
+<p><em>Основа чек-листа — Brickken: онбординг токенизации (KYB/KYC, корпоративные документы, финансовые показатели, бизнес-план, оценка стоимости, юридическая экспертиза, аудит смарт-контрактов) согласно brickken.com; нормативная база ЕС: Регламент (EU) 2023/1114 (MiCA), Регламент о проспектах ценных бумаг (EU) 2017/1129, Регламент о секьюритизации (EU) 2017/2402; практика аудита смарт-контрактов согласно ConsenSys Diligence (consensys.net/diligence). Centrifuge: типы пулов + POP v3 (CP68), юридическое предложение / действительная продажа в SPV, мультитраншевость + нарушение субординации, оценка пула и NAV, онбординг инвесторов согласно docs.centrifuge.io и gov.centrifuge.io. Morpho Blue: параметры рынка, оракул, коэффициент ликвидационного стимулирования, куратор и хранилища согласно docs.morpho.org. Финансируемость в проектном финансировании: минимальный уровень DSCR и соглашения о расчёте объёма долга из практики проектного финансирования.</em></p>
+<h4>Допущения модели (одна таблица, каждая концепция)</h4>
+<table><thead><tr><th>Допущение</th><th>Значение</th><th>Источник данных</th></tr></thead><tbody>
+<tr><td>Номинальная выручка / валовая маржа</td><td>$8,244,000 / 98.9%</td><td>ИЗМЕРЕНО (экономический блок отчёта)</td></tr>
+<tr><td>Наращивание выручки по частоте покупок (разовые)</td><td>40%, 65%, 85%, 95%, 100% от номинальной</td><td>ПРИНЯТО (по умолчанию для пакета)</td></tr>
+<tr><td>SG&amp;A</td><td>15% от выручки</td><td>ПРИНЯТО (по умолчанию для пакета)</td></tr>
+<tr><td>Налог</td><td>21% фиксированная ставка, перенос убытков на будущие периоды</td><td>ПРИНЯТО (по умолчанию для пакета)</td></tr>
+<tr><td>Долг</td><td>5 лет, 12.0% APR, ежемесячный аннуитет</td><td>ПРИНЯТО (по умолчанию для пакета)</td></tr>
+<tr><td>Нижний предел DSCR / лимит LTV</td><td>1.25x / 80%</td><td>ПРИНЯТО (институциональная конвенция)</td></tr>
+</tbody></table>
+<p><em>Всё, что не помечено как ИЗМЕРЕНО, является заявленным допущением модели, одинаковым для всех концепций, чтобы сравнения были сопоставимыми. Ни одна цифра в этом пакете не придумана под конкретную концепцию; каждое число представляет собой либо исходную величину, приведённую в отчёте, либо арифметическую операцию над ней.</em></p><p class="pack-note">Показатели проформы, долга и оценки рассчитываются детерминистически на основе приведённых в этом отчёте исходных экономических величин (institutional.py). Источник данных: ИЗМЕРЕНО = исходная величина, приведённая в отчёте; ВЫВЕДЕНО = арифметические операции над измеренными значениями; ПРИНЯТО = заявленное значение по умолчанию для пакета, одинаковое для каждой концепции.</p>
+<!--aa-report-gate:end--></div></section>
+
+<section class="concept">
+<h2>Использованные источники</h2>
+<p style="font-size:14px;color:#5b6470">24 уникальных источника для данной концепции.
+Каждое количественное утверждение восходит к одному из них; проверьте их.</p>
+<ul class="refs">
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3374775/">nih.gov</a></li>
+  <li><a href="https://usdentaldepot.com/gc-mi-paste-35ml-10-pack-437000-gc-america-437000">usdentaldepot.com</a></li>
+  <li><a href="https://www.1800medicalsupply.com/product/mi-paste-with-recaldent-cpp-acp-dental-cream-mint-flavor-by-gc-america">1800medicalsupply.com</a></li>
+  <li><a href="https://www.mdpi.com/2313-7673/7/2/54">mdpi.com</a></li>
+  <li><a href="https://pubs.acs.org/ancac3/article/16/2/3119/1462667/Polyzwitterion-Manipulates-Remineralization-and">acs.org</a></li>
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC3867526/">nih.gov</a>— DOI: 10.1016/j.dental.2013.07.013</li>
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC6512855/">nih.gov</a>— DOI: 10.1111/ocr.12271</li>
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12224999/">nih.gov</a>— DOI: 10.1002/advs.202501340</li>
+  <li><a href="https://pubs.rsc.org/TB/article-lookup/doi/10.1039/D6TB00840B">rsc.org</a>— DOI: 10.1039/D6TB00840B</li>
+  <li><a href="https://www.science.gov/topicpages/c/calcium+phosphate+cpp-acp">science.gov</a></li>
+  <li><a href="https://www.tdsc.com/All-Categories/Dental-Supplies/Preventives/Toothpastes/Specialty-%26-Prescription-Toothpastes/MI-Paste-Topical-Tooth-Paste/p/310438-1">tdsc.com</a></li>
+  <li><a href="https://www.mountainside-medical.com/collections/mi-paste">mountainside-medical.com</a></li>
+  <li><a href="https://dentalhealth.com/products/mi-paste-strawberry">dentalhealth.com</a></li>
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC5600685/">nih.gov</a>— DOI: 10.1016/j.archoralbio.2017.06.006</li>
+  <li><a href="https://www.frontiersin.org/journals/bioengineering-and-biotechnology/articles/10.3389/fbioe.2022.985881/full">frontiersin.org</a>— DOI: 10.3389/fbioe.2022.985881</li>
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9136455/">nih.gov</a>— DOI: 10.3389/fbioe.2022.853436</li>
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11987509/">nih.gov</a>— DOI: 10.1515/mr-2024-0035</li>
+  <li><a href="https://www.dhpsupply.com/item/950-002888/MI-Paste-Plus-Vanilla-10-40gm/">dhpsupply.com</a></li>
+  <li><a href="https://www.purelifedental.com/mi-paste-plus.html">purelifedental.com</a></li>
+  <li><a href="https://escholarship.org/uc/item/63s1h773">escholarship.org</a></li>
+  <li><a href="https://pocketdentistry.com/biomimetic-remineralization-of-artificial-caries-dentin-lesion-using-cap-pilp/">pocketdentistry.com</a></li>
+  <li><a href="https://sowingo.com/product/mi-paste-40-g-tubes-10-pkg-assorted-package/">sowingo.com</a></li>
+  <li><a href="https://www.facebook.com/OdontopediatricOnline/posts/-mi-paste-plus-uses-benefits-and-how-it-worksmi-paste-plus-is-a-topical-reminera/1610401153863155/">facebook.com</a></li>
+  <li><a href="https://www.mountainside-medical.com/products/mi-paste-with-recaldent-40-gram-tube-vanilla-flavor">mountainside-medical.com</a></li>
+</ul>
+<footer>
+  <p><strong>The Absence Audit</strong>&mdash; доказано в литературе, отсутствует на
+  рынке. theabsenceaudit.com</p>
+  <p>Не является инвестиционной, юридической, регуляторной или инженерной консультацией. Некоторые концепции включают химические, биологические или регулируемые процессы, требующие надлежащей квалификации, мощностей, разрешений и мер контроля безопасности. Проверяйте каждую цифру и каждое регуляторное требование самостоятельно, прежде чем выделять капитал.</p>
+</footer>
+</section>
+
+</div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+</body></html>

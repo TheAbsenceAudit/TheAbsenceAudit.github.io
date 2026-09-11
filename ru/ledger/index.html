@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Реестр — все концепции с возможностью поиска | The Absence Audit</title>
+<meta name="description" content="Search every venture concept we have assessed: what cleared all seven gates, and the full studies of what didn&rsquo;t &mdash; with the specific reason each one failed. Filter by discipline, the incumbent it displaces, startup capital, payback and failure mode.">
+<link rel="canonical" href="https://theabsenceaudit.com/ledger/">
+<meta name="theme-color" content="#FBF9F5">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://theabsenceaudit.com/ledger/">
+<meta property="og:title" content="The ledger — every concept, searchable">
+<meta property="og:description" content="Everything we have assessed — every concept, every verdict, every study in full.">
+<meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"> <a href="/ledger/" hreflang="en">EN</a> <a href="/fr/ledger/" hreflang="fr">FR</a> <a href="/ru/ledger/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap ledger-headwrap">
+  <p class="eyebrow"><img src="/ru/icon-48.png" width="22" height="22" alt="The Absence Audit" style="width:22px;height:22px;border-radius:5px;vertical-align:-4px;margin-right:8px">Реестр</p>
+  <h1>Каждая концепция, которую мы оценили.</h1>
+  <p class="lede">То, что прошло все семь порогов, и полное исследование всего, что их не преодолело, — конкретная причина неудачи каждого из них. Ищите по концепции, дисциплине или действующему продукту, с которым проводилось сравнение.</p>
+  
+</div>
+<div class="wrap" id="join" style="margin-top:1.6rem">
+  <form id="join-form" action="https://us-central1-the-absence-audit.cloudfunctions.net/subscribe" method="POST" novalidate>
+    <div class="field">
+      <label for="email" style="position:absolute;left:-9999px">Адрес эл. почты</label>
+      <input type="email" id="email" name="email_address" placeholder="you@company.com" autocomplete="email" required>
+      <button type="submit">Отправить мне реестр</button>
+    </div>
+    <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden">
+      <label for="company_website">Оставьте это поле пустым</label>
+      <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+    </div>
+    <p class="form-note">Бесплатно, пока формируется реестр. Без спама и перепродажи вашего адреса.
+    Мы не обещаем вам доходность — ни один из этих деептех-проектов ещё никто не реализовал.</p>
+    <p class="msg" id="msg" role="status" aria-live="polite"></p>
+  </form>
+</div>
+<script>/* Сбор адресов эл. почты — зеркало template.html. Синхронизировать. */
+(function () {
+  var form = document.getElementById("join-form");
+  var input = document.getElementById("email");
+  var msg = document.getElementById("msg");
+  var trap = document.getElementById("company_website");
+  var endpoint = form.getAttribute("action") || "";
+  var DONE_KEY = "aa_subscribed";
+  function say(text, kind) { msg.textContent = text; msg.className = "msg " + (kind || ""); }
+  if (!endpoint) {
+    form.classList.add("unconfigured");
+    input.disabled = true;
+    form.querySelector("button").disabled = true;
+    say("Signup opens shortly \u2014 the list is not accepting addresses yet.", "err");
+    return;
+  }
+  if (localStorage.getItem(DONE_KEY)) say("Вы уже внесены в список с этого браузера.", "ok");
+  form.addEventListener("submit", function (e) {
+    var value = (input.value || "").trim();
+    if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+      e.preventDefault();
+      say("Это не похоже на адрес электронной почты.", "err");
+      input.focus();
+      return;
+    }
+    if (trap && trap.value) { e.preventDefault(); return; }
+    if (!window.fetch) return;
+    e.preventDefault();
+    var btn = form.querySelector("button");
+    btn.disabled = true;
+    say("Добавляем вас\u2026");
+    var payload = new FormData(form);
+    payload.delete("company_website");
+    fetch(endpoint, { method: "POST", body: payload })
+      .then(function (r) {
+        if (!r.ok && r.status !== 0) throw new Error("HTTP " + r.status);
+        form.reset();
+        localStorage.setItem(DONE_KEY, "1");
+        say("Вы внесены в список. Следующий аудит будет отправлен со следующим сканированием.", "ok");
+      })
+      .catch(function () { say("Не удалось отправить. Пожалуйста, повторите попытку через минуту.", "err"); })
+      .finally(function () { btn.disabled = false; });
+  });
+})();</script>
+<script>/* Атрибуция регистрации — зеркало template.html. Синхронизировать. */
+(function () {
+  var KEY = "aa_first_touch";
+  function params() { try { return new URLSearchParams(location.search); } catch (e) { return null; } }
+  function capture() {
+    var stored = null;
+    try { stored = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (stored && stored.src) return stored;
+    var q = params();
+    var src = q && (q.get("utm_source") || q.get("ref"));
+    var med = q && q.get("utm_medium");
+    var cmp = q && q.get("utm_campaign");
+    if (!src) {
+      var r = document.referrer || "";
+      if (r) {
+        try {
+          var h = new URL(r).hostname.replace(/^www\./, "");
+          if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+        } catch (e) {}
+      }
+    }
+    var rec = { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "",
+                lp: location.pathname, ts: new Date().toISOString().slice(0, 10) };
+    try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch (e) {}
+    return rec;
+  }
+  var touch = capture();
+  var form = document.getElementById("join-form");
+  if (!form) return;
+  function hidden(name, value) {
+    var i = document.createElement("input");
+    i.type = "hidden"; i.name = name; i.value = value || "";
+    form.appendChild(i);
+  }
+  hidden("fields[source]", touch.src);
+  hidden("fields[medium]", touch.med);
+  hidden("fields[campaign]", touch.cmp);
+  hidden("fields[landing_page]", touch.lp);
+  form.addEventListener("submit", function () {
+    if (typeof gtag === "function") {
+      gtag("event", "generate_lead", {
+        source_channel: touch.src,
+        medium: touch.med,
+        campaign: touch.cmp,
+        landing_page: touch.lp
+      });
+    }
+  });
+})();</script>
+
+<div class="toolbar"><div class="wrap">
+  <div class="searchrow">
+    <input type="search" id="q" placeholder="Search concepts, disciplines, or an incumbent (e.g. silver ink, Portland cement)" aria-label="Search the ledger">
+    <div class="toolrow">
+      <div class="seg" role="group" aria-label="Verdict" id="verdictseg">
+        <button type="button" data-v="all" aria-pressed="true">Все</button>
+        <button type="button" data-v="sale" aria-pressed="false">В продаже</button>
+        <button type="button" data-v="0" aria-pressed="false">Исследования</button>
+      </div>
+      <div class="seg" role="group" aria-label="Favorites" id="favseg" hidden>
+        <button type="button" aria-pressed="false">&#9733; Избранное</button>
+      </div>
+      <div class="toolright">
+        <label class="sortlabel" for="sort">Сортировка</label>
+        <select id="sort" class="sortsel">
+          <option value="new">сначала новые</option>
+          <option value="delta">наибольшее преимущество</option>
+          <option value="capex">наименьшие капитальные затраты</option>
+          <option value="pay">быстрейшая окупаемость</option>
+          <option value="az">A&ndash;Z</option>
+        </select>
+        <div class="seg" role="group" aria-label="View" id="viewseg">
+          <button type="button" data-view="grid" aria-pressed="true">Сетка</button>
+          <button type="button" data-view="list" aria-pressed="false">Список</button>
+        </div>
+        <a class="dl" data-aa-commerce href="/ledger.csv" download>Скачать CSV</a>
+      </div>
+    </div>
+  </div>
+  <style>.askrow{display:flex;align-items:center;gap:.6rem;margin-top:.45rem;padding-top:.55rem;border-top:1px solid var(--rule)}
+  .asklabel{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+  .askrow input[type=text]{flex:1;min-width:0;font:inherit;font-size:.95rem;padding:.45rem .6rem;background:var(--paper);border:1px solid var(--rule);border-radius:0;color:var(--ink)}
+  .askrow input[type=text]:focus{outline:none;border-color:var(--ink);box-shadow:inset 0 -2px 0 var(--kill)}
+  .askrow .qbtn{flex:none}
+  .answerarea{margin-top:.7rem;padding:.85rem 1rem;background:var(--paper-2);border:1px solid var(--rule)}
+  .answerstate{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.75rem;letter-spacing:.06em;color:var(--ink-3);margin-bottom:.4rem}
+  .answerbody{margin:0 0 .75rem;font-size:1rem;line-height:1.55;color:var(--ink);max-width:70ch}
+  .answerbody::first-line{font-weight:600}
+  .answersrcs{display:flex;flex-wrap:wrap;gap:.45rem}
+  .answer-src{display:flex;flex-direction:column;gap:.1rem;padding:.45rem .65rem;background:var(--paper);border:1px solid var(--rule);text-decoration:none;color:var(--ink)}
+  .answer-src:hover,.answer-src:focus-visible{border-color:var(--ink);outline:none}
+  .answer-src-name{font-weight:600;font-size:.9rem}
+  .answer-src-meta{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.7rem;letter-spacing:.04em;color:var(--ink-3)}
+  .asknote{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.68rem;letter-spacing:.03em;color:var(--ink-3);margin-top:.35rem}</style>
+  <div class="askrow">
+    <label class="asklabel" for="askinput">Спросить реестр</label>
+    <input type="text" id="askinput" placeholder="e.g. What can I start for under $25,000?" aria-label="Ask the ledger a question">
+    <button type="button" id="askbtn" class="qbtn">Спросить</button>
+  </div>
+  <p class="asknote">Сгенерированные ответы ссылаются только на концепции из реестра и могут содержать ошибки &mdash; первоисточником является реестр.</p>
+  <div class="answerarea" id="answerarea" hidden>
+    <div class="answerstate" id="answerstate" hidden></div>
+    <p class="answerbody" id="answerbody"></p>
+    <div class="answersrcs" id="answersrcs"></div>
+  </div>
+  <div class="facets">
+    <p class="fghead">Суть</p>
+    <label for="disc">Дисциплина</label>
+    <select id="disc"><option value="">любая</option></select>
+    <label for="fail">Причина неудачи</label>
+    <select id="fail"><option value="">любая</option></select>
+    <p class="fghead">Деньги</p>
+    <div class="capcell">
+      <label>Стартовый капитал</label>
+      <div class="seg seg--wrap" role="group" aria-label="Startup capital" id="capexseg">
+        <button type="button" data-cx="" aria-pressed="true" title="Show every concept">Любой</button>
+        <button type="button" data-cx="25" aria-pressed="false" title="Concepts startable with $25,000 or less">&le; $25k</button>
+        <button type="button" data-cx="100" aria-pressed="false" title="Concepts startable with $100,000 or less">&le; $100k</button>
+        <button type="button" data-cx="500" aria-pressed="false" title="Concepts startable with $500,000 or less">&le; $500k</button>
+        <button type="button" data-cx="max" aria-pressed="false" title="Concepts needing more than $500,000">$500k+</button>
+      </div>
+    </div>
+    <label for="pay">Макс. окупаемость, мес.</label>
+    <input type="number" id="pay" min="0" step="1" placeholder="any" style="width:6rem">
+    <p class="fghead">Финансируемость</p>
+    <div class="capcell">
+      <div class="seg seg--wrap" role="group" aria-label="Bankability (model)" id="bankseg">
+        <button type="button" data-bk="" aria-pressed="true" title="Show every concept">Любая</button>
+        <button type="button" data-bk="BANKABLE" aria-pressed="false" title="Model debt math passes the DSCR floor">Финансируемый (модель)</button>
+        <button type="button" data-bk="NOT BANKABLE" aria-pressed="false" title="Model debt math fails the DSCR floor">Не финансируемый (модель)</button>
+        <button type="button" data-bk="CONDITIONAL" aria-pressed="false" title="Bankable only under the stated conditions">Условно (модель)</button>
+        <button type="button" data-bk="NO VERDICT" aria-pressed="false" title="No pack, or primitives that can&rsquo;t support a verdict">Без вердикта</button>
+      </div>
+    </div>
+    <button type="button" id="reset" class="qbtn">Сбросить</button>
+  </div>
+  <p class="countline" id="count">Загрузка реестра&hellip;</p>
+  <p class="bankline" id="bankline" hidden></p>
+  <p class="histline" style="font-size:.8rem;color:var(--ink-3);margin:.4rem 0 0">Проверяемая история: слепок реестра сохраняется при каждой публикации &mdash;<a href="/ru/ledger/history/index.json" style="font-weight:600;color:var(--ink);text-decoration:underline">датированные слепки &rarr;</a></p>
+</div></div>
+
+<div class="taxbox" id="taxbox" hidden><div class="wrap">
+  <h3>Классификация причин неудачи — почему погибают концепции</h3>
+  <p id="taxline"></p>
+</div></div>
+
+<div class="wrap">
+  <div class="results" id="results"></div>
+  <button type="button" class="more" id="more" hidden>Показать ещё</button>
+  <div class="empty" id="empty" hidden>
+    <p><strong>По данным фильтрам ничего не найдено.</strong></p>
+    <p style="font-size:.95rem">Try a broader search, or<button type="button" id="reset2"
+      style="min-height:auto;padding:.2rem .5rem;font-size:.9rem">reset the filters</button>.</p>
+  </div>
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+
+<script>window.AA_LEDGER_PAGE = {"mine": false};</script>
+
+<script>window.AA_LEDGER_CFG = {"fail_labels":{"evidence_concentration":"Single-source evidence base","duplicate_refs":"Duplicate references inflating the evidence base","retracted_reference":"Cites a retracted reference","missing_absence_ledger":"Absence asserted, search unreported","absence_ledger_unquantified":"Absence search unquantified","opex_driven_margin":"Margin fails the operating-cost check","capex_mismatch":"CapEx figures inconsistent","payback_over":"Payback horizon exceeds the model's ceiling","capital_productivity_under":"Capital productivity below the model's floor","missing_application_envelope":"Entry application undeclared","entry_application_missing":"Entry application undeclared","negative_control":"Negative control used as incumbent","defunct_incumbent":"Comparator may have left the market","declared_parity":"Price parity asserted, not sourced","uncited_incumbent_price":"Incumbent price uncited","no_switching_analysis":"Customer switching incentive not analyzed","sub_2x":"Below the 2x step-change bar","no_superiority_table":"No head-to-head evidence","weak_superiority_source":"Evidence rests on non-peer-reviewed sources","missing_hazard_profile":"Hazard profile missing","uncited_safety_claim":"Uncited safety claim","missing_defensibility_position":"No protectable contribution declared","prior_art_not_delineated":"Prior-art / novelty boundary not drawn","self_declared_arbitrage":"Self-declared operational arbitrage (no patentable asset)","defensibility_partial":"Prior-art / novelty boundary incomplete","moat_is_operational_only":"Operational arbitrage, no IP moat","weak_ip_hook":"Weak hook — known class characteristic / unverified superlative","patent_prior_art_missing":"No patent prior art identified (FTO unverified)","no_comparative_matrix":"No comparative data matrix","no_claim_hierarchy":"No claim hierarchy"},"void_labels":{"A":"Illegitimate incumbent","B":"Mismatched comparison","C":"Capital and time to revenue","D":"Economics undisclosed","E":"Negative control / sub-2x","F":"Entry application mismatch","G":"Form-factor / handling regression","H":"Hazards undisclosed","I":"Absence search missing","J":"No defensible contribution declared"},"singles":{"biomimetic-nano-hydroxyapatite-nhap-via-mechanochemical-attritor-milli":{"name":"Biomimetic Nano-Hydroxyapatite (nHAp)","price":"","checkout_url":"","unpriced":true},"biogenic-acid-resistant-sewer-infrastructure-via-alkali-activated-alum":{"name":"Biogenic Acid-Resistant Sewer Infrastructure","price":"","checkout_url":"","unpriced":true},"high-photostability-anti-counterfeiting-inks-via-hydrothermal-carboniz":{"name":"High-Photostability Anti-Counterfeiting Inks","price":"€1,999","checkout_url":"https://buy.stripe.com/dRmaEX5t18AQ8SQfOSg7e3E"},"ultra-high-strength-underwater-adhesives-via-in-situ-catechol-polymer":{"name":"Ultra-High-Strength Underwater Adhesives","price":"€4,999","checkout_url":"https://buy.stripe.com/8x23cv8Fd7wMd96eKOg7e3F"},"sustained-release-silk-fibroin-microneedle-matrices-via-lithium-bromid":{"name":"Sustained-Release Silk Fibroin Microneedle Matrices","price":"€1,999","checkout_url":"https://buy.stripe.com/6oU7sL8Fd7wM3ywdGKg7e3G"},"commercial-production-of-pediocin-pa-1-biopreservative-via-low-capex-f":{"name":"Commercial Production of Pediocin PA-1","price":"","checkout_url":"","unpriced":true},"mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc":{"name":"CTFs for PFAS water treatment","price":"€2,999","checkout_url":"https://buy.stripe.com/3cIfZh1cLaIY3yw6eig7e3B"},"polyimide-reinforced-silica-aerogel-blankets-via-ambient-pressure-dryi":{"name":"Polyimide-Silica Aerogel Blankets","price":"€2,999","checkout_url":"https://buy.stripe.com/dRmeVd7B9dVa2usgSWg7e3C"},"cement-free-refractory-castables-via-potassium-activated-metakaolin-ge":{"name":"Cement-Free Refractory Castables","price":"€1,999","checkout_url":"https://buy.stripe.com/7sY8wPaNl6sI2usauyg7e3v"},"inositol-hexaphosphate-ip6-substrate-passivation-via-ambient-immersion":{"name":"Inositol Hexaphosphate (IP6) Substrate Passivation","price":"€4,999","checkout_url":"https://buy.stripe.com/cNiaEX7B98AQd961Y2g7e3w"},"polyurethane-encapsulated-ipdi-microcapsules-via-low-shear-interfacial":{"name":"IPDI Self-Healing Microcapsules","price":"€1,999","checkout_url":"https://buy.stripe.com/cNifZh6x5aIY8SQ8mqg7e3x"},"compact-volume-expandable-sorbents-cves-via-continuous-polyhipe-emulsi":{"name":"Compact Volume-Expandable Sorbents (CVES)","price":"€1,999","checkout_url":"https://buy.stripe.com/eVq7sL4oX6sI7OMdGKg7e3y"},"ultrawhite-barium-sulfate-baso4-subambient-radiative-cooling-paint-via":{"name":"Ultrawhite BaSO4 Radiative Cooling Paint","price":"€2,999","checkout_url":"https://buy.stripe.com/bJedR93kT5oE3yw8mqg7e3z"},"halogen-free-orthoborate-phosphonium-ionic-liquid-p6-6-6-14-bmb-via-am":{"name":"Halogen-Free Ionic Liquid Boundary Lubricant","price":"€2,999","checkout_url":"https://buy.stripe.com/00w28r9Jh5oE5GEbyCg7e3A"},"drought-resilient-dark-septate-endophyte-dse-inoculants-via-solid-stat":{"name":"Drought-Resilient Dark Septate Endophyte (DSE) Inoculants","price":"€2,999","checkout_url":"https://buy.stripe.com/4gM00j8FdcR69WU0TYg7e3H"},"ultra-low-shrinkage-liquid-optically-clear-resin-ocr-via-base-catalyze":{"name":"Ultra-Low Shrinkage Liquid Optically Clear Resin (OCR)","price":"€2,999","checkout_url":"https://buy.stripe.com/5kQdR99Jh6sIedadGKg7e3s"},"self-healable-wpu-ti3c2tx-mxene-coating-via-mechanical-blending-and-ca":{"name":"Self-Healable WPU/Ti3C2Tx MXene Coating","price":"€2,999","checkout_url":"https://buy.stripe.com/3cI8wP2gP7wM7OM0TYg7e3t"},"pressureless-micro-silver-indium-mu-ag-in-tlp-sintering-paste-via-mech":{"name":"Pressureless Micro-Silver-Indium TLP Sintering Paste","price":"€2,999","checkout_url":"https://buy.stripe.com/14A7sL8Fd7wMc52cCGg7e3u"},"conductive-inositol-hexaphosphate-polyaniline-ip6-pani-hydrogels-via-a":{"name":"Conductive IP6-PANI Hydrogels","price":"€4,999","checkout_url":"https://buy.stripe.com/cNidR9f3B5oE9WUbyCg7e3D"},"nitrogen-doped-carbon-nanodots-n-cds-via-atmospheric-microwave-pyrolys":{"name":"Nitrogen-Doped Carbon Nanodots (N-CDs)","price":"€2,999","checkout_url":"https://buy.stripe.com/cNi4gzcVt18oc521Y2g7e3q"},"silver-nanowire-polyvinyl-alcohol-melamine-sponge-agphms-electro-ionic":{"name":"Silver-Nanowire / Melamine Sponge (AgPHMS) Electro-Ionic Electrodes","price":"€4,999","checkout_url":"https://buy.stripe.com/fZu5kD9Jh6sI7OM8mqg7e3r"},"polyaspartate-stabilized-amorphous-calcium-phosphate-pasp-acp-via-low":{"name":"Polyaspartate-Stabilized Amorphous Calcium Phosphate (PAsp-ACP)","price":"€4,999","checkout_url":"https://buy.stripe.com/aFa6oH7B9aIY8SQ0TYg7e3p"},"ahpnd-targeting-bacteriophage-suspensions-via-rapid-broth-fermentation":{"name":"AHPND-Targeting Bacteriophage Suspensions via Rapid Broth Fermentation","price":"€1,000","checkout_url":"https://buy.stripe.com/5kQeVd08H04kc52cCGg7e3J"},"high-purity-shikonin-via-aeroponic-hairy-root-bioreactors":{"name":"High-Purity Shikonin via Aeroponic Hairy Root Bioreactors","price":"€1,000","checkout_url":"https://buy.stripe.com/28EaEX2gP18o1qo7img7e44"},"natural-gamma-decalactone-and-fruity-aromas-via-solid-state-fermentati":{"name":"Natural Gamma-Decalactone and Fruity Aromas via Solid-State Fermentation of *Ceratocystis fimbriata","price":"€1,000","checkout_url":"https://buy.stripe.com/00wdR92gP2csc529qug7f06"},"high-purity-mesoporous-silica-nanoparticles-via-alkaline-extraction-of":{"name":"High-Purity Mesoporous Silica Nanoparticles via Alkaline Extraction of Rice Husk Ash","price":"€1,000","checkout_url":"https://buy.stripe.com/5kQ6oHg7F7wM4CA46ag7e43"},"commercial-bacteriorhodopsin-production-via-non-sterile-hypersaline-cu":{"name":"Commercial Bacteriorhodopsin Production via Non-Sterile Hypersaline Cultivation of *Halobacterium salinarum","price":"€500","checkout_url":"https://buy.stripe.com/5kQcN5bRp5oE1qo5aeg7e3P"},"high-porosity-vaterite-nanoparticles-via-microbially-induced-calcium-c":{"name":"High-Porosity Vaterite Nanoparticles via Microbially Induced Calcium Carbonate Precipitation (MICP)","price":"€1,000","checkout_url":"https://buy.stripe.com/9B6aEX5t1dVafhe7img7e41"},"premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi":{"name":"Premium Sophorolipids via Solid-State Fermentation of Winterization Oil Cake","price":"€1,000","checkout_url":"https://buy.stripe.com/5kQaEX6x52cs5GEauyg7f0c"},"plant-derived-exosome-like-nanovesicles-pelnvs-via-continuous-tangenti":{"name":"Plant-Derived Exosome-Like Nanovesicles (PELNVs) via Continuous Tangential Flow Filtration","price":"€250","checkout_url":"https://buy.stripe.com/3cI14n6x58AQ3ywgSWg7e2J"},"ectoine-via-unsterile-bacterial-milking-of-halomonas-elongata":{"name":"Ectoine via Unsterile 'Bacterial Milking' of Halomonas elongata","price":"€500","checkout_url":"https://buy.stripe.com/9B6fZhg7F7wM7OMauyg7e3Q"},"c-phycocyanin-via-heterotrophic-cultivation-of-galdieria-sulphuraria":{"name":"C-Phycocyanin via Heterotrophic Cultivation of Galdieria sulphuraria","price":"€250","checkout_url":"https://buy.stripe.com/4gM28r5t15oEb0YgSWg7e3O"},"biological-pullulan-foliar-anti-transpirants-via-aureobasidium-pullula":{"name":"Biological Pullulan Foliar Anti-Transpirants via *Aureobasidium pullulans* Fermentation on Molasses Waste","price":"€500","checkout_url":"https://buy.stripe.com/eVq7sL8FddVaeda6eig7e3M"},"nitrogen-fixing-cyanobacterial-biocrust-consortia-via-thin-film-cellul":{"name":"Nitrogen-Fixing Cyanobacterial Biocrust Consortia via Thin-Film Cellulose Matrix Propagation","price":"€500","checkout_url":"https://buy.stripe.com/7sY28r08H9EUb0Y46ag7f07"},"brassicaceae-compatible-endophytic-inoculants-via-axenic-submerged-fer":{"name":"Brassicaceae-Compatible Endophytic Inoculants via Axenic Submerged Fermentation of Serendipita indica","price":"€250","checkout_url":"https://buy.stripe.com/9B64gzbRpg3i6KI6eig7e3N"},"halophile-derived-siderophores-via-non-sterile-hypersaline-fermentatio":{"name":"Halophile-Derived Siderophores via Non-Sterile Hypersaline Fermentation","price":"€250","checkout_url":"https://buy.stripe.com/8x23cvcVt04k1qogSWg7e3Z"},"acc-deaminase-secreting-desert-streptomyces-via-solid-state-fermentati":{"name":"ACC-Deaminase-Secreting Desert Streptomyces via Solid-State Fermentation","price":"€250","checkout_url":"https://buy.stripe.com/28E5kDdZxg3i9WUfOSg7e24"},"premium-high-barrier-packaging-plastics-phbv-via-non-sterile-halophili":{"name":"Premium High-Barrier Packaging Plastics (PHBV) via Non-Sterile Halophilic Fermentation","price":"€250","checkout_url":"https://buy.stripe.com/cNidR9cVt18ofhecCGg7f0b"},"halogen-free-flame-retardants-via-synthesis-of-hexagonal-magnesium-hyd":{"name":"Halogen-Free Flame Retardants via Synthesis of Hexagonal Magnesium Hydroxide Nanosheets","price":"€250","checkout_url":"https://buy.stripe.com/8x23cv4oX8AQfhe1Y2g7e3Y"},"advanced-polymer-reinforcement-via-brine-mediated-co2-mineralization-o":{"name":"Advanced Polymer Reinforcement via Brine-Mediated CO2 Mineralization of Aragonite Whiskers","price":"€250","checkout_url":"https://buy.stripe.com/bJe5kDbRp7wM9WU6eig7e3I"},"enzymatic-synthesis-of-estolide-biolubricants-via-direct-castor-oil-tr":{"name":"Enzymatic Synthesis of Estolide Biolubricants via Direct Castor Oil Transesterification","price":"€500","checkout_url":"https://buy.stripe.com/14AcN508HeZe6KIeKOg7e3U"},"plant-derived-urease-driven-enzyme-induced-carbonate-precipitation-eic":{"name":"Plant-Derived Urease-Driven Enzyme-Induced Carbonate Precipitation (EICP)","price":"€500","checkout_url":"https://buy.stripe.com/fZudR98FdbN2gli7img7f09"},"high-yield-biomanufactured-magnetosomes-fions-for-ultra-high-relaxivit":{"name":"High-Yield Biomanufactured Magnetosomes (FIONs) for Ultra-High Relaxivity MRI","price":"€500","checkout_url":"https://buy.stripe.com/4gMeVd6x5dVafhe46ag7e46"},"recombinant-ice-binding-proteins-ibps-via-methylotrophic-yeast-ferment":{"name":"Recombinant Ice-Binding Proteins (IBPs) via Methylotrophic Yeast Fermentation","price":"€1,000","checkout_url":"https://buy.stripe.com/8x28wPcVtaIY5GE46ag7f0d"},"biochar-supported-sulfidated-nanoscale-zero-valent-iron-s-nzvi-bc-for":{"name":"Biochar-Supported Sulfidated Nanoscale Zero-Valent Iron (S-nZVI@BC) for Rapid TCE Groundwater Remediation","price":"€500","checkout_url":"https://buy.stripe.com/aFa9ATbRp5oE3yw326g7e3L"},"enteric-drug-delivery-vehicles-via-phosphoric-acidolysis-of-natural-pl":{"name":"Enteric Drug Delivery Vehicles via Phosphoric Acidolysis of Natural Plant Spores","price":"€500","checkout_url":"https://buy.stripe.com/eVqbJ1bRp9EU3ywgSWg7e3R"},"high-yield-premium-hydrocolloids-via-synergistic-ultrasound-microwave":{"name":"High-Yield, Premium Hydrocolloids via Synergistic Ultrasound-Microwave-Assisted Extraction (UMAE) of Citrus Biowaste","price":"€500","checkout_url":"https://buy.stripe.com/cNidR97B92cs1qo46ag7e47"},"marine-safe-biomimetic-sunscreen-filters-via-ultrasound-assisted-extra":{"name":"Marine-Safe Biomimetic Sunscreen Filters via Ultrasound-Assisted Extraction of Mycosporine-Like Amino Acids","price":"€1,000","checkout_url":"https://buy.stripe.com/00waEXbRp6sIb0Y46ag7f04"},"pdms-sio2-superhydrophobic-anti-soiling-nanocoating-for-photovoltaic-a":{"name":"PDMS/SiO2 Superhydrophobic Anti-Soiling Nanocoating for Photovoltaic Arrays","price":"€1,000","checkout_url":"https://buy.stripe.com/28E00jdZx4kAc52fOSg7f08"},"high-purity-l-amino-acid-biostimulant-via-keratinase-driven-feather-hy":{"name":"High-Purity L-Amino Acid Biostimulant via Keratinase-Driven Feather Hydrolysis","price":"€1,000","checkout_url":"https://buy.stripe.com/dRm14naNl5oE5GE9qug7e42"},"form-stable-capric-palmitic-expanded-graphite-ca-pa-eg-composites-via":{"name":"Form-Stable Capric-Palmitic/Expanded Graphite (CA-PA/EG) Composites via Vacuum Impregnation","price":"€1,000","checkout_url":"https://buy.stripe.com/8x200jaNlaIY0mkbyCg7e3W"},"potassium-coordinated-cyclodextrin-frameworks-k-cd-via-ultrasound-assi":{"name":"Potassium-Coordinated Cyclodextrin Frameworks (K-γ-CD) via Ultrasound-Assisted Crystallization","price":"€1,000","checkout_url":"https://buy.stripe.com/4gM5kD7B92cs8SQ0TYg7f0a"},"shear-exfoliated-few-layer-graphene-flg-via-high-speed-hydrodynamics":{"name":"Shear-Exfoliated Few-Layer Graphene (FLG) via High-Speed Hydrodynamics","price":"€500","checkout_url":"https://buy.stripe.com/9B6aEX3kT6sI0mk7img7f0g"},"enzymatic-alginate-oligosaccharides-aos-via-targeted-polysaccharide-ly":{"name":"Enzymatic Alginate Oligosaccharides (AOS) via Targeted Polysaccharide Lyase Depolymerization","price":"€500","checkout_url":"https://buy.stripe.com/3cIfZh7B96sI2us46ag7e3S"},"microbial-lactobionic-acid-lba-via-whole-cell-dairy-byproduct-fermenta":{"name":"Microbial Lactobionic Acid (LBA) via Whole-Cell Dairy Byproduct Fermentation","price":"€500","checkout_url":"https://buy.stripe.com/8x2cN5aNl8AQ2usdGKg7f05"},"enzymatic-cyclic-phosphatidic-acid-cpa-via-biocatalytic-transphosphati":{"name":"Enzymatic Cyclic Phosphatidic Acid (cPA) via Biocatalytic Transphosphatidylation","price":"€500","checkout_url":"https://buy.stripe.com/7sY8wP2gPbN2d96326g7e3T"},"long-afterglow-strontium-aluminate-phosphors-via-sol-gel-auto-combusti":{"name":"Long-Afterglow Strontium Aluminate Phosphors via Sol-Gel Auto-Combustion","price":"€500","checkout_url":"https://buy.stripe.com/eVq3cvf3B3gw8SQ0TYg7f03"},"high-impact-polydicyclopentadiene-pdcpd-resins-via-frontal-ring-openin":{"name":"High-Impact Polydicyclopentadiene (pDCPD) Resins via Frontal Ring-Opening Metathesis Polymerization (FROMP)","price":"€500","checkout_url":"https://buy.stripe.com/3cIeVd2gP9EU7OM5aeg7e40"},"terephthalaldehyde-crosslinked-polyimine-vitrimers-via-catalyst-free-s":{"name":"Terephthalaldehyde-Crosslinked Polyimine Vitrimers via Catalyst-Free Solution Casting","price":"€500","checkout_url":"https://buy.stripe.com/fZu6oHdZx6sId96byCg7f0l"},"lignosulfonate-acrylamide-graft-copolymers-ls-g-paam-via-redox-initiat":{"name":"Lignosulfonate-Acrylamide Graft Copolymers (LS-g-PAAm) via Redox-Initiated Aqueous Polymerization","price":"€500","checkout_url":"https://buy.stripe.com/9B628r1cL2cs1qo1Y2g7f02"},"wpua-pam-eg-organohydrogel-coatings-via-uv-initiated-free-radical-poly":{"name":"WPUA-PAM@EG Organohydrogel Coatings via UV-Initiated Free-Radical Polymerization","price":"€250","checkout_url":"https://buy.stripe.com/14AcN57B94kA5GEbyCg7e36"},"supramolecular-membrane-rejuvenation-kits-via-metal-phenolic-network-d":{"name":"Supramolecular Membrane Rejuvenation Kits via Metal-Phenolic Network Deposition","price":"€500","checkout_url":"https://buy.stripe.com/7sY28r8Fd7wM4CAauyg7f0j"},"ricinoleic-crosslinked-polysulfide-rcp-sorbents-via-inverse-vulcanizat":{"name":"Ricinoleic-Crosslinked Polysulfide (RCP) Sorbents via Inverse Vulcanization","price":"€500","checkout_url":"https://buy.stripe.com/28E4gzdZxeZed96326g7f0e"},"formaldehyde-free-tannin-furanic-rigid-foam-via-phytic-acid-synergisti":{"name":"Formaldehyde-Free Tannin-Furanic Rigid Foam via Phytic Acid Synergistic Crosslinking","price":"€500","checkout_url":"https://buy.stripe.com/9B600jcVt4kA9WUeKOg7e3X"},"ultrahigh-voltage-gradient-zno-polystyrene-varistors-via-the-cold-sint":{"name":"Ultrahigh-Voltage Gradient ZnO-Polystyrene Varistors via the Cold Sintering Process (CSP)","price":"€500","checkout_url":"https://buy.stripe.com/fZudR908HeZec528mqg7f0p"},"ultrafast-periodate-accelerated-polycatecholamine-aqueous-adhesion-pro":{"name":"Ultrafast Periodate-Accelerated Polycatecholamine Aqueous Adhesion Promoters via Oxidative Crosslinking","price":"€1,000","checkout_url":"https://buy.stripe.com/5kQ28r2gP04k8SQ0TYg7f0o"},"ultra-low-stress-thiol-ene-photopolymer-conformal-coatings-uste-cc-via":{"name":"Ultra-Low Stress Thiol-Ene Photopolymer Conformal Coatings (USTE-CC) via Step-Growth Radical Photopolymerization","price":"€500","checkout_url":"https://buy.stripe.com/28E6oH5t14kA8SQ46ag7f0n"},"urcasu-mechanochemical-fertilizer-via-twin-screw-extrusion":{"name":"URCASU Mechanochemical Fertilizer via Twin-Screw Extrusion","price":"€250","checkout_url":"https://buy.stripe.com/28EfZhaNl2cs8SQ0TYg7e34"},"laser-induced-porous-graphene-lig-sensor-substrates-via-direct-laser-w":{"name":"Laser-Induced Porous Graphene (LIG) Sensor Substrates via Direct-Laser Writing","price":"€500","checkout_url":"https://buy.stripe.com/00w8wP08H9EU1qo6eig7f01"},"extrusion-synthesized-urea-calcium-sulfate-urcasu-cocrystals-via-twin":{"name":"Extrusion-Synthesized Urea-Calcium Sulfate (URCASU) Cocrystals via Twin-Screw Mechanochemistry","price":"€500","checkout_url":"https://buy.stripe.com/dRmdR94oX6sI5GEeKOg7e3V"},"paraffin-functionalized-sand-pfs-mulch-via-hexane-solvent-evaporation":{"name":"Paraffin-Functionalized Sand (PFS) Mulch via Hexane-Solvent Evaporation","price":"€250","checkout_url":"https://buy.stripe.com/fZudR96x5dVa1qofOSg7e2H"},"supramolecular-tannic-acid-zinc-ta-zn-antimicrobial-surface-shield-via":{"name":"Supramolecular Tannic Acid-Zinc (TA-Zn) Antimicrobial Surface Shield via Ambient Aqueous Dual-Chamber Assembly","price":"€500","checkout_url":"https://buy.stripe.com/bJecN53kT8AQgli5aeg7f0k"},"thermoresponsive-in-situ-gelling-biogel-via-polyacrylamide-gelatin-co":{"name":"Thermoresponsive In-Situ Gelling Biogel via Polyacrylamide/Gelatin Co-Polymerization","price":"€250","checkout_url":"https://buy.stripe.com/3cI7sL8Fd18oeda5aeg7e2X"},"chitosan-modified-bentonite-cmb-powder-via-coprecipitation":{"name":"Chitosan-Modified Bentonite (CMB) Powder via Coprecipitation","price":"€250","checkout_url":"https://buy.stripe.com/cNi28r5t1cR61qofOSg7e2c"},"high-specific-strength-densified-superwood-via-delignification-and-hot":{"name":"High-Specific-Strength Densified Superwood via Delignification and Hot-Pressing","price":"€500","checkout_url":"https://buy.stripe.com/14A8wP4oXg3i6KIeKOg7e45"},"amino-functionalized-boron-nitride-nanosheet-bnns-nh2-silicone-gap-fil":{"name":"Amino-Functionalized Boron Nitride Nanosheet (BNNS-NH2) Silicone Gap Fillers via Urea-Assisted Ball Milling","price":"€500","checkout_url":"https://buy.stripe.com/dRm4gz5t104k0mk326g7e3K"},"solventless-eugenol-furfurylamine-polybenzoxazine-e-f-bz-via-one-pot-m":{"name":"Solventless Eugenol-Furfurylamine Polybenzoxazine (E-F-Bz) via One-Pot Melt Condensation","price":"€500","checkout_url":"https://buy.stripe.com/8x29AT4oX3gweda1Y2g7f0h"},"ultra-low-corrosion-ldac-working-fluid-via-formate-ionic-liquid-blendi":{"name":"Ultra-Low-Corrosion LDAC Working Fluid via Formate-Ionic Liquid Blending","price":"€250","checkout_url":"https://buy.stripe.com/7sY9ATcVt3gwb0YeKOg7e30"},"erythritol-based-tephritid-fruit-fly-bait-via-dry-blending":{"name":"Erythritol-Based Tephritid Fruit Fly Bait via Dry Blending","price":"€250","checkout_url":"https://buy.stripe.com/dRm5kDaNl18o5GE5aeg7e2k"},"thermoreversible-diels-alder-poly-vinyl-alcohol-hot-melt-adhesive-via":{"name":"Thermoreversible Diels-Alder Poly(vinyl alcohol) Hot-Melt Adhesive via Furan-Maleimide Cycloaddition","price":"€500","checkout_url":"https://buy.stripe.com/00w6oH8Fd8AQeda0TYg7f0m"},"thermostabilized-stearic-encapsulated-calcium-peroxide-se-cao2-via-pre":{"name":"Thermostabilized Stearic-Encapsulated Calcium Peroxide (SE-CaO2) via Precision Microencapsulation","price":"€250","checkout_url":"https://buy.stripe.com/aFa28r9Jh4kA3yw8mqg7e2Z"},"v2o5-ppy-nanozymatic-antifouling-additives-via-in-situ-interfacial-pol":{"name":"V2O5@PPy Nanozymatic Antifouling Additives via In Situ Interfacial Polymerization","price":"€500","checkout_url":"https://buy.stripe.com/6oU00jaNl2cs0mkfOSg7f0q"},"self-healing-telechelic-linear-coordination-polymers-lcps-for-agricult":{"name":"Self-Healing Telechelic Linear Coordination Polymers (LCPs) for Agricultural Drift Control via RAFT Polymerization and Metal Coordination","price":"€500","checkout_url":"https://buy.stripe.com/7sYaEX1cL4kAd96auyg7f0f"},"endogenous-mechanochemical-phase-transition-for-selective-lithium-extr":{"name":"Endogenous Mechanochemical Phase-Transition for Selective Lithium Extraction","price":"€250","checkout_url":"https://buy.stripe.com/9B64gz08HdVad96eKOg7e2f"},"ice-templated-portland-cement-via-directional-freeze-casting":{"name":"Ice-Templated Portland Cement via Directional Freeze-Casting","price":"€1,000","checkout_url":"https://buy.stripe.com/3cI00j6x54kA1qo5aeg7f00"},"force-activated-damage-indicating-structural-epoxies-via-spirolactam-m":{"name":"Force-Activated Damage-Indicating Structural Epoxies via Spirolactam Mechanophore Crosslinking","price":"€250","checkout_url":"https://buy.stripe.com/8x228r08HbN2d965aeg7e2m"},"sulfur-rich-chalcogenide-hybrid-inorganic-organic-polymer-chip-lenses":{"name":"Sulfur-Rich Chalcogenide Hybrid Inorganic/Organic Polymer (CHIP) Lenses via Inverse Vulcanization","price":"€500","checkout_url":"https://buy.stripe.com/6oUdR9bRp3gwb0YfOSg7f0i"},"liquid-metal-nanoparticle-conductive-ink-via-ultrasonic-probe-cavitati":{"name":"Liquid Metal Nanoparticle Conductive Ink via Ultrasonic Probe Cavitation","checkout_url":"","price":"","free":true},"osmotically-regulated-hexanal-clathrate-pads":{"name":"Osmotically-Regulated Hexanal Clathrate Pads","price":"€500","checkout_url":"https://buy.stripe.com/fZu8wPbRpg3iglicCGg7f0r"},"high-fidelity-bidisperse-magnetorheological-fluids-via-vacuum-centrifu":{"name":"High-Fidelity Bidisperse Magnetorheological Fluids via Vacuum Centrifugal Dispersal","price":"€2,999","checkout_url":"https://buy.stripe.com/cNi3cvbRp4kAedabyCg7e3o"},"commercial-production-of-pediocin-pa-1-biopreserva":{"price":"","checkout_url":"","unpriced":true},"premium-botanical-powders-via-wire-to-mesh-electrohydrodynamic-ehd-dry":{"name":"Premium Botanical Powders via Wire-to-Mesh Electrohydrodynamic (EHD) Drying","price":"€250","checkout_url":"https://buy.stripe.com/aFa4gzdZx4kAb0YdGKg7f0s"}},"full_access":{"url":"https://buy.stripe.com/4gM28r6x53gw4CAbyCg7e1N","price":"€20,000","label":"Commission a scouting mandate"},"batch":50,"search":{"enabled":true,"fn":"https://us-central1-the-absence-audit.cloudfunctions.net/ask"},"bank_insights":{"sale|BANKABLE":"19 of 21 for-sale concepts are model-bankable &mdash; the debt math works. The audit's objections decide, not the model.","sale|NOT BANKABLE":"1 of 21 for-sale concepts fail the model DSCR floor &mdash; the pack publishes that. Read it before buying.","sale|CONDITIONAL":"1 for-sale concept is model-bankable only under the stated conditions.","sale|NOT ASSESSABLE":"0 for-sale concept has a pack whose primitives can't support a verdict.","sale|NONE":"0 for-sale concept predates the economics model &mdash; no pack could be computed.","0|BANKABLE":"55 of 82 studies are model-bankable &mdash; the debt math works, the venture case didn't. The audit's reasons are published on each page.","0|NOT BANKABLE":"14 of 82 studies also fail the model DSCR.","0|CONDITIONAL":"5 studies are conditionally bankable.","0|NOT ASSESSABLE":"1 studies carry a pack whose primitives can't support a verdict.","0|NONE":"7 studies predate the economics model &mdash; no pack.","all|BANKABLE":"64 concepts are model-bankable &mdash; 55 of them didn't clear the audit: the debt math works, the venture case didn't.","all|NOT BANKABLE":"14 concepts fail the model DSCR floor &mdash; every one of them carries a didn't-clear verdict; 1 are still sold as dossiers. The pack publishes that.","all|CONDITIONAL":"5 concepts are model-bankable only under stated conditions.","all|NOT ASSESSABLE":"1 concepts carry a pack whose primitives can't support a verdict.","all|NONE":"7 concepts predate the economics model &mdash; no pack."}};</script>
+<script src="/assets/ledger.js?v=dee398cf" defer></script>
+</body>
+</html>

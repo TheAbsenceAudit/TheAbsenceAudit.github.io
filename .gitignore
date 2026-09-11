@@ -14,6 +14,8 @@ _tmp_idx.html
 # and hard-blocked the apolitical gate) — never commit these
 /chunk_*.js
 /config.js
+# i18n pipeline junk (nested _fr_aside snapshots, path-length hazards) — never commit
+_fr_aside*/
 # local desktop attachments (user uploads) never ship
 .hermes/
 # SECURITY (owner 2026-09-07 AM + PM): static hosting cannot gate —

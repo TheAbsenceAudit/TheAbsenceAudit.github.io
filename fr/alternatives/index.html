@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="alternate" hreflang="en" href="https://theabsenceaudit.com/alternatives/"/>
+<link rel="alternate" hreflang="fr" href="https://theabsenceaudit.com/fr/alternatives/"/>
+<link rel="alternate" hreflang="zh" href="https://theabsenceaudit.com/zh/alternatives/"/>
+<link rel="alternate" hreflang="ru" href="https://theabsenceaudit.com/ru/alternatives/"/>
+<link rel="alternate" hreflang="x-default" href="https://theabsenceaudit.com/alternatives/"/>
+<link rel="canonical" href="https://theabsenceaudit.com/fr/alternatives/"/>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accepter</button>' +
+        '<button type="button" id="aa-consent-no">Décliner</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Incumbent alternatives</title>
+<meta name="description" content="Every incumbent product benchmarked in the ledger, with the concepts assessed against it — survivors and rejections alike.">
+<link rel="canonical" href="https://theabsenceaudit.com/alternatives/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ledger/">Ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/method/">Method</a>
+      <a href="/nations/">Nations</a>
+      <a href="/translation/">Translation</a>
+      <span class="aa-langs"> <a href="/alternatives/" hreflang="en">EN</a> <a href="/fr/alternatives/" hreflang="fr">FR</a> <a href="/zh/alternatives/" hreflang="zh">中文</a> <a href="/ru/alternatives/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="wrap hub">
+<p class="eyebrow">SEO hub index</p>
+<h1>Incumbent alternatives</h1>
+<p class="lede">Every incumbent product benchmarked in the ledger, with the concepts assessed against it — survivors and rejections alike.</p>
+<ul class="hub-list"><li><a href="/alternatives/lord-mrf-132dg/">Lord MRF-132DG</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/freeze-dried-lyophilized-powder/">Poudre lyophilisée</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/sulfur-dioxide-so2-generating-pads-e-g-uvasys/">Sulfur Dioxide (SO2) Generating Pads (e.g., Uvasys)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/novita-drift-control/">Novita Drift Control</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/h2so4-hydrometallurgy/">H2SO4 Hydrometallurgy</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/mi-paste-gc-america/">MI Paste (GC America)</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/commercial-alumina-al2o3-ceramic-membrane/">Commercial Alumina (α-Al2O3) Ceramic Membrane</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/loctite-ea-9394-aero/">Loctite EA 9 394 AERO</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/germanium-ge-optical-lenses/">Germanium (Ge) optical lenses</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/anionic-polyacrylamide-apam/">Polyacrylamide anionique (APAM)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/6061-t6-aluminum-plate/">6061-T6 aluminum plate</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/bergquist-gap-filler-tgf-4000-henkel/">Bergquist Gap Filler TGF 4000 (Henkel)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/bismaleimide-bmi-resin-abron-br-720/">Bismaleimide (BMI) Resin (Abron BR 720)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/40-liquid-lithium-chloride-licl-solution/">Solution de chlorure de lithium liquide (LiCl) à 40%</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/gf-120-nf-naturalyte-fruit-fly-bait/">GF-120 NF Naturalyte Fruit Fly Bait</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/3m-scotch-weld-pur-te040/">3M Scotch-Weld PUR TE040</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/regenesis-orc-advanced/">Regenesis ORC Advanced®</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/cuprous-oxide-cu2o/">Oxyde cuivreux (Cu2O)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/rigid-polyurethane-foam-rpuf/">Mousse de polyuréthane rigide (RPUF)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/conventional-zno-bi2o3-varistors-tdk-littelfuse/">Varistances conventionnelles ZnO-Bi2O3 (TDK/Littelfuse)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/3m-tape-primer-94/">3M Tape Primer 94</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/humiseal-uv40/">HumiSeal UV40</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/polymer-coated-urea-turf-maker-duration-44-0-0/">Polymer-Coated Urea (Turf-Maker Duration 44-0-0)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/metrohm-dropsens-drp-110-screen-printed-carbon-electrode/">Metrohm DropSens DRP-110 screen-printed carbon electrode</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/lesco-44-0-0-100-polyplus-opti-turfgrass-granular-fertilizer/">LESCO 44-0-0 100% PolyPlus OPTI Turfgrass Granular Fertilizer</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/low-density-polyethylene-ldpe-black-mulch-film/">Film de paillage noir en polyéthylène basse densité (LDPE)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/mancozeb-75-wp/">Mancozeb 75 WP</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/zoono-microbe-shield/">Zoono Microbe Shield</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/sintered-ag-agcl-wet-disc-electrode/">Sintered Ag/AgCl wet disc electrode</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/weaver-ten20-conductive-paste/">Weaver Ten20 Conductive Paste</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/premium-acrylic-uv-curable-loca-e-g-loctite-dsp-3196/">Premium Acrylic UV-Curable LOCA (e.g., Loctite DSP 3196)</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/mg-chemicals-841ar-super-shield-nickel-conductive-paint/">MG Chemicals 841AR Super Shield Nickel Conductive Paint</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/macdermid-alpha-argomax-2148/">MacDermid Alpha Argomax 2148</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/commercial-bulk-solid-state-sral2o4-eu-dy/">Commercial bulk solid-state SrAl2O4:Eu,Dy</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/structural-epoxy-resin/">Structural Epoxy Resin</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/harbisonwalker-mizzou-castable-plus/">HarbisonWalker Mizzou® Castable Plus</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/bisphenol-a-bpa-epoxy-resin/">Résine époxy de bisphénol A (BPA)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/henkel-bonderite-m-zn-4333/">Henkel BONDERITE M-ZN 4333</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/driscal-d-chevron-phillips-chemical/">Driscal D (Chevron Phillips Chemical)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/xypex-admix-c-1000-nf/">Xypex Admix C-1 000 NF</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/3m-hp-156-high-capacity-petroleum-sorbent-pad/">3M HP-156 High Capacity Petroleum Sorbent Pad</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/henry-887-tropi-cool-100-silicone-white-roof-coating/">Henry 887 Tropi-Cool 100% Silicone White Roof Coating</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/bergolin-1-component-topcoat-6p1600/">Bergolin 1-couche de finition de composant 6P1600</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/commercial-polyurethane-adhesive-sealants-e-g-3m-550-polyurethane-henk/">Commercial Polyurethane Adhesive Sealants (e.g. 3M 550 Polyurethane, Henkel Loctite Hysol)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/chemours-krytox-gpl-106/">Chemours Krytox GPL 106</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/premium-coconut-shell-granular-activated-carbon-gac/">Premium Coconut Shell Granular Activated Carbon (GAC)</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/spherical-alumina/">Spherical Alumina</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/aspen-aerogels-pyrogel-xte/">Aspen Aerogels Pyrogel XTE</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/acadian-plant-health-ascophyllum-nodosum-extract-ascostar-stella-maris/">Acadian Plant Health Ascophyllum nodosum extrait (AscoStar / Stella Maris)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/glycolic-acid/">Acide glycolique</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/bulk-retinol-vitamin-a/">Rétinol en vrac (vitamine A)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/ag-agcl-wet-conductive-electrode-gel-ten20-paste/">Ag/AgCl wet conductive electrode gel (Ten20 paste)</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/puretemp-20/">PureTemp 20</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/spray-dried-maltodextrin-sd-md/">Maltodextrine séchée par pulvérisation (SD-MD)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/synthetic-plga-microspheres-uncoated-oral-delivery/">Microsphères de PLGA synthétiques / administration orale non enrobée</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/conventional-hot-acid-extraction-ce/">Conventional Hot Acid Extraction (CE)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/astm-c76-class-iii-reinforced-concrete-pipe-rcp-made-with-ordinary-por/">ASTM C76 tuyau en béton armé de classe III (RCP) fabriqué avec du ciment Portland ordinaire (OPC)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/shenzhen-goosam-uv-fluorescent-water-based-invisible-ink-l3258-l3151-s/">Shenzhen Goosam UV fluorescent à base d'eau encre invisible (série L3258/L3151)</a> <span class="hub-count">1 concepts · 1 ont survécu</span></li>
+<li><a href="/alternatives/standard-organic-uv-filters-oxybenzone/">Filtres UV organiques standard (oxybenzone)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/belzona-1212/">Belzona 1 212</a> <span class="hub-count">1 concepts · 1 ont survécu</span></li>
+<li><a href="/alternatives/silver-flake-ink/">Silver flake ink</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/hyaluronic-acid-ha-microneedle-matrices/">Hyaluronic Acid (HA) microneedle matrices</a> <span class="hub-count">1 concepts · 1 survived</span></li>
+<li><a href="/alternatives/florfenicol-20-premix/">Prémélange de florfénicol à 20 %</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/opti-form-corbion/">Opti.Form (Corbion)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/chemitek-solar-wash-protect-swp/">ChemiTek Solar Wash Protect (SWP)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/enzymatic-plant-soy-amino-acids/">Enzymatic plant/soy amino acids</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/penicillium-bilaiae-jumpstart-by-novonesis/">Penicillium bilaiae (JumpStart by Novonesis)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/sequestrene-138-fe/">Sequestrene 138 Fe</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/chemical-anti-transpirants-e-g-vapor-gard-generic-pgpr-bacillus-subtil/">Chemical Anti-Transpirants (e.g., Vapor-Gard) / Generic PGPR (Bacillus subtilis)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/polyethylene-pe/">Polyethylene (PE)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/bulk-mg-oh-2-or-ath-at-9-loading/">Bulk Mg(OH)2 or ATH at 9% loading</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/granular-calcite-ground-calcium-carbonate-gcc/">Calcite granulaire / carbonate de calcium broyé (GCC)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/polyalphaolefin-pao-pao-4-pao-6-and-mineral-oil/">Polyalphaolefin (PAO / PAO 4 / PAO 6) and Mineral Oil</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/ordinary-portland-cement-opc/">Ordinary Portland Cement (OPC)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/feridex-resovist-gadolinium-chelates/">Feridex / Resovist / chélates de gadolinium</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/cryostor-cs10-biolife-solutions/">CryoStor® CS10 (BioLife Solutions)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/potassium-nitrate-kno3/">Potassium Nitrate (KNO3)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/pump-and-treat-systems-with-activated-carbon/">Pump-and-Treat Systems (with Activated Carbon)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/yarrowia-lipolytica-submerged-liquid-fermentation-of-castor-oil/">Yarrowia lipolytica submerged liquid fermentation of castor oil</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/syloid-244-fp-w-r-grace-co/">SYLOID® 244 FP (W.R. Grace & Co.)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/inorganic-optically-variable-pigments-merck-iriodin-or-multichrome-cha/">Inorganic Optically Variable Pigments (Merck Iriodin or multichrome chameleon pigments)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/mesoporous-silica-nanoparticles-msns/">Nanoparticules de silice mésoporeuse (MSN)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/98-shikonin-api-derived-from-traditional-field-grown-gromwell-root-cas/">98% Shikonin API derived from traditional field-grown Gromwell root (CAS 517-89-5)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/alkyl-polyglucoside-apg/">Alkyl Polyglucoside (APG)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/phytocelltec-malus-domestica/">PhytoCellTec Malus Domestica</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/bitop-ag-ectoin-natural/">Bitop AG (Ectoin® naturel)</a> <span class="hub-count">1 concepts · 0 ont survécu</span></li>
+<li><a href="/alternatives/spirulina-extract-c-phycocyanin-e25-grade/">Spirulina Extract (C-Phycocyanin, E25 Grade)</a> <span class="hub-count">1 concepts · 0 survived</span></li>
+<li><a href="/alternatives/mycoapply-ultrafine-endo-mycorrhizal-applications-valent-biosciences/">MycoApply® Ultrafine Endo (Mycorrhizal Applications / Valent Biosciences)</a> <span class="hub-count">1 concepts · 1 survived</span></li></ul>
+<p class="hub-back"><a href="/ledger/">Search the full ledger &rarr;</a> · <a href="/sectors/">Browse by sector &rarr;</a></p></div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/pipeline/">Pipeline</a>
+      <a href="/alternatives/">Alternatives</a>
+      <a href="/sectors/">Sectors</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/translation/">Translation</a>
+      <a href="/nations/">Nations</a>
+      <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap capture">
+    <p>Proven in the literature. Absent from the market. Bankable on the numbers. The ledger lands in your inbox at 08:45 and 17:45 &mdash; free while it is being built. <a href="/#join">Get it &rarr;</a></p>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a> &middot; <a href="#" data-aa-consent-open>Cookie settings</a></p>
+  </div>
+</footer>
+</body>
+</html>

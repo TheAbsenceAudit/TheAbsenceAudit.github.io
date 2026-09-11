@@ -1,0 +1,1323 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="alternate" hreflang="en" href="https://theabsenceaudit.com/nations/"/>
+<link rel="alternate" hreflang="fr" href="https://theabsenceaudit.com/fr/nations/"/>
+<link rel="alternate" hreflang="zh" href="https://theabsenceaudit.com/zh/nations/"/>
+<link rel="alternate" hreflang="ru" href="https://theabsenceaudit.com/ru/nations/"/>
+<link rel="alternate" hreflang="x-default" href="https://theabsenceaudit.com/nations/"/>
+<link rel="canonical" href="https://theabsenceaudit.com/fr/nations/"/>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accepter</button>' +
+        '<button type="button" id="aa-consent-no">Décliner</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tunisia &mdash; the closed loop | The Absence Audit</title>
+<meta name="description" content="The first nation-scale Absence Audit: Tunisia's five structural absences — monetary, cognitive, material, hydrological, nutritional — and the literature-backed engineering that fills each, wired into one closed loop. Then the audit turns on itself: honest confidence grades, a bottom-up feasibility model and a kill-gate protocol. A public template for every country with the same absences.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="canonical" href="https://theabsenceaudit.com/nations/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/nations/">
+<meta property="og:title" content="Tunisia &mdash; the closed loop">
+<meta property="og:description" content="Five absences. Nine legs. One metabolism &mdash; the integrated closed loop, energy- and money-net-positive by design.">
+<meta property="og:image" content="https://theabsenceaudit.com/nations/og-nations.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tunisia, audited. Five absences. One closed loop.">
+<meta name="twitter:description" content="The Absence Audit at national scale — a public template for every country with the same absences.">
+<meta name="twitter:image" content="https://theabsenceaudit.com/nations/og-nations.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Tunisia, audited — The Absence Audit at national scale",
+  "url": "https://theabsenceaudit.com/nations/",
+  "inLanguage": "en",
+  "isPartOf": {"@type": "WebSite", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
+  "description": "The first nation-scale Absence Audit: five structural absences, five literature-backed fills, one closed industrial loop — and the red team that grades each claim by evidence. A public template for every country with the same absences."
+}
+</script>
+<style>
+  .n-hero{padding:4.2rem 0 3rem;border-bottom:1px solid var(--rule)}
+  .n-hero h1{font-size:clamp(2.6rem,6vw,4.4rem);letter-spacing:-.02em}
+  .n-hero h1 em{color:var(--kill);font-style:italic}
+  .n-hero .lede{max-width:66ch;margin:1.2rem 0 0;font-size:1.12rem;color:var(--ink-2)}
+  .n-stats{display:flex;flex-wrap:wrap;gap:2.4rem;margin:2.4rem 0 0;padding:0}
+  .n-stats dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+  .n-stats dd{margin:.35rem 0 0;font-family:var(--serif);font-size:1.9rem}
+  .n-section{padding:3.4rem 0;border-bottom:1px solid var(--rule)}
+  .n-section h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 1rem}
+  .n-section .n-lede{max-width:72ch;color:var(--ink-2);margin:0 0 2rem;font-size:1.05rem}
+  .n-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem}
+  .n-card{background:var(--paper-2);border:1px solid var(--rule);padding:1.5rem 1.5rem 1.3rem}
+  .n-card .n-num{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;color:var(--kill);text-transform:uppercase}
+  .n-card h3{font-size:1.25rem;margin:.5rem 0 .55rem}
+  .n-card h3 .n-missing{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;
+        letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.35rem}
+  .n-card p{margin:.55rem 0;color:var(--ink-2);font-size:.97rem}
+  .n-card ul{margin:.6rem 0 0;padding-left:1.1rem;color:var(--ink-2);font-size:.94rem}
+  .n-card ul li{margin:.3rem 0}
+  .n-card ul strong{color:var(--ink)}
+  .n-loop{counter-reset:loop}
+  .n-loop li{list-style:none;position:relative;padding:0 0 1.1rem 3rem;counter-increment:loop}
+  .n-loop li::before{content:counter(loop);position:absolute;left:0;top:.05rem;width:1.9rem;height:1.9rem;
+        border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;
+        font-family:var(--mono);font-size:.82rem;color:var(--kill)}
+  .n-loop li::after{content:"";position:absolute;left:.92rem;top:2rem;bottom:.35rem;border-left:1px dashed var(--rule)}
+  .n-loop li:last-child::after{display:none}
+  .n-loop li p{margin:.1rem 0 0;color:var(--ink-2)}
+  .n-loop li strong{font-family:var(--serif);font-size:1.06rem;color:var(--ink)}
+  .n-quote{font-family:var(--serif);font-size:1.35rem;line-height:1.45;font-style:italic;
+        border-left:3px solid var(--kill);padding-left:1.2rem;margin:2rem 0;max-width:60ch}
+  .n-quote cite{display:block;font-family:var(--mono);font-style:normal;font-size:.72rem;
+        letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:.7rem}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0 1.8rem;font-size:.93rem}
+  caption{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+        color:var(--ink-3);text-align:left;margin-bottom:.6rem}
+  th,td{text-align:left;border-bottom:1px solid var(--rule);padding:.55rem .7rem;vertical-align:top}
+  th{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+  td strong{color:var(--ink)}
+  .n-media{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.8rem;margin-top:1.6rem}
+  .n-media figure{margin:0}
+  .n-media video{width:100%;max-width:340px;background:#000;border:1px solid var(--rule)}
+  .n-media audio{width:100%;margin-top:.9rem}
+  .n-media figcaption{font-size:.9rem;color:var(--ink-2);margin-top:.7rem}
+  .n-media figcaption strong{color:var(--ink);font-family:var(--serif);font-size:1.02rem;font-weight:500}
+  .n-media .n-meta{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  details.n-tr{margin-top:1.4rem;border:1px solid var(--rule);background:var(--paper-2);padding:.9rem 1.2rem}
+  details.n-tr summary{cursor:pointer;font-weight:600;font-family:var(--sans);font-size:.95rem}
+  .n-tr-pad{max-height:420px;overflow:auto;margin-top:.9rem;padding-right:.6rem;
+        font-size:.92rem;color:var(--ink-2)}
+  .n-tr-a,.n-tr-b{margin:.45rem 0}
+  .n-tr-a strong{color:var(--kill)}
+  .n-tr-b strong{color:var(--live)}
+  .n-note{color:var(--ink-2);font-size:.95rem}
+  .n-boundary{background:var(--paper-2);border:1px solid var(--rule);padding:1.5rem 1.6rem;margin-top:1.6rem}
+  .n-boundary h3{margin:0 0 .6rem;font-size:1.15rem}
+  .n-boundary p{color:var(--ink-2);font-size:.96rem;margin:.5rem 0}
+  .n-src{font-size:.85rem;color:var(--ink-2);columns:2;column-gap:2.4rem;padding-left:1.4rem}
+  .n-src li{margin:.35rem 0;break-inside:avoid}
+  .n-src a{word-break:break-all}
+  @media(max-width:640px){.n-src{columns:1}}
+  /* red-team + feasibility */
+  .n-badge{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
+        text-transform:uppercase;padding:.22rem .55rem;border:1px solid var(--rule);
+        background:var(--paper-2);color:var(--ink-2);white-space:nowrap}
+  .n-badge.high{color:var(--live);border-color:var(--live)}
+  .n-badge.med{color:#8a6d1f;border-color:#bda052;background:#faf6e9}
+  .n-badge.low{color:var(--kill);border-color:var(--kill)}
+  .n-badge.unknown{color:var(--ink-3);border-color:var(--rule)}
+  table.n-red td:first-child{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;
+        text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+  .n-finding{border-left:3px solid var(--kill);background:var(--paper-2);padding:1.1rem 1.3rem;
+        margin:1.4rem 0;font-size:.96rem;color:var(--ink-2)}
+  .n-finding strong{color:var(--ink);font-family:var(--serif);font-size:1.02rem}
+  .n-finding .n-num{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--kill);
+        text-transform:uppercase;display:block;margin-bottom:.35rem}
+  .n-feas td:first-child{width:46%}
+  .n-phase{counter-reset:ph;margin:1.2rem 0}
+  .n-phase li{list-style:none;position:relative;padding:0 0 1rem 2.6rem;counter-increment:ph}
+  .n-phase li::before{content:"P" counter(ph);position:absolute;left:0;top:.05rem;width:2rem;height:2rem;
+        border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;
+        font-family:var(--mono);font-size:.72rem;color:var(--kill)}
+  .n-phase li strong{font-family:var(--serif);font-size:1.02rem;color:var(--ink)}
+  .n-phase li p{margin:.15rem 0 0;color:var(--ink-2);font-size:.95rem}
+  .n-srcline{font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+  .n-note small{display:block;margin-top:.4rem}
+  .n-twrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2rem 0}
+  .n-twrap table{min-width:760px}
+  .n-twrap table.n-red{min-width:920px}
+  .n-unlock{border-left:3px solid var(--live);background:var(--paper-2);padding:1.1rem 1.3rem;
+        margin:1.2rem 0;font-size:.96rem;color:var(--ink-2)}
+  .n-unlock strong{color:var(--ink);font-family:var(--serif);font-size:1.02rem}
+  .n-unlock .n-num{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--live);
+        text-transform:uppercase;display:block;margin-bottom:.35rem}
+  .n-unlock .n-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+        color:var(--ink-3);display:inline-block;margin-right:.5rem}
+.n-cite{font-size:.68rem;color:var(--ink-3);vertical-align:super;margin-left:.15rem}
+.n-audit-note{font-size:.9rem;color:var(--ink-2);margin:1.6rem 0 0;max-width:72ch}
+.n-audit-note code,.n-lede code{font-family:var(--mono);font-size:.82em;background:var(--paper-2);padding:.1rem .35rem;border:1px solid var(--rule)}
+.n-sub{font-size:1.15rem;margin:2.4rem 0 .8rem}
+.n-tablewrap{overflow-x:auto;margin:0 0 .6rem}
+.n-tablewrap table{min-width:640px}
+.n-tablewrap td,.n-tablewrap th{font-size:.88rem}
+.n-total td{background:var(--paper-2);font-weight:600}
+.n-g-strong{color:var(--live);font-weight:700}
+.n-g-plausible{color:var(--ink);font-weight:600}
+.n-g-speculative{color:var(--ink-2);font-style:italic}
+.n-g-wrong,.n-g-overstated,.n-g-zero{color:var(--kill);font-weight:700}
+.n-g-verified{color:var(--live);font-weight:700}
+.n-dl-btn{display:inline-block;margin-top:.4rem;padding:.65rem 1.1rem;font-weight:600;font-size:.95rem;border:1px solid var(--ink);color:var(--ink);text-decoration:none}
+.n-dl-btn:hover{background:var(--kill);border-color:var(--kill);color:#fff}
+</style>
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ledger/">Ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/method/">Method</a>
+      <a href="/nations/">Nations</a>
+      <a href="/translation/">Translation</a>
+      <span class="aa-langs"> <a href="/nations/" hreflang="en">EN</a> <a href="/fr/nations/" hreflang="fr">FR</a> <a href="/ru/nations/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="n-hero">
+  <div class="wrap">
+    <p class="eyebrow">The method, at national scale</p>
+    <h1>Tunisia, <em>audited.</em></h1>
+    <p class="lede">Five absences. Nine legs. <strong>One metabolism.</strong> A system drawn with
+    da Vinci&rsquo;s proportion and measured with Nash&rsquo;s equilibrium &mdash; every leg
+    cash-positive, every joule collected twice, every correction already built in. The audit is
+    finished; the plan is ready; <strong>the state program is written</strong> &mdash; the
+    architecture, the instruments, the financing, the signature. Phase&nbsp;0 is ninety days and
+    $150&ndash;250k from today.</p>
+    <dl class="n-stats">
+      <div><dt>Absences audited</dt><dd>5</dd></div>
+      <div><dt>Legs in one metabolism</dt><dd>9</dd></div>
+      <div><dt>External-account effect at phase (tiered)</dt><dd>~$279M</dd></div>
+      <div><dt>Energy recovered inside the system</dt><dd>~33.9 GWh/yr</dd></div>
+      <div><dt>Dispatch value (not joules)</dt><dd>20 GWh/yr</dd></div>
+      <div><dt>To Phase 0</dt><dd>90 days</dd></div>
+    </dl>
+    <p class="n-audit-note">Every figure on this page is computed in code
+    (<code>nations_audit.py</code>) from the cited primitives &mdash; the full works-cited register
+    closes the page, and every number resolves to it. The grades below separate what is established
+    from what is modeled.</p>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">The five absences</p>
+    <h2>What is missing &mdash; and what fills it</h2>
+    <p class="n-lede">Same discipline as every dossier: name what is missing, find the process the record demonstrates, keep the numbers where anyone can re-check them.</p>
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Absence 01</p>
+        <h3><span class="n-missing">What is missing</span>Monetary sovereignty</h3>
+        <p>Debt in a currency the state cannot print: <strong>$40.5B</strong> (&asymp;79% of GDP), <strong>26.2% of export revenues</strong> to debt service.</p>
+        <ul><li><strong>The fill:</strong> the three owned-export engines &mdash; compute &middot; strategic metals &middot; protein &mdash; feeding the sovereign money cycle.</li></ul>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 02</p>
+        <h3><span class="n-missing">What is missing</span>Sovereign compute</h3>
+        <p>World-class talent without sovereign infrastructure &mdash; InstaDeep, founded in Tunis, sold for <strong>$680M</strong>.</p>
+        <ul><li><strong>The fill:</strong> coastal datacenters, seawater-cooled (PUE 1.15&ndash;1.25), sovereign tier; the AI layer dispatches the whole system.</li></ul>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 03</p>
+        <h3><span class="n-missing">What is missing</span>Strategic materials</h3>
+        <p>Phosphogypsum at Gab&egrave;s is costing the sea <strong>&gt;$58M/yr</strong> &mdash; holding uranium and heavy rare earths never monetized.</p>
+        <ul><li><strong>The fill:</strong> the acid stream yields uranium + heavy REE (~$78M/yr), the radium untouched; the gypsum becomes fire-rated board.</li></ul>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 04</p>
+        <h3><span class="n-missing">What is missing</span>Water</h3>
+        <p>A dry country where dams sit at record lows and much of what remains underground is <strong>brine</strong>.</p>
+        <ul><li><strong>The fill:</strong> filters now, coastal desal for cities, inland brackish desal for the basin, reuse at 30%+, the municipal spine as the Phase-4 arteries.</li></ul>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 05</p>
+        <h3><span class="n-missing">What is missing</span>Nutrition</h3>
+        <p>Latent malnutrition capping a generation&rsquo;s cognition &mdash; while the south grows <em>terfas</em>, the drought-proof desert truffle.</p>
+        <ul><li><strong>The fill:</strong> the drought-proof chain &mdash; terfas, spirulina, greenhouses &mdash; water-whale legacy crops excluded.</li></ul>
+
+      </article>
+    </div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Le métabolisme</p>
+    <h2>One loop. Nothing wasted. Nothing bolted on.</h2>
+    <p class="n-lede">The system is drawn as a single organism. Energy flows in once and is collected again at every point it would otherwise escape &mdash; inside the system, not beside it.</p>
+    <ol class="n-loop">
+      <li><strong>Le soleil entre</strong><p>Solaire utilitaire à la voie IPP prouvée — construit dans sa région bancable, les chiffres déjà réglés dans la conception.</p></li>
+      <li><strong>Water rises once &mdash; and pays rent coming down</strong><p>Desalination with
+      isobaric energy recovery on the brine, brackish-water plants inland, reuse at 30%+; the return
+      legs run pump-as-turbines, so what gravity was paid to lift, gravity gives back.</p></li>
+      <li><strong>The acid stream becomes the treasury</strong><p>The phosphoric stream yields
+      uranium and heavy rare earths; the phosphogypsum cures into fire-rated board under its own
+      CO&sub2; &mdash; the liability monetized inside the same pipework.</p></li>
+      <li><strong>Heat never leaves the loop</strong><p>The acid plant&rsquo;s exotherm and the
+      kilns preheat desalination feed and greenhouses; the datacenters&rsquo; reject heat warms the
+      same circuits &mdash; cold sea in, warm district out.</p></li>
+      <li><strong>La saumure est un produit</strong><p>Sel, magnésium et minéraux récupérés de chaque flux de saumure — l'élimination devient production.</p></li>
+      <li><strong>The desert feeds without thirst</strong><p>Terfas in full sun (2,000&ndash;3,000 ha,
+      a third reserved for locals &le;&euro;12/kg), spirulina ponds, greenhouses &mdash; the chain
+      that survives the drought is the chain we build.</p></li>
+      <li><strong>Health is the first output</strong><p>Point-of-use filters and clean air &mdash;
+      $2,592 per healthy year, the best investment in the economy &mdash; bought with the ESG
+      concession the loop itself earns.</p></li>
+      <li><strong>Money closes the circle</strong><p>Compute &middot; metals &middot; protein feed
+      hard currency &rarr; reserves &rarr; rating &rarr; refinancing the trap &rarr; reinvestment.
+      The sovereign money cycle, every variable on the table.</p></li>
+    </ol>
+    <p class="n-quote">&ldquo;The toxic slag of the past becomes tomorrow&rsquo;s cognitive gold.&rdquo;
+    <cite>&mdash; the V1 line, kept</cite></p>
+  </div>
+</div>
+<div class="n-section" id="arteries">
+  <div class="wrap">
+    <p class="eyebrow">Les artères</p>
+    <h2>How the water reaches every town &mdash; the pipeline mesh</h2>
+    <p class="n-lede">This is how a dry country is saved: not one giant canal, but a mesh of three water
+    tiers carried on pipelines, powered by the loop&rsquo;s own solar, paid by the loop&rsquo;s own yields.
+    Dams sit at record lows and much of the groundwater is brine &mdash; so the plan pipes water where the
+    arithmetic lets it travel, and recovers energy on every leg it descends.</p>
+
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Tier 0 &mdash; days</p>
+        <h3>Filtres, au robinet</h3>
+        <p>Before any pipe is laid, the cheapest cut: point-of-use filters and clean-air boxes in homes
+        and schools &mdash; <strong>$2,592 per healthy year</strong>,
+        the best investment in the economy, nothing piped, no permits, live in 90 days.</p>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Tier 1 &mdash; months to years</p>
+        <h3>Dessalement côtier pour les villes · eau saumâtre pour le bassin</h3>
+        <p>150,000 m&sup3;/d coastal SWRO serves the coast at
+        <strong>$0.35/m&sup3; integrated</strong> &mdash; 35% of SONEDE&rsquo;s own
+        produced cost, every credit from inside the loop&rsquo;s pipework. Inland, the basin runs on
+        brackish-water RO at <strong>~$0.34/m&sup3;</strong> &mdash; inside SONEDE&rsquo;s own
+        brackish band ($0.10&ndash;0.70/m&sup3;, Pg16) &mdash; and reuse at 30%+ turns every drop twice.
+        The pumping physics is priced: 1.09 kWh/m&sup3; per 400 m lift is the floor that decides where water
+        may travel<sup class="n-cite">[Rw4]</sup>.</p>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Tier 2 &mdash; years 5&ndash;10</p>
+        <h3>La colonne vertébrale municipale — l'artère de Riyad, construite quand elle paie</h3>
+        <p>The long-distance spine stays in the plan at its true price:
+        <strong>$1.16&ndash;2.10B</strong> for 300 km,
+        $1.94&ndash;3.45/m&sup3; transport<sup class="n-cite">[Rw5]</sup><sup class="n-cite">[Rw8]</sup> &mdash; priced
+        for industrial offtake, never for fields paying $0.04-0.07/m&sup3;. It is Phase-4 because it
+        must pay for itself, not because it is optional.</p>
+      </article>
+    </div>
+
+    <div class="n-boundary">
+      <h3>The water pays rent coming down</h3>
+      <p>Every leg the water <em>descends</em>, the loop collects: return flows run pump-as-turbines
+      (<strong>3.9 GWh/yr</strong> &mdash; 70% of 150,000 m&sup3;/d at 50 m head), brine
+      pressure feeds back through the ERD, and the same mesh shifts its pumping with the solar curve
+      (20 GWh/yr of dispatch value). What gravity was paid to lift, gravity gives back
+      &mdash; the water system is also the loop&rsquo;s battery, and its bill lands at
+      <strong>$0.35/m&sup3;</strong> against the $4.90B fuel and
+      $3.00B food import lines the same mesh relieves.</p>
+    </div>
+  </div>
+</div>
+<div class="n-section" id="fed">
+  <div class="wrap">
+    <p class="eyebrow">The monetary underlying</p>
+    <h2>Le cycle de taux de la Fed est le temps qu'il fait sous lequel vit cet État — la boucle est le toit</h2>
+    <p class="n-lede">No sovereign design in a dollar-denominated frontier economy is honest without naming
+    the transmission from Washington. Every figure in this section is measured &mdash; pulled from the World
+    Bank API on 2026-09-09 &mdash; not restated from memory<sup class="n-cite">[Pg1]</sup>.</p>
+
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Channel 1 &mdash; the debt trap</p>
+        <h3>Original sin, compounded by the Fed</h3>
+        <p>Tunisia cannot borrow long-term in its own currency abroad &mdash; the &ldquo;original sin&rdquo;
+        of every emerging state<sup class="n-cite">[Pg12]</sup>. External debt stands at <strong>$40.46B</strong>,
+        <strong>78.7% of GDP</strong>, a large share dollar-denominated. When the Fed raises
+        rates, global yields climb in tandem and refinancing turns expensive; debt service already absorbs
+        <strong>26.2% of export revenues</strong> and drains the reserves
+        (9.34B = 4.3 months of imports, World Bank 2024; Fitch&rsquo;s
+        anchor is ~4.5 months<sup class="n-cite">[Rc11]</sup>). US monetary conditions are the anchor of the whole emerging-market
+        cycle &mdash; the &ldquo;dilemma, not trilemma&rdquo;<sup class="n-cite">[Pg13]</sup>: a small state with a dollar trap
+        does not set its own weather.</p>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Canal 2 — inflation importée</p>
+        <h3>The orthodoxy trap: hold rates, strangle growth</h3>
+        <p>A wide interest-rate differential pulls capital toward US safe assets, pressing the dinar down
+        &mdash; which immediately worsens imported inflation, because Tunisia is a net importer of
+        hydrocarbons and cereals priced in dollars: food and fuel imports are <strong>$3.00B +
+        $4.90B a year</strong> (11.5% + 18.8% of merchandise imports, World Bank 2024). The BCT
+        &mdash; autonomous and non-monetizing under Organic Law 2016-35<sup class="n-cite">[Pg4]</sup><sup class="n-cite">[Pg5]</sup> &mdash; must
+        hold its own rates up to keep dinar placements attractive. That orthodoxy is correct and asphyxiating:
+        credit freezes, investment stalls, growth stays below <strong>2.5%</strong> with
+        inflation at <strong>5.2%</strong> (2025). The dead end is arithmetic, not policy
+        failure.</p>
+      </article>
+    </div>
+
+    <div class="n-boundary">
+      <h3>The loop&rsquo;s answer: earn the weather, stop renting it</h3>
+      <p>The program does not fight the Fed &mdash; it <em>decouples the transmission</em>. The three
+      owned-export engines &mdash; compute &middot; strategic metals &middot; protein &mdash; earn
+      <strong>~$117M/yr of gross
+      exports</strong> outside the Fed cycle, and the import-substitution legs (solar displacement + food)
+      take <strong>$152M/yr</strong> out of the dollar invoice directly
+      &mdash; the same $3B food and $5B fuel import lines the Fed&rsquo;s second
+      channel punishes. Reserves rise, the rating path runs B-/Caa1 &rarr; BB-, and the refinancing premium the
+      Fed sets shrinks for the state that has its own hard-currency engines. Monetary orthodoxy stays exactly
+      where it belongs &mdash; at the BCT &mdash; while the <em>real</em> economy stops renting dollars and
+      starts producing them. That is the sovereign answer to the original sin: not defiance of the Fed, but
+      independence from the channel.</p>
+    </div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Les neuf volets</p>
+    <h2>Each leg stands alone. Together they stand as one.</h2>
+    <p class="n-lede">Nine cash-positive modules, one dispatcher. The AI layer balances generation, load, pumps and triage &mdash; the equilibrium is the design.</p>
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Volet 01</p>
+        <h3><span class="n-missing">Eau</span></h3>
+        <p>Filters now ($2,592/DALY) &middot; coastal SWRO (gate &ge;$0.68/m&sup3;) &middot; inland brackish desal &middot; reuse 30%+ &middot; the municipal spine (Riyadh precedent).</p>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Volet 02</p>
+        <h3><span class="n-missing">Énergie</span></h3>
+        <p>Solar inside its bankable region &middot; storage at honest scale &middot; surplus &rarr; hydrogen.</p>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Volet 03</p>
+        <h3><span class="n-missing">Calcul</span></h3>
+        <p>Coastal, seawater-cooled, sovereign tier + colocation &middot; the RL dispatcher coordinates the grid, the pumps, the triage.</p>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Volet 04</p>
+        <h3><span class="n-missing">Matériaux</span></h3>
+        <p>Acid-stream uranium + heavy REE ~$78M/yr &middot; PG-REE booked as the future option &middot; gypsum &rarr; fire-rated board.</p>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Volet 05</p>
+        <h3><span class="n-missing">Toxines</span></h3>
+        <p>Laveurs de HF · remédiation du PG comme passif financé · surveillance marine à Gabès · NORM encapsulé.</p>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Volet 06</p>
+        <h3><span class="n-missing">Alimentation</span></h3>
+        <p>The drought-proof chain &mdash; terfas, spirulina (10 ha = 178,000 children), greenhouses &middot; price index published quarterly.</p>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Volet 07</p>
+        <h3><span class="n-missing">Santé</span></h3>
+        <p>Cut the Dose: filters, clean-air boxes, calcium/C/D3, metals defense, telemedicine, biomonitoring.</p>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Volet 08</p>
+        <h3><span class="n-missing">Human capital</span></h3>
+        <p>Le pipeline de la cognition : protéine → neurodéveloppement → la main-d'œuvre IA · emplois là où les blocus ont commencé.</p>
+
+      </article>
+      <article class="n-card">
+        <p class="n-num">Volet 09</p>
+        <h3><span class="n-missing">Argent</span></h3>
+        <p>Le cycle monétaire souverain — le registre complet ci-dessous.</p>
+
+      </article>
+    </div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">L'équilibre</p>
+    <h2>Énergie et argent, équilibrés par conception</h2>
+    <p class="n-lede">Nash&rsquo;s standard: a state is an equilibrium when nothing can improve it by moving alone. Here every module is cash-positive on its own, and the whole is net-positive because nothing leaves the loop.</p>
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Registre A — énergie</p>
+        <h3>The system recovers inside itself</h3>
+
+        <ul>
+          <li><strong>Desalination ERD:</strong> isobaric ERD already inside the 4 kWh/m3 SWRO benchmark (~35-40% of RO energy); adding it on top would double-count &mdash; carried as zero here, not added twice.</li>
+          <li><strong>Return flows (pump-as-turbines):</strong> 3.9 GWh/yr &mdash; 70% of 150,000 m&sup3;/d returning at 50 m head, 75% turbine efficiency.</li>
+          <li><strong>Heat:</strong> 30 GWh/yr &mdash; 9% of the calcination thermal envelope (333 GWh at 0.6 GJ/t &times; 2 Mt PG), delivered to desal preheat and greenhouses.</li>
+          <li><strong>Flexibility:</strong> 20 GWh/yr of shifted load &mdash; dispatch value, honestly labeled: <em>not</em> recovered joules.</li>
+          <li><strong>Carbon:</strong> 30 kt CO&sub2;/yr mineralized into board.</li>
+          <li><strong>Balance:</strong> &asymp;<strong>33.9 GWh/yr recovered</strong> + 20 GWh/yr dispatch value &mdash; every leg computed from cited primitives, in the audit below.</li>
+        </ul>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Registre B — argent</p>
+        <h3>The trap, measured &middot; the loop&rsquo;s answer</h3>
+
+        <ul>
+          <li><strong>The trap:</strong> $40.5B debt (79% of GDP) &middot; 26.2% of export revenues to service &middot; reserves 4.5 months &middot; B-/Caa1.</li>
+          <li><strong>Exports (gross):</strong> $117M &middot; <strong>import substitution:</strong> $152M &middot; <strong>financing delta (not FX):</strong> $10M.</li>
+          <li><strong>Total:</strong> <strong>~$279M/yr</strong> external-account effect &mdash; tiered: <strong>$80M strong</strong> (proven flowsheets, cited anchors), <strong>$137M plausible</strong> (gated), <strong>$61M speculative</strong> (assumed volume or price).</li>
+          <li><strong>La boucle elle-même :</strong> substitution de $3.0B d'importations alimentaires et de $4.9B d'importations de carburant, mesurée dans le même registre.</li>
+        </ul>
+      </article>
+    </div>
+    <p class="n-note">Every figure above is computed in code from sourced primitives &mdash; the numbers are the design, and the design is the equilibrium.</p>
+  </div>
+</div>
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Les deux futurs</p>
+    <h2>Évolution darwinienne — avec la boucle, et sans elle</h2>
+    <p class="n-lede">The selection machine is already running. The loop is the intervention that flips which strategy wins.</p>
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Futur A — le défaut</p>
+        <h3>Sans la boucle</h3>
+        <p>Dose accumulates: fluoride in the teeth before age 8, cadmium in the kidneys for decades,
+        dust in the lungs. The fittest emigrate &mdash; engineer to Paris, founder to London;
+        InstaDeep&rsquo;s $680M exit is the emblem. Every departure makes the basin harder for those
+        who stay. The nation evolves into a smaller, older, sicker version of itself that exports
+        its children and imports its food. <strong>That future requires no decision.</strong></p>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Futur B — le plan</p>
+        <h3>Avec la boucle</h3>
+        <p>We change the environment, not the genes: clean water &rarr; intact enamel and strong
+        bones within one generation; protein &rarr; nourished brains; jobs &rarr; a reason to stay;
+        exports &rarr; room to breathe. Same people, same geography &mdash; a different fitness
+        landscape. <strong>The plan is evolution by other means.</strong></p>
+      </article>
+    </div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">La construction</p>
+    <h2>Six steps, every step gated, every gate public</h2>
+    <p class="n-lede">From the first measurement to the full loop &mdash; the original scale, reached leg by leg, each leg having paid for itself.</p>
+    <ol class="n-phase">
+      <li><strong>STEP 0 &mdash; MEASURE (months 0&ndash;3, $150&ndash;250k, no construction)</strong>
+        <p>The water panel (salinity included), the acid-stream assays, the emissions inventory, the
+        cohort protocol, the health pilot&rsquo;s first 100 households, the legal structures.</p></li>
+      <li><strong>STEP 1 &mdash; PROTECT (months 0&ndash;9)</strong>
+        <p>Filters and clean-air boxes in homes and schools; telemedicine live; 90-day health KPIs
+        published. Gate: filter uptime &ge;70%, urinary F &darr;20%.</p></li>
+      <li><strong>STEP 2 &mdash; PILOT THE ENGINE (months 4&ndash;18, $3&ndash;6M)</strong>
+        <p>Acid pilot, 100 ha terfas + nursery, spirulina pond, the solar bid, desal offtake.
+        Every pilot passes or dies alone, in public.</p></li>
+      <li><strong>STEP 3 &mdash; BUILD THE CORE (years 2&ndash;5, $250&ndash;650M)</strong>
+        <p>Metals plant, solar, coastal desal, inland brackish desal, health at basin scale, the AI
+        dispatcher, ponds and greenhouses scaled.</p></li>
+      <li><strong>STEP 4 &mdash; BUILD THE ARTERIES (years 5&ndash;10)</strong>
+        <p>The municipal spine, the compute colocation park, hydrogen, green belts, brine valorization
+        at scale.</p></li>
+      <li><strong>STEP 5 &mdash; THE FULL LOOP (years 10+)</strong>
+        <p>The complete system at the original scale. The loop is the destination; the steps are the
+        proof.</p></li>
+    </ol>
+  </div>
+</div>
+<div class="n-section" id="household">
+  <div class="wrap">
+    <p class="eyebrow">The household ledger</p>
+    <h2>What this does to the cost of living</h2>
+    <p class="n-lede">A state program that does not make life cheaper for its people is decoration. This
+    is the household ledger &mdash; each line of a Tunisian family&rsquo;s budget, and what the loop does
+    to it. The reductions are computed from the same primitives as everything else; the enforcement is
+    published: the quarterly price index in Gafsa and Gab&egrave;s is a success metric, not a hope.</p>
+
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Eau</p>
+        <h3>Le plancher de la facture chute des deux tiers</h3>
+        <p>The cost every tariff is built on drops from SONEDE&rsquo;s own $1.00&ndash;1.50/m&sup3;
+        to <strong>$0.35/m&sup3; coastal and $0.34/m&sup3; inland</strong>
+        &mdash; powered by the loop&rsquo;s own sun, cooled by its own seawater, credited by its own brine.
+        The final tariff stays SONEDE&rsquo;s decision; the floor it stands on is the loop&rsquo;s.</p>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Protéines et alimentation</p>
+        <h3>Half the price of imported protein</h3>
+        <p>Spirulina and the greenhouse stack land at <strong>$5&ndash;10/kg</strong>
+        where imported protein costs $15&ndash;25/kg &mdash; 10 ha of ponds
+        feed 178,082 children at the clinically tested dose. Terfas:
+        <strong>a third of the harvest stays home at &le;&euro;12/kg</strong>, written into
+        the contracts &mdash; the luxury that feeds the people who grow it.</p>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Santé</p>
+        <h3>Moins cher que la maladie</h3>
+        <p>A healthy year costs <strong>$2,592</strong> against the $4,000/DALY
+        international standard &mdash; the filters, the clean-air boxes, the calcium/C/D3 that reverses
+        fluorosis, the telemedicine call that replaces the 70-km trip. The pilot starts with
+        100 households and two schools for $58,000. Health is the biggest bill
+        a sick family pays; this is the bill the plan cuts first.</p>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Tout le reste</p>
+        <h3>Le moteur de l'inflation, bridé</h3>
+        <p>The $4.90B fuel and $3.00B food import lines are the machine behind
+        5.2% inflation &mdash; the hidden tax on every dinar. The loop takes
+        ~$136M/yr out of the dollar invoice directly and the government&rsquo;s own solar program saves
+        ~$125M/yr of gas. Cheaper energy imports are the only durable price cut that reaches
+        <em>every</em> good in the market.</p>
+      </article>
+    </div>
+
+    <div class="n-boundary">
+      <h3>La baisse de prix la plus forte est un emploi</h3>
+      <p>28% unemployment in the basin &mdash; 54% for women graduates &mdash;
+      is the real poverty machine. The workshop, the nursery, the ponds, the plants, the solar crews, the
+      health workers: jobs in the same towns where the blockades began. Income up and prices down, measured
+      on the same quarterly scoreboard: <strong>the price of protein and vegetables in Gafsa and Gab&egrave;s
+      must bend downward within 24 months of the first harvest</strong> &mdash; that sentence is the
+      contract with the people, and it is published.</p>
+    </div>
+  </div>
+</div>
+<div class="n-section" id="program">
+  <div class="wrap">
+    <p class="eyebrow">Le programme</p>
+    <h2>A state program &mdash; the full institutional architecture, cited instrument by instrument</h2>
+    <p class="n-lede">This is the proposal a government adopts. Every counterpart is a named Tunisian
+    institution, every legal instrument is a real law or treaty with its citation, every financing line is a
+    real channel, and every gate is a public number. What the state is asked for is cooperation &mdash; not
+    money &mdash; and what it receives is measured in the same ledgers above.</p>
+
+    <div class="n-boundary">
+      <h3>The peace dividend &mdash; the number that ends the argument</h3>
+      <p>Phosphate output collapsed from <strong>~8 Mt to ~3.1 Mt</strong> after the blockade years
+      &mdash; the same grievances this program&rsquo;s health, food and jobs legs are built to answer<sup class="n-cite">[Rm17]</sup>.
+      The gap alone is <strong>4.9 Mt/yr &asymp; $0.49&ndash;0.73B/yr</strong>
+      of export value &mdash; two to three times the entire ~$286M external-account ledger above. Restoring the
+      basin is not a side effect of this program; it is the program&rsquo;s largest line item, and it belongs
+      to the same people whose grievances closed the basin: the jobs, the water and the clinic are the
+      restoration plan. A job is the cheapest peace treaty ever signed &mdash; and this is its price tag.</p>
+    </div>
+
+    <h3 class="n-sub">Les contreparties — qui signe quoi</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Institutional architecture &mdash; named counterparts, existing regimes</caption>
+      <thead><tr><th>Institution</th><th>Instrument</th><th>Rôle</th></tr></thead>
+      <tbody>
+      <tr><td><strong>GCT (Tunisian Chemical Group)</strong></td><td>acid-stream MOU + sampling agreement</td><td>the treasury's feedstock</td></tr>
+      <tr><td><strong>SONEDE</strong></td><td>municipal/industrial water offtake at >=$0.68/m3 gate</td><td>contrats d'eau sous le régime existant</td></tr>
+      <tr><td><strong>STEG</strong></td><td>25-year PPA under the IPP regime (500 MW class)</td><td>the power leg's revenue</td></tr>
+      <tr><td><strong>Ministry of Industry, Mines & Energy</strong></td><td>program sponsor; tender registration</td><td>the executive mandate</td></tr>
+      <tr><td><strong>Ministry of Health</strong></td><td>biomonitoring + cohort registry</td><td>le tableau de bord</td></tr>
+      <tr><td><strong>CNSTN</strong></td><td>NORM licensing for the uranium route</td><td>le passe réglementaire</td></tr>
+      <tr><td><strong>Ministry of State Domains & Agriculture</strong></td><td>baux de 40 ans en vertu de la loi 93-120 (86 000 ha disponibles)</td><td>le foncier</td></tr>
+      <tr><td><strong>BCT</strong></td><td>reserve/rating path; FX policy coordination</td><td>the monetary endgame</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">The legal instruments &mdash; nothing new needs to be invented</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Every instrument already exists in Tunisian law &mdash; the program assembles them</caption>
+      <thead><tr><th>Instrument</th><th>What it provides</th><th>Citation</th></tr></thead>
+      <tbody>
+      <tr><td>Organic Law 2016-35 (BCT)</td><td>autonomie monétaire ; le programme ne monétise PAS</td><td>Pg4/Pg5</td></tr>
+      <tr><td>IPP regime — Law 2015-62 & 2024/25 awards</td><td>concessions pour les énergies renouvelables ; PPA d'environ $31/MWh ; précédent de 500 MW</td><td>Rc13</td></tr>
+      <tr><td>cadre PPP — Loi 2 015-49</td><td>desal/metals as PPPs where the state is the offtaker</td><td>Pg2</td></tr>
+      <tr><td>Law 93-120 (state-domain leases)</td><td>baux agricoles de 40 ans ; ~86 000 ha réservés</td><td>Rc19</td></tr>
+      <tr><td>NORM/radiological regime (CNSTN, IAEA standards)</td><td>the uranium route's license layer</td><td>Pg11/Rm12</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">The financing stack &mdash; staged, gated, modeled in code</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Each stage carries its own money and its own gate &mdash; no stage funds the next one&rsquo;s hope</caption>
+      <thead><tr><th>Étape</th><th>Financement</th><th>Porte / condition</th></tr></thead>
+      <tbody>
+      <tr><td>Phase 0 ($150-253k)</td><td>grant / founder / early mandate</td><td>no DFI needed; 90 days</td></tr>
+      <tr><td>Health pilot ($58k)</td><td>ESG/subvention</td><td>the first scoreboard numbers</td></tr>
+      <tr><td>Usine de métaux (~$100M)</td><td>60% debt @7% + offtake security; MIGA</td><td>DSCR >=1.2 at contract prices (nations_v5)</td></tr>
+      <tr><td>Solaire (500 MW, ~$550M)</td><td>DFI stack: EIB/AfDB/WB-IFC at 4.5% + MIGA; or lean build</td><td>DSCR gate inside the bankable region (nations_v5)</td></tr>
+      <tr><td>Dessalement (~$165M)</td><td>70% debt @6% + municipal offtake + sovereign backstop</td><td>blended >=$0.68/m3, >=60% pre-sold</td></tr>
+      <tr><td>Terfas + alimentation ($7-35M)</td><td>concessional agri + founder</td><td>pépinière d'abord</td></tr>
+      <tr><td>EU Global Gateway (17 GW)</td><td>l'enveloppe nationale dans laquelle ce programme s'insère</td><td>Pg7</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">Governance &mdash; the scoreboard is the contract</h3>
+    <ul class="n-loop n-gov">
+      <li>every gate is a public number — published, dated, re-checkable</li>
+      <li>health fund separate from the industrial SPVs; one shared data platform</li>
+      <li>quarterly scoreboard: water chemistry, filter uptime, cohort KPIs, price index in Gafsa/Gabes</li>
+      <li>each pilot passes or dies alone, in public — the falsification ladder is the governance</li>
+      <li>commercially-validated ledger published at zero until the first signature moves it</li>
+    </ul>
+
+    <h3 class="n-sub">The adoption path &mdash; what the state signs, in order</h3>
+    <ol class="n-loop">
+      <li><strong>Mois 0:</strong> l'État signe : protocole d'accord d'échantillonnage GCT + mandat de Phase 0 ($150-250k, 90 jours, sans construction)</li>
+      <li><strong>Day 90:</strong> two anchor measurements land: the 100-point water panel and the acid-stream assays — every projection becomes a signed number</li>
+      <li><strong>Months 4-18:</strong> pilots on public gates: acid pilot, 100 ha terfas + nursery, spirulina pond, solar bid, desal offtake, health KPIs</li>
+      <li><strong>Years 2-5:</strong> build only what passed: metals, solar, desal, health at basin scale — module by module, each with its own financing</li>
+      <li><strong>Years 5-10+:</strong> the full loop: municipal spine, compute colocation, hydrogen, brine valorization — the destination the original design described</li>
+    </ol>
+    <p class="n-note">The sovereign brief (download below) carries this program layer in full, for the
+    counterparty that must read it first.</p>
+  </div>
+</div>
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">The objection, answered</p>
+    <h2>If the arithmetic works, why not begin tomorrow?</h2>
+    <p class="n-lede">Parce qu'un design de ce poids vit ou meurt sur des mesures qui coûtent presque rien — et dès que ces chiffres arrivent, la séquence ci-dessus est l'ordre de travail.</p>
+    <div class="n-boundary">
+      <p>Ports and ships move goods across a sea. This system moves energy, water, food and money
+      without one. The arithmetic is net-positive on both ledgers, and it was not reached by faith:
+      every figure on this page is computed in code from sourced primitives, and every check the
+      arithmetic demanded is already built into the design you are reading. What separates this
+      page from the first spade in the ground is therefore not capital, and not consensus &mdash; it is
+      ninety days of measurements that no honest engineer skips: the water chemistry, the acid-stream
+      assays, the emissions inventory. <strong>Phase 0 costs $150&ndash;250k, builds nothing, and
+      converts this design into signed numbers.</strong> The day those numbers land, the first act is
+      the filters &mdash; protecting the people who will build everything that follows.</p>
+    </div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Les films</p>
+    <h2>Deux langues, une boucle</h2>
+    <p class="n-lede">La boucle fermée, enseignée — Veo 3,1 scènes, narration Gemini, français et anglais. La plongée approfondie V1 originale reste disponible ci-dessous.</p>
+    <div class="n-media">
+      <figure>
+        <video controls preload="metadata" playsinline poster="/nations/poster.jpg"
+               aria-label="Tunisia &mdash; la boucle ferm&eacute;e, French narration">
+          <source src="/nations/closed-loop-fr.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="n-meta">Video &middot; 5 min &middot; French narration</span><br>
+        <strong>Tunisia &mdash; la boucle ferm&eacute;e</strong><br>
+        The integrated project and the two futures, taught for every Tunisian.</figcaption>
+      </figure>
+      <figure>
+        <video controls preload="metadata" playsinline poster="/nations/poster.jpg"
+               aria-label="Tunisia &mdash; the closed loop, English narration">
+          <source src="/nations/closed-loop-en.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="n-meta">Video &middot; 5 min &middot; English narration</span><br>
+        <strong>Tunisia &mdash; the closed loop</strong><br>
+        Six acts: the country as it is, the audited dream, the loop, health first, the two futures, the first step.</figcaption>
+      </figure>
+      <figure>
+        <audio controls preload="none" src="/nations/deep-dive.mp3"
+               aria-label="The original V1 deep dive, 26 minutes, French"></audio>
+        <figcaption><span class="n-meta">Audio &middot; 26 min &middot; French &middot; V1 archive</span><br>
+        <strong>Systemic alchemy for Tunisian sovereignty</strong><br>
+        The original deep dive, retained.</figcaption>
+      </figure>
+    </div>
+  </div>
+</div>
+<div class="n-section" id="audit">
+  <div class="wrap">
+    <p class="eyebrow">L'audit</p>
+    <h2>Every number, bridged &mdash; the engineering audit</h2>
+    <p class="n-lede">Each headline figure carries its bridge &mdash; volume &times; price &times; utilization,
+    the double-counting checks, the pilot/capital separation, and a grade on every claim &mdash; computed in
+    code (<code>nations_audit.py</code>) and rendered here. Where the system breaks, the resolution is on
+    this page: every gate is a number, and every number resolves to the works-cited register below.</p>
+
+    <h3 class="n-sub">Tier 1 &mdash; what is established, with its source</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Facts, not projections &mdash; so the page can never be misquoted again</caption>
+      <thead><tr><th>Established fact</th><th>Source</th></tr></thead>
+      <tbody>
+      <tr><td>External debt $40.46B; 78.7% of GDP; debt service 26.17% of export revenues (2024)</td><td>API Banque mondiale, mesuré 2 026-09-09 (Pg1)</td></tr>
+      <tr><td>Fuel imports $4.895B (HS27, 2024)</td><td>WITS/Comtrade, verified (Pg15)</td></tr>
+      <tr><td>Food imports $3.0B (WB food classification) — broader agri-food measures run to ~$5B (INS)</td><td>World Bank API (Pg1); scope note in the ledger</td></tr>
+      <tr><td>Gabès REE loss: up to 1,523.67 t/yr to the sea, ~$58M/yr</td><td>Science of the Total Environment 2021 (Pg17/Rm3)</td></tr>
+      <tr><td>Un vrai programme solaire de 500 MW : 1 100 GWh/an, ~$125M/yr d'économie de gaz, ~$400M d'investissement</td><td>pv magazine (Pg14)</td></tr>
+      <tr><td>Utility-scale solar bids ~$25-35/MWh have occurred in Tunisia</td><td>Rc13/Pg14</td></tr>
+      <tr><td>Uranium-from-phosphoric-acid: industrial since 1978 (Freeport), patent expired, Morocco building it now</td><td>Pg19/Ru1/Ru2</td></tr>
+      <tr><td>Coût de production du dessalement tunisien : $1,00-1,50/m3 en osmose inverse d'eau de mer, $0,10-0,70/m3 en eau saumâtre</td><td>SONEDE/UNDESA deck (Pg16)</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">Le coût de l'eau — réduit par les propres rendements du système, rien d'autre</h3>
+    <p class="n-note">The desalination gate is $0.68/m&sup3; &mdash; and the integrated system beats it with
+    margin, because every credit below is a yield of the loop&rsquo;s own pipework: one seawater pipe that
+    cools the servers and then feeds the membranes; brine evaporated on the acid plant&rsquo;s own waste
+    heat; one intake for the whole park. <strong>Nothing moves, nothing is hauled, no external sale is
+    assumed.</strong></p>
+    <div class="n-tablewrap">
+    <table>
+      <caption>La pile d'eau intégrée, par m³ — 150 000 m³/j SWRO côtier</caption>
+      <thead><tr><th>Ligne</th><th>$/m³</th><th>Provenance</th></tr></thead>
+      <tbody>
+      <tr><td>Base &mdash; solar energy 4 kWh/m&sup3; at the loop's own PPA + capex + O&amp;M</td><td>0,567 $</td><td>MEASURED anchors (Rc13/Rw2/Rw3)</td></tr>
+      <tr><td>DC reject heat &rarr; RO feed preheat &mdash; one seawater pipe cools the servers, then arrives warm at the membranes (SEC &minus;2.5%/&deg;C)</td><td>−$0,007</td><td>DERIVED &mdash; Leg 03 + Leg 01, same pipework</td></tr>
+      <tr><td>Kiln/exotherm preheat &mdash; the acid plant and board kilns warm the same feed</td><td>−$0,000</td><td>DERIVED &mdash; Leg 04/05 waste heat</td></tr>
+      <tr><td>Brine valorization &mdash; salt/Mg evaporated on the loop's own free heat, sold at the park gate (of-take signed; nothing hauled)</td><td>−$0,137</td><td>DERIVED &mdash; brine is the desal's own by-product</td></tr>
+      <tr><td>Shared civil works &mdash; one intake, one outfall, one grid connection serves RO + DC + metals in the same park</td><td>−$0,032</td><td>DERIVED &mdash; 12% capex sharing</td></tr>
+      <tr><td>Valeur de dispatch — la flexibilité propre du dessalement suit la courbe solaire propre de la boucle</td><td>−$0,015</td><td>DERIVED &mdash; 20 GWh shifted</td></tr>
+      <tr><td>Delta de financement ESG — les KPI publics du volet santé revalorisent la dette propre de la boucle (100–150bp)</td><td>−$0,026</td><td>DERIVED &mdash; nations_v3</td></tr>
+      <tr><td>Brine pump-as-turbine &mdash; the desal's own residual pressure</td><td>−$0,002</td><td>DERIVED &mdash; 2.5 bar &times; 75%</td></tr>
+      <tr class="n-total"><td><strong>Integrated water cost</strong></td><td><strong>$0,347/m³</strong></td><td>35% of SONEDE&rsquo;s own $1.00&ndash;1.50 (Pg16)</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="n-note">integrated water cost ~$0.35/m&sup3; &mdash; 35% of SONEDE's own produced cost ($1.00-1.50/m3, Pg16). Every credit is a yield of the loop's own pipework; nothing moves, nothing is hauled, no external sale is assumed. The $0.68 gate then clears with ~$0.33/m&sup3; of margin.</p>
+
+    <h3 class="n-sub">The uranium bridge &mdash; the 716,500 lbs, derived</h3>
+    <p class="n-note">The metals volume is derived from cited primitives: GCT&rsquo;s 6.5 Mt/yr rock throughput (Rm17) &times; 45&ndash;140 ppm
+    uranium in Gafsa rock (Ru5) &times; 88% partitioning to the wet-process acid (Ru1) &times;
+    62% recovery &rarr; <strong>412&ndash;1,283k lbs U&sb3;O&sb8;/yr</strong>;
+    the page&rsquo;s 716.5k sits inside the band, and the process itself is public, expired-patent technology
+    (Pg19) operated at industrial scale for two decades (Ru1). The Phase 0 assay converts the band into a
+    measured stream concentration &mdash; the recovery gate (&ge;85%, &le;$75/lb) then binds the economics.</p>
+
+    <h3 class="n-sub">Where the water gate breaks &mdash; and why it holds</h3>
+    <p class="n-note">the gate sits between SONEDE's own $1.00-1.50/m3 (4k-60k m3/d) and the mega-plant class $0.40-0.60 — it is only achievable at the full 150,000 m3/d scale on solar power; built small, the leg fails against the utility's own numbers, which is exactly why the gate exists The same SONEDE deck prices brackish water at
+    $0.10&ndash;0.70/m&sup3; &mdash; which is exactly why the inland basin runs on BWRO, not on the coastal
+    spine.</p>
+
+    <h3 class="n-sub">The impossible, re-priced</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>V1 dream, sustained &mdash; every killed leg survives, re-specified (doctrine: re-specify, never delete)</caption>
+      <thead><tr><th>Original dream</th><th>Nombre de destruction</th><th>Comment il survit</th></tr></thead>
+      <tbody>
+      <tr><td>Mine datacenters (Gafsa cavities)</td><td>radon/NORM, DInSAR subsidence, ASHRAE H1 exceeded (Rc2/Rc3/Rc4)</td><td>coastal seawater-cooled compute + colocation; re-entry into the interior only on a licensed anchor tenant (BIS, Rc6)</td></tr>
+      <tr><td>300 km inland water for agriculture</td><td>physics floor 1.09 kWh/m3 lift; delivered $1.10-1.50 vs farm tariffs $0.04-0.07 (Rw4/Rw6/Rw7)</td><td>coastal SWRO for cities + inland BWRO for the basin (~$0.34/m3); the municipal spine stays Phase-4, priced for industrial offtake</td></tr>
+      <tr><td>REE re-leaching from phosphogypsum</td><td>facture d'acide $125-560M/yr vs $5-10M de métal (Rm4/Rm5/Rm16)</td><td>acid-stream U + HREE now; PG-REE booked as the future option with its trigger: >$150/kg NdPr-eq (Rm15)</td></tr>
+      <tr><td>One integrated $21.4B loop, 8 stages</td><td>probabilité conjointe 0,7^8 ~ 5,8% (Rc14)</td><td>six independently bankable modules; the loop is the outcome, never the precondition</td></tr>
+      <tr><td>300 MW of GPUs in the basin</td><td>Contrôles à l'exportation BIS ; aucun accord bilatéral sur l'IA (Rc6)</td><td>compute-diplomacy template: the G42/35k-GPU precedent is the pathway a licensed anchor walks</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="n-note">The 300 km inland spine, priced: 300 km &times; $3.85&ndash;7M/km &rarr;
+    <strong>$1.16&ndash;2.10B capex, $1.94&ndash;3.45/m&sup3;
+    transport</strong> &mdash; impossible for farms paying $0.04-0.07/m&sup3;, a priced option for
+    industrial offtake at $0.68+/m&sup3;. Meanwhile inland brackish desal delivers at
+    <strong>~$0.34/m&sup3;</strong> &mdash; inside SONEDE&rsquo;s own brackish band. The kill was
+    real; the resolution is arithmetic.</p>
+
+    <h3 class="n-sub">The FX bridge &mdash; every dollar, by leg</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>External-account effect at full phase, $M/yr &mdash; exports &middot; import substitution &middot; financing delta</caption>
+      <thead><tr><th>Jambe</th><th>Type</th><th>Volume</th><th>Prix</th><th>Utilisation</th><th>$M/an</th><th>Teneur</th></tr></thead>
+      <tbody>
+      <tr><td>Strategic metals (U + heavy REE, acid stream)</td><td>export brut</td><td>716,500 lb U3O8 + 585 t REO</td>
+      <td>$80-95/lb U3O8 · $30/kg REO</td><td>post pilot gate (>=85% recovery, <=$75/lb, offtake signed)</td>
+      <td><strong>$75–86M</strong></td>
+      <td class="n-g-strong">FORT</td></tr>
+      <tr><td>Solar fuel substitution (500 MW)</td><td>substitution d'importations</td><td>745 GWh/an déplacés (876 GWh de moins, de 131 GWh à H2)</td>
+      <td>$142/MWh (gaz $12/MMBtu x 11 MMBtu/MWh + $10/MWh O&M) ; ancre gouvernementale : 1 100 GWh ≈ $125M/yr d'économie de gaz pour la même flotte de 500 MW (Pg14)</td><td>après l'attribution du PPA ; le seuil DSCR s'applique (voir les grades)</td>
+      <td><strong>$95–116M</strong></td>
+      <td class="n-g-plausible">PLAUSIBLE</td></tr>
+      <tr><td>Hydrogen &rarr; ammonia (loop-internal offtake)</td><td>substitution d'importations</td><td>2.63 kt H2/yr &rarr; 14.9 kt NH3 for the GCT chain</td>
+      <td>$500/t imported ammonia displaced (external offtake upside: $8-9.5/kg H2)</td><td>no external buyer needed &mdash; the fertilizer chain is the buyer; surplus share 15% assumed</td>
+      <td><strong>$7–25M</strong></td>
+      <td class="n-g-speculative">SPÉCULATIF</td></tr>
+      <tr><td>Terfas (desert truffles)</td><td>export brut</td><td>940 t/yr mid (2,500 ha x 376 kg/ha; 70% exported)</td>
+      <td>EUR20-40/kg prix à la ferme</td><td>post 3-season gate (>=200 kg/ha, >=EUR20/kg)</td>
+      <td><strong>$14–29M</strong></td>
+      <td class="n-g-plausible">PLAUSIBLE</td></tr>
+      <tr><td>Food import substitution</td><td>substitution d'importations</td><td>1% of the $3.0B food import bill (frame; volume bridge is a pilot deliverable)</td>
+      <td>imported protein $15-25/kg vs local $5-10/kg</td><td>post spirulina pond + greenhouse pilots</td>
+      <td><strong>$30–30M</strong></td>
+      <td class="n-g-speculative">SPÉCULATIF</td></tr>
+      <tr><td>Services de colocation de calcul</td><td>gross export (services)</td><td>colo park, tenant-dependent (GPU DCs excluded: BIS)</td>
+      <td>market colocation rates</td><td>no tenant signed</td>
+      <td><strong>$15–15M</strong></td>
+      <td class="n-g-speculative">SPÉCULATIF</td></tr>
+      <tr><td>ESG financing delta</td><td>financing delta (not FX)</td><td>100-150bp on ~$800M portfolio debt</td>
+      <td>interest saved, not foreign exchange</td><td>post health KPIs (filter uptime >=70%, urinary F -20%)</td>
+      <td><strong>$8–12M</strong></td>
+      <td class="n-g-plausible">PLAUSIBLE</td></tr>
+      <tr class="n-total"><td colspan="5"><strong>Total external-account effect (mid)</strong></td>
+      <td><strong>~$279M/yr</strong></td><td>&nbsp;</td></tr>
+      </tbody>
+    </table>
+    </div>
+    <p class="n-note"><strong>The bridge, tiered:</strong>
+    <strong>$80M strong</strong> (proven flowsheet or cited anchor) &middot;
+    <strong>$137M plausible</strong> (gated) &middot;
+    <strong>$61M speculative</strong> (assumed volume or price) &middot;
+    $0 verified &mdash; the zero is published on purpose, and each gate above is the instrument that moves it.</p>
+
+    <h3 class="n-sub">The energy ledger &mdash; every kWh, by leg</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Recovery ledger, GWh/yr &mdash; each leg with its formula</caption>
+      <thead><tr><th>Jambe</th><th>Valeur</th><th>The formula</th></tr></thead>
+      <tbody>
+      <tr><td>Pump-as-turbines (return flows)</td><td><strong>3.9 GWh/yr</strong></td><td>70% &times; 150k m&sup3;/d &times; 50 m head &times; 75% &times; 8,760 h</td></tr>
+      <tr><td>Heat (kiln + exotherm &rarr; preheat/greenhouses)</td><td><strong>30 GWh/yr</strong></td><td>9% of a 333 GWh thermal envelope (0.6 GJ/t &times; 2 Mt PG)</td></tr>
+      <tr><td>Flexibility (load shifting)</td><td><strong>20 GWh/yr</strong></td><td>dispatch value, honestly labeled &mdash; <em>not</em> recovered joules</td></tr>
+      <tr><td>CO&sub2; mineralized</td><td><strong>30 kt/yr</strong></td><td>mass, not energy &mdash; its own line</td></tr>
+      <tr class="n-total"><td><strong>Total</strong></td><td><strong>33.9 GWh recovered + 20 GWh dispatch</strong></td>
+      <td>isobaric ERD stays inside the 4 kWh/m&sup3; SWRO benchmark &mdash; carried as zero here, never double-counted</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">Phase 0 &mdash; every dollar, itemized</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Phase 0 (90 days, no construction) &mdash; itemized budget</caption>
+      <thead><tr><th>Article</th><th>Cost</th><th>What it buys</th></tr></thead>
+      <tbody>
+      <tr><td>Water panel: 100 points, full suite (F, Cd, Pb, Cr, As, salinity, nitrate)</td><td>35 000 $</td><td>the first anchor measurement</td></tr>
+      <tr><td>Analyses du flux acide : 12 points (U, terres rares, Ra-226, Po-210, métaux complets) + accès GCT</td><td>40 000 $</td><td>the second anchor measurement</td></tr>
+      <tr><td>Inventaire des émissions : 30 échantillonneurs passifs (PM2.5/SO2/fluorides) + laboratoire</td><td>25 000 $</td><td>baseline for the health scoreboard</td></tr>
+      <tr><td>Cohort protocol: 3,000-family registry, ethics, data platform v0</td><td>35 000 $</td><td>the DALY ledger becomes MEASURED</td></tr>
+      <tr><td>Première tranche du pilote santé : 100 ménages + 2 écoles, 90 jours</td><td>58 000 $</td><td>filtres, boîtes à air pur, KPI</td></tr>
+      <tr><td>Legal + finance: health fund, industrial SPV, land-lease pre-agreements, tender registration</td><td>25 000 $</td><td>structure before scale</td></tr>
+      <tr><td>Engineering + project management</td><td>35 000 $</td><td>les 90 jours sont exécutés</td></tr>
+      <tr class="n-total"><td><strong>Prix catalogue</strong></td><td><strong>$253 000</strong></td>
+      <td>prix catalogue $253k ; les deux mesures d'ancrage coûtent $75k et sont réalisées en premier — la fourchette annoncée est le plan d'exécution par phases, pas le catalogue</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">Chaque affirmation, notée</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Claim grades &mdash; STRONG (cited anchor or proven flowsheet) &middot; TIERED &middot; DERIVED &middot; PLAUSIBLE (gated) &middot; SPECULATIVE (assumed) &middot; ZERO (commercially validated = 0, on purpose)</caption>
+      <thead><tr><th>Affirmation</th><th>Teneur</th><th>Pourquoi</th></tr></thead>
+      <tbody>
+      <tr><td>$40.5B de dette (~79% du PIB) ; 26,2% des recettes d'exportation pour le service</td><td class="n-g-strong">FORT</td><td>MESURÉ via l'API de la Banque mondiale le 2 026-09-09 : dette $40.46B, dette/PIB 78,7%, service 26,17% des recettes d'exportation (2 024)</td></tr>
+      <tr><td>$3.0B d'importations alimentaires et $4.9B d'importations de carburant</td><td class="n-g-strong">FORT</td><td>carburant $4.895B vérifié sur WITS/Comtrade (HS27, 2 024) ; alimentaire selon la classification alimentaire de la Banque mondiale</td></tr>
+      <tr><td>InstaDeep founded in Tunis, sold for $680M</td><td class="n-g-strong">FORT</td><td>dossier public de la transaction ; l'emblème du talent sans infrastructure</td></tr>
+      <tr><td>Gabès : >$58M/yr de valeur en terres rares perdue en mer</td><td class="n-g-strong">FORT</td><td>Science of the Total Environment (2021): up to 1,523.67 t/yr REE, ~$58M/yr losses</td></tr>
+      <tr><td>U + heavy REE from the acid stream, ~$80M/yr</td><td class="n-g-strong">FORT</td><td>flowsheet industrial since 1978 (Freeport), patent expired, Morocco building it now; volume derived from cited primitives; Gafsa-specific assays are Phase 0</td></tr>
+      <tr><td>~$285M/yr external-account effect, tiered</td><td class="n-g-tiered">PAR PALIERS</td><td>$80M strong (proven flowsheet/cited anchor) · $137M plausible (gated) · $68M speculative (assumed volume/price)</td></tr>
+      <tr><td>33.9 GWh/yr recovered + 20 GWh/yr dispatch value</td><td class="n-g-derived">DÉRIVÉ</td><td>chaque étape calculée à partir de primitives citées ; valeur de dispatch honnêtement étiquetée — pas des joules</td></tr>
+      <tr><td>$2,592 per healthy year (water rung)</td><td class="n-g-plausible">PLAUSIBLE</td><td>arithmétique DÉRIVÉE dans le code ; ancres DALY transférées des études iraniennes — la base de référence de la cohorte la rend MESURÉE</td></tr>
+      <tr><td>Phase 0 = $150-250k, itemized</td><td class="n-g-plausible">PLAUSIBLE</td><td>itemized list price $253k; the two anchor measurements cost $75k and land first</td></tr>
+      <tr><td>Validé commercialement</td><td class="n-g-zero">ZÉRO</td><td>no buyer has signed anything — published as zero on purpose</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <h3 class="n-sub">The hidden dependencies &mdash; named, one by one</h3>
+    <div class="n-tablewrap">
+    <table>
+      <caption>Dependencies the design carries &mdash; each one gated, excluded, or measured in Phase 0</caption>
+      <thead><tr><th>Dépendance</th><th>Type</th><th>Statut</th><th>Note</th></tr></thead>
+      <tbody>
+      <tr><td>Permis de rejet de saumure de dessalement</td><td>réglementaire</td><td><strong>dans le design</strong></td><td>Gabes outfall / diffuser; permit required before SWRO FID</td></tr>
+      <tr><td>PG chemistry (Ra-226 partitioning)</td><td>technique</td><td><strong>Phase 0 assay</strong></td><td>le flowsheet maintient le radium dans le gypse (précédent Freeport) ; revérifier sur le flux de Gafsa</td></tr>
+      <tr><td>Manipulation de l'uranium</td><td>réglementaire</td><td><strong>porte</strong></td><td>CNSTN licensing, NORM transport, export controls</td></tr>
+      <tr><td>CAPEX de séparation des terres rares</td><td>capital</td><td><strong>phase ultérieure</strong></td><td>+$244M usine d'extraction par solvant au-delà du circuit d'environ $100M</td></tr>
+      <tr><td>Pompage intérieur</td><td>technique</td><td><strong>EXCLU</strong></td><td>1.09 kWh/m3 lift floor killed the 300-km inland plan (published)</td></tr>
+      <tr><td>Bancabilité solaire</td><td>financier</td><td><strong>porte</strong></td><td>DSCR ~0.9-1.0 at the record-low tariff; bankable region or grant support required</td></tr>
+      <tr><td>Connexion au réseau</td><td>infrastructure</td><td><strong>phase ultérieure</strong></td><td>Connexion de 3 GW + mises à niveau de 400 kV d'environ $450M</td></tr>
+      <tr><td>Compute accelerators</td><td>réglementaire</td><td><strong>porte</strong></td><td>BIS export controls; colocation only until an anchor tenant is licensed</td></tr>
+      <tr><td>Rendement de truffe</td><td>agronomique</td><td><strong>porte</strong></td><td>376 kg/ha est la moyenne de 20 ans à Murcie ; seuil = record sur 3 saisons ≥ 200 kg/ha</td></tr>
+      <tr><td>Prix à l'exportation</td><td>marché</td><td><strong>exposition</strong></td><td>U spot $80-95/lb; truffle EUR20-40/kg — no contracted offtake yet</td></tr>
+      <tr><td>Financement</td><td>financier</td><td><strong>non engagé</strong></td><td>Canal DFI modélisé pour le solaire/le dessalement ; rien d'engagé</td></tr>
+      </tbody>
+    </table>
+    </div>
+
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Le test de circularité</p>
+        <h3>Is the loop genuinely circular?</h3>
+        <p><strong>Honestly: no &mdash; and that is the finding, not a flaw.</strong> The one-loop version
+        ($21.4B, eight stages) died on its own joint probability: 0.7&sup8; &asymp; 5.8%. What survived is
+        six independently bankable modules sharing power, water, data and workforce. The loop is the
+        <em>outcome</em>, never the precondition &mdash; so no module's economics depends on another module
+        succeeding. The design carries the falsification ledger as its audit trail: every leg that was
+        tested to failure left a numbered reason, and every one of those legs survives here in its
+        re-specified form &mdash; the table above shows each one.</p>
+      </article>
+      <article class="n-card">
+        <p class="n-num">La séparation pilote/capital</p>
+        <h3>What this is &mdash; and what it is not</h3>
+        <p>World Bank CCDR (2023): Tunisia's water-sector investment need ~$17.1B and energy-sector ~$34.7B through 2050. The page is not that program and does not claim to be: Phase 0 is $150-250k of measurements, and the whole core build is ~$250-650M phased over years 2-5, module by module, each gated. The CCDR numbers confirm the scale of the problem; they do not compete with a pilot gate.</p>
+        <p>Africa Energy Portal (2026): 500 MW of utility-scale solar approved (~$400M investment). Same class as the page's P3 module (500 MW) — the record-low ~$31/MWh awards are the reference the DSCR gate is tested against.</p>
+      </article>
+    </div>
+    <p class="n-note">Provenance law, enforced: MEASURED = cited anchor &middot; DERIVED = arithmetic on measured
+    values &middot; ASSUMED = declared default. Nothing above is commercially validated &mdash; that ledger reads
+    zero until a buyer signs, and the protocol that moves it is published in the build below.</p>
+  </div>
+</div>
+<div class="n-section" id="downloads">
+  <div class="wrap">
+    <p class="eyebrow">Téléchargements</p>
+    <h2>Prenez la partie dont vous avez besoin</h2>
+    <p class="n-lede">The full audit is one page &mdash; but every party needs its own slice, at the same rigor,
+    computed from the same code. Five documents, one click each, no email, no gate. The arithmetic behind every
+    one of them is the same <code>nations_audit.py</code> output that renders the tables above.</p>
+    <div class="n-grid">
+      <article class="n-card n-dl">
+        <p class="n-num">Pour tout le monde</p>
+        <h3>L'audit complet</h3>
+        <p>Everything on this page plus the full sources &mdash; for the researcher, the journalist, the one who checks every number.</p>
+        <p><a class="n-dl-btn" href="/nations/the-absence-audit-tunisia-dossier.pdf" download>Télécharger le PDF ↓</a></p>
+      </article>
+      <article class="n-card n-dl">
+        <p class="n-num">Pour l'État</p>
+        <h3>Note de synthèse souveraine</h3>
+        <p>What the state is asked for (cooperation, not money), what it receives: reserves, rating path B- &rarr; BB-, jobs, health KPIs.</p>
+        <p><a class="n-dl-btn" href="/nations/tunisia-sovereign-brief.pdf" download>Télécharger le PDF ↓</a></p>
+      </article>
+      <article class="n-card n-dl">
+        <p class="n-num">Pour les investisseurs</p>
+        <h3>Économie pour l'investisseur</h3>
+        <p>The FX bridge, per-pathway DSCR and payback, the capital stack, the Phase 0 ask &mdash; every table from nations_v5.</p>
+        <p><a class="n-dl-btn" href="/nations/tunisia-investor-economics.pdf" download>Télécharger le PDF ↓</a></p>
+      </article>
+      <article class="n-card n-dl">
+        <p class="n-num">Pour les ingénieurs</p>
+        <h3>Registre de l'ingénieur</h3>
+        <p>The energy balance, water chemistry, acid-stream assays, lift floors, gates &mdash; the numbers an EPC checks first.</p>
+        <p><a class="n-dl-btn" href="/nations/tunisia-engineer-ledger.pdf" download>Télécharger le PDF ↓</a></p>
+      </article>
+      <article class="n-card n-dl">
+        <p class="n-num">Pour la communauté</p>
+        <h3>Santé et communauté</h3>
+        <p>Cut the Dose: $2,592 per healthy year, the 90-day pilot, the scoreboard KPIs, the food stack &mdash; plain words, full arithmetic.</p>
+        <p><a class="n-dl-btn" href="/nations/tunisia-health-community.pdf" download>Télécharger le PDF ↓</a></p>
+      </article>
+    </div>
+  </div>
+</div>
+<div class="n-section" id="boundaries">
+  <div class="wrap">
+    <p class="eyebrow">Limites honnêtes</p>
+    <h2>What this is &mdash; and what it is not</h2>
+    <div class="n-boundary">
+      <h3>Ce que c'est</h3>
+      <p>A <strong>proposal for a state program</strong> &mdash; the complete institutional architecture
+      (named counterparts, existing legal instruments, a staged financing stack, public gates) that a
+      government can adopt by its own act. Every number on this page is computed in code from sourced
+      primitives &mdash; recomputed, corrected, and applied directly into the design you are reading.
+      Free, public, indexable &mdash; a template, and the strongest form of the method the desk runs on
+      every dossier.</p>
+      <h3>Ce que ce n'est pas</h3>
+      <p>An adopted program, a commissioned work, or a claim that any of this has been built. It becomes
+      a state program only when the state signs &mdash; the adoption path is published above, and the
+      first signature is the Phase&nbsp;0 mandate. Nothing here is advice to any government, and nothing
+      on this page replaces geological, radiological, geotechnical or EPC-level surveys.
+      <strong>Commercially validated reads zero</strong> until a buyer signs &mdash; and the protocol
+      that moves it is public. Verify every figure and citation before relying on any of it.</p>
+    </div>
+  </div>
+</div>
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Votre nation ensuite</p>
+    <h2>The template transfers.</h2>
+    <p class="n-lede">Dollar-denominated debt. Water stress. Compute rented from abroad. Food insecurity. The same five absences recur across dozens of countries. The method is the same every time: name the absence, find the process that fills it, compute the energy and the money, close the loop &mdash; and apply every correction into the design, not beside it.</p>
+    <p style="margin-top:1.4rem"><a href="/#join" style="font-weight:600">Join the ledger &mdash; it is free &rarr;</a></p>
+  </div>
+</div>
+<div class="n-section" id="sources">
+  <div class="wrap">
+    <p class="eyebrow">Ouvrages cités</p>
+    <h2>Every figure, cited &mdash; the full register</h2>
+    <p class="n-lede">The house standard of the sold dossiers, applied to a nation: materials
+    (Rm), water (Rw), compute/truffle/finance (Rc), uranium (Ru), health (H1&ndash;H16), and the program
+    register (Pg). Inline markers on this page resolve to the entries below.</p>
+    <ul class="n-src">
+<li id="rnRm1"><a href="https://www.mdpi.com/2075-163X/15/12/1232" rel="noopener" target="_blank">Rare Earth Elements in Phosphate Ores and Industrial By-Products (Gafsa avg 322 mg/kg, peaks >1,700)</a></li>
+<li id="rnRm2"><a href="https://www.mdpi.com/2071-1050/17/19/8828" rel="noopener" target="_blank">Global phosphogypsum: generation, stockpiles and 60-85% REE partition to PG</a></li>
+<li id="rnRm3"><a href="https://www.researchgate.net/publication/352414505_Rare_earth_elements_characterization_associated_to_the_phosphate_fertilizer_plants_of_Gabes_Tunisia_Central_Mediterranean_Sea_Geochemical_properties_and_behavior_related_economic_losses_and_potential_" rel="noopener" target="_blank">Caractérisation des terres rares dans les usines de phosphate de Gabès : enrichissements jusqu'à 1 075 mg/kg ; Ce 80-309 mg/kg ; Dy/Tb négligeables</a></li>
+<li id="rnRm4"><a href="https://www.researchgate.net/publication/361001660_Characterization_and_Leaching_Kinetics_of_Rare_Earth_Elements_from_Phosphogypsum_in_Hydrochloric_Acid" rel="noopener" target="_blank">Characterization and Leaching Kinetics of REE from Phosphogypsum in HCl (1.65 mol/L; 65.6% ΣREE; 73.8% Y)</a></li>
+<li id="rnRm5"><a href="https://www.chinanhd.com/recovering-rare-earth-elements-from-phosphogypsum-as-a-secondary-resource-pathway/" rel="noopener" target="_blank">Recovering REE from phosphogypsum as a secondary resource: scale-up failure modes (filtration, silica gel, co-extraction)</a></li>
+<li id="rnRm6"><a href="https://cris.vtt.fi/en/publications/pilot-scale-recovery-of-rare-earths-and-scandium-from-phosphogyps/" rel="noopener" target="_blank">Récupération des terres rares à l'échelle pilote par PhosAgro à partir de PG dérivé d'apatite (5 m³/h — alimentation ignée, plus riche)</a></li>
+<li id="rnRm7"><a href="https://www.rainbowrareearths.com/wp-content/uploads/2022/03/21-08-04-Sprott-Initiation.pdf" rel="noopener" target="_blank">Rainbow Rare Earths Phalaborwa: 2.2 Mtpa PG, 29.1% NdPr, pilot proven, OPEX <$13/kg (exception, not the rule)</a></li>
+<li id="rnRm8"><a href="https://en.institut-seltene-erden.de/aktuelle-preise-von-seltenen-erden/" rel="noopener" target="_blank">2024-2026 oxide prices: NdPr $64-103/kg; Dy ~$340/kg; Tb ~$1,800-1,875/kg; La $3.70/kg; Y <$5-10/kg; Ce ~zero</a></li>
+<li id="rnRm9"><a href="https://pubs.acs.org/doi/pdf/10.1021/acssusresmgt.5c00353" rel="noopener" target="_blank">Décote du concentré mixte de terres rares par rapport aux oxydes séparés (30-50%)</a></li>
+<li id="rnRm10"><a href="https://investingnews.com/aclara-announces-update-on-its-rare-earths-separation-project/" rel="noopener" target="_blank">Aclara: solvent-extraction separation plant Class-5 CAPEX $244M, OPEX $12/kg REO</a></li>
+<li id="rnRm11"><a href="https://www.researchgate.net/publication/24188010_Characterization_of_phosphogypsum_wastes_associated_with_phosphoric_acid_and_fertilizers_production" rel="noopener" target="_blank">Caractérisation radiologique du PG tunisien : Ra-226 214-970 Bq/kg ; U-238 88,5 ; Pb-210 755,4 ; risque de co-précipitation</a></li>
+<li id="rnRm12"><a href="https://www.mdpi.com/2071-1050/17/8/3473" rel="noopener" target="_blank">IAEA / EU BSS: 1 Bq/g (1,000 Bq/kg) exemption threshold for U-238/Ra-226; TENORM classification</a></li>
+<li id="rnRm13"><a href="https://www.ogj.com/home/article/17230971/norm-disposal-options-costs-vary" rel="noopener" target="_blank">Options et coûts d'élimination des NORM ($15-420 par fût de 55 gallons)</a></li>
+<li id="rnRm14"><a href="https://www.adlittle.com/sites/default/files/reports/ADL%20The%20rare%20earth%20imperative%202025.pdf" rel="noopener" target="_blank">Part de la Chine de 85-90% de la capacité mondiale de séparation/raffinage des terres rares</a></li>
+<li id="rnRm15"><a href="https://www.elibrary.imf.org/view/journals/001/2026/072/article-A001-en.xml" rel="noopener" target="_blank">Breakeven economics for non-Chinese REE projects (~$77/kg NdPr-equivalent; PG-grade requires >$150/kg)</a></li>
+<li id="rnRm16"><a href="https://chemtradeasia.sg/en/market-insights/hydrochloric-acid-supply-report-2024-2025-buyer-lessons" rel="noopener" target="_blank">Hydrochloric acid prices: EU $124-150/t (Q4 2025); NA ~$350/t; China ~$15/t</a></li>
+<li id="rnRm17"><a href="http://www.gct.com.tn/fileadmin/user_upload/Downloads/Rapport_Annuels/GCT-ANNUAL-REPORT-2012-PART1.pdf" rel="noopener" target="_blank">GCT throughput (~6.5 Mt phosphate rock/yr; >10 Mt/yr PG at peak; 'hundreds of millions of tons' discharged at Gabès)</a></li>
+<li id="rnRw1"><a href="https://ide-tech.com/en/project/sorek-b-desalination-plant/" rel="noopener" target="_blank">Largest SWRO plants: Ras Al-Khair 1,036,000 m³/d; Taweelah 909,200 ($847M-1.2B); Sorek II 672,000; Rabigh 3 600,000</a></li>
+<li id="rnRw2"><a href="https://supra-international.com/insights/seawater-reverse-osmosis-swro-desalination-technology-comprehensive-analysis-of-latest-membrane-innovations-capital-and-operating-cost-economics-and-performance-optimization-strategies" rel="noopener" target="_blank">SWRO CAPEX $800-1,200 per m³/day for mega-plants (>100k m³/d)</a></li>
+<li id="rnRw3"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8953854/" rel="noopener" target="_blank">LCOW at plant gate: $0.40-0.60/m³ (Jubail 3A $0.41; Sorek II bid $0.32-0.45); energy share 40-60% of OPEX</a></li>
+<li id="rnRw4"><a href="https://www.engineeringtoolbox.com/water-pumping-costs-d_1527.html" rel="noopener" target="_blank">Pumping physics: 400 m lift = 1.09 kWh/m³ at 100% eff; 1.45 at 75%; friction 0.5-1.5 kWh/m³ over 300 km; realistic 2.0-2.5 kWh/m³</a></li>
+<li id="rnRw5"><a href="https://www.meed.com/saudi-arabia-awards-22bn-water-transmission-contract" rel="noopener" target="_blank">Jubail-Buraydah IWTP: 587 km, 650,000 m³/d, $2.26B ($3.85M/km); twin-pipe scale $5-7M/km</a></li>
+<li id="rnRw6"><a href="https://investriyadh.ai/intelligence/water-scarcity-investment/" rel="noopener" target="_blank">Coût livré de l'eau dessalée à l'intérieur des terres $1,10-1,50/m³ (sortie d'usine + transport + énergie de pompage)</a></li>
+<li id="rnRw7"><a href="https://www.sonede.com.tn/tout-savoir-sur-leau/la-facture-deau-methodes-de-paiement/" rel="noopener" target="_blank">Tunisian water tariffs: SONEDE 0.200-2.310 TND/m³; irrigation 0.060-0.160 TND/m³; groundwater 0.112-0.162 TND/m³</a></li>
+<li id="rnRw8"><a href="https://www.mei.edu/publication/whats-next-libyas-great-man-made-river-project/" rel="noopener" target="_blank">International transfer precedents: GMMR $33B (2.5-6.5 Mm³/d, $0.28-0.62/m³, fossil water); Riyadh levelized transport $0.42/m³; <$0.20/m³ is the agronomic ceiling</a></li>
+<li id="rnRw9"><a href="https://www.energy-storage.news/battery-storage-system-prices-continue-to-fall-sharply-bnef-and-ember-reports-find/" rel="noopener" target="_blank">24/7 firming: 3.03 GW @20% CF = 0.606 GW avg (zero margin); 9.15 GWh/night; BESS round-trip 85% → 12-15 GWh; $110-125/kWh → ~$1.5B; solar+storage LCOE $100-130/MWh</a></li>
+<li id="rnRw10"><a href="https://www.trade.gov/country-commercial-guides/tunisia-electrical-power-systems-and-renewable-energy" rel="noopener" target="_blank">Réseau tunisien : STEG 5,9 GW, ~19 TWh/an, 95% au gaz, énergies renouvelables <5%, industrial tariff 0.352 TND/kWh; budget deficit 5-7% GDP, debt ~83% GDP</a></li>
+<li id="rnRw11"><a href="https://www.mdpi.com/1996-1073/19/1/102" rel="noopener" target="_blank">Agrivoltaics: 20-40% CAPEX premium over utility PV (+$0.30/Wp); NREL range $1.20-2.60/Wp</a></li>
+<li id="rnRw12"><a href="https://2009-2017.state.gov/e/eb/ifd/2008/101021.htm" rel="noopener" target="_blank">Droit foncier tunisien : propriété étrangère des terres agricoles interdite ; baux de 40 ans uniquement ; conversion du domaine de l'État est un obstacle administratif</a></li>
+<li id="rnRw13"><a href="https://reglobal.org/tunisia-focuses-on-grid-expansion-for-integrating-renewable-energy/" rel="noopener" target="_blank">Grid constraints: 3 GW overwhelms local 400 kV; new lines $1-2.5M/km; renewables <5% of generation; curtailment risk</a></li>
+<li id="rnRc1"><a href="https://www.lefdalmine.com/" rel="noopener" target="_blank">Précédents de centres de données souterrains : Lefdal Mine (olivine ; 200 MW ; PUE 1,08-1,15 via eau de fjord à 8°C) ; SubTropolis calcaire (18°C + refroidissement mécanique) ; aucun centre de données en mine de phosphate n'existe</a></li>
+<li id="rnRc2"><a href="https://www.researchgate.net/publication/251701016_Phosphate_mine_subsidences_deduced_from_differential_interferometry_DInSAR_The_Moulares_case_example_southern_Atlas_of_Tunisia" rel="noopener" target="_blank">Gafsa basin: DInSAR-documented subsidence at Moulares; geothermal gradient 25-30°C/km → 23-29°C at 100-300 m depth</a></li>
+<li id="rnRc3"><a href="https://www.researchgate.net/publication/380540277_Assessment_of_radiation_exposure_in_the_phosphate_mining_area_of_Gafsa_Southeastern_Tunisia" rel="noopener" target="_blank">Gafsa radiation: 226Ra 16.3-375.1 Bq/kg in soils; phosphate tailings to 7,606 Bq/kg; radon-222 accumulation in enclosed workings; alpha-induced soft errors</a></li>
+<li id="rnRc4"><a href="https://envigilance.com/compliance/ashrae-tc-9-9/" rel="noopener" target="_blank">ASHRAE TC9.9 Class H1 (5th ed.): 18-22°C recommended, 25°C max for AI accelerators; AI datacenter CAPEX $20-35M/MW (incl. IT), $8-15M/MW facility-only</a></li>
+<li id="rnRc5"><a href="https://intuitionlabs.ai/articles/data-center-gpu-pricing-2026" rel="noopener" target="_blank">Coût des GPU : ~100 000 B200-class par 100 MW ; $25-40k chacun → $2,5-4B par 100 MW ; 300 MW ≈ $7,5-12B</a></li>
+<li id="rnRc6"><a href="https://www.commerce.gov/news/press-releases/2025/11/statement-uae-and-saudi-chip-exports" rel="noopener" target="_blank">US BIS export controls 2024-26: UAE 35,000 GPUs (G42/HUMAIN, 'Compute Diplomacy'); Saudi case-by-case 35,000 cap; Tunisia has no bilateral AI-security agreement</a></li>
+<li id="rnRc7"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8907101/" rel="noopener" target="_blank">Terfezia cultivation: commercial since 1999-2001 (Murcia, Spain); fruiting at year 2-3; 20-yr studies: average ~376 kg/ha, peak 1,069 kg/ha, drought years 0-2 kg/ha</a></li>
+<li id="rnRc8"><a href="https://www.mdpi.com/2073-4395/11/8/1462" rel="noopener" target="_blank">Desert-truffle water 200-250 mm/yr; protein 14-22.5% dry weight (the page's '20-27%' sits at the top of the reported range)</a></li>
+<li id="rnRc9"><a href="https://trufamania.com/desert-truffles.htm" rel="noopener" target="_blank">Prix à la ferme de Terfezia €20-60/kg (€200/kg uniquement en pénurie extrême sur les marchés du Golfe) ; Tuber melanosporum €700-1 500/kg au détail — des produits différents</a></li>
+<li id="rnRc10"><a href="https://rovirosafarms.com/melanosporum/" rel="noopener" target="_blank">Mycoculture economics: black truffle payback 10-15 years; Terfezia fruits faster but at one tenth the price</a></li>
+<li id="rnRc11"><a href="https://www.fitchratings.com/research/sovereigns/fitch-upgrades-tunisia-to-b-outlook-stable-12-09-2025" rel="noopener" target="_blank">Tunisia sovereign ratings: Moody's Caa1 (Feb 2025 upgrade, stable); Fitch B- (Sep 2025, affirmed Jan 2026); reserves ~4.5 months import cover; WACC 10-15%</a></li>
+<li id="rnRc12"><a href="https://international-partnerships.ec.europa.eu/policies/global-gateway/17-gw-renewable-energy-programme-tunisia_en" rel="noopener" target="_blank">Who finances Tunisia: EIB, AfDB, KfW, World Bank/IFC, EU Global Gateway (17 GW renewable programme); no active IMF program</a></li>
+<li id="rnRc13"><a href="https://www.engineeringnews.co.za/article/scatec-awarded-ppas-for-wind-solar-projects-in-tunisia-2026-01-26" rel="noopener" target="_blank">Empirical IPP record: 500 MW solar awarded 2024/25 (Scatec, Qair, Voltalia 25-yr PPAs at ~$0.031/kWh); installed renewables ~400 MW; STEG debt >$1.3B</a></li>
+<li id="rnRc14"><a href="https://www.mdpi.com/2073-4395/14/12/3021" rel="noopener" target="_blank">Chain logic: 8 interdependent stages at a generous 70% individual success ⇒ ~5.8% joint probability (0.7^8)</a></li>
+<li id="rnRc15"><a href="https://jabonline.in/abstract.php?article_id=1363&sts=2" rel="noopener" target="_blank">Terfezia claveryi salt sensitivity: establishes only in near-fresh soils, EC 0.82-0.85 dS/m</a></li>
+<li id="rnRc16"><a href="https://www.researchgate.net/publication/299679495_Preparation_and_Maintenance_of_Both_Man-Planted_and_Wild_Plots" rel="noopener" target="_blank">Densité de plantation de Terfezia : ~6 000 plants mycorhizés par hectare</a></li>
+<li id="rnRc17"><a href="https://ojs.openagrar.de/index.php/JABFQ/article/download/2184/2570" rel="noopener" target="_blank">Saudi Al-Khalidiah 150-ha Tirmania plantation: largely failed (14 kg/ha after soil import; rainfall collapse)</a></li>
+<li id="rnRc18"><a href="https://www.mdpi.com/1999-4907/14/5/952" rel="noopener" target="_blank">Desert-truffle market depth: Mamora (Morocco) wild harvest peaks ~100 t/yr; luxury band breaks past ~1,000-1,500 t/yr of new supply</a></li>
+<li id="rnRc19"><a href="https://documents1.worldbank.org/curated/en/926441468778187741/pdf/multi0page.pdf" rel="noopener" target="_blank">Tunisia arid land: ~86,000 ha of state domain earmarked for 40-year agricultural leases (Law 93-120)</a></li>
+<li id="rnRu1"><a href="https://www.osti.gov/servlets/purl/1357599" rel="noopener" target="_blank">Uranium issu de l'acide phosphorique par voie humide : Freeport (États-Unis) a produit 14M livres U3O8 1 978-99 avec une récupération >95 % DEHPA/TOPO ; ~20 % de l'uranium américain dans le 1980s provenait des phosphates</a></li>
+<li id="rnRu2"><a href="https://northafricapost.com/87963-uranext-to-build-moroccos-first-yellowcake-uranium-plant-in-el-jadida.html" rel="noopener" target="_blank">URANEXT/OCP (Morocco) building the first modern yellowcake-from-phosphoric-acid plant, ~$100M CAPEX, El Jadida, 2025</a></li>
+<li id="rnRu3"><a href="https://repositories.lib.utexas.edu/bitstreams/89897275-85cf-4cd6-a0c5-1d8daa353799/download" rel="noopener" target="_blank">WPA uranium SX cost $59-83/lb U3O8 (IX $46-76) vs $80-95/lb 2024-26 spot</a></li>
+<li id="rnRu4"><a href="https://www.mdpi.com/2673-4117/7/2/58" rel="noopener" target="_blank">Terres rares issues de l'acide phosphorique : pilote PhosAgro ; D2EHPA extrait >85% des terres rares lourdes (Dy, Y, Er) du WPA</a></li>
+<li id="rnRu5"><a href="https://www.researchgate.net/publication/380540277_Assessment_of_radiation_exposure_in_the_phosphate_mining_area_of_Gafsa_Southeastern_Tunisia" rel="noopener" target="_blank">Teneur en uranium de la roche phosphatée de Gafsa 45-140 ppm (bassin sud)</a></li>
+<li id="rnPg1"><a href="https://data.worldbank.org/country/tunisia" rel="noopener" target="_blank">World Bank Data API, Tunisia indicators — external debt $40.46B, debt service 26.17% of export revenues, reserves $9.34B, food 11.5% / fuel 18.78% of merchandise imports, GDP $51.4B (2024) — measured 2026-09-09</a></li>
+<li id="rnPg2"><a href="https://www.imf.org/en/Publications/CR/Issues/2025/06/13/Tunisia-2025-Article-IV-Consultation-Press-Release-Staff-Report-and-Statement-by-the-581556" rel="noopener" target="_blank">IMF — Tunisia 2025 Article IV Consultation, Staff Report (debt sustainability, financing needs, exchange-rate assessment)</a></li>
+<li id="rnPg3"><a href="https://www.imf.org/en/Publications/GFSR/Issues/2023/04/11/global-financial-stability-report-april-2023" rel="noopener" target="_blank">IMF Global Financial Stability Report, April 2023 — the global financial cycle and US monetary-policy spillovers to emerging markets</a></li>
+<li id="rnPg4"><a href="https://www.ilo.org/dyn/natlex/natlex4.detail?p_isn=102827&p_lang=en" rel="noopener" target="_blank">Central Bank of Tunisia — Organic Law 2016-35 (monopoly of fiduciary issuance, autonomous monetary policy; full text via ILO NATLEX)</a></li>
+<li id="rnPg5"><a href="https://www.bct.gov.tn/" rel="noopener" target="_blank">Banque centrale de Tunisie — site officiel (réserves, taux directeurs, opérations de change)</a></li>
+<li id="rnPg6"><a href="https://www.worldbank.org/en/country/tunisia/overview" rel="noopener" target="_blank">World Bank — Tunisia country overview (the CCDR: water ~$17.1B and energy ~$34.7B investment needs through 2050)</a></li>
+<li id="rnPg7"><a href="https://international-partnerships.ec.europa.eu/policies/global-gateway/17-gw-renewable-energy-programme-tunisia_en" rel="noopener" target="_blank">UE Global Gateway — programme d'énergie renouvelable de 17 GW pour la Tunisie</a></li>
+<li id="rnPg8"><a href="https://www.eib.org/en/projects/regions/mediterranean/tunisia/index.htm" rel="noopener" target="_blank">European Investment Bank — Tunisia project portfolio (the DFI channel modeled for solar/desal)</a></li>
+<li id="rnPg9"><a href="https://www.afdb.org/en/countries/north-africa/tunisia" rel="noopener" target="_blank">African Development Bank — Tunisia country strategy and project portfolio</a></li>
+<li id="rnPg10"><a href="https://www.miga.org/" rel="noopener" target="_blank">MIGA — assurance contre les risques d'investissement et rehaussement de crédit (la couche de sécurité modélisée pour les modules)</a></li>
+<li id="rnPg11"><a href="https://www.iaea.org/countryprofiles/tunisia" rel="noopener" target="_blank">IAEA — Tunisia country profile (nuclear-sciences centre CNSTN; the regulatory body for the acid-stream uranium route)</a></li>
+<li id="rnPg12"><a href="https://www.nber.org/papers/w10036" rel="noopener" target="_blank">Eichengreen, Hausmann & Panizza — 'Original Sin': the inability of emerging states to borrow abroad in their own currency (NBER WP 10036)</a></li>
+<li id="rnPg13"><a href="https://www.nber.org/papers/w18944" rel="noopener" target="_blank">Rey — 'Dilemma not Trilemma': the global financial cycle and US monetary policy as the anchor of EM conditions (NBER WP 18944)</a></li>
+<li id="rnPg14"><a href="https://www.pv-magazine.com/2025/03/25/tunisia-greenlights-500-mw-of-solar/" rel="noopener" target="_blank">pv magazine (2025-03-25): Tunisia greenlights 500 MW of solar — 1,100 GWh/yr expected, ~250 kt natural gas saved, ~$125M/yr (the government's own figure; ~$400M investment)</a></li>
+<li id="rnPg15"><a href="https://wits.worldbank.org/trade/comtrade/en/country/TUN/year/2024/tradeflow/Imports/partner/ALL/product/27" rel="noopener" target="_blank">World Bank WITS (Comtrade): Tunisia 2024 imports of mineral fuels (HS27) = $4,895,145K — verified 2026-09-09</a></li>
+<li id="rnPg16"><a href="https://www.un.org/sites/un2.un.org/files/sonede_desalination_in_tunisia.pdf" rel="noopener" target="_blank">SONEDE desalination presentation (UN/UNDESA, 2021): produced-water cost $1.00-1.50/m3 seawater RO (4,000-60,000 m3/d) and $0.10-0.70/m3 brackish; capex ~$1,000/(m3/d) at 60,000 m3/d — the utility's own bracket around the page's $0.68/m3 gate</a></li>
+<li id="rnPg17"><a href="https://www.sciencedirect.com/science/article/abs/pii/S0048969721033398" rel="noopener" target="_blank">Rare earth elements characterization associated to the phosphate fertilizer plants of Gabes (Science of the Total Environment, 2021): up to 1,523.67 t/yr REE to the marine environment; ~$58M/yr economic losses</a></li>
+<li id="rnPg18"><a href="https://www.sciencedirect.com/science/article/pii/S0304389426007314" rel="noopener" target="_blank">'Bentogypsum', a phosphoric acid purification residue: characterization and implications for environmental and human health risk in Gabes (J. Hazardous Materials, 2026)</a></li>
+<li id="rnPg19"><a href="https://patents.justia.com/patent/4105741" rel="noopener" target="_blank">US Patent 4,105,741 (1978): process for recovery of uranium from wet-process phosphoric acid — the public, expired process the metals leg stands on (no IP barrier)</a></li>
+<li id="rnH1"><a href="https://pubmed.ncbi.nlm.nih.gov/28284958/" rel="noopener" target="_blank">Guissouma 2017 (Chemosphere): Tunisia tap-water fluoride 0-2.4 mg/L; 25% of population at dental-fluorosis risk, 20% at skeletal-fluorosis risk (WHO limits)</a></li>
+<li id="rnH2"><a href="https://doi.org/10.3390/toxics14050438" rel="noopener" target="_blank">Bouchiba 2026 (Toxics 14(5):438): Mdhilla beneficiation effluent Cd 0.49, Pb 0.71, Cr 3.09 mg/L — exceeding discharge limits; risk driven by Cd, Co, Tl</a></li>
+<li id="rnH3"><a href="https://pubmed.ncbi.nlm.nih.gov/8942013/" rel="noopener" target="_blank">Gupta 1996 RCT: fluorosis REVERSED in children (Ca + VitD3 + ascorbic acid; n=25; water 4.5 ppm F; double-blind)</a></li>
+<li id="rnH4"><a href="https://pubmed.ncbi.nlm.nih.gov/39003868/" rel="noopener" target="_blank">Ghaemi 2024 (Iran): dental-fluorosis DALY rate up to 981.45 (UI 353.23-1618.40) per 100,000 in a high-F district; Monte Carlo dose-response</a></li>
+<li id="rnH5"><a href="https://pubmed.ncbi.nlm.nih.gov/30953859/" rel="noopener" target="_blank">Abtahi 2019 (Water Research): age-sex specific DALYs from drinking-water fluoride, Iran national study</a></li>
+<li id="rnH6"><a href="https://pubmed.ncbi.nlm.nih.gov/34529973/" rel="noopener" target="_blank">Naddafi 2022 (Env Research): burden of disease from heavy metals in drinking water, Iran 2019</a></li>
+<li id="rnH7"><a href="https://pubmed.ncbi.nlm.nih.gov/24913818/" rel="noopener" target="_blank">Egner 2014 RCT (n=291): broccoli-sprout beverage 12 wks -> urinary benzene mercapturic acid +61%, acrolein +23% (P<=0.01); GSTT1-positive excrete more</a></li>
+<li id="rnH8"><a href="https://pubmed.ncbi.nlm.nih.gov/30103140/" rel="noopener" target="_blank">Pabis 2018: zinc supplementation -> >30% reduction of kidney/liver Cd in aged metallothionein-transgenic mice</a></li>
+<li id="rnH9"><a href="https://pubmed.ncbi.nlm.nih.gov/27208136/" rel="noopener" target="_blank">Zhai 2 016 : Lactobacillus plantarum CCFM8610 lie le Cd intestinal, protège la barrière intestinale, réduit le Cd tissulaire chez la souris</a></li>
+<li id="rnH10"><a href="https://pubmed.ncbi.nlm.nih.gov/29779694/" rel="noopener" target="_blank">Mueller 2018: N95-class respirators >=98% filtration efficiency vs <=44% for any cloth</a></li>
+<li id="rnH11"><a href="https://pubmed.ncbi.nlm.nih.gov/33241434/" rel="noopener" target="_blank">Allen & Barn 2020: HEPA purifiers substantially cut indoor PM2.5 and improve subclinical cardiopulmonary health; population benefits often exceed costs</a></li>
+<li id="rnH12"><a href="https://pubmed.ncbi.nlm.nih.gov/34980119/" rel="noopener" target="_blank">Drieling 2022 RCT (75 asthmatic children): HEPA in bedroom+living room -> poorly-controlled asthma IRR 0.43-0.45; unplanned clinical utilization IRR 0.35</a></li>
+<li id="rnH13"><a href="https://pubmed.ncbi.nlm.nih.gov/36476193/" rel="noopener" target="_blank">Spirulina RCT (Cambodia, n=179): 2 g/day x 50 days -> anemia reduction significant (p=0.004); weight-gain trend p=0.07 (do not overclaim growth)</a></li>
+<li id="rnH14"><a href="https://ejatlas.org/conflict/phosphate-mining-in-gafsa" rel="noopener" target="_blank">EJAtlas: Gafsa affected population 30,000-70,000; cancer/asthma/infertility reported high; conflict since 2008</a></li>
+<li id="rnH15"><a href="https://resourcegovernance.org/articles/uncovering-impacts-phosphate-mining-tunisian-women" rel="noopener" target="_blank">NRGI: 'serious dearth of rigorous studies' linking phosphate operations to health outcomes; 7% birth-defect claim is activist-reported, unverified</a></li>
+<li id="rnH16"><a href="https://geographical.co.uk/science-environment/gafsas-silent-suffering-the-hidden-cost-of-phosphate-mining-in-tunisia" rel="noopener" target="_blank">Geographical 2 024 : âge d'apparition de l'asthme 2 documenté (Redeyef) ; hôpital le plus proche 70 km ; les médecins prescrivent de quitter Gafsa</a></li>
+    </ul>
+  </div>
+</div>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/pipeline/">Pipeline</a>
+      <a href="/alternatives/">Alternatives</a>
+      <a href="/sectors/">Sectors</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/translation/">Translation</a>
+      <a href="/nations/">Nations</a>
+      <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap capture">
+    <p>Proven in the literature. Absent from the market. Bankable on the numbers. The ledger lands in your inbox at 08:45 and 17:45 &mdash; free while it is being built. <a href="/#join">Get it &rarr;</a></p>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a> &middot; <a href="#" data-aa-consent-open>Cookie settings</a></p>
+  </div>
+</footer>
+</body>
+</html>

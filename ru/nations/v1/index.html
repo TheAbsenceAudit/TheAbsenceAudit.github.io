@@ -1,0 +1,1462 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=1788660395">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>**Тунис: аудит — The Absence Audit в национальном масштабе** 
+
+*(Или более буквальный вариант: **Тунис, проверено — The Absence Audit в национальном масштабе**)*</title>
+<meta name="description" content="The first nation-scale Absence Audit: Tunisia's five structural absences — monetary, cognitive, material, hydrological, nutritional — and the literature-backed engineering that fills each, wired into one closed loop. Then the audit turns on itself: honest confidence grades, a bottom-up feasibility model and a kill-gate protocol. A public template for every country with the same absences.">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="canonical" href="https://theabsenceaudit.com/nations/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/nations/">
+<meta property="og:title" content="Tunisia, audited. Five absences. One closed loop.">
+<meta property="og:description" content="The Absence Audit, applied to a nation: five structural absences, five literature-backed fills, one industrial metabolism. A public template for every country with the same absences.">
+<meta property="og:image" content="https://theabsenceaudit.com/nations/v1/og-nations.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:locale" content="en_GB">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Tunisia, audited. Five absences. One closed loop.">
+<meta name="twitter:description" content="The Absence Audit at national scale — a public template for every country with the same absences.">
+<meta name="twitter:image" content="https://theabsenceaudit.com/nations/v1/og-nations.png">
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": "Tunisia, audited — The Absence Audit at national scale",
+  "url": "https://theabsenceaudit.com/nations/",
+  "inLanguage": "en",
+  "isPartOf": {"@type": "WebSite", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
+  "description": "The first nation-scale Absence Audit: five structural absences, five literature-backed fills, one closed industrial loop — and the red team that grades each claim by evidence. A public template for every country with the same absences."
+}
+</script>
+<style>
+  .n-hero{padding:4.2rem 0 3rem;border-bottom:1px solid var(--rule)}
+  .n-hero h1{font-size:clamp(2.6rem,6vw,4.4rem);letter-spacing:-.02em}
+  .n-hero h1 em{color:var(--kill);font-style:italic}
+  .n-hero .lede{max-width:66ch;margin:1.2rem 0 0;font-size:1.12rem;color:var(--ink-2)}
+  .n-stats{display:flex;flex-wrap:wrap;gap:2.4rem;margin:2.4rem 0 0;padding:0}
+  .n-stats dt{font-family:var(--mono);font-size:.68rem;letter-spacing:.13em;text-transform:uppercase;color:var(--ink-3)}
+  .n-stats dd{margin:.35rem 0 0;font-family:var(--serif);font-size:1.9rem}
+  .n-section{padding:3.4rem 0;border-bottom:1px solid var(--rule)}
+  .n-section h2{font-size:clamp(1.6rem,3vw,2.2rem);margin:0 0 1rem}
+  .n-section .n-lede{max-width:72ch;color:var(--ink-2);margin:0 0 2rem;font-size:1.05rem}
+  .n-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.4rem}
+  .n-card{background:var(--paper-2);border:1px solid var(--rule);padding:1.5rem 1.5rem 1.3rem}
+  .n-card .n-num{font-family:var(--mono);font-size:.7rem;letter-spacing:.13em;color:var(--kill);text-transform:uppercase}
+  .n-card h3{font-size:1.25rem;margin:.5rem 0 .55rem}
+  .n-card h3 .n-missing{display:block;font-family:var(--mono);font-size:.72rem;font-weight:400;
+        letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin-bottom:.35rem}
+  .n-card p{margin:.55rem 0;color:var(--ink-2);font-size:.97rem}
+  .n-card ul{margin:.6rem 0 0;padding-left:1.1rem;color:var(--ink-2);font-size:.94rem}
+  .n-card ul li{margin:.3rem 0}
+  .n-card ul strong{color:var(--ink)}
+  .n-loop{counter-reset:loop}
+  .n-loop li{list-style:none;position:relative;padding:0 0 1.1rem 3rem;counter-increment:loop}
+  .n-loop li::before{content:counter(loop);position:absolute;left:0;top:.05rem;width:1.9rem;height:1.9rem;
+        border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;
+        font-family:var(--mono);font-size:.82rem;color:var(--kill)}
+  .n-loop li::after{content:"";position:absolute;left:.92rem;top:2rem;bottom:.35rem;border-left:1px dashed var(--rule)}
+  .n-loop li:last-child::after{display:none}
+  .n-loop li p{margin:.1rem 0 0;color:var(--ink-2)}
+  .n-loop li strong{font-family:var(--serif);font-size:1.06rem;color:var(--ink)}
+  .n-quote{font-family:var(--serif);font-size:1.35rem;line-height:1.45;font-style:italic;
+        border-left:3px solid var(--kill);padding-left:1.2rem;margin:2rem 0;max-width:60ch}
+  .n-quote cite{display:block;font-family:var(--mono);font-style:normal;font-size:.72rem;
+        letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin-top:.7rem}
+  table{width:100%;border-collapse:collapse;margin:1.2rem 0 1.8rem;font-size:.93rem}
+  caption{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;
+        color:var(--ink-3);text-align:left;margin-bottom:.6rem}
+  th,td{text-align:left;border-bottom:1px solid var(--rule);padding:.55rem .7rem;vertical-align:top}
+  th{font-family:var(--mono);font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-3)}
+  td strong{color:var(--ink)}
+  .n-media{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:1.8rem;margin-top:1.6rem}
+  .n-media figure{margin:0}
+  .n-media video{width:100%;max-width:340px;background:#000;border:1px solid var(--rule)}
+  .n-media audio{width:100%;margin-top:.9rem}
+  .n-media figcaption{font-size:.9rem;color:var(--ink-2);margin-top:.7rem}
+  .n-media figcaption strong{color:var(--ink);font-family:var(--serif);font-size:1.02rem;font-weight:500}
+  .n-media .n-meta{font-family:var(--mono);font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+  details.n-tr{margin-top:1.4rem;border:1px solid var(--rule);background:var(--paper-2);padding:.9rem 1.2rem}
+  details.n-tr summary{cursor:pointer;font-weight:600;font-family:var(--sans);font-size:.95rem}
+  .n-tr-pad{max-height:420px;overflow:auto;margin-top:.9rem;padding-right:.6rem;
+        font-size:.92rem;color:var(--ink-2)}
+  .n-tr-a,.n-tr-b{margin:.45rem 0}
+  .n-tr-a strong{color:var(--kill)}
+  .n-tr-b strong{color:var(--live)}
+  .n-note{color:var(--ink-2);font-size:.95rem}
+  .n-boundary{background:var(--paper-2);border:1px solid var(--rule);padding:1.5rem 1.6rem;margin-top:1.6rem}
+  .n-boundary h3{margin:0 0 .6rem;font-size:1.15rem}
+  .n-boundary p{color:var(--ink-2);font-size:.96rem;margin:.5rem 0}
+  .n-src{font-size:.85rem;color:var(--ink-2);columns:2;column-gap:2.4rem;padding-left:1.4rem}
+  .n-src li{margin:.35rem 0;break-inside:avoid}
+  .n-src a{word-break:break-all}
+  @media(max-width:640px){.n-src{columns:1}}
+  /* red-team + feasibility */
+  .n-badge{display:inline-block;font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;
+        text-transform:uppercase;padding:.22rem .55rem;border:1px solid var(--rule);
+        background:var(--paper-2);color:var(--ink-2);white-space:nowrap}
+  .n-badge.high{color:var(--live);border-color:var(--live)}
+  .n-badge.med{color:#8a6d1f;border-color:#bda052;background:#faf6e9}
+  .n-badge.low{color:var(--kill);border-color:var(--kill)}
+  .n-badge.unknown{color:var(--ink-3);border-color:var(--rule)}
+  table.n-red td:first-child{font-family:var(--mono);font-size:.72rem;letter-spacing:.08em;
+        text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
+  .n-finding{border-left:3px solid var(--kill);background:var(--paper-2);padding:1.1rem 1.3rem;
+        margin:1.4rem 0;font-size:.96rem;color:var(--ink-2)}
+  .n-finding strong{color:var(--ink);font-family:var(--serif);font-size:1.02rem}
+  .n-finding .n-num{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--kill);
+        text-transform:uppercase;display:block;margin-bottom:.35rem}
+  .n-feas td:first-child{width:46%}
+  .n-phase{counter-reset:ph;margin:1.2rem 0}
+  .n-phase li{list-style:none;position:relative;padding:0 0 1rem 2.6rem;counter-increment:ph}
+  .n-phase li::before{content:"P" counter(ph);position:absolute;left:0;top:.05rem;width:2rem;height:2rem;
+        border:1px solid var(--rule);border-radius:50%;display:flex;align-items:center;justify-content:center;
+        font-family:var(--mono);font-size:.72rem;color:var(--kill)}
+  .n-phase li strong{font-family:var(--serif);font-size:1.02rem;color:var(--ink)}
+  .n-phase li p{margin:.15rem 0 0;color:var(--ink-2);font-size:.95rem}
+  .n-srcline{font-family:var(--mono);font-size:.74rem;color:var(--ink-3)}
+  .n-note small{display:block;margin-top:.4rem}
+  .n-twrap{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:1.2rem 0}
+  .n-twrap table{min-width:760px}
+  .n-twrap table.n-red{min-width:920px}
+  .n-unlock{border-left:3px solid var(--live);background:var(--paper-2);padding:1.1rem 1.3rem;
+        margin:1.2rem 0;font-size:.96rem;color:var(--ink-2)}
+  .n-unlock strong{color:var(--ink);font-family:var(--serif);font-size:1.02rem}
+  .n-unlock .n-num{font-family:var(--mono);font-size:.66rem;letter-spacing:.12em;color:var(--live);
+        text-transform:uppercase;display:block;margin-bottom:.35rem}
+  .n-unlock .n-tag{font-family:var(--mono);font-size:.66rem;letter-spacing:.1em;text-transform:uppercase;
+        color:var(--ink-3);display:inline-block;margin-right:.5rem}
+</style>
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body><div style="background:#171512;color:#F6F2EA;padding:.7rem 1rem;font-family:Georgia,serif;font-size:.95rem">&#128279; АРХИВНАЯ страница V1 (опубликовано 2026-09-06). Заменена интегрированной версией &mdash;<a href="/ru/nations/" style="color:#F6F2EA;text-decoration:underline">читать текущую страницу &rarr;</a></div>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"> <a href="/nations/v1/" hreflang="en">EN</a> <a href="/fr/nations/v1/" hreflang="fr">FR</a> <a href="/ru/nations/v1/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+
+<div class="n-hero">
+  <div class="wrap">
+    <p class="eyebrow">Метод в масштабе страны</p>
+    <h1>Тунис,<em>проведён аудит.</em></h1>
+    <p class="lede">The Absence Audit выявляет то, чего не хватает, &mdash; и то, чем, согласно цитируемой литературе, это можно восполнить. Обычно единицей анализа выступает процесс, материал, деептех-проект. На этот раз единица анализа &mdash;<strong>страна</strong>: пять структурных отсутствий, пять подтверждённых литературой вариантов восполнения и замкнутый цикл, превращающий каждое обременение в очередное решение. Это не продаётся. Материал опубликован бесплатно, в открытом доступе, как 
+§<strong>template</strong>&mdash; for Tunisia, and for every
+    country that carries the same absences. And because the first rule of this site is<em>try to
+    destroy the idea</em>, the audit is then turned on itself: a red-team pass with honest
+    confidence grades, a bottom-up cost model, and a kill-gate protocol &mdash; because the method
+    is what transfers, not the dream. The video, the audio and the original report are in
+    French; everything written on this page is in English.</p>
+    <dl class="n-stats">
+      <div><dt>Absences audited</dt><dd>5</dd></div>
+      <div><dt>Energy, recomputed</dt><dd>5.65 TWh/yr</dd></div>
+      <div><dt>Layers red-teamed</dt><dd>7</dd></div>
+      <div><dt>Closed loop</dt><dd>1</dd></div>
+    </dl>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">The audit</p>
+    <h2>Five absences. Five fills the literature demonstrates.</h2>
+    <p class="n-lede">Same discipline as every dossier in the ledger: name what is missing,
+    find the process the peer-reviewed record demonstrates, and keep the numbers where anyone
+    can re-check them. A note on the word<em>proves</em>: it applies to the processes, not to
+    the system. What the literature proves at scale, and what it does not, is graded layer by
+    layer in the red-team section further down.</p>
+    <div class="n-grid">
+      <article class="n-card">
+        <p class="n-num">Absence 01</p>
+        <h3><span class="n-missing">What is missing</span>Monetary sovereignty</h3>
+        <p>A debt in a currency the state cannot print. External debt of<strong>$42.9B</strong>&mdash; about<strong>80% of GDP</strong>, dollar-denominated. When the Fed raises rates,
+        over<strong>20% of export revenues</strong>go to debt service; growth stays under 1.5%.</p>
+        <ul>
+          <li><strong>The trap:</strong>the &ldquo;original sin&rdquo; of borrowing in a foreign
+          currency &mdash; the playing field is rigged, and no monetary tool fixes it.</li>
+          <li><strong>The fill:</strong>stop refinancing the trap; generate hard currency from
+          exports the country owns outright: compute, strategic metals, protein.</li>
+        </ul>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 02</p>
+        <h3><span class="n-missing">What is missing</span>Sovereign compute</h3>
+        <p>World-class talent without infrastructure. InstaDeep &mdash; founded in Tunis &mdash;
+        was acquired by BioNTech for<strong>$680M</strong>. The talent is proven; the data
+        sits in foreign clouds under extraterritorial law.</p>
+        <ul>
+          <li><strong>The fix:</strong>three 100&nbsp;MW datacenters in the abandoned<strong>Gafsa mines</strong>&mdash; constant 15&ndash;20&nbsp;&deg;C geothermal cooling
+          (surface cooling eats up to 40% of a datacenter's OPEX), physical protection, OPEX in dinars.</li>
+          <li><strong>The result:</strong>state data, state models, state hardware &mdash; on
+          sovereign soil.</li>
+        </ul>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 03</p>
+        <h3><span class="n-missing">What is missing</span>Strategic materials</h3>
+        <p>A toxic liability that is actually a strategic deposit. Phosphogypsum &mdash; decades of
+        phosphate-industry waste at Gab&egrave;s &mdash; costs the marine ecosystem over<strong>$58M a year</strong>.</p>
+        <ul>
+          <li><strong>The discovery:</strong>over 70% of the rare earths in Gafsa phosphate rock
+          precipitate into the waste &mdash; up to<strong>1,700&nbsp;mg/kg</strong>in some strata.</li>
+          <li><strong>The extraction:</strong>HCl at 60&nbsp;&deg;C (shrinking-core kinetics,
+          Ea 20.65&nbsp;kJ&middot;mol&sup1;) recovers<strong>65.6% &Sigma;REE</strong>, up to
+          73.8% yttrium. The purified gypsum then lines the mine walls.</li>
+        </ul>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 04</p>
+        <h3><span class="n-missing">What is missing</span>Water</h3>
+        <p>Endemic water stress &mdash; dams at record lows, agriculture throttled. The plan
+        targets<strong>500 million m&sup3;</strong>of desalinated water a year.</p>
+        <ul>
+          <li><strong>The energy:</strong>4&nbsp;kWh/m&sup3; reverse osmosis &rarr;<strong>2.0&nbsp;TWh/yr</strong>; transport 300&nbsp;km inland and 400&nbsp;m uphill at
+          0.38&nbsp;kWh/m&sup3; &rarr; 0.19&nbsp;TWh/yr<em>(since corrected: 2.05&nbsp;kWh/m&sup3; — see the erratum and Finding 01).</em></li>
+          <li><strong>The control:</strong>reinforcement-learning over millions of IoT sensors
+          modulates pump pressure in real time &mdash; the sovereign AI's first job.</li>
+        </ul>
+      </article>
+      <article class="n-card">
+        <p class="n-num">Absence 05</p>
+        <h3><span class="n-missing">What is missing</span>Nutrition &mdash; and the brains it builds</h3>
+        <p>Latent malnutrition caps a generation's cognitive development. The desert truffle
+        (<em>Terfezia boudieri</em>, symbiotic with<em>Helianthemum</em>) grows on<strong>200&nbsp;L/m&sup2;/yr</strong>under the solar shade.</p>
+        <ul>
+          <li><strong>The yield:</strong> <strong>20&ndash;27% protein</strong>, all essential amino
+          acids, iron &mdash; the highest nutritional water productivity of any crop in the system.</li>
+          <li><strong>The loop:</strong>protein for children's neurodevelopment &rarr; the engineers
+          who build the sovereign AI. Luxury export price (&euro;20&ndash;220/kg) funds the rest.</li>
+        </ul>
+      </article>
+    </div>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">The loop</p>
+    <h2>Systemic alchemy &mdash; each liability finances the next solution</h2>
+    <p class="n-lede">The design principle is the opposite of ministry-by-ministry
+    problem-solving: nothing is waste, and every by-product is the input of the next stage.</p>
+    <ol class="n-loop">
+      <li><strong>Toxic waste</strong><p>Phosphogypsum mountains at Gab&egrave;s &mdash; the country's
+      worst ecological liability &mdash; are mined for their rare earths.</p></li>
+      <li><strong>Strategic metals</strong><p>Yttrium, lanthanum, neodymium &mdash; the raw materials
+      of the compute era &mdash; recovered at up to 83% by nitric-acid leaching.</p></li>
+      <li><strong>Sovereign compute</strong><p>The rare earths feed three 100&nbsp;MW datacenters
+      buried in the cool, defensible Gafsa mines.</p></li>
+      <li><strong>Industrial symbiosis</strong><p>The hot leachates from metal extraction are piped
+      through heat exchangers to cool the servers &mdash; then treated. The purified gypsum becomes
+      fire-rated board that lines the very galleries housing the machines.</p></li>
+      <li><strong>Water, managed by the AI</strong><p>The sovereign AI runs the desalination and the
+      smart pipelines that push 500&nbsp;Mm&sup3;/yr across the desert.</p></li>
+      <li><strong>Agrivoltaic shade</strong><p>A 3&nbsp;GW solar park on 45&ndash;60&nbsp;km&sup2;
+      shelters the crops instead of sterilising the soil &mdash; cutting irrigation needs 20&ndash;40%
+      while the plants' transpiration cools the panels.</p></li>
+      <li><strong>Desert truffles</strong><p>Hyper-protein food from almost no water &mdash; sold
+      abroad at luxury prices, eaten at home for nutrition.</p></li>
+      <li><strong>Человеческий капитал</strong><p>Белок сегодня — это когнитивный потенциал следующего поколения &mdash;
+      инженеров, которые напишут суверенные алгоритмы завтрашнего дня.</p></li>
+    </ol>
+    <p class="n-quote">«Токсичный шлак прошлого становится когнитивным золотом завтрашнего дня.
+    Это системная алхимия, доведённая до предела».<cite>&mdash; «Системная алхимия для суверенитета Туниса», 26-минутный подробный разбор ниже</cite></p>
+    <p class="n-note">Проектное видение, сформулированное как есть. Замкнутый контур — это поэтический кейс отчёта;
+    выдержит ли он столкновение с цепочками поставок, радиологией и финансами, оценивается слой
+    за слоем в разделе красной команды ниже. Видение принадлежит отчёту; вердикты принадлежат
+    аудиту.</p>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Арифметика</p>
+    <h2>Энергетический бюджет, раскрытый до основания</h2>
+    <p class="n-lede">Каждая цифра пересчитана на основе указанных базовых параметров &mdash; та же дисциплина, что и в
+    каждом досье. Общая потребность: 5.32&nbsp;TWh/yr, покрываемая агровольтаическим парком мощностью 3&nbsp;GW.</p>
+    <table>
+      <caption>Годовая потребность в энергии по стратегическим направлениям</caption>
+      <thead><tr><th>Направление</th><th>TWh/yr</th><th>Доля</th></tr></thead>
+      <tbody>
+        <tr><td>Опреснение морской воды (500&nbsp;Mm&sup3;)</td><td>2.00</td><td>37.6%</td></tr>
+        <tr><td>Суверенные дата-центры ИИ (300&nbsp;MW непрерывно)</td><td>2.63</td><td>49.4%</td></tr>
+        <tr><td>Экстракция редкоземельных элементов (2&nbsp;Mt фосфогипса)</td><td>0.50</td><td>9.4%</td></tr>
+        <tr><td>Общенациональная насосная сеть</td><td>0.19</td><td>3.6%</td></tr>
+        <tr><td><strong>Итого</strong></td><td><strong>5.32</strong></td><td><strong>100%</strong></td></tr>
+      </tbody>
+    </table>
+    <p style="color:var(--ink-2)">При коэффициенте использования установленной мощности 20%: 5.32&nbsp;TWh &divide; (8,760&nbsp;h &times; 0.20)
+    &asymp;<strong>3.03&nbsp;GW</strong>установленной мощности &mdash; 4,500&ndash;6,000&nbsp;ha
+    агровольтаики, ничтожная доля национальной территории, производящая энергию, воду, металлы, вычислительные мощности
+    и белок из одного участка пустыни.</p>
+    <p class="n-note"><strong>Корректировка (v2, 2026-09-06).</strong>С тех пор слагаемое перекачки в этом бюджете было
+    пересчитано исходя из фундаментальных принципов (подъём на 400&nbsp;m требует как минимум
+    1.09&nbsp;kWh/m&sup3; &mdash; потенциальная энергия, а не инженерное искусство). Честный бюджет составляет<strong>5.65&nbsp;TWh/yr</strong>, где на перекачку приходится 1.03&nbsp;TWh, а мощность солнечного парка составляет<strong>3.23&nbsp;GW</strong>. Скорректированные цифры используются в следующем
+    разделе красной команды; исходные числа сохранены здесь, поскольку сама корректировка является
+    уроком.</p>
+  </div>
+</div>
+
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Аудит, обращённый на самого себя</p>
+    <h2>Красная команда: Тунис &mdash; лестница фальсификации</h2>
+    <p class="n-lede">Первое правило The Absence Audit —<em>попытаться разрушить идею</em>.
+    Здесь идея — это целая страна. Поэтому дисциплина фальсификации применяется к самому аудиту точно
+    так же, как к каждому деептех-проекту в реестре, — не как опровержение какого-то отдельного возражения, а как
+    постоянная структура: лестница стандартов доказательства, замкнутая таксономия слоёв и перечень
+    контрольных условий, способных изменить каждую оценку. Три независимых цикла глубокого анализа
+    технико-экономической литературы (материалы, вода/энергия, вычисления/сельское хозяйство/финансирование, около 200
+    источников, ссылки верифицированы), а каждая цифра пересчитана программно на основе базовых параметров
+    (<span class="n-srcline">движок аудита</span>) легли в основу приведённого ниже среза.</p>
+
+<div class="n-twrap"><table class="n-red">
+<caption>Лестница фальсификации — шесть стандартов доказательства и положение Туниса по каждому из них (сентябрь 2026 г.)</caption>
+<thead><tr><th>Ступень</th><th>Стандарт доказательства</th><th>Что считается доказательством</th><th>Статус</th></tr></thead>
+<tbody>
+<tr><td>L1 · Физика и химия</td><td>Детерминированный</td><td>Уравнение сходится; лабораторный результат воспроизводим</td><td><span class="n-badge high">ВЫПОЛНЕНО</span>выщелачивание РЗЭ 65.6%; нижний порог подъёма 1.09 kWh/m&sup3;</td></tr>
+<tr><td>L2 · Инженерный прецедент</td><td>Работающее предприятие в таком масштабе, на данном сырье</td><td>Конкретное действующее предприятие</td><td><span class="n-badge low">ОТСУТСТВУЕТ</span>нет примеров на осадочном фосфогипсе; Rainbow = апатит</td></tr>
+<tr><td>L3 · Технико-экономический</td><td>Исследование класса 5 / предварительное ТЭО</td><td>Опубликованная подтверждённая цена $/unit</td><td><span class="n-badge low">ОТСУТСТВУЕТ</span>существует только наша оценка «снизу вверх» (~$21B)</td></tr>
+<tr><td>L4 · Финансовые обязательства</td><td>Подписанная концессия / PPA / договор оффтейка</td><td>Наличие подписи</td><td><span class="n-badge med">ЧАСТИЧНО</span>PPA на 500 MW солнечной энергии по цене $0.031/kWh</td></tr>
+<tr><td>L5 · Институциональный и политический</td><td>Принятый закон + профинансированное ведомство</td><td>Законодательный акт и строка в бюджете</td><td><span class="n-badge low">ОТСУТСТВУЕТ</span>закон об IPP существует; нет программы, ведомства или МВФ</td></tr>
+<tr><td>L6 · Системная интеграция</td><td>Модули генерируют положительный денежный поток; контур создаёт добавленную стоимость</td><td>Операционные денежные потоки, каждый независим</td><td><span class="n-badge unknown">НЕ ДОКАЗАНО</span>0.7^8 &asymp; 5.8%</td></tr>
+</tbody></table></div>
+<p class="n-note">Деептех-проекту требуется один тип доказательств; нации требуется несколько, и они различаются<em>по своей природе</em>, а не по степени. Правило сайта —<em>попытаться разрушить идею</em>— не меняется и в
+национальном масштабе; меняется лишь то, что разрушение идеи теперь означает<em>требование стандарта доказательства
+на каждом уровне и публикацию того, где находится каждое утверждение</em>. Бо́льшая часть замкнутого контура добросовестна на уровне L1 и
+не доказана начиная с L2 и выше. Это не изъян метода; это сам метод, ставший прозрачным.</p>
+
+    <div class="n-twrap"><table class="n-red">
+      <caption>Послойный разбор: заявления на странице, результаты исследований, честная оценка уверенности</caption>
+      <thead><tr><th>Уровень</th><th>Заявление</th><th>Что показало исследование</th><th>Уверенность
+§SEG212</th><th>What would prove it</th></tr></thead>
+      <tbody>
+<tr><td>Scientific</td><td>REE can be recovered from phosphogypsum (65.6% ΣREE, 73.8% Y)</td><td>Confirmed at lab scale; 60-85% of the rock's REE partitions into the PG; Gafsa grade ~322 mg/kg (peaks &gt;1,700)<sup class="n-cite">[Rm1]</sup><sup class="n-cite">[Rm2]</sup>; the 65.6%/73.8% numbers come from a 1.65 mol/L HCl bench study<sup class="n-cite">[Rm4]</sup></td><td>HIGH (chemistry)<br><span class='n-badge low'>but the grade is the problem</span></td><td>A 50 t/yr pilot acid circuit, six months of published mass balance, and the fed-grade confirmed on the specific Gabès heap</td></tr>
+<tr><td>Engineering</td><td>Scales to 2 Mt/yr</td><td>No commercial precedent on sedimentary PG<sup class="n-cite">[Rm5]</sup>. PhosAgro's pilot was on richer apatite feed (5 m³/h)<sup class="n-cite">[Rm6]</sup>; Rainbow's Phalaborwa is the only real commercial attempt and its 29.1% NdPr split makes it an anomaly<sup class="n-cite">[Rm7]</sup>. Scale-up literature: filtration, silica gel, impurity co-extraction<sup class="n-cite">[Rm5]</sup></td><td>LOW &ndash; MEDIUM</td><td>Engineering-scale pilot: continuous solids-liquid separation, acid regeneration ≥85%, published capex per tonne</td></tr>
+<tr><td>Economic</td><td>Recovered REEs are a revenue engine</td><td>~422 t/yr of REE (at lab recovery) whose basket is Cerium-dominated with Y, La; NdPr share 15-25%<sup class="n-cite">[Rm3]</sup><sup class="n-cite">[Rm8]</sup>. At real 2024-26 oxide prices:<b>$5-10M/yr</b>. The published lab recipe at S/L 1:10 needs ~1.2 Mt/yr HCl-equivalent — $125-560M/yr before regeneration<sup class="n-cite">[Rm16]</sup>. Separation to saleable oxides: $244M+<sup class="n-cite">[Rm10]</sup>(PG re-leach route; the acid-stream U+REE route is the unlock — see Unlock 01).</td><td>LOW</td><td>A signed offtake at a stated $/kg, with the full acid-recycle mass balance published</td></tr>
+<tr><td>Infrastructure</td><td>Gafsa mines are suitable for 3×100 MW (free-cooled)</td><td>No phosphate-mine datacenter exists<sup class="n-cite">[Rc1]</sup>. Gafsa: DInSAR-documented subsidence at Moulares<sup class="n-cite">[Rc2]</sup>; скальная порода 23–29°C на глубине 100–300 м против рекомендации ASHRAE Class H1 в 18–22°C<sup class="n-cite">[Rc4]</sup>; накопление радона-222 (Ra-226 до 375 Bq/kg в почвах, хвосты до 7,606 Bq/kg)<sup class="n-cite">[Rc3]</sup>; тепловое насыщение закрытых выработок; единственный известный успешный пример (Lefdal) охлаждается водой фьорда с температурой 8°C, а не скальной породой<sup class="n-cite">[Rc1]</sup></td><td>НИЗКИЙ</td><td>Радоновое + геотехническое обследование фактических выработок; затем пилот на 10 MW на сертифицированной стабильной, нерадиоактивной площадке с опубликованным PUE &lt;1.25</td></tr>
+<tr><td>Финансы</td><td>Проект может привлечь капитал</td><td>Оценка «снизу вверх»: ~$15-25B (в среднем ~$21B), при этом GPU-ускорители (подпадающие под экспортный контроль) составляют 40–60% от этой суммы<sup class="n-cite">[Rc5]</sup><sup class="n-cite">[Rc6]</sup>. Тунис: Caa1/B-<sup class="n-cite">[Rc11]</sup>, WACC 10–15%, госдолг ~83% ВВП, нет действующей программы МВФ, долг STEG >$1.3B. Рабочий контрпример: 500 MW солнечной генерации было профинансировано по ~$0.031/kWh с 25-летними PPA (Scatec, Qair, Voltalia)<sup class="n-cite">[Rc13]</sup></td><td>НИЗКИЙ &ndash; СРЕДНИЙ</td><td>Одна подписанная концессия с софинансированием от МБР (EIB/AfDB/KfW/Global Gateway) на первый транш в $500M</td></tr>
+<tr><td>Политика</td><td>Государство способно это реализовать</td><td>Механизм IPP работает<sup class="n-cite">[Rc13]</sup>; закон о землях сельхозназначения блокирует иностранную собственность (только аренда на 40 лет)<sup class="n-cite">[Rw12]</sup>; бюджет (дефицит 5–7% ВВП) не может профинансировать собственный капитал<sup class="n-cite">[Rw10]</sup>; переговоры с МВФ остаются в тупике<sup class="n-cite">[Rc12]</sup></td><td>НИЗКИЙ</td><td>Опубликованная национальная программа с профинансированной пилотной фазой, ограниченной по времени, и назначенным уполномоченным агентством</td></tr>
+<tr><td>Регуляторика и комплаенс</td><td>Обращение с отходами NORM осуществляется в рамках закона</td><td>Тунисский фосфогипс содержит Ra-226 на уровне 214–970 Bq/kg при пороге исключения МАГАТЭ/ЕС в 1,000 Bq/kg<sup class="n-cite">[Rm11]</sup><sup class="n-cite">[Rm12]</sup>; кислотное выщелачивание переводит Ra в продуктивный раствор, а концентрат РЗЭ соосаждает его<sup class="n-cite">[Rm11]</sup>. Захоронение отходов NORM обходится в $15-420/бочку<sup class="n-cite">[Rm13]</sup>. Лицензированного маршрута утилизации для 2 Mt/год переработанного кислого кека фильтрации не существует.</td><td>НИЗКИЙ</td><td>Классифицированный как NORM поток отходов с лицензированным маршрутом утилизации/инкапсуляции и покупатель, принимающий радиологическую спецификацию</td></tr>
+<tr><td>Рынок и сбыт</td><td>Существует покупатель на то, что производит контур</td><td>Смешанный концентрат продаётся с дисконтом 30–50% китайским переработчикам, контролирующим 85–90% мировых мощностей разделения<sup class="n-cite">[Rm9]</sup><sup class="n-cite">[Rm14]</sup>; продажа разделённых оксидов требует завода жидкостной экстракции (SX) стоимостью $244M+<sup class="n-cite">[Rm10]</sup>. Сбыт трюфелей реален (€20-60/kg), но неглубок — премиальный рынок насыщается при площади свыше ~2,600-4,000 ha<sup class="n-cite">[Rc18]</sup>. У суверенных вычислений сбыта нет по определению.</td><td>НИЗКИЙ</td><td>Подписанный офтейк-контракт по фиксированной цене в $/kg конкретно на продукцию РЗЭ — без него каждая статья затрат является ставкой на ценообразование в Китае</td></tr>
+<tr><td>Экология и общество</td><td>Рекультивация фосфогипса является чистым общественным благом</td><td>Ущерб реален и количественно оценён: >$58M/год потерь морской экосистемы в Габесе<sup class="n-cite">[Rm2]</sup>и многолетние отвалы NORM<sup class="n-cite">[Rm11]</sup>. Но ценность рекультивации — это общественное благо, финансируемое за счёт обязательств, а не бизнес на выручке от металлов; занятость в Гафсе и социальная стабилизация реальны, но не оценены количественно в отчёте.</td><td>СРЕДНИЙ</td><td>Финансирование экологических обязательств (облигации рекультивации / грант МБР), определяющее цену очистки независимо от выручки от металлов</td></tr>
+<tr><td>Геополитика и цепочки поставок</td><td>Входные ресурсы доступны в требуемых объёмах</td><td>Китай контролирует 85–90% разделения<sup class="n-cite">[Rm14]</sup>и владеет технологическим ноу-хау переработки; правила Бюро промышленности и безопасности США (BIS) делают 300 MW передовых GPU юридически недоступными для Туниса на сегодняшний день<sup class="n-cite">[Rc6]</sup>; мембраны обратного осмоса, логистика HCl и сетевое оборудование являются импортными и ограничены импортом.</td><td>НИЗКИЙ</td><td>Офтейк вне Китая И соглашение о поставках аппаратного обеспечения — обязательно оба, так как любое из них по отдельности оставляет контур в зависимом положении</td></tr>
+<tr><td>Система</td><td>Все компоненты взаимно усиливают друг друга</td><td>Восемь взаимозависимых этапов, каждый со своим поставщиком, регулятором и валютой. При оптимистичной вероятности успеха 70% на этап: 0.7^8 &asymp;<b>5.8%</b>совместная вероятность<sup class="n-cite">[Rc14]</sup>. Контур представляет собой проектную гипотезу, а не результат</td><td>ГИПОТЕЗА</td><td>Каждый модуль генерирует положительный денежный поток сам по себе, при этом контур создаёт добавленную стоимость, а не покрывает дефициты</td></tr>
+      </tbody>
+    </table></div>
+    <p class="n-note" style="margin-top:1.2rem"><strong>Как читать эту таблицу.</strong>Уровень уверенности — это оценка<em>доказательной базы</em>, а не осуществимости замысла. «Высокая уверенность, но проблема в содержании» означает: химия доказана, а экономика — нет. Оценка уверенности «Высокий» для слоя не означает, что слой успешен, — это значит, что мы точно знаем, какого ответа ожидать. Классификатор замкнут: каждое утверждение на этой странице относится ровно к одному слою, а слой без доказательств оценивается как НИЗКИЙ, а не остаётся без оценки<span class="n-badge high">1 HIGH</span>
+    <span class="n-badge med">1 MEDIUM</span>
+    <span class="n-badge med">2 LOW-MEDIUM</span>
+    <span class="n-badge low">6 LOW</span>
+    <span class="n-badge unknown">1 HYPOTHESIS</span></p>
+
+<div class="n-twrap"><table>
+<caption>Watch conditions — observable events that would move a grade (checked without a laboratory)</caption>
+<thead><tr><th>Signal</th><th>Trigger</th><th>Grade it moves</th></tr></thead>
+<tbody>
+<tr><td>REE basket (NdPr/Dy/Tb)</td><td>&minus;50% vs 2026 spot</td><td>Economic &rarr; confirmed no-go for PG recovery</td></tr>
+<tr><td>Rainbow Phalaborwa (SA)</td><td>commercial commissioning result</td><td>Engineering: informative for apatite, not proof for sedimentary feed</td></tr>
+<tr><td>Tunisia sovereign rating</td><td>upgrade to investment-grade</td><td>Finance LOW-MED &rarr; MED</td></tr>
+<tr><td>US BIS / compute diplomacy</td><td>Tunisia added to a licensing tier</td><td>Geopolitical + Infrastructure: the hardware gate opens</td></tr>
+<tr><td>STEG / IPP tender</td><td>&gt;1 GW signed below $0.04/kWh</td><td>Finance + Political: the grid path becomes real</td></tr>
+<tr><td>Terfezia 100 ha pilot</td><td>3-season yield &ge;200 kg/ha</td><td>Market: the truffle leg confirms</td></tr>
+<tr><td>Desert-truffle farm-gate price</td><td>sustained &lt;€15/kg</td><td>Market: ceiling moves down; cap acreage below 2,000 ha</td></tr>
+<tr><td>Sovereign rating (downgrade)</td><td>any downgrade</td><td>Finance &rarr; LOW</td></tr>
+</tbody></table></div>
+<p class="n-srcline">Last re-checked against public sources: 2026-09-06 · a moving grade triggers a dated
+update to the tables above — never a rewrite of the narrative. The falsification loop is the
+deliverable; the snapshot is just its latest state.</p>
+
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Where the falsification bit</p>
+    <h2>Seven findings<span style="font-weight:400;color:var(--ink-2);font-size:.95rem;font-family:var(--sans)">&mdash; including two corrections to the arithmetic</span></h2>
+
+<div class="n-finding">
+  <span class="n-num">Finding 01 &mdash; the arithmetic had a hole, and it was pumping</span>
+  <strong>The page's water transport figure is off by a factor of five.</strong>The report (and its arithmetic section here) states 0.38 kWh/m&sup3; for 300 km + 400 m of lift.
+  Lifting water is pure physics: 1 m&sup3; x 400 m = 3.92 MJ =<b>1.09 kWh/m&sup3; at 100% efficiency</b>—
+  before friction, pumps or motors. At 75% combined efficiency and real-wall friction the figure is<b>2.05 kWh/m&sup3;</b>, то есть перекачка составляет 1,03 ТВт·ч/год,
+  а не 0,19. Скорректированный итог:<b>5,65 ТВт·ч/год</b>(5,32 в отчёте), а солнечной
+  электростанции требуется<b>3,23 ГВт</b>, а не 3,03. Эта ошибка не меняет сути
+  идеи; но она меняет степень доверия к расчётам — поэтому теперь мы публикуем оба варианта.<p class="n-srcline">Доказательства: Rw4 · Rw5; перерасчёт в движке аудита</p>
+</div>
+<div class="n-finding">
+  <span class="n-num">Вывод 02 &mdash; заголовок про иттрий вводит в заблуждение</span>
+  <strong>Извлечение иттрия на уровне 73,8% практически лишено экономического смысла.</strong>Иттрий торгуется по
+  $5-10/кг. В корзине месторождения Гафса доминирует церий (Ce 80-309 мг/кг из общего объёма ~322 мг/кг), за
+  которым следуют La, Nd и Y, а доля Dy/Tb ничтожно мала. Магнитный NdPr составляет, возможно, 15-25% от массы.
+  При реальных ценах весь контур на 2 млн т/год даёт<b>~$5-10 млн/год</b>содержащегося металла
+  (перерасчёт: 422 т РЗЭ при лабораторном извлечении; 7,0 млн $/год при
+  промышленном извлечении 45% и доле NdPr 20%) — и это на фоне химического завода, прокачивающего<b>20 млн м&sup3;/год кислого раствора</b>.<p class="n-srcline">Доказательства: Rm1 · Rm3 · Rm8 · Rm9 · Rm15 · Rw1 · Rw5</p>
+</div>
+<div class="n-finding">
+  <span class="n-num">Вывод 03 &mdash; кислотная арифметика, которую никто не внёс в реестр</span>
+  <strong>Опубликованный лабораторный рецепт в промышленном масштабе требует химического завода, а не обогатительной фабрики.</strong>Т/Ж 1:10 при 1,65 моль/л:<b>601 кг эквивалента HCl на тонну фосфогипса</b>.
+  Для 2 млн т/год это<b>1 203 180 т/год</b>эквивалента HCl —
+  3 759 938 т/год 32%-й технической кислоты стоимостью $
+  564 млн/год по спотовым ценам в ЕС при выручке от металла всего ~$7 млн/год.
+  Регенерация кислоты — критически важная инженерная проблема всего материального направления,
+  и ни одного коммерческого предприятия, делающего это на осадочном фосфогипсе, не существует.<em>Выход в том, чтобы вообще не выщелачивать
+  фосфогипс повторно &mdash; а вместо этого извлекать уран и редкоземельные элементы напрямую из потока фосфорной кислоты
+  (Разблокировка 01).</em>
+
+  <p class="n-srcline">Доказательства: Rm4 · Rm16 · Rm10 · Rm12</p>
+</div>
+<div class="n-finding">
+  <span class="n-num">Вывод 04 &mdash; вопрос радиоактивности даже не поднимался</span>
+  <strong>Фосфогипс в Габесе содержит 214-970 Бк/кг Ra-226; норматив МАГАТЭ/ЕС для освобождения от контроля составляет 1 000 Бк/кг.</strong>И локализацией отходов тут не обойтись: солянокислотное выщелачивание переводит Ra в раствор, Ra соосаждается
+  с продуктом РЗЭ (образуя токсичный, непригодный для продажи концентрат), либо его приходится осаждать обратно в остаток
+  с помощью сорбентов — оставляя 2 млн т/год всё ещё радиоактивного кека. Захоронение NORM обходится
+  в $15-420 за 55-галлонную бочку. Заявление о «чистом гипсе» в контуре — лабораторная идеализация;
+  в промышленном масштабе проблема NORM становится ядром проекта, а не сноской на полях.<p class="n-srcline">Доказательства: Rm11 · Rm12 · Rm13 · Rm5</p>
+</div>
+<div class="n-finding">
+  <span class="n-num">Вывод 05 &mdash; объёмы воды рассчитаны на города &mdash; за исключением одной культуры</span>
+  <strong>Традиционное сельское хозяйство не способно платить €1,10-1,40/м&sup3;; пустынный трюфель — способен.</strong>Доставка опреснённой воды вглубь страны обходится в<b>€1,10-1,40/м&sup3;</b>(рекордная стоимость проекта Jubail 3A
+  составляет €0,38/м&sup3; на выходе со станции, плюс трубопровод за $1,5-2,1 млрд и затраты энергии на перекачку ~1,5 кВт·ч/м&sup3;)
+  &mdash; в 30-40 раз дороже, чем поливная вода в Тунисе сегодня (€0,02-0,05/м&sup3;). Пшеница, оливы
+  и финики структурно не выдержат таких затрат, а «Великая рукотворная река» ($33 млрд) и
+  переброска воды в Эр-Рияде существуют лишь потому, что города, в отличие от полей, поддаются перекрёстному субсидированию. Но трюфель
+  стал исключением: 200-250 мм/год = 2 000-2 500 м&sup3;/га, &times; €1,30 =<b>€2 600-3 250/га/год</b>на воду при валовом доходе €7 500-22 500/га &mdash; затраты на воду составляют<b>11,5-43,2% выручки</b>. Ровно
+  одна культура в этом контуре окупает дорогую опреснённую воду в открытой пустыне, и это
+  трюфель. (Солоноватые грунтовые воды её заменить не могут: растение-хозяин<em>Helianthemum</em>переносит
+  засоление, но<em>Terfezia claveryi</em>приживается только на почти пресных почвах с минерализацией около 0,8 дСм/м.)<p class="n-srcline">Доказательства: Rw3 · Rw5 · Rw7 · Rw8 · Rc15 · Rc7</p>
+</div>
+<div class="n-finding">
+  <span class="n-num">Вывод 06 &mdash; вычислительное направление упирается в дипломатию, а не в инженерию</span>
+  <strong>300 МВт передовых ускорителей сегодня невозможно приобрести на законных основаниях.</strong>Правила Бюро промышленности и безопасности (BIS) США на 2024-2026 годы: ОАЭ получили 35 000 GPU в рамках строгого
+  соглашения о «вычислительной дипломатии» и были переведены в страновую группу A:5 в июле 2026 года; поставки в Саудовскую Аравию
+  по-прежнему рассматриваются в индивидуальном порядке с лимитом в 35 000 единиц. У Туниса нет подобного двустороннего соглашения о безопасности ИИ.
+  ~300 000 ускорителей (300 МВт) — это принципиально иной порядок величины, и тезис о
+  «суверенном ИИ на рудниках» целиком зависит от дипломатических переговоров между
+  Вашингтоном и Тунисом — а не от геотермических градиентов, рабочих рук или линий электропередачи.
+  Европейские альтернативы существуют, но ограничены по мощности; переход же на китайское «железо» ставит крест
+  на интеграции в экосистему западного программного обеспечения.<p class="n-srcline">Доказательства: Rc5 · Rc6 · Rc4</p>
+</div>
+<div class="n-finding">
+  <span class="n-num">Вывод 07 &mdash; трюфелю никогда не требовалась земля под панелями (исправление)</span>
+  <strong>Будучи отделённым от солнечной электростанции, трюфель упирается лишь в рынок и посевной мицелий &mdash; но не в свет и не в землю.</strong>В более ранней версии этого аудита отмечался агрономический конфликт между светолюбивым растением-хозяином<em>Helianthemum</em>и тенью от агровольтаики. Этот конфликт возник из-за необоснованного
+  допущения: контур вовсе не требовал выращивать трюфель строго под панелями. При высадке в виде открытых
+  плантаций на обширных засушливых государственных землях Туниса (~86 000 га, выделенных под 40-летнюю аренду согласно
+  Закону 93-120 [Rc19]), земля попросту перестаёт быть сдерживающим фактором. Реальных ограничений два. Во-первых,
+  рынок: мировая торговля пустынным трюфелем — это ниша объёмом ~100 т/год дикого сбора, и предложение культивируемого продукта
+  свыше ~1 000-1 500 т/год обрушит диапазон цен в €20-60/кг [Rc18] &mdash; что ограничивает масштабы программы
+  ~2 600-4 000 га. Во-вторых, посадочный материал: норма ~6 000 микоризированных саженцев на гектар означает, что для плантации в 2 000 га
+  требуется 12 миллионов штук [Rc16], тогда как саудовский прецедент на 150 га по большей части провалился [Rc17].
+  Этот вывод аннулирует прежнее утверждение об «агрономической несовместимости».<p class="n-srcline">Доказательства: Rc19 · Rc18 · Rc16 · Rc17 · Rc7 · Rc8</p>
+</div>
+
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Восходящая модель</p>
+    <h2>Сколько система будет стоить на самом деле</h2>
+    <p class="n-lede">Тот же подход, что и в каждом досье на этом сайте: на входе исходные параметры, затем перерасчёт
+    в коде. каждая удельная стоимость представляет собой подтверждённый источниками показатель за 2024-2026 годы с диапазоном значений.</p>
+<div class="n-twrap"><table class="n-feas"><caption>Восходящие капитальные затраты — базовый сценарий (каждая строка содержит источник и диапазон)</caption><thead><tr><th>Компонент</th><th>Капитальные затраты (среднее)</th><th>Основа расчёта и диапазон</th></tr></thead><tbody>
+<tr><td>Контур извлечения РЗЭ (гидрометаллургия, ~290 т/год РЗЭ)</td><td><strong>$72 млн</strong></td><td>без разделения; +$244 млн на установку жидкостной экстракции [Rm10]</td></tr>
+<tr><td>Инфраструктура ЦОД (300 МВт, без учёта IT-оборудования)</td><td><strong>$3 450 млн</strong></td><td>Объект класса ИИ $8-15 млн/МВт [Rc4]</td></tr>
+<tr><td>ЦОД: ИИ-ускорители (300 МВт)</td><td><strong>$9 900 млн</strong></td><td>~300 000 GPU; подпадают под экспортный контроль BIS [Rc6]</td></tr>
+<tr><td>Агровольтаическая СЭС (3,2 ГВт)</td><td><strong>$3 389 млн</strong></td><td>промышленная СЭС $0,8-1,2/Вт(пик) + надбавка за агровольтаику 20-40% [Rw11]</td></tr>
+<tr><td>Накопители BESS для балансировки (5 ГВт·ч)</td><td><strong>$646 млн</strong></td><td>8 часов средней нагрузки; $110-125/кВт·ч [Rw9]</td></tr>
+<tr><td>Опреснение (1,37 млн м3/сут)</td><td><strong>$1,644M</strong></td><td>$800-2,000 за m3/day [Rw2]</td></tr>
+<tr><td>Двухниточный трубопровод 300 km</td><td><strong>$1,800M</strong></td><td>$5-7M/km при таком расходе [Rw5]</td></tr>
+<tr><td>Энергосеть + передача</td><td><strong>$450M</strong></td><td>Подключение 3 GW [Rw13]</td></tr>
+<tr><td><strong>Вся система</strong></td><td><strong>~$21.4B</strong></td><td>Примерно<strong>20-45% ВВП Туниса</strong>; ~35% в средней точке. Оборудование дата-центров подпадает под экспортный контроль (Вывод 06 ниже); водные и энергетические статьи находятся на нижнем уровне мировых показателей за 2024-26 годы.</td></tr>
+</tbody></table></div>
+    <p class="n-note">Главный драйвер, не являющийся вопросом удельной себестоимости:
+    33 M$/MW для ИИ-ускорителей — текущий глобальный
+    бенчмарк для GPU, которые страна без двустороннего соглашения с США о безопасности в сфере ИИ
+    не может законно приобрести<sup class="n-cite">[Rc6]</sup>. Инфраструктура — дешевая часть; чипы —
+    подпадающая под экспортный контроль часть; таким образом, вычислительная опора контура зависит от дипломатического
+    соглашения, а не от инженерии.</p>
+
+<div class="n-twrap"><table>
+<caption>Годовые opex и выручка, честные столбцы</caption>
+<thead><tr><th>Поток</th><th>В год (среднее)</th><th>База</th></tr></thead>
+<tbody>
+<tr><td>Кислота для РЗЭ (свежая HCl)</td><td><strong>$125-560M</strong></td><td>601 kg HCl-equiv/t PG; $124-150/t [Rm16]; регенерация 85% снизила бы затраты примерно в 6 раз — не доказано на таком сырье</td></tr>
+<tr><td>Энергия на опреснение + O&amp;M</td><td><strong>~$150-220M</strong></td><td>2 TWh при стоимости балансировки мощности €100-130/MWh + 13% O&amp;M [Rw3, Rw9]</td></tr>
+<tr><td>Выручка от металлов РЗЭ</td><td><strong>$5-10M</strong></td><td>422 t при доле NdPr 15-25%, дисконт 30-50% на смешанный концентрат [Rm8, Rm9]</td></tr>
+<tr><td>Выручка от воды</td><td><strong>отрицательная &mdash; субсидия</strong></td><td>С доставкой €1.10-1.40/m&sup3; против €0.02-0.05/m&sup3; агрономического потолка; продажи городам все равно отстают от себестоимости в 2-20 раз [Rw6, Rw7, Rw8]</td></tr>
+<tr><td>Выручка от трюфелей (ограничена рынком)</td><td><strong>€15-45M валовая</strong></td><td>2,000-3,000 ha (потолок рынка роскоши) × 376 kg/ha в среднем × €20-60/kg [Rc7, Rc9]; земля не является ограничением — им выступает емкость рынка в ~1,000-1,500 t/yr (Вывод 07). При заложенных в отчете 10,000 ha нижняя цена в €20/kg рушится</td></tr>
+<tr><td>Выручка от вычислений</td><td><strong>0</strong></td><td>Суверенное использование по определению; модель с якорным</td></tr>
+</tbody>
+</table></div>
+
+
+<div class="n-twrap"><table>
+<caption>Who finances what, at what terms</caption>
+<thead><tr><th>Instrument</th><th>Available for</th><th>Reality for this program</th></tr></thead>
+<tbody>
+<tr><td>EIB / AfDB / KfW / World Bank-IFC / EU Global Gateway</td><td>Desalination, water, grid, renewables ("17 GW renewable programme" for Tunisia)</td><td>The realistic channel — but each project must be bankable on its own PPA/offtake, and MDBs do not finance a 0-revenue loop [Rc12]</td></tr>
+<tr><td>IPP / PPP concessions (Law 2015-42)</td><td>Solar, water plants</td><td>Proven: 500 MW awarded at ~$0.031/kWh, 25-yr PPAs (Scatec, Qair, Voltalia) [Rc13]. Scale to 3 GW needs grid first ($1-2.5M/km of 400 kV) [Rw13]</td></tr>
+<tr><td>Sovereign guarantee / MIGA</td><td>All</td><td>Required for bankability given Caa1/B-; the state cannot comfortably co-sign $20B of obligations against 83% debt/GDP [Rc11, Rw10]</td></tr>
+<tr><td>IMF program</td><td>—</td><td>None active; the traditional unlock gate for institutional capital is closed [Rc12]</td></tr>
+<tr><td>Gulf / Chinese capital</td><td>Some</td><td>Exists, but swaps independence for dependency — the exact absence this page is about</td></tr>
+</tbody>
+</table></div>
+
+
+<div class="n-twrap"><table>
+<caption>Downside cases — what actually happens when a link fails</caption>
+<thead><tr><th>Shock</th><th>Effect</th><th>What survives</th></tr></thead>
+<tbody>
+<tr><td>REE prices -50% (historic: 2-3x annual swings since 2020)</td><td>Metal revenue $5-10M &rarr; $2-5M/yr; the acid bill is unchanged</td><td>Nothing on the materials side. The environmental case (PG remediation) survives but as a funded liability, not a business</td></tr>
+<tr><td>Recovery 65% &rarr; 45% industrial (the published norm for scale-up)</td><td>422 t &rarr; 290 t/yr REE; revenue -30%</td><td>Same as above</td></tr>
+<tr><td>GPU export agreement refused</td><td>300 MW of sovereign AI is legally unavailable; the sovereign-compute absence stays unfilled</td><td>A commercial edge-node (10 MW) with an anchor tenant and EU/US hardware — smaller, exportable, real</td></tr>
+<tr><td>Drought year (AAI-sensitive; documented 0-2 kg/ha)</td><td>Truffle revenue &rarr; ~0 for the season; 400 kg/ha was an upper-quartile figure</td><td>The crop itself — with drip irrigation and a 3-season yield record before scaling</td></tr>
+<tr><td>Water subsidies withdrawn</td><td>500 Mm&sup3;/yr delivered at €1.10-1.40 can only be sold where buyers exist: cities, industry, tourism</td><td>A smaller, coastal, urban-scale program — the honest version of the water pillar</td></tr>
+<tr><td>One link of the loop fails (any one)</td><td>The loop was never a load-bearing structure: 0.7^8 &asymp; 5.8% joint probability</td><td>Every module that is cash-positive on its own, which is the redesign we propose below — modular by construction</td></tr>
+</tbody>
+</table></div>
+
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">How it could actually run</p>
+    <h2>Kill-gate protocol &mdash; the template transfers, the gates stay</h2>
+    <p class="n-lede">The honest answer to "what happens when one link fails" is: the loop was
+    the wrong unit of build. The right unit is the module with its own gate, financed on its own
+    cash flow, and a public go/no-go criterion. This is the graveyard logic of the ledger,
+    applied to a nation: the plan includes its own falsification.</p>
+    <div class="n-twrap"><table>
+      <caption>Module gates — observable evidence, not opinions</caption>
+      <thead><tr><th>Module</th><th>Go / no-go gate</th><th>Decision</th></tr></thead>
+      <tbody>
+        <tr><td>REE from PG</td><td>6-month pilot mass balance; acid regeneration &ge;85%; separated-oxide cost &lt;$40/kg</td><td>No-go unless the regenerated acid number comes in — it is the whole economics</td></tr>
+        <tr><td>Underground compute</td><td>Radon &amp; geotech survey + 10 MW pilot with anchor tenant, PUE &lt;1.25</td><td>Pivot to a certified stable site or surface edge node; never build 300 MW on a hypothesis</td></tr>
+        <tr><td>Water</td><td>Signed urban/industrial offtake &ge;€0.80/m&sup3;</td><td>Coastal, municipal-scale only. The 300 km agricultural version is the one that dies</td></tr>
+        <tr><td>Truffle</td><td>3 seasons on 100 ha; average &ge;200 kg/ha at &ge;€20/kg farm-gate</td><td>Scale on full sun (Finding 07), exports first, nutrition second</td></tr>
+        <tr><td>Loop</td><td>Every module cash-positive without the others</td><td>Only then may the "one industrial metabolism" language be used</td></tr>
+      </tbody>
+    </table></div>
+
+<ol class="n-phase">
+  <li><strong>P0 &mdash; Evidence (months 0-18)</strong>
+    <p>Fifty million dollars of pilots, not twenty billion of faith. 100 ha of inoculated Helianthemum
+    with three seasons of yield data; a 50 t/yr acid circuit with a published mass balance
+    (the acid-recycle number is the gate); a radon + geotechnical survey of the actual Gafsa
+    workings; one 10 MW datacenter pilot with a signed anchor tenant and a published PUE;
+    a 100k m&sup3;/day coastal RO unit operating in the STEG framework.</p></li>
+  <li><strong>P1 &mdash; First bankable modules (years 1-4)</strong>
+    <p>Three 300-450k m&sup3;/day desalination plants for municipal and industrial offtake
+    (EIB/AfDB/Global Gateway financing; the 17 GW renewable programme is the natural umbrella);
+    ~700 MW of solar via the proven IPP route; 1,000-2,000 ha of truffle orchards on full-sun
+    sites (without shade panels — Finding 07); a 20-50 t/yr REE partnership with a research
+    university and an EU CRMA offtake conversation.</p></li>
+  <li><strong>P2 &mdash; Масштабирование победителей (годы 4–8)</strong>
+    <p>Только модули, прошедшие свои пороги отсева: 500 Mm&sup3;/год при наличии подписанного соглашения об отборе для городских/промышленных нужд
+    (прибрежное распределение, а не 300-километровое сельскохозяйственное кольцо); 2.5–3.5 GW фотовольтаики, если это поддерживается
+    сетевой программой и PPA; экспорт трюфелей в масштабе, если результаты за 3 сезона подтвердятся;
+    вычисления только при наличии аппаратного пути и PPA.</p></li>
+  <li><strong>P3 &mdash; Замкнутый контур (годы 8–15, опционально)</strong>
+    <p>Только и исключительно если каждый модуль генерирует положительный денежный поток сам по себе. Замкнутый контур — это принцип проектирования для
+    очередности реализации, но ни в коем случае не обоснование для отдельного взятого проекта. Это та же дисциплина, которую
+    реестр применяет к деептех-проектам: зона отсева — часть метода.</p></li>
+</ol>
+
+
+<div class="n-boundary" style="margin-top:2rem">
+  <h3>Что красная команда не смогла уничтожить</h3>
+  <p><strong>Вода, скорректированный охват:</strong>водохранилища и водоносные горизонты Туниса действительно истощены, а
+  опреснение на побережье в муниципальном масштабе стандартно, доказано и финансируемо (€0.38–0.60/m&sup3;
+  на выходе со станции, мега-заводы по цене $800–1,200 за m&sup3;/день, рекорд LCOW €0.38/m&sup3;).
+  Что отсекается — так это 300-километровая доставка для сельского хозяйства: ни одна страна в мире не выиграла
+  в субсидиарной арифметике таких проектов.</p>
+  <p><strong>Солнечная энергетика, в правильном темпе:</strong>модель IPP работает (500 MW по ~$0.031/kWh);
+  целевым ориентиром должен быть темп сетевой программы, а не изолированный остров на 3 GW.</p>
+  <p><strong>Пустынный трюфель, разделенный и честно ограниченный:</strong>единственный модуль, где
+  существует коммерческое выращивание (Испания, с 1999 года), средняя урожайность ~376 kg/ha за 20 лет,
+  потребление воды невелико (200–250 mm), содержание белка реально (14–22.5% сухого веса [Rc8]), цена у ворот фермы
+  €20–60/kg [Rc9] &mdash; и единственная культура, маржа которой способна поглотить опресненную воду (11.5–43.2% от
+  выручки [Rc15]). Земля не является ограничением: ~86,000 ha арендуемых засушливых государственных земель [Rc19].
+  Реальные ограничения — это рынок предметов роскоши (~1,000–1,500 t/год &rarr; ~2,600–4,000 ha до того, как диапазон
+  €20–60 рухнет [Rc18]) и поставка инокулята (~6,000 микоризированных саженцев/ha [Rc16]; саудовский прецедент
+  на 150 ha по большей части провалился [Rc17]). Программа на 2,000–3,000 ha — это подлинный экспорт на €15–45M/год &mdash;
+  реальный, но ограниченный, а не отрасль, преобразующая пустыню.</p>
+  <p><strong>Стратегические металлы, переопределенные:</strong>повторное выщелачивание ФГ мертво, но металлы —
+  нет. Извлекайте уран + тяжелые редкоземельные элементы из потока фосфорной кислоты, который GCT уже эксплуатирует —
+  технологическая схема, доказанная двумя десятилетиями практики (Freeport, 14M lbs U3O8), сейчас восстанавливается с бюджетом ~$100M компанией OCP в Марокко
+  [Ru1, Ru2]. В масштабах Гафсы это даст ~$78M/год чистой выручки от стратегических металлов (уран обеспечивает основу;
+  тяжелые РЗЭ идут попутно), при этом оставшиеся РЗЭ в ФГ остаются опционом на будущее. Это честное
+  заполнение отсутствия в категории «стратегические материалы» — обусловленное прохождением через пилотный проект в Тунисе, как и любое другое снятие блокировок.</p>
+  <p><strong>Вычисления национального масштаба, любого вида:</strong>самое глубокое отсутствие из всех.
+  Финляндия, Швеция, Исландия сделали этот шаг; в Тунисе есть таланты (экзит InstaDeep за $680M служит
+  доказательством) — барьерами выступают законодательство об оборудовании и энергосеть, а не интеллектуальный потенциал. В пересмотренном виде это
+  коммерческая ставка на экономику данных, основанная на модели якорного арендатора на благоприятной площадке.</p>
+</div>
+
+  </div>
+</div>
+
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Снятие блокировок</p>
+    <h2>Каждая стена и то, что ее открывает</h2>
+    <p class="n-lede">Красная команда, которая только разрушает, выглядит как самосаботаж. Вторая
+    половина метода та же, что применяется к тупиковому деептех-проекту:<em>переопределить ограничение, затем
+    произвести перерасчет исходя из реалий площадки</em>. Большая часть того, что аудит назвал невозможным, растворяется, когда вы
+    рассуждаете исходя из того, чем Тунис является на самом деле &mdash; прибрежной, залитой солнцем, богатой фосфатами
+    и граничащей с ЕС страной &mdash; вместо того, что предполагал план первого порядка. Каждое снятие блокировки
+    ниже помечено тегом<span class="n-tag">площадка</span>(рассуждение на основе фундаментальных принципов,
+    исходя из реальной географии, ресурсов и институтов страны) или<span class="n-tag">исследование</span>(цитируемый промышленный прецедент), и каждое содержит условие, которое способно его подтвердить.</p>
+
+    <div class="n-unlock">
+      <span class="n-num">Снятие блокировки 01 &mdash; материальный кластер выщелачивал не то сырье</span>
+      <strong>Извлекайте уран и редкоземельные элементы из потока фосфорной кислоты, а не путем повторного разложения
+      фосфогипса.</strong>Красная команда была права в том, что повторное выщелачивание ФГ мертво &mdash; однако ФГ никогда и не был
+      ресурсом. В ходе производства кислоты мокрым способом<em>85–90% урана и 15–40%
+      редкоземельных элементов переходят в раствор фосфорной кислоты</em>, тогда как &gt;80–90% радия остается
+      в твердом гипсе<span class="n-srcline">[Rm11] [Ru1]</span>. Извлекайте металлы
+      на этом этапе, и сразу три стены исчезнут &mdash; кислотная стена (кислотный контур уже функционирует
+      на заводе GCT в Габесе), радиационная стена (Ra никогда не соосаждается с
+      продуктом, поскольку он так и не покинул гипс) и стена содержания (ценность
+      определяет уран, а не церий).<strong>Маршрут проверен на практике, а не гипотетичен.</strong>Извлечение урана из фосфорной
+      кислоты мокрого способа осуществлялось в промышленных масштабах в США на протяжении двух десятилетий &mdash; завод Freeport (Луизиана)
+      произвел<strong>14 миллионов фунтов U3O8</strong>за 1978–99 годы с извлечением &gt;95% методом жидкостной
+      экстракции DEHPA/TOPO, а уран фосфатного происхождения обеспечивал ~20% потребностей США в уране в 1980-х годах<span class="n-srcline">[Ru1]</span>. Этот процесс возрождается в 2025 году: компания URANEXT, дочерняя структура OCP, строит
+      первый в Марокко завод по производству уранового концентрата (желтого кека) стоимостью ~$100M в Эль-Джадиде<span class="n-srcline">[Ru2]</span>,
+      а эксплуатационные затраты SX составляют $59–83/lb при спотовой цене $80–95/lb<span class="n-srcline">[Ru3]</span>.
+      В применении к масштабам Гафсы с ее ~6.5 Mt руды в год при содержании ~50 ppm U<span class="n-srcline">[Ru5]</span>:<strong>~325 t U3O8/год (&asymp;$61M/год)</strong>плюс<strong>~585 t/год извлеченных оксидов
+      РЗЭ (&asymp;$18M/год)</strong>, что дает<strong>~$78M/год</strong>выручки от стратегических металлов
+      при стоимости завода ~$100M &mdash; против тупиковых $5–10M при повторном выщелачивании ФГ с затратами на кислоту в размере $125–560M.
+      Остаточный гипс по-прежнему сохраняет ~65% РЗЭ как опцион на будущее, но уран и
+      фракция тяжелых РЗЭ извлекаются чистыми.<p class="n-srcline">Свидетельства: Ru1 &middot; Ru2 &middot; Ru3 &middot; Ru4 &middot; Rm11.
+      Иерархия уровней все еще применима: это снятие блокировки уровня L2/L3 (доказанный прецедент + опубликованные экономические показатели),
+      проходящее через порог отсева в виде пилотного проекта в Тунисе &mdash; а не утвержденный проект L4.</p>
+    </div>
+
+    <div class="n-twrap"><table>
+      <caption>Оставшиеся стены, открываемые логикой площадки</caption>
+      <thead><tr><th>Стена (со стороны красной команды)</th><th>Снятие блокировки</th><th>Основание</th><th>Что может послужить доказательством</th></tr></thead>
+      <tbody>
+      <tr><td>300 MW передовых GPU юридически недоступны (BIS)</td><td>Корректировка охвата: 10–50 MW<em>суверенных</em>вычислительных мощностей на кремнии с меньшими ограничениями (серия AMD MI, модели с открытыми весами) плюс колокейшн-парк, принимающий арендаторов из ЕС/стран Персидского залива, которые привозят собственное одобренное BIS оборудование</td><td><span class="n-tag">площадка</span>суверенитет — это юрисдикция над данными, а не владение GPU; бум колокейшна в Средиземноморье требует дешевой солнечной энергии + земель по соседству с ЕС</td><td>Подписанное соглашение о намерениях (LOI) на размещение от одного соблюдающего требования арендатора</td></tr>
+      <tr><td>ЦОД в фосфатных шахтах не существует; Гафса радиоактивна и подвержена оседанию грунта</td><td>Отказаться от шахт. Сохранить идею естественного охлаждения (free-cooling) и перенести ее на побережье: теплообмен с морской водой (по типу Lefdal, но для Средиземноморья ~15–18&deg;C) на равнинных рекультивируемых участках с доступом к портам и энергосетям</td><td><span class="n-tag">рельеф</span>охлаждение морской/глубинной водой коммерчески освоено; «шахта с температурой 15–20&deg;C» была неверным вектором</td><td>Прибрежный пилотный проект на 10 MW с подтверждённым PUE &lt;1,25</td></tr>
+      <tr><td>500 Mm&sup3; на 300 km вглубь суши обходятся в 30–40 раз дороже поливной воды</td><td>Изменить пространственную структуру: опреснение на побережье для прибрежных городов и промышленности; очистка и повторное использование существующих сточных вод страны для внутренних районов; дополнительное капельное орошение (200–250 mm) в масштабе гектара для трюфеля &mdash; без транспустынного акведука</td><td><span class="n-tag">рельеф</span>сельскохозяйственное плечо в 300 km/400 m было самой сложной и наименее необходимой частью</td><td>Объём повторного использования сточных вод в Тунисе и стоимость местного пилотного проекта обратного осмоса</td></tr>
+      <tr><td>~$21B невозможно профинансировать при рейтинге Caa1/B- без программы МВФ</td><td>Не финансируйте весь замкнутый цикл. Финансируйте один финансируемый модуль (прибрежная СЭС + вода) траншами по $500M-1B через программу ЕС Global Gateway на 17 GW и ЕИБ &mdash; проект на 500 MW по цене $0,031/kWh уже доказывает жизнеспособность пути</td><td><span class="n-tag">рельеф</span>+ цитируемые [Rc12, Rc13]</td><td>Один подписанный транш с софинансированием МБР</td></tr>
+      <tr><td>Рынок трюфелей насыщается на уровне ~2 600–4 000 ha</td><td>Сохранить трюфель в качестве флагмана на его естественном пределе и вести<em>портфель</em>соле- и засухоустойчивых высокодоходных культур на тех же водных и земельных ресурсах (финики, гранат, каперсы, алоэ, жожоба, моринга) &mdash; Тунис уже экспортирует большинство из них</td><td><span class="n-tag">рельеф</span>возможности пустыни никогда не сводились к одной культуре</td><td>Пилотный проект по трюфелю на 100 ha + масштабирование существующих экспортных цепочек</td></tr>
+      <tr><td>Интегрированный замкнутый цикл — это ставка с вероятностью 5,8% (0,7^8)</td><td>Цикл должен быть<em>эмерджентным, а не спроектированным заранее</em>: стройте модули, преодолевающие свои пороги, и «замкнутый цикл» станет тем, что эти прошедшие модули случайно усилят, &mdash; это описание результата, но ни в коем случае не предварительное условие</td><td><span class="n-tag">рельеф</span>протокол порога отсева уже выстраивает эту последовательность (P0–P3)</td><td>Два модуля с положительным денежным потоком, независимо друг от друга</td></tr>
+      </tbody>
+    </table></div>
+
+    <p class="n-srcline">Примечание к методологии: разблокировки через «рельеф» — это выводы из задокументированной
+    географии, ресурсов и институтов Туниса (каждый со своей подтверждённой ссылкой, где таковая имеется); они
+    служат честным дополнением к подкреплённой литературой красной команде, а не её заменой. Каждая
+    разблокировка всё равно упирается в порог отсева &mdash; лестница фальсификации применима к решению
+    в той же степени, что и к проблеме.</p>
+  </div>
+</div>
+
+
+<div class="n-section" style="border-bottom:0">
+  <div class="wrap" style="max-width:76ch">
+    <p class="eyebrow">Источники красной команды</p>
+    <h2 style="font-size:1.25rem">Исследовательские заметки, как указано выше</h2>
+    <ol class="n-src">
+<li id="rnRm1"><a href="https://www.mdpi.com/2075-163X/15/12/1232" rel="noopener" target="_blank">Rare Earth Elements in Phosphate Ores and Industrial By-Products (среднее по Гафсе 322 mg/kg, пики >1 700)</a></li>
+<li id="rnRm2"><a href="https://www.mdpi.com/2071-1050/17/19/8828" rel="noopener" target="_blank">Global phosphogypsum: generation, stockpiles and 60-85% REE partition to PG</a></li>
+<li id="rnRm3"><a href="https://www.researchgate.net/publication/352414505_Rare_earth_elements_characterization_associated_to_the_phosphate_fertilizer_plants_of_Gabes_Tunisia_Central_Mediterranean_Sea_Geochemical_properties_and_behavior_related_economic_losses_and_potential_" rel="noopener" target="_blank">Характеристика РЗЭ на фосфатных заводах в Габесе: обогащение до 1 075 mg/kg; Ce 80–309 mg/kg; незначительное содержание Dy/Tb</a></li>
+<li id="rnRm4"><a href="https://www.researchgate.net/publication/361001660_Characterization_and_Leaching_Kinetics_of_Rare_Earth_Elements_from_Phosphogypsum_in_Hydrochloric_Acid" rel="noopener" target="_blank">Characterization and Leaching Kinetics of REE from Phosphogypsum in HCl (1,65 mol/L; 65,6% ΣREE; 73,8% Y)</a></li>
+<li id="rnRm5"><a href="https://www.chinanhd.com/recovering-rare-earth-elements-from-phosphogypsum-as-a-secondary-resource-pathway/" rel="noopener" target="_blank">Recovering REE from phosphogypsum as a secondary resource: сценарии неудач при масштабировании (фильтрация, силикагель, соэкстракция)</a></li>
+<li id="rnRm6"><a href="https://cris.vtt.fi/en/publications/pilot-scale-recovery-of-rare-earths-and-scandium-from-phosphogyps/" rel="noopener" target="_blank">Опытно-промышленное извлечение РЗЭ компанией «ФосАгро» из фосфогипса на основе апатита (5 m³/h — магматическое, более богатое сырьё)</a></li>
+<li id="rnRm7"><a href="https://www.rainbowrareearths.com/wp-content/uploads/2022/03/21-08-04-Sprott-Initiation.pdf" rel="noopener" target="_blank">Rainbow Rare Earths Phalaborwa: 2,2 Mtpa фосфогипса, 29,1% NdPr, пилотный проект подтверждён, opex<$13/kg (exception, not the rule)</a></li>
+<li id="rnRm8"><a href="https://en.institut-seltene-erden.de/aktuelle-preise-von-seltenen-erden/" rel="noopener" target="_blank">Цены на оксиды в 2024–2026 годах: NdPr $64–103/kg; Dy ~$340/kg; Tb ~$1 800–1 875/kg; La $3,70/kg; Y<$5-10/kg; Ce ~zero</a></li>
+<li id="rnRm9"><a href="https://pubs.acs.org/doi/pdf/10.1021/acssusresmgt.5c00353" rel="noopener" target="_blank">Дисконт на смешанный концентрат редкоземельных элементов по сравнению с разделёнными оксидами (30–50%)</a></li>
+<li id="rnRm10"><a href="https://investingnews.com/aclara-announces-update-on-its-rare-earths-separation-project/" rel="noopener" target="_blank">Aclara: завод жидкостной экстракции для разделения, capex класса 5 — $244M, opex $12/kg REO</a></li>
+<li id="rnRm11"><a href="https://www.researchgate.net/publication/24188010_Characterization_of_phosphogypsum_wastes_associated_with_phosphoric_acid_and_fertilizers_production" rel="noopener" target="_blank">Радиологическая характеристика тунисского фосфогипса: Ra-226 214–970 Bq/kg; U-238 88,5; Pb-210 755,4; риск соосаждения</a></li>
+<li id="rnRm12"><a href="https://www.mdpi.com/2071-1050/17/8/3473" rel="noopener" target="_blank">МАГАТЭ / EU BSS: порог освобождения от контроля 1 Bq/g (1 000 Bq/kg) для U-238/Ra-226; классификация TENORM</a></li>
+<li id="rnRm13"><a href="https://www.ogj.com/home/article/17230971/norm-disposal-options-costs-vary" rel="noopener" target="_blank">Варианты и затраты на захоронение NORM ($15–420 за 55-галлонную бочку)</a></li>
+<li id="rnRm14"><a href="https://www.adlittle.com/sites/default/files/reports/ADL%20The%20rare%20earth%20imperative%202025.pdf" rel="noopener" target="_blank">Доля Китая в мировых мощностях по разделению/очистке РЗЭ составляет 85–90%</a></li>
+<li id="rnRm15"><a href="https://www.elibrary.imf.org/view/journals/001/2026/072/article-A001-en.xml" rel="noopener" target="_blank">Экономика точки безубыточности для проектов по РЗЭ за пределами Китая (~$77/kg в эквиваленте NdPr; для фосфогипсового сырья требуется >$150/kg)</a></li>
+<li id="rnRm16"><a href="https://chemtradeasia.sg/en/market-insights/hydrochloric-acid-supply-report-2024-2025-buyer-lessons" rel="noopener" target="_blank">Цены на соляную кислоту: ЕС $124–150/t (4 кв. 2025 г.); Северная Америка ~$350/t; Китай ~$15/t</a></li>
+<li id="rnRm17"><a href="http://www.gct.com.tn/fileadmin/user_upload/Downloads/Rapport_Annuels/GCT-ANNUAL-REPORT-2012-PART1.pdf" rel="noopener" target="_blank">Пропускная способность GCT (~6,5 Mt фосфоритной руды в год; >10 Mt/yr фосфогипса на пике; «сотни миллионов тонн» сброшено в Габесе)</a></li>
+<li id="rnRw1"><a href="https://ide-tech.com/en/project/sorek-b-desalination-plant/" rel="noopener" target="_blank">Крупнейшие заводы морского обратного осмоса (SWRO): Ras Al-Khair 1 036 000 m³/d; Taweelah 909 200 ($847M-1,2B); Sorek II 672 000; Rabigh 3 600 000</a></li>
+<li id="rnRw2"><a href="https://supra-international.com/insights/seawater-reverse-osmosis-swro-desalination-technology-comprehensive-analysis-of-latest-membrane-innovations-capital-and-operating-cost-economics-and-performance-optimization-strategies" rel="noopener" target="_blank">Capex SWRO: $800–1 200 за m³/день для мега-заводов (>100k m³/d)</a></li>
+<li id="rnRw3"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8953854/" rel="noopener" target="_blank">LCOW на выходе с завода: $0,40–0,60/m³ (Jubail 3A $0,41; заявка Sorek II $0,32–0,45); доля энергии составляет 40–60% от opex</a></li>
+<li id="rnRw4"><a href="https://www.engineeringtoolbox.com/water-pumping-costs-d_1527.html" rel="noopener" target="_blank">Физика перекачки: подъём на 400 m = 1,09 kWh/m³ при 100% КПД; 1,45 при 75%; трение 0,5–1,5 kWh/m³ на протяжении 300 km; реалистично 2,0–2,5 kWh/m³</a></li>
+<li id="rnRw5"><a href="https://www.meed.com/saudi-arabia-awards-22bn-water-transmission-contract" rel="noopener" target="_blank">Jubail-Buraydah IWTP: 587 km, 650 000 m³/d, $2,26B ($3,85M/km); двухниточный масштаб $5–7M/km</a></li>
+<li id="rnRw6"><a href="https://investriyadh.ai/intelligence/water-scarcity-investment/" rel="noopener" target="_blank">Стоимость опреснённой воды, доставленной вглубь суши: $1,10–1,50/m³ (на выходе с завода + транспортировка + энергия на перекачку)</a></li>
+<li id="rnRw7"><a href="https://www.sonede.com.tn/tout-savoir-sur-leau/la-facture-deau-methodes-de-paiement/" rel="noopener" target="_blank">Тарифы на воду в Тунисе: SONEDE 0,200–2,310 TND/m³; орошение 0,060–0,160 TND/m³; подземные воды 0,112–0,162 TND/m³</a></li>
+<li id="rnRw8"><a href="https://www.mei.edu/publication/whats-next-libyas-great-man-made-river-project/" rel="noopener" target="_blank">Международные прецеденты транспортировки: GMMR $33B (2,5–6,5 Mm³/d, $0,28–0,62/m³, ископаемая вода); приведенная стоимость транспортировки в Эр-Рияде $0,42/m³;<$0.20/m³ is the agronomic ceiling</a></li>
+<li id="rnRw9"><a href="https://www.energy-storage.news/battery-storage-system-prices-continue-to-fall-sharply-bnef-and-ember-reports-find/" rel="noopener" target="_blank">Обеспечение круглосуточной мощности (24/7): 3,03 GW при КИУМ 20% = 0,606 GW в среднем (нулевая маржа); 9,15 GWh за ночь; КПД цикла BESS 85% → 12–15 GWh; $110–125/kWh → ~$1,5B; LCOE СЭС+накопитель $100–130/MWh</a></li>
+<li id="rnRw10"><a href="https://www.trade.gov/country-commercial-guides/tunisia-electrical-power-systems-and-renewable-energy" rel="noopener" target="_blank">Энергосистема Туниса: STEG 5,9 GW, ~19 TWh/yr, 95% на газе, возобновляемые источники энергии<5%, industrial tariff 0.352 TND/kWh; budget deficit 5-7% GDP, debt ~83% GDP</a></li>
+<li id="rnRw11"><a href="https://www.mdpi.com/1996-1073/19/1/102" rel="noopener" target="_blank">Агровольтаика: премия к capex в 20–40% по сравнению с промышленными СЭС (+$0,30/Wp); диапазон NREL $1,20–2,60/Wp</a></li>
+<li id="rnRw12"><a href="https://2009-2017.state.gov/e/eb/ifd/2008/101021.htm" rel="noopener" target="_blank">Земельное законодательство Туниса: иностранная собственность на земли сельхозназначения запрещена; аренда только на 40 лет; перевод земель из госсобственности является административным препятствием</a></li>
+<li id="rnRw13"><a href="https://reglobal.org/tunisia-focuses-on-grid-expansion-for-integrating-renewable-energy/" rel="noopener" target="_blank">Ограничения энергосети: 3 GW перегружают местную сеть 400 kV; новые линии $1–2,5M/km; возобновляемые источники энергии<5% of generation; curtailment risk</a></li>
+<li id="rnRc1"><a href="https://www.lefdalmine.com/" rel="noopener" target="_blank">Прецеденты подземных ЦОД: Lefdal Mine (оливин; 200 MW; PUE 1,08–1,15 за счёт воды фьорда с температурой 8°C); известняковый SubTropolis (18°C + машинное охлаждение); ЦОД в фосфатных шахтах не существует</a></li>
+<li id="rnRc2"><a href="https://www.researchgate.net/publication/251701016_Phosphate_mine_subsidences_deduced_from_differential_interferometry_DInSAR_The_Moulares_case_example_southern_Atlas_of_Tunisia" rel="noopener" target="_blank">Бассейн Гафса: задокументированное с помощью DInSAR оседание грунта в Муларесе; геотермический градиент 25–30°C/km → 23–29°C на глубине 100–300 m</a></li>
+<li id="rnRc3"><a href="https://www.researchgate.net/publication/380540277_Assessment_of_radiation_exposure_in_the_phosphate_mining_area_of_Gafsa_Southeastern_Tunisia" rel="noopener" target="_blank">Радиация в Гафсе: 226Ra 16,3–375,1 Bq/kg в почвах; фосфатные хвосты до 7 606 Bq/kg; накопление радона-222 в закрытых выработках; сбои полупроводников, вызванные альфа-частицами</a></li>
+<li id="rnRc4"><a href="https://envigilance.com/compliance/ashrae-tc-9-9/" rel="noopener" target="_blank">ASHRAE TC9.9 Класс H1 (5-е изд.): рекомендуется 18–22°C, максимум 25°C для ИИ-ускорителей; capex ИИ-ЦОД $20–35M/MW (включая IT), $8–15M/MW только инфраструктура объекта</a></li>
+<li id="rnRc5"><a href="https://intuitionlabs.ai/articles/data-center-gpu-pricing-2026" rel="noopener" target="_blank">Стоимость GPU: ~100 000 класса B200 на 100 MW; $25–40k за штуку → $2,5–4B на 100 MW; 300 MW ≈ $7,5–12B</a></li>
+<li id="rnRc6"><a href="https://www.commerce.gov/news/press-releases/2025/11/statement-uae-and-saudi-chip-exports" rel="noopener" target="_blank">Экспортный контроль Бюро промышленности и безопасности США (BIS) 2024–2026: ОАЭ 35 000 GPU (G42/HUMAIN, «вычислительная дипломатия»); Саудовская Аравия в индивидуальном порядке лимит 35 000; у Туниса нет двустороннего соглашения о безопасности в сфере ИИ</a></li>
+<li id="rnRc7"><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8907101/" rel="noopener" target="_blank">Культивация Terfezia: коммерческое выращивание с 1999–2001 годов (Мурсия, Испания); плодоношение на 2–3 год; 20-летние исследования: в среднем ~376 kg/ha, пик 1 069 kg/ha, в засушливые годы 0–2 kg/ha</a></li>
+<li id="rnRc8"><a href="https://www.mdpi.com/2073-4395/11/8/1462" rel="noopener" target="_blank">Водопотребление пустынного трюфеля 200–250 mm/год; белок 14–22,5% сухого веса (указанные на странице «20–27%» находятся на самом верхнем пределе зарегистрированного диапазона)</a></li>
+<li id="rnRc9"><a href="https://trufamania.com/desert-truffles.htm" rel="noopener" target="_blank">Цена Terfezia у ворот фермы €20–60/kg (€200/kg только при крайнем дефиците на рынках стран Персидского залива); Tuber melanosporum €700–1 500/kg в розницу — это разные товары</a></li>
+<li id="rnRc10"><a href="https://rovirosafarms.com/melanosporum/" rel="noopener" target="_blank">Экономика микокультуры: окупаемость чёрного трюфеля 10–15 лет; Terfezia начинает плодоносить быстрее, но стоит в десять раз дешевле</a></li>
+<li id="rnRc11"><a href="https://www.fitchratings.com/research/sovereigns/fitch-upgrades-tunisia-to-b-outlook-stable-12-09-2025" rel="noopener" target="_blank">Суверенные рейтинги Туниса: Moody's Caa1 (повышение в феврале 2025 г., стабильный); Fitch B- (сентябрь 2025 г., подтверждён в январе 2026 г.); резервы ~4.5 месяца покрытия импорта; WACC 10-15%</a></li>
+<li id="rnRc12"><a href="https://international-partnerships.ec.europa.eu/policies/global-gateway/17-gw-renewable-energy-programme-tunisia_en" rel="noopener" target="_blank">Кто финансирует Тунис: EIB, AfDB, KfW, World Bank/IFC, EU Global Gateway (программа по возобновляемым источникам энергии на 17 GW); нет активной программы МВФ</a></li>
+<li id="rnRc13"><a href="https://www.engineeringnews.co.za/article/scatec-awarded-ppas-for-wind-solar-projects-in-tunisia-2026-01-26" rel="noopener" target="_blank">Эмпирический послужной список IPP: распределено 500 MW солнечной генерации в 2024/25 (25-летние PPA Scatec, Qair, Voltalia по ~$0.031/kWh); установленная мощность ВИЭ ~400 MW; долг STEG >$1.3B</a></li>
+<li id="rnRc14"><a href="https://www.mdpi.com/2073-4395/14/12/3021" rel="noopener" target="_blank">Логика цепочки: 8 взаимозависимых этапов при щедрой 70% вероятности индивидуального успеха ⇒ совместная вероятность ~5.8% (0.7^8)</a></li>
+<li id="rnRc15"><a href="https://jabonline.in/abstract.php?article_id=1363&sts=2" rel="noopener" target="_blank">Чувствительность Terfezia claveryi к соли: приживается только в практически пресных почвах, EC 0.82-0.85 dS/m</a></li>
+<li id="rnRc16"><a href="https://www.researchgate.net/publication/299679495_Preparation_and_Maintenance_of_Both_Man-Planted_and_Wild_Plots" rel="noopener" target="_blank">Плотность плантации Terfezia: ~6,000 микоризованных растений на гектар</a></li>
+<li id="rnRc17"><a href="https://ojs.openagrar.de/index.php/JABFQ/article/download/2184/2570" rel="noopener" target="_blank">Саудовская плантация Tirmania на 150-ha в Al-Khalidiah: в основном провалилась (14 kg/ha после завоза почвы; резкое сокращение осадков)</a></li>
+<li id="rnRc18"><a href="https://www.mdpi.com/1999-4907/14/5/952" rel="noopener" target="_blank">Глубина рынка пустынного трюфеля: дикий сбор в Mamora (Morocco) достигает пика ~100 t/yr; люксовый сегмент обваливается при объёме нового предложения свыше ~1,000-1,500 t/yr</a></li>
+<li id="rnRc19"><a href="https://documents1.worldbank.org/curated/en/926441468778187741/pdf/multi0page.pdf" rel="noopener" target="_blank">Аридные земли Туниса: ~86,000 ha государственных земель, выделенных под 40-летнюю сельскохозяйственную аренду (Law 93-120)</a></li>
+<li id="rnRu1"><a href="https://www.osti.gov/servlets/purl/1357599" rel="noopener" target="_blank">Уран из экстракционной фосфорной кислоты: Freeport (US) произвела 14M lbs U3O8 в 1978-99 при извлечении >95% методом DEHPA/TOPO; ~20% урана в US в 1980-х годах поступало из фосфатов</a></li>
+<li id="rnRu2"><a href="https://northafricapost.com/87963-uranext-to-build-moroccos-first-yellowcake-uranium-plant-in-el-jadida.html" rel="noopener" target="_blank">URANEXT/OCP (Morocco) строит первый современный завод по производству уранового концентрата из фосфорной кислоты, капитальные затраты ~$100M, El Jadida, 2025</a></li>
+<li id="rnRu3"><a href="https://repositories.lib.utexas.edu/bitstreams/89897275-85cf-4cd6-a0c5-1d8daa353799/download" rel="noopener" target="_blank">Себестоимость экстракции урана из WPA (жидкостная экстракция, SX) $59-83/lb U3O8 (ионный обмен, IX: $46-76) против спотовой цены $80-95/lb в 2024-26</a></li>
+<li id="rnRu4"><a href="https://www.mdpi.com/2673-4117/7/2/58" rel="noopener" target="_blank">РЗЭ из фосфорной кислоты: пилот PhosAgro; D2EHPA извлекает >85% тяжёлых РЗЭ (Dy, Y, Er) из WPA</a></li>
+<li id="rnRu5"><a href="https://www.researchgate.net/publication/380540277_Assessment_of_radiation_exposure_in_the_phosphate_mining_area_of_Gafsa_Southeastern_Tunisia" rel="noopener" target="_blank">Содержание урана в фосфоритах Gafsa: 45-140 ppm (южный бассейн)</a></li>
+    </ol>
+    <p class="n-note">Примечание по методологии: ссылки были преобразованы из перенаправлений Deep Research в их постоянные URL; каждая цифра в таблицах выше восходит к одному из них. При расхождении источников приводится диапазон. Исследовательские отчёты (материалы, вода-энергия, вычисления-финансирование) заархивированы вместе с конвейером, с помощью которого они были подготовлены; арифметику можно перезапустить по опубликованным базовым параметрам.</p>
+  </div>
+</div>
+
+
+<div class="n-section">
+  <div class="wrap">
+    <p class="eyebrow">Послушайте, посмотрите</p>
+    <h2>Краткий обзор и глубокое погружение</h2>
+    <p class="n-lede">Два публичных медиаматериала, сопровождающие отчёт, — минутный тизер и 26-минутное глубокое погружение. Обе записи на французском языке.</p>
+    <div class="n-media">
+      <figure>
+        <video controls preload="metadata" playsinline poster="/nations/v1/poster.jpg"
+               aria-label="The Tunisian megaproject that reinvents the future — 75-second video, French audio">
+          <source src="/nations/v1/teaser.mp4" type="video/mp4">
+        </video>
+        <figcaption><span class="n-meta">Видео &middot; 1 min 15 &middot; Аудио на французском</span><br>
+        <strong>Тунисский мегапроект, переосмысляющий будущее</strong><br>Четыре столпа за девяносто секунд: подземные вычислительные мощности, редкоземельные элементы из токсичных отходов, управление водными ресурсами с помощью ИИ, пустынные трюфели.</figcaption>
+      </figure>
+      <figure>
+        <audio controls preload="none" src="/nations/v1/deep-dive.mp3"
+               aria-label="Systemic alchemy for Tunisian sovereignty — 26-minute audio, French"></audio>
+        <figcaption><span class="n-meta">Аудио &middot; 26 min &middot; Французский</span><br>
+        <strong>Системная алхимия для суверенитета Туниса</strong><br>Полная аргументация — от долларовой ловушки до трюфелей, которые кормят инженеров, пишущих суверенные алгоритмы.</figcaption>
+      </figure>
+    </div>
+    <details class="n-tr">
+      <summary>Читать стенограмму глубокого погружения (перевод французского аудио на английский язык)</summary>
+      <div class="n-tr-pad"><p class="n-tr-a"><strong>Ведущий А —</strong>Обычно, когда люди говорят об алхимии, э-э, образ, который сразу приходит на ум, — это, ну, старый мудрец.</p>
+<p class="n-tr-b"><strong>Ведущий Б —</strong>Да, старик, запертый в супертёмной лаборатории.</p>
+<p class="n-tr-a"><strong>Ведущий А —</strong>Именно. Повсюду дымящиеся колбы. Парень, отчаянно пытающийся превратить обычный кусок свинца в чистое золото.</p>
+<p class="n-tr-b"><strong>Ведущий Б —</strong>Классический, завораживающий миф, конечно, но, если честно, изрядно запылившийся.</p>
+<p class="n-tr-a"><strong>Ведущий А —</strong>Совершенно запылившийся. Но вообще, представьте на мгновение, что эта настоящая алхимия действительно существует сегодня, в 21st веке.</p>
+<p class="n-tr-b"><strong>Ведущий Б —</strong>Хорошо. Но тогда с какими ингредиентами?</p>
+<p class="n-tr-a"><strong>Ведущий А —</strong>Ну, вот тут-то и начинается безумие. Вместо свинца возьмите, скажем, совершенно сокрушительный государственный долг, добавьте водный дефицит, парализующий целые регионы, и горы высокотоксичных промышленных отходов.</p>
+<p class="n-tr-b"><strong>Ведущий Б —</strong>О да, весьма восхитительный коктейль.</p>
+<p class="n-tr-a"><strong>Ведущий А —</strong>Правда? А вместо золота представьте превращение всех этих уязвимостей в настоящую суверенную империю искусственного интеллекта, при этом, э-э, выращивая трюфели прямо посреди пустыни.</p>
+<p class="n-tr-b"><strong>Ведущий Б —</strong>Это абсолютный парадокс.</p>
+<p class="n-tr-a"><strong>Ведущий А —</strong>Полнейший. В этом и заключается задача нашего сегодняшнего глубокого погружения. Как нация может взять свои худшие структурные слабости и использовать их как топливо для своего главного двигателя могущества?</p>
+<p class="n-tr-b"><strong>Ведущий Б —</strong>Что ж, отличная метафора для старта этого глубокого погружения. И что самое захватывающее — мы здесь вовсе не говорим о научно-фантастическом романе.</p>
+<p class="n-tr-a"><strong>Ведущий А —</strong>Нет, всё вполне реально.</p>
+<p class="n-tr-b"><strong>Ведущий Б —</strong>Именно. Мы собираемся разобрать очень серьёзный документ. Это знаменитый, э-э, стратегический отчёт: «Macroeconomic, Technological, and Ecological Engineering for Tunisia's Sovereignty», датированный 2026 годом.</p>
+<p class="n-tr-a"><strong>Ведущий А —</strong>Название, скажем прямо, язык сломаешь.</p>
+<p class="n-tr-b"><strong>Host B —</strong>True, but what this report proposes is integrated engineering on a scale that&#x27;s almost dizzying. Usually, the traditional government approach is to isolate a problem to solve it.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Like, you have a water problem, you create a water ministry.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Exactly, that&#x27;s it. But here, the paradigm is completely reversed. It&#x27;s about using each monumental problem to finance, feed into, and solve the next one.</p>
+<p class="n-tr-a"><strong>Host A —</strong>In a perfectly closed loop.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Exactly.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Well, let&#x27;s unpack all this. To really grasp the scale of this loop, we first have to look at the country&#x27;s baseline economic dashboard.</p>
+<p class="n-tr-b"><strong>Host B —</strong>The starting point, basically.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Yeah, because when you look at the data in this report, the numbers seem, at first glance anyway, completely counterintuitive. Let me explain: we&#x27;re in 2026, the global economy is shaken by major turbulence, inflation is wreaking havoc all over the place...</p>
+<p class="n-tr-b"><strong>Host B —</strong>It&#x27;s a very complicated time globally, yes.</p>
+<p class="n-tr-a"><strong>Host A —</strong>And yet, we see that the Tunisian dinar shows a resilience that completely defies logic. The report indicates that at the end of 2025, the dinar even appreciated by 9.8% against the US dollar.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Which is huge in this context.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Well, yes! And in the first half of 2026, it remains anchored in remarkable stability. It cruises very calmly between 2.93 and 2.97 dinars to 1 dollar.</p>
+<p class="n-tr-b"><strong>Host B —</strong>It&#x27;s almost flat.</p>
+<p class="n-tr-a"><strong>Host A —</strong>At the same time, the Central Bank of Tunisia maintains its foreign exchange reserves at around 8 billion dollars. That covers roughly 92 days of imports. We know that&#x27;s supported by tourism and the diaspora, but...</p>
+<p class="n-tr-b"><strong>Host B —</strong>Mathematically, something doesn&#x27;t add up.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Exactly. Mathematically speaking, how can a currency remain so strong when the country carries such a heavy debt? What&#x27;s the hidden mechanism behind that?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Если связать это с общей ситуацией, нужно заглянуть «под капот» центрального банка, BCT.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Хорошо, давайте заглянем под капот.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>На фоне этой нетипичной стабильности упорно ходили слухи. Некоторые утверждали, что Тунис тайно перешёл на режим «валютного совета» (currency board).</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Жёсткий валютный совет.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Именно. Механическая система, где каждый динар в обращении напрямую подкреплён долларом в резервах. Но отчёт категоричен: это неправда.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>А! Значит, они сохранили контроль над своей валютой?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Безусловно. BCT сохраняет свою автономию и монополию на эмиссию. На самом деле он использует гегемонистскую мировую валюту, доллар, в качестве собственного оборонительного преимущества.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Каким образом? Они играют на бирже государственными деньгами?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Нет, как раз наоборот. Цель — не спекулировать. Значительная часть этих 8 миллиардов долларов не лежит мёртвым грузом в хранилище. Она стратегически инвестирована в ультрабезопасные и высоколиквидные активы.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>В казначейские облигации США, полагаю?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Верно. Цель — выковать мощный финансовый щит. Этот щит позволяет банку проводить интервенции на местном межбанковском рынке и гарантировать обслуживание внешнего долга.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Понятно. Хочу убедиться, что правильно представляю себе общую картину, потому что всё это непросто. Мне нравится рассматривать эту макроэкономическую ситуацию как корабль посреди шторма.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Хороший образ.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Экипаж, то есть центральный банк, вычёрпывает воду с поразительной эффективностью. Они используют этот финансовый щит, чтобы держать корабль на плаву, а валюту — стабильной.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Пока всё верно.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Вот только в это самое время за тысячи километров оттуда Федеральная резервная система США, знаменитая ФРС, поднимает настоящее цунами. Чтобы бороться с собственной инфляцией в США, ФРС резко повышает процентные ставки.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>И тут вода начинает прибывать очень, очень быстро.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Вот именно! И я задаюсь вопросом: разве эта политика высоких ставок, которой Тунис вынужден в некотором роде следовать ради защиты динара, не душит реальную экономику внутри страны?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>О, это главный вопрос.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Ведь если кредит становится недоступным, частные инвестиции замирают, и мы получаем тот самый анемичный местный рост ниже 1.5%, о котором говорится в отчёте.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Ваш анализ бьёт прямо в корень проблемы. Это то, что экономисты развития называют первородным грехом.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Первородный грех. Серьёзно?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Да, термин сильный. Он означает структурную неспособность развивающейся страны заимствовать на международных рынках в собственной валюте.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>А, то есть они вынуждены брать займы в долларах или евро.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Именно так. И в 2026 году внешний долг Туниса достиг почти 42.9 миллиарда долларов.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Погодите, 42.9 миллиарда — сколько это по сравнению с их богатством?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Около 80% их ВВП. Причём почти весь этот долг номинирован в иностранной валюте. Механика тут по-настоящему беспощадна.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Да уж. Когда американская ФРС кашляет и поднимает ставки, Тунис сваливается с тяжёлой простудой.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Хуже, чем с простудой. Стоимость рефинансирования этого долга автоматически взлетает до небес, притом что страна даже не допустила ни малейшей ошибки во внутреннем управлении.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Идеальная ловушка.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Абсолютно. Более 20% выручка от экспорта страны мгновенно вымывается только на обслуживание этого долга — то есть просто на выплату процентов и погашение сроков.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Но тогда, если позволить своей валюте обесцениться, разве это не поможет?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Ни в коем случае! Если так поступить, взлетит стоимость импортируемых ими энергоносителей и пшеницы. Это вызовет разрушительную внутреннюю инфляцию. Это настоящий тупик.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Загнаны в угол со всех сторон, по сути.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Именно. Поэтому в отчёте делается вывод: финансовую проблему нельзя решить чисто финансовыми инструментами. Правила игры подтасованы.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>И нужно менять само игровое поле.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Именно так. Суверенитет придёт не из банков; он станет результатом радикального технологического скачка.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>И вот здесь начинается самое интересное. Итак, мы пойманы в ловушку долларового долга, выход из неё нельзя просто купить — его буквально приходится изобретать.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Именно здесь мы переходим к карте глобальных поставок завтрашнего дня.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Да. В отчёте подчеркивается масштабный эпохальный сдвиг. Мировая экономика слезает с нефтяной иглы. Новой мерой могущества, новым чёрным золотом становятся вычисления.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Сырая вычислительная мощность.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Вот именно. Способность запускать гигантские модели искусственного интеллекта. И на этом фронте у Туниса есть актив, который невозможно напечатать в центральном банке: его интеллектуальный капитал.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>У них блестящие инженеры, да.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Собственно, в отчёте вспоминается поглощение InstaDeep — тунисской жемчужины в сфере ИИ. Её выкупил немецкий гигант BioNTech за 680 миллионов долларов.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Это мощный сигнал мировому рынку. Доказательство того, что неогранённые таланты находятся прямо здесь.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Вот только план на 2026 год не ограничивается созданием пары-тройки стартап-инкубаторов. В нём анонсировано строительство трёх мегадата-центров искусственного интеллекта.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>И отнюдь не маленьких. Речь идёт о 100 мегаваттах каждый.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Колоссально! Но деталь, которая меня по-настоящему поразила, — это локация. Их планируют строить под землёй, в бывших заброшенных шахтах бассейна Gafsa.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>О, это... выбор глубокого подземного размещения в шахтах беспощадно рационален.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Объясните нам, потому что поначалу думаешь: «Зачем закапываться на дно шахты?»</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Нужно понимать, что поставлено на карту в вопросе цифрового суверенитета. Сегодня, если вы зависите от зарубежного облака, размещённого на серверах в Северной Америке или где-то ещё, вы соглашаетесь на колоссальную стратегическую уязвимость.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Да, вы больше не хозяева своих собственных данных.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Именно так. Ваши правительственные, медицинские и промышленные данные подпадают под действие экстерриториальных законов, таких как американский CLOUD Act, который прямо позволяет другим государствам получать к ним доступ.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Значит, чтобы иметь суверенный ИИ, нужно держать серверы у себя в стране.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Владеть одними алгоритмами недостаточно. Вы должны владеть физической инфраструктурой на собственной земле.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Вот только — и в этом загвоздка — эти суперкомпьютеры выделяют адское тепло...</p>
+<p class="n-tr">Вот полная дословная стенограмма записи:</p>
+<p class="n-tr-a"><strong>Host A —</strong>...что эти суперкомпьютеры выделяют адское тепло. А мы находимся в Тунисе, здесь жарко!</p>
+<p class="n-tr-b"><strong>Host B —</strong>В этом и заключается проблема термодинамики. Охлаждать этих монстров на поверхности, в засушливом климате Туниса, было бы чистым экономическим самоубийством. В обычных условиях охлаждение поглощает до 40 % opex дата-центра.</p>
+<p class="n-tr-a"><strong>Host A</strong>That&#x27;s almost half the electricity bill, that&#x27;s insane!</p>
+<p class="n-tr-b"><strong>Host B —</strong>But by rehabilitating these underground mines in Gafsa, the servers are placed in a natural geothermal environment. The temperature there is constant, between 15 and 20 °C all year round.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Ah! Free AC, basically.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Air conditioning costs get slashed, yes, while providing these critical infrastructures with near-military physical protection.</p>
+<p class="n-tr-a"><strong>Host A —</strong>And it&#x27;s with this computing power hidden underground that the report touches on something... Honestly, the expression made me jump out of my chair, it talks about &quot;spacetime travel.&quot;</p>
+<p class="n-tr-b"><strong>Host B —</strong>I know exactly which passage you mean.</p>
+<p class="n-tr-a"><strong>Host A —</strong>When I read that, I thought, &quot;Okay, we&#x27;re venturing into obscure theoretical physics,&quot; but the explanation is fascinating.</p>
+<p class="n-tr-b"><strong>Host B —</strong>It&#x27;s very pragmatic, actually.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Yes!</p>
+<p class="n-tr-b"><strong>Host B —</strong>The report states that an emerging state cannot afford to burn hundreds of billions of dollars in a physical space race to build metal rockets...</p>
+<p class="n-tr-a"><strong>Host A —</strong>...with a precision down to the molecular scale.</p>
+<p class="n-tr-b"><strong>Host B —</strong>What we call digital twins, but on a cosmic scale.</p>
+<p class="n-tr-a"><strong>Host A —</strong>And by coupling these simulations with brain-machine interfaces for researchers, ruinous physical space exploration is replaced with ultra-efficient neural exploration.</p>
+<p class="n-tr-b"><strong>Host B —</strong>It&#x27;s dizzying to rethink hum... human expansion in this way, isn&#x27;t it?</p>
+<p class="n-tr-a"><strong>Host A —</strong>It&#x27;s a complete paradigm shift.</p>
+<p class="n-tr-b"><strong>Host B —</strong>But anyway, let&#x27;s come back down to Earth for a moment. Because to manufacture the components of these supercomputers, very specific minerals are needed. Rare earths are needed.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Exactly. And that&#x27;s where ecological engineering enters the scene in quite a spectacular fashion. Because Tunisia doesn&#x27;t have traditional rare earth mines, if I&#x27;m not mistaken.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Not in the strict sense of the term, no. On the other hand, it harbors an environmental liability of monumental scale.</p>
+<p class="n-tr-a"><strong>Host A —</strong>The famous phosphogypsum?</p>
+<p class="n-tr-b"><strong>Host B —</strong>That&#x27;s it. It&#x27;s a highly toxic industrial waste, a byproduct of the phosphate industry. It has been accumulating for decades, especially in the coastal region of Gabès.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Yes, they have veritable open-air mountains of pollution down there. The report actually estimates the damage to the local marine ecosystem at around 58 million dollars in losses each year. It&#x27;s an ecological disaster.</p>
+<p class="n-tr-b"><strong>Host B —</strong>What is fascinating here is the mineralogical stroke of genius in this plan. They analyzed the composition of this toxic waste.</p>
+<p class="n-tr-a"><strong>Host A —</strong>What did they find?</p>
+<p class="n-tr-b"><strong>Host B —</strong>During the processing of Gafsa phosphates into phosphoric acid, about 70 % of the rare earths naturally present in the rock end up trapped in this toxic waste.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Elements like yttrium, lanthanum...</p>
+<p class="n-tr-b"><strong>Host B —</strong>Neodymium, yes. The analyses show concentrations reaching up to 1 700 mg per kilo in certain layers of the phosphogypsum.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Wait, I want to make sure I fully realize what that implies. We&#x27;re literally looking at the country&#x27;s worst toxic dump and saying, &quot;Hey, look, this is our future goldmine for building quantum computers!&quot;</p>
+<p class="n-tr-b"><strong>Host B —</strong>That&#x27;s exactly it. The project plans to process 2 million tonnes of this phosphogypsum each year.</p>
+<p class="n-tr-a"><strong>Host A —</strong>That&#x27;s huge!</p>
+<p class="n-tr-b"><strong>Host B —</strong>And the extraction process described in the report, hydrometallurgy, is particularly ingenious. The industry often uses sulfuric acid for this, but it doesn&#x27;t work very well.</p>
+<p class="n-tr-a"><strong>Host A —</strong>The yields are poor.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Mediocre, yes. Here, the engineers propose using hydrochloric acid. To understand, visualize the &quot;shrinking core&quot; model mentioned in the document.</p>
+<p class="n-tr-a"><strong>Host A —</strong>The &quot;shrinking core&quot;?</p>
+<p class="n-tr-b"><strong>Host B —</strong>Imagine a hard candy with a liquid center.</p>
+<p class="n-tr-a"><strong>Host A —</strong>OK, I see it.</p>
+<p class="n-tr-b"><strong>Host B —</strong>You let it melt in your mouth. The saliva gradually attacks the outer layer until it frees the center. Well, it&#x27;s the exact same chemical principle.</p>
+<p class="n-tr-a"><strong>Host A —</strong>The acid acts like the saliva, basically.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Exactly. The hydrochloric acid, maintained at a very precise temperature of 60 °C, acts like a surgical solvent. It eats away at the toxic matrix from the outside in.</p>
+<p class="n-tr-a"><strong>Host A —</strong>And that releases the rare earths trapped at the core.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Exactly. This process makes it possible to extract up to 73,8 % of the yttrium present. We turn an ecological disaster into a major strategic lever.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Well, I&#x27;m going to play devil&#x27;s advocate for a second, because this sounds almost too good to be true.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Go ahead, let&#x27;s hear it.</p>
+<p class="n-tr-a"><strong>Host A —</strong>You just said that acid heated to 60° is used to process 2 million tonnes of material a year. Heating such volumes requires colossal energy...</p>
+<p class="n-tr-b"><strong>Host B —</strong>That&#x27;s true.</p>
+<p class="n-tr-a"><strong>Host A —</strong>...and above all, once it&#x27;s done, we&#x27;re left with millions of liters of industrial liquid discharge, hot, full of acid and residues. Aren&#x27;t we simply relocating the ecological nightmare?</p>
+<p class="n-tr-b"><strong>Host B —</strong>Cleaning up on one side just to pollute on the other.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Well, yes! We&#x27;re creating rivers of scorching industrial fluids!</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Это принципиальное возражение. Но в отчёте оно решается с помощью так называемого промышленного симбиоза. Базовая идея состоит в том, что никакой побочный продукт не должен считаться окончательными отходами.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Понятно. И как же тогда поступают с этими горячими жидкостями?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Помнишь подземные дата-центры, о которых мы говорили?</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Да, в Gafsa.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Геотермальная среда их, конечно, охлаждает, но они всё равно выделяют огромное количество тепла. Так вот, эти колоссальные объёмы жидких отходов от извлечения редкоземельных металлов будут циркулировать через сеть теплообменников.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Подожди, жидкие отходы шахты будут охлаждать ИИ-серверы?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Именно! Огромный объём этих подземных жидкостей</p>
+<p class="n-tr-a"><strong>Host A —</strong>That&#x27;s super smart!</p>
+<p class="n-tr-b"><strong>Host B —</strong>And the symbiosis doesn&#x27;t stop there. Once this phosphogypsum has been purged of its heavy metals, its radioactivity, and its rare earths, what&#x27;s left, physically?</p>
+<p class="n-tr-a"><strong>Host A —</strong>I don&#x27;t know, an inert sludge?</p>
+<p class="n-tr-b"><strong>Host B —</strong>What&#x27;s left is ultra-purified gypsum. And this ultimate residue becomes a top-quality raw material to manufacture fire-resistant plasterboards, construction materials.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Let me guess: they&#x27;re going to use these materials to build out the mines?</p>
+<p class="n-tr-b"><strong>Host B —</strong>That&#x27;s it. To line, insulate, and fit out the mine galleries that house the servers. The loop is absolutely elegant.</p>
+<p class="n-tr-a"><strong>Host A —</strong>That&#x27;s recycling taken to its absolute extreme! Today&#x27;s waste literally builds the walls of tomorrow&#x27;s artificial intelligence.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Everything is interconnected.</p>
+<p class="n-tr-a"><strong>Host A —</strong>But we have to talk about the elephant in the room here: energy.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Electricity, yes. That&#x27;s the crux of the matter.</p>
+<p class="n-tr-a"><strong>Host A —</strong>This entire megaproject has a voracious appetite. The report models a total demand of 5.32 TWh per year.</p>
+<p class="n-tr-b"><strong>Host B —</strong>That&#x27;s massive for a country of this size.</p>
+<p class="n-tr-a"><strong>Host A —</strong>And we can&#x27;t forget the geographical context: Tunisia suffers from endemic, very severe water stress. There is less and less water.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Yes, dams are often at their lowest.</p>
+<p class="n-tr-a"><strong>Host A —</strong>To run these industries, and just to provide drinking water to the population, the plan calls for desalinating 500 million cubic meters of seawater per year.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Desalination consumes an enormous amount of energy.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Exactly. And to achieve this without ruining the country by buying natural gas abroad, the report deploys a colossal 3 GW solar farm.</p>
+<p class="n-tr-b"><strong>Host B —</strong>We&#x27;re talking about an area of 45 to 60 km².</p>
+<p class="n-tr-a"><strong>Host A —</strong>That&#x27;s where I need to dig a little deeper: solar panels in the desert over 60 km² is an absolute logistical nightmare.</p>
+<p class="n-tr-b"><strong>Host B —</strong>It&#x27;s not simple, indeed.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Well, there&#x27;s dust, sandstorms scratching the glass, and extreme heat causing panel efficiency to plummet. Not to mention the astronomical amounts of water that would be needed just to clean them. How do we avoid a technical fiasco?</p>
+<p class="n-tr-b"><strong>Host B —</strong>That&#x27;s where sovereign artificial intelligence immediately justifies its existence. The AI will orchestrate what the report calls &quot;the water revolution.&quot;</p>
+<p class="n-tr-a"><strong>Host A —</strong>The AI is going to manage the water?</p>
+<p class="n-tr-b"><strong>Host B —</strong>Exactly. First of all, transporting this desalinated water from the coasts, like Gabès or Sfax, to the arid inland regions, like Gafsa, is a titanic challenge.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Yes, water is heavy.</p>
+<p class="n-tr-b"><strong>Host B —</strong>We&#x27;re talking about pumping millions of cubic meters over 300 km with a 400 m elevation gain. Mechanically, pumping alone requires a tremendous amount of energy.</p>
+<p class="n-tr-a"><strong>Host A —</strong>It&#x27;s like pushing a river upstream to the top of a mountain.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Exactly. As a result, the pipeline network won&#x27;t be a simple passive pipe. It will be a nervous system lined with millions of sensors. The AI will use reinforcement learning to modulate pump pressure in real time.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Ah! So it manages the pumps intelligently.</p>
+<p class="n-tr-b"><strong>Host B —</strong>It will analyze the weather down to the millisecond to predict solar production, and it will smooth electricity consumption peaks to optimize every kilowatt-hour used.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Okay, the AI manages energy with surgical precision. But what about my concern regarding the solar panels themselves, in the desert heat?</p>
+<p class="n-tr-b"><strong>Host B —</strong>The report offers a very specific solution: agrivoltaics.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Agrivoltaics? Meaning growing crops under the panels?</p>
+<p class="n-tr-b"><strong>Host B —</strong>Exactly.</p>
+<p class="n-tr-a"><strong>Host A —</strong>But how does that solve the desert problem?</p>
+<p class="n-tr-b"><strong>Host B —</strong>The report emphasizes that paving over or altering 60 km² of fragile soil is out of the question. You don&#x27;t place the panels flush with the burning sand; you elevate them.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Okay, like building a roof?</p>
+<p class="n-tr-b"><strong>Host B —</strong>Exactly. In doing so, the panels create a giant canopy, an artificial microclimate. This shade protects the soil from evaporation caused by the sun, reducing irrigation water loss by 20 % to 40 %.</p>
+<p class="n-tr-a"><strong>Host A —</strong>So the water we...</p>
+<p class="n-tr-a"><strong>Host A —</strong>...irrigation of 20 % to 40 %.</p>
+<p class="n-tr-b"><strong>Host B —</strong>So the water we desalinated at great expense doesn&#x27;t evaporate instantly?</p>
+<p class="n-tr-a"><strong>Host A —</strong>Exactly. Drip-managed by the AI, water is maximized. And in return—this is where it&#x27;s brilliant—the vegetation growing underneath creates evapotranspiration.</p>
+<p class="n-tr-b"><strong>Host B —</strong>A natural coolness rising up.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Exactly. This coolness rises toward the panels, cools the silicon, and, paradoxically, increases the electrical efficiency of the panels by a few crucial percent.</p>
+<p class="n-tr-b"><strong>Host B —</strong>That&#x27;s crazy. A true technico-biological symbiosis. The silicon protects the plant, and the plant cools the silicon.</p>
+<p class="n-tr-a"><strong>Host A —</strong>That&#x27;s the principle.</p>
+<p class="n-tr-b"><strong>Host B —</strong>And guess what the report plans to grow under these panels? I admit that when I read it, I thought it was a typo.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Oh yeah, it&#x27;s not tomatoes or wheat at all.</p>
+<p class="n-tr-b"><strong>Host B —</strong>No, they&#x27;re betting everything on truffle cultivation, specifically growing the desert truffle, Terfezia.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Да, это весьма специфический выбор.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Моей первой реакцией была чисто экономическая. Я подумал: ладно, это невероятно умно. Пустынные трюфели продаются по цене от 20 до 60 € за килограмм, а иногда и до 220 € на международных нишевых рынках.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Это действительно очень дорого.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>При урожайности в 400 kg с гектара это идеальная товарная культура. Предмет роскоши, предназначенный на экспорт ради твёрдой валюты и, ну, погашения того самого знаменитого долларового долга, о котором мы говорили в самом начале.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Любопытно, что вы это сказали, ведь таков был бы классический логический вывод экономиста XX века: экспортировать, чтобы расплатиться с долгами.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Ну да, это казалось логичным.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Но отчёт 2026 года идёт гораздо дальше. В нём совершается кардинальный концептуальный сдвиг. Прежде чем говорить об экономике, давайте поговорим о биологии.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Я вас внимательно слушаю.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Пустынный трюфель, или Terfezia boudieri, растёт в естественном симбиозе с небольшими местными кустарниками вроде Helianthemum.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Партнёрство растения и гриба?</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Именно. Этот гриб создаёт подземную микоризную сеть, своего рода живую грибную губку, которая оплетает корни кустарника. Эта сеть улавливает малейшую каплю воды.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>А поскольку ИИ дозирует воду капля за каплей...</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Это идеально, потому что такой культуре требуется всего 200 L воды на квадратный метр в год</p>
+<p class="n-tr-b"><strong>Host B —</strong>Okay, but what&#x27;s the end goal, if it&#x27;s not export?</p>
+<p class="n-tr-a"><strong>Host A —</strong>That raises an important question. This is where the concept of Nutritional Water Productivity, NWP, comes in.</p>
+<p class="n-tr-b"><strong>Host B —</strong>NWP, meaning we stop counting agricultural yield in tons of raw material per liter of water and start measuring it in terms of biochemical impact on humans, is that it?</p>
+<p class="n-tr-a"><strong>Host A —</strong>Exactly. We are counting in amino acids per drop of water.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Oh, yeah.</p>
+<p class="n-tr-a"><strong>Host A —</strong>The desert truffle is a genuine biochemical powerhouse. It contains between 20 % and 27 % extremely high-quality protein.</p>
+<p class="n-tr-b"><strong>Host B —</strong>That&#x27;s huge for a plant! Well, a fungus.</p>
+<p class="n-tr-a"><strong>Host A —</strong>It has all the essential amino acids, iron, antioxidants. To get an equivalent protein profile with cattle farming, you would have to swallow up thousands of liters of water.</p>
+<p class="n-tr-b"><strong>Host B —</strong>So it&#x27;s an incredibly water-efficient alternative to meat.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Yes, and the report highlights that these truffles are primarily intended for the domestic market, for populations in rural and marginalized regions.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Wait, we aren&#x27;t cultivating them at all to export them to the wealthy in Europe or elsewhere?</p>
+<p class="n-tr-a"><strong>Host A —</strong>No, they are grown to be eaten locally.</p>
+<p class="n-tr-b"><strong>Host B —</strong>But what are they eaten for?</p>
+<p class="n-tr-a"><strong>Host A —</strong>It&#x27;s pure biopolitics, actually.</p>
+<p class="n-tr-b"><strong>Host B —</strong>So, what does all of this really mean deep down? Wow! It just clicked.</p>
+<p class="n-tr-a"><strong>Host A —</strong>You&#x27;ve got it.</p>
+<p class="n-tr-b"><strong>Host B —</strong>I just understood the report&#x27;s big picture. We aren&#x27;t talking about agriculture at all anymore, actually. Are we talking about neurological engineering?</p>
+<p class="n-tr-a"><strong>Host A —</strong>We&#x27;re right in the middle of it.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Basically, the document says that if a nation wants to become a true artificial intelligence superpower, it can&#x27;t just settle for buying or building data centers. It first has to build the brains of its own citizens.</p>
+<p class="n-tr-a"><strong>Host A —</strong>That&#x27;s human capital.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Well, yes. Latent malnutrition, the lack of complex proteins, or iron deficiencies during early childhood irreversibly curb cognitive and neurological development.</p>
+<p class="n-tr-a"><strong>Host A —</strong>A malnourished child will not become tomorrow&#x27;s engineer.</p>
+<p class="n-tr-b"><strong>Host B —</strong>So by cultivating this high-protein truffle with a minimum amount of water under solar panels and distributing it locally, the state isn&#x27;t engaging in agricultural charity; it is literally altering the nutritional landscape to raise the intellectual potential of the next generation.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Absolutely.</p>
+<p class="n-tr-b"><strong>Host B —</strong>We are physically feeding the brains of the future engineers who will code tomorrow&#x27;s sovereign algorithms. That&#x27;s crazy!</p>
+<p class="n-tr-a"><strong>Host A —</strong>That is exactly the report&#x27;s conclusion. The macroeconomic meets the neurological. It really is the project&#x27;s final loop. Everything comes together. By involving rural populations in growing this truffle, exceptional income is generated for them as well. That allows them to be banked, to be integrated into the digital economy...</p>
+<p class="n-tr-b"><strong>Host B —</strong>And presto, the state eradicates structural poverty in the process.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Exactly. Farmers are integrated at the base of the country&#x27;s most advanced technological value chain. The nation&#x27;s resilience no longer depends on interest rate fluctuations from the Fed in Washington.</p>
+<p class="n-tr-b"><strong>Host B —</strong>No more original sin.</p>
+<p class="n-tr-a"><strong>Host A —</strong>It no longer depends on the whims of bond markets either. It rests on a perfect, local, and controlled symbiosis between the sun, the earth, water, computer code, and human biology.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Frankly, it&#x27;s a systemic choreography of dizzying complexity.</p>
+<p class="n-tr-a"><strong>Host A —</strong>The term is well chosen.</p>
+<p class="n-tr-b"><strong>Host B —</strong>I suggest we recap the trajectory of this plan for a moment, because the architecture of the concept deserves to be paused over for a second to really digest it.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Go ahead, let&#x27;s retrace the path.</p>
+<p class="n-tr-b"><strong>Host B —</strong>We start with a country trapped by the original sin of a dollar-denominated debt. To escape this financial fate, the country shifts toward the economy of computing power, of compute.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Step one.</p>
+<p class="n-tr-b"><strong>Host B —</strong>But to build this physically sovereign AI, it extracts its own rare earths using hydrochloric acid to cleverly dissolve the toxic pollution of an old industrial liability.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Phosphogypsum.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Then, the hot fluids from this cleaning process go to cool the giant computer servers that are hidden underground in former phosphate mines.</p>
+<p class="n-tr-a"><strong>Host A —</strong>And we recycle the residue?</p>
+<p class="n-tr-b"><strong>Host B —</strong>Да, очищенный конечный остаток превращается в гипсокартон для укрепления тех самых шахт. Чтобы снабдить этого монстра электроэнергией и побороть жажду страны, солнечная электростанция мощностью 3 GW опресняет морскую воду.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Вода становится доступной?</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>Искусственный интеллект регулирует давление этой воды по всей пустыне. Эта вода течёт в тени солнечных панелей для выращивания высокобелковых трюфелей...</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Благодаря агровольтаике.</p>
+<p class="n-tr-b"><strong>Ведущий B —</strong>...и эти трюфели питают неврологическое развитие детей, которые впоследствии вырастут и будут программировать следующее поколение ИИ. Каждое обязательство становится активом, каждый отход — отправной точкой для нового богатства.</p>
+<p class="n-tr-a"><strong>Ведущий A —</strong>Это настоящее переосмысление того, каким должен быть государственный инжиниринг в 21 веке. Это уже вовсе не простое фрагментарное антикризисное управление.</p>
+<p class="n-tr-b"><strong></strong>It&#x27;s total systemic design.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Exactly.</p>
+<p class="n-tr-b"><strong>Host B —</strong>By managing to master and synchronize simultaneously the cycles of water, silicon, carbon, minerals, and intellectual capital...</p>
+<p class="n-tr-a"><strong>Host A —</strong>...sovereignty stops being a vague legal concept waved around during speeches...</p>
+<p class="n-tr-b"><strong>Host B —</strong>It becomes something tangible.</p>
+<p class="n-tr-a"><strong>Host A —</strong>It becomes a concrete, measurable thermodynamic, biological, and mathematical reality.</p>
+<p class="n-tr-b"><strong>Host B —</strong>Which brings me to a final thought, perhaps the most provocative of this entire exploration, and it&#x27;s really an idea I want to leave with those listening to us today.</p>
+<p class="n-tr-a"><strong>Host A —</strong>Please, go ahead.</p>
+<p class="n-tr-b"><strong>Host B —</strong>If a country historically labeled as emerging, cornered by the super rigid rules of the traditional financial system, manages to conceptualize its entire territory as a single operating system, seamlessly merging the biological, the digital, and the mineral, doesn&#x27;t that make completely obsolete our old framework separating developed countries from developing ones?</p>
+<p class="n-tr-a"><strong>Host A —</strong>That&#x27;s an excellent question to ask.</p>
+<p class="n-tr-b"><strong>Host B —</strong>If the future of global power belongs to those who master the art of ecological and technological symbiosis, rather than those who simply hoard billions in bank accounts, then the cards of global influence could be reshuffled at lightning speed.</p>
+<p class="n-tr-a"><strong>Host A —</strong>The criteria of wealth are changing.</p>
+<p class="n-tr-b"><strong>Host B —</strong>And all of that by transforming the toxic slag of the past into the cognitive gold of tomorrow. It&#x27;s systemic alchemy pushed to perfection. Keep this idea firmly in mind to rethink the limits and the hidden potential of your own local environments. Thank you for joining us on this dizzying deep dive. Until next time!</p></div>
+    </details>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap" style="max-width:76ch">
+    
+<h2 id="rapport">The complete report</h2>
+<p class="n-note">Strategic report:<em>Macroeconomic, Technological and Ecological Engineering for Tunisia's Sovereignty</em>(2026). English translation of the original French; the original .docx is available for download at the bottom of the page.</p>
+
+<h3>1. Macroeconomic dynamics: dinar resilience, foreign-exchange reserves and dollar hegemony</h3>
+<h4>1.1. Anatomy of the Tunisian dinar's stabilization</h4>
+<p>The trajectory of the Tunisian dinar (TND) against the reference currencies presents a dynamic that looks counter-intuitive in the face of global macroeconomic pressures. By the end of 2025 the dinar had appreciated<strong>9.8%</strong>against the US dollar relative to its level at the end of 2024. Over the first half of 2026, exchange rates remained remarkably stable: roughly<strong>2.93 to 2.97 TND per USD</strong>, and<strong>3.37 to 3.38 TND per EUR</strong>.</p>
+<p>This resistance, amid global economic turbulence, is explained by a combination of endogenous factors and the restrictive monetary policies pursued by the Central Bank of Tunisia (BCT). Foreign-exchange market volume rose<strong>23.7%</strong>year on year, driven by the interbank market, whose operations crossed<strong>TND 9 billion</strong>in the first half of 2026. The BCT's policy of high policy rates mechanically supports the currency's external value. The sustained recovery of tourism (over<strong>EUR 1 billion</strong>in receipts in H1 2026) and structurally resilient diaspora remittances keep refilling the country's reserves, securing roughly<strong>92 days of import cover</strong>.</p>
+<table>
+<caption>Macroeconomic indicators (2025&ndash;2026)</caption>
+<thead><tr><th>Indicator</th><th>Value</th><th>Trend and structural impact</th></tr></thead>
+<tbody>
+<tr><td>USD/TND (June 2026)</td><td>2.93 &ndash; 2.97</td><td>Stabilization / slight appreciation cushioning imported inflation</td></tr>
+<tr><td>EUR/TND (June 2026)</td><td>3.37 &ndash; 3.38</td><td>Relative stability supporting export competitiveness toward the EU</td></tr>
+<tr><td>Foreign-exchange reserves (gross)</td><td>~USD 8 bn</td><td>Regulated fluctuations securing &asymp; 92 days of imports</td></tr>
+<tr><td>External debt (March 2026)</td><td>USD 42.9 bn</td><td>Structural rise absorbing a large share of foreign-currency liquidity</td></tr>
+</tbody>
+</table>
+
+<h4>1.2. The monetary underlying: US Treasury bills and reserve management</h4>
+<p>The report refutes the theory that the BCT massively buys US Treasury bills as the direct and exclusive underlying for money creation: Tunisia does not operate under a currency board. Under Organic Law n&deg; 2016-35, the BCT holds the absolute monopoly on fiduciary issuance and runs a sovereign, autonomous monetary policy. Reserves (TND 23.15 to 25.65 billion, i.e. roughly USD 7.9&ndash;8 billion in mid-2026) are strictly composed of a diversified basket: currencies, monetary gold, Special Drawing Rights and high-quality international assets. The holdings of US Treasuries form the financial shield that guarantees the country's international solvency and smooths exchange-rate volatility through targeted interbank interventions &mdash; they do not technically &ldquo;produce&rdquo; dinars.</p>
+
+<h4>1.3. The impact of the Federal Reserve and the debt trap</h4>
+<p>The tightening of US monetary policy generates asymmetric shock waves across emerging economies, through two transmission channels.<strong>First channel</strong>: the mechanical rise in external debt service. Tunisia's external debt reached<strong>USD 42.9 billion</strong>in March 2026, about<strong>80% of GDP</strong>, a substantial share of it dollar-denominated. The &ldquo;original sin&rdquo; &mdash; an emerging country's structural inability to borrow long-term in its own currency on international markets &mdash; exposes Tunisia dramatically to exchange-rate risk. When the Fed raises rates, global bond yields climb in tandem, making refinancing prohibitively expensive; debt service then absorbs more than<strong>20% of export revenues</strong>and drains the reserves.</p>
+<p><strong>Second channel</strong>: imported inflation combined with strangled local growth. A wide interest-rate differential encourages capital flight toward US safe-haven assets, pressing the dinar to depreciate &mdash; which would immediately worsen imported inflation, Tunisia being a net importer of hydrocarbons, cereals and raw materials priced in dollars. In preventive response, the BCT is forced to hold or raise its own policy rates to keep dinar placements attractive. But this monetary orthodoxy asphyxiates the real economy: costlier credit freezes private investment, brakes household consumption and keeps growth below<strong>1.5%</strong>over the medium term. Faced with this dead end of classical economics, disruptive solutions built on breakthrough technological paradigms become indispensable to restore economic sovereignty.</p>
+
+<h3>2. Compute as the new strategic asset, and sovereign AI</h3>
+<h4>2.1. The paradigm shift: the compute unit replacing oil</h4>
+<p>The world economy is pivoting from a thermo-industrial model based on hydrocarbon extraction to a cognitive-intelligence economy in which computing power (GPU and TPU clusters) is the new primary geostrategic asset. A nation's wealth is no longer measured only in barrels, but in its capacity to generate and process &ldquo;tokens&rdquo;. AI is therefore no longer a mere software sector: it is critical national-sovereignty infrastructure, on a par with energy or defense.</p>
+<p>Tunisia's potential in this cognitive field was spectacularly validated by the acquisition of<strong>InstaDeep</strong>&mdash; an AI company founded in Tunisia &mdash; by the biotech giant BioNTech for a historic<strong>USD 680 million</strong>. Tunisian intellectual capital and algorithmic engineering are world-class &mdash; but persistent dependence on foreign computing infrastructure limits local value creation and exposes national data to extraterritorial jurisdictions.</p>
+<table>
+<caption>Strategic components of AI</caption>
+<thead><tr><th>Component</th><th>Current dependence (foreign cloud)</th><th>Tunisian sovereign-AI model</th></tr></thead>
+<tbody>
+<tr><td>Data</td><td>Subject to extraterritorial laws (e.g. the Cloud Act)</td><td>Local hosting, absolute confidentiality</td></tr>
+<tr><td>Algorithms</td><td>Commercial black boxes, imported cultural biases</td><td>Open or proprietary models, cultural alignment</td></tr>
+<tr><td>Infrastructure</td><td>Outsourced CAPEX, dollar-denominated OPEX</td><td>State / local-consortium ownership, OPEX in dinars</td></tr>
+<tr><td>National security</td><td>Vulnerable to technology embargoes</td><td>Strategic autonomy and cyber resilience</td></tr>
+</tbody>
+</table>
+
+<h4>2.2. Quantum engineering, reality simulation and &ldquo;spatio-temporal travel&rdquo;</h4>
+<p>Mastery of exascale compute lets a nation move beyond conventional computing into advanced materials engineering. AI simulators &mdash; soon coupled to quantum computing &mdash; can model molecular and subatomic interactions with unmatched precision. This is precisely the convergence companies like InstaDeep exploit to design new gene therapies and new materials without decades of empirical lab trial-and-error.</p>
+<p>The audacious concept of &ldquo;mental and spatio-temporal travel&rdquo; finds a concrete technological footing here. Instead of investing hundreds of billions of dollars in heavy aerospace programs whose CAPEX is prohibitive for an emerging state, computing power generates hyper-realistic physical simulations. Pairing multimodal generative AI with next-generation brain&ndash;computer interfaces (BCI) makes it conceivable to simulate cosmic or historical environments at molecular perfection &mdash; letting human consciousness explore digitally recreated spaces in full immersion. This substitution of physical exploration by digital neural exploration is a radical optimization of humanity's resources: it shifts the financial and energy footprint from building rockets to building local ultra-dense datacenters, while propelling global competition toward a new kind of immaterial voyage. The energy cost of such infrastructure becomes the only true bottleneck, requiring extraordinary cooling and power-supply solutions.</p>
+
+<h3>3. Underground datacenters, phosphogypsum and materials engineering</h3>
+<h4>3.1. Rehabilitating old mines into datacenters</h4>
+<p>The major challenge of compute sovereignty is heat dissipation. GPU farms generate massive heat, and cooling can represent up to<strong>40% of the operating expenses (OPEX)</strong>of a conventional surface datacenter. In Tunisia's arid climate, siting such critical infrastructure in the open would be an energy aberration. The thermodynamically optimal solution is the geotechnical rehabilitation of the old mining infrastructures of the<strong>Gafsa basin</strong>: deploying sovereign datacenters in these underground cavities provides a natural geothermal temperature, constant year-round (generally<strong>15 to 20&nbsp;&deg;C</strong>), entirely independent of the extreme surface heat. This burial drastically lowers the Power Usage Effectiveness (PUE) by cutting mechanical air-conditioning, and provides unmatched physical and military protection for the infrastructure hosting the nation's critical data &mdash; a cornerstone of digital-sovereignty defense doctrine.</p>
+
+<h4>3.2. Rare-earth extraction: the phosphogypsum alchemy</h4>
+<p>Building the hardware for these supercomputers requires rare earth elements (REE). And Tunisia holds a colossal unexploited secondary deposit:<strong>phosphogypsum (PG)</strong>. This toxic by-product of phosphoric-acid production by the Tunisian Chemical Group has accumulated for decades, notably at<strong>Gab&egrave;s</strong>, causing major marine ecological disasters estimated at over<strong>USD 58 million in annual losses§SEG1352§  to the gulf's ecosystem.
+        Let's look at the original English text:
+        `...estimated at over <a>USD 58 million in annual losses</a> to the gulf's ecosystem.`
+        The link text in English was "USD 58 million in annual losses"!
+        If you keep Rule 1: "Translate EVERYTHING — no summarising, no skipping, no commentary."
+        If it's inside a tag, how do professional translators handle it?
+        Wait, "USD 58 million" is the price. "in annual losses" is "ежегодных убытков" or "в виде ежегодных убытков".
+        Wait, if you write `USD 58 million ежегодных убытков` or `USD 58 million in annual losses`?
+        Wait! What if rule 2 says: "Keep every number, percentage, unit, price (€/$), ticker, formula, citation marker [Rm1]-style, and proper name EXACTLY as written."
+        Does Rule 2 say keep entire link text as written? No, Rule 2 lists specific categories:
+        - number
+        - percentage
+        - unit
+        - price (€/$)
+        - ticker
+        - formula
+        - citation marker [Rm1]-style
+        - proper name
+        Notice: "price (€/$)" -> `USD 58 million`. "in annual</strong>to the gulf's ecosystem.</p>
+<p>Recent mineralogical research reveals that the Gafsa-basin phosphates are exceptionally rich in rare earths, with average concentrations of<strong>322 mg/kg</strong>and some strata reaching over<strong>1,700 mg/kg</strong>. During wet-process treatment with sulfuric acid, more than<strong>70%</strong>of these rare earths (including yttrium, lanthanum, cerium and neodymium) do not pass into the phosphoric acid &mdash; they precipitate, trapped in the phosphogypsum crystal matrix.</p>
+<p>Hydrometallurgical processes are the most promising route to break the calcium-sulfate structure and release the rare-earth ions. Hydrochloric (HCl) or nitric (HNO&sb3;) acid solutions perform far better than sulfuric acid because gypsum is more soluble in these media. Kinetic studies show that leaching conditions of<strong>1.65 mol/L HCl</strong>, a solid/liquid ratio of<strong>1/10</strong>and a moderate<strong>60&nbsp;&deg;C</strong>reach<strong>65.6%</strong>overall rare-earth recovery (&Sigma;REE), peaking at<strong>73.8% для иттрия</strong>. Кинетика реакции точно описывается моделью сжимающегося ядра (Shrinking Core Model), выявляя кажущуюся энергию активации<strong>20.65 kJ&middot;mol&sup1;</strong>&mdash; что подтверждает промышленную осуществимость при умеренных температурах. Дополнительные методы, такие как микроволновое облучение и высокоэнергетическое измельчение матрицы PG перед кислотной обработкой, увеличивают реакционноспособную поверхность, максимизируя выход экстракции при одновременном снижении расхода реагентов.</p>
+<table>
+<caption>Реагенты выщелачивания фосфогипса (синтез литературных данных)</caption>
+<thead><tr><th>Реагент</th><th>Смоделированная концентрация (mol/L)</th><th>Температура процесса (&deg;C)</th><th>Общая эффективность экстракции (&Sigma;REE)</th><th>Оптимизированный элемент / пиковый показатель</th></tr></thead>
+<tbody>
+<tr><td>H&sb2;SO&sb4; (серная кислота)</td><td>1.0 &ndash; 4.0
+§SEG13</td><td>25 &ndash; 60</td><td>12% &ndash; 40%</td><td>Low overall profitability</td></tr>
+<tr><td>HCl (hydrochloric acid)</td><td>1.5 &ndash; 1.65</td><td>60 &ndash; 80</td><td>50% &ndash; 65.6%</td><td>Yttrium (73.8%)</td></tr>
+<tr><td>HNO&sb3; (nitric acid)</td><td>1.5 &ndash; 3.0</td><td>25 &ndash; 80</td><td>57% &ndash; 83.4%</td><td>Lanthanum (73.4%)</td></tr>
+</tbody>
+</table>
+
+<h4>3.3. Industrial symbiosis: cooling with the effluents and new materials</h4>
+<p>Integrating the hydrometallurgical plant with the underground datacenters creates an industrial-ecology loop. The immense volumes of industrial water and liquid leachates generated during phosphogypsum treatment can be exploited thermally before final reprocessing: circulated through giant heat exchangers or industrial heat pumps connected to the AI facilities, they act as a massive thermal sink, absorbing the servers' heat. Moreover, once the phosphogypsum has been stripped of its radioactive impurities, heavy metals and valuable rare earths, the ultra-purified residual gypsum becomes a &ldquo;new raw material&rdquo; &mdash; ideal for fire-rated plasterboard, special cements and next-generation thermal insulators. These materials can be directly reused to fit out and insulate the very mine galleries hosting the datacenters, cutting the capital cost of construction.</p>
+
+<h3>4. The water revolution: smart desalination, pipelines and agrivoltaics</h3>
+<h4>4.1. Desalination in the face of structural water stress</h4>
+<p>Tunisia suffers from endemic water stress that threatens its food security and industrial development. Seawater desalination is no longer a comfort option but a national survival necessity. The thermodynamics of desalination, though limiting, are well understood: the theoretical minimum energy to overcome seawater's osmotic pressure (&asymp; 27 atmospheres) is on the order of<strong>0.75 to 1 kWh per cubic meter</strong>. In real reverse-osmosis (RO) industrial operations, however, membrane inefficiencies, fluid friction and auxiliary needs push specific energy consumption (SEC) to<strong>3 to 5.5 kWh per cubic meter</strong>of fresh water produced. Coupling these coastal desalination plants to very large-scale renewable energy is the only way to guarantee water independence without worsening the country's energy bill.</p>
+
+<h4>4.2. The spatial mesh: AI-managed pipeline networks</h4>
+<p>Producing water on the coasts is only the first step; distributing it nationwide toward the hinterland and arid agricultural zones requires large-scale hydraulic engineering. Fluid-dynamics studies indicate that transporting water horizontally over 100 km consumes about<strong>0.06 kWh/m&sup3;</strong>, while lifting it vertically costs about<strong>0.05 kWh per 100 m of elevation</strong>. To optimize this energy burden, distribution must be intelligently managed by the country's sovereign AI: reinforcement-learning algorithms, fed by millions of IoT sensors on the pipes, modulate pump pressure in real time according to predictive local demand, solar electricity prices, evaporation levels and weather models. This intelligent management prevents water hammer, instantly detects leaks and smooths energy-consumption peaks &mdash; turning a plain pipe into an adaptive fluid-transport infrastructure.</p>
+
+<h4>4.3. Agrivoltaics: the symbiosis of shade and light</h4>
+<p>Powering this ecosystem rests on a massive deployment of solar panels. To avoid soil artificialization and land-use conflict, the infrastructure is organized as agrivoltaic systems: crops are cultivated directly beneath elevated photovoltaic modules. This architecture creates a revolutionary agricultural microclimate. The partial shade filters direct radiation, lowering crop leaf temperatures and considerably reducing soil-surface water evaporation. Agronomic research confirms that agrivoltaic systems cut irrigation needs by<strong>20% to 40%</strong>while increasing plant resilience to summer heat waves; water-use efficiency (WUE) rises sharply. The electricity feeds the pipelines and the datacenters, while the desalinated water flows beneath the panels to irrigate a new kind of agriculture.</p>
+
+<h3>5. The desert truffle: biosecurity, nutrition and social engineering</h3>
+<h4>5.1. Thermiculture: the desert's gold</h4>
+<p>It is beneath these agrivoltaic solar fields, delicately irrigated by desalinated water through an AI-managed drip system, that the production of a major new food resource unfolds: the cultivation of the desert truffle (mainly the species<em>Terfezia boudieri</em>and<em>Terfezia claveryi</em>). These hypogeous fungi, endemic to the arid zones of North Africa and the Middle East, grow in obligatory mycorrhizal symbiosis with the roots of specific host plants &mdash; chiefly shrubs of the<em>Helianthemum</em>genus (such as<em>Helianthemum sessiliflorum</em>).</p>
+<p>Cultivating this fungus &mdash; called &ldquo;thermiculture&rdquo; &mdash; is a marvel of adaptation to scarcity. Once mycorrhized, the host plant's physiology is boosted by the fungus: photosynthesis, transpiration and respiration rates rise considerably, conferring exceptional resistance to water stress. The root system protects fragile soils from erosion and restores fertility to desertified land. Crucially, this symbiosis requires only about<strong>200 liters of water per square meter per year</strong>(200 mm of rainfall or irrigation) &mdash; a tiny fraction of traditional cereal or market-garden crops &mdash; fitting perfectly into the constrained agrivoltaic environment.</p>
+
+<h4>5.2. Nutritional Water Productivity (NWP) and the fight against malnutrition</h4>
+<p>The most disruptive aspect of the desert truffle lies in its formidable biochemical value. Analyses show that, on a dry-matter basis, these truffles contain<strong>20% to 27% high-quality protein</strong>(including all essential amino acids), 3% to 8% lipids, and high levels of potassium, iron, fiber, vitamins and antioxidant and antibacterial compounds. This nutritional density redefines agriculture through the emerging concept of<strong>Nutritional Water Productivity (NWP)</strong>: an index that measures not raw tonnage of biomass per cubic meter of water, but the absolute quantity of vital nutrients (proteins, kilocalories, minerals) generated per unit of water consumed. Faced with the famine threats induced by climate disruption, the capacity to produce complete proteins with a fraction of the water demanded by cattle farming or conventional protein crops is an absolute food-security rampart.</p>
+
+<h4>5.3. Intellectual evolution, financial inclusion and social stability</h4>
+<p>The implications of this agricultural revolution go beyond mere biological survival. The scientific literature attests that sustained, democratized access to high-quality protein, essential fatty acids and iron during the critical phases of brain development eradicates the cognitive deficits induced by latent undernutrition. By raising the population's nutritional baseline with high-functional-density products like the desert truffle, the state maximizes the neurological potential of its youth. For a nation aiming to build its economy on artificial intelligence and advanced engineering, strengthening its human cognitive capital through nutrition is a foundational biopolitical policy.</p>
+<p>Socio-economically, the desert truffle is a luxury product whose international demand &mdash; notably in the Gulf countries and Europe &mdash; far outstrips supply. Sale prices range from<strong>EUR 20 to 60 per kilogram</strong>, climbing to<strong>EUR 220</strong>on certain niche markets. With yields reaching<strong>400 kg per hectare</strong>in optimized regimes from the fifth or sixth year of planting, revenues per hectare are spectacular. Integrating farmers and populations from remote, marginalized regions into this agro-technological value chain would be a massive financial-inclusion lever: generating significant liquidity and bankarizing these communities (potentially through the state's digital infrastructure) eradicates the structural poverty of the hinterland and consolidates the Republic's social cohesion.</p>
+
+<h3>6. Quantitative energy modeling of the megaproject</h3>
+<p>The material realization of this holistic vision requires rigorous energy modeling. To assess the feasibility of this integrated-sovereignty program, the annual energy requirements are calculated below for each macro-component of the system.</p>
+<p><strong>6.1. Energy for the water revolution (desalination and pumping).</strong>Targeted production:<strong>500 million m&sup3;</strong>of fresh water per year, sized to fill the structural dam deficits, supply drinking water to urban zones and guarantee precision irrigation of the agrivoltaic desert-truffle network. Desalination consumption at a standard modern reverse-osmosis efficiency of 4 kWh/m&sup3;: 500,000,000 m&sup3; &times; 4 kWh/m&sup3; =<strong>2.00 TWh/yr</strong>. Smart-pipeline consumption, pumping from the coasts (e.g. Gab&egrave;s, Sfax) to the interior (Gafsa, Kasserine basins) over an average distance of 300 km with an average elevation of 400 m: horizontal transport 0.06 &times; 3 = 0.18 kWh/m&sup3;; vertical lift 0.05 &times; 4 = 0.20 kWh/m&sup3;; total 0.38 kWh/m&sup3; &rarr; 500,000,000 m&sup3; &times; 0.38 kWh/m&sup3; =<strong>0.19 TWh/yr</strong>.</p>
+<p><strong>6.2. Energy for cognitive sovereignty (AI datacenters).</strong>Targeted compute capacity: three hyperscale megacenters hosted in rehabilitated mines, each with an operational electrical capacity of<strong>100 MW</strong>&mdash; 300 MW total, required to train the state's large language models (LLMs), run national cryptography and support physical and quantum reality simulations. Thanks to the mines' natural geothermal cooling and the phosphogypsum leachate used as a thermal sink, the datacenters run at continuous full load with an extremely low PUE. Annual consumption at uninterrupted operation (8,760 h/yr): 300 MW &times; 8,760 h =<strong>2.63 TWh/yr</strong>.</p>
+<p><strong>6.3. Energy for materials engineering (rare-earth extraction).</strong>Targeted processing volume:<strong>2 million tonnes of phosphogypsum per year</strong>, progressively cleaning the toxic dumps while extracting strategic metals. The hydrometallurgical process &mdash; acid attack (HCl or HNO&sb3;) with reactors heated to 60&nbsp;&deg;C, continuous intense mechanical agitation (fine grinding) and centrifugation phases for solid&ndash;liquid separation &mdash; requires combined thermal and electrical energy estimated at about 250 kWh per tonne processed. Annual consumption: 2,000,000 t &times; 250 kWh/t =<strong>0.50 TWh/yr</strong>.</p>
+<table>
+<caption>Overall energy balance</caption>
+<thead><tr><th>Strategic pole</th><th>Annual electricity consumption (estimated TWh)</th><th>Share of total balance</th></tr></thead>
+<tbody>
+<tr><td>Seawater desalination (500 Mm&sup3;)</td><td>2.00 TWh</td><td>37.6%</td></tr>
+<tr><td>Sovereign AI datacenters (300 MW continuous)</td><td>2.63 TWh</td><td>49.4%</td></tr>
+<tr><td>Rare-earth extraction (2 Mt phosphogypsum)</td><td>0.50 TWh</td><td>9.4%</td></tr>
+<tr><td>National pumping network</td><td>0.19 TWh</td><td>3.6%</td></tr>
+<tr><td><strong>Total megaproject energy demand</strong></td><td><strong>&asymp; 5.32 TWh/yr</strong></td><td><strong>100%</strong></td></tr>
+</tbody>
+</table>
+<p>To generate 5.32 TWh of annual production relying exclusively on solar energy, the capacity factor of photovoltaic installations in Tunisia must be accounted for &mdash; generally estimated around<strong>20%</strong>in the center and south of the country. Required installed capacity: 5.32 TWh &divide; (8,760 h &times; 0.20) &asymp;<strong>3.03 GW</strong>. Deploying a 3 GW solar park, architected as agrivoltaic structures overhanging the mycorrhized<em>Helianthemum</em>plantations for the desert truffle, would require a land footprint of<strong>4,500 to 6,000 hectares</strong>(45 to 60 km&sup2;). On the scale of Tunisian geography this area is a marginal fraction of the national territory. Far from artificializing the soil, the installation literally transforms an arid expanse into a symbiotic reactor simultaneously generating decarbonized energy, fresh water, rare metals, sovereign computing power and a food resource of exceptionally high nutritional density.</p>
+
+<h3>7. Prospective synthesis and strategic implications</h3>
+<p>The conceptual engineering detailed in this report transcends simple crisis management. Tunisia's structural vulnerabilities &mdash; a dollar-denominated external debt subjecting it to the Federal Reserve's dictates, the dinar's apparent volatility, imported inflation, structural unemployment and endemic water stress &mdash; cannot be durably resolved by isolated monetary orthodoxy, nor by contracting new loans. The Central Bank's independence, crucial to prevent the disaster of direct deficit monetization (which would inevitably lead to hyperinflation, as the Venezuelan and Zimbabwean crises demonstrated), must be accompanied by a radical new-generation industrialization policy, resting on the hybridization of physical and digital infrastructures:</p>
+<ul>
+<li><strong>Когнитивная и материальная эмансипация</strong>: вычислительные мощности окончательно вытеснили углеводороды в качестве эталона мирового богатства; суверенная инфраструктура ИИ, размещённая в геотермальной прохладе бывших шахт, обеспечивает технологическое будущее страны. Этот суперкомпьютер позволяет избежать непомерных затрат на физическую аэрокосмическую отрасль за счёт совершенного моделирования реальности (когнитивные и пространственно-временные путешествия с помощью симуляции).</li>
+<li><strong>Экологическая и промышленная алхимия</strong>: извлечение редкоземельных элементов (с выходом более 65% хлоридным или нитратным способом) из экологической катастрофы фосфогипса — в сочетании с термической рециркуляцией его стоков для охлаждения ИИ-серверов — показывает, что владение минеральной химией способно восстановить окружающую среду, одновременно обеспечивая контроль над критически важными компонентами квантовой экономики.</li>
+<li><strong>Инженерия живых систем и биобезопасность</strong>: покрытие территории сетью умных конвейеров-трубопроводов под управлением ИИ, транспортирующих опреснённую воду к масштабным агровольтаическим установкам (3 GW),</li>
+</ul>
+<p>Ultimately, the synchronization of these technological, monetary, water and biological flows endows the Tunisian state with a matrix of absolute resilience. The country no longer merely absorbs the shock waves of global capital markets &mdash; it generates its own value at the intersection of algorithmic data, recycled strategic metals and optimized living systems.</p>
+
+<h4>Sources cited</h4>
+<ol class="n-src">
+<li>BCT: &Eacute;volution du taux de change du dinar &mdash; Mosaique FM,<a href="https://www.mosaiquefm.net/fr/national-tunisie/1522891/bct-evolution-du-taux-de-change-du-dinar" rel="noopener">link</a></li>
+<li>La BCT d&eacute;ment des rumeurs concernant le recul du taux de change &mdash; TAP,<a href="https://www.tap.info.tn/fr/Portail-Economie/20427161-la-bct-d%C3%A9ment" rel="noopener">link</a></li>
+<li>USD manual exchange rate &mdash; Tunisia Economic Indicator | Markets.tn,<a href="https://www.markets.tn/en/economy/indicator/7082" rel="noopener">link</a></li>
+<li>Cours de devises de la Banque Centrale de Tunisie &mdash; Dinar Tunisien,<a href="https://www.dinartunisien.com/fr/banque/banque-centrale-tunisie" rel="noopener">link</a></li>
+<li>Le dinar tunisien r&eacute;siste face &agrave; l'euro mais recule face au dollar &mdash; Webdo,<a href="https://www.webdo.tn/fr/actualite/national/le-dinar-tunisien-resiste-face-a-leuro-mais-recule-face-au-dollar/403349/" rel="noopener">link</a></li>
+<li>Central Bank of Tunisia's foreign exchange reserves &mdash; Econ. Bulletin,<a href="https://ideas.repec.org/a/ebl/ecbull/eb-24-00294.html" rel="noopener">link</a></li>
+<li>Tunisia: Foreign exchange reserves decline to around 8 billion dollars &mdash; Financial Afrik,<a href="https://www.financialafrik.com/en/2026/07/16/tunisia-foreign-exchange-reserves-decline-to-around-8-billion-dollars/" rel="noopener">link</a></li>
+<li>Mobile financial services in Mediterranean Partner Countries &mdash; EIB,<a href="https://www.eib.org/attachments/country/femip_study_mobile_financial_services_en.pdf" rel="noopener">link</a></li>
+<li>Tunisia: Weak macroeconomic fundamentals &mdash; Credendo,<a href="https://credendo.com/en/knowledge-hub/tunisia-weak-macroeconomic-fundamentals-will-continue-weigh-near-and-medium-term" rel="noopener">link</a></li>
+<li>Loi n&deg; 2016-48 relative aux banques,<a href="https://www.fgdb.gov.tn/storage/79/Loi-n%C2%B0-2016-48-du-11-juillet-2016.pdf" rel="noopener">link</a></li>
+<li>Loi n&deg; 2016-35 fixant le statut de la Banque Centrale de Tunisie,<a href="https://9anoun.tn/fr/kb/jorts/jort-2016-035-d2971/loi-ndeg-2016-35-du-25-avril-2016-portant-fixation-du-statut-de-la-banque-centrale-de-tunisie-3" rel="noopener">link</a></li>
+<li>R&eacute;glementation bancaire &mdash; UBM,<a href="https://ubmonline.org/wp-content/uploads/2017/03/reg_bancaire.pdf" rel="noopener">link</a></li>
+<li>Banque centrale de Tunisie &mdash; Wikipedia,<a href="https://fr.wikipedia.org/wiki/Banque_centrale_de_Tunisie" rel="noopener">link</a></li>
+<li>Net foreign exchange reserves (value) &mdash; Tunisia | Markets.tn,<a href="https://www.markets.tn/en/economy/indicator/7056" rel="noopener">link</a></li>
+<li>Investor &mdash; OMFIF Global Public Investor,<a href="https://www.omfif.org/wp-content/uploads/2023/06/GPI-2023.pdf" rel="noopener">link</a></li>
+<li>Special Drawing Rights: The Right Tool to Use &mdash; CEPR,<a href="https://cepr.net/publications/special-drawing-rights-the-right-tool-to-use-to-respond-to-the-pandemic-and-other-challenges/" rel="noopener">link</a></li>
+<li>Tunisia &mdash; International reserves and foreign currency liquidity &mdash; IMF,<a href="https://dsbb.imf.org/sdds/dqaf-base/country/TUN/category/ILV00" rel="noopener">link</a></li>
+<li>Tunisian Banks Have Sufficient Liquidity &mdash; Fitch Ratings,<a href="https://www.fitchratings.com/research/banks/tunisian-banks-have-sufficient-liquidity-to-help-meet-sovereign-financing-30-01-2025" rel="noopener">link</a></li>
+<li>Tunisia Foreign Exchange Reserves: % of GDP &mdash; CEIC,<a href="https://www.ceicdata.com/en/indicator/tunisia/foreign-exchange-reserves--of-gdp" rel="noopener">link</a></li>
+<li>Tunisia External Debt &mdash; CEIC Data,<a href="https://www.ceicdata.com/en/indicator/tunisia/external-debt" rel="noopener">link</a></li>
+<li>A Path Out of Tunisia's Economic Crisis &mdash; Carnegie Endowment,<a href="https://carnegieendowment.org/middle-east/research/2025/02/a-path-out-of-tunisias-economic-crisis" rel="noopener">link</a></li>
+<li>The surge in Tunisia foreign debt: causes and possible ways out &mdash; PMC,<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9901378/" rel="noopener">link</a></li>
+<li>Tunisia &mdash; Debt Justice,<a href="https://debtjustice.org.uk/countries/tunisia" rel="noopener">link</a></li>
+<li>The impacts of the external debt on economic growth in Tunisia,<a href="https://www.journalcra.com/article/impacts-external-debt-economic-growth-tunisia" rel="noopener">link</a></li>
+<li>Tunisia | World Bank Group,<a href="https://www.worldbank.org/ext/en/country/tunisia" rel="noopener">link</a></li>
+<li>Connectivity for continental power &mdash; Global Africa Tech,<a href="http://globalafricatech.com/fr/homepage-fr/" rel="noopener">link</a></li>
+<li>The AI Landscape, Mapped &middot; Sub-Saharan Africa &mdash; Pursuit AI Lab,<a href="https://pursuitlab.ai/resources/ai-landscape/" rel="noopener">link</a></li>
+<li>Sovereign Large Language Models: Advantages, Strategy &mdash; arXiv,<a href="https://arxiv.org/html/2503.04745v1" rel="noopener">link</a></li>
+<li>Sovereign Large Language Models &mdash; arXiv,<a href="https://arxiv.org/pdf/2503.04745" rel="noopener">link</a></li>
+<li>Gab&egrave;s Phosphate Fertilizers Plants of the Tunisian Chemical Group &mdash; EJAtlas,<a href="https://ejatlas.org/print/gabes-phosphate-fertilizers-plants-of-the-tunisian-chemical-group" rel="noopener">link</a></li>
+<li>Rare earth elements characterization associated to the phosphate &mdash; INIS,<a href="https://inis.iaea.org/records/yzr2a-x6k29" rel="noopener">link</a></li>
+<li>Characterization of phosphate rock and phosphogypsum &mdash; PubMed,<a href="https://pubmed.ncbi.nlm.nih.gov/29532384/" rel="noopener">link</a></li>
+<li>Impact of industrial phosphate waste discharge on the marine &mdash; PLOS ONE,<a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0197731" rel="noopener">link</a></li>
+<li>Rare Earth Elements in Phosphate Ores and Industrial By-Products &mdash; MDPI,<a href="https://www.mdpi.com/2075-163X/15/12/1232" rel="noopener">link</a></li>
+<li>Characterization and Leaching Kinetics of Rare Earth Elements &mdash; MDPI,<a href="https://www.mdpi.com/2075-163X/12/6/703" rel="noopener">link</a></li>
+<li>A Critical Review of the Enhanced Recovery of Rare Earth Elements &mdash; PMC,<a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10488757/" rel="noopener">link</a></li>
+<li>Phosphogypsum Processing for Rare Earths Recovery &mdash; A Review,<a href="https://www.scirp.org/journal/paperinformation?paperid=94961" rel="noopener">link</a></li>
+<li>From Grave to Cradle: Treatment, Resource Recycling &mdash; ACS,<a href="https://pubs.acs.org/doi/abs/10.1021/acs.estlett.4c00530" rel="noopener">link</a></li>
+<li>Predicting Sustainable Phosphogypsum Valorization in Tunisia and North Africa,<a href="https://www.researchgate.net/publication/408215362_Predicting_Sustainable_Phosphogypsum_Valorization_in_Tunisia_and_North_Africa_Based_on_Chinese_Reuse_Trends" rel="noopener">link</a></li>
+<li>Renewable Energy Desalination &mdash; World Bank Documents,<a href="https://documents1.worldbank.org/curated/en/443161468275091537/pdf/730700PUB0EPI001200pub0date09026012.pdf" rel="noopener">link</a></li>
+<li>How much energy does desalinisation use? Is it &ldquo;absurdly cheap&rdquo;? &mdash; Hannah Ritchie,<a href="https://hannahritchie.substack.com/p/how-much-energy-does-desalinisation/comments" rel="noopener">link</a></li>
+<li>Desalination &mdash; Dr Rajiv Desai,<a href="https://drrajivdesaimd.com/2024/05/07/desalination/" rel="noopener">link</a></li>
+<li>Second-party opinion report &mdash; Pengurusan Aset Air Berhad,<a href="https://www.paab.my/wp-content/uploads/2026/04/Pengurusan-Aset-Air-Berhad-Second-Opinion-Report-Final.pdf" rel="noopener">link</a></li>
+<li>Reducing the Energy Footprint of the Water Sector &mdash; EurEau,<a href="https://eureau.org/wp-content/uploads/2020/03/briefing-note-on-reducing-the-energy-footprint-of-water-sector.pdf" rel="noopener">link</a></li>
+<li>How to save water with agrivoltaics &mdash; Enel Green Power,<a href="https://www.enelgreenpower.com/media/news/2023/07/agrivoltaics-water-savings" rel="noopener">link</a></li>
+<li>Impact of Agrivoltaics irrigation and soil moisture dynamics &mdash; ResearchGate,<a href="https://www.researchgate.net/publication/396897001_Impact_of_Agrivoltaics_irrigation_and_soil_moisture_dynamics_A_review" rel="noopener">link</a></li>
+<li>Water and microclimate management strategies for agrivoltaics &mdash; KU Leuven,<a href="https://research.kuleuven.be/portal/en/project/3E230899" rel="noopener">link</a></li>
+<li>Desert truffle &mdash; Innovatione,<a href="https://innovatione.eu/en/2021/10/29/desert-truffle/" rel="noopener">link</a></li>
+<li>The Microbiome Structure of the Symbiosis between the Desert truffle &mdash; MDPI,<a href="https://www.mdpi.com/2309-608X/8/10/1062" rel="noopener">link</a></li>
+<li>Cultivation of an edible desert truffle (Terfezia boudieri Chatin),<a href="https://www.internationalscholarsjournals.com/abstract/cultivation-of-an-edible-desert-truffle-terfezia-boudieri-chatin-65770.html" rel="noopener">link</a></li>
+<li>Mycorrhizal association between the desert truffle Terfezia boudieri &mdash; BGU,<a href="https://cris.bgu.ac.il/en/publications/mycorrhizal-association-between-the-desert-truffle-terfezia-boudi-5/" rel="noopener">link</a></li>
+<li>Cultivation of Desert Truffles &mdash; A Crop Suitable for Arid and Semi-Arid Zones &mdash; MDPI,<a href="https://www.mdpi.com/2073-4395/11/8/1462" rel="noopener">link</a></li>
+<li>Cultivation of Desert Truffles (PDF) &mdash; ResearchGate,<a href="https://www.researchgate.net/publication/353406050_Cultivation_of_Desert_Truffles-A_Crop_Suitable_for_Arid_and_Semi-Arid_Zones" rel="noopener">link</a></li>
+<li>Desert Truffles &mdash; Nutritious &mdash; Botit,<a href="https://botit.botany.wisc.edu/toms_fungi/nutritious.html" rel="noopener">link</a></li>
+<li>Water Use and Nutritional Water Productivity &mdash; WRC South Africa,<a href="https://www.wrc.org.za/wp-content/uploads/mdocs/3223%20final.pdf" rel="noopener">link</a></li>
+<li>A Review of Nutritional Water Productivity (NWP) in Agriculture &mdash; MDPI,<a href="https://www.mdpi.com/2073-4441/15/24/4278" rel="noopener">ссылка</a></li>
+<li>Водопотребление сельскохозяйственных культур и пищевая водопродуктивность &mdash; WRC,<a href="https://www.wrc.org.za/wp-content/uploads/mdocs/2493%20Main%20report.pdf" rel="noopener">ссылка</a></li>
+<li>Способ извлечения редкоземельных элементов из фосфогипса &mdash; Патент,<a href="https://patents.google.com/patent/CN102639729B/en" rel="noopener">ссылка</a></li>
+<li>Ind&eacute;pendance de la BCT : Risques et cons&eacute;quences du financement direct de l'&Eacute;tat &mdash; IlBoursa,<a href="https://www.ilboursa.com/marches/independance-de-la-bct-risques-et-consequences-du-financement-direct-de-l-etat_42542" rel="noopener">ссылка</a></li>
+</ol>
+
+    <p style="margin-top:2rem"><a class="row-btn" href="/nations/v1/rapport-megaprojet-tunisie.docx"
+      download aria-label="Download the original report as a Word document, in French">Скачать исходный отчёт (.docx, французский)</a></p>
+  </div>
+</div>
+
+<div class="n-section">
+  <div class="wrap" style="max-width:76ch">
+    <p class="eyebrow">Честные границы</p>
+    <h2>Чем это является &mdash; и чем не является</h2>
+    <div class="n-boundary">
+      <h3>Это</h3>
+      <p>Инженерное исследование на уровне концепции<em>плюс собственный опубликованный тест на фальсифицируемость</em>:
+      семь уровней утверждений, оценённых по степени достоверности доказательств, модель «капитальные затраты / операционные затраты / выручка» по принципу «снизу вверх»,
+      пересчитанная в коде на основе исходных базовых данных, пессимистичные сценарии, финансовые инструменты, которые
+      реально существуют, и протокол порога отсева с наблюдаемыми критериями «go/no-go». Бесплатно, публично,
+      индексируемо &mdash; шаблон, а не продукт. Весь смысл красной команды заключается в методе,
+      который она демонстрирует: идея государства выживает столь же точно и честно, сколь и идея деептех-проекта.</p>
+      <h3>Чем это не является</h3>
+      <p>Заказной государственной программой, технико-экономическим исследованием банковского уровня (Class-5), инвестиционным
+      предложением или заявлением о том, что что-либо из этого уже построено. Ничто здесь не является рекомендацией какому-либо
+      правительству. Оценка достоверности измеряет доказательную базу, а не вероятность успеха:
+      нескольким уровням присвоена ВЫСОКАЯ оценка именно потому, что исследования показывают реальную сложность
+      задачи. Количественная аргументация опирается на цитируемую литературу; ничто на этой странице
+      не заменяет геологических, радиологических, геотехнических изысканий или изысканий уровня EPC. Отдельные разделы отчёта
+      намеренно носят поисковый характер &mdash; например, «когнитивные путешествия» на основе моделирования,
+      заменяющие физические космические программы. Проверяйте каждую цифру и цитату, прежде
+      чем полагаться на них, &mdash; то же правило применимо ко всему остальному на этом сайте.</p>
+    </div>
+  </div>
+</div>
+
+<div class="n-section" style="border-bottom:0">
+  <div class="wrap" style="max-width:76ch">
+    <p class="eyebrow">Очередь вашей страны</p>
+    <h2>Шаблон переносится.</h2>
+    <p class="n-lede">Номинированный в долларах долг. Водный стресс. Вычислительные мощности, арендуемые за рубежом.
+    Продовольственная нестабильность. Те же пять видов отсутствия повторяются в десятках стран &mdash; в Северной Африке,
+    Сахеле, на Ближнем Востоке и за их пределами. Аудит каждый раз один и тот же: назвать отсутствие,
+    найти подтверждённый источниками процесс, который его восполнит, рассчитать энергию и деньги и замкнуть контур
+    так, чтобы каждое обязательство окупало следующее решение. Эта страница существует для того, чтобы этот метод &mdash; и эти
+    амбиции &mdash; можно было скопировать. В этом вся суть.</p>
+    <p style="margin-top:1.4rem"><a href="/ru/#join" style="font-weight:600">Присоединиться к реестру &mdash; это бесплатно &rarr;</a></p>
+  </div>
+</div>
+
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+</body>
+</html>

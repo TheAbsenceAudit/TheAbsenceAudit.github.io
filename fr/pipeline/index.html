@@ -1,0 +1,446 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<link rel="alternate" hreflang="en" href="https://theabsenceaudit.com/pipeline/"/>
+<link rel="alternate" hreflang="fr" href="https://theabsenceaudit.com/fr/pipeline/"/>
+<link rel="alternate" hreflang="zh" href="https://theabsenceaudit.com/zh/pipeline/"/>
+<link rel="alternate" hreflang="ru" href="https://theabsenceaudit.com/ru/pipeline/"/>
+<link rel="alternate" hreflang="x-default" href="https://theabsenceaudit.com/pipeline/"/>
+<link rel="canonical" href="https://theabsenceaudit.com/fr/pipeline/"/>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Pipeline — L&#x27;Audit de l&#x27;absence</title>
+<meta name="description" content="Deeptech ventures proven in the peer-reviewed literature, absent from the commercial market, and bankable on the numbers we compute. 91 deeptech concepts audited against seven gates; every one published as a full study with its economics, its citations, and its verdict.">
+<link rel="canonical" href="https://theabsenceaudit.com/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<meta name="color-scheme" content="light">
+
+<!-- Open Graph: without these, every Facebook/LinkedIn/WhatsApp share renders a bare grey box -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/">
+<meta property="og:title" content="Deeptech ventures, audited and bankable — The Absence Audit">
+<meta property="og:description" content="The market's best-kept secrets are in the public record. 20 battle-tested build dossiers for sale — proven in the literature, absent from the market, bankable on the numbers. The 82 studies are published in full, autopsy included.">
+<meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
+<meta property="og:image:secure_url" content="https://theabsenceaudit.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="The Absence Audit — 91 concepts examined, 82 published as studies, 20 for sale">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proven in the literature. Absent from the market. Bankable on the numbers.">
+<meta name="twitter:description" content="91 concepts examined, 82 published as studies, 20 for sale — every survivor carries a computed bankability verdict. Every study is published in full.">
+<meta name="twitter:image" content="https://theabsenceaudit.com/og-image.png">
+<meta name="twitter:image:alt" content="The Absence Audit ledger card">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+
+<link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://theabsenceaudit.com/#website",
+      "url": "https://theabsenceaudit.com/",
+      "name": "The Absence Audit",
+      "description": "A research ledger of venture concepts proven in peer-reviewed literature, absent from the commercial market, and bankable on the numbers we compute — debt sizing and DSCR for every surviving dossier. Every study is published in full, with the specific failure that killed it.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://theabsenceaudit.com/#ledger",
+      "name": "The Absence Audit ledger",
+      "description": "91 venture concepts screened against seven gates for scientific backing, commercial absence, unit margins, capital intensity, production velocity, market size and measured superiority over a named incumbent. 82 published as studies, 20 for sale. Every study is published with its specific failure mode.",
+      "url": "https://theabsenceaudit.com/ledger/",
+      "isAccessibleForFree": true,
+      "creator": {"@type": "Organization", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
+      "dateModified": "2026-09-09T19:57:57+02:00",
+      "keywords": ["venture concepts","peer-reviewed literature","commercial absence","unit economics","technology transfer","research commercialisation"],
+      "variableMeasured": [
+        {"@type":"PropertyValue","name":"Superiority margin vs named incumbent"},
+        {"@type":"PropertyValue","name":"Gross margin at incumbent price"},
+        {"@type":"PropertyValue","name":"Startup capital expenditure"},
+        {"@type":"PropertyValue","name":"Payback period"}
+      ]
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ledger/">Ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/method/">Method</a>
+      <a href="/nations/">Nations</a>
+      <a href="/translation/">Translation</a>
+      <span class="aa-langs"> <a href="/pipeline/" hreflang="en">EN</a> <a href="/fr/pipeline/" hreflang="fr">FR</a> <a href="/ru/pipeline/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main"><div class="wrap" style="padding:3.2rem 0 4rem;max-width:76ch"><p class="eyebrow">Pipeline</p><h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)">Everything that entered, and what happened to it</h1><p class="lede">This is not a brochure. It is the funnel as it stands at publish time — every number below is computed by the pipeline itself from the same records that build the ledger, twice a day. The pipeline is a system, not a list: what enters, what clears, what dies, and the specific arithmetic of each death.</p><p class="snapshot">Dataset snapshot: 09 Sep 2026, 17:57 UTC &middot; 91 concepts &middot; 9 cleared &middot; 82 studies &middot; 20 dossiers for sale &middot; 61 research reports &middot; 3261 references &middot; 583 DOIs &middot; 30,418 citations of record. One snapshot per publish &mdash; every page that shows numbers references this same line.</p><h3>The funnel, live</h3><div style="margin:0 0 .9rem"><div style="display:flex;justify-content:space-between;gap:1rem;margin-bottom:.25rem"><span><strong>Research reports read</strong></span><span class="num"><strong>61</strong> <span style="color:var(--ink-2)">each with works cited</span></span></div><div style="height:1.4rem;background:var(--paper-2);border:1px solid var(--rule)"><div style="width:100.0%;height:100%;background:var(--ink);opacity:.85"></div></div></div><div style="margin:0 0 .9rem"><div style="display:flex;justify-content:space-between;gap:1rem;margin-bottom:.25rem"><span><strong>Venture concepts extracted</strong></span><span class="num"><strong>91</strong> <span style="color:var(--ink-2)">≈1.5 per report</span></span></div><div style="height:1.4rem;background:var(--paper-2);border:1px solid var(--rule)"><div style="width:100.0%;height:100%;background:var(--ink);opacity:.85"></div></div></div><div style="margin:0 0 .9rem"><div style="display:flex;justify-content:space-between;gap:1rem;margin-bottom:.25rem"><span><strong>Cleared all seven gates + void tests</strong></span><span class="num"><strong>9</strong> <span style="color:var(--ink-2)">the rest are published as studies — full failure record public</span></span></div><div style="height:1.4rem;background:var(--paper-2);border:1px solid var(--rule)"><div style="width:9.9%;height:100%;background:var(--ink);opacity:.85"></div></div></div><div style="margin:0 0 .9rem"><div style="display:flex;justify-content:space-between;gap:1rem;margin-bottom:.25rem"><span><strong>Published as full studies — failure record public, autopsy priced</strong></span><span class="num"><strong>82</strong> <span style="color:var(--ink-2)">20 distinct failure modes &middot; full reports priced &euro;125&ndash;&euro;250 by Autopsy Value Score</span></span></div><div style="height:1.4rem;background:var(--paper-2);border:1px solid var(--rule)"><div style="width:90.1%;height:100%;background:var(--ink);opacity:.85"></div></div></div><div style="margin:0 0 .9rem"><div style="display:flex;justify-content:space-between;gap:1rem;margin-bottom:.25rem"><span><strong>Full dossiers for sale</strong></span><span class="num"><strong>20</strong> <span style="color:var(--ink-2)">priced by Deal Value Score</span></span></div><div style="height:1.4rem;background:var(--paper-2);border:1px solid var(--rule)"><div style="width:22.0%;height:100%;background:var(--ink);opacity:.85"></div></div></div><div style="margin:0 0 .9rem"><div style="display:flex;justify-content:space-between;gap:1rem;margin-bottom:.25rem"><span><strong>Market absence verified by search</strong></span><span class="num"><strong>11</strong> <span style="color:var(--ink-2)">channels, companies, substitutes named</span></span></div><div style="height:1.4rem;background:var(--paper-2);border:1px solid var(--rule)"><div style="width:12.1%;height:100%;background:var(--ink);opacity:.85"></div></div></div><div style="margin:0 0 .9rem"><div style="display:flex;justify-content:space-between;gap:1rem;margin-bottom:.25rem"><span><strong>Specific protectable contribution named</strong></span><span class="num"><strong>0</strong> <span style="color:var(--ink-2)">the IP gate</span></span></div><div style="height:1.4rem;background:var(--paper-2);border:1px solid var(--rule)"><div style="width:2.0%;height:100%;background:var(--ink);opacity:.85"></div></div></div><div style="margin:0 0 .9rem"><div style="display:flex;justify-content:space-between;gap:1rem;margin-bottom:.25rem"><span><strong>Follow-up checks on record</strong></span><span class="num"><strong>0</strong> <span style="color:var(--ink-2)">absence re-checks, validation findings</span></span></div><div style="height:1.4rem;background:var(--paper-2);border:1px solid var(--rule)"><div style="width:2.0%;height:100%;background:var(--ink);opacity:.85"></div></div></div><div style="margin:0 0 .9rem"><div style="display:flex;justify-content:space-between;gap:1rem;margin-bottom:.25rem"><span><strong>Built into operating companies by buyers</strong></span><span class="num"><strong>0</strong> <span style="color:var(--ink-2)">the honest end of the funnel — see <a href="/track-record/">the hit-rate ledger</a></span></span></div><div style="height:1.4rem;background:var(--paper-2);border:1px solid var(--rule)"><div style="width:2.0%;height:100%;background:var(--ink);opacity:.85"></div></div></div><p style="color:var(--ink-2);font-size:.95rem;margin-bottom:2rem">&ldquo;Cleared&rdquo; means <em>internal</em> screening passed — the seven gates, the void tests, the recomputed economics and the red-team audit. It is not commercial validation: that is the bottom bar, published as zero on purpose, and it only moves when a buyer reports a built business. The full five-way distinction is the <a href="/method/">verification vocabulary</a>.</p><p style="color:var(--ink-2);font-size:.95rem;margin-bottom:2rem">Bar widths are proportional to concept counts. The bottom stage is published as zero on purpose: it is the metric that matters, and it will only move when a buyer reports a built business. Nothing on this page is estimated or projected.</p><h3>What entered the pipeline, month by month</h3><table style="margin:1rem 0 2rem"><thead><tr><th>Month</th><th class="num">Concepts entered</th><th class="num">Cleared</th><th class="num">Studies</th></tr></thead><tbody><tr><td>2026-08</td><td class="num">45</td><td class="num">8</td><td class="num">37</td></tr><tr><td>2026-09</td><td class="num">46</td><td class="num">13</td><td class="num">33</td></tr></tbody></table><h3>Everything that entered in the last 30 days</h3><p style="color:var(--ink-2);font-size:.95rem">91 concepts entered in the last 30 days (34 in the last 7). The full list, newest first:</p><div class="tbl-scroll"><table style="margin:1rem 0 2rem"><thead><tr><th>Concept</th><th>Verdict</th><th>Measured against</th></tr></thead><tbody><tr><td><a href="/c/high-fidelity-bidisperse-magnetorheological-fluids-via-vacuum-centrifu/">High-Fidelity Bidisperse Magnetorheological Fluids via Vacuum Centrifugal Dispersal</a><span style="color:var(--ink-2)"> · 2026-09-08</span></td><td><span class="tbadge ok">cleared</span></td><td>Lord MRF-132DG</td></tr><tr><td><a href="/c/premium-botanical-powders-via-wire-to-mesh-electrohydrodynamic-ehd-dry/">Premium Botanical Powders via Wire-to-Mesh Electrohydrodynamic (EHD) Drying</a><span style="color:var(--ink-2)"> · 2026-09-08</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Freeze-dried (lyophilized) powder</td></tr><tr><td><a href="/c/osmotically-regulated-hexanal-clathrate-pads/">Osmotically-Regulated Hexanal Clathrate Pads</a><span style="color:var(--ink-2)"> · 2026-09-07</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Sulfur Dioxide (SO2) Generating Pads (e.g., Uvasys)</td></tr><tr><td><a href="/c/self-healing-telechelic-linear-coordination-polymers-lcps-for-agricult/">Self-Healing Telechelic Linear Coordination Polymers (LCPs) for Agricultural Drift Control via RAFT Polymerization and Metal Coordination</a><span style="color:var(--ink-2)"> · 2026-09-06</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Novita Drift Control</td></tr><tr><td><a href="/c/endogenous-mechanochemical-phase-transition-for-selective-lithium-extr/">Endogenous Mechanochemical Phase-Transition for Selective Lithium Extraction</a><span style="color:var(--ink-2)"> · 2026-09-06</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>H2SO4 Hydrometallurgy</td></tr><tr><td><a href="/c/polyaspartate-stabilized-amorphous-calcium-phosphate-pasp-acp-via-low/">Polyaspartate-Stabilized Amorphous Calcium Phosphate (PAsp-ACP) via Low-Shear Vacuum PIFP Blending</a><span style="color:var(--ink-2)"> · 2026-09-06</span></td><td><span class="tbadge ok">cleared</span></td><td>MI Paste (GC America)</td></tr><tr><td><a href="/c/ice-templated-portland-cement-via-directional-freeze-casting/">Ice-Templated Portland Cement via Directional Freeze-Casting</a><span style="color:var(--ink-2)"> · 2026-09-06</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Commercial Alumina (α-Al2O3) Ceramic Membrane</td></tr><tr><td><a href="/c/force-activated-damage-indicating-structural-epoxies-via-spirolactam-m/">Force-Activated Damage-Indicating Structural Epoxies via Spirolactam Mechanophore Crosslinking</a><span style="color:var(--ink-2)"> · 2026-09-06</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Loctite EA 9394 AERO</td></tr><tr><td><a href="/c/sulfur-rich-chalcogenide-hybrid-inorganic-organic-polymer-chip-lenses/">Sulfur-Rich Chalcogenide Hybrid Inorganic/Organic Polymer (CHIP) Lenses via Inverse Vulcanization</a><span style="color:var(--ink-2)"> · 2026-09-06</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Germanium (Ge) optical lenses</td></tr><tr><td><a href="/c/chitosan-modified-bentonite-cmb-powder-via-coprecipitation/">Chitosan-Modified Bentonite (CMB) Powder via Coprecipitation</a><span style="color:var(--ink-2)"> · 2026-09-05</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Anionic Polyacrylamide (APAM)</td></tr><tr><td><a href="/c/high-specific-strength-densified-superwood-via-delignification-and-hot/">High-Specific-Strength Densified Superwood via Delignification and Hot-Pressing</a><span style="color:var(--ink-2)"> · 2026-09-05</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>6061-T6 aluminum plate</td></tr><tr><td><a href="/c/amino-functionalized-boron-nitride-nanosheet-bnns-nh2-silicone-gap-fil/">Amino-Functionalized Boron Nitride Nanosheet (BNNS-NH2) Silicone Gap Fillers via Urea-Assisted Ball Milling</a><span style="color:var(--ink-2)"> · 2026-09-05</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Bergquist Gap Filler TGF 4000 (Henkel)</td></tr><tr><td><a href="/c/solventless-eugenol-furfurylamine-polybenzoxazine-e-f-bz-via-one-pot-m/">Solventless Eugenol-Furfurylamine Polybenzoxazine (E-F-Bz) via One-Pot Melt Condensation</a><span style="color:var(--ink-2)"> · 2026-09-05</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Bismaleimide (BMI) Resin (Abron BR 720)</td></tr><tr><td><a href="/c/ultra-low-corrosion-ldac-working-fluid-via-formate-ionic-liquid-blendi/">Ultra-Low-Corrosion LDAC Working Fluid via Formate-Ionic Liquid Blending</a><span style="color:var(--ink-2)"> · 2026-09-05</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>40% Liquid Lithium Chloride (LiCl) Solution</td></tr><tr><td><a href="/c/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/">Erythritol-Based Tephritid Fruit Fly Bait via Dry Blending</a><span style="color:var(--ink-2)"> · 2026-09-05</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>GF-120 NF Naturalyte Fruit Fly Bait</td></tr><tr><td><a href="/c/thermoreversible-diels-alder-poly-vinyl-alcohol-hot-melt-adhesive-via/">Thermoreversible Diels-Alder Poly(vinyl alcohol) Hot-Melt Adhesive via Furan-Maleimide Cycloaddition</a><span style="color:var(--ink-2)"> · 2026-09-05</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>3M Scotch-Weld PUR TE040</td></tr><tr><td><a href="/c/thermostabilized-stearic-encapsulated-calcium-peroxide-se-cao2-via-pre/">Thermostabilized Stearic-Encapsulated Calcium Peroxide (SE-CaO2) via Precision Microencapsulation</a><span style="color:var(--ink-2)"> · 2026-09-05</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Regenesis ORC Advanced®</td></tr><tr><td><a href="/c/v2o5-ppy-nanozymatic-antifouling-additives-via-in-situ-interfacial-pol/">V2O5@PPy Nanozymatic Antifouling Additives via In Situ Interfacial Polymerization</a><span style="color:var(--ink-2)"> · 2026-09-05</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Cuprous Oxide (Cu2O)</td></tr><tr><td><a href="/c/formaldehyde-free-tannin-furanic-rigid-foam-via-phytic-acid-synergisti/">Formaldehyde-Free Tannin-Furanic Rigid Foam via Phytic Acid Synergistic Crosslinking</a><span style="color:var(--ink-2)"> · 2026-09-04</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Rigid Polyurethane Foam (RPUF)</td></tr><tr><td><a href="/c/ultrahigh-voltage-gradient-zno-polystyrene-varistors-via-the-cold-sint/">Ultrahigh-Voltage Gradient ZnO-Polystyrene Varistors via the Cold Sintering Process (CSP)</a><span style="color:var(--ink-2)"> · 2026-09-04</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Conventional ZnO-Bi2O3 Varistors (TDK/Littelfuse)</td></tr><tr><td><a href="/c/ultrafast-periodate-accelerated-polycatecholamine-aqueous-adhesion-pro/">Ultrafast Periodate-Accelerated Polycatecholamine Aqueous Adhesion Promoters via Oxidative Crosslinking</a><span style="color:var(--ink-2)"> · 2026-09-04</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>3M Tape Primer 94</td></tr><tr><td><a href="/c/ultra-low-stress-thiol-ene-photopolymer-conformal-coatings-uste-cc-via/">Ultra-Low Stress Thiol-Ene Photopolymer Conformal Coatings (USTE-CC) via Step-Growth Radical Photopolymerization</a><span style="color:var(--ink-2)"> · 2026-09-04</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>HumiSeal UV40</td></tr><tr><td><a href="/c/urcasu-mechanochemical-fertilizer-via-twin-screw-extrusion/">URCASU Mechanochemical Fertilizer via Twin-Screw Extrusion</a><span style="color:var(--ink-2)"> · 2026-09-04</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Polymer-Coated Urea (Turf-Maker Duration 44-0-0)</td></tr><tr><td><a href="/c/laser-induced-porous-graphene-lig-sensor-substrates-via-direct-laser-w/">Laser-Induced Porous Graphene (LIG) Sensor Substrates via Direct-Laser Writing</a><span style="color:var(--ink-2)"> · 2026-09-04</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>Metrohm DropSens DRP-110 screen-printed carbon electrode</td></tr><tr><td><a href="/c/extrusion-synthesized-urea-calcium-sulfate-urcasu-cocrystals-via-twin/">Extrusion-Synthesized Urea-Calcium Sulfate (URCASU) Cocrystals via Twin-Screw Mechanochemistry</a><span style="color:var(--ink-2)"> · 2026-09-04</span></td><td><span class="tbadge dead">didn&rsquo;t clear</span></td><td>LESCO 44-0-0 100% PolyPlus OPTI Turfgrass Granular Fertilize</td></tr></tbody></table></div><h3>The failure taxonomy &mdash; why the 82 didn&rsquo;t clear, every failure mode published</h3><p style="color:var(--ink-2);font-size:.95rem">Every study carries at least one of these measured failure modes. This is the negative half of the product: each entry is a specific, quantified reason that a real, apparently promising process does not work as a business. Search the ledger by any of them at <a href="/ledger/">/ledger/</a>.</p><table style="margin:1rem 0 2rem"><tbody><tr><td>Negative control / sub-2x (voids the audit)</td><td class="num">42</td></tr><tr><td>Economics undisclosed (voids the audit)</td><td class="num">38</td></tr><tr><td>Form-factor / handling regression (voids the audit)</td><td class="num">38</td></tr><tr><td>Margin fails the operating-cost check</td><td class="num">29</td></tr><tr><td>Capital and time to revenue (voids the audit)</td><td class="num">24</td></tr><tr><td>Mismatched comparison (voids the audit)</td><td class="num">22</td></tr><tr><td>Evidence rests on non-peer-reviewed sources</td><td class="num">19</td></tr><tr><td>Absence asserted, search unreported</td><td class="num">19</td></tr><tr><td>Absence search missing (voids the audit)</td><td class="num">19</td></tr><tr><td>No protectable contribution declared</td><td class="num">8</td></tr><tr><td>No defensible contribution declared (voids the audit)</td><td class="num">8</td></tr><tr><td>Entry application mismatch (voids the audit)</td><td class="num">7</td></tr><tr><td>Payback horizon exceeds the model&#x27;s ceiling</td><td class="num">6</td></tr><tr><td>Capital productivity below the model&#x27;s floor</td><td class="num">6</td></tr><tr><td>Below the 2x step-change bar</td><td class="num">5</td></tr><tr><td>No head-to-head evidence</td><td class="num">4</td></tr><tr><td>Uncited safety claim</td><td class="num">3</td></tr><tr><td>Illegitimate incumbent (voids the audit)</td><td class="num">2</td></tr><tr><td>Self-declared operational arbitrage (no patentable asset)</td><td class="num">1</td></tr><tr><td>Negative control used as incumbent</td><td class="num">1</td></tr></tbody></table><h3>The capital census &mdash; model bankability, verdict-blind</h3><p style="color:var(--ink-2);font-size:.95rem">Every pack verdict is computed from the same economics primitives, independent of the audit verdict &mdash; which is why the two disagree honestly: <strong>45 studies are model-bankable</strong> (the debt math works, the venture case didn&rsquo;t), and <strong>1 for-sale concepts fail the model DSCR floor</strong> (the audit publishes that). Filter the ledger by either cut: <a href="/ledger/?v=0&amp;bk=BANKABLE">Studies &times; bankable</a> &middot; <a href="/ledger/?v=sale&amp;bk=NOT BANKABLE">For sale &times; not bankable</a> &middot; <a href="/ledger/?bk=NONE">No model</a>.</p><table style="margin:1rem 0 2rem"><thead><tr><th>Model verdict</th><th class="num">For sale</th><th class="num">Studies</th><th class="num">Total</th></tr></thead><tbody><tr><td>BANKABLE</td><td class="num">19</td><td class="num">45</td><td class="num">64</td></tr><tr><td>NOT BANKABLE</td><td class="num">1</td><td class="num">13</td><td class="num">14</td></tr><tr><td>CONDITIONAL</td><td class="num">1</td><td class="num">4</td><td class="num">5</td></tr><tr><td>NOT ASSESSABLE</td><td class="num">0</td><td class="num">1</td><td class="num">1</td></tr><tr><td>NONE</td><td class="num">0</td><td class="num">7</td><td class="num">7</td></tr></tbody></table><h3>How the pipeline runs</h3><ul><li><strong>Two research scans a day</strong> — the engine reads the peer-reviewed record for demonstrated processes and drafts an assessment per candidate with works cited.</li><li><strong>Thirteen automated checks</strong> — every candidate passes the seven gates, the three void tests, the economics recomputed in code, the independent red-team audit, the IP critique and the patent-citation check.</li><li><strong>Two publishes a day</strong> — the ledger, this page and the track record are regenerated from the corpus at every publish, so a number on the site is never older than the last scan.</li><li><strong>Fail closed</strong> — any gate failure blocks the publish entirely; the pipeline cannot silently ship a wrong number.</li></ul><h3>Fenêtre prioritaire</h3><p>New dossiers are released to subscribers <strong>7 days before their public release date</strong>. The public sees the concept, its verdict and its date of release; subscribers open the dossier immediately. It is the difference between reading a newsletter and buying deal flow: the pursuit window opens before the crowd. No dossier currently sits inside the window; the next one that clears the gates enters it automatically.</p><p style="margin-top:2rem"><a href="/sample/" style="font-weight:600">Read the free sample dossier &rarr;</a> · <a href="/track-record/" style="font-weight:600">The hit-rate ledger &rarr;</a></p><div class="wrap" id="join" style="margin-top:2.4rem"><form id="join-form" action="https://us-central1-the-absence-audit.cloudfunctions.net/subscribe" method="POST" novalidate>
+      <div class="field">
+        <label for="email" style="position:absolute;left:-9999px">Adresse e-mail</label>
+        <input type="email" id="email" name="email_address" placeholder="you@company.com" autocomplete="email" required>
+        <button type="submit">Envoyez-moi le registre</button>
+      </div>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden">
+        <label for="company_website">Laissez ceci vide</label>
+        <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+      </div>
+      
+      <p class="form-note">Free while the ledger is being built. No spam, no reselling your address.
+      We will not promise you a return &mdash; nobody has built one of these ventures yet.</p>
+      <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    </form></div></div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/pipeline/">Pipeline</a>
+      <a href="/alternatives/">Alternatives</a>
+      <a href="/sectors/">Sectors</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/translation/">Translation</a>
+      <a href="/nations/">Nations</a>
+      <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap capture">
+    <p>Proven in the literature. Absent from the market. Bankable on the numbers. The ledger lands in your inbox at 08:45 and 17:45 &mdash; free while it is being built. <a href="#join">Get it &rarr;</a></p>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a> &middot; <a href="#" data-aa-consent-open>Cookie settings</a></p>
+  </div>
+</footer>
+
+<script>
+/* Email capture. Posts to a real endpoint so the visitor never has to send us
+   an email. The form ALSO works with JavaScript disabled, because its action /
+   method attributes are set server-side at publish time and the browser will
+   do a native POST. Configure in _site/site_config.json. */
+(function () {
+  var form = document.getElementById("join-form");
+  var input = document.getElementById("email");
+  var msg = document.getElementById("msg");
+  var trap = document.getElementById("company_website");
+  var endpoint = form.getAttribute("action") || "";
+  var provider = form.getAttribute("data-provider") || "";
+  var DONE_KEY = "aa_subscribed";
+
+  function say(text, kind) {
+    msg.textContent = text;
+    msg.className = "msg " + (kind || "");
+  }
+
+  if (!endpoint) {
+    // Never fake a subscription. Say so plainly and stop.
+    form.classList.add("unconfigured");
+    input.disabled = true;
+    form.querySelector("button").disabled = true;
+    say("Signup opens shortly \u2014 the list is not accepting addresses yet.", "err");
+    return;
+  }
+
+  if (localStorage.getItem(DONE_KEY)) {
+    say("You are already on the list from this browser.", "ok");
+  }
+
+  form.addEventListener("submit", function (e) {
+    var value = (input.value || "").trim();
+    if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+      e.preventDefault();
+      say("That does not look like an email address.", "err");
+      input.focus();
+      return;
+    }
+    if (trap && trap.value) { e.preventDefault(); return; }   // bot
+
+    // progressive enhancement: intercept only if fetch is available
+    if (!window.fetch) return;      // otherwise let the native POST happen
+    e.preventDefault();
+    var btn = form.querySelector("button");
+    btn.disabled = true;
+    say("Adding you\u2026");
+
+    var payload = new URLSearchParams(new FormData(form));
+    payload.delete("company_website");
+    var opts = { method: "POST", body: payload };
+    if (provider === "json") {
+      var obj = {};
+      payload.forEach(function (v, k) { obj[k] = v; });
+      opts = { method: "POST", headers: { "Content-Type": "application/json" },
+               body: JSON.stringify(obj) };
+    }
+    fetch(endpoint, opts)
+      .then(function (r) {
+        if (!r.ok && r.status !== 0) throw new Error("HTTP " + r.status);
+        form.reset();
+        localStorage.setItem(DONE_KEY, "1");
+        say("You are on the list. The next audit goes out with the following scan.", "ok");
+      })
+      .catch(function () {
+        say("That did not go through. Please try again in a moment.", "err");
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+})();
+</script>
+
+<script>
+/* Signup attribution. Answers the only marketing question that matters:
+   which channel produced this subscriber?
+
+   FIRST-touch, not last-touch: if someone arrives from Hacker News, leaves,
+   then returns via a Google search and subscribes, the credit belongs to
+   Hacker News. Last-touch would wrongly credit Google for HN's work. */
+(function () {
+  var KEY = "aa_first_touch";
+  function params() {
+    try { return new URLSearchParams(location.search); } catch (e) { return null; }
+  }
+  function capture() {
+    var stored = null;
+    try { stored = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (stored && stored.src) return stored;          // first touch already known
+
+    var q = params();
+    var src = q && (q.get("utm_source") || q.get("ref"));
+    var med = q && q.get("utm_medium");
+    var cmp = q && q.get("utm_campaign");
+    if (!src) {
+      // no explicit tag -> derive from the referring host
+      var r = document.referrer || "";
+      if (r) {
+        try {
+          var h = new URL(r).hostname.replace(/^www\./, "");
+          if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+        } catch (e) {}
+      }
+    }
+    var rec = {
+      src: src || "direct",
+      med: med || (src ? "unknown" : "none"),
+      cmp: cmp || "",
+      lp: location.pathname,
+      ts: new Date().toISOString().slice(0, 10)
+    };
+    try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch (e) {}
+    return rec;
+  }
+
+  var touch = capture();
+  var form = document.getElementById("join-form");
+  if (!form) return;
+
+  // pass it to Kit as a hidden field so attribution survives even without GA
+  function hidden(name, value) {
+    var i = document.createElement("input");
+    i.type = "hidden"; i.name = name; i.value = value || "";
+    form.appendChild(i);
+  }
+  hidden("fields[source]", touch.src);
+  hidden("fields[medium]", touch.med);
+  hidden("fields[campaign]", touch.cmp);
+  hidden("fields[landing_page]", touch.lp);
+
+  // and mirror the conversion into GA so the acquisition reports line up
+  form.addEventListener("submit", function () {
+    if (typeof gtag === "function") {
+      gtag("event", "generate_lead", {
+        source_channel: touch.src,
+        medium: touch.med,
+        campaign: touch.cmp,
+        landing_page: touch.lp
+      });
+    }
+  });
+})();
+</script>
+</body>
+</html>

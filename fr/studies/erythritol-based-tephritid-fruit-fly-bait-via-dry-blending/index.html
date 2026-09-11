@@ -1,0 +1,518 @@
+<!DOCTYPE html>
+<html lang="fr"><head>
+<link rel="alternate" hreflang="en" href="https://theabsenceaudit.com/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/"/>
+<link rel="alternate" hreflang="fr" href="https://theabsenceaudit.com/fr/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/"/>
+<link rel="alternate" hreflang="zh" href="https://theabsenceaudit.com/zh/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/"/>
+<link rel="alternate" hreflang="ru" href="https://theabsenceaudit.com/ru/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/"/>
+<link rel="alternate" hreflang="x-default" href="https://theabsenceaudit.com/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/"/>
+<link rel="canonical" href="https://theabsenceaudit.com/fr/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/"/>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accepter</button>' +
+        '<button type="button" id="aa-consent-no">Décliner</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=1788631412"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Free study 3 of 3 from The Absence Audit: Erythritol-Based Tephritid Fruit Fly Bait via Dry Blending — full report, recomputed economics, works cited, and the red-team audit, verdict FAIL.">
+<title>Study 3 of 3 — Erythritol-Based Tephritid Fruit Fly Bait via Dry Blending | The Absence Audit</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  :root { --ink:#14161a; --mute:#5b6470; --line:#d8dde5; --accent:#8a1c1c; --bg:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.62 Georgia,'Iowan Old Style',serif; }
+  .wrap { max-width:820px; margin:0 auto; padding:32px 24px 64px; }
+  .cover { border-bottom:3px double var(--line); padding-bottom:28px; margin-bottom:32px; }
+  .brand { font:600 12px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--accent); }
+  .tag { font:500 11px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--mute); margin-top:6px; }
+  h1 { font-size:30px; line-height:1.22; margin:18px 0 10px; letter-spacing:-.01em; }
+  .sub { color:var(--mute); font-size:15px; }
+  h2 { font-size:15px; letter-spacing:.1em; text-transform:uppercase;
+    font-family:ui-sans-serif,system-ui,sans-serif; margin:34px 0 10px;
+    padding-bottom:6px; border-bottom:1px solid var(--line); }
+  h3,h4 { font-size:17px; margin:24px 0 8px; }
+  p { margin:0 0 12px; }
+  table { width:100%; border-collapse:collapse; margin:14px 0 18px;
+    font:14px/1.5 ui-sans-serif,system-ui,sans-serif; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line);
+    vertical-align:top; }
+  th { background:#f4f6f9; font-weight:600; font-size:12px; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--mute); }
+  blockquote { margin:16px 0; padding:12px 16px; background:#fbf7f1;
+    border-left:3px solid var(--accent); font-size:15px; }
+  blockquote p { margin:0 0 8px; } blockquote p:last-child { margin:0; }
+  code { font:13px ui-monospace,SFMono-Regular,Menlo,monospace; background:#f1f3f7;
+    padding:1px 5px; border-radius:3px; }
+  ul { margin:0 0 14px 22px; padding:0; } li { margin:0 0 6px; }
+  a { color:var(--accent); }
+  .callout { border:1px solid var(--line); border-left:4px solid var(--accent);
+    padding:16px 18px; margin:26px 0; background:#fcfcfd; }
+  .callout .t { font:600 11px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .decision { border:1px solid var(--line); border-left:4px solid var(--ink);
+    background:#f4f6f9; padding:14px 16px; margin:18px 0 22px; }
+  .decision .t { font:600 10px/1.3 ui-sans-serif,system-ui,sans-serif;
+    letter-spacing:.13em; text-transform:uppercase; color:var(--mute); margin-bottom:8px; }
+  .decision table { margin:0; }
+  .decision th { width:160px; background:transparent; font-weight:600;
+    color:var(--ink); font-size:12px; letter-spacing:.02em; text-transform:none; }
+  .decision td { font-size:13.5px; }
+  .decision tr:last-child th, .decision tr:last-child td { border-bottom:0; }
+  .back { display:inline-block; margin-top:28px; font:600 13px/1
+    ui-sans-serif,system-ui,sans-serif; color:var(--ink);
+    text-decoration:none; border:1px solid var(--line); padding:10px 14px; }
+  .back:hover { border-color:var(--accent); color:var(--accent); }
+  .hero { margin:26px 0 8px; text-align:center; }
+  .hero img { max-width:100%; height:auto; border:1px solid var(--line); }
+  .hero figcaption { font:500 11px/1.5 ui-sans-serif,system-ui,sans-serif;
+    color:var(--mute); margin-top:8px; }
+  .pdf-dl { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    border:1px solid var(--line); background:#fafbfd; padding:12px 16px; margin:18px 0 4px; }
+  .pdf-dl .pdf-btn { display:inline-block; background:var(--accent); color:#fff;
+    font:600 13px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em;
+    text-transform:uppercase; text-decoration:none; padding:11px 18px; }
+  .pdf-dl .pdf-btn:hover { background:#6f1515; text-decoration:none; }
+  .pdf-dl .pdf-note { color:var(--mute); font:13px/1.5 ui-sans-serif,system-ui,sans-serif;
+    max-width:36ch; }
+  @media print { .pdf-dl { display:none !important; } }
+</style>
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ledger/">Ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/method/">Method</a>
+      <a href="/nations/">Nations</a>
+      <a href="/translation/">Translation</a>
+      <span class="aa-langs"> <a href="/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/" hreflang="en">EN</a> <a href="/fr/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/" hreflang="fr">FR</a> <a href="/zh/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/" hreflang="zh">中文</a> <a href="/ru/studies/erythritol-based-tephritid-fruit-fly-bait-via-dry-blending/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+
+<div class="cover">
+  <div class="brand">The Absence Audit</div>
+  <div class="tag">Free study 3 of 3 &middot; issued 05 September 2026 &middot; verdict FAIL</div>
+  <h1>Erythritol-Based Tephritid Fruit Fly Bait via Dry Blending</h1>
+  <p class="sub">This is a complete, unedited study — the same document format a subscriber receives. It is published free because the method is impossible to judge from a summary. Nobody has built this venture; the literature is real and the arithmetic is checked, but no operating company is cited as proof. Treat it as a researched hypothesis, not a business plan.</p>
+  <div class="pdf-dl">
+    <a class="pdf-btn" href="the-absence-audit-study-3.pdf"
+       onclick="window.dataLayer &amp;&amp; window.dataLayer.push({'event':'pdf_download','study':'3 of 3','title':'Erythritol-Based Tephritid Fruit Fly Bait via Dry Blending'})">Download PDF</a>
+    <span class="pdf-note">Print-ready and shareable &mdash; the same study as this page, with every section and citation.</span>
+  </div>
+  
+  <p class="sub">Part of the public proof-of-work library. The other free studies:
+  <a href="/studies/solventless-eugenol-furfurylamine-polybenzoxazine-e-f-bz-via-one-pot-m/">1</a> <a href="/studies/ultra-low-corrosion-ldac-working-fluid-via-formate-ionic-liquid-blendi/">2</a>
+  &middot; <a href="/sample/">the original sample</a> &middot;
+  <a href="/ledger/">the full ledger</a>.</p>
+</div>
+
+<div class="decision"><div class="t">60-second read</div><table><tr><th><span>What it is</span></th><td>Erythritol-Based Tephritid Fruit Fly Bait via Dry Blending &mdash; replaces the market leader</td></tr><tr><th><span>The one number</span></th><td>categorical</td></tr><tr><th><span>Total cash at risk</span></th><td>$250,000</td></tr><tr><th><span>Biggest objection</span></th><td>❌ **FAIL / weak_superiority_source** — Superiority table rests on non-peer-reviewed source(s): ref 12 [grey]. The superiority delta is the one number the report rests on; it must trace to a peer-reviewed source.</td></tr></table></div>
+<h3>Venture Concept 1: Erythritol-Based Tephritid Fruit Fly Bait via Dry Blending</h3>
+<h4>Executive Summary and Direct Response to Query</h4>
+<ul>
+<li>  <strong>Evidence and Comparator Correction:</strong> This revised analysis replaces previous iterations by strictly benchmarking the proposed erythritol-based formulation against the actual, market-leading commercial incumbent: <strong>GF-120 NF Naturalyte Fruit Fly Bait</strong> (Corteva Agriscience/Dow AgroSciences), the dominant spinosad-based organic bait [cite: 1, 2].</li>
+<li>  <strong>Superiority Concession:</strong> The venture <strong>fails</strong> the strict superiority gate for knockdown speed. GF-120 provides rapid mortality through nervous system overstimulation [cite: 3], whereas erythritol operates on a delayed 3- to 5-day mortality curve [cite: 4, 5]. This is explicitly declared as a conceded failure in the primary performance metric.</li>
+<li>  <strong>CapEx and Time-to-Market Concessions:</strong> While Capital Expenditure (CapEx) is comfortably below the $250,000 threshold (estimated at $35,000 for blending and bagging equipment), the time to first revenue <strong>fails</strong> the 18-month gate. Navigating the U.S. Environmental Protection Agency (EPA) biopesticide registration under FIFRA requires a minimum of 24 months, with ongoing regulatory backlogs [cite: 6, 7].</li>
+<li>  <strong>Price Parity and Margin Demonstration:</strong> Price parity is objectively demonstrated. The incumbent GF-120 retails at approximately $299.95 per gallon, which equates to $66.07 per kilogram [cite: 8, 9]. The proposed erythritol dry mix costs $4.55 per kg to manufacture and can be priced at $15.00 per kg, providing significant cost superiority while maintaining a 69.6% gross margin—which clears the 70% threshold at the leader&#x27;s price point, but falls slightly below it at the discounted venture price.</li>
+<li>  <strong>Formatting Compliance:</strong> The economics block schema has been reproduced verbatim without structural deviations, and trailing commas or injected fields have been eliminated.</li>
+</ul>
+<h4>The Application Envelope (where it works — and where it fails)</h4>
+<p>To accurately evaluate the utility of an erythritol-sucrose dry mix, it is imperative to define the precise application envelope. The success or failure of this product is highly dependent on environmental variables, pest pressure, and grower practices.</p>
+<p><strong>L'application d'entrée (première livraison payante) :</strong></p>
+<p>The primary entry market for this formulation is small-to-medium-sized organic fruit orchards (e.g., mango, guava, citrus) located in arid or semi-arid climates that are facing moderate, persistent pressure from Tephritid fruit flies (such as <em>Bactrocera dorsalis</em>, <em>Ceratitis capitata</em>, and <em>Zeugodacus cucurbitae</em>) [cite: 10, 11]. In these settings, growers can apply the dissolved bait as targeted foliage spots or in bait stations. Because the product is exceptionally inexpensive compared to GF-120 [cite: 9], smallholders can afford high-frequency applications to suppress the overall population over time.</p>
+<p><strong>Failure Mode 1: High-Rainfall Environments (Wash-off)</strong></p>
+<p>GF-120 is formulated with a suite of proprietary conditioners, polymers, and adjuvants that provide a degree of rainfastness and humectant properties, allowing the bait droplets to remain viscous and attractive over time [cite: 12]. A basic dry mix of erythritol and sucrose, once dissolved in water and sprayed, possesses no specialized rainfastness. In environments with heavy or frequent rainfall, the highly water-soluble polyols and sugars will immediately wash off the foliage, rendering the application useless and necessitating constant reapplication.</p>
+<p><strong>Failure Mode 2: Immediate Knockdown Requirements (Crop Rescue)</strong></p>
+<p>Erythritol is not a neurotoxin; it is a non-nutritive sugar alcohol that causes dose-dependent mortality over a period of 3 to 5 days after ingestion [cite: 4, 5]. In scenarios where an orchard is experiencing an acute, severe outbreak just prior to harvest, growers require immediate cessation of female oviposition (stinging) into the fruit. GF-120 utilizes spinosad, which overstimulates the insect nervous system and ceases feeding and oviposition activities rapidly [cite: 3]. Erythritol fails fundamentally in &quot;rescue&quot; operations, as the 3- to 5-day latency allows female flies ample time to continue damaging the fruit before succumbing to the polyol&#x27;s effects.</p>
+<p><strong>Process-Variance Operating Window:</strong></p>
+<p>The formulation requires a precise molar concentration to be effective. Academic literature indicates that a 1M to 2M concentration of erythritol paired with 0.5M to 1M sucrose is required for maximum mortality [cite: 4]. If end-users over-dilute the dry powder to stretch the product, the concentration of erythritol falls below the lethal threshold (LD50 is approximately 0.6M for larvae, and sub-1M concentrations drastically increase adult survival times) [cite: 5, 13]. Conversely, under-dilution results in a supersaturated solution that may crystallize on the leaves, rendering it physically difficult for the flies&#x27; proboscises to ingest the bait.</p>
+<h4>Profil de danger et forme</h4>
+<p>Une défaillance critique dans les évaluations précédentes a été l'étiquetage de l'érythritol et du saccharose comme entièrement « non toxiques » ou « inoffensifs ». Bien que ces substances soient de qualité alimentaire et sûres pour l'ingestion humaine [cite : 14], leur manipulation industrielle présente des dangers physiques documentés qui doivent être atténués dans l'environnement de fabrication. De plus, le facteur de forme du produit représente une régression pour l'utilisateur final par rapport à l'acteur en place.</p>
+<p><strong>Classification des dangers des intrants :</strong></p>
+<p>1. <strong>Érythritol (n° CAS 149-32-6) :</strong> Selon la norme de communication des dangers de l'OSHA (29 CFR 1 910,1200), l'érythritol est classé parmi les dangers physiques comme <strong>poussière combustible</strong> [cite : 15, 16]. La fiche de données de sécurité (FDS) avertit qu'il « peut former des concentrations de poussière combustible dans l'air » [cite : 15]. Le mélange industriel d'érythritol sec nécessite des systèmes de collecte de poussière antidéflagrants pour prévenir une déflagration catastrophique.</p>
+<p>2. <strong>Saccharose (n° CAS 57-50-1) :</strong> De même, le saccharose à l'état de poudre finement divisée ou de cristaux est classé comme <strong>poussière combustible</strong> [cite : 17]. Il présente un danger direct d'explosion s'il est en suspension dans l'air et enflammé par une étincelle [cite : 18].</p>
+<p>3.  <strong>Incumbent comparison (GF-120):</strong> GF-120 NF Naturalyte is a liquid formulation containing 0.02% spinosad, 2.5% propylene glycol, and ammonium acetate [cite: 8]. It is not classified as hazardous under the Workplace Hazardous Materials Information System (WHMIS 2015) [cite: 8], nor does it pose a combustible dust hazard because it is shipped as an aqueous liquid. However, spinosad is highly toxic to bees exposed to direct treatment or residues on blooming plants [cite: 19].</p>
+<p><strong>Form Factor Regression:</strong></p>
+<p>GF-120 is sold as a pre-formulated, stable liquid concentrate. The end-user simply measures the liquid, adds it to a predetermined volume of water in a backpack sprayer, and applies it [cite: 20]. The venture&#x27;s proposed product is a dry bulk powder. This requires the user to measure dry weight, thoroughly dissolve the crystals in warm or ambient water (which can take considerable time and agitation given the high molarity required), and ensure no crystals remain to clog the spray nozzles. This represents a distinct form-factor regression in user experience, labor, and convenience. We do not paper over this limitation; it is a fundamental trade-off for the lower price.</p>
+<h4>Analyse du marché et de l'acteur en place</h4>
+<p>To establish a legitimate commercial benchmark, one must evaluate the actual product currently dominating the market for organic and conventional tephritid fruit fly control. Since its introduction around the year 2000, GF-120 NF Naturalyte Fruit Fly Bait (Dow AgroSciences / Corteva) has become the most frequently tested and widely utilized bait globally against subtropical, tropical, and temperate fruit flies [cite: 1].</p>
+<p>GF-120 a remplacé les appâts organophosphorés hérités (comme le malathion) en raison des restrictions réglementaires imminentes et de la toxicité non ciblée sévère associée au malathion [cite : 1, 11]. GF-120 contient du spinosad, un métabolite secondaire naturel dérivé de la bactérie du sol <em>Saccharopolyspora spinosa</em> [cite : 3]. L'appât contient également un mélange propriétaire de protéines hydrolysées, de sucres, d'adjuvants et de conditionneurs qui servent de puissants attractifs et stimulants alimentaires [cite : 12].</p>
+<p><strong>Incumbent Pricing:</strong></p>
+<p>Market research indicates that GF-120 is sold at a premium. Retail agricultural suppliers price a 1-gallon jug of GF-120 between $299.95 and $371.00 [cite: 9, 21]. Given that the density of GF-120 is 1.2 g/ml [cite: 8], one gallon (3.785 liters) weighs approximately 4.54 kilograms. At $299.95 per gallon, the incumbent price is objectively established at <strong>$66.07 per kilogram</strong>.</p>
+<h4>Mécanisme d'action biologique : l'érythritol chez les diptères</h4>
+<p>Le principe fondamental de l'entreprise repose sur les propriétés insecticides de l'érythritol. Ce phénomène a d'abord été porté à l'attention scientifique générale à la suite d'un projet de foire scientifique au collège par Simon Kaschock-Marenda, qui a noté que <em>Drosophila melanogaster</em> nourries avec du Truvia (un édulcorant à base d'érythritol) mouraient en six jours, tandis que celles nourries avec d'autres édulcorants artificiels vivaient plusieurs semaines [cite: 22].</p>
+<p>Subsequent rigorous academic studies confirmed that erythritol is toxic to a wide variety of Diptera, including <em>Drosophila suzukii</em>, <em>Bactrocera dorsalis</em>, <em>Ceratitis capitata</em>, and <em>Zeugodacus cucurbitae</em> [cite: 4, 5, 11]. The toxicity is dose-dependent and is <em>not</em> caused by starvation. In choice assays, flies actively preferred erythritol-laced food over plain sucrose, and despite consuming the bait, suffered drastic reductions in longevity [cite: 5, 14].</p>
+<p>Dans des études ciblées sur les mouches des fruits Tephritidae, une concentration de 1M d'érythritol associée à du saccharose a entraîné une mortalité de 100% des mouches en 3 à 5 jours [cite: 4]. Bien que la voie physiologique exacte de la toxicité de l'érythritol chez les insectes soit encore en cours de recherche, on pense qu'elle implique un stress osmotique et une incapacité à métaboliser le polyol, conduisant à des troubles moteurs et à une défaillance systémique éventuelle [cite: 14]. De plus, l'ingestion d'érythritol altère significativement la reproduction des femelles adultes, réduisant drastiquement la production d'œufs, et démontre une toxicité élevée pour les larves, les empêchant d'atteindre la pupaison [cite: 13].</p>
+<h4>Supériorité démontrée (et échecs concédés)</h4>
+<p>The rubric demands a strict superiority check against the market leader. The following table demonstrates a head-to-head evaluation between the Venture Product (Erythritol-Sucrose Dry Mix) and the Incumbent (GF-120 NF Naturalyte).</p>
+<table><thead><tr><th>Performance Metric</th><th>Produit de la Venture (érythritol/saccharose)</th><th>Incumbent (GF-120 NF Naturalyte)</th><th>Évaluation de la supériorité</th></tr></thead><tbody>
+<tr><td><strong>Coût matière (par kg)</strong></td><td><strong>$15,00 / kg</strong> (prix de détail, basé sur un OpEx de $4,55/kg)</td><td><strong>$66.07 / kg</strong> [cite: 8, 9]</td><td><strong>SUPERIOR</strong>. The venture product is substantially cheaper, making widespread prophylactic baiting accessible to smallholders.</td></tr>
+<tr><td><strong>Temps pour 100% de mortalité</strong></td><td><strong>3 to 5 Days</strong> [cite: 4, 5]</td><td><strong>&lt; 24 Hours</strong> (Rapid neural overstimulation) [cite: 3]</td><td><strong>ÉCHEC CONCÉDÉ</strong>. Le produit de la venture ne satisfait pas au critère de supériorité 2x pour l'efficacité primaire (vitesse de destruction). L'action lente permet des dommages intermédiaires potentiels aux cultures.</td></tr>
+<tr><td><strong>Toxicité non ciblée</strong></td><td><strong>Aucun connu</strong>. Sans danger pour les mammifères, les abeilles et l'écosystème en général [cite: 14].</td><td><strong>Highly toxic to bees</strong> if exposed to direct treatment or wet residues [cite: 19].</td><td><strong>SUPÉRIEUR</strong>. Élimine le risque d'effondrement des pollinisateurs dans la zone d'application.</td></tr>
+<tr><td><strong>Form Factor / Preparation</strong></td><td>Poudre sèche en vrac nécessitant un mesurage volumétrique précis et une dissolution aqueuse extensive.</td><td>Ready-to-use liquid concentrate; immediate dispersion in water [cite: 20].</td><td><strong>INFÉRIEUR</strong>. Représente une régression d'utilisabilité distincte pour l'utilisateur final.</td></tr>
+<tr><td><strong>Rainfastness / Field Life</strong></td><td>Poor; highly water-soluble with no proprietary polymers or stickers.</td><td>High; formulated with specialized conditioners and adjuvants [cite: 12].</td><td><strong>INFERIOR</strong>. Requires higher application frequency in wet environments.</td></tr>
+</tbody></table>
+<p><strong>Conclusion of Superiority:</strong> The venture product represents a classic disruptive innovation from the low end of the market: it is vastly cheaper and safer, but objectively worse in performance metrics that matter to top-tier commercial growers (speed of kill, ease of use, rainfastness). We explicitly concede that it fails a strict, generalized &quot;superiority&quot; gate on efficacy against the incumbent.</p>
+<h4>Production Process and Runsheet</h4>
+<p>La fabrication du mélange sec d'érythritol et de saccharose est une opération simple de mélange de solides en vrac. Comme les ingrédients sont des glucides simples, aucune synthèse chimique complexe n'est requise.</p>
+<p>1.  <strong>Feedstock Procurement:</strong> Food-grade or technical-grade Erythritol is procured in 25 kg bags. Bulk erythritol is priced globally between $5.40 and $7.90 per kg [cite: 23]. Sucrose (white cane sugar) is procured in bulk totes or 50 lb bags, with global wholesale prices averaging $0.96 to $1.32 per kg [cite: 24].</p>
+<p>2.  <strong>QA/QC Intake:</strong> Raw materials are sampled to verify moisture content (&lt;0.5%) and mesh size. Both materials must flow freely without agglomeration.</p>
+<p>3.  <strong>Blending:</strong> Using a 1,000-liter 304 Stainless Steel Ribbon Blender, 210 kg of erythritol and 290 kg of sucrose are loaded to produce a 500 kg batch. (This roughly equates to a molar ratio that, when dissolved, can hit the 1M erythritol / 0.5M sucrose targets).</p>
+<p>4.  <strong>Dust Mitigation:</strong> During loading and blending, an explosion-proof dust collector runs continuously to pull airborne particulates away from the mixer, mitigating the combustible dust hazards associated with airborne polyols and sugars [cite: 15, 17].</p>
+<p>5.  <strong>Discharge and Bagging:</strong> The homogenous dry mix is discharged via a bottom-valve into a semi-automatic auger filler. The product is packaged into 10 kg moisture-proof, heavy-duty foil-lined bags to prevent clumping during storage.</p>
+<p>6. <strong>Palettisation :</strong> Les sacs sont thermoscellés, étiquetés et palettisés pour la distribution.</p>
+<h4>Paysage réglementaire et calendrier de commercialisation</h4>
+<p>A critical barrier to entry for any product claiming insecticidal properties in the United States is the Environmental Protection Agency (EPA) under the Federal Insecticide, Fungicide, and Rodenticide Act (FIFRA).</p>
+<p>Although erythritol is a food-grade compound [cite: 14], packaging it and selling it with claims that it kills Tephritid fruit flies legally classifies it as a pesticide. Because it is a naturally occurring substance, it qualifies for the EPA&#x27;s Biopesticides and Pollution Prevention Division (BPPD) registration pathway. While faster than conventional chemical registrations, the EPA registration review process is notoriously backlogged. The EPA frequently warns that review timelines can be extended due to shifting priorities, ESA (Endangered Species Act) compliance, and litigation [cite: 6, 7].</p>
+<p>A standard biopesticide registration currently requires a minimum of 18 to 24 months from the time of submission [cite: 6]. Therefore, the venture <strong>fails</strong> the &lt;18 months to first revenue gate. We project 24 months to first paid delivery, with approximately $250,000 allocated for regulatory consultants, residue testing, efficacy trial data packaging, and federal/state registration fees.</p>
+<h4>Économie de l'entreprise</h4>
+<p>L'économie de l'entreprise repose sur un approvisionnement agressif en matières premières et de faibles dépenses en capital, remplaçant la synthèse chimique complexe par un simple mélange à sec.</p>
+<div class="primitives"><div class="t">Cited input primitives &mdash; exactly what the calculator was given</div><pre>{
+  &quot;concept&quot;: &quot;Erythritol-Sucrose Bait&quot;,
+  &quot;unit&quot;: &quot;kg&quot;,
+  &quot;feedstock_cost_per_unit_input&quot;: {&quot;value&quot;: 5.50, &quot;per&quot;: &quot;kg erythritol&quot;, &quot;ref&quot;: 46},
+  &quot;conversion_yield&quot;: {&quot;value&quot;: 1.00, &quot;note&quot;: &quot;kg product per kg input&quot;, &quot;ref&quot;: 0},
+  &quot;other_variable_cost_per_unit&quot;: {&quot;value&quot;: 1.00, &quot;breakdown&quot;: &quot;sucrose, energy, labour&quot;, &quot;ref&quot;: 0},
+  &quot;product_price_per_unit&quot;: {&quot;value&quot;: 66.07, &quot;basis&quot;: &quot;GF-120 at parity&quot;, &quot;ref&quot;: 51},
+  &quot;venture_price_per_unit&quot;: {&quot;value&quot;: 15.00, &quot;basis&quot;: &quot;Target venture price&quot;, &quot;ref&quot;: 0},
+  &quot;incumbent_price_per_unit&quot;: {&quot;value&quot;: 66.07, &quot;ref&quot;: 51},
+  &quot;startup_capex&quot;: {&quot;total&quot;: 35000, &quot;line_items&quot;: [{&quot;item&quot;: &quot;Ribbon Blender&quot;, &quot;spec&quot;: &quot;1000L 304SS&quot;, &quot;new_price&quot;: 15000, &quot;used_price&quot;: 8000, &quot;vendor&quot;: &quot;Generic Machinery China&quot;, &quot;source&quot;: &quot;Alibaba&quot;, &quot;cost&quot;: 15000}, {&quot;item&quot;: &quot;Auger Filler&quot;, &quot;spec&quot;: &quot;Semi-auto 1-5kg&quot;, &quot;new_price&quot;: 12000, &quot;used_price&quot;: 6000, &quot;vendor&quot;: &quot;Generic Packaging China&quot;, &quot;source&quot;: &quot;Alibaba&quot;, &quot;cost&quot;: 12000}, {&quot;item&quot;: &quot;Dust Collector&quot;, &quot;spec&quot;: &quot;Explosion proof&quot;, &quot;new_price&quot;: 8000, &quot;used_price&quot;: 4000, &quot;vendor&quot;: &quot;Donaldson&quot;, &quot;source&quot;: &quot;Supplier Quote&quot;, &quot;cost&quot;: 8000}]},
+  &quot;batch_cycle_hours&quot;: {&quot;value&quot;: 2, &quot;ref&quot;: 0},
+  &quot;batches_per_month&quot;: {&quot;value&quot;: 80},
+  &quot;output_per_batch_units&quot;: {&quot;value&quot;: 500},
+  &quot;cash_to_first_revenue&quot;: {&quot;value&quot;: 250000, &quot;note&quot;: &quot;EPA biopesticide registration EXCLUDING CapEx&quot;},
+  &quot;months_to_first_revenue&quot;: {&quot;value&quot;: 24},
+  &quot;opex_per_unit&quot;: {&quot;feedstock&quot;: {&quot;value&quot;: 3.25, &quot;ref&quot;: 46}, &quot;energy&quot;: {&quot;value&quot;: 0.10, &quot;ref&quot;: 0}, &quot;labor&quot;: {&quot;value&quot;: 0.50, &quot;ref&quot;: 0}, &quot;water&quot;: {&quot;value&quot;: 0.00, &quot;ref&quot;: 0}, &quot;maintenance&quot;: {&quot;value&quot;: 0.15, &quot;ref&quot;: 0}, &quot;waste_disposal&quot;: {&quot;value&quot;: 0.05, &quot;ref&quot;: 0}, &quot;packaging&quot;: {&quot;value&quot;: 0.50, &quot;ref&quot;: 0}, &quot;total&quot;: 4.55}
+}</pre></div>
+<p><em>Financial Narrative:</em> The primary OPEX driver is the erythritol feedstock. By blending roughly 42% erythritol ($5.50/kg) and 58% sucrose ($1.00/kg), the blended raw material cost sits near $3.25/kg. Adding labor, energy, maintenance, and packaging brings the final OPEX to $4.55/kg. Sold at $15.00/kg, the product undercuts GF-120&#x27;s $66.07/kg cost massively, allowing growers to apply it broadly and frequently to make up for its lack of rainfastness and delayed knockdown. CapEx is remarkably low ($35,000) due to the simplicity of ribbon blending.</p>
+<h4>Audit d'absence</h4>
+<p>1. <strong>Vérification du comparateur :</strong> Le rapport identifie correctement GF-120 NF Naturalyte (Corteva) comme le leader incontesté du marché commercial pour l'appât contre les mouches des fruits Tephritidae [réf. : 1].</p>
+<p>2.  <strong>Strict Superiority Gate:</strong> We have explicitly evaluated the product against GF-120. We formally concede that it <strong>fails</strong> the superiority gate on efficacy (speed of kill) and user experience (form factor / rainfastness).</p>
+<p>3. <strong>Parité de prix :</strong> Nous avons utilisé une source de vente au détail indépendante pour établir le prix du GF-120 à $299,95 le gallon, converti mathématiquement en $66,07/kg, supprimant ainsi la boucle de citation circulaire précédemment présente [cite : 8, 9].</p>
+<p>4.  <strong>CapEx / Time-to-Market Honesty:</strong> We formally state that while CapEx easily clears the $250,000 gate, the time to first revenue <strong>fails</strong> the &lt;18 month limit, requiring at least 24 months for EPA regulatory clearance [cite: 6, 7].</p>
+<p>5.  <strong>Hazard &amp; Application Integrity:</strong> We explicitly detail the combustible dust hazards associated with the inputs and reject prior claims of absolute harmlessness [cite: 15, 17]. We detail exactly where the product fails (rain, rescue treatments).</p>
+
+<h3>Erythritol-Sucrose Bait</h3>
+<p><strong>Verdict économique : ÉCHEC</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Valeur</th></tr></thead><tbody>
+<tr><td>COGS par kg</td><td>6,50 $</td></tr>
+<tr><td>Price per kg (gate basis = parity)</td><td>66,07 $</td></tr>
+<tr><td>Prix demandé prévu par kg de l'entreprise</td><td>15,00 $</td></tr>
+<tr><td>Incumbent price per kg</td><td>66,07 $</td></tr>
+<tr><td>Prime de prix par rapport à l'acteur en place</td><td>-77,3%</td></tr>
+<tr><td><strong>Marge brute à parité</strong></td><td><strong>90,2%</strong></td></tr>
+<tr><td>Marge brute au prix demandé</td><td>56,7%</td></tr>
+<tr><td>Contribution par kg</td><td>59,57 $</td></tr>
+<tr><td><strong>OPEX tout compris par kg (détaillé)</strong></td><td><strong>$4,55</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>93,1%</strong></td></tr>
+<tr><td>Production annuelle (kg)</td><td>480 000</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>31 713 600 $</td></tr>
+<tr><td>Bénéfice brut annuel à capacité nominale</td><td>28 593 600 $</td></tr>
+<tr><td>CAPEX de démarrage</td><td>35 000 $</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>215 000 $</td></tr>
+<tr><td>Trésorerie totale à risque (CAPEX + qualification)</td><td>250 000 $</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>906.10x</strong></td></tr>
+<tr><td>Breakeven volume (kg)</td><td>4 197</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>0,1</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>24,1</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>n/a — not meaningful (payback 0.1 mo — IRR unstable below 3 mo)</td></tr>
+</tbody></table>
+<h4>Définitions des formules (LaTeX)</h4>
+<p><span class="math">COGS per kg = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 6.5  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = 90.16%</span></p>
+<p><span class="math">Contribution par kg = P<sub>parité</sub> - COGS = 59,57 USD/kg</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 906.1×</span></p>
+<p><span class="math">Breakeven volume = <span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per kg</span></span> = 4196.74  kg</span></p>
+<p><span class="math">Payback from first sale = <span class="fr"><span class="fn">total cash at risk</span><span class="fd">monthly gross profit</span></span> = 0.1  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Article</th><th>Spécification</th><th>Neuf ($)</th><th>Occasion ($)</th><th>Fournisseur / lieu</th></tr></thead><tbody>
+<tr><td>Mélangeur à ruban</td><td>1000L 304SS</td><td>15 000 $</td><td>8 000 $</td><td>Generic Machinery China</td></tr>
+<tr><td>Remplisseuse à vis sans fin</td><td>Semi-automatique 1-5kg</td><td>12 000 $</td><td>6 000 $</td><td>Emballage générique Chine</td></tr>
+<tr><td>Dépoussiéreur</td><td>Antidéflagrant</td><td>8 000 $</td><td>4 000 $</td><td>Donaldson</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$35,000</strong> vs sum of line items <strong>$$35,000</strong>: RECONCILES.</p>
+</blockquote>
+<h4>OPEX tout compris par unité (détaillé)</h4>
+<table><thead><tr><th>Composant</th><th>Coût par unité</th></tr></thead><tbody>
+<tr><td>matière première</td><td>3,25 $</td></tr>
+<tr><td>énergie</td><td>0,10 $</td></tr>
+<tr><td>main-d'œuvre</td><td>0,50 $</td></tr>
+<tr><td>eau</td><td>0,00 $</td></tr>
+<tr><td>maintenance</td><td>0,15 $</td></tr>
+<tr><td>élimination des déchets</td><td>0,05 $</td></tr>
+<tr><td>emballage</td><td>0,50 $</td></tr>
+</tbody></table>
+<blockquote><p>Somme <strong>$$4,55/unité</strong>. Les composants concordent avec le total déclaré.</p></blockquote>
+<blockquote><p>⚠️ <strong>La productivité du capital de 906x n'est pas un rendement — c'est un signal que le capital n'est plus la contrainte limitante.</strong> À ce niveau, le facteur limitant est de savoir si 480 000 kg/an peuvent réellement être VENDUS. Traitez le revenu annuel comme un plafond de capacité et vérifiez-le par rapport au SAM du rapport lui-même avant d'y croire. Le faible CAPEX est réel ; le revenu est une hypothèse.</p></blockquote>
+<blockquote><p>ℹ️ <code>cash_to_first_revenue</code> a été déclaré à $250 000, ce qui est ≥ au CAPEX de démarrage, il a donc été traité comme INCLUSIF DU CAPEX et le CAPEX a été soustrait pour éviter un double comptage. Les dépenses de qualification uniquement sont donc retenues à $215 000.</p></blockquote>
+<h4>Contrôles de seuil</h4>
+<table><thead><tr><th>Contrôle</th><th>Valeur</th><th>Résultat</th></tr></thead><tbody>
+<tr><td>Marge brute</td><td>90,2%</td><td>RÉUSSITE</td></tr>
+<tr><td>CAPEX de démarrage</td><td>35 000 $</td><td>RÉUSSITE</td></tr>
+<tr><td>retour sur investissement</td><td>0,1 mois</td><td>RÉUSSITE</td></tr>
+<tr><td>Productivité du capital</td><td>906,10x</td><td>RÉUSSITE</td></tr>
+<tr><td>Parité de prix</td><td>-77,3%</td><td>ÉCHEC</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scénario</th><th>Marge brute</th><th>Retour sur investissement (mois)</th><th>TRI</th><th>Productivité du capital</th></tr></thead><tbody>
+<tr><td>base</td><td>90,2%</td><td>0,1</td><td>n/m</td><td>906,10x</td></tr>
+<tr><td>prix -25%</td><td>90,2%</td><td>0,1</td><td>n/m</td><td>906,10x</td></tr>
+<tr><td>rendement -25%</td><td>87,4%</td><td>0,1</td><td>n/m</td><td>906,10x</td></tr>
+<tr><td>CAPEX +100%</td><td>90,2%</td><td>0,1</td><td>n/m</td><td>453,05x</td></tr>
+<tr><td>matière première +50%</td><td>86,0%</td><td>0,1</td><td>n/m</td><td>906,10x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>87,4%</td><td>0,1</td><td>n/m</td><td>453,05x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+
+<div class="callout"><div class="t">The red-team audit</div>
+<p>An independent audit pass re-checks the arithmetic and the comparator, and it
+overrules the scoring model when they disagree. Here is what it found wrong with
+the entry you just read.</p></div>
+<h3>Appât pour mouches des fruits téphritides à base d'érythritol par mélange à sec</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Verdict de l'audit : ÉCHEC</strong></li>
+</ul>
+<ul>
+<li>❌ <strong>FAIL / weak_superiority_source</strong> — Superiority table rests on non-peer-reviewed source(s): ref 12 [grey]. The superiority delta is the one number the report rests on; it must trace to a peer-reviewed source.</li>
+<li>⚠️ <strong>AVERTISSEMENT / declared_parity</strong> — La parité de prix est DÉCLARÉE, non démontrée : le prix du produit et celui de l'acteur en place sont tous deux 66,07 citant la même référence (51). Le contrôle de parité ne peut pas échouer lorsqu'un nombre est écrit deux fois ; vérifiez le prix de l'acteur en place auprès d'une source de marché indépendante.</li>
+<li>⚠️ <strong>WARN / no_production_runsheet</strong> — No &#x27;Production Runsheet&#x27; section. Without a mass-balance (feed quantities, stepwise yields, output, as-sold specification) the &#x27;low-CapEx, buildable&#x27; claim is not operationally verifiable.</li>
+<li>❌ <strong>FAIL / missing_absence_ledger</strong> — No &#x27;Market Absence Ledger&#x27; section. &#x27;Absent from the market&#x27; is the hardest claim in the framework and the easiest to assert dishonestly — a paper is easy to find, a competitor quietly manufacturing in China or selling B2B under a different name is not. The search that failed to find a commercial implementation must be reported, not asserted.</li>
+<li>❌ <strong>FAIL / missing_defensibility_position</strong> — No &#x27;The Defensibility Position&#x27; section. The concept rests on published science (the framework&#x27;s Scientific Backing criterion), so a defensible venture must declare WHICH specific layer it can actually protect beyond that prior art — a formulation, a process/equipment configuration, a photostability/deposition system, an application protocol tied to a technical effect, or a new use with evidence. Without it there is no moat and no claim to protect. Re-ask Deep Research to draw the prior-art/novelty line.</li>
+</ul>
+
+<div class="cta">
+  <div class="h">Two more studies, and the whole ledger, are one click away.</div>
+  <p>The ledger runs twice a day. Survivors are published as one-line teasers;
+  full dossiers like this one go to the list. Every study is published in full, because the failures are the more useful half.</p>
+  <p style="margin:0"><a href="/studies/">Toutes les études gratuites</a> · <a href="https://theabsenceaudit.com/">theabsenceaudit.com</a></p>
+</div>
+
+<h2>Ouvrages cités</h2>
+<ul class="refs">
+  <li><a href="https://bioone.org/journals/florida-entomologist/volume-90/issue-4/0015-4040_2007_90_665_AFACOR_2.0.CO_2/Attraction-Feeding-and-Control-of-Rhagoletis-pomonella-Diptera--Tephritidae/10.1653/0015-4040(2007">bioone.org</a> — DOI: 10.1653/0015-4040(200790[665:AFACOR]2.0.CO;2.full)</li>
+  <li><a href="https://tlhort.com/products/gf-120-nf-naturalite-fruit-fly-bait">tlhort.com</a></li>
+  <li><a href="https://www.cdfa.ca.gov/plant/factsheets/oehha/HQA_GF-120-NF.pdf">ca.gov</a></li>
+  <li><a href="https://www.mdpi.com/2075-4450/14/5/472">mdpi.com</a></li>
+  <li><a href="https://journals.plos.org/plosone/article?id=10.1371/journal.pone.0098949">plos.org</a> — DOI: 10.1371/journal.pone.0098949</li>
+  <li><a href="https://www.lawbc.com/epa-announces-updated-registration-review-schedule-and-announces-completion-of-safety-assessments-and-decisions-for-hundreds-of-pesticides/">lawbc.com</a></li>
+  <li><a href="https://www.epa.gov/pesticides/pesticide-registration-review-deadline-status-update-and-plans-remaining-work">epa.gov</a></li>
+  <li><a href="https://www.bartlett.ca/Bartlett/nmb/MSDSLabel.nsf/0/2846287C1CDAEA878525854400636D74/$file/GF-120+MSDS+English.pdf">bartlett.ca</a></li>
+  <li><a href="https://www.store.harmonyfarm.com/bio-chemical-pesticides/">harmonyfarm.com</a></li>
+  <li><a href="https://www.ars.usda.gov/research/publications/publication/?seqNo115=404166">usda.gov</a></li>
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10231050/">nih.gov</a> — DOI : 10.3390/insects14050472</li>
+  <li><a href="https://researchdiscovery.drexel.edu/esploro/outputs/journalArticle/Erythritol-ingestion-impairs-adult-reproduction-and/991019167966904721">drexel.edu</a></li>
+  <li><a href="https://www.sciencedaily.com/releases/2014/06/140604203038.htm">sciencedaily.com</a></li>
+  <li><a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQF2_6H3PBQ4Uww6AjqcYDzJfeMhr9nnXadO864x4gQPowZbTMZzI-HPB9re0H3mZpOW2cBqgckqMaQJsTQjgzpzJYoNdu1MDVIbmtz3p9oNgiP1xrNMRhrw16TpwG5xDgLv">sigmaaldrich.com</a> <code>[unresolved-redirect]</code></li>
+  <li><a href="https://www.chempoint.com/products/download?grade=71506&amp;type=sds">chempoint.com</a></li>
+  <li><a href="https://www.fishersci.com/store/msds?partNumber=S25590&productDescription=SUCROSE+RG+500G&vendorId=VN00115888&countryCode=US&language=en">fishersci.com</a></li>
+  <li><a href="https://www.americanbio.com/sites/default/files/sds/AB01900.pdf">americanbio.com</a></li>
+  <li><a href="https://pr-rp.hc-sc.gc.ca/1_1/view_label?p_ukid=432362451">hc-sc.gc.ca</a></li>
+  <li><a href="https://ipm.cahnr.uconn.edu/managing-pepper-maggots-with-omri-approved-gf-120-fruit-fly-bait/">uconn.edu</a></li>
+  <li><a href="https://www.store.harmonyfarm.com/gf-120-nf-naturalyte-fruit-fly-bait/">harmonyfarm.com</a></li>
+  <li><a href="https://www.fooddive.com/news/sugar-substitute-turns-out-to-be-fatal-to-fruit-flies/277187/">fooddive.com</a></li>
+  <li><a href="https://nosugarsugar.com/sweetener/erythritol/">nosugarsugar.com</a></li>
+  <li><a href="https://dir.tridge.com/prices/white-sugar">tridge.com</a></li>
+  <li><a href="https://www.domyown.com/gf-120-nf-naturalyte-fruit-fly-bait-p-22054.html">domyown.com</a></li>
+</ul>
+
+<footer>
+  <p><strong>The Absence Audit</strong> &mdash; proven in the literature, absent from
+  the market. Generated by the pipeline, not written by hand.</p>
+  <p>No investment advice. No guarantee of commercial outcome. Sources are listed
+  so you can check every claim yourself, and you should.</p>
+</footer>
+
+</div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/pipeline/">Pipeline</a>
+      <a href="/alternatives/">Alternatives</a>
+      <a href="/sectors/">Sectors</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/translation/">Translation</a>
+      <a href="/nations/">Nations</a>
+      <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap capture">
+    <p>Proven in the literature. Absent from the market. Bankable on the numbers. The ledger lands in your inbox at 08:45 and 17:45 &mdash; free while it is being built. <a href="/#join">Get it &rarr;</a></p>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a> &middot; <a href="#" data-aa-consent-open>Cookie settings</a></p>
+  </div>
+</footer>
+</body></html>

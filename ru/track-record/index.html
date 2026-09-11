@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Послужной список — The Absence Audit</title>
+<meta name="description" content="Deeptech ventures proven in the peer-reviewed literature, absent from the commercial market, and bankable on the numbers we compute. 91 deeptech concepts audited against seven gates; every one published as a full study with its economics, its citations, and its verdict.">
+<link rel="canonical" href="https://theabsenceaudit.com/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<meta name="color-scheme" content="light">
+
+<!-- Open Graph: without these, every Facebook/LinkedIn/WhatsApp share renders a bare grey box -->
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/">
+<meta property="og:title" content="Deeptech ventures, audited and bankable — The Absence Audit">
+<meta property="og:description" content="The market's best-kept secrets are in the public record. 20 battle-tested build dossiers for sale — proven in the literature, absent from the market, bankable on the numbers. The 82 studies are published in full, autopsy included.">
+<meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
+<meta property="og:image:secure_url" content="https://theabsenceaudit.com/og-image.png">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:type" content="image/png">
+<meta property="og:image:alt" content="The Absence Audit — 91 concepts examined, 82 published as studies, 20 for sale">
+<meta property="og:locale" content="en_GB">
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Proven in the literature. Absent from the market. Bankable on the numbers.">
+<meta name="twitter:description" content="91 concepts examined, 82 published as studies, 20 for sale — every survivor carries a computed bankability verdict. Every study is published in full.">
+<meta name="twitter:image" content="https://theabsenceaudit.com/og-image.png">
+<meta name="twitter:image:alt" content="The Absence Audit ledger card">
+
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/icon-16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+<link rel="manifest" href="/manifest.webmanifest">
+
+<link rel="preload" href="/fonts/newsreader-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="preload" href="/fonts/ibm-plex-sans-var.woff2" as="font" type="font/woff2" crossorigin>
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://theabsenceaudit.com/#website",
+      "url": "https://theabsenceaudit.com/",
+      "name": "The Absence Audit",
+      "description": "A research ledger of venture concepts proven in peer-reviewed literature, absent from the commercial market, and bankable on the numbers we compute — debt sizing and DSCR for every surviving dossier. Every study is published in full, with the specific failure that killed it.",
+      "inLanguage": "en"
+    },
+    {
+      "@type": "Dataset",
+      "@id": "https://theabsenceaudit.com/#ledger",
+      "name": "The Absence Audit ledger",
+      "description": "91 venture concepts screened against seven gates for scientific backing, commercial absence, unit margins, capital intensity, production velocity, market size and measured superiority over a named incumbent. 82 published as studies, 20 for sale. Every study is published with its specific failure mode.",
+      "url": "https://theabsenceaudit.com/ledger/",
+      "isAccessibleForFree": true,
+      "creator": {"@type": "Organization", "name": "The Absence Audit", "url": "https://theabsenceaudit.com/"},
+      "dateModified": "2026-09-10T13:38:50+02:00",
+      "keywords": ["venture concepts","peer-reviewed literature","commercial absence","unit economics","technology transfer","research commercialisation"],
+      "variableMeasured": [
+        {"@type":"PropertyValue","name":"Superiority margin vs named incumbent"},
+        {"@type":"PropertyValue","name":"Gross margin at incumbent price"},
+        {"@type":"PropertyValue","name":"Startup capital expenditure"},
+        {"@type":"PropertyValue","name":"Payback period"}
+      ]
+    }
+  ]
+}
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"> <a href="/track-record/" hreflang="en">EN</a> <a href="/fr/track-record/" hreflang="fr">FR</a> <a href="/zh/track-record/" hreflang="zh">中文</a> <a href="/ru/track-record/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main"><div class="wrap" style="padding:3.2rem 0 4rem;max-width:76ch"><p class="eyebrow">Послужной список</p><h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)">Операционный послужной список</h1><p class="lede">То, что существует, с датами и возможностью проверки. Никаких отзывов, никаких выдуманных клиентов — доказательством служит сам реестр.</p><p class="snapshot">Снимок набора данных: 10 Sep 2026, 11:38 UTC &middot; 91 концепция &middot; 9 одобрено &middot; 82 исследования &middot; 20 досье в продаже &middot; 61 исследовательский отчёт &middot; 3261 ссылка &middot; 583 DOIs &middot; 30,418 зафиксированных цитирований. Один снимок на каждую публикацию &mdash; каждая страница с цифрами ссылается на эту же строку.</p><h3>Результаты на текущий момент</h3><ul><li><strong>61 исследовательский отчёт</strong>, сформированный на основе рецензируемой научной литературы, каждый с разделом «использованные источники».</li><li><strong>91 концепция деептех-проектов</strong>, прошедшая аудит по системе семи порогов отсева и независимый аудит красной команды.</li><li><strong>20 досье в продаже</strong>, с ценой, рассчитанной по Deal Value Score, каждое поставляется с полной экономикой и предупреждениями аудита.</li><li><strong>Каждое исследование содержит полный перечень неудач</strong>— классификатор причин неудач с возможностью поиска, а не список побед. Полное вскрытие причин неудач открывается на месте для покупателей и подписчиков.</li><li><strong>Для каждого отчёта установлена цена</strong>— прошедшие отбор по Deal Value Score (&euro;1,999&ndash;&euro;4,999), исследования по Autopsy Value Score (&euro;125&ndash;&euro;250), рассчитанным на основе содержимого каждого отчёта, независимо от наличия вердикта.</li><li><strong>Одно полное образцовое досье</strong>, бесплатно и доступно для индексации, с собственными возражениями аудита, напечатанными прямо внутри.</li><li><strong>3261 ссылка</strong>по всему корпусу, 583 с DOIs, благодаря чему утверждения можно проверить по первоисточникам.</li></ul><h3>Реестр результативности</h3><p>Вот семь вопросов, которые задаёт прагматичный покупатель перед оплатой пайплайна сделок. Каждый ответ измеряется, а не постулируется, и эта таблица пересчитывается при каждой публикации. Там, где честный ответ — ноль, публикуется ноль и описывается протокол, который позволит изменить это значение.</p><table style="margin:1.2rem 0 1.8rem"><tbody><tr><td style="width:38%"><strong>Рекомендованные концепции, прошедшие независимую валидацию</strong></td><td class="num"><strong>0</strong>из 20</td><td style="width:34%;color:var(--ink-2)">Ни один покупатель ещё не сообщил о создании или валидации хотя бы одной. Инструментом контроля служит описанный ниже 30-дневный опрос покупателей.</td></tr><tr><td><strong>Привели к созданию действующих компаний</strong></td><td class="num"><strong>0</strong></td><td style="color:var(--ink-2)">Данных нет. Об этом сообщает опрос покупателей.</td></tr><tr><td><strong>Получили инвестиции</strong></td><td class="num"><strong>0</strong></td><td style="color:var(--ink-2)">Данных нет.</td></tr><tr><td><strong>Привели к лицензионным соглашениям</strong></td><td class="num"><strong>0</strong></td><td style="color:var(--ink-2)">Данных нет.</td></tr><tr><td><strong>Стали коммерчески успешными</strong></td><td class="num"><strong>0</strong></td><td style="color:var(--ink-2)">Данных нет — это молодой проект, и страница будет отражать это, пока цифры не изменятся.</td></tr><tr><td><strong>Позже признаны ошибочными</strong></td><td class="num"><strong>0 обнаружено</strong></td><td style="color:var(--ink-2)">30-дневная повторная проверка существует именно для их выявления; каждая находка публикуется на странице концепции, содержавшей данное утверждение.</td></tr><tr><td><strong>Выдержали независимую техническую экспертизу</strong></td><td class="num"><strong>4 отклонено</strong></td><td style="color:var(--ink-2)">Каждая прошедшая отбор концепция поставляется вместе с независимым аудитом красной команды, которая пыталась её отклонить; этот аудит пересматривал нашу собственную систему скоринга 4 раза, и его возражения приведены внутри досье, а не скрыты.</td></tr></tbody></table><h3>Как нули становятся цифрами</h3><ol><li><strong>30-дневный опрос покупателей.</strong>Каждая покупка досье запускает последующий опрос с четырьмя неизменными вопросами: Начали ли вы разработку? Провели ли вы независимую валидацию ключевого утверждения? Сохранилась ли экономика в вашем масштабе? Оказалось ли что-либо в досье ошибочным? Ответы — как об успехах, так и о неудачах — обновляют эту таблицу и страницу концепции.</li><li><strong>30-дневная перепроверка отсутствия.</strong>Одобренные концепции повторно проверяются на предмет появления новых коммерческих игроков и новых публика</li><li><strong>Published per concept.</strong>Findings attach to the concept they concern, on its public page, with sources.</li></ol><h3>What has not happened yet</h3><p>This is a young operation, and the record is honest about it. No dossier has yet shipped to a paying subscriber, and none of the audited concepts has yet been licensed or built into an operating company by a buyer. No success stories are claimed. The only performance evidence is the published method, the published studies, and the sample dossier you can read in full before paying anything.</p><h3>How to verify us</h3><p>Take any published study or the free sample, follow its citations to the underlying papers, and recompute the economics yourself from the primitives the dossier states. The method is designed so that a skeptical reader — human or machine — can check the work without taking our word for it.</p><p style="margin-top:2rem"><a href="/ru/sample/" style="font-weight:600">Read the free sample dossier &rarr;</a>·<a href="/ru/pipeline/" style="font-weight:600">See the live pipeline &rarr;</a>·<a href="/ru/method/">Method</a></p><div class="wrap" id="join" style="margin-top:2.4rem"><form id="join-form" action="https://us-central1-the-absence-audit.cloudfunctions.net/subscribe" method="POST" novalidate>
+      <div class="field">
+        <label for="email" style="position:absolute;left:-9999px">Email address</label>
+        <input type="email" id="email" name="email_address" placeholder="you@company.com" autocomplete="email" required>
+        <button type="submit">Send me the ledger</button>
+      </div>
+      <div aria-hidden="true" style="position:absolute;left:-9999px;height:0;overflow:hidden">
+        <label for="company_website">Leave this empty</label>
+        <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+      </div>
+      
+      <p class="form-note">Free while the ledger is being built. No spam, no reselling your address.
+      We will not promise you a return &mdash; nobody has built one of these ventures yet.</p>
+      <p class="msg" id="msg" role="status" aria-live="polite"></p>
+    </form></div></div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+
+<script>/* Email capture. Posts to a real endpoint so the visitor never has to send us
+   an email. The form ALSO works with JavaScript disabled, because its action /
+   method attributes are set server-side at publish time and the browser will
+   do a native POST. Configure in _site/site_config.json. */
+(function () {
+  var form = document.getElementById("join-form");
+  var input = document.getElementById("email");
+  var msg = document.getElementById("msg");
+  var trap = document.getElementById("company_website");
+  var endpoint = form.getAttribute("action") || "";
+  var provider = form.getAttribute("data-provider") || "";
+  var DONE_KEY = "aa_subscribed";
+
+  function say(text, kind) {
+    msg.textContent = text;
+    msg.className = "msg " + (kind || "");
+  }
+
+  if (!endpoint) {
+    // Never fake a subscription. Say so plainly and stop.
+    form.classList.add("unconfigured");
+    input.disabled = true;
+    form.querySelector("button").disabled = true;
+    say("Signup opens shortly \u2014 the list is not accepting addresses yet.", "err");
+    return;
+  }
+
+  if (localStorage.getItem(DONE_KEY)) {
+    say("You are already on the list from this browser.", "ok");
+  }
+
+  form.addEventListener("submit", function (e) {
+    var value = (input.value || "").trim();
+    if (!value || !/^[^\s@]+@[^\s@]+\.[^\s@]{2,}$/.test(value)) {
+      e.preventDefault();
+      say("That does not look like an email address.", "err");
+      input.focus();
+      return;
+    }
+    if (trap && trap.value) { e.preventDefault(); return; }   // bot
+
+    // progressive enhancement: intercept only if fetch is available
+    if (!window.fetch) return;      // otherwise let the native POST happen
+    e.preventDefault();
+    var btn = form.querySelector("button");
+    btn.disabled = true;
+    say("Adding you\u2026");
+
+    var payload = new URLSearchParams(new FormData(form));
+    payload.delete("company_website");
+    var opts = { method: "POST", body: payload };
+    if (provider === "json") {
+      var obj = {};
+      payload.forEach(function (v, k) { obj[k] = v; });
+      opts = { method: "POST", headers: { "Content-Type": "application/json" },
+               body: JSON.stringify(obj) };
+    }
+    fetch(endpoint, opts)
+      .then(function (r) {
+        if (!r.ok && r.status !== 0) throw new Error("HTTP " + r.status);
+        form.reset();
+        localStorage.setItem(DONE_KEY, "1");
+        say("You are on the list. The next audit goes out with the following scan.", "ok");
+      })
+      .catch(function () {
+        say("That did not go through. Please try again in a moment.", "err");
+      })
+      .finally(function () { btn.disabled = false; });
+  });
+})();</script>
+
+<script>/* Атрибуция регистрации. Отвечает на единственный важный маркетинговый вопрос:
+   какой канал привёл этого подписчика?
+
+   FIRST-touch, а не last-touch: если пользователь приходит с Hacker News, уходит,
+   затем возвращается через поиск Google и подписывается, заслуга принадлежит
+   Hacker News. Last-touch ошибочно приписал бы Google работу HN. */
+(function () {
+  var KEY = "aa_first_touch";
+  function params() {
+    try { return new URLSearchParams(location.search); } catch (e) { return null; }
+  }
+  function capture() {
+    var stored = null;
+    try { stored = JSON.parse(localStorage.getItem(KEY) || "null"); } catch (e) {}
+    if (stored && stored.src) return stored;          // первое касание уже известно
+
+    var q = params();
+    var src = q && (q.get("utm_source") || q.get("ref"));
+    var med = q && q.get("utm_medium");
+    var cmp = q && q.get("utm_campaign");
+    if (!src) {
+      // нет явного тега — определяем по ссылающемуся хосту
+      var r = document.referrer || "";
+      if (r) {
+        try {
+          var h = new URL(r).hostname.replace(/^www\./, "");
+          if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+        } catch (e) {}
+      }
+    }
+    var rec = {
+      src: src || "direct",
+      med: med || (src ? "unknown" : "none"),
+      cmp: cmp || "",
+      lp: location.pathname,
+      ts: new Date().toISOString().slice(0, 10)
+    };
+    try { localStorage.setItem(KEY, JSON.stringify(rec)); } catch (e) {}
+    return rec;
+  }
+
+  var touch = capture();
+  var form = document.getElementById("join-form");
+  if (!form) return;
+
+  // передаём в Kit в виде скрытого поля, чтобы атрибуция сохранялась даже без GA
+  function hidden(name, value) {
+    var i = document.createElement("input");
+    i.type = "hidden"; i.name = name; i.value = value || "";
+    form.appendChild(i);
+  }
+  hidden("fields[source]", touch.src);
+  hidden("fields[medium]", touch.med);
+  hidden("fields[campaign]", touch.cmp);
+  hidden("fields[landing_page]", touch.lp);
+
+  // и дублируем конверсию в GA, чтобы отчёты о привлечении совпадали
+  form.addEventListener("submit", function () {
+    if (typeof gtag === "function") {
+      gtag("event", "generate_lead", {
+        source_channel: touch.src,
+        medium: touch.med,
+        campaign: touch.cmp,
+        landing_page: touch.lp
+      });
+    }
+  });
+})();</script>
+</body>
+</html>

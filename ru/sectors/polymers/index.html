@@ -1,0 +1,270 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Концепции полимеров — 7 оценено</title>
+<meta name="description" content="The Absence Audit assessed 7 Polymers concepts from peer-reviewed literature: 1 survived the gates, the rest rejected with published autopsies.">
+<link rel="canonical" href="https://theabsenceaudit.com/sectors/polymers/">
+<meta name="robots" content="index, follow">
+<meta name="theme-color" content="#FBF9F5">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"> <a href="/sectors/polymers/" hreflang="en">EN</a> <a href="/fr/sectors/polymers/" hreflang="fr">FR</a> <a href="/zh/sectors/polymers/" hreflang="zh">中文</a> <a href="/ru/sectors/polymers/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+
+<div class="wrap hub">
+<p class="eyebrow">Отраслевой хаб ·<a href="/ru/ledger/">полный реестр</a></p>
+<h1>Полимеры</h1>
+<p class="lede">В этом секторе оценено 7 концепций; 1 одобрена или выставлена на продажу. Каждое отклонение сопровождается указанием конкретной причины отказа.</p>
+<article class="hub-card cleared">
+<h2><a href="/ru/c/mechanochemical-covalent-triazine-frameworks-ctfs-via-solvent-free-cyc/">Механохимические ковалентные триазиновые каркасы (CTF) методом безрастворительной циклотримеризации</a></h2>
+<p class="hub-status cleared">Одобрено</p>
+<p class="hub-ev">Адсорбционная ёмкость по ПФОК 903.0 mg/g против 43.4 mg/g для Premium GAC (дельта 20.8x)</p>
+<p class="hub-econ">валовая маржа 71.2% · капитальные затраты $85,000 · окупаемость 8.1 месяца</p>
+<p class="hub-fail">нет</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/ru/c/high-impact-polydicyclopentadiene-pdcpd-resins-via-frontal-ring-openin/">Ударопрочные полидициклопентадиеновые (pDCPD) смолы методом фронтальной метатезисной полимеризации с раскрытием цикла (FROMP)</a></h2>
+<p class="hub-status rejected">Отклонено</p>
+<p class="hub-ev">Улучшение поглощения баллистической энергии (KE50) на 300%-400% (в 3-4x) и уменьшение площади расслоения на 50% по сравнению с конструкционной эпоксидной смолой</p>
+<p class="hub-econ">валовая маржа 60.7% · капитальные затраты $134,500 · окупаемость 1.9 месяца</p>
+<p class="hub-fail">Маржа не проходит проверку операционных расходов</p>
+<p class="hub-fail">нет</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/ru/c/lignosulfonate-acrylamide-graft-copolymers-ls-g-paam-via-redox-initiat/">Привитые сополимеры лигносульфоната и акриламида (LS-g-PAAm) методом окислительно-восстановительной водной полимеризации</a></h2>
+<p class="hub-status rejected">Отклонено</p>
+<p class="hub-ev">Снижение фильтратоотдачи HTHP при 200°C в 3.84x (7.5 mL для LS-g-PAAm против 28.8 mL для Driscal D)</p>
+<p class="hub-econ">валовая маржа 87.7% · капитальные затраты $92,000 · окупаемость 0.6 месяца</p>
+<p class="hub-fail">нет</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/ru/c/premium-high-barrier-packaging-plastics-phbv-via-non-sterile-halophili/">Упаковочные пластики премиум-класса с высокими барьерными свойствами (PHBV) методом нестерильной галофильной ферментации</a></h2>
+<p class="hub-status rejected">Отклонено</p>
+<p class="hub-ev">Кислородопроницаемость (OTR) PHBV составляет 218.4 cm³/m²/day против OTR полиэтилена 1543.09 cm³/m²/day (кислородопроницаемость ниже в 7.0x).</p>
+<p class="hub-fail">B</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/ru/c/terephthalaldehyde-crosslinked-polyimine-vitrimers-via-catalyst-free-s/">Полииминовые витримеры, сшитые терефталевым альдегидом, методом бескатализаторного формования из раствора</a></h2>
+<p class="hub-status rejected">Отклонено</p>
+<p class="hub-ev">Прочность на растяжение 97.0 MPa против 70-80 MPa для BPA Epoxy (улучшение в 1.2x); 5 циклов повторной переработки против 0 для BPA Epoxy</p>
+<p class="hub-econ">валовая маржа 70.0% · капитальные затраты $85,000 · окупаемость 1.4 месяца</p>
+<p class="hub-fail">нет</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/ru/c/thermoreversible-diels-alder-poly-vinyl-alcohol-hot-melt-adhesive-via/">Термообратимый клей-расплав на основе поливинилового спирта по реакции Дильса — Альдера посредством фуран-малеимидного циклоприсоединения</a></h2>
+<p class="hub-status rejected">Отклонено</p>
+<p class="hub-ev">Прочность на отслаивание 43.33 N/mm против 9.1 N/mm для 3M Scotch-Weld PUR TE040 (дельта 4.76x)</p>
+<p class="hub-econ">валовая маржа 46.4% · капитальные затраты $220,000 · окупаемость 1.5 месяца</p>
+<p class="hub-fail">Доказательная база опирается на нерецензируемые источники</p>
+<p class="hub-fail">Маржа не проходит проверку операционных расходов</p>
+<p class="hub-fail">Отсутствие заявлено, отчёт о поиске не представлен</p>
+<p class="hub-fail">D, I, J</p>
+</article>
+<article class="hub-card rejected">
+<h2><a href="/ru/c/wpua-pam-eg-organohydrogel-coatings-via-uv-initiated-free-radical-poly/">Органогидрогелевые покрытия WPUA-PAM@EG методом свободнорадикальной полимеризации с УФ-инициированием</a></h2>
+<p class="hub-status rejected">Отклонено</p>
+<p class="hub-ev">Задержка замерзания капли 322s при -30°C против &lt;20s для используемого аналога (задержка &gt;16x) и адгезия льда 39.8 kPa при -50°C против &gt;500 kPa для базового уровня (снижение &gt;12x)</p>
+<p class="hub-econ">валовая маржа 46.4% · капитальные затраты $315,000 · окупаемость 2.0 месяца</p>
+<p class="hub-fail">Маржа не проходит проверку операционных расходов</p>
+<p class="hub-fail">B, C, D, F, G</p>
+</article>
+<p class="hub-back">Другие секторы:<a href="/ru/sectors/materials/">Материалы</a>·<a href="/ru/sectors/agriculture/">Сельское хозяйство</a>·<a href="/ru/sectors/biotechnology/">Биотехнологии</a>·<a href="/ru/sectors/chemical-engineering/">Химическая инженерия</a>·<a href="/ru/sectors/medical-cosmetics/">Медицина и косметика</a>·<a href="/ru/sectors/environmental/">Окружающая среда</a>·<a href="/ru/sectors/energy-electronics/">Энергетика и электроника</a>·<a href="/ru/sectors/unclassified/">Не классифицировано</a>·<a href="/ru/sectors/specialty-chemicals-tribology/">Специальная химия / Трибология</a></p></div>
+</main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+</body>
+</html>

@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script>window.AA_AGENT = {"id": "agent_6601m1xq7sj4ej3th6mvs74wgbhk", "title": "Premium Sophorolipids via Solid-State Fermentation of Winterization Oil Cake"};</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>**Премиальные софоролипиды методом твердофазной ферментации винтеризаци… — исследование deeptech-стартапа | The Absence Audit**</title>
+<meta name="description" content="Study — none">
+<link rel="canonical" href="https://theabsenceaudit.com/c/premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi/">
+<meta name="theme-color" content="#FBF9F5">
+<meta property="og:type" content="article">
+<meta property="og:site_name" content="The Absence Audit">
+<meta property="og:url" content="https://theabsenceaudit.com/c/premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi/">
+<meta property="og:title" content="Premium Sophorolipids via Solid-State Fermentation of Winterization Oil Cake">
+<meta property="og:description" content="Study — none">
+<meta property="og:image" content="https://theabsenceaudit.com/images/concepts/premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"> <a href="/c/premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi/" hreflang="en">EN</a> <a href="/fr/c/premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi/" hreflang="fr">FR</a> <a href="/zh/c/premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi/" hreflang="zh">中文</a> <a href="/ru/c/premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main"><div class="wrap" style="padding:3.2rem 0 4rem;max-width:76ch">
+  <p class="eyebrow"><a href="/ru/ledger/" style="color:inherit">Реестр</a>· 2026-08-27 · Биотехнологии / Биохимическая инженерия</p>
+  <h1 style="font-size:clamp(1.9rem,3.6vw,2.9rem)">Премиальные софоролипиды методом твердофазной ферментации жмыха винтеризации</h1>
+  <div class="vbar"><div class="vcell vcell--fail"><span class="vlabel">Кейс деептех-проекта</span><span class="vword">НЕ ПРОЙДЕН</span></div><div class="vcell vcell--fail"><span class="vlabel">Финансовое обоснование</span><span class="vword">НЕФИНАНСИРУЕМЫЙ</span><span class="vsub">ниже минимального порога DSCR</span></div><p class="vsynth">Оба обоснования провалены. Это наиболее жесткая отрицательная оценка системы — дефекты аудита и расчеты долговой нагрузки дают отрицательный ответ.</p></div>
+  <figure class="concept-fig"><img src="/images/concepts/premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi.jpg" alt="Premium Sophorolipids via Solid-State Fermentation of Winterization Oil Cake" style="width:100%;border-radius:8px;margin:1.3rem 0 0.2rem"></figure>
+  <div style="margin:1.4rem 0 0.6rem;padding:12px 16px;border:1px solid var(--rule);background:var(--paper-2);border-radius:8px;display:flex;align-items:center;gap:14px;flex-wrap:wrap"><span style="font:600 11px/1 ui-sans-serif,system-ui,sans-serif;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3)">Слушать — 60-секундная сводка</span><audio controls preload="none" style="height:38px" src="/audio/teaser-premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi.mp3"></audio><span style="font:12.5px/1.5 ui-sans-serif,system-ui,sans-serif;color:var(--ink-3);max-width:34ch">Обзор, сгенерированный ИИ. Полная аудиосводка прилагается к отчету.</span></div>
+  <p class="lede">Полный аудит — механизм, расчетная экономика, финансовое обоснование и все цитаты — открыт ниже целиком для покупателей и подписчиков. Вердикты выше — это честная оценка данной концепции со стороны системы, а запись о непрохождении ниже публична.</p><h3>Оцениваемый профиль</h3><table><tbody><tr><td style="width:36%"><strong>Действующий аналог</strong></td><td>Алкилполиглюкозид (APG)</td></tr><tr><td style="width:36%"><strong>Сигналы валидации</strong></td><td>30 источников, 1,288 учтенных цитирований, отозванных публикаций нет (OpenAlex)</td></tr><tr><td style="width:36%"><strong>Целевое применение для выхода на рынок</strong></td><td>бессульфатные экологичные косметические очищающие средства</td></tr><tr><td style="width:36%"><strong>Зафиксированное преимущество</strong></td><td>отсутствует</td></tr><tr><td style="width:36%"><strong>Срок до первой выручки</strong></td><td>24 месяца</td></tr><tr><td style="width:36%"><strong>Валовая маржа при ценовом паритете</strong></td><td>-198.4%</td></tr><tr><td style="width:36%"><strong>Начальные капитальные затраты</strong></td><td>$6,700,000</td></tr><tr><td style="width:36%"><strong>Совокупный капитал под риском</strong></td><td>$7,900,000</td></tr><tr><td style="width:36%"><strong>Эффективность использования капитала</strong></td><td>0.09x</td></tr><tr><td style="width:36%"><strong>Финансируемость</strong></td><td>НЕФИНАНСИРУЕМЫЙ (модель)</td></tr><tr><td style="width:36%"><strong>Регуляторный риск</strong></td><td>Умеренный — заявлены затраты на квалификацию (оценка: $1,200,000)</td></tr></tbody></table><h3>Позиция по ИС и патентам</h3><p>Защищаемость:<strong>не оценивалась</strong>. Внешняя критика Lightbringer:<strong>в ожидании</strong>— внешняя критика по данному отчету еще не проводилась. Этот отчет был составлен до введения требования о защищаемости — позиция публикуется в качестве раскрытия информации, патентные притязания не заявляются.</p><p>Критика на возможность реверс-инжиниринга:<strong>в ожидании</strong>— анализ на возможность реверс-инжиниринга по данному отчету еще не проводился</p><h3>Почему деептех-проект не прошел</h3><ul><li>Аннулировано по причинам: Капитал и срок до выручки, Нераскрытая экономика, Отрицательный контроль / прирост менее 2x, Регресс по форм-фактору / технологичности применения</li><li>Маржа не проходит проверку операционными расходами</li></ul><h3>Замечания оценки</h3><p>В концепции прямо признается несоответствие экономическим и операционным критериям: капитальные затраты составляют $6.7M, срок до первой выручки — 24 месяца, а себестоимость единицы продукции — $5.10/kg при рыночной цене APG в $1.86/kg. Продукт представляет собой вязкую неочищенную пасту, требующую локального подогрева/растворителей, что является серьезным регрессом форм-фактора по сравнению с жидким APG. Кроме того, софоролипиды неустойчивы к солям и агрегируют в кислой среде при создании рецептур.</p><h3>Дополнительные замечания</h3><ul><li>Доказательная база опирается на нерецензируемые источники</li><li>Повторяющиеся ссылки искусственно раздувают доказательную базу</li><li>Ценовой паритет декларируется, но не подтвержден источниками</li></ul><p style="margin-top:1.6rem;font-size:.93rem;color:var(--ink-2)">Этот вердикт не означает, что научные положения неверны. Он означает, что кейс деептех-проекта не выдержал проверки: объект сравнения не соответствует тому, что реально приобретает покупатель, сопоставление было некорректным, преимущество не достигло качественного скачка либо капитальные затраты и срок до первой выручки оказались чрезмерными.</p><h3>Что остается от кейса</h3><p>Финансовое обоснование также не прошло проверку: расчетная модель выдает<strong>НЕФИНАНСИРУЕМЫЙ</strong>— расчет долговой нагрузки не достигает минимального порога DSCR при заявленных допу</p><p>Every reason above is a specific, quantified defect — the fix is knowable before another dollar is spent. Two build paths survive a non-clearance: fix the defects and re-test, or reposition — when the step change is missing, the cost-alternative route needs none: a drop-in that undercuts the incumbent on price and sells the switch. The failure reasons are the roadmap; the recomputed economics state the unit-cost position (inside the full report). If you can fix the one or sell the other, this report is the complete blueprint — mechanism, operating protocol, economics, capital pack, citations.</p><div data-aa-locked style="margin:2rem 0;padding:1.1rem 1.2rem;background:var(--paper-2);border:1px solid var(--rule);border-radius:8px"><h2 style="margin:0 0 .6rem">The full report</h2><p style="margin:0;font-size:.95rem;color:var(--ink-2)">The complete research report &mdash; mechanism and operating protocol, the production runsheet with quantities, recomputed economics with the six-scenario stress test, the audit&rsquo;s own objections, the institutional capital-formation pack, and every resolved citation &mdash; opens right here for buyers and subscribers. Use the buy CTA below to open it in place.</p></div><div data-aa-report style="display:none"></div><div data-aa-parts hidden><div class="aa-briefcase" data-aa-parts data-aa-slug="premium-sophorolipids-via-solid-state-fermentation-of-winterization-oi"><div class="aa-bc-row"><span class="aa-bc-label">Download</span><div class="aa-bc-pills"><button type="button" class="aa-pill" data-aa-dl="financial" data-aa-label="Financial plan" title="Lender · bank · debt committee">Financial plan</button><button type="button" class="aa-pill" data-aa-dl="centrifuge" data-aa-label="Centrifuge pack" title="Pool onboarding · Credit Group">Centrifuge pack</button><button type="button" class="aa-pill" data-aa-dl="morpho" data-aa-label="Morpho pack" title="Curators · market creation">Morpho pack</button><button type="button" class="aa-pill" data-aa-dl="brickken" data-aa-label="Brickken pack" title="Tokenization onboarding">Brickken pack</button><button type="button" class="aa-pill" data-aa-dl="investor" data-aa-label="Investor pack" title="Senior & junior LPs">Investor pack</button><button type="button" class="aa-pill" data-aa-dl="offtake" data-aa-label="Offtake pack" title="Contract counterparty">Offtake pack</button><button type="button" class="aa-pill" data-aa-dl="mica" data-aa-label="MiCA & regulatory pack" title="Offeror · competent authority">MiCA & regulatory pack</button><button type="button" class="aa-pill" data-aa-dl="technical" data-aa-label="Technical & IP pack" title="Engineering · patent counsel">Technical & IP pack</button><button type="button" class="aa-pill" data-aa-dl="ops" data-aa-label="Operations & audit pack" title="Operator · trustee · auditor">Operations & audit pack</button><button type="button" class="aa-pill aa-pill-full" data-aa-dl="full" data-aa-label="Full report" title="Every section &amp; citation">Full report</button></div></div><div class="aa-bc-row"><span class="aa-bc-label">Read</span><div class="aa-bc-tabs"><button type="button" class="aa-tab" data-aa-part="financial" data-aa-label="Financial plan" title="Lender · bank · debt committee">Financial plan</button><button type="button" class="aa-tab" data-aa-part="centrifuge" data-aa-label="Centrifuge pack" title="Pool onboarding · Credit Group">Centrifuge pack</button><button type="button" class="aa-tab" data-aa-part="morpho" data-aa-label="Morpho pack" title="Curators · market creation">Morpho pack</button><button type="button" class="aa-tab" data-aa-part="brickken" data-aa-label="Brickken pack" title="Tokenization onboarding">Brickken pack</button><button type="button" class="aa-tab" data-aa-part="investor" data-aa-label="Investor pack" title="Senior & junior LPs">Investor pack</button><button type="button" class="aa-tab" data-aa-part="offtake" data-aa-label="Offtake pack" title="Contract counterparty">Offtake pack</button><button type="button" class="aa-tab" data-aa-part="mica" data-aa-label="MiCA & regulatory pack" title="Offeror · competent authority">MiCA & regulatory pack</button><button type="button" class="aa-tab" data-aa-part="technical" data-aa-label="Technical & IP pack" title="Engineering · patent counsel">Technical & IP pack</button><button type="button" class="aa-tab" data-aa-part="ops" data-aa-label="Operations & audit pack" title="Operator · trustee · auditor">Operations & audit pack</button><button type="button" class="aa-tab aa-tab-on" data-aa-part="full" data-aa-label="Full report" title="Every section &amp; citation" aria-pressed="true">Full report</button></div></div></div></div><h3>The decision</h3><p><strong style="color:var(--kill)">DON&rsquo;T TOUCH</strong>&mdash; both the venture case and the debt math failed — the defect lists below are the full explanation.</p><p style="margin:0 0 .3rem">The next cheapest experiments, from the unresolved flags:</p><ul><li>Find the peer-reviewed version of the key comparison</li><li>Clean the citation set — remove duplicates, verify the originals</li><li>Prove price parity with an independent quote, not a declaration</li></ul><p style="font-size:.9rem;color:var(--ink-2)">Validation log: no customer interviews or pilots logged yet &mdash; the buyer-outcome loop publishes here as it fills. Nothing on this page is externally validated until it says so.</p><div class="promise" data-aa-commerce style="margin-top:2rem"><h3>This report is €1,000 &mdash; priced by the score, not the verdict</h3><p style="margin:0 0 .8rem">The verdict is honest, and so is the value:<strong>Deep autopsy (Autopsy Value Score)</strong>, computed from the content that survives the failure, never from the verdict. Not clearing is a specific, quantified claim about the venture case &mdash; not about the science, which opens in full above for buyers and subscribers. What survives: 41,833 characters of audit + 145 works cited + computed economics + regulatory estimate + named incumbent + 4 measured failure modes.</p><p style="margin:0"><a href="https://buy.stripe.com/5kQaEX6x52cs5GEauyg7f0c" rel="noopener" style="font-weight:600" aria-label="Buy the full research report for Premium Sophorolipids via Solid-State Fermentation of Winterization Oil Cake, priced at €1,000">Buy the full report &rarr;</a></p></div>
+  <hr class="rule" style="margin:2.6rem 0 1.6rem">
+  <p style="font-size:.9rem;color:var(--ink-3)">Assessed 2026-08-27 against seven gates plus the
+  voiding sub-tests.<a href="/ru/#thesis">How the method works</a>·<a href="/ru/ledger/">Browse all concepts</a></p>
+</div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+</body></html>

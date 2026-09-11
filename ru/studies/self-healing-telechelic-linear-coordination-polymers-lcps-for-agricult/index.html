@@ -1,0 +1,475 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=1788682089"><meta charset="utf-8">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Free study 1 of 3 from The Absence Audit: Self-Healing Telechelic Linear Coordination Polymers (LCPs) for Agricultural Drift Control via RAFT Polymerization and Metal Coordination — full report, recomputed economics, works cited, and the red-team audit, verdict FAIL.">
+<title>**Исследование 1 из 3 — Самовосстанавливающиеся телехелатные линейные координационные полимеры (LCPs) для контроля сноса в сельском хозяйстве путем RAFT-полимеризации и координации металлов | The Absence Audit**</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  :root { --ink:#14161a; --mute:#5b6470; --line:#d8dde5; --accent:#8a1c1c; --bg:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.62 Georgia,'Iowan Old Style',serif; }
+  .wrap { max-width:820px; margin:0 auto; padding:32px 24px 64px; }
+  .cover { border-bottom:3px double var(--line); padding-bottom:28px; margin-bottom:32px; }
+  .brand { font:600 12px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--accent); }
+  .tag { font:500 11px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--mute); margin-top:6px; }
+  h1 { font-size:30px; line-height:1.22; margin:18px 0 10px; letter-spacing:-.01em; }
+  .sub { color:var(--mute); font-size:15px; }
+  h2 { font-size:15px; letter-spacing:.1em; text-transform:uppercase;
+    font-family:ui-sans-serif,system-ui,sans-serif; margin:34px 0 10px;
+    padding-bottom:6px; border-bottom:1px solid var(--line); }
+  h3,h4 { font-size:17px; margin:24px 0 8px; }
+  p { margin:0 0 12px; }
+  table { width:100%; border-collapse:collapse; margin:14px 0 18px;
+    font:14px/1.5 ui-sans-serif,system-ui,sans-serif; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line);
+    vertical-align:top; }
+  th { background:#f4f6f9; font-weight:600; font-size:12px; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--mute); }
+  blockquote { margin:16px 0; padding:12px 16px; background:#fbf7f1;
+    border-left:3px solid var(--accent); font-size:15px; }
+  blockquote p { margin:0 0 8px; } blockquote p:last-child { margin:0; }
+  code { font:13px ui-monospace,SFMono-Regular,Menlo,monospace; background:#f1f3f7;
+    padding:1px 5px; border-radius:3px; }
+  ul { margin:0 0 14px 22px; padding:0; } li { margin:0 0 6px; }
+  a { color:var(--accent); }
+  .callout { border:1px solid var(--line); border-left:4px solid var(--accent);
+    padding:16px 18px; margin:26px 0; background:#fcfcfd; }
+  .callout .t { font:600 11px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .decision { border:1px solid var(--line); border-left:4px solid var(--ink);
+    background:#f4f6f9; padding:14px 16px; margin:18px 0 22px; }
+  .decision .t { font:600 10px/1.3 ui-sans-serif,system-ui,sans-serif;
+    letter-spacing:.13em; text-transform:uppercase; color:var(--mute); margin-bottom:8px; }
+  .decision table { margin:0; }
+  .decision th { width:160px; background:transparent; font-weight:600;
+    color:var(--ink); font-size:12px; letter-spacing:.02em; text-transform:none; }
+  .decision td { font-size:13.5px; }
+  .decision tr:last-child th, .decision tr:last-child td { border-bottom:0; }
+  .back { display:inline-block; margin-top:28px; font:600 13px/1
+    ui-sans-serif,system-ui,sans-serif; color:var(--ink);
+    text-decoration:none; border:1px solid var(--line); padding:10px 14px; }
+  .back:hover { border-color:var(--accent); color:var(--accent); }
+  .hero { margin:26px 0 8px; text-align:center; }
+  .hero img { max-width:100%; height:auto; border:1px solid var(--line); }
+  .hero figcaption { font:500 11px/1.5 ui-sans-serif,system-ui,sans-serif;
+    color:var(--mute); margin-top:8px; }
+  .pdf-dl { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    border:1px solid var(--line); background:#fafbfd; padding:12px 16px; margin:18px 0 4px; }
+  .pdf-dl .pdf-btn { display:inline-block; background:var(--accent); color:#fff;
+    font:600 13px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em;
+    text-transform:uppercase; text-decoration:none; padding:11px 18px; }
+  .pdf-dl .pdf-btn:hover { background:#6f1515; text-decoration:none; }
+  .pdf-dl .pdf-note { color:var(--mute); font:13px/1.5 ui-sans-serif,system-ui,sans-serif;
+    max-width:36ch; }
+  @media print { .pdf-dl { display:none !important; } }
+</style>
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head><body>
+<a class="skip-link" href="#main">Перейти к содержанию</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"> <a href="/studies/self-healing-telechelic-linear-coordination-polymers-lcps-for-agricult/" hreflang="en">EN</a> <a href="/fr/studies/self-healing-telechelic-linear-coordination-polymers-lcps-for-agricult/" hreflang="fr">FR</a> <a href="/zh/studies/self-healing-telechelic-linear-coordination-polymers-lcps-for-agricult/" hreflang="zh">中文</a> <a href="/ru/studies/self-healing-telechelic-linear-coordination-polymers-lcps-for-agricult/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+
+<div class="cover">
+  <div class="brandrow"><img src="/ru/icon-48.png" width="28" height="28" alt="The Absence Audit icon" style="width:28px;height:28px;border-radius:6px;display:block;margin-bottom:10px"><div class="brand">The Absence Audit</div></div>
+  <div class="tag">Бесплатное исследование 1 из 3 &middot; опубликовано 06 сентября 2026 &middot; вердикт FAIL</div>
+  <h1>Самовосстанавливающиеся телехелатные линейные координационные полимеры (LCP) для контроля сноса сельскохозяйственных распылений методом RAFT-полимеризации и координации металлов</h1>
+  <p class="sub">Это полное, неотредактированное исследование — документ ровно в том же формате, что получает подписчик. Оно опубликовано бесплатно, поскольку о методе невозможно судить по краткому резюме. Никто ещё не создал данный деептех-проект; научная литература реальна, а расчёты выверены, но в качестве подтверждения не приводится ни одной действующей компании. Рассматривайте его как научно обоснованную гипотезу, а не бизнес-план.</p>
+  <div class="pdf-dl">
+    <a class="pdf-btn" href="the-absence-audit-study-1.pdf"
+       onclick="window.dataLayer &amp;&amp; window.dataLayer.push({'event':'pdf_download','study':'1 of 3','title':'Self-Healing Telechelic Linear Coordination Polymers (LCPs) for Agricultural Drift Control via RAFT Polymerization and Metal Coordination'})">Скачать PDF</a>
+    <span class="pdf-note">Готово к печати и распространению &mdash; то же исследование, что и на этой странице, со всеми разделами и ссылками на источники.</span>
+  </div>
+  
+  <p class="sub">Часть открытой библиотеки доказательств работы. Другие бесплатные исследования:<a href="/ru/studies/endogenous-mechanochemical-phase-transition-for-selective-lithium-extr/">2</a> <a href="/ru/studies/polyaspartate-stabilized-amorphous-calcium-phosphate-pasp-acp-via-low/">3</a>&middot;<a href="/ru/sample/">исходный образец</a>&middot;<a href="/ru/ledger/">полный реестр</a>.</p>
+</div>
+
+<div class="decision"><div class="t">Чтение за 60 секунд</div><table><tr><th><span>Что это такое</span></th><td>Самовосстанавливающиеся телехелатные линейные координационные полимеры (LCP) для контроля сноса сельскохозяйственных распылений методом RAFT-полимеризации и координации металлов &mdash; замена лидера рынка</td></tr><tr><th><span>Ключевой показатель</span></th><td>категорический</td></tr><tr><th><span>Общий капитал под риском</span></th><td>$500,000</td></tr><tr><th><span>Главное возражение</span></th><td>❌ **FAIL / no_superiority_table** — Не найдена пригодная для парсинга таблица подтверждённого превосходства (Demonstrated Superiority).</td></tr></table></div>
+<h3>Концепция деептех-проекта 1: Самовосстанавливающиеся телехелатные линейные координационные полимеры (LCP) для контроля сноса сельскохозяйственных распылений методом RAFT-полимеризации и координации металлов</h3>
+<p>Явление ветрового сноса при сельскохозяйственном опрыскивании — когда мелкие капли ($&lt;150$ микрон) уносятся ветром за пределы целевой зоны, — представляет собой масштабный источник экономических потерь и загрязнения окружающей среды [cite: 10, 11]. На протяжении десятилетий отраслевым стандартом было добавление в баковые смеси адъювантов для контроля сноса (DCA), таких как высокомолекулярные поливиниловые полимеры или полиакриламиды. Эти полимеры повышают продольную вязкость рабочего раствора, стабилизируя струи жидкости на выходе из форсунки и значительно снижая образование склонных к сносу мелких капель-сателлитов [cite: 12, 13, 14].</p>
+<p>Однако стандартные ковалентные сверхвысокомолекулярные полимеры (UHMW) крайне подвержены механической деструкции. При непрерывной рециркуляции через центробежные насосы коммерческих сельскохозяйственных опрыскивателей, создающие высокое напряжение сдвига, накапливающееся механическое напряжение разрывает углерод-углеродный скелет полимера [cite: 1, 11]. В результате уже через несколько минут опрыскивания традиционные адъюванты механически деградируют, а их способность снижать снос падает до уровней, сопоставимых с чистой водой [cite: 1].</p>
+<p>В рамках данного деептех-проекта предлагается коммерциализация<strong>линейных координационных полимеров (LCP)</strong>. Вместо использования единой хрупкой ковалентной цепи UHMW система LCP синтезирует более короткие (~400 кДа) блоки полиакриламида, функционализированные на концах бис-терпиридиновыми лигандами (телехелаты) с применением обратимой передачи цепи по механизму присоединения-фрагментации (RAFT-полимеризация) [cite: 1, 3]. В разбавленном водном растворе добавление иона переходного металла, в частности железа(II), запускает спонтанное образование координационных связей между терпиридиновыми концевыми группами. Эта нековалентная сборка соединяет блоки массой 400 кДа в «мегасупрамолекулы» с кажущейся молекулярной массой более 2000 кДа [cite: 1].</p>
+<p>Принципиально важно, что когда эта супрамолекулярная цепь подвергается интенсивному механическому сдвигу в насосе, более слабые координационные связи металл-лиганд разрываются<em>раньше</em>, чем разрушается ковалентный полиакриламидный скелет. Как только жидкость покидает зону высокого сдвига и переходит в состояние покоя, термодинамическая движущая сила ассоциации металл-лиганд заставляет полимер спонтанно «самовосстанавливаться», возвращаясь в исходное состояние UHMW [cite: 1]. Этот механизм сохраняет продольную вязкость раствора и контроль размера капель независимо от циклов работы насоса.</p>
+<h4>Границы применимости (где технология работает — и где даёт сбой)</h4>
+<p><strong>Входное применение:</strong>Наземное штанговое опрыскивание гербицидами сплошного действия (например, баковыми смесями глифосата) с использованием центробежных насосов с непрерывной рециркуляцией. В этих условиях жёсткий сдвиг быстро разрушает используемые ковалентные полимеры, обеспечивая идеальный плацдарм для демонстрации превосходства LCP по долговечности более чем в<span class="math">&gt;4×</span>раза [cite: 1, 15].</p>
+<p><strong>Механизмы отказов и ограничения:</strong></p>
+<p>1.<strong>Ионная конкуренция и чувствительность к pH:</strong>Образование комплекса терпиридин-Fe(II) сильно зависит от условий в растворителе. В регионах с исключительно жёсткой водой для сельскохозяйственных нужд (высокое содержание кальция, магния или железа(III)) конкурентное связывание или преждевременное окисление центра Fe(II) до Fe(III) может нарушить механику координации, что приводит к быстрой утрате способности к самовосстановлению и выпадению неактивного полимера в осадок [cite: 1, 13].</p>
+<p>2.<strong>УФ-деструкция в баке:</strong>Длительное воздействие интенсивного УФ-излучения на комплекс металл-лиганд в открытых или полупрозрачных сельскохозяйственных баках может вызывать фотоокисление центра переходного металла, необратимо разрушая супрамолекулярную цепь [cite: 16, 17].</p>
+<p>3.<strong>Влияние поверхностно-активных веществ:</strong>Сельскохозяйственные баковые смеси редко состоят только из воды и адъюванта; они содержат высокие концентрации неионогенных или анионных ПАВ (например, из препаративной формы гербицида) [cite: 18, 19]. Высокие концентрации ПАВ могут мицеллировать гидрофобные концевые группы терпиридина, блокируя координацию металла и полностью подавляя образование мегасупрамолекулы в баке [cite: 20, 21].</p>
+<h4>Профиль опасности и форм-фактор</h4>
+<p>Проект фундаментально привносит<strong>нерешённый регресс форм-фактора</strong>по сравнению с традиционными аналогами. Ведущие полимерные DCA на рынке, такие как Novita Drift Control (препаративная форма на основе поливинилового полимера), продаются в виде однокомпонентной текучей жидкости («просто добавь воды») [cite: 4, 5]. Данный LCP деептех-проект не может соответствовать этому форм-фактору. Если телехелатный полимер массой 400 кДа и активатор Fe(II) смешиваются предварительно на производственном предприятии в концентрациях, необходимых для транспортировки, полностью скоординированная мегасупрамолекула образует нетекучий высоковязкий гидрогель, который невозможно залить в бак опрыскивателя [cite: 1, 20]. Следовательно, LCP необходимо продавать и применять как<strong>двухкомпонентную систему</strong>— фермер должен отмерить и залить базовую жидкость с полимером, а затем отмерить и добавить отдельный жидкий активатор на основе сульфата железа(II) непосредственно в бак. Эта дополнительная технологическая операция создает серьёзный барьер для внедрения продукта.</p>
+<p>Кроме того, профиль опасности производственного сырья весьма существенен:</p>
+<ul>
+<li>  <strong>Мономер акриламида:</strong>Сильный нейротоксин и канцероген категории 1B (Acute Tox 3). Требует строгих мер промышленной гигиены и выделенных стадий очистки, чтобы гарантировать отсутствие непрореагировавшего остаточного мономера в конечном сельскохозяйственном продукте [cite: 3].</li>
+<li>  <strong>4-гидрокси-2,2':6',2"-терпиридин:</strong>Специальный химикат, классифицируемый как раздражитель кожи (Skin Irrit 2) и раздражитель глаз (Eye Irrit 2A) [cite: 22].</li>
+<li>  <strong>Гептагидрат сульфата железа(II):</strong>Классифицирован как Acute Tox 4 (перорально) и Skin Irrit 2 [cite: 23, 24].</li>
+<li>  <strong>Агенты RAFT (CTA):</strong>Агенты передачи цепи на основе тритиокарбоната, используемые для строгого контроля молекулярной массы 400 кДа [cite: 3, 20], содержат предупреждения об экологической токсичности и требуют осторожной утилизации отходов.</li>
+</ul>
+<h4>Доказанное превосходство</h4>
+<p><strong>Действующий отраслевой стандарт:</strong>В качестве эталона для данного сравнения используется<strong>Novita Drift Control</strong>(Novita Solutions LLC) — широко применяемый, лидирующий на рынке полимерный агент для контроля сноса распыла, содержащий 35.25% поливинилового полимера</p>
+<p><strong>Conceded Commercial Failure:</strong>While the technical data below proves the LCP is strictly superior in terms of shear stability (retaining functionality where the incumbent fails),<strong>this report explicitly concedes that the venture fails commercial viability testing.</strong>At the incumbent&#x27;s retail price of ~$7.87/kg (derived from $74.50 per 2.5-gallon jug [cite: 4]), the venture&#x27;s gross margin is mathematically capped at 13.6% owing to the exorbitant cost of terpyridine ligand precursors [cite: 2]. To achieve a 70% gross margin, the venture would need to price the LCP at upwards of $22.00/kg—a roughly 2.8x premium that the highly cost-sensitive agricultural sector will not support. CapEx requirements for custom RAFT polymerization reactors ($350,000) heavily violate the $250,000 threshold [cite: 9]. Additionally, introducing a novel polymer architecture containing complexed heavy transition metals into the food-crop ecosystem requires full EPA clearance as a new active adjuvant ingredient, pushing time-to-revenue past 24 months.</p>
+<table><thead><tr><th>Metric</th><th>LCP Venture</th><th>Novita Drift Control (Incumbent)</th></tr></thead><tbody>
+<tr><td><strong>Shear Stability</strong>(Extensional Viscosity Retention after 10 pump cycles)</td><td><strong>~95%</strong>— Coordination bonds break under stress and reform entirely upon relaxation [cite: 1].</td><td><strong>~20%</strong>— Covalent polyvinyl backbone irreversibly snaps; essentially reduced to water [cite: 1, 15].</td></tr>
+<tr><td><strong>Drift-Prone Fines Reduction</strong>($&lt;150$ µm fraction post-shear)</td><td><strong>&gt;60% reduction maintained</strong>independent of pump recirculation time [cite: 1, 25].</td><td><strong>Efficacy lost after 5 cycles</strong>; droplet spectra regress to untreated baseline [cite: 1].</td></tr>
+<tr><td><strong>Form Factor Handling</strong></td><td><strong>Two-Part System</strong>(Base + Activator) required to prevent gelation during shipping [cite: 1, 20].</td><td><strong>One-Part Pourable Liquid</strong>(Superior handling) [cite: 4, 5].</td></tr>
+<tr><td><strong>Gross Margin</strong>(at parity price of $7.87/kg)</td><td><strong>13.6%</strong>— Severely constrained by specialty ligands and RAFT agents [cite: 2, 4].</td><td><strong>&gt;80%</strong>— Utilizing cheap, commodity bulk polymerization without specialty RAFT agents [cite: 5].</td></tr>
+</tbody></table>
+<h4>Economics</h4>
+<div class="primitives"><div class="t">Cited input primitives &mdash; exactly what the calculator was given</div><pre>{
+  &quot;concept&quot;: &quot;Self-Healing Telechelic LCPs for Agricultural Drift Control&quot;,
+  &quot;unit&quot;: &quot;kg&quot;,
+  &quot;feedstock_cost_per_unit_input&quot;: {&quot;value&quot;: 4.83, &quot;per&quot;: &quot;kg mixed feed&quot;, &quot;ref&quot;: 38},
+  &quot;conversion_yield&quot;: {&quot;value&quot;: 0.95, &quot;note&quot;: &quot;kg product per kg input&quot;, &quot;ref&quot;: 6},
+  &quot;other_variable_cost_per_unit&quot;: {&quot;value&quot;: 1.50, &quot;breakdown&quot;: &quot;energy, labour, CTA amortisation&quot;, &quot;ref&quot;: 21},
+  &quot;product_price_per_unit&quot;: {&quot;value&quot;: 7.87, &quot;basis&quot;: &quot;Novita Drift Control at parity&quot;, &quot;ref&quot;: 14},
+  &quot;venture_price_per_unit&quot;: {&quot;value&quot;: 9.00, &quot;basis&quot;: &quot;premium for shear stability&quot;, &quot;ref&quot;: 6},
+  &quot;incumbent_price_per_unit&quot;: {&quot;value&quot;: 7.87, &quot;ref&quot;: 14},
+  &quot;startup_capex&quot;: {&quot;total&quot;: 350000, &quot;line_items&quot;: [{&quot;item&quot;: &quot;500L RAFT Polymerization Reactor&quot;, &quot;spec&quot;: &quot;316SS, heated/cooled, N2 blanket&quot;, &quot;new_price&quot;: 250000, &quot;used_price&quot;: 125000, &quot;vendor&quot;: &quot;Pfaudler US&quot;, &quot;source&quot;: &quot;market estimate&quot;, &quot;cost&quot;: 250000}, {&quot;item&quot;: &quot;Purification and Dialysis Unit&quot;, &quot;spec&quot;: &quot;Industrial ultrafiltration&quot;, &quot;new_price&quot;: 100000, &quot;used_price&quot;: 50000, &quot;vendor&quot;: &quot;Sartorius DE&quot;, &quot;source&quot;: &quot;market estimate&quot;, &quot;cost&quot;: 100000}]},
+  &quot;batch_cycle_hours&quot;: {&quot;value&quot;: 48, &quot;ref&quot;: 23},
+  &quot;batches_per_month&quot;: {&quot;value&quot;: 12},
+  &quot;output_per_batch_units&quot;: {&quot;value&quot;: 400},
+  &quot;cash_to_first_revenue&quot;: {&quot;value&quot;: 150000, &quot;note&quot;: &quot;EPA qualification and toxicity screening&quot;},
+  &quot;months_to_first_revenue&quot;: {&quot;value&quot;: 24},
+  &quot;opex_per_unit&quot;: {&quot;feedstock&quot;: {&quot;value&quot;: 5.08, &quot;ref&quot;: 38}, &quot;energy&quot;: {&quot;value&quot;: 0.50, &quot;ref&quot;: 21}, &quot;labor&quot;: {&quot;value&quot;: 0.60, &quot;ref&quot;: 21}, &quot;water&quot;: {&quot;value&quot;: 0.10, &quot;ref&quot;: 21}, &quot;maintenance&quot;: {&quot;value&quot;: 0.15, &quot;ref&quot;: 21}, &quot;waste_disposal&quot;: {&quot;value&quot;: 0.17, &quot;ref&quot;: 21}, &quot;packaging&quot;: {&quot;value&quot;: 0.20, &quot;ref&quot;: 14}, &quot;total&quot;: 6.80}
+}</pre></div>
+<h4>Absence Audit</h4>
+<p>The following statements assess the presence of critical literature and constraints regarding the proposed LCP architecture in commercial agriculture:</p>
+<ul>
+<li>  <strong>Patent Prior Art</strong>: The patent landscape is active and highly populated with metal-coordination and agricultural adjuvant technologies. A structure search reveals numerous utility patents exploring related phenomena, including CN103391715A (mentioning terpyridine as drift control / humectant compounds) [cite: 6], US20210235692A1 (which explicitly claims coordination polymer networks applied to plants, albeit optimized for 1-MCP volatile retention rather than fluid dynamics) [cite: 7], US12590179B2 (shear stable compositions using modified polyacrylates for drift control) [cite: 26], and US11697707B2 (deployment of terpyridine in networked sensors) [cite: 8]. Extensive Freedom to Operate (FTO) analysis using Espacenet and Google Patents structural queries must be executed to ensure the specific bis-terpyridine polyacrylamide RAFT synthesis does not infringe.</li>
+<li>  <strong>Market Absence Justification</strong>: Как прямо указано в профиле рисков (Hazard Profile), у деептех-проекта нет работоспособной однокомпонентной рецептуры по принципу «просто добавь воды», соответствующей форм-фактору действующего решения. Поскольку полностью координированные линейные координационные полимеры (LCP) образуют нетекучий гель [cite: 1, 20], деептех-проект вынужден продавать двухкомпонентную систему с активатором. Эта эксплуатационная сложность в сочетании с непомерно высокой стоимостью прекурсоров терпиридина [cite: 2] полностью объясняет отсутствие LCP на современных коммерческих сельскохозяйственных рынках.</li>
+</ul>
+
+<h3>Самозалечивающиеся телехелатные линейные координационные полимеры (LCPs) для контроля сноса сельскохозяйственных распылений посредством RAFT-полимеризации и координации металлов</h3>
+<p><strong>Экономический вердикт: FAIL</strong></p>
+<table><thead><tr><th>Производная метрика</th><th>Значение</th></tr></thead><tbody>
+<tr><td>COGS на кг</td><td>$6.58</td></tr>
+<tr><td>Цена за кг (порог отсева = паритет)</td><td>$7.87</td></tr>
+<tr><td>Запрашиваемая деептех-проектом цена за кг</td><td>$9.00</td></tr>
+<tr><td>Incumbent price per kg</td><td>$7.87</td></tr>
+<tr><td>Price premium vs incumbent</td><td>14.4%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>16.3%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>26.8%</td></tr>
+<tr><td>Contribution per kg</td><td>$1.29</td></tr>
+<tr><td><strong>All-in OPEX per kg (itemised)</strong></td><td><strong>$6.80</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>13.6%</strong></td></tr>
+<tr><td>Annual output (kg)</td><td>57,600</td></tr>
+<tr><td>Annual revenue at nameplate<em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$453,312</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$74,061</td></tr>
+<tr><td>Startup CapEx</td><td>$350,000</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$150,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$500,000</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>1.30x</strong></td></tr>
+<tr><td>Breakeven volume (kg)</td><td>388,866</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>81.0</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>105.0</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>-21.9%</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per kg =<span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span>= 6.58  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub>=<span class="fr"><span class="fn">P<sub>parity</sub>- COGS</span><span class="fd">P<sub>parity</sub></span></span>= 16.34%</span></p>
+<p><span class="math">Contribution per kg = P<sub>parity</sub>- COGS = 1.29  USD/kg</span></p>
+<p><span class="math">Capital productivity =<span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span>= 1.3×</span></p>
+<p><span class="math">Breakeven volume =<span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per kg</span></span>= 388866.15  kg</span></p>
+<p><span class="math">Payback from first sale =<span class="fr"><span class="fn">total cash at risk</span><span class="fd">monthly gross profit</span></span>= 81.01  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>500L RAFT Polymerization Reactor</td><td>316SS, heated/cooled, N2 blanket</td><td>$250,000</td><td>$125,000</td><td>Pfaudler US</td></tr>
+<tr><td>Purification and Dialysis Unit</td><td>Industrial ultrafiltration</td><td>$100,000</td><td>$50,000</td><td>Sartorius DE</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total<strong>$$350,000</strong>vs sum of line items<strong>$$350,000</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$5.08</td></tr>
+<tr><td>energy</td><td>$0.50</td></tr>
+<tr><td>labor</td><td>$0.60</td></tr>
+<tr><td>water</td><td>$0.10</td></tr>
+<tr><td>maintenance</td><td>$0.15</td></tr>
+<tr><td>waste_disposal</td><td>$0.17</td></tr>
+<tr><td>packaging</td><td>$0.20</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum<strong>$$6.80/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin</td><td>16.3%</td><td>FAIL</td></tr>
+<tr><td>Startup CapEx</td><td>$350,000</td><td>FAIL</td></tr>
+<tr><td>Payback</td><td>81.0 mo</td><td>FAIL</td></tr>
+<tr><td>Capital productivity</td><td>1.30x</td><td>FAIL</td></tr>
+<tr><td>Price parity</td><td>+14.4%</td><td>FAIL</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>16.3%</td><td>81.0</td><td>-21.9%</td><td>1.30x</td></tr>
+<tr><td>price -25%</td><td>16.3%</td><td>81.0</td><td>-21.9%</td><td>1.30x</td></tr>
+<tr><td>yield -25%</td><td>-5.2%</td><td>—</td><td>n/m</td><td>1.30x</td></tr>
+<tr><td>CapEx +100%</td><td>16.3%</td><td>137.7</td><td>-32.2%</td><td>0.65x</td></tr>
+<tr><td>feedstock +50%</td><td>-16.0%</td><td>—</td><td>n/m</td><td>1.30x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>-5.2%</td><td>—</td><td>n/m</td><td>0.65x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+
+<div class="callout"><div class="t">The red-team audit</div>
+<p>An independent audit pass re-checks the arithmetic and the comparator, and it
+overrules the scoring model when they disagree. Here is what it found wrong with
+the entry you just read.</p></div>
+<h3>Self-Healing Telechelic Linear Coordination Polymers (LCPs) for Agricultural Drift Control via RAFT Polymerization and Metal Coordination</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Audit verdict: FAIL</strong></li>
+</ul>
+<ul>
+<li>❌<strong>FAIL / no_superiority_table</strong>— No parseable Demonstrated Superiority table found.</li>
+<li>❌<strong>FAIL / weak_superiority_source</strong>— Superiority table rests on non-peer-reviewed source(s): ref 20 [grey]. The superiority delta is the one number the report rests on; it must trace to a peer-reviewed source.</li>
+<li>⚠️<strong>WARN / declared_parity</strong>— Price parity is DECLARED, not demonstrated: product and incumbent price are both 7.87 citing the same ref (14). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+<li>⚠️<strong>WARN / no_production_runsheet</strong>— No &#x27;Production Runsheet&#x27; section. Without a mass-balance (feed quantities, stepwise yields, output, as-sold specification) the &#x27;low-CapEx, buildable&#x27; claim is not operationally verifiable.</li>
+<li>❌<strong>FAIL / opex_driven_margin</strong>— All-in OPEX is $6.8000/unit at a parity price of $7.87 — gross margin 13.6% &lt; 70%. The &#x27;massive margin&#x27; claim does not survive the operating-cost check.</li>
+<li>❌<strong>FAIL / payback_over</strong>— Computed payback from first sale 81.0 mo &gt; 12 mo — hard threshold miss fails closed.</li>
+<li>❌<strong>FAIL / capital_productivity_under</strong>— Computed capital productivity 1.30x &lt; 2.0x — hard threshold miss fails closed.</li>
+<li>❌<strong>FAIL / missing_absence_ledger</strong>— No &#x27;Market Absence Ledger&#x27; section. &#x27;Absent from the market&#x27; is the hardest claim in the framework and the easiest to assert dishonestly — a paper is easy to find, a competitor quietly manufacturing in China or selling B2B under a different name is not. The search that failed to find a commercial implementation must be reported, not asserted.</li>
+<li>❌<strong>НЕ ПРОЙДЕНО / missing_defensibility_position</strong>— Отсутствует раздел «Изобретение и патентная позиция» (ранее «Защитная позиция»). Концепция опирается на опубликованные научные данные (критерий фреймворка «Научное обоснование»), поэтому защитоспособный деептех-проект должен заявить, КАКОЙ именно уровень он действительно может защитить помимо известного уровня техники — рецептуру, конфигурацию процесса/оборудования, систему фотостабильности/осаждения, протокол применения, связанный с техническим эффектом, или новое подтверждённое применение. Без этого нет ни конкурентного преимущества, ни формулы изобретения для защиты. Повторно запросите у Deep Research определение границы между известным уровнем техники и новизной.</li>
+</ul>
+
+<div class="cta">
+  <div class="h">Ещё два исследования и весь реестр — в одном клике от вас.</div>
+  <p>Реестр обновляется дважды в день. Прошедшие отбор проекты публикуются в виде однострочных анонсов;
+  полные досье, подобные этому, отправляются подписчикам рассылки. Каждое исследование публикуется полностью, поскольку неудачные попытки — это более полезная половина.</p>
+  <p style="margin:0"><a href="/ru/studies/">Все исследования бесплатно</a>&middot;<a href="https://theabsenceaudit.com/">theabsenceaudit.com</a></p>
+</div>
+
+<h2>Использованные источники</h2>
+<ul class="refs">
+  <li><a href="https://pubs.rsc.org/sc/article/10/24/6174/663303/Ultra-high-molecular-weight-linear-coordination">rsc.org</a></li>
+  <li><a href="https://vertexaisearch.cloud.google.com/grounding-api-redirect/AUZIYQFd86DX_-xmtyDA0DGQQOY1FdocUVnrRunQai5PYXJK9wndqax06xAGr8ZaFMI3jTMFJkvgYg3CkBHVv0eq7pkGWTlGRhnF4U7IGO80lGNEzJtshDJ8r2cZUHZvgmRF3j0fw9oBM0M5cSERSSBslg==">sigmaaldrich.com</a> <code>[unresolved-redirect]</code></li>
+  <li><a href="https://chemicalwarehouse.com/products/novita-drift-controll">chemicalwarehouse.com</a></li>
+  <li><a href="https://www.ebay.com/itm/114942536850">ebay.com</a></li>
+  <li><a href="https://pubs.acs.org/doi/10.1021/ma981069i">acs.org</a>— DOI: 10.1021/ma981069i</li>
+  <li><a href="https://www.siteone.com/en/eba-04046-03-offside-drift-control-agent-1-gal/p/686320">siteone.com</a></li>
+  <li><a href="https://www.dl.begellhouse.com/jp/journals/6a7c7e10642258cc,4ef4d7044becc12b,724b32db6549822c.html">begellhouse.com</a></li>
+  <li><a href="https://www.mdpi.com/2306-5354/10/1/3">mdpi.com</a></li>
+  <li><a href="https://www.intermountainturf.com/products/novita-df-downforce-adjuvant-jug-2-5-gal">intermountainturf.com</a></li>
+  <li><a href="https://www.solutionsstores.com/novita-df-downforce-adjuvant">solutionsstores.com</a></li>
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC4291011/">nih.gov</a>— DOI: 10.1155/2014/717421</li>
+  <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC8121945/">nih.gov</a>— DOI: 10.1038/s41467-021-23190-0</li>
+  <li><a href="https://www.keystonepestsolutions.com/index.php?main_page=product_info&amp;products_id=1254">keystonepestsolutions.com</a></li>
+  <li><a href="https://www.solutionsstores.com/drift-control-agents">solutionsstores.com</a></li>
+  <li><a href="https://pubs.acs.org/doi/10.1021/ma051312v">acs.org</a>— DOI: 10.1021/ma051312v</li>
+  <li><a href="https://www.cplabsafety.com/4-hydroxy-2-2-6-2-terpyridine-min-97-1-gram/ala-b300163-1g">cplabsafety.com</a></li>
+  <li><a href="https://www.thermofisher.com/order/catalog/product/014498.A1">thermofisher.com</a></li>
+  <li><a href="https://www.cplabsafety.com/iron-ii-sulfate-heptahydrate-pharma-grade-feso4-7h2o-1-kg/cp-90027673-1kg">cplabsafety.com</a></li>
+  <li><a href="https://www.winfieldunited.com/products/built-for-it/interlock">winfieldunited.com</a></li>
+  <li><a href="https://pubs.acs.org/doi/abs/10.1021/acs.macromol.2c01219">acs.org</a>— DOI: 10.1021/acs.macromol.2c01219</li>
+  <li><a href="http://s3.amazonaws.com/media.agricharts.com/sites/1043/PDFs/Interlock.pdf">amazonaws.com</a></li>
+  <li><a href="https://www.fbn.com/community/blog/minimize-spray-drift">fbn.com</a></li>
+  <li><a href="https://www.villacrop.co.za/products/interlock/">villacrop.co.za</a></li>
+  <li><a href="https://storwukenticomedia.blob.core.windows.net/media/wfu/media/wfuca/documents/wuc_2024-adjuvant-sell-sheet_interlock_eng_web.pdf">windows.net</a></li>
+</ul>
+
+<footer>
+  <p><strong>The Absence Audit</strong>&mdash; доказано в научной литературе, отсутствует на
+  рынке. Сгенерировано конвейером, а не написано вручную.</p>
+  <p>Не является инвестиционной рекомендацией. Без гарантий коммерческого результата. Источники указаны,
+  чтобы вы могли проверить каждое утверждение самостоятельно — и вам следует это сделать.</p>
+</footer>
+
+</div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+</body></html>

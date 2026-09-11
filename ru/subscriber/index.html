@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=eadcbfb1" defer></script>
+<script src="/assets/aa-voice.js?v=20260908f" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex,nofollow">
+<title>Реестр подписчиков | The Absence Audit</title>
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="stylesheet" href="/style.css?v=61c2b0ae">
+<script id="aa-checkout-tracking">
+(function () {
+  function isKit(href) {
+    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isKit(a.href)) return;
+    var t = touch();
+    var slug = "";
+    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
+    try {
+      var u = new URL(a.href);
+      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+      if (t.med) u.searchParams.set("utm_medium", t.med);
+      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+      u.searchParams.set("utm_content", slug || location.pathname);
+      a.href = u.toString();
+    } catch (e) {}
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head>
+<body>
+<a class="skip-link" href="#main">Перейти к содержимому</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/ru/ru/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/studies/">Бесплатные исследования</a>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/translation/">Перевод</a>
+      <span class="aa-langs"> <a href="/subscriber/" hreflang="en">EN</a> <a href="/fr/subscriber/" hreflang="fr">FR</a> <a href="/zh/subscriber/" hreflang="zh">中文</a> <a href="/ru/subscriber/" hreflang="ru">RU</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+
+<main id="main">
+<div class="wrap">
+  <p id="unlocked" class="invite" hidden><strong>Разблокировано.</strong>Цены и пейволлы теперь
+  скрыты для вас на всех страницах этого сайта — открывайте любое досье и читайте его полностью.</p>
+
+  <div id="gate" class="invite" hidden>
+    <p><strong>Доступ к этому реестру — по приглашениям.</strong></p>
+    <p style="margin:0">Используйте вашу персональную ссылку-приглашение, чтобы открыть его. Если ссылка не работает,
+    попросите пригласившего вас человека отправить новую.</p>
+  </div>
+
+  <div id="aa-subscribe" class="invite">
+    <p><strong>Что получает подписчик.</strong></p>
+    <ul style="margin:.4rem 0 0;padding-left:1.2rem;line-height:1.7">
+      <li><strong>Каждое досье, прошлое и будущее</strong>— открывается в один клик прямо в этой таблице.</li>
+      <li><strong>Приоритетное окно</strong>— новые досье открываются вам за 7 дней до их
+      публичного релиза. Окно возможностей открывается раньше, чем для широкой публики.</li>
+      <li><strong>Лента конвейера</strong>— всё, что поступило на кон<a href="/ru/pipeline/">/pipeline/</a>.</li>
+      <li><strong>No paywalls</strong>— subscriber mode follows you site-wide; prices shown are informational.</li>
+    </ul>
+  </div>
+
+  <div id="aa-ledger" class="aa-ledger-body">
+    <div class="wrap ledger-headwrap">
+      <p class="eyebrow">The ledger</p>
+      <h1>Every concept we have assessed.</h1>
+      <p class="lede">No dangling secrets. What cleared all seven gates, and the full study of everything that didn&rsquo;t &mdash; the specific reason each one failed. Search by concept, discipline, or the incumbent
+      product it was measured against.</p>
+      <div id="aa-ledger-attrib"></div>
+    </div>
+
+    <div class="toolbar"><div class="wrap">
+      <div class="searchrow">
+        <input type="search" id="q" placeholder="Search concepts, disciplines, or an incumbent (e.g. silver ink, Portland cement)" aria-label="Search the ledger">
+        <div class="toolrow">
+          <div class="seg" role="group" aria-label="Verdict" id="verdictseg">
+            <button type="button" data-v="all" aria-pressed="true">All</button>
+            <button type="button" data-v="sale" aria-pressed="false">For sale</button>
+            <button type="button" data-v="0" aria-pressed="false">Studies</button>
+          </div>
+          <div class="seg" role="group" aria-label="Favorites" id="favseg" hidden>
+            <button type="button" aria-pressed="false">&#9733; Favorites</button>
+          </div>
+          <div class="toolright">
+            <label class="sortlabel" for="sort">Sort</label>
+            <select id="sort" class="sortsel">
+              <option value="new">newest first</option>
+              <option value="delta">biggest advantage</option>
+              <option value="capex">lowest CapEx</option>
+              <option value="pay">fastest payback</option>
+              <option value="az">A&ndash;Z</option>
+            </select>
+            <div class="seg" role="group" aria-label="View" id="viewseg">
+              <button type="button" data-view="grid" aria-pressed="true">Grid</button>
+              <button type="button" data-view="list" aria-pressed="false">List</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="facets">
+        <p class="fghead">What it is</p>
+        <label for="disc">Discipline</label>
+        <select id="disc"><option value="">any</option></select>
+        <label for="fail">Failure mode</label>
+        <select id="fail"><option value="">any</option></select>
+        <p class="fghead">Money</p>
+        <div class="capcell">
+          <label>Startup capital</label>
+          <div class="seg seg--wrap" role="group" aria-label="Startup capital" id="capexseg">
+            <button type="button" data-cx="" aria-pressed="true" title="Show every concept">Any</button>
+            <button type="button" data-cx="25" aria-pressed="false" title="Concepts startable with $25,000 or less">&le; $25k</button>
+            <button type="button" data-cx="100" aria-pressed="false" title="Concepts startable with $100,000 or less">&le; $100k</button>
+            <button type="button" data-cx="500" aria-pressed="false" title="Concepts startable with $500,000 or less">&le; $500k</button>
+            <button type="button" data-cx="max" aria-pressed="false" title="Concepts needing more than $500,000">$500k+</button>
+          </div>
+        </div>
+        <label for="pay">Max payback, mo</label>
+        <input type="number" id="pay" min="0" step="1" placeholder="any" style="width:6rem">
+        <p class="fghead">Bankability</p>
+        <div class="capcell">
+          <div class="seg seg--wrap" role="group" aria-label="Bankability (model)" id="bankseg">
+            <button type="button" data-bk="" aria-pressed="true" title="Show every concept">Any</button>
+            <button type="button" data-bk="BANKABLE" aria-pressed="false" title="Model debt math passes the DSCR floor">Bankable (model)</button>
+            <button type="button" data-bk="NOT BANKABLE" aria-pressed="false" title="Model debt math fails the DSCR floor">Not bankable (model)</button>
+            <button type="button" data-bk="CONDITIONAL" aria-pressed="false" title="Bankable only under the stated conditions">Conditional (model)</button>
+            <button type="button" data-bk="NO VERDICT" aria-pressed="false" title="No pack, or primitives that can&rsquo;t support a verdict">No verdict</button>
+          </div>
+        </div>
+        <button type="button" id="reset" class="qbtn">Reset</button>
+      </div>
+      <p class="countline" id="count">Loading the ledger&hellip;</p>
+      <p class="bankline" id="bankline" hidden></p>
+      <p class="histline" style="font-size:.8rem;color:var(--ink-3);margin:.4rem 0 0">Auditable history: the ledger is snapshotted on every publish &mdash;<a href="/ru/ledger/history/index.json" style="font-weight:600;color:var(--ink);text-decoration:underline">dated snapshots &rarr;</a></p>
+    </div></div>
+
+    <div class="taxbox" id="taxbox" hidden><div class="wrap">
+      <h3>The failure taxonomy — why concepts die</h3>
+      <p id="taxline"></p>
+    </div></div>
+
+    <div class="wrap">
+      <div class="results" id="results"></div>
+      <button type="button" class="more" id="more" hidden>Show more</button>
+      <div class="empty" id="empty" hidden>
+        <p><strong>Nothing matches those filters.</strong></p>
+        <p style="font-size:.95rem">Try a broader search, or<button type="button" id="reset2"
+          style="min-height:auto;padding:.2rem .5rem;font-size:.9rem">reset the filters</button>.</p>
+      </div>
+    </div>
+  </div>
+</div>
+</main>
+
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/ru/ru/method/">Метод</a>
+      <a href="/ru/ru/nations/">Нации</a>
+      <a href="/ru/ru/ledger/">Реестр</a>
+      <a href="/ru/ru/#graveyard">Фильтр</a>
+      <a href="/ru/ru/track-record/">Послужной список</a>
+      <a href="/ru/ru/terms/">Условия</a>
+      <a href="/ru/ru/privacy/">Конфиденциальность</a>
+      <a href="/ru/ru/contact/">Контакт</a>
+            <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Публикуется в исследовательских и образовательных целях. Ничто здесь не является инвестиционным, юридическим, регуляторным или инженерным советом; никакой коммерческий результат не обещается и не подразумевается. Самостоятельно проверяйте каждую цифру, цитату и регуляторное требование перед вложением капитала.</p>
+    <p class="disclaimer">© 2026 The Absence Audit. Все права защищены. · <a href="/ru/ru/terms/">Условия</a> · <a href="/ru/ru/privacy/">Конфиденциальность</a> · <a href="/ru/ru/contact/">Контакт</a> · <a href="#" data-aa-consent-open>Настройки cookie</a></p>
+  </div>
+</footer>
+
+<script>window.AA_LEDGER_PAGE = {"mine": false};</script>
+<script>window.AA_LEDGER_CFG = {"fail_labels":{"evidence_concentration":"Single-source evidence base","duplicate_refs":"Duplicate references inflating the evidence base","retracted_reference":"Cites a retracted reference","missing_absence_ledger":"Absence asserted, search unreported","absence_ledger_unquantified":"Absence search unquantified","opex_driven_margin":"Margin fails the operating-cost check","capex_mismatch":"CapEx figures inconsistent","payback_over":"Payback horizon exceeds the model's ceiling","capital_productivity_under":"Capital productivity below the model's floor","missing_application_envelope":"Entry application undeclared","entry_application_missing":"Entry application undeclared","negative_control":"Negative control used as incumbent","defunct_incumbent":"Comparator may have left the market","declared_parity":"Price parity asserted, not sourced","uncited_incumbent_price":"Incumbent price uncited","no_switching_analysis":"Customer switching incentive not analyzed","sub_2x":"Below the 2x step-change bar","no_superiority_table":"No head-to-head evidence","weak_superiority_source":"Evidence rests on non-peer-reviewed sources","missing_hazard_profile":"Hazard profile missing","uncited_safety_claim":"Uncited safety claim","missing_defensibility_position":"No protectable contribution declared","prior_art_not_delineated":"Prior-art / novelty boundary not drawn","self_declared_arbitrage":"Self-declared operational arbitrage (no patentable asset)","defensibility_partial":"Prior-art / novelty boundary incomplete","moat_is_operational_only":"Operational arbitrage, no IP moat","weak_ip_hook":"Weak hook — known class characteristic / unverified superlative","patent_prior_art_missing":"No patent prior art identified (FTO unverified)","no_comparative_matrix":"No comparative data matrix","no_claim_hierarchy":"No claim hierarchy"},"void_labels":{"A":"Illegitimate incumbent","B":"Mismatched comparison","C":"Capital and time to revenue","D":"Economics undisclosed","E":"Negative control / sub-2x","F":"Entry application mismatch","G":"Form-factor / handling regression","H":"Hazards undisclosed","I":"Absence search missing","J":"No defensible contribution declared"},"singles":{},"full_access":{},"batch":50,"bank_insights":{"sale|BANKABLE":"19 of 21 for-sale concepts are model-bankable &mdash; the debt math works. The audit's objections decide, not the model.","sale|NOT BANKABLE":"1 of 21 for-sale concepts fail the model DSCR floor &mdash; the pack publishes that. Read it before buying.","sale|CONDITIONAL":"1 for-sale concept is model-bankable only under the stated conditions.","sale|NOT ASSESSABLE":"0 for-sale concept has a pack whose primitives can't support a verdict.","sale|NONE":"0 for-sale concept predates the economics model &mdash; no pack could be computed.","0|BANKABLE":"55 of 82 studies are model-bankable &mdash; the debt math works, the venture case didn't. The audit's reasons are published on each page.","0|NOT BANKABLE":"14 of 82 studies also fail the model DSCR.","0|CONDITIONAL":"5 studies are conditionally bankable.","0|NOT ASSESSABLE":"1 studies carry a pack whose primitives can't support a verdict.","0|NONE":"7 studies predate the economics model &mdash; no pack.","all|BANKABLE":"64 concepts are model-bankable &mdash; 55 of them didn't clear the audit: the debt math works, the venture case didn't.","all|NOT BANKABLE":"14 concepts fail the model DSCR floor &mdash; every one of them carries a didn't-clear verdict; 1 are still sold as dossiers. The pack publishes that.","all|CONDITIONAL":"5 concepts are model-bankable only under stated conditions.","all|NOT ASSESSABLE":"1 concepts carry a pack whose primitives can't support a verdict.","all|NONE":"7 concepts predate the economics model &mdash; no pack."}};</script>
+<script src="/assets/ledger.js?v=dee398cf" defer></script>
+
+
+</body></html>
