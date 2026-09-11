@@ -17,9 +17,10 @@
  *  2. Session restore — Firebase v9+ keeps auth state in IndexedDB; we scan
  *     it synchronously-ish so the chip flips to the signed-in state
  *     immediately, then load the SDKs lazily.
- *  3. Entitlements — one Firestore read of access/<email> (allowed by the
- *     security rules for the owner only) -> window.AA.state {email, plan,
- *     products}. The ledger engine (/assets/ledger.js) and the dossier gates
+ *  3. Entitlements — one Firestore read of access/<email> (every buyer reads
+ *     their OWN doc: rules require the verified token email to match the doc
+ *     id) -> window.AA.state {email, plan, products}. The ledger engine
+ *     (/assets/ledger.js) and the dossier gates
  *     subscribe to this, so signing in unlocks rows in place everywhere.
  */
 (function () {
