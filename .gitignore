@@ -21,6 +21,7 @@ fr/dossier/*/
 zh/dossier/*/
 ru/dossier/*/
 nations/**/*.mp3
+nations/*.pdf
 _*_aside*/
 # i18n withheld/retired pages (purity gate fail-closed archive) — never commit
 _i18n_orphans/
