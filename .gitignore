@@ -38,3 +38,11 @@ c/**/*.pdf
 case-study/*.pdf
 track-record/*.pdf
 pdf_render_report.json
+# oversized source media (2026-09-11 incident: two unreferenced
+# 137/147 MB films in nations/ were swept into a publish commit by
+# `git add nations` — TRACKED carries DIRECTORIES — and GitHub then
+# rejected EVERY push with GH001 >100 MB. site_publish.py also
+# hard-skips any TRACKED blob over 95 MB; these rules keep the
+# known offenders out of the index at source. FIX HERE, never in the
+# generated repo copy (see the note above).
+nations/closed-loop-*.mp4
