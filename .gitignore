@@ -16,6 +16,9 @@ _tmp_idx.html
 /config.js
 # i18n pipeline junk (nested _fr_aside snapshots, path-length hazards) — never commit
 _fr_aside*/
+_*_aside*/
+# i18n withheld/retired pages (purity gate fail-closed archive) — never commit
+_i18n_orphans/
 # local desktop attachments (user uploads) never ship
 .hermes/
 # SECURITY (owner 2026-09-07 AM + PM): static hosting cannot gate —
@@ -35,3 +38,9 @@ c/**/*.pdf
 case-study/*.pdf
 track-record/*.pdf
 pdf_render_report.json
+# nations v2 source films (143/154 MB) exceed GitHub's 100 MB blob limit and are
+# referenced by no published page (the site uses /nations/last-drop-*.mp4 and the
+# archived /nations/v1/ copies). A publish commit swept them in on 2026-09-11 and
+# blocked every push; never stage them.
+nations/closed-loop-en.mp4
+nations/closed-loop-fr.mp4
