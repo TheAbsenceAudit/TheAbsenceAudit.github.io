@@ -3,10 +3,16 @@
  * Expands into a compact paper panel above the badge. Built on the official
  * ElevenLabs JavaScript SDK (@elevenlabs/client, self-hosted, lazy-loaded).
  *
- * - agent id is read from data-agent at TAP time, so the entitled upgrade
- *   (public ledger agent -> full per-report agent) needs no rebuild.
+ * - MILITARY-GRADE (2026-09-12): per-report agent ids are SECRET and never
+ *   ship in page bytes. At tap time the badge asks the voiceSession Cloud
+ *   Function (AA_AUTH.voiceFn) for a short-lived signed URL — the function
+ *   re-checks entitlement server-side (subscriber hash / plan / products).
+ *   On 403 or any failure the badge falls back to the PUBLIC ledger agent
+ *   (data-agent), which stays auth-off by design. A locked agent accepts
+ *   nothing but a signed URL, so an id extracted from anywhere is useless.
  * - WebRTC on mobile networks can fail to establish ("pc connection") —
- *   retry once automatically, then fail with an honest status line.
+ *   retry once automatically (re-minting a fresh signed URL), then fail
+ *   with an honest status line.
  * - LIVE TRANSCRIPT (owner 2026-09-08): every word is written down — the
  *   agent's replies AND the visitor's own questions — through the SDK's
  *   onMessage callback (docs: "tentative or final transcriptions of user
@@ -33,15 +39,17 @@
     var b = document.querySelector(".aa-voice-badge");
     if (b) return b;
     // Fail-closed agent choice (owner security law): on GATED pages
-    // (cfg.report / cfg.dossier) the defensive mount must start with the
-    // PUBLIC ledger agent — the full per-report agent is revealed only by
-    // auth.js at the entitled moment, so a stale-auth.js mount here must
-    // never hand anonymous visitors an agent that has read the paid
-    // report. On non-gated pages the page's own agent is public to every
-    // visitor and can be used directly.
+    // (cfg.report / cfg.dossier) the defensive mount starts with the
+    // PUBLIC ledger agent; the full per-report agent opens only through a
+    // server-minted signed URL (voiceSession CF) at the entitled moment.
+    // A stale-auth.js mount here can never hand a non-entitled visitor
+    // the paid report's voice.
     var cfg = window.AA_AUTH || {};
     var gated = !!(cfg.report || cfg.dossier);
-    var agent = (!gated && window.AA_AGENT && window.AA_AGENT.id) || PUBLIC_AGENT_ID;
+    var slug = cfg.report || cfg.dossier ||
+               (window.AA_AGENT && window.AA_AGENT.slug) || "";
+    var kind = cfg.dossier ? "dossier" : "c";
+    var agent = PUBLIC_AGENT_ID;
     var title = (!gated && window.AA_AGENT)
       ? "Ask this report — the agent has read it in full"
       : "Ask the ledger — any concept, any verdict";
@@ -49,6 +57,10 @@
     b.className = "aa-voice-badge";
     b.setAttribute("data-agent", agent);
     b.setAttribute("data-title", title);
+    if (slug) {
+      b.setAttribute("data-slug", slug);
+      b.setAttribute("data-kind", kind);
+    }
     document.body.appendChild(b);
     return b;
   }
@@ -69,9 +81,11 @@
   setTimeout(function () {
     var again = ensureBadge();
     if (again !== badge) {
-      // auth.js created/upgraded a badge after us — prefer its agent id.
-      badge.setAttribute("data-agent", again.getAttribute("data-agent"));
-      badge.setAttribute("data-title", again.getAttribute("data-title"));
+      // auth.js created/upgraded a badge after us — adopt its attributes.
+      ["data-agent", "data-title", "data-slug", "data-kind"].forEach(function (a) {
+        var v = again.getAttribute(a);
+        if (v) badge.setAttribute(a, v);
+      });
       var t = document.querySelector(".aa-voice-title");
       if (t) t.textContent = again.getAttribute("data-title");
     }
@@ -257,6 +271,38 @@
     setLive(false);
   }
 
+  // Begin a conversation with the given session options (signedUrl or
+  // agentId) + the page-identity dynamic variables. Shared by the mint
+  // path and the public-agent fallback path.
+  function begin(withOpts, seq, cb) {
+    var opts = Object.assign({}, withOpts, cb);
+    // Entitlement law: page identity (slug + title — public, on screen)
+    // ships to every agent, public ledger agent included. Report content
+    // never ships as variables — it lives only inside the per-report
+    // agents' prompts, which open only via server-minted signed URLs.
+    opts.dynamicVariables = pageContext();
+    window.ElevenLabsClient.Conversation.startSession(opts).then(function (c) {
+      if (seq !== sessionSeq) { try { c.endSession(); } catch (e) {} return; }
+      conv = c;
+      retries = 0;
+      setLive(true);
+      setStatus("Listening — ask your question.");
+    }).catch(function (e) {
+      // WebRTC "pc connection" is the classic mobile-network failure.
+      // One automatic retry (re-mints a fresh signed URL), then an
+      // honest error.
+      var msg = String((e && e.message) || e);
+      if (retries < 1) {
+        retries += 1;
+        setStatus("Reconnecting…");
+        setTimeout(function () { busy = false; start(); }, 900);
+      } else {
+        retries = 0; busy = false;
+        setStatus("Could not start the call: " + esc(msg).slice(0, 90), true);
+      }
+    });
+  }
+
   function start() {
     if (busy || conv) return;
     busy = true;
@@ -272,32 +318,39 @@
         if (err) { busy = false; setStatus("Voice is unavailable right now — try again in a moment.", true); return; }
         var cb = sessionCallbacks(seq);
         try {
-          var agentId = badge.getAttribute("data-agent");
-          var opts = Object.assign({ agentId: agentId }, cb);
-          // Entitlement law (revised): page identity (slug + title — public,
-          // on screen) ships to every agent, public ledger agent included.
-          // Report content never ships as variables — it lives only in the
-          // per-report agents' prompts, revealed by auth.js to the entitled.
-          opts.dynamicVariables = pageContext();
-          window.ElevenLabsClient.Conversation.startSession(opts).then(function (c) {
-            if (seq !== sessionSeq) { try { c.endSession(); } catch (e) {} return; }
-            conv = c;
-            retries = 0;
-            setLive(true);
-            setStatus("Listening — ask your question.");
-          }).catch(function (e) {
-            // WebRTC "pc connection" is the classic mobile-network failure.
-            // One automatic retry, then an honest error.
-            var msg = String((e && e.message) || e);
-            if (retries < 1) {
-              retries += 1;
-              setStatus("Reconnecting…");
-              setTimeout(function () { busy = false; start(); }, 900);
-            } else {
-              retries = 0; busy = false;
-              setStatus("Could not start the call: " + esc(msg).slice(0, 90), true);
-            }
-          });
+          var slug = badge.getAttribute("data-slug") || "";
+          if (slug) {
+            // Military-grade path: ask the voiceSession CF for a signed
+            // URL. The CF re-checks entitlement server-side; 403 or any
+            // failure -> public ledger agent. The browser never holds an
+            // agent id or an entitlement guess.
+            var vfn = (window.AA_AUTH && window.AA_AUTH.voiceFn) || "";
+            var getH = (window.AA && window.AA.getAuthHeaders)
+              ? window.AA.getAuthHeaders
+              : function (f) { f({}); };
+            if (!vfn) { begin({ agentId: PUBLIC_AGENT_ID }, seq, cb); return; }
+            getH(function (h) {
+              fetch(vfn + "?slug=" + encodeURIComponent(slug) +
+                    "&kind=" + encodeURIComponent(badge.getAttribute("data-kind") || "c"),
+                    { headers: h })
+                .then(function (r) {
+                  if (!r.ok) throw new Error("http " + r.status);
+                  return r.json();
+                })
+                .then(function (d) {
+                  if (d && d.ok && d.signed_url) {
+                    begin({ signedUrl: d.signed_url }, seq, cb);
+                  } else {
+                    begin({ agentId: PUBLIC_AGENT_ID }, seq, cb);
+                  }
+                })
+                .catch(function () {
+                  begin({ agentId: PUBLIC_AGENT_ID }, seq, cb);
+                });
+            });
+          } else {
+            begin({ agentId: PUBLIC_AGENT_ID }, seq, cb);
+          }
         } catch (e) {
           busy = false;
           setStatus("Could not start the call: " + esc(String((e && e.message) || e)).slice(0, 90), true);

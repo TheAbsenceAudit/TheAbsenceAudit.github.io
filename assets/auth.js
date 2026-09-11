@@ -674,17 +674,20 @@
 
   function revealAgent() {
     var A = window.AA_AGENT;
-    if (!A || !A.id || agentRevealed) return;
+    if (!A || !A.slug || agentRevealed) return;
     agentRevealed = true;
-    // Upgrade the public badge to the full agent when the gate lifts.
+    // Military-grade (2026-09-12): the agent id never existed client-side.
+    // The badge mints a server-signed URL through the voiceSession Cloud
+    // Function at tap time (same entitlement check as the report bytes).
+    // This reveal only upgrades the badge TITLE for the entitled visitor;
+    // the badge's own tap flow handles the signed-URL mint.
     var badge = document.querySelector(".aa-voice-badge");
     if (badge) {
-      badge.setAttribute("data-agent", A.id);
       badge.setAttribute("data-title", "Ask this report — the agent has read it in full");
       var t = document.querySelector(".aa-voice-title");
       if (t) t.textContent = "Ask this report — the agent has read it in full";
     } else {
-      makeVoiceCard(A.id, "Ask this report — the agent has read it in full");
+      makeVoiceCard(PUBLIC_AGENT_ID, "Ask this report — the agent has read it in full");
     }
   }
 
@@ -861,7 +864,31 @@
     // The lazy-SDK loader, shared with the ledger engine's favorites layer:
     // call AA.boot(cb) to run after firebase.app/auth/firestore are ready.
     boot: boot,
-    getState: function () { return state; }
+    getState: function () { return state; },
+    // Entitlement headers for the voiceSession Cloud Function (2026-09-12):
+    // subscriber invite token when present, plus the Firebase ID token when
+    // signed in. The CF verifies entitlement server-side before minting the
+    // signed URL — the browser never guesses its own entitlement.
+    getAuthHeaders: function (cb) {
+      var h = {};
+      try {
+        if (subMode() && localStorage.getItem("aa_subtok")) {
+          h["X-Sub-Token"] = localStorage.getItem("aa_subtok");
+        }
+      } catch (e) {}
+      var done = function () { cb(h); };
+      try {
+        if (state.signedIn && window.firebase &&
+            firebase.auth() && firebase.auth().currentUser) {
+          firebase.auth().currentUser.getIdToken().then(function (tok) {
+            h["Authorization"] = "Bearer " + tok;
+            done();
+          }).catch(done);
+          return;
+        }
+      } catch (e) {}
+      done();
+    }
   };
 
   function start() {
