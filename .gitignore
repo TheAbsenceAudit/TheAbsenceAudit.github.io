@@ -16,6 +16,11 @@ _tmp_idx.html
 /config.js
 # i18n pipeline junk (nested _fr_aside snapshots, path-length hazards) — never commit
 _fr_aside*/
+# SECURITY (2026-09-11): translated PAID dossier subpages + private audio never ship
+fr/dossier/*/
+zh/dossier/*/
+ru/dossier/*/
+nations/**/*.mp3
 _*_aside*/
 # i18n withheld/retired pages (purity gate fail-closed archive) — never commit
 _i18n_orphans/
