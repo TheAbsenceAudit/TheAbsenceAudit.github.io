@@ -554,11 +554,13 @@
         '" rel="noopener" aria-label="Buy the full dossier for ' + esc(r.n) + " for " + esc(price) + '">' +
         'Full dossier <span class="row-btn__price">' + esc(price) + "</span></a></div>";
     }
-    var fa = FULL_ACCESS || {};
-    var url = fa.url || "/ledger/";
-    var label = fa.label || "Full access";
-    return '<div class="rcta"><a class="row-btn row-btn--buy" href="' + esc(url) + '" rel="noopener" ' +
-      'aria-label="Subscribe for full access to ' + esc(r.n) + '">' + esc(label) + "</a></div>";
+    // No live single yet (onboarding pending): never route the buy action to
+    // the full-access mandate checkout — the price stands, the link opens
+    // when the single lands.
+    var prep = rowPrice(r) || "";
+    return '<div class="rcta"><span class="row-btn row-btn--wait" aria-label="Priced at ' +
+      esc(prep) + ' — checkout opens when the Stripe listing is finalized">' +
+      esc(prep || "Listing") + " — listing in preparation</span></div>";
   }
 
   // The merged Edge cell: advantage vs incumbent (saleable rows only — a
@@ -591,9 +593,9 @@
     if (s && s.checkout_url) {
       return '<a class="tdossier" href="' + esc(s.checkout_url) + '" rel="noopener">Buy ' + esc(rowPrice(r)) + "</a>";
     }
-    var fa = FULL_ACCESS || {};
-    return '<a class="tdossier" href="' + esc(fa.url || "/ledger/") + '" rel="noopener">' +
-      esc(fa.label || "Full access") + "</a>";
+    // No live single yet (onboarding pending): hold the link, show the price.
+    var prep = rowPrice(r) || "";
+    return '<span class="tbadge">' + esc(prep || "Listing") + " &mdash; listing in preparation</span>";
   }
 
   function bankBadge(r) {
