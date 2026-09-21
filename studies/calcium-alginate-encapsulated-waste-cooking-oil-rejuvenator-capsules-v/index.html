@@ -181,9 +181,21 @@
   @media print { .pdf-dl { display:none !important; } }
 </style>
 <script id="aa-checkout-tracking">
+/* aa-ct-v2 */
 (function () {
-  function isKit(href) {
-    return /^https:\/\/theabsenceaudit\.kit\.com\//i.test(href || "");
+  function isCheckout(href) {
+    // v2 (2026-09-21): the storefront moved from Kit to Stripe payment links
+    // (buy.stripe.com) on 2026-09-13, so a Kit-only matcher made every live
+    // buy button invisible to GA4 — the money step recorded nothing at all.
+    return /^https:\/\/(theabsenceaudit\.kit\.com|buy\.stripe\.com)\//i.test(href || "");
+  }
+  function slugOf(a, href) {
+    // Prefer the explicit data-aa-slug (Stripe link ids are opaque), then the
+    // last path segment (which IS the product slug on a Kit link).
+    var s = a.getAttribute("data-aa-slug");
+    if (s) return s;
+    try { return new URL(href).pathname.split("/").filter(Boolean).pop() || ""; }
+    catch (e) { return ""; }
   }
   function touch() {
     var t = null;
@@ -204,18 +216,23 @@
   }
   document.addEventListener("click", function (e) {
     var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
-    if (!a || !isKit(a.href)) return;
+    if (!a || !isCheckout(a.href)) return;
     var t = touch();
-    var slug = "";
-    try { slug = new URL(a.href).pathname.split("/").pop() || ""; } catch (e) {}
-    try {
-      var u = new URL(a.href);
-      if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
-      if (t.med) u.searchParams.set("utm_medium", t.med);
-      if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
-      u.searchParams.set("utm_content", slug || location.pathname);
-      a.href = u.toString();
-    } catch (e) {}
+    var slug = slugOf(a, a.href);
+    // UTM decoration is applied to Kit links only. A Stripe payment link IS the
+    // money path: never rewrite it in a cron-driven publish (an unrecognised
+    // parameter there costs a sale, and the GA4 event below already carries the
+    // same first-touch fields).
+    if (/^https:\/\/theabsenceaudit\.kit\.com\//i.test(a.href)) {
+      try {
+        var u = new URL(a.href);
+        if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+        if (t.med) u.searchParams.set("utm_medium", t.med);
+        if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+        u.searchParams.set("utm_content", slug || location.pathname);
+        a.href = u.toString();
+      } catch (e) {}
+    }
     if (typeof gtag === "function") {
       gtag("event", "begin_checkout", {
         item_id: slug,
