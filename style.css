@@ -356,7 +356,7 @@
   /* ---------- footer ---------- */
   footer.site{border-top:1px solid var(--rule);padding:2.4rem 0 3.4rem;font-size:.86rem;color:var(--ink-3)}
   footer.site .wrap{display:flex;gap:1.6rem;flex-wrap:wrap;align-items:baseline}
-  footer.site nav{margin-left:auto;display:flex;gap:1.4rem}
+  footer.site nav{margin-left:auto;display:flex;flex-wrap:wrap;row-gap:.5rem;gap:1.4rem}
   footer.site a{color:var(--ink-2);text-decoration:none}
   footer.site a:hover{color:var(--kill)}
   .disclaimer{max-width:78ch;margin-top:1.5rem;font-size:.79rem;line-height:1.55;color:var(--ink-3)}
