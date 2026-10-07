@@ -769,8 +769,8 @@ table.term td .favbtn{margin-right:.35rem;padding-left:.15rem}
   .searchrow{display:flex;flex-direction:column}
   .toolrow{flex-direction:column;align-items:stretch}
   .toolright{justify-content:flex-start}
-  .askrow{flex-direction:column;align-items:stretch}
-  .askrow .qbtn{align-self:flex-start}
+  .askfield{flex-direction:column;align-items:stretch}
+  .askrow .qbtn{align-self:stretch}
   .facets .capcell .seg--wrap{flex-wrap:wrap}
 }
 
