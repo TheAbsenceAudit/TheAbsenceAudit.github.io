@@ -454,9 +454,20 @@
   }
 
   function partsPrint(label, html) {
-    var w = window.open("", "_blank");
-    if (!w) { alert("Pop-up blocked — allow pop-ups to download the bundle PDF."); return; }
-    w.document.write(
+    // Same-page print (owner 2026-10-07): a popup/new tab felt like leaving
+    // the site. Render the print view into a hidden iframe and open the
+    // browser's print dialog from there — the visitor never leaves the page.
+    var old = document.getElementById("aa-print-frame");
+    if (old) old.remove();
+    var fr = document.createElement("iframe");
+    fr.id = "aa-print-frame";
+    fr.setAttribute("aria-hidden", "true");
+    fr.style.cssText = "position:fixed;right:0;bottom:0;width:0;height:0;border:0;visibility:hidden";
+    document.body.appendChild(fr);
+    var w = fr.contentWindow;
+    var d = fr.contentDocument || w.document;
+    d.open();
+    d.write(
       "<!doctype html><html><head><meta charset=\"utf-8\"><title>"
       + String(label || "Bundle").replace(/</g, "&lt;") + " — The Absence Audit</title>"
       + "<style>"
@@ -485,8 +496,10 @@
       + "<p style=\"font-size:.8rem;color:#555\">The Absence Audit — party bundle. Provenance: MEASURED = cited primitive; DERIVED = arithmetic on measured values; ASSUMED = declared pack default.</p>"
       + html + "</body></html>"
     );
-    w.document.close();
-    setTimeout(function () { try { w.focus(); w.print(); } catch (e) {} }, 350);
+    d.close();
+    setTimeout(function () {
+      try { w.focus(); w.print(); } catch (e) { /* never block the page */ }
+    }, 350);
   }
 
   function partsShowFull() {
