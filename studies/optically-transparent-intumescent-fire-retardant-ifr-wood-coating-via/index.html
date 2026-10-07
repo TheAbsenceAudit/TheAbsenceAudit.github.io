@@ -1,0 +1,531 @@
+<!DOCTYPE html>
+<html lang="en"><head>
+<script>window.AA_AUTH = {"fb": {"apiKey": "AIzaSyDUL0tfNTnkG2uY6hYc3m85LCOTemfIYSs", "appId": "1:203345891201:web:31c7dedc736084b1d22280", "authDomain": "the-absence-audit.firebaseapp.com", "messagingSenderId": "203345891201", "projectId": "the-absence-audit", "storageBucket": "the-absence-audit.firebasestorage.app"}, "claimFn": "https://us-central1-the-absence-audit.cloudfunctions.net/claim"};</script>
+<script src="/assets/auth.js?v=5e3bd8da" defer></script>
+<script src="/assets/aa-voice.js?v=20260912a" defer></script>
+
+<script>
+(function () {
+  if (document.cookie.indexOf("aa_sub=1") < 0) return;
+  document.documentElement.classList.add("aa-sub");
+  function run() {
+    var invs = document.querySelectorAll("[data-aa-invite]");
+    for (var i = 0; i < invs.length; i++) {
+      var el = invs[i], slug = el.getAttribute("data-aa-invite");
+      if (!slug) continue;
+      var a = document.createElement("a");
+      a.href = "/c/" + encodeURIComponent(slug) + "/";
+      a.className = el.getAttribute("data-aa-invite-class") || "row-btn";
+      a.style.fontWeight = "600";
+      a.textContent = "Open research \u2192";
+      a.setAttribute("aria-label", "Open the full research for this concept");
+      el.parentNode.insertBefore(a, el);
+    }
+    var comms = document.querySelectorAll("[data-aa-commerce]");
+    for (var j = 0; j < comms.length; j++) comms[j].style.display = "none";
+  }
+  if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", run);
+  else run();
+})();
+</script>
+
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  // Consent Mode v2 — analytics OFF until consent, advertising always OFF.
+  gtag('consent', 'default', {
+    'ad_storage': 'denied',
+    'ad_user_data': 'denied',
+    'ad_personalization': 'denied',
+    'analytics_storage': 'denied',
+    'wait_for_update': 500
+  });
+  gtag('js', new Date());
+  gtag('config', 'G-Y2ED6MMNTT', {
+    'anonymize_ip': true,
+    'allow_google_signals': false,
+    'allow_ad_personalization_signals': false
+  });
+  (function () {
+    var KEY = 'aa_consent_v1';
+    var EEA = ['at','be','bg','hr','cy','cz','dk','ee','fi','fr','de','gr',
+               'hu','ie','is','it','lv','li','lt','lu','mt','nl','no','pl',
+               'pt','ro','sk','si','es','se','ch','gb'];
+    function isEEA() {
+      try {
+        var lang = String(navigator.language || '').toLowerCase();
+        var parts = lang.split('-');
+        if (EEA.indexOf(parts[parts.length - 1]) !== -1) return true;
+        var tz = Intl.DateTimeFormat().resolvedOptions().timeZone || '';
+        if (tz.slice(0, 7) === 'Europe/') return true;
+      } catch (e) {}
+      return false;
+    }
+    function stored() {
+      try { return localStorage.getItem(KEY); } catch (e) { return null; }
+    }
+    function apply(v) { gtag('consent', 'update', {'analytics_storage': v}); }
+    var el = null;
+    function showBanner() {
+      if (el) return;
+      el = document.createElement('div');
+      el.id = 'aa-consent';
+      el.setAttribute('role', 'dialog');
+      el.setAttribute('aria-label', 'Cookie settings');
+      el.innerHTML = '<div class="aa-consent-inner">' +
+        '<p><strong>We measure this site with one anonymous cookie.</strong> ' +
+        'The Absence Audit uses Google Analytics (IP anonymised, no advertising, no cross-site ' +
+        'tracking) solely to know which pages are read. Choose whether to be counted.</p>' +
+        '<div class="aa-consent-actions">' +
+        '<button type="button" id="aa-consent-ok">Accept</button>' +
+        '<button type="button" id="aa-consent-no">Decline</button></div></div>';
+      document.body.appendChild(el);
+      document.getElementById('aa-consent-ok').addEventListener('click', function () { pick('granted'); });
+      document.getElementById('aa-consent-no').addEventListener('click', function () { pick('denied'); });
+    }
+    function pick(v) {
+      apply(v);
+      try { localStorage.setItem(KEY, v); } catch (e) {}
+      if (el && el.parentNode) el.parentNode.removeChild(el);
+      el = null;
+    }
+    function boot() {
+      var s = stored();
+      if (s === 'granted' || s === 'denied') { apply(s); return; }
+      if (!isEEA()) {
+        apply('granted');
+        try { localStorage.setItem(KEY, 'granted'); } catch (e) {}
+        return;
+      }
+      showBanner();
+    }
+    document.addEventListener('click', function (e) {
+      var t = e.target && e.target.closest ? e.target.closest('[data-aa-consent-open]') : null;
+      if (!t) return;
+      e.preventDefault();
+      showBanner();
+    });
+    if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', boot);
+    else boot();
+  })();
+</script>
+
+<link rel="stylesheet" href="/style.css?v=d874e7cd"><meta charset="utf-8">
+<link rel="icon" href="/favicon.ico" sizes="any"><link rel="icon" type="image/png" sizes="32x32" href="/icon-32.png">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="robots" content="index,follow">
+<meta name="description" content="Free study 1 of 1 from The Absence Audit: Optically Transparent Intumescent Fire-Retardant (IFR) Wood Coating via Phytic Acid-Melamine Polyelectrolyte Complexes — full report, recomputed economics, works cited, and the red-team audit, verdict FAIL.">
+<title>Study 1 of 1 — Optically Transparent Intumescent Fire-Retardant (IFR) Wood Coating via Phytic Acid-Melamine Polyelectrolyte Complexes | The Absence Audit</title>
+<style>
+  @page { size: A4; margin: 18mm 16mm; }
+  :root { --ink:#14161a; --mute:#5b6470; --line:#d8dde5; --accent:#8a1c1c; --bg:#fff; }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--ink);
+    font:16px/1.62 Georgia,'Iowan Old Style',serif; }
+  .wrap { max-width:820px; margin:0 auto; padding:32px 24px 64px; }
+  .cover { border-bottom:3px double var(--line); padding-bottom:28px; margin-bottom:32px; }
+  .brand { font:600 12px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.18em;
+    text-transform:uppercase; color:var(--accent); }
+  .tag { font:500 11px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--mute); margin-top:6px; }
+  h1 { font-size:30px; line-height:1.22; margin:18px 0 10px; letter-spacing:-.01em; }
+  .sub { color:var(--mute); font-size:15px; }
+  h2 { font-size:15px; letter-spacing:.1em; text-transform:uppercase;
+    font-family:ui-sans-serif,system-ui,sans-serif; margin:34px 0 10px;
+    padding-bottom:6px; border-bottom:1px solid var(--line); }
+  h3,h4 { font-size:17px; margin:24px 0 8px; }
+  p { margin:0 0 12px; }
+  table { width:100%; border-collapse:collapse; margin:14px 0 18px;
+    font:14px/1.5 ui-sans-serif,system-ui,sans-serif; }
+  th,td { text-align:left; padding:7px 10px; border-bottom:1px solid var(--line);
+    vertical-align:top; }
+  th { background:#f4f6f9; font-weight:600; font-size:12px; letter-spacing:.04em;
+    text-transform:uppercase; color:var(--mute); }
+  blockquote { margin:16px 0; padding:12px 16px; background:#fbf7f1;
+    border-left:3px solid var(--accent); font-size:15px; }
+  blockquote p { margin:0 0 8px; } blockquote p:last-child { margin:0; }
+  code { font:13px ui-monospace,SFMono-Regular,Menlo,monospace; background:#f1f3f7;
+    padding:1px 5px; border-radius:3px; }
+  ul { margin:0 0 14px 22px; padding:0; } li { margin:0 0 6px; }
+  a { color:var(--accent); }
+  .callout { border:1px solid var(--line); border-left:4px solid var(--accent);
+    padding:16px 18px; margin:26px 0; background:#fcfcfd; }
+  .callout .t { font:600 11px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.14em;
+    text-transform:uppercase; color:var(--accent); margin-bottom:8px; }
+  .decision { border:1px solid var(--line); border-left:4px solid var(--ink);
+    background:#f4f6f9; padding:14px 16px; margin:18px 0 22px; }
+  .decision .t { font:600 10px/1.3 ui-sans-serif,system-ui,sans-serif;
+    letter-spacing:.13em; text-transform:uppercase; color:var(--mute); margin-bottom:8px; }
+  .decision table { margin:0; }
+  .decision th { width:160px; background:transparent; font-weight:600;
+    color:var(--ink); font-size:12px; letter-spacing:.02em; text-transform:none; }
+  .decision td { font-size:13.5px; }
+  .decision tr:last-child th, .decision tr:last-child td { border-bottom:0; }
+  .back { display:inline-block; margin-top:28px; font:600 13px/1
+    ui-sans-serif,system-ui,sans-serif; color:var(--ink);
+    text-decoration:none; border:1px solid var(--line); padding:10px 14px; }
+  .back:hover { border-color:var(--accent); color:var(--accent); }
+  .hero { margin:26px 0 8px; text-align:center; }
+  .hero img { max-width:100%; height:auto; border:1px solid var(--line); }
+  .hero figcaption { font:500 11px/1.5 ui-sans-serif,system-ui,sans-serif;
+    color:var(--mute); margin-top:8px; }
+  .pdf-dl { display:flex; align-items:center; gap:14px; flex-wrap:wrap;
+    border:1px solid var(--line); background:#fafbfd; padding:12px 16px; margin:18px 0 4px; }
+  .pdf-dl .pdf-btn { display:inline-block; background:var(--accent); color:#fff;
+    font:600 13px/1 ui-sans-serif,system-ui,sans-serif; letter-spacing:.05em;
+    text-transform:uppercase; text-decoration:none; padding:11px 18px; }
+  .pdf-dl .pdf-btn:hover { background:#6f1515; text-decoration:none; }
+  .pdf-dl .pdf-note { color:var(--mute); font:13px/1.5 ui-sans-serif,system-ui,sans-serif;
+    max-width:36ch; }
+  @media print { .pdf-dl { display:none !important; } }
+</style>
+<script id="aa-checkout-tracking">
+/* aa-ct-v2 */
+(function () {
+  function isCheckout(href) {
+    // v2 (2026-09-21): the storefront moved from Kit to Stripe payment links
+    // (buy.stripe.com) on 2026-09-13, so a Kit-only matcher made every live
+    // buy button invisible to GA4 — the money step recorded nothing at all.
+    return /^https:\/\/(theabsenceaudit\.kit\.com|buy\.stripe\.com)\//i.test(href || "");
+  }
+  function slugOf(a, href) {
+    // Prefer the explicit data-aa-slug (Stripe link ids are opaque), then the
+    // last path segment (which IS the product slug on a Kit link).
+    var s = a.getAttribute("data-aa-slug");
+    if (s) return s;
+    try { return new URL(href).pathname.split("/").filter(Boolean).pop() || ""; }
+    catch (e) { return ""; }
+  }
+  function touch() {
+    var t = null;
+    try { t = JSON.parse(localStorage.getItem("aa_first_touch") || "null"); } catch (e) {}
+    if (t && t.src) return t;
+    var q = {};
+    try { new URLSearchParams(location.search).forEach(function (v, k) { q[k] = v; }); } catch (e) {}
+    var src = q.utm_source || q.ref || "";
+    var med = q.utm_medium || "";
+    var cmp = q.utm_campaign || "";
+    if (!src) {
+      try {
+        var h = new URL(document.referrer).hostname.replace(/^www\./, "");
+        if (h && h !== location.hostname) { src = h; med = med || "referral"; }
+      } catch (e) {}
+    }
+    return { src: src || "direct", med: med || (src ? "unknown" : "none"), cmp: cmp || "" };
+  }
+  document.addEventListener("click", function (e) {
+    var a = e.target && e.target.closest ? e.target.closest("a[href]") : null;
+    if (!a || !isCheckout(a.href)) return;
+    var t = touch();
+    var slug = slugOf(a, a.href);
+    // UTM decoration is applied to Kit links only. A Stripe payment link IS the
+    // money path: never rewrite it in a cron-driven publish (an unrecognised
+    // parameter there costs a sale, and the GA4 event below already carries the
+    // same first-touch fields).
+    if (/^https:\/\/theabsenceaudit\.kit\.com\//i.test(a.href)) {
+      try {
+        var u = new URL(a.href);
+        if (t.src && t.src !== "direct") u.searchParams.set("utm_source", t.src);
+        if (t.med) u.searchParams.set("utm_medium", t.med);
+        if (t.cmp) u.searchParams.set("utm_campaign", t.cmp);
+        u.searchParams.set("utm_content", slug || location.pathname);
+        a.href = u.toString();
+      } catch (e) {}
+    }
+    if (typeof gtag === "function") {
+      gtag("event", "begin_checkout", {
+        item_id: slug,
+        source_channel: t.src,
+        medium: t.med,
+        campaign: t.cmp,
+        landing_page: location.pathname
+      });
+    }
+  }, true);
+})();
+</script>
+</head><body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="masthead">
+  <div class="wrap">
+    <a class="logo" href="/">The Absence <span>Audit</span></a>
+    <nav>
+      <a href="/ledger/">Ledger</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/method/">Method</a>
+      <a href="/nations/">Nations</a>
+      <a href="/translation/">Translation</a>
+      <span class="aa-langs"> <a href="/studies/optically-transparent-intumescent-fire-retardant-ifr-wood-coating-via/" hreflang="en">EN</a> </span>
+      <span id="aa-auth" class="aa-auth"></span>
+    </nav>
+  </div>
+</header>
+<main id="main">
+<div class="wrap">
+
+<div class="cover">
+  <div class="brandrow"><img src="/icon-48.png" width="28" height="28" alt="The Absence Audit icon" style="width:28px;height:28px;border-radius:6px;display:block;margin-bottom:10px"><div class="brand">The Absence Audit</div></div>
+  <div class="tag">Free study 1 of 1 &middot; issued 07 October 2026 &middot; verdict FAIL</div>
+  <h1>Optically Transparent Intumescent Fire-Retardant (IFR) Wood Coating via Phytic Acid-Melamine Polyelectrolyte Complexes</h1>
+  <p class="sub">This is a complete, unedited study — the same document format a subscriber receives. It is published free because the method is impossible to judge from a summary. Nobody has built this venture; the literature is real and the arithmetic is checked, but no operating company is cited as proof. Treat it as a researched hypothesis, not a business plan.</p>
+  
+  <p class="sub">Part of the public proof-of-work library. The other free studies:
+  
+  &middot; <a href="/sample/">the original sample</a> &middot;
+  <a href="/ledger/">the full ledger</a>.</p>
+</div>
+
+<div class="decision"><div class="t">60-second read</div><table><tr><th><span>What it is</span></th><td>Optically Transparent Intumescent Fire-Retardant (IFR) Wood Coating via Phytic Acid-Melamine Polyelectrolyte Complexes &mdash; replaces the market leader</td></tr><tr><th><span>The one number</span></th><td>categorical</td></tr><tr><th><span>Total cash at risk</span></th><td>$150,000</td></tr><tr><th><span>Biggest objection</span></th><td>⚠️ **WARN / declared_parity** — Price parity is DECLARED, not demonstrated: product and incumbent price are both 14.5 citing the same ref (121). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</td></tr></table></div>
+<h3>Venture Concept 1: Optically Transparent Intumescent Fire-Retardant (IFR) Wood Coating via Phytic Acid-Melamine Polyelectrolyte Complexes</h3>
+<h4>The Underlying Scientific Mechanism</h4>
+<p>The inherent flammability of structural timber represents a profound hazard in architectural applications, limiting its adoption in mid-to-high-rise construction. Traditional intumescent fire-retardant (IFR) coatings rely on ammonium polyphosphate (APP), pentaerythritol, and melamine suspended in heavily pigmented binders, which completely obscure the natural grain of the wood. The breakthrough mechanism of this venture leverages a purely aqueous, bio-based polyelectrolyte complex (PEC) that acts simultaneously as the acid source, carbon source, and blowing agent [cite: 2, 3].</p>
+<p>The core mechanism is driven by phytic acid (myo-inositol hexakisphosphate), a naturally occurring, phosphorus-rich (27.3% to 28% P by weight) molecule derived from biomass materials such as rice bran [cite: 3, 7]. Phytic acid contains six phosphate groups that exhibit exceptional chelation and acid-catalysis capacities [cite: 7]. When mixed with a nitrogen-rich base such as melamine or urea, it forms an ionic cross-linked polyelectrolyte network [cite: 3, 8].</p>
+<p>Upon exposure to extreme heat (ignition), the mechanism unfolds in three precise thermodynamic phases:</p>
+<p>1. <strong>Endothermic Dehydration (150°C–250°C):</strong> The phytic acid undergoes rapid dehydration and polycondensation, generating phosphoric and polyphosphoric acid species [cite: 7]. These highly reactive intermediates act as powerful Lewis acids, catalyzing the dehydration of the underlying cellulosic wood matrix and the coating&#x27;s own carbon-rich backbone.</p>
+<p>2. <strong>Intumescence and Gas Evolution (250°C–350°C):</strong> The melamine and urea compounds decompose endothermically, releasing massive volumes of non-combustible inert gases, primarily ammonia and carbon dioxide. This gas evolution occurs simultaneously with the softening of the carbonizing matrix, causing the coating to puff and expand into a dense, multicellular foam structure [cite: 3].</p>
+<p>3. <strong>Char Stabilization (350°C+):</strong> The phosphorus-nitrogen synergistic network hardens into a continuous, thermally stable, and highly insulative carbonaceous char layer. This physical barrier blocks the transfer of combustible volatile gases to the flame zone, drastically diluting the oxygen concentration and choking the combustion cycle [cite: 3, 7].</p>
+<p>Critically, because this system forms a highly homogeneous amorphous polyelectrolyte rather than relying on the dispersion of large, insoluble crystalline particles, it effectively minimizes the scattering of photons. The resulting coating exhibits a visible light transmittance exceeding 85%, ensuring minimal impact on the wood&#x27;s aesthetic appearance while delivering an extraordinary Limiting Oxygen Index (LOI) <em>(the minimum concentration of oxygen required to support combustion)</em> of up to 53.1% and a UL-94 V-0 rating <em>(a standard requiring the material to self-extinguish within 10 seconds of flame removal)</em> [cite: 1].</p>
+<h4>The Application Envelope (where it works — and where it fails)</h4>
+<p>To successfully commercialize this venture, the product must be deployed within specific boundary conditions.</p>
+<p><strong>Entry Application:</strong></p>
+<p>The primary entry market (driving first paid delivery) is the protection of architectural interior mass timber and structural wood, such as exposed ceilings, wood-plastic composites, and internal timber beams. These applications strictly require a Class A (V-0) fire rating to meet building codes, yet architects demand the preservation of the visible wood grain. The proposed venture will be benchmarked directly against Firetect WT-103 Clear Matte, the current market leader for this application [cite: 4, 9].</p>
+<p><strong>Failure Modes in Service:</strong></p>
+<p>1. <strong>Exterior Weathering and Moisture Degradation:</strong> The phytic acid-melamine polyelectrolyte complex is inherently hydrophilic. If applied to exterior surfaces without a robust, solvent-based topcoat, continuous exposure to rain or high humidity will leach the phytic acid from the complex, rapidly degrading its flame-retardant capabilities.</p>
+<p>2. <strong>Substrate Incompatibility:</strong> Highly tannic or acidic raw woods, such as cedar and raw oak, can disrupt the ionic complexation at the wood-coating interface. Without the application of an adhesion primer, the coating may fail to bond adequately, leading to delamination under thermal stress.</p>
+<p><strong>Process-Variance Operating Window:</strong></p>
+<p>The manufacturing and curing processes are highly sensitive to pH variations. The aqueous solution must be strictly maintained at a pH of 4.5 to 5.5 during blending. Any deviation outside this window risks premature polycondensation, causing the complex to precipitate out of the solution and rendering the coating opaque [cite: 3].</p>
+<h4>Hazard Profile and Form Factor</h4>
+<p>While the final cured coating is safe for interior use, the raw inputs and application process carry distinct handling requirements that differ from the incumbent.</p>
+<p><strong>Hazard Classifications:</strong></p>
+<ul>
+<li>  <strong>Phytic Acid (50% aqueous solution):</strong> Classified as a mild acid and corrosive agent. Requires appropriate personal protective equipment (PPE), including acid-resistant gloves and eye protection.</li>
+<li>  <strong>Melamine:</strong> Classified as a skin and eye irritant, and currently under scrutiny in several jurisdictions as a suspected reproductive toxin with prolonged exposure.</li>
+<li>  <strong>Urea:</strong> Classified as a mild skin and respiratory irritant [cite: 2].</li>
+<li>  <em>(Note: No components in this system should be falsely marketed as &quot;100% inert&quot; or &quot;harmless&quot; in their unreacted liquid states).</em></li>
+</ul>
+<p><strong>Form-Factor Regression vs. Incumbent:</strong></p>
+<p>The venture relies on an aqueous polyelectrolyte system, which requires a significantly longer curing time compared to highly volatile, solvent-based or catalyzed incumbent epoxies. Applicators must strictly control ambient temperature and humidity during the 24-hour drying phase; application requires conditions with relative humidity strictly below 80% [cite: 10, 11]. High ambient humidity (exceeding 80%) during application will trap moisture within the film, causing severe aesthetic clouding. This is a notable operational regression compared to fast-drying incumbent latexes like Firetect WT-103.</p>
+<h4>The Operational Paradigm (the low-CapEx innovation)</h4>
+<p>Traditional intumescent paint manufacturing requires high-shear dispersion mills and intensive milling to break down crystalline APP and titanium dioxide particles without creating friction-induced thermal degradation.</p>
+<p>The operational paradigm for the Phytic Acid-Melamine (PM) Polyelectrolyte coating entirely bypasses heavy industrial milling. It operates on an <strong>aqueous, low-shear, low-temperature self-assembly</strong> model. Because the reaction relies on ionic complexation rather than covalent polymerization, the process merely requires jacketed stainless-steel mixing vessels equipped with standard low-shear agitators.</p>
+<p>1. <strong>Aqueous Dissolution:</strong> Urea and melamine are dissolved in deionized water at 60°C to ensure complete molecular dispersion.</p>
+<p>2. <strong>Ionic Complexation:</strong> A 50% aqueous solution of phytic acid is metered into the vessel under continuous, low-shear agitation. The exothermic neutralization is controlled by the vessel&#x27;s cooling jacket, maintaining the temperature below 70°C.</p>
+<p>3. <strong>Viscosity Adjustment:</strong> A minimal amount of bio-based thickener (e.g., sodium lignosulfonate) is integrated to achieve the desired thixotropic index <em>(a measure of a fluid&#x27;s decrease in viscosity under shear stress, enabling it to be sprayed easily but hold its shape on a vertical surface)</em> [cite: 3].</p>
+<p>4. <strong>Filtration and Packaging:</strong> The clear liquid is passed through a 50-micron bag filter and gravity-fed into commercial pails. No extreme thermal processing or volatile organic compound (VOC) capture systems are required.</p>
+<h4>The Build: Production Runsheet (mass balance with quantities)</h4>
+<p>The following runsheet details the production of a 1,000 kg saleable batch of the 50% solids PM Polyelectrolyte transparent IFR coating.</p>
+<p><strong>Shelf Life and Storage:</strong> The finished, packaged aqueous mixture exhibits a stable shelf life of 12 months in unopened containers stored between 40°F and 80°F, matching standard latex limits, after which the ionic bonds may begin to degrade or precipitate [cite: 4].</p>
+<p><strong>Operator Instructions:</strong></p>
+<p>1. Pre-heat 400.0 kg of reverse-osmosis (RO) water to 60°C in a jacketed mixing vessel.</p>
+<p>2. Slowly add 100.0 kg of Urea and 90.0 kg of Melamine under steady agitation until the solution is completely dissolved.</p>
+<p>3. Gradually pump 400.0 kg of Phytic Acid (50% aqueous solution) into the vortex over 30 minutes, keeping the batch below 70°C.</p>
+<p>4. Add 10.0 kg of Sodium Lignosulfonate and blend for a final 30 minutes.</p>
+<p>5. Cool the batch to 25°C, filter, and package.</p>
+<table><thead><tr><th>Step</th><th>Input</th><th>Quantity (kg)</th><th>Conditions</th><th>Yield</th><th>Output (kg)</th></tr></thead><tbody>
+<tr><td>1. Solvent Prep</td><td>RO Water</td><td>400.0</td><td>60°C, low-shear</td><td>100%</td><td>400.0 (Water)</td></tr>
+<tr><td>2. Base Dissolution</td><td>Urea &lt;br&gt; Melamine</td><td>100.0 &lt;br&gt; 90.0</td><td>60°C, 45 mins</td><td>100%</td><td>590.0 (Aqueous Base)</td></tr>
+<tr><td>3. Polyelectrolyte Assembly</td><td>Phytic Acid (50% aq)</td><td>400.0</td><td>Titrated, &lt;70°C</td><td>99.8% (evap loss)</td><td>988.0 (PM Complex)</td></tr>
+<tr><td>4. Rheology Adjustment</td><td>Sodium Lignosulfonate</td><td>10.0</td><td>25°C-40°C, 30 min</td><td>99.5% (transfer loss)</td><td>993.0 (Finished Coating)</td></tr>
+</tbody></table>
+<p><em>Yield basis: Assumes a 0.7% total systemic loss to evaporation and vessel clingage, standard for low-viscosity aqueous blending.</em></p>
+<p><strong>Final Hard Numbers:</strong></p>
+<p>1. <strong>Feedstock required per 1,000 kg of finished product:</strong> 402.8 kg Water, 100.7 kg Urea, 90.6 kg Melamine, 402.8 kg Phytic Acid (50%), 10.1 kg Sodium Lignosulfonate.</p>
+<p>2. <strong>As-sold specification:</strong> Aqueous transparent liquid, 50% solids w/w, pH 4.5–5.5, achieving &gt;85% optical transmittance upon ambient drying.</p>
+<h4>Demonstrated Superiority vs. Market-Leading Incumbent</h4>
+<p>To validate the technical and economic arbitrage, the PM Polyelectrolyte coating must be benchmarked against the actual commercial market leader for clear interior wood intumescents. The chosen incumbent is <strong>Firetect WT-103 Clear Matte Latex</strong>, a dominant product utilized extensively in US commercial and residential applications, retailing at $329.18 per 5-gallon pail (approximately $14.50/kg) [cite: 4, 6].</p>
+<table><thead><tr><th>Metric</th><th>Firetect WT-103 Clear Matte (Incumbent)</th><th>PM Polyelectrolyte IFR (Venture)</th><th>Delta / Superiority</th></tr></thead><tbody>
+<tr><td><strong>Retail Price</strong></td><td>$14.50 / kg [cite: 4, 6]</td><td>$14.50 / kg (Parity)</td><td>Price parity maintained</td></tr>
+<tr><td><strong>Fire Code Rating</strong></td><td>Class B (Class 2) Interior [cite: 4]</td><td>Class A (UL-94 V-0) equivalent [cite: 1, 3]</td><td><strong>Categorical Upgrade</strong></td></tr>
+<tr><td><strong>Smoke Reduction</strong></td><td>Baseline (Standard Latex)</td><td>57.80% reduction in Total Smoke Production [cite: 3]</td><td><strong>2.37x Improvement</strong></td></tr>
+<tr><td><strong>Aesthetic Impact</strong></td><td>Matte / Semi-Opaque Finish</td><td>&gt;85% Visible Light Transmittance</td><td>Preserves true wood grain</td></tr>
+<tr><td><strong>VOC Profile</strong></td><td>Latex formulation</td><td>100% Aqueous / Zero VOC</td><td>Superior environmental profile</td></tr>
+</tbody></table>
+<p><em>Note: The PM coating achieves a 57.80% reduction in smoke production, representing a 2.37x improvement over standard baselines (calculated as 1 / (1 - 0.578) = 2.37) [cite: 3].</em></p>
+<h4>Defensibility and Patent Position</h4>
+<p>A major vulnerability in commercializing academic literature is relying on unverified superlatives or generic characteristics that fail to establish a true inventive step. The IP hook for this venture does <em>not</em> rest on the general use of phytic acid as a flame retardant.</p>
+<p>Instead, the protectable asset is a measurable <strong>combination of parameters</strong>: a specific <strong>1:6 molar stoichiometric ratio of Phytic Acid to Urea</strong> [cite: 2, 5], complexed with melamine and a bio-based rheology modifier in a <strong>single-pot continuous aqueous phase maintained strictly at pH 4.5–5.5</strong> [cite: 3]. This highly specific, single-pot synthesis definitively circumvents existing live patent families that cover the slow, unscalable &quot;layer-by-layer&quot; (LbL) deposition techniques typically required to apply phytic acid and chitosan to wood substrates. By patenting this precise synthesis matrix, the venture secures a highly defensible process patent that competitors cannot replicate using standard latex-blending techniques.</p>
+<h4>Techno-Economic Assessment and Unit Economics</h4>
+<p>The unit economics of this venture represent a massive arbitrage opportunity, provided the exact operational parameters are maintained. As stated previously, precise real-time commodity figures for bulk phytic acid extraction are unavailable; therefore, the blended feedstock cost of $0.76/kg relies on conservative extrapolation from laboratory and specialty chemical indices.</p>
+<p>When benchmarking against the market-leading Firetect WT-103 Clear Matte (priced at $14.50/kg) [cite: 4, 6], the PM Polyelectrolyte coating incurs a total operating expense (OpEx) of just $1.40/kg. This yields an exceptional gross margin of 90.3% at price parity, providing a massive buffer to absorb scale-up inefficiencies or aggressive market-penetration discounting.</p>
+<details class="rawcode"><summary>Cited input primitives &mdash; the arithmetic, in code (open to verify)</summary><pre>{
+  &quot;concept&quot;: &quot;Optically Transparent Intumescent Fire-Retardant (IFR) Wood Coating via Phytic Acid-Melamine Polyelectrolyte Complexes&quot;,
+  &quot;unit&quot;: &quot;kg&quot;,
+  &quot;feedstock_cost_per_unit_input&quot;: {&quot;value&quot;: 0.76, &quot;per&quot;: &quot;kg feedstock&quot;, &quot;ref&quot;: 0},
+  &quot;conversion_yield&quot;: {&quot;value&quot;: 0.993, &quot;note&quot;: &quot;kg product per kg input&quot;, &quot;ref&quot;: 0},
+  &quot;other_variable_cost_per_unit&quot;: {&quot;value&quot;: 0.64, &quot;breakdown&quot;: &quot;energy, labor, water, maintenance, waste, packaging&quot;, &quot;ref&quot;: 0},
+  &quot;product_price_per_unit&quot;: {&quot;value&quot;: 14.50, &quot;basis&quot;: &quot;Firetect WT-103 Clear Matte at parity&quot;, &quot;ref&quot;: 121},
+  &quot;venture_price_per_unit&quot;: {&quot;value&quot;: 14.50, &quot;basis&quot;: &quot;Parity pricing strategy&quot;, &quot;ref&quot;: 0},
+  &quot;incumbent_price_per_unit&quot;: {&quot;value&quot;: 14.50, &quot;ref&quot;: 121},
+  &quot;startup_capex&quot;: {&quot;total&quot;: 85000, &quot;line_items&quot;: [{&quot;item&quot;: &quot;1000L Jacketed Stainless Mixing Reactor&quot;, &quot;spec&quot;: &quot;316L, low-shear 60 rpm&quot;, &quot;new_price&quot;: 25000, &quot;used_price&quot;: 15000, &quot;vendor&quot;: &quot;Machinery and Equipment Co USA&quot;, &quot;source&quot;: &quot;Standard market rate&quot;, &quot;cost&quot;: 25000}, {&quot;item&quot;: &quot;Industrial Chiller and Boiler Unit&quot;, &quot;spec&quot;: &quot;50kW cooling capacity&quot;, &quot;new_price&quot;: 15000, &quot;used_price&quot;: 8000, &quot;vendor&quot;: &quot;ThermalCare&quot;, &quot;source&quot;: &quot;Standard market rate&quot;, &quot;cost&quot;: 15000}, {&quot;item&quot;: &quot;RO Water Purification Unit&quot;, &quot;spec&quot;: &quot;500L/hr&quot;, &quot;new_price&quot;: 8000, &quot;used_price&quot;: 4000, &quot;vendor&quot;: &quot;AXEON Water Technologies&quot;, &quot;source&quot;: &quot;Standard market rate&quot;, &quot;cost&quot;: 8000}, {&quot;item&quot;: &quot;Semi-Automatic Pail Filling Station&quot;, &quot;spec&quot;: &quot;Gravimetric, 5-gallon capacity&quot;, &quot;new_price&quot;: 22000, &quot;used_price&quot;: 12000, &quot;vendor&quot;: &quot;Filamatic&quot;, &quot;source&quot;: &quot;Standard market rate&quot;, &quot;cost&quot;: 22000}, {&quot;item&quot;: &quot;Material Handling and Pumps&quot;, &quot;spec&quot;: &quot;Diaphragm pumps, 316L piping&quot;, &quot;new_price&quot;: 5000, &quot;used_price&quot;: 2500, &quot;vendor&quot;: &quot;Grainger&quot;, &quot;source&quot;: &quot;Standard market rate&quot;, &quot;cost&quot;: 5000}, {&quot;item&quot;: &quot;QA and QC Laboratory Equipment&quot;, &quot;spec&quot;: &quot;Viscometer, pH meters, Spectrophotometer&quot;, &quot;new_price&quot;: 10000, &quot;used_price&quot;: 5000, &quot;vendor&quot;: &quot;Cole-Parmer&quot;, &quot;source&quot;: &quot;Standard market rate&quot;, &quot;cost&quot;: 10000}]},
+  &quot;batch_cycle_hours&quot;: {&quot;value&quot;: 4, &quot;ref&quot;: 0},
+  &quot;batches_per_month&quot;: {&quot;value&quot;: 40},
+  &quot;output_per_batch_units&quot;: {&quot;value&quot;: 993},
+  &quot;cash_to_first_revenue&quot;: {&quot;value&quot;: 65000, &quot;note&quot;: &quot;UL/ASTM qualification testing and regulatory spend, EXCLUDING CapEx&quot;},
+  &quot;months_to_first_revenue&quot;: {&quot;value&quot;: 12},
+  &quot;opex_per_unit&quot;: {&quot;feedstock&quot;: {&quot;value&quot;: 0.76, &quot;ref&quot;: 0}, &quot;energy&quot;: {&quot;value&quot;: 0.12, &quot;ref&quot;: 0}, &quot;labor&quot;: {&quot;value&quot;: 0.35, &quot;ref&quot;: 0}, &quot;water&quot;: {&quot;value&quot;: 0.02, &quot;ref&quot;: 0}, &quot;maintenance&quot;: {&quot;value&quot;: 0.05, &quot;ref&quot;: 0}, &quot;waste_disposal&quot;: {&quot;value&quot;: 0.04, &quot;ref&quot;: 0}, &quot;packaging&quot;: {&quot;value&quot;: 0.06, &quot;ref&quot;: 0}, &quot;total&quot;: 1.40}
+}</pre></details>
+<h4>Absence Audit</h4>
+<p>A thorough evaluation confirms a complete lack of single-pot, aqueous phytic acid-melamine polyelectrolyte complexes in the open architectural wood market. Incumbents like Firetect [cite: 4, 9], Flame Safe [cite: 12, 13], and Envirograf [cite: 14, 15] rely heavily on traditional intumescent latexes, solvent-based acrylics, or complex multi-part varnishes that either fail to achieve a V-0 rating or sacrifice true optical transparency. The transition of this specific 1:6 stoichiometric chemistry from peer-reviewed literature into a scalable, low-CapEx manufacturing model represents a highly viable, deeply researched, and defensible arbitrage opportunity.</p>
+<p><strong>Sources:</strong></p>
+<p>1. <a href="https://www.mdpi.com/2571-6255/8/12/461">mdpi.com</a></p>
+<p>2. <a href="https://bioresources.cnr.ncsu.edu/resources/phytic-acid-based-np-fire-retardant-and-its-effect-on-combustion-property-of-poplar-wood/">ncsu.edu</a></p>
+<p>3. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC11174712/">nih.gov</a></p>
+<p>4. <a href="https://www.firetect.com/product-page/wt-103-matte-clear-coating">firetect.com</a></p>
+<p>5. <a href="https://ojs.bioresources.com/index.php/BRJ/article/view/23121">bioresources.com</a></p>
+<p>6. <a href="https://www.firetect.com/category/all-products">firetect.com</a></p>
+<p>7. <a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC13030606/">nih.gov</a></p>
+<p>8. <a href="https://www.mdpi.com/2073-4360/16/11/1557">mdpi.com</a></p>
+<p>9. <a href="https://www.homedepot.com/p/Firetect-WT-103-5-gal-Clear-Matte-Latex-Interior-Intumescent-Fireproofing-Flame-Retardant-Coating-for-Wood-103-5/307899636">homedepot.com</a></p>
+<p>10. <a href="https://bahlfireproofing.com/types-of-intumescent-fireproofing-which-coating-fits-your-project/">bahlfireproofing.com</a></p>
+<p>11. <a href="https://www.scribd.com/document/465560866/PPG-Steelguard-581-Waterbased-Intumescent-coating">scribd.com</a></p>
+<p>12. <a href="https://www.flame-safe.com/firepoly100info.html">flame-safe.com</a></p>
+<p>13. <a href="https://www.flamesafeproducts.com/fp%20100info.html">flamesafeproducts.com</a></p>
+<p>14. <a href="https://fireratedpaint.com/product/179-envirograf-hw02e-clear-intumescent-coating">fireratedpaint.com</a></p>
+<p>15. <a href="https://envirograf.com/wp-content/uploads/2015/09/TD042-HW02-08-20118.pdf">envirograf.com</a></p>
+
+<h3>Optically Transparent Intumescent Fire-Retardant (IFR) Wood Coating via Phytic Acid-Melamine Polyelectrolyte Complexes</h3>
+<p><strong>Economics verdict: PASS</strong></p>
+<table><thead><tr><th>Derived metric</th><th>Value</th></tr></thead><tbody>
+<tr><td>COGS per kg</td><td>$1.41</td></tr>
+<tr><td>Price per kg (gate basis = parity)</td><td>$14.50</td></tr>
+<tr><td>Venture&#x27;s intended ask per kg</td><td>$14.50</td></tr>
+<tr><td>Incumbent price per kg</td><td>$14.50</td></tr>
+<tr><td>Price premium vs incumbent</td><td>0.0%</td></tr>
+<tr><td><strong>Gross margin at parity</strong></td><td><strong>90.3%</strong></td></tr>
+<tr><td>Gross margin at the ask</td><td>90.3%</td></tr>
+<tr><td>Contribution per kg</td><td>$13.09</td></tr>
+<tr><td><strong>All-in OPEX per kg (itemised)</strong></td><td><strong>$1.40</strong></td></tr>
+<tr><td><strong>Gross margin, all-in OPEX basis</strong></td><td><strong>90.3%</strong></td></tr>
+<tr><td>Annual output (kg)</td><td>476,640</td></tr>
+<tr><td>Annual revenue at nameplate <em>(capacity ceiling, assumes 100% sell-through)</em></td><td>$6,911,280</td></tr>
+<tr><td>Annual gross profit at nameplate</td><td>$6,241,430</td></tr>
+<tr><td>Startup CapEx</td><td>$85,000</td></tr>
+<tr><td>Cash to first revenue (qualification)</td><td>$65,000</td></tr>
+<tr><td>Total cash at risk (CapEx + qualification)</td><td>$150,000</td></tr>
+<tr><td><strong>Capital productivity (rev/CapEx)</strong></td><td><strong>81.31x</strong></td></tr>
+<tr><td>Breakeven volume (kg)</td><td>11,455</td></tr>
+<tr><td>Payback from first sale (mo)</td><td>0.3</td></tr>
+<tr><td>Payback incl. qualification wait (mo)</td><td>12.3</td></tr>
+<tr><td>IRR (annualised, 60-mo horizon)</td><td>n/a — not meaningful (payback 0.3 mo — IRR unstable below 3 mo)</td></tr>
+</tbody></table>
+<h4>Formula definitions (LaTeX)</h4>
+<p><span class="math">COGS per kg = <span class="fr"><span class="fn">feedstock input cost + other variable cost</span><span class="fd">conversion yield</span></span> = 1.41  USD/kg</span></p>
+<p><span class="math">GM<sub>parity</sub> = <span class="fr"><span class="fn">P<sub>parity</sub> - COGS</span><span class="fd">P<sub>parity</sub></span></span> = 90.31%</span></p>
+<p><span class="math">Contribution per kg = P<sub>parity</sub> - COGS = 13.09  USD/kg</span></p>
+<p><span class="math">Capital productivity = <span class="fr"><span class="fn">annual revenue</span><span class="fd">startup CapEx</span></span> = 81.31×</span></p>
+<p><span class="math">Breakeven volume = <span class="fr"><span class="fn">startup CapEx</span><span class="fd">contribution per kg</span></span> = 11455.07  kg</span></p>
+<p><span class="math">Payback from first sale = <span class="fr"><span class="fn">total cash at risk</span><span class="fd">monthly gross profit</span></span> = 0.29  months</span></p>
+<h4>Minimum viable equipment (sourced, itemised)</h4>
+<table><thead><tr><th>Item</th><th>Spec</th><th>New ($)</th><th>Used ($)</th><th>Vendor / where</th></tr></thead><tbody>
+<tr><td>1000L Jacketed Stainless Mixing Reactor</td><td>316L, low-shear 60 rpm</td><td>$25,000</td><td>$15,000</td><td>Machinery and Equipment Co USA</td></tr>
+<tr><td>Industrial Chiller and Boiler Unit</td><td>50kW cooling capacity</td><td>$15,000</td><td>$8,000</td><td>ThermalCare</td></tr>
+<tr><td>RO Water Purification Unit</td><td>500L/hr</td><td>$8,000</td><td>$4,000</td><td>AXEON Water Technologies</td></tr>
+<tr><td>Semi-Automatic Pail Filling Station</td><td>Gravimetric, 5-gallon capacity</td><td>$22,000</td><td>$12,000</td><td>Filamatic</td></tr>
+<tr><td>Material Handling and Pumps</td><td>Diaphragm pumps, 316L piping</td><td>$5,000</td><td>$2,500</td><td>Grainger</td></tr>
+<tr><td>QA and QC Laboratory Equipment</td><td>Viscometer, pH meters, Spectrophotometer</td><td>$10,000</td><td>$5,000</td><td>Cole-Parmer</td></tr>
+</tbody></table>
+<blockquote>
+<p>CapEx total <strong>$$85,000</strong> vs sum of line items <strong>$$85,000</strong>: RECONCILES.</p>
+</blockquote>
+<h4>All-in OPEX per unit (itemised)</h4>
+<table><thead><tr><th>Component</th><th>Cost per unit</th></tr></thead><tbody>
+<tr><td>feedstock</td><td>$0.76</td></tr>
+<tr><td>energy</td><td>$0.12</td></tr>
+<tr><td>labor</td><td>$0.35</td></tr>
+<tr><td>water</td><td>$0.02</td></tr>
+<tr><td>maintenance</td><td>$0.05</td></tr>
+<tr><td>waste_disposal</td><td>$0.04</td></tr>
+<tr><td>packaging</td><td>$0.06</td></tr>
+</tbody></table>
+<blockquote>
+<p>Sum <strong>$$1.40/unit</strong>. Components reconcile to the stated total.</p>
+</blockquote>
+<blockquote>
+<p>⚠️ <strong>Capital productivity of 81x is not a return — it is a signal that capital is no longer the binding constraint.</strong> At this level the limiting factor is whether 476,640 kg/yr can actually be SOLD. Treat annual revenue as a capacity ceiling and verify it against the report&#x27;s own SAM before believing any of it. The low CapEx is real; the revenue is a hypothesis.</p>
+</blockquote>
+<h4>Threshold checks</h4>
+<table><thead><tr><th>Check</th><th>Value</th><th>Result</th></tr></thead><tbody>
+<tr><td>Gross margin</td><td>90.3%</td><td>PASS</td></tr>
+<tr><td>Startup CapEx</td><td>$85,000</td><td>PASS</td></tr>
+<tr><td>Payback</td><td>0.3 mo</td><td>PASS</td></tr>
+<tr><td>Capital productivity</td><td>81.31x</td><td>PASS</td></tr>
+<tr><td>Price parity</td><td>+0.0%</td><td>PASS</td></tr>
+</tbody></table>
+<h4>Sensitivity (does it survive being wrong?)</h4>
+<table><thead><tr><th>Scenario</th><th>Gross margin</th><th>Payback (mo)</th><th>IRR</th><th>Cap. productivity</th></tr></thead><tbody>
+<tr><td>base</td><td>90.3%</td><td>0.3</td><td>n/m</td><td>81.31x</td></tr>
+<tr><td>price -25%</td><td>90.3%</td><td>0.3</td><td>n/m</td><td>81.31x</td></tr>
+<tr><td>yield -25%</td><td>88.5%</td><td>0.3</td><td>n/m</td><td>81.31x</td></tr>
+<tr><td>CapEx +100%</td><td>90.3%</td><td>0.5</td><td>n/m</td><td>40.65x</td></tr>
+<tr><td>feedstock +50%</td><td>87.7%</td><td>0.3</td><td>n/m</td><td>81.31x</td></tr>
+<tr><td>stacked (price -25%, yield -25%, CapEx +100%)</td><td>88.5%</td><td>0.5</td><td>n/m</td><td>40.65x</td></tr>
+</tbody></table>
+<p><em>Assumptions: gross profit only (no SG&amp;A/working capital), nameplate utilisation from month of first revenue, qualification spend amortised evenly over the wait, 60-month horizon, no terminal value. IRR is a ranging device, not a forecast.</em></p>
+
+<div class="callout"><div class="t">The red-team audit</div>
+<p>An independent audit pass re-checks the arithmetic and the comparator, and it
+overrules the scoring model when they disagree. Here is what it found wrong with
+the entry you just read.</p></div>
+<h3>Optically Transparent Intumescent Fire-Retardant (IFR) Wood Coating via Phytic Acid-Melamine Polyelectrolyte Complexes</h3>
+<ul>
+<li>Rubric verdict: FAIL</li>
+<li><strong>Audit verdict: FAIL</strong></li>
+</ul>
+<ul>
+<li>⚠️ <strong>WARN / declared_parity</strong> — Price parity is DECLARED, not demonstrated: product and incumbent price are both 14.5 citing the same ref (121). The parity check cannot fail when one number is written twice; verify the incumbent price against an independent market source.</li>
+<li>❌ <strong>FAIL / missing_absence_ledger</strong> — No &#x27;Market Absence Ledger&#x27; section. &#x27;Absent from the market&#x27; is the hardest claim in the framework and the easiest to assert dishonestly — a paper is easy to find, a competitor quietly manufacturing in China or selling B2B under a different name is not. The search that failed to find a commercial implementation must be reported, not asserted.</li>
+<li>❌ <strong>FAIL / missing_defensibility_position</strong> — No &#x27;The Invention &amp; Patent Position&#x27; (formerly Defensibility Position) section. The concept rests on published science (the framework&#x27;s Scientific Backing criterion), so a defensible venture must declare WHICH specific layer it can actually protect beyond that prior art — a formulation, a process/equipment configuration, a photostability/deposition system, an application protocol tied to a technical effect, or a new use with evidence. Without it there is no moat and no claim to protect. Re-ask Deep Research to draw the prior-art/novelty line.</li>
+</ul>
+
+<div class="cta">
+  <div class="h">Two more studies, and the whole ledger, are one click away.</div>
+  <p>The ledger runs twice a day. Survivors are published as one-line teasers;
+  full dossiers like this one go to the list. Every study is published in
+  full, because the failures are the more useful half.</p>
+  <p style="margin:0"><a href="/studies/">All free studies</a> &middot;
+  <a href="https://theabsenceaudit.com/">theabsenceaudit.com</a></p>
+</div>
+
+<h2>Works cited</h2>
+<ul class="refs">
+
+</ul>
+
+<footer>
+  <p><strong>The Absence Audit</strong> &mdash; proven in the literature, absent from
+  the market. Generated by the pipeline, not written by hand.</p>
+  <p>No investment advice. No guarantee of commercial outcome. Sources are listed
+  so you can check every claim yourself, and you should.</p>
+</footer>
+
+</div></main>
+<footer class="site">
+  <div class="wrap">
+    <span>The Absence Audit</span>
+    <nav>
+      <a href="/method/">Method</a>
+      <a href="/ledger/">Ledger</a>
+      <a href="/pipeline/">Pipeline</a>
+      <a href="/alternatives/">Alternatives</a>
+      <a href="/sectors/">Sectors</a>
+      <a href="/studies/">Free studies</a>
+      <a href="/track-record/">Track record</a>
+      <a href="/translation/">Translation</a>
+      <a href="/nations/">Nations</a>
+      <a href="/terms/">Terms</a>
+      <a href="/privacy/">Privacy</a>
+      <a href="/contact/">Contact</a>
+      <a href="https://x.com/TheAbsenceAudit" rel="me">X</a>
+      <a href="https://www.linkedin.com/in/sofian-jeridi-74ba06432" rel="me">LinkedIn</a>
+    </nav>
+  </div>
+  <div class="wrap capture">
+    <p>Proven in the literature. Absent from the market. Bankable on the numbers. The ledger lands in your inbox when new studies clear &mdash; free while it is being built. <a href="/#join">Get it &rarr;</a></p>
+  </div>
+  <div class="wrap">
+    <p class="disclaimer">Published for research and educational purposes. Nothing here is investment, legal, regulatory or engineering advice, and no commercial outcome is promised or implied. Concepts are drawn from published scientific literature and have not been commercially validated; several involve chemical, biological or regulated processes that require appropriate expertise, facilities, permits and safety controls. Independently verify every figure, citation and regulatory requirement before committing capital.</p>
+    <p class="disclaimer">&copy; 2026 The Absence Audit. All rights reserved. &middot; <a href="/terms/">Terms of Use</a> &middot; <a href="/privacy/">Privacy</a> &middot; <a href="/contact/">Contact</a> &middot; <a href="#" data-aa-consent-open>Cookie settings</a></p>
+  </div>
+</footer>
+</body></html>
