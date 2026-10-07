@@ -711,13 +711,15 @@ table.term td .favbtn{margin-right:.35rem;padding-left:.15rem}
 }
 .aa-tab:hover{border-color:var(--rule,#DDD6C8);color:var(--ink,#171512)}
 .aa-tab-on{background:var(--paper,#FBF9F5);border-color:var(--rule,#DDD6C8);color:var(--ink,#171512);font-weight:600}
-/* bounded document viewer — the page stays short, the document scrolls */
+/* full-length document viewer — the report flows with the page (2026-10-07:
+   a 72vh porthole nested scrollbars inside the page; readers hated it) */
 .aa-viewer{
-  max-height:72vh;overflow:auto;
+  max-height:none;overflow:visible;
   border:1px solid var(--rule,#DDD6C8);border-radius:10px;
   background:var(--paper,#FBF9F5);
   padding:1.2rem 1.3rem;
 }
+.aa-viewer table{display:block;max-width:100%;overflow-x:auto}
 .aa-viewer > h2:first-child{margin-top:0}
 /* cover cards inside bundles */
 .aa-cover{border:1px solid var(--rule,#DDD6C8);border-radius:10px;padding:1rem 1.1rem;margin:0 0 1.4rem;background:var(--paper-2,#F3EFE7)}
@@ -746,3 +748,52 @@ table.term td .favbtn{margin-right:.35rem;padding-left:.15rem}
 .masthead nav .aa-langs a{color:inherit;text-decoration:none}
 .masthead nav .aa-langs a:hover{opacity:1;text-decoration:underline}
 @media (max-width:720px){.masthead nav{flex-wrap:wrap;row-gap:.4rem}}
+
+/* --- ledger-first landing (2026-10-07) --- */
+.hero--landing{padding:2.2rem 0 .6rem}
+.hero--landing .wrap{max-width:var(--wrap,1080px)}
+.landstats{display:flex;flex-wrap:wrap;gap:.5rem;margin:1.1rem 0 .2rem;font-family:var(--mono)}
+.landstats span{border:1px solid var(--rule);border-radius:999px;padding:.32rem .8rem;font-size:.76rem;letter-spacing:.02em;color:var(--ink-2);white-space:nowrap}
+.landstats b{color:var(--ink)}
+.hero--landing .hero-cta-wrap{display:flex;flex-wrap:wrap;gap:.9rem;align-items:center;margin-top:1.2rem}
+
+/* --- responsive ledger surface (fixes measured 390px horizontal overflow) --- */
+.searchrow{min-width:0}
+.toolrow{min-width:0}
+.toolright{min-width:0;flex-wrap:wrap}
+.askrow{min-width:0;flex-wrap:wrap}
+.askrow input[type=text]{min-width:0}
+#results{overflow-x:auto}
+@media (max-width:720px){
+  .toolbar{position:static}
+  .searchrow{display:flex;flex-direction:column}
+  .toolrow{flex-direction:column;align-items:stretch}
+  .toolright{justify-content:flex-start}
+  .askrow{flex-direction:column;align-items:stretch}
+  .askrow .qbtn{align-self:flex-start}
+  .facets .capcell .seg--wrap{flex-wrap:wrap}
+}
+
+/* --- collapsible filters (2026-10-07: list must start in the first screen) --- */
+.facets-details{border:1px solid var(--rule);background:var(--paper-2);margin-top:.9rem;margin-bottom:.9rem}
+.facets-summary{display:flex;align-items:center;gap:.8rem;padding:.6rem .9rem;cursor:pointer;font-family:var(--mono);font-size:.78rem;letter-spacing:.05em;color:var(--ink-2);list-style:none;user-select:none}
+.facets-summary::-webkit-details-marker{display:none}
+.facets-summary::before{content:"+";color:var(--ink-3);font-weight:700;font-size:.9rem}
+.facets-details[open] .facets-summary::before{content:"\2212"}
+.fs-title{text-transform:uppercase;letter-spacing:.12em}
+.fs-chips{color:var(--ink);font-size:.75rem;letter-spacing:.02em;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.facets-details .facets{padding:.2rem .9rem .9rem;border-top:1px solid var(--rule)}
+.taxbox{margin-top:1.4rem}
+
+/* --- top-of-page price card on concept pages (2026-10-07: price belongs
+   beside the verdict, not four screens down) --- */
+.buycard{display:flex;flex-wrap:wrap;align-items:center;gap:.9rem;margin:1.1rem 0 1.6rem;padding:.85rem 1rem;background:var(--paper-2);border:1px solid var(--rule);border-radius:8px}
+.bc-price{font-family:var(--mono);font-size:1.05rem;font-weight:600;letter-spacing:.02em}
+.bc-buy{background:var(--ink);color:var(--paper);text-decoration:none;font-weight:600;padding:.5rem .9rem;border-radius:6px}
+.bc-buy:hover{opacity:.88}
+.bc-free{font-size:.88rem;color:var(--ink-2);text-decoration:underline;text-underline-offset:2px}
+.bc-free:hover{color:var(--ink)}
+
+/* --- superscript citation markers (2026-10-07: [cite: n] reads as machine
+   noise inline; superscript de-emphasizes it without inventing links) --- */
+sup.aa-cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--ink-3);letter-spacing:.04em;margin:0 .12em}

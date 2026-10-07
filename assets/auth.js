@@ -586,18 +586,25 @@
       // Gated page: when the server report lands, stash it as the full view,
       // lift the menu to the top of the revealed report, and route part
       // views into a dedicated viewport so the menu survives every swap.
+      // (2026-10-07 dedup: the report must live ONCE — replaceChildren swaps
+      // the raw injected copy for the framed viewport instead of appending a
+      // duplicate beside it.)
       partsHost = box;
       var ob = new MutationObserver(function () {
         if (box.innerHTML && !box.querySelector(".aa-part-viewport")) {
           partsFullHtml = box.innerHTML;
           partsLoaded["full"] = partsFullHtml;
-          box.insertBefore(menu, box.firstChild);
-          menu.hidden = false;
           var vp = document.createElement("div");
           vp.className = "aa-part-viewport aa-viewer";
           vp.innerHTML = partsFullHtml;
-          box.appendChild(vp);
+          box.replaceChildren(menu, vp);
+          menu.hidden = false;
           partsHost = vp;
+          // The revealed report carries its own decision block — hide the
+          // page's static one so the verdict lane never shows twice
+          // (dedup 2026-10-07).
+          var dec = document.querySelector("[data-aa-decision]");
+          if (dec) dec.hidden = true;
           ob.disconnect();
         }
       });

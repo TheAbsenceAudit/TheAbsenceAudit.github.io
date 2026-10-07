@@ -1036,3 +1036,42 @@
     toggleFav: toggleFav // QA/debug affordance for the favorites layer
   };
 })();
+
+/* Filter chips — surface the active facet state on the collapsed Filters row
+   (owner 2026-10-07: the list must start in the first screen, so the facet
+   groups collapse behind a disclosure; chips keep the active state visible). */
+(function () {
+  var chips = document.getElementById("fs-chips");
+  if (!chips) return;
+  function selText(id) {
+    var e = document.getElementById(id);
+    return (e && e.value) ? ((e.options[e.selectedIndex] || {}).textContent || e.value) : "";
+  }
+  function segActive(id, anyVal) {
+    var e = document.getElementById(id);
+    if (!e) return "";
+    var b = e.querySelector('button[aria-pressed="true"]');
+    if (!b) return "";
+    var v = b.getAttribute("data-cx") || b.getAttribute("data-bk");
+    if (v === null || v === anyVal) return "";
+    return (b.textContent || "").trim();
+  }
+  function refresh() {
+    var parts = [];
+    var d = selText("disc"); if (d) parts.push(d);
+    var f = selText("fail"); if (f) parts.push(f);
+    var c = segActive("capexseg", ""); if (c) parts.push(c);
+    var p = document.getElementById("pay");
+    if (p && p.value) parts.push("payback \u2264 " + p.value + " mo");
+    var b = segActive("bankseg", ""); if (b) parts.push(b);
+    chips.textContent = parts.join(" \u00b7 ");
+  }
+  document.addEventListener("change", function (ev) {
+    if (ev.target && (ev.target.id === "disc" || ev.target.id === "fail" || ev.target.id === "pay")) refresh();
+  });
+  document.addEventListener("click", function (ev) {
+    var b = ev.target && ev.target.closest ? ev.target.closest("button") : null;
+    if (b && (b.hasAttribute("data-cx") || b.hasAttribute("data-bk"))) setTimeout(refresh, 0);
+  });
+  refresh();
+})();
