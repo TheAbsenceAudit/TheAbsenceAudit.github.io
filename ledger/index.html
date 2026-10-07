@@ -29,6 +29,7 @@
   else run();
 })();
 </script>
+
 <script async src="https://www.googletagmanager.com/gtag/js?id=G-Y2ED6MMNTT"></script>
 <script>
   window.dataLayer = window.dataLayer || [];
@@ -124,7 +125,7 @@
 <meta property="og:image" content="https://theabsenceaudit.com/og-image.png">
 <meta name="twitter:card" content="summary_large_image">
 <link rel="icon" href="/favicon.ico" sizes="any">
-<link rel="stylesheet" href="/style.css?v=3db8583c">
+<link rel="stylesheet" href="/style.css?v=d874e7cd">
 <script id="aa-checkout-tracking">
 /* aa-ct-v2 */
 (function () {
@@ -335,13 +336,15 @@
   <div class="searchrow">
     <input type="search" id="q" placeholder="Search concepts, disciplines, or an incumbent (e.g. silver ink, Portland cement)" aria-label="Search the ledger">
     <div class="toolrow">
-      <div class="seg" role="group" aria-label="Verdict" id="verdictseg">
-        <button type="button" data-v="all" aria-pressed="true">All</button>
-        <button type="button" data-v="sale" aria-pressed="false">For sale</button>
-        <button type="button" data-v="0" aria-pressed="false">Studies</button>
-      </div>
-      <div class="seg" role="group" aria-label="Favorites" id="favseg" hidden>
-        <button type="button" aria-pressed="false">&#9733; Favorites</button>
+      <div class="toolleft">
+        <div class="seg" role="group" aria-label="Verdict" id="verdictseg">
+          <button type="button" data-v="all" aria-pressed="true">All</button>
+          <button type="button" data-v="sale" aria-pressed="false">For sale</button>
+          <button type="button" data-v="0" aria-pressed="false">Studies</button>
+        </div>
+        <div class="seg" role="group" aria-label="Favorites" id="favseg" hidden>
+          <button type="button" aria-pressed="false">&#9733; Favorites</button>
+        </div>
       </div>
       <div class="toolright">
         <label class="sortlabel" for="sort">Sort</label>
@@ -361,11 +364,12 @@
     </div>
   </div>
   <style>
-  .askrow{display:flex;align-items:center;gap:.6rem;margin-top:.45rem;padding-top:.55rem;border-top:1px solid var(--rule)}
-  .asklabel{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);white-space:nowrap}
-  .askrow input[type=text]{flex:1;min-width:0;font:inherit;font-size:.95rem;padding:.45rem .6rem;background:var(--paper);border:1px solid var(--rule);border-radius:0;color:var(--ink)}
+  .askrow{display:block;margin-top:.9rem;padding-top:.9rem;border-top:1px solid var(--rule)}
+  .asklabel{display:block;font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.7rem;letter-spacing:.09em;text-transform:uppercase;color:var(--ink-2);margin:0 0 .4rem}
+  .askfield{display:flex;gap:.6rem}
+  .askrow input[type=text]{flex:1;min-width:0;font:inherit;font-size:1rem;min-height:46px;padding:.65rem .9rem;background:var(--paper);border:1px solid var(--rule);border-radius:0;color:var(--ink)}
   .askrow input[type=text]:focus{outline:none;border-color:var(--ink);box-shadow:inset 0 -2px 0 var(--kill)}
-  .askrow .qbtn{flex:none}
+  .askrow .qbtn{flex:none;min-height:46px;padding:0 1.2rem}
   .answerarea{margin-top:.7rem;padding:.85rem 1rem;background:var(--paper-2);border:1px solid var(--rule)}
   .answerstate{font-family:'IBM Plex Mono',ui-monospace,monospace;font-size:.75rem;letter-spacing:.06em;color:var(--ink-3);margin-bottom:.4rem}
   .answerbody{margin:0 0 .75rem;font-size:1rem;line-height:1.55;color:var(--ink);max-width:70ch}
@@ -379,8 +383,10 @@
   </style>
   <div class="askrow">
     <label class="asklabel" for="askinput">Ask the ledger</label>
-    <input type="text" id="askinput" placeholder="e.g. What can I start for under $25,000?" aria-label="Ask the ledger a question">
-    <button type="button" id="askbtn" class="qbtn">Ask</button>
+    <div class="askfield">
+      <input type="text" id="askinput" placeholder="e.g. What can I start for under $25,000?" aria-label="Ask the ledger a question">
+      <button type="button" id="askbtn" class="qbtn">Ask</button>
+    </div>
   </div>
   <p class="asknote">Generated answers cite ledger concepts only and may be wrong &mdash; the ledger is the source of truth.</p>
   <div class="answerarea" id="answerarea" hidden>

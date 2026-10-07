@@ -801,3 +801,17 @@ sup.aa-cite{font-size:.66em;vertical-align:super;line-height:0;color:var(--ink-3
 /* --- toolbar grouping (2026-10-07: favorites floated mid-row under
    space-between; group the filter segs together on the left) --- */
 .toolleft{display:flex;gap:.6rem;align-items:center;flex-wrap:wrap;min-width:0}
+
+/* --- collapsible raw code blocks (2026-10-07: the JSON is proof, not pitch;
+   one line by default, open to verify; print/PDF force it open) --- */
+details.rawcode{border:1px solid var(--rule,#DDD6C8);border-radius:8px;margin:14px 0;padding:.55rem .9rem .75rem;background:var(--paper-2,#F3EFE7)}
+details.rawcode summary{cursor:pointer;font:600 11.5px/1.5 ui-sans-serif,system-ui,sans-serif;letter-spacing:.07em;text-transform:uppercase;color:var(--ink-2,#55504a);padding:.25rem 0;list-style:none}
+details.rawcode summary::before{content:"+ ";font-weight:700;color:var(--ink-3,#8a8478)}
+details.rawcode[open] summary::before{content:"\2212 "}
+details.rawcode summary::-webkit-details-marker{display:none}
+details.rawcode pre{margin:.45rem 0 .2rem;font:12.5px/1.55 ui-monospace,Menlo,Consolas,monospace;overflow-x:auto;white-space:pre;color:var(--ink,#171512)}
+@media print{
+  details.rawcode:not([open]) > *:not(summary){display:block}
+  details.rawcode > summary{display:none}
+  details.rawcode pre{white-space:pre-wrap}
+}
